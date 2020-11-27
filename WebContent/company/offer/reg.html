@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css">
+    <link rel="stylesheet" href="../../css/company/offer/reg.css"  type="text/css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>(기업)회원에게 보낼 오퍼 페이지</title>
+</head>
+<body>
+    <header id="header" class="header">
+        <h1><a href="http://127.0.0.1:5500/main.html">틈</a></h1>
+        <nav>
+            <h1>메인메뉴</h1>
+            <ul>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">이벤트</a></li>
+                <li><a href="">더보기</a></li>
+                <li><a href="">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container">
+            <aside id="aside" class="aside">
+                <h1>회원 정보 관리(기업)</h1>
+                <ul>
+                    <li><a href="">회원 정보 수정</a></li>
+                    <li><a href="">예약 관리</a></li>
+                    <li><a href="" class="active">역제안 신청 관리</a></li>
+                    <li><a href="">등록된 숙소 정보</a></li>
+                    <li><a href="">숙소 등록</a></li>
+                    <li><a href="">골든타임 관리</a></li>
+                </ul>
+            </aside>
+            <main id="main" class="main">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><i class="fas fa-home"></i>HOME ▶ </li>
+                        <li>회원 정보 관리(기업) ▶ </li>
+                        <li>역제안 신청 관리 ▶ </li>
+                        <li>오퍼 상세정보</li>
+                    </ul>
+                </div>
+                <section class="proposal-sec">
+                    <h1>○○○○님이 제안하신 정보에요!</h1>  
+                    <!-- 아래 div태그의 개수는 동적으로 변함 -->
+                    <div class="proposal-container">
+                        <div>
+                            <h2>제안정보</h2>
+                            <ul>
+                                <li>
+                                    <div>날짜</div>
+                                    <div>2020.12.12 ~ 2020.12.15</div>
+                                </li>
+                                <li>
+                                    <div>위치</div>
+                                    <div>경기도 하남시</div>
+                                </li>
+                                <li>
+                                    <div>인원수</div>
+                                    <div>성인4</div>
+                                </li>
+                                <li>
+                                    <div>희망하는 가격</div>
+                                    <div class="wanted-price">120,000원</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2>제안정보</h2>
+                            <ul>
+                                <li>
+                                    <div>날짜</div>
+                                    <div>2020.12.07 ~ 2020.12.08</div>
+                                </li>
+                                <li>
+                                    <div>위치</div>
+                                    <div>서울시 강남구</div>
+                                </li>
+                                <li>
+                                    <div>인원수</div>
+                                    <div>성인2, 아동1</div>
+                                </li>
+                                <li>
+                                    <div>희망하는 가격</div>
+                                    <div class="wanted-price">50,000원</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </section>
+                <section class="offer-sec">
+                    <h1>나의 숙소 정보</h1>
+                    <form class="offer-form">
+                        <section>
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="checkbox-1" class="checkbox" required>
+                                <label for="checkbox-1"><span></span></label>
+                            </div>
+                            <div class="offer-container">
+                                <div class="offer-img-container">
+                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
+                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/슈페리얼더블1.jpg" alt=""></a>
+                                </div>
+                                <div class="offer-detail-container">
+                                    <div class="offer-room">
+                                        <span>스탠다드 더블</span>
+                                    </div>
+                                    <div class="offer-price">
+                                        <div>가격</div>
+                                        <div>128,260원</div>
+                                    </div>
+                                    <div class="offer-detail-link">객실 자세히 보기</div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="checkbox-2" class="checkbox" required>
+                                <label for="checkbox-2"><span></span></label>
+                            </div>
+                            <div class="offer-container">
+                                <div class="offer-img-container">
+                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼트윈/슈페리얼트윈2.jpg"></a>
+                                </div>
+                                <div class="offer-detail-container">
+                                    <div class="offer-room">
+                                        <span>스탠다드 더블</span>
+                                    </div>
+                                    <div class="offer-price">
+                                        <div>가격</div>
+                                        <div>128,260원</div>
+                                    </div>
+                                    <div class="offer-detail-link">객실 자세히 보기</div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="checkbox-3" class="checkbox" required>
+                                <label for="checkbox-3"><span></span></label>
+                            </div>
+                            <div class="offer-container">
+                                <div class="offer-img-container">
+                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블2.jpg"></a>
+                                </div>
+                                <div class="offer-detail-container">
+                                    <div class="offer-room">
+                                        <span>스탠다드 더블</span>
+                                    </div>
+                                    <div class="offer-price">
+                                        <div>가격</div>
+                                        <div>128,260원</div>
+                                    </div>
+                                    <div class="offer-detail-link">객실 자세히 보기</div>
+                                    <!-- <div><i class="fas fa-caret-right"></i></div> -->
+                                </div>
+                            </div>
+                        </section>
+                        <div class="submit-btn-container">
+                            <input type="submit" class="submit-btn" value="오퍼하기">
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </section>
+
+    <section>
+        <footer id="footer" class="footer">
+            <div>
+                <ul>
+                    <li>
+                        <a href="">회사소개</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">이용약관</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">개인정보처리방침</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">사업자정보확인</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">여기어때 마케팅센터</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">액티비티 호스트센터</a>
+                        <span>|</span>
+                    </li>
+                    <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
+                </ul>
+        
+                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
+    
+                <address>
+                    <span>(주)TEUM</span>
+                    주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                    <br>대표이사 : 신중언 | 사업자등록번호 777-11-45678
+                    <br>통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제 1324-55호
+                    <br>전화번호 : 010-1111-2222
+                    <br>전자우편주소 : teum@teum.co.kr
+                    <br>Copyright TEUM COMPANY Corp. All rights reserved.
+                </address>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>

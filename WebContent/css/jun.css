@@ -1,0 +1,444 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+/* body{
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+} */
+
+/*-------------메인페이지용 헤더------------*/
+.sec_header_index{
+    background: white;
+}
+.header_index{
+    display: flex;
+    background: white;
+    height: 72px;
+    width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+/*------------------------------------------*/
+
+.sec_header{
+    background: #5f0081;
+}
+.header{
+    display: flex;
+    background: #5f0081;
+    height: 72px;
+    width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.header_index>.header_h1{
+    flex-basis: 50px;
+    height:70%;
+    background: url(../../../../틈로고index.png) 0 0 no-repeat;
+    text-indent: -9999px;
+    background-size: 50px auto;
+}
+.header>.header_h1{
+    flex-basis: 50px;
+    height:70%;
+    background: url(../../../../틈로고.png) 0 0 no-repeat;
+    text-indent: -9999px;
+    background-size: 50px auto;
+}
+
+.teum_logo{
+    box-sizing: border-box;
+    height: 100%;
+} 
+
+.header_search{
+    display: flex;
+}
+    .header_search>input{
+        padding: 8px 16px 8px 16px;
+        width: 100px;
+    }
+
+header h1{
+    margin: 0;
+    height: 100%;
+} 
+
+.main_menu{
+    display: flex;
+    margin: 0;
+    position: relative;
+}
+.header .mega_menu{
+    display: none;
+    position: absolute;
+    right: 0;
+    border: 1px solid black;
+    background-color: black;
+}
+    .header .mega_menu a{
+        color: white;
+    }
+
+.mypage:hover .mega_menu{
+    display: block;
+}
+
+header li{
+    color: white;
+    list-style: none;
+}
+
+/*-------------메인페이지용 헤더------------*/
+.header_index a {
+    --height: 50%;
+    display: block;
+    text-align: center;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #5f0081;
+    font-weight: bold;
+}
+
+.header_index .mega_menu{
+    display: none;
+    position: absolute;
+    right: 0;
+    border: 1px solid #5f0081;
+    background-color: #5f0081;
+}
+    .header_index .mega_menu a{
+        color: white;
+    }
+/*----------------------------------------*/
+
+.header a {
+    --height: 50%;
+    display: block;
+    text-align: center;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+
+/*---------반응형 용으로 만들어둔거 손대지 않기-----------*/
+.mobileHeader{
+    display: none;
+}
+/* @media(max-width: 600px){
+    .mobileHeader{
+        display: flex;
+    }
+    .pcHeader{
+        display: none;
+    }
+    .sec_login_main>div:first-child>img{
+        width: 300px;
+    }
+}
+
+@media(min-width: 600px){
+    .mobileHeader{
+        display: none;
+    }
+    .pcHeader{
+        display: flex;
+    }
+    .sec_login_main>div:first-child>img{
+        width: 500px;
+    }
+} */
+/*---------------------------------------------------------*/
+.sec_main_page{
+    min-height: 600px;
+}
+
+.promotion{
+    height: 600px;
+    background-color: rgb(247, 188, 247);
+    --border: 1px solid red;
+}
+    .promotion_bar{
+        height: 600px;
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .promotion>div>div:first-child{
+        /* width: 1200px;
+        margin: auto; */
+        --border: 1px solid red;
+    }
+    .promotion>div>div:nth-child(2){
+        display: flex;
+        height: 480px;
+        padding-top: 20px;
+        /* width: 1200px;
+        margin: 0 auto; */
+        --border: 1px solid red;
+        justify-content: space-evenly;
+    }
+        .promotion>div>div:first-child{
+            padding-top: 30px;
+            text-indent: 100px;
+        }
+        
+        .promotion>div>div:nth-child(2)>div{
+            --border: 1px solid red;
+            --text-align: center;
+            height: 100%;
+            display: flex;
+            margin: 5px;
+        }
+            .promotion>div>div:nth-child(2)>div:nth-child(1),
+            .promotion>div>div:nth-child(2)>div:nth-child(5){
+                align-items: center;
+            }
+            
+        .promotion .promotion-item{
+            align-items: center;
+            background-color: rgb(253, 245, 230);
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+            .promotion .promotion-item img{
+                padding-top: 10px;
+                width: 300px;
+                height: 350px;
+            }
+            .promotion .promotion-item>div:nth-child(2),
+            .promotion .promotion-item>div:nth-child(3){
+                align-self: start;
+            }
+            .promotion .promotion-item .promotion-item-detail>h2{
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .promotion .promotion-item .promotion-item-detail>h4{
+                font-size: 12px;
+                color: gray;
+                text-decoration: line-through;
+            }
+            .promotion .promotion-item .promotion-item-detail>h3{
+                font-size: 14px;
+                color: red;
+                font-weight: bold;
+            }
+            .promotion .promotion-item .promotion-item-detail>h5{
+                font-size: 14px;
+                padding: 5px 0;
+                width: 290px;
+                border-bottom: 1.5px solid rgb(160, 160, 160);
+            }
+
+            .promotion>div>div:nth-child(2)>div>a{
+                --border: 1px solid red;
+            }
+            .promotion>div>div:nth-child(2)>div:nth-child(1){
+                margin-left: 80px;
+            }
+            .promotion>div>div:nth-child(2)>div:nth-child(5){
+                margin-right: 80px;
+            }
+        .promotion>div>div:nth-child(2)>div:nth-child(2){
+            width: 300px;
+        }
+        .promotion>div>div:nth-child(2)>div:nth-child(3){
+            width: 300px;
+        }
+        .promotion>div>div:nth-child(2)>div:nth-child(4){
+            width: 300px;
+        }
+
+.category_bar{
+    width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .category_bar>ul{
+        display: flex;
+        justify-content: center;
+    }
+    .category_bar>ul>li>a{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0 30px;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.5s ease;
+    }
+        .category_bar>ul>li>a:hover{
+            color: lightcoral;
+            transform: scale(1.2);
+        }
+        
+    .category_bar>ul>li>a>img{
+        width: 80px;
+        margin-bottom: 20px;
+    }
+
+
+.main{
+    --min-height: 600px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around; */
+}
+
+.sec_login_main{
+    min-height: 600px;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --flex-wrap: wrap; /*나중에 반응형 만들때 사용하기*/
+}
+    .sec_login_main>div:first-child{
+        margin-right: 100px;
+        border: 1px solid red;
+    }
+    .sec_login_main>.login_form{
+        --margin-left: 100px;
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+    }
+        .sec_login_main>.login_form>h1{
+            font-size: 32px;
+            color: #5f0081;
+            font-weight: bold;
+        }
+        .sec_login_main>.login_form>section{
+            margin-top: 50px;
+        }
+        .sec_login_main>.login_form th{
+            color: #5f0081;
+            font-weight: bold;
+        }
+        .sec_login_main>.login_form th+td>input[type=text],.sec_login_main>.login_form th+td>input[type=password]{
+            margin-left: 16px;
+            width: 200px;
+        }
+        .sec_login_main>.login_form th~td>input[type=button]{
+            margin-left: 16px;
+        }
+
+        .sec_login_main>.login_form table{
+            border-spacing: 10px;
+        }
+
+        .btn_submit{
+            text-align: center;
+        }
+        .btn_submit>input{
+            margin: 10px 0;
+            height: 30px;
+            border: 1px dashed #ff0080;    /*---테두리 정의---*/
+            background-Color:#ffe6f2;   /*--백그라운드 정의---*/
+            font:12px 굴림;      /*--폰트 정의---*/
+            font-weight:bold;   /*--폰트 굵기---*/
+            color:#ff0080;    /*--폰트 색깔---*/
+        }
+        .btn_submit>input:hover{
+            cursor: pointer;
+        }
+
+.sec_form>div:nth-child(2){
+    margin-top: 16px;
+}
+    .sec_form>div:nth-child(2)>ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    .sec_form>div:nth-child(2)>ul input{
+        height: 30px;
+        border: 1px dashed #ff0080;    /*---테두리 정의---*/
+        background-Color:#ffe6f2;   /*--백그라운드 정의---*/
+        font:12px 굴림;      /*--폰트 정의---*/
+        font-weight:bold;   /*--폰트 굵기---*/
+        color:#ff0080;    /*--폰트 색깔---*/
+    }
+    .sec_form>div:nth-child(2)>ul input:hover{
+        cursor: pointer;
+    }
+
+.sec_footer{
+    background-color: lightgray;  
+}
+footer{
+    height: 300px;
+    width: 1200px;
+    background-color: lightgray;  
+    color :rgba(0,0,0,0.38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+footer ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    --flex-wrap: wrap;
+}
+
+footer ul li{
+    display: flex;
+    flex-shrink: 0;
+}
+
+/* footer ul li a{
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+} */
+
+footer a{
+    color: lightslategray;
+}
+
+footer div p{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.userInfo_main{
+    min-height: 600px;
+    background-color: khaki;
+}
+.sec_userInfo_main{
+    display: flex;
+    min-height: inherit;
+    width: 1200px;
+    margin: 0 auto;
+}
+    .sec_userInfo_main>aside{
+        width: 300px;
+        /*display: flex;
+        flex-direction: column;
+        align-items: center; */
+        background-color: lightcoral;
+    }
+        .sec_userInfo_main>aside>h1{
+            /* font-family: '맑은 고딕', '고딕', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-top: 43px; */
+            
+        }
+    .sec_userInfo_main>div{
+        width: 900px;
+        background-color: lightgreen;
+    }

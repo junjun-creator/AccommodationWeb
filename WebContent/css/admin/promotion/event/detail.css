@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+.header {
+    min-height: 100px;
+    background: wheat;
+}
+
+/********************************************/
+.body {
+    display: flex;
+}
+
+.body > .aside {
+    border: 1px solid #e4e3e3;
+    width: 18%;
+    height: 1000px;
+}
+
+    .aside > h1 {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 30px 0 0 20px;
+    }
+
+        .aside > ul {
+            width: 250px;
+            padding: 10px 0 0 40px;
+        }
+
+            .aside > ul li {
+                padding-top: 10px;
+                font-size: 20px;
+            }
+
+            .aside > ul li .active {
+                font-weight: bold;
+                color: #fc0453;
+            }
+
+            .aside > ul li a {
+                text-decoration: none;
+            }
+
+.body > .container {
+    flex-grow: 1;
+}
+
+    .container > .nav {
+        background: #F5F5F5;
+        border-bottom: 1px solid #e4e3e3;
+    }
+
+        .container > .nav > ul {
+            display: flex;
+            padding: 10px;
+            justify-content: space-around;
+        }
+
+            .container > .nav > ul > li {
+                border: 1px solid rgb(207, 204, 204);
+                border-radius: 3px;
+                flex-basis: 350px; /* 화면이 작으면 경계선이 붙어보임 */
+                height: 70px;
+                line-height: 70px;
+                text-align: center;
+                margin-left: 10px;
+            }
+
+            .container > .nav > ul > li:first-child {
+                margin-left: 0;
+            }
+
+                .container > .nav > ul > li > a {
+                    display: block;
+                    text-decoration: none;
+                    font-size: 24px;
+                }
+
+                .container > .nav > ul > li > a:hover {
+                    color:  rgb(207, 204, 204);
+                }
+
+                .container > .nav > ul > .current-tab {
+                    background: #d6d6d6;
+                }
+
+                .container > .nav > ul > .current-tab > a:hover {
+                    color: black;
+                }
+
+                    .container > .nav > ul > li > a span {
+                        text-decoration: none;
+                        margin-left: 10px;
+                        font-size: 24px;
+                    }
+        
+    .container > .main {
+        --background: darkorange;
+    }
+
+        .sub-container {
+            width: 66%;
+            --background: cornflowerblue;
+            margin: 0 auto;
+        }
+
+            .sub-container .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 30px;
+                margin-top: 30px;
+                font-size: 14px;
+            }
+
+            .sub-container .img-sec .img-container > img {
+                width: 800px;
+            }
+
+            .sub-container .page-list-sec {
+                --border: 1px solid blue;
+                margin-top: 50px;
+                margin-bottom: 100px;
+                width: 800px;
+            }
+
+                .sub-container .page-list-sec .page {
+                    border-bottom: 1px solid #d6d6d6;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                }
+
+                .sub-container .page-list-sec .prev-page {
+                    border-top: 1px solid #d6d6d6;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                }
+
+                    .sub-container .page-list-sec .page a {
+                        text-decoration: none;
+                    }
+
+                        .sub-container .page-list-sec .page .page-direction {
+                            color: #fc0453;
+                            padding-left: 30px;
+                        }
+
+                        .sub-container .page-list-sec .page .page-title {
+                            font-weight: bold;
+                            padding-left: 100px;
+                            display: inline-block;
+                            width: 460px;
+                        }
+
+                        .sub-container .page-list-sec .page .page-date {
+                            color: #808080;
+                        }
+                        
+                        
+                .sub-container .page-list-sec .btn-container {
+                    width: 180px;
+                    margin: 30px auto 0 auto;
+                }
+                
+                    .sub-container .page-list-sec .btn-container .btn-list {
+                        background-color: #fc0453;
+                        border-radius: 3px;
+                        border: 1px solid #ff0059;
+                        display: inline-block;
+                        cursor: pointer;
+                        color: #ffffff;
+                        padding: 16px 60px;
+                        text-decoration: none;
+                    }

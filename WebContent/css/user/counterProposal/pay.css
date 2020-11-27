@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+
+.header {
+    min-height: 100px;
+    background: wheat;
+}
+
+/********************************************/
+
+.container {
+    width: 1200px;
+    min-height: 100px;
+    --background: orange;
+    margin: 0 auto;
+}
+
+    .main {
+        width: 900px;
+        min-height: 100px;
+        background: rgb(107, 197, 224);
+    }
+        .breadcrumb {
+            background: violet;
+        }
+
+        .reservation-form {
+            display: flex;
+            background: cornflowerblue;
+            width: 700px;
+            margin: 0 auto;
+        }
+
+            .reservation-form-left {
+                background: darkgoldenrod;
+            }
+
+            .reservation-form-right {
+                background: darksalmon;
+            }
+
+/********************************************/
+
+.footer {
+    min-height: 100px;
+    background: yellowgreen;
+}

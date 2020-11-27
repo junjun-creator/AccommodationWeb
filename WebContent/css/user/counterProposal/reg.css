@@ -1,0 +1,190 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+
+.header{
+    display: flex;
+    background: #5f0081;
+    height: 72px;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_h1{
+    flex-basis: 50px;
+    height:70%;
+    background: url(../../../../틈로고.png) 0 0 no-repeat;
+    text-indent: -9999px;
+    background-size: 50px auto;
+}
+
+.teum_logo{
+    box-sizing: border-box;
+    height: 100%;
+} 
+
+.header_search{
+    display: flex;
+}
+    .header_search>input{
+        padding: 8px 16px 8px 16px;
+        width: 100px;
+    }
+
+header h1{
+    margin: 0;
+    height: 100%;
+} 
+
+.main_menu{
+    display: flex;
+    margin: 0;
+    position: relative;
+}
+.mega_menu{
+    display: none;
+    position: absolute;
+    right: 0;
+    border: 1px solid black;
+    background-color: black;
+}
+    .mega_menu a{
+        color: white;
+    }
+
+.mypage:hover .mega_menu{
+    display: block;
+}
+
+header li{
+    color: white;
+    list-style: none;
+}
+
+header a {
+    height: 50%;
+    display: block;
+    text-align: center;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+@media(max-width: 600px){
+    .mobileHeader{
+        display: flex;
+    }
+    .pcHeader{
+        display: none;
+    }
+}
+
+@media(min-width: 600px){
+    .mobileHeader{
+        display: none;
+    }
+    .pcHeader{
+        display: flex;
+    }
+}
+
+/********************************************/
+
+.container {
+    width: 1200px;
+    min-height: 550px;
+    --background:orange;
+    margin: 20px auto 0 auto;
+}
+
+    .main h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 30px;
+        border: 1px solid red;
+    }
+
+    .main > .breadcrumb {
+        border: 1px solid red;
+    }
+
+        .breadcrumb > .breadcrumb-list {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+    .main > .banner-img {
+        width: 900px;
+        height: 200px;
+        background: url("../../../images/user/counterProposal/banner-1.jpg") no-repeat center;
+        background-size: cover;
+        margin: 20px auto 0 auto;
+        border: 1px solid red;
+    }
+
+    .main > .reg-form-sec {
+        width: 700px;
+        margin: 50px auto 0 auto;
+        border: 1px solid red;
+    }
+        .reg-form-sec > .reg-form > div {
+            display: flex;
+        }
+
+            .form-both {
+                width: 50%;
+                flex-grow: 1;
+            }
+
+                .form-both > section:nth-child(2) {
+                    margin-top: 20px;
+                }
+    
+    .main  > .reg-form-sec .submit-btn-sec {
+        width: 70px; /* 나중에 버튼 크기에 맞게 너비 수정하기 */
+        margin: 30px auto 0 auto;
+    }
+
+/********************************************/
+
+footer{
+    --overflow: auto;
+    --min-width: 1283px;
+    --padding-top: 30px;
+    height: 300px;
+    background-color: lightgray;
+    color :rgba(0,0,0,0.38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer ul li{
+    display: flex;
+    flex-shrink: 0;
+}
+
+footer ul li a{
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+footer a{
+    color: lightslategray;
+}
+
+footer div p{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+

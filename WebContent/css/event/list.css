@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+.header {
+    background: wheat;
+    min-height: 100px;
+}
+
+/********************************************/
+.container {
+    width: 1200px;
+    min-height: 500px;
+    margin: 30px auto 0 auto;
+    display: flex;
+}
+
+    .aside {
+        border: 1px solid rgb(209, 196, 196);
+        border-radius: 5px;
+        width: 300px;
+        height: 330px;
+        margin-top: 70px;
+    }
+
+        .aside > h1 {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 0 0 20px;
+        }
+
+        .aside > ul {
+            width: 200px;
+            padding: 10px 0 0 40px;
+        }
+
+        .aside li {
+            padding-top: 10px;
+            font-size: 20px;
+        }
+
+        .aside .active {
+            font-weight: bold;
+            color: #fc0453;
+        }
+
+            .aside li > a {
+                text-decoration: none;
+            }
+
+    .main {
+        width: 900px;
+        min-height: 500px;
+        --border: 1px solid blue;
+        padding: 0 40px;
+        margin-bottom: 50px;
+    }
+
+        .breadcrumb > .breadcrumb-list {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .event-sec > h1 {
+            font-size: 30px;
+            width: 500px;
+            font-weight: bold;
+            font-size: 30px;
+            margin: 50px 0 30px 0;
+        }
+
+        .event-sec > .event-list {
+            display: flex;
+            --border: 1px solid #c5c7c9;
+            --border-radius: 5px;
+            color: #888888;
+        }
+
+            .event-sec > .event-list > li {
+                border: 1px solid #c5c7c9;
+                flex-grow: 1;
+                text-align: center;
+                height: 40px;
+                line-height: 40px;
+                background: #F2F2F8;
+            }
+
+            .event-sec > .event-list > .current-tab {
+                border-top: 3px solid #FC0453;
+                --border-right: 1px solid #FC0453;
+                --border-left: 1px solid #FC0453;
+                border-bottom: none;
+                background: white;
+            }
+
+                .event-sec > .event-list > li > a {
+                    text-decoration: none;
+                }
+
+        .event-sec > .event-img-container {
+            margin-top: 30px;
+            width: 816px;
+            height: 165px;
+            overflow: hidden;
+        }
+
+            .event-sec > .event-img-container > .scale {
+                transform: scale(1);
+                transition: transform 0.2s;
+            }
+
+            .event-sec > .event-img-container > .scale:hover {
+                transform: scale(1.03);
+            }
+
+                .event-sec > .event-img-container img {
+                    width: 816px;
+                    height: 165px;
+                }
+
+                
+
+
+
+/********************************************/
+.footer {
+    min-height: 100px;
+    background: yellowgreen;
+}

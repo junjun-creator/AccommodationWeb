@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            min-width: 1283px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background:#5f0081;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav{
+            overflow: auto;
+        }
+
+        header ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translateY(-50%);
+        }
+
+        header ul li{
+            display: inline-block;
+        }
+        
+        header h1{
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            transform:translateY(-30%);
+            left: 3%;
+            color: white;
+            background: url(틈로고.png) 0 0 no-repeat;
+            background-size: 45px auto;
+            text-indent: -9999px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin: .25rem;
+            padding: .5rem 1rem;
+            text-decoration: none;
+        }
+
+        header a{
+            font-weight: bold;
+            color: white;
+        }
+
+        .main{
+            min-width: 1283px;
+            height: 1000px;
+            overflow: auto;
+        }
+
+        footer{
+            overflow: auto;
+            min-width: 1283px;
+            padding-top: 30px;
+            height: 300px;
+            background-color: lightgray;
+            color :rgba(0,0,0,0.38);
+        }
+
+        footer div{
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        footer ul{
+            padding: 0;
+            list-style: none;
+        }
+
+        footer ul li{
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        footer ul li a{
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        footer a{
+            color: lightslategray;
+        }
+
+        footer div p{
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="http://127.0.0.1:5500/main.html">틈</a></h1>
+        <nav>
+            <h1>메인메뉴</h1>
+            <ul>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">이벤트</a></li>
+                <li><a href="">더보기</a></li>
+                <li><a href="">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main">
+        <main class="sec_main">
+            <h1>최근살펴본상품조회</h1>
+            
+            <section>
+                <h1>회원정보관리(개인)</h1>
+                <ul>
+                    <li>
+                        <a href="">회원정보수정</a>
+                    </li>
+                    <li>
+                        <a href="">예약관리</a>
+                    </li>
+                    <li>
+                        <a href="">경매신청관리</a>
+                    </li>
+                    <li>
+                        <a href="">최근살펴본상품조회</a>
+                    </li>
+                    <li>
+                        <a href="">찜한상품조회</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>최근살펴본상품조회</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>목록</td>
+                            <td>상품정보</td>
+                            <td>지역</td>
+                            <td>비고</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>(이미지)상품정보~!~!~!</td>
+                            <td>가평</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>(이미지)상품정보~!~!~!</td>
+                            <td>가평</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h1>페이지정보</h1>
+                이전(나중에 버튼으로)
+                <div>
+                    1/2 pages
+                </div>
+                다음(나중에 버튼으로)
+            </section>
+        </main>
+    </section>
+
+    <section>
+        <footer>
+            <div>
+                <ul>
+                    <li>
+                        <a href="">회사소개</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">이용약관</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">개인정보처리방침</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">사업자정보확인</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">여기어때 마케팅센터</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">액티비티 호스트센터</a>
+                        <span>|</span>
+                    </li>
+                    <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
+                </ul>
+        
+                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
+    
+                <address>
+                    <span>(주)TEUM</span>
+                    주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                    <br>대표이사 : 신중언 | 사업자등록번호 777-11-45678
+                    <br>통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제 1324-55호
+                    <br>전화번호 : 010-1111-2222
+                    <br>전자우편주소 : teum@teum.co.kr
+                    <br>Copyright TEUM COMPANY Corp. All rights reserved.
+                </address>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>

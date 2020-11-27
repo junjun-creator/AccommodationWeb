@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+.d-none{
+    display: none;
+}
+.header_h1{
+    flex-basis: 50px;
+    height:70%;
+    background: url("../../틈로고.png") 0 0 no-repeat;
+    text-indent: -9999px;
+    background-size: 50px auto;
+}
+.img-btn{
+    border: none;
+    background: none;
+}
+/********************************************/
+
+.container {
+    width: 1200px;
+    min-height: 100px;
+    --background: orange;
+    margin: 0 auto;
+    display: flex;
+}
+
+    .aside {
+        background: palegreen;
+        width: 300px;
+    }
+
+    .main {
+        width: 900px;
+        min-height: 500px;
+        
+    }
+        .breadcrumb {
+            width: 100%;
+        }
+            .breadcrumb>ul{
+                display: flex;
+                justify-content: flex-end;
+            }
+
+        .qna-sec {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+        }
+        .qna-sec section{
+            width: 600px;
+        }
+            .change-tap-list{
+                display: flex;
+                flex-direction: row;
+            }
+                .change-tap-list>li>input{
+                    width: 80px;
+                    height: 30px;
+                    text-align: center;
+                    color:#ffffff;
+                    background:#5f0080;
+                    border: 1px solid gray;
+                    border-radius: 10px 10px 0 0 ;
+
+                }
+                .change-tap-list .tap{
+                    color:#000000;
+                    background:#ffffff; 
+                }
+        .qna-list {
+            min-height: 300px;
+           border-top: 1px solid gray;
+            
+        }
+            .qna-list ol{
+                min-height: 200px; /* 컨텐츠 크기에 따른 높이 변화 */
+                display: flex;
+                flex-flow: column wrap;
+                align-items: center;                
+                justify-content: space-around;
+            }
+            .qna-list ol li{
+                    width: 600px;
+                    flex: 0 0 100px;
+                    padding-right: 50px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-around;
+                    border: 1.5px solid gray;
+                    border-radius: 20px;
+                    background: url("../../images/icon/notice-button.png") no-repeat  right 3% bottom 50%/7%;
+                }
+
+                .qna-list ol li>div{
+                        flex: 0 0 400px;
+                        padding: 20px;
+                    }
+                    .qna-list ol li:hover .d-none{
+                            display: block;
+                        }
+                        .qna-list ol li:hover {
+                            background: url("../../images/icon/notice-button-click.png") no-repeat  right 3% bottom 50%/7%;
+
+                        }
+                        .qna-list ol li>div p:nth-child(1){
+                            border-bottom: 0.5px solid gray;
+                        }
+        .qna-creat {
+            height: 300px;
+            border-top: 1px solid gray;
+            display: none;
+            --background: chartreuse;
+        }
+            .qna-creat>form{
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
+                border-top: 1px solid #000000;
+            }
+                .qna-creat>form>select{
+                    width: 200px;
+                }
+
+           

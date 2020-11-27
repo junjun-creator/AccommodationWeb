@@ -1,0 +1,51 @@
+    .main{
+        width: max-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        .title{
+            display: flex;
+        }
+            .title .main-img{
+
+            }
+            .title .main-info
+        .review{
+
+        }
+        .event{
+            border: 2px solid black;
+            position: relative;
+        }
+        .event h1{
+            font-weight: bold;
+        }
+            .event nav a{
+                position: absolute;
+                right: 0px;
+            }
+            .event nav ul{
+                /* align-items: flex-end; */
+            }
+        .dateChange{
+            border: 2px solid black;
+        }
+
+        .information-box{
+            display: flex;
+        }
+        .information-box>div{
+            background-attachment: fixed;
+        }
+        .information-box table{
+            height: 220px;
+            width: 700px;
+            border: 1px solid black;
+            
+        }
+        .information-box table tr:nth-child(3) td:last-child{
+            background-color: pink;
+            color: white;
+        }
+        
+        

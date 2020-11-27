@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+
+.header {
+    min-height: 100px;
+    background: wheat;
+}
+
+/********************************************/
+
+.container {
+    width: 1200px;
+    min-height: 100px;
+    --background: orange;
+    margin: 0 auto;
+    display: flex;
+}
+
+    .aside {
+        background: palegreen;
+        width: 300px;
+    }
+
+    .main {
+        width: 900px;
+        min-height: 100px;
+        --background: rgb(107, 197, 224);
+    }
+        .breadcrumb {
+            background: violet;
+        }
+
+        .offer-sec {
+            background: powderblue;
+        }
+
+            .offer-form {
+                --background: palevioletred;
+            }
+
+/********************************************/
+
+.footer {
+    min-height: 100px;
+    background: yellowgreen;
+}

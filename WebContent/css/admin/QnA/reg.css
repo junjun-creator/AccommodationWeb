@@ -1,0 +1,104 @@
+
+/********************************************/
+.main h1 {
+    font-size: 20px;
+    margin: 30px 0 0 0;
+}
+
+    .sub-container {
+        width: 1200px;
+        --background: cornflowerblue;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .main .breadcrumb{
+            align-self: flex-end;
+        }
+
+            .main .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 30px;
+                margin-top: 30px;
+                font-size: 14px;
+            }
+     
+        .main .form-sec {
+           
+            width: 800px; /* form의 margin-left(30) + form의 width(800) */
+        }
+
+            .main .reg-form > table {
+                border-top: 2px solid #5F0080;
+                --border-collapse: collapse;
+                --border-spacing: 5px 10px;
+                width: 800px;
+                table-layout: fixed;
+                font-size: 14px;
+                margin: 10px 0 0 0px;
+            }
+
+                .main .reg-form > table tr {
+                    height: 40px;
+                    line-height: 40px;
+                }
+
+                    .main .reg-form > table th {
+                        border-bottom: 1px solid #d6d6d6;
+                        border-left: 1px solid #d6d6d6;
+                        background: #f5f5f5;
+                        text-align: center;
+                    }
+
+                    .main .reg-form > table td {
+                        border-bottom: 1px solid #d6d6d6;
+                        border-left: 1px solid #d6d6d6;
+                        border-right: 1px solid #d6d6d6;
+                        padding-left: 10px;
+                    }
+
+                    .main .reg-form > table th.col-m { 
+                        width: 50px;
+                    }
+
+                    .main .reg-form > table td.col-l { 
+                        width: 130px;
+                    }
+
+                    .main .reg-form > table td.text-left {
+                        text-align: left;
+                    }
+
+                    .main .reg-form > table td > .input-title {
+                        width: 350px;
+                        height: 25px;
+                    }
+
+                        .main .reg-form > table td > .checkbox-open {
+                            margin-left: 10px;
+                        }
+
+                        .main .reg-form > table td > .checkbox-open + span {
+                            margin-left: 10px;
+                        }
+
+                        .main .reg-form > table td > .textarea {
+                            margin-top: 10px;
+                        }
+
+                    .main .reg-form > div {
+                        width: 800pxpx;
+                        margin: 10px 0 0 30px;
+                        text-align: center;
+                    }
+
+                    .main .reg-form > div .btn-submit,
+                    .main .reg-form > div .btn-cancel {
+                        width: 80px;
+                        height: 25px;
+                        margin: 0 5px 0 5px;
+                    }
+/********************************************/

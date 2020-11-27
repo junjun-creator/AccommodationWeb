@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+
+.admin-container {
+    width: 100%;
+    min-height: 100px;
+    --background: orange;
+    display: flex;
+}
+
+    .aside {
+        background: palegreen;
+        width:20%;
+    }
+
+    .main {
+        width: 80%;
+        min-height: 100px;
+        background: rgb(107, 197, 224);
+    }
+        
+    .ad-notice-sec {
+        background: rgb(113, 51, 214);
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .ad-notice-sec section{
+            border: 1px solid black;
+        }
+        
+/********************************************/

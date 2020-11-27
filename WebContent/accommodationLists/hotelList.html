@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호텔리스트</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/jun.css">
+    <link rel="stylesheet" href="../css/accommodationList/hotelList.css">
+    
+</head>
+<body>
+    <div class="sec_header">
+        <header class="header pcHeader">
+            <div class="header_h1">
+                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+            </div>
+            <div>
+                <ul class="main_menu">
+                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">공지사항</a></li>
+                    <li><a href="">이벤트</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="">로그인</a>
+                        <div class="mega_menu">
+                            <ul>
+                                <li><a href="">submenu</a></li>
+                                <li><a href="">submenu</a></li>
+                                <li><a href="">submenu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <header class="header mobileHeader">
+        <div>
+            <a href=""><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="header_h1">
+            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+        </div>
+        <div>
+            <a href=""><i class="fas fa-search"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class='aside'>
+            <h1>지역</h1>
+            <div class = "location"></div>
+            <h1>날짜</h1>
+            <div class='calander'>
+            <!-- 날짜 -->
+            </div>
+            
+            <div class='people'>
+                인원
+                </div>
+
+            <h1>상세조건</h1>
+            <form>
+                <button type="button">초기화</button>
+                <button type="submit">적용</button>
+            </form>
+            <form>
+                <input type="checkbox" name="예약가능">예약가능
+                <input type="checkbox" name="프로모션">골든타임
+            </form><br>
+
+            <h1>배트 타입</h1>
+            <form>
+                <input type="image" id="싱글" alt="" src="../images/침대 아이콘/싱글.png">
+                <input type="image" id="더블" alt="" src="../images/침대 아이콘/더블.png">
+                <input type="image" id="트윈" alt="" src="../images/침대 아이콘/트윈.png">
+            </form>
+        </aside>
+        
+        <main class= 'main'>
+            <div class='location'>
+                <nav>
+                    <ul>
+                        <li><a href=""><img src = "../images/icon/집 아이콘.png" alt= "Home"></a></li>
+                        <li>></li>
+                        <li><a href="">서울</a></li>
+                        <li>></li>
+                        <li><a href="">강남,삼성,역삼</a></li>
+                    </ul>
+                </nav>
+            </div>
+    
+          
+
+            <div class="product-list">
+                <ul>
+                    <li>
+                        <a href = "">
+                            <div class="pic">
+                                <img class="" src="../images/company/호텔/리스트/신라스테이_삼성_메인.jpg">
+                            </div>
+                            <div class="evt-info">
+                                <div class="title">완벽한 힐링의 조화~[조식 2인+24시간 투숙]</div>
+                                <div class="badge">4성급</div> 
+                                <div class= "name">신라스테이 삼성</div>
+                                <div class="score">9.1 추천해요(94)</div>
+                                <div class="location">강남구</div>
+                                <div class="price"> 120,032원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "">
+                            <div class="pic">
+                                <img class="" src="../images/company/호텔/리스트/라마다호텔_메인.jpg">
+                            </div>
+                            <div class="evt-info">
+                                <div class="title">당신과의 아름다운 추억 [롯데스카이 전망대]</div>
+                                <div class="badge">특급</div> 
+                                <div class= "name">라마다 서울 호텔</div>
+                                <div class="score">8.0 만족해요(1101)</div>
+                                <div class="location">강남구</div>
+                                <div class="price"> 65,000원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "">
+                            <div class="pic">
+                                <img class="" src="../images/company/호텔/리스트/글래드라이브_강남_메인.jpg">
+                            </div>
+                            <div class="evt-info">
+                                <div class="title">편안한 수면 경험![컨셉룸+13시 늦은퇴실]</div>
+                                <div class="badge">4성급</div> 
+                                <div class= "name">글래드 라이브 강남</div>
+                                <div class="score">9.3 추천해요(506)</div>
+                                <div class="location">강남구</div>
+                                <div class="price"> 70,000원</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+
+
+    <section class="sec_footer">
+        <footer>
+            <div>
+                <ul>
+                    <li>
+                        <a href="">회사소개</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">이용약관</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">개인정보처리방침</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">사업자정보확인</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">여기어때 마케팅센터</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">액티비티 호스트센터</a>
+                        <span>|</span>
+                    </li>
+                    <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
+                </ul>
+        
+                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
+    
+                <address>
+                    <span>(주)TEUM</span>
+                    주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                    <br>대표이사 : 신중언 | 사업자등록번호 777-11-45678
+                    <br>통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제 1324-55호
+                    <br>전화번호 : 010-1111-2222
+                    <br>전자우편주소 : teum@teum.co.kr
+                    <br>Copyright TEUM COMPANY Corp. All rights reserved.
+                </address>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>

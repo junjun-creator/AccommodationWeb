@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+/********************************************/
+
+.header {
+    min-height: 100px;
+    background: wheat;
+}
+
+/********************************************/
+
+.container {
+    width: 1200px;
+    min-height: 100px;
+    background: orange;
+    margin: 0 auto;
+}
+
+    .breadcrumb {
+        background: violet;
+    }
+
+    .banner-img {
+        width: 900px;
+        height: 200px;
+        background: url("../../../images/user/counterProposal/banner-2.jpg") no-repeat center;
+        background-size: cover;
+        margin: 0 auto;
+    }
+
+    .reg-form {
+        background: tomato;
+    }
+
+/********************************************/
+
+.footer {
+    min-height: 100px;
+    background: yellowgreen;
+}
+

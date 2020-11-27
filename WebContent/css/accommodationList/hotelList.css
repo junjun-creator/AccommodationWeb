@@ -1,0 +1,42 @@
+li  a .title{
+background: rgba(50,50,50, 0.5);
+color: rgba(255, 255, 255, 0.9);
+}
+li  a .badge{
+    background: #5f0081;
+    color: white;
+}
+li  a .name{
+    font-weight: bold;
+    color: white;
+}
+li  a .score{
+    color: orange;
+}
+li  a .location{
+
+}
+li  a .price{
+
+}
+/* --------------------------- */
+.container{
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    
+}
+    .container .aside{
+        width: 200px;
+
+    }
+    .container .main{
+        width: 500px;
+    }
+        .main .location ul{
+            display: flex;
+        }
+        .main .product-list{
+            display: flex;
+        }
