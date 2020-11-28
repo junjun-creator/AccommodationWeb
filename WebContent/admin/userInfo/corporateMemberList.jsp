@@ -6,7 +6,7 @@
     
 <% 
 	MemberService service = new MemberService();
-	List<Member> list = service.getList(0);
+	List<Member> list = service.getList(1);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +36,8 @@
         <aside id="aside" class="aside">
             <h1>회원관리</h1>
                 <ul>
-                    <li><a href="" class="active">개인회원리스트</a></li>
-                    <li><a href="">기업회원리스트</a></li>
+                    <li><a href="">개인회원리스트</a></li>
+                    <li><a href="" class="active">기업회원리스트</a></li>
                 </ul>
         </aside>
         <div class="container">
@@ -55,44 +55,42 @@
                         <ul class="breadcrumb-list">
                             <li><i class="fas fa-home"></i>HOME ▶ </li>
                             <li>회원관리 ▶ </li>
-                            <li>개인회원리스트</li>
+                            <li>기업회원리스트</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h1>등급별 회원수</h1>
+                        <h1>업체등록현황</h1>
                     </div>
                     <div class="list-board">
                         <table>
                             <thead>
                                 <tr>
-                                    <td class="col-sm">등급</td>
+                                    <td class="col-sm">등록여부</td>
                                     <td class="col-m">인원</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>실버</td>
-                                    <td>100명</td>
+                                    <td>등록</td>
+                                    <td>190명</td>
                                 </tr>
                                 <tr>
-                                    <td>골드</td>
-                                    <td>30명</td>
+                                    <td>미등록</td>
+                                    <td>35명</td>
                                 </tr>
                                 <tr>
-                                    <td>플레티넘</td>
-                                <td>3명</td>
-                                </tr>
-                                <tr>
-                                    <td>다이아</td>
-                                    <td>1명</td>
+                                    <td>신청현황</td>
+                                    <td><a href="">35개</a>
+                                    	<input type="button" value="목록보기">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div>
-                        <h1>등록된 개인회원리스트</h1>
+                        <h1>등록된 기업회원리스트</h1>
                         <select name="" id="">
                             <option value="">전체등급</option>
                             <option value="">실버</option>
@@ -112,23 +110,24 @@
                                         <td class="col-sm">생년월일</td>
                                         <td class="col-m">휴대폰번호</td>
                                         <td class="col-sm">회원종류</td>
-                                        <td class="col-m">회원등급</td>
+                                        <td class="col-sm">업체등록여부</td>
                                         <td class="col-s"><input type="checkbox"></td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <% for(Member m : list){ %>
+                                    <% for(Member m : list){ %>
                                     <tr>
                                         <td class="col-s"><%=m.getId() %></td>
                                         <td class="col-sm"><%=m.getName() %></td>
                                         <td class="col-m"><%=m.getEmail() %></td>
                                         <td class="col-sm"><%=m.getBirthday() %></td>
                                         <td class="col-m"><%=m.getPhone() %></td>
-                                        <td class="col-sm user-type">개인회원</td>
-                                        <td class="col-m user-rank"><%=m.getRank() %></td>
+                                        <td class="col-sm user-type">기업회원</td>
+                                        <td class="col-m user-rank">미등록</td>
                                         <td class="col-s"><input type="checkbox"></td>
                                     </tr>
                                     <%} %>
+                                    
                                     <!-- <tr>
                                         <td class="col-s">2</td>
                                         <td class="col-sm">신중언</td>
@@ -170,78 +169,5 @@
             </main>
         </div>
     </section>
-    
-    <script type="text/javascript">
-    	window.addEventListener("load",function(){
-    		
-	    	var rank = document.querySelectorAll(".user-rank");
-    		console.log(rank);
-    		/* var icon = document.createElement('i');
-    		icon.setAttribute("class","far fa-gem");
-    		icon.style.color="red";
-    		
-			for(var v of rank){
-				console.log(icon);
-				v.append(icon);
-				switch(v.innerText){
-				case "0":
-					v.innerText = "실버";
-					break;
-				case "1":
-					v.innerText = "골드";
-					break;
-				case "2":
-					v.innerText = "플래티넘";
-					break;
-				case "3":
-					v.innerText = "다이아";
-					break;
-				}
-			}
-			
-			var type = document.querySelectorAll(".user-type");
-			for(var v of type){
-				switch(v.innerText){
-				case "0":
-					v.innerText ="개인회원";
-					break;
-				case "1":
-					v.innerText = "기업회원";
-					break;
-				}
-			} */
-		
-			var icon = document.createElement('i');
-	    	icon.setAttribute("class","far fa-gem");
-	    	
-			for(var i=0;i<rank.length;i++){
-				(function(m){
-					
-					switch(rank[m].innerText){
-		    		
-					case "0":
-						rank[m].style.color = "green";
-						rank[m].innerHTML = "실버<i class='fas fa-gem'></i>";
-						break;
-					case "1":
-						rank[m].style.color = "gold";
-						rank[m].innerHTML = "골드<i class='fas fa-gem'></i>";
-						break;
-					case "2":
-						rank[m].style.color = "gray";
-						rank[m].innerHTML = "플래티넘<i class='fas fa-gem'></i>";
-						console.log(m);
-						break;
-					case "3":
-						rank[m].style.color = "black";
-						rank[m].innerHTML = "다이아<i class='fas fa-gem'></i>";
-						console.log(m);
-						break;
-					}
-				})(i);
-	    	}
-    	});
-
-    </script>
 </body>
 </html>
