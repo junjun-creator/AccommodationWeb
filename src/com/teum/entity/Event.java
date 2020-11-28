@@ -7,6 +7,7 @@ public class Event {
 	private int status;
 	private String title;
 	private Date regDate;
+	private Date startDate;
 	private Date endDate;
 	private int pub;
 	
@@ -14,12 +15,13 @@ public class Event {
 		
 	}
 
-	public Event(int eventNo, int status, String title, Date regDate, Date endDate, int pub) {
+	public Event(int eventNo, int status, String title, Date regDate, Date startDate, Date endDate, int pub) {
 		super();
 		this.eventNo = eventNo;
 		this.status = status;
 		this.title = title;
 		this.regDate = regDate;
+		this.startDate = startDate;
 		this.endDate = endDate;
 		this.pub = pub;
 	}
@@ -27,7 +29,7 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event [eventNo=" + eventNo + ", status=" + status + ", title=" + title + ", regDate=" + regDate
-				+ ", endDate=" + endDate + ", pub=" + pub + "]";
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", pub=" + pub + "]";
 	}
 
 	public int getEventNo() {
@@ -62,6 +64,14 @@ public class Event {
 		this.regDate = regDate;
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -78,7 +88,5 @@ public class Event {
 		this.pub = pub;
 	}
 
-	
-	
 	
 }

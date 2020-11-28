@@ -84,7 +84,7 @@
                                         <td><%=e.getEventNo() %></td>
                                         <td class="event-ing"><%=status%></td>
                                         <td><%=e.getEndDate() %></td>
-                                        <td class="text-left"><a href=""><%=e.getTitle() %></a></td>
+                                        <td class="text-left"><a href="detail.jsp"><%=e.getTitle() %></a></td>
                                         <td>관리자</td>
                                         <td><%=e.getRegDate() %></td>
                                         <td><input type="checkbox"></td>
@@ -103,6 +103,26 @@
                                 </tbody>
                             </table>
                         </form>
+                        <div class="pager-container">
+                            <div class="btn btn-prev">
+                                <span><a href="">이전</a></span>
+                            </div>
+                            <ul class="pager-list">
+                                <li><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">4</a></li>
+                                <li><a href="">5</a></li>
+                                <li><a href="">6</a></li>
+                                <li><a href="">7</a></li>
+                                <li><a href="">8</a></li>
+                                <li><a href="">9</a></li>
+                                <li><a href="">10</a></li>
+                            </ul>
+                            <div class="btn btn-next">
+                                <span><a href="">다음</a></span>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </main>
