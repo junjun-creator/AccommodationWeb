@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
     <link rel="stylesheet" href="../../../css/jun.css">
     <link rel="stylesheet" href="../../../css/admin-form.css">
-    <link rel="stylesheet" href="../../../css/admin/notice/edit.css">
+    <link rel="stylesheet" href="../../../css/admin/QnA/reg.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>noticeCreate</title>
 </head>
@@ -35,8 +37,8 @@
         <aside id="aside" class="aside">
             <h1>고객센터</h1>
                 <ul>
-                    <li><a href="" class="active">공지사항</a></li>
-                    <li><a href="">QnA</a></li>
+                    <li><a href="" >공지사항</a></li>
+                    <li><a href="" class="active">QnA</a></li>
                 </ul>
         </aside>
         <div class="container">
@@ -55,19 +57,19 @@
                         <ul class="breadcrumb-list">
                             <li><i class="fas fa-home"></i>HOME ▶ </li>
                             <li>고객센터 ▶ </li>
-                            <li>공지사항 리스트 ▶</li>
-                            <li>공지사항 수정</li>
-                        </ul>
+                            <li> QnA ▶</li>
+                            <li>문의사항 답변</li>
+                        </ul> 
                     </div>
                     <section class="form-sec">
-                        <h1>공지사항 수정</h1>
+                        <h1>문의사항 답변</h1>
                         <form action="" class="reg-form">
                             <table class="table">
                                 <tr>
                                     <th class="col-m">제목</th>
                                     <td class="col-l text-left">
                                         <input type="text" class="input-title" autofocus required>
-                                      
+                                       
                                     </td>
                                 </tr>
                                 <tr>
@@ -84,7 +86,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <input class="btn-submit" type="submit" value="수정" />
+                                <input class="btn-submit" type="submit" value="답변" />
                                 <button class="btn-cancel" href="">취소</button>
                             </div>
                         </form>

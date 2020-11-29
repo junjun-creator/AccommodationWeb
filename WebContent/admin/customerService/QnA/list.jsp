@@ -67,7 +67,7 @@
                         <ul class="breadcrumb-list">
                             <li><i class="fas fa-home"></i>HOME ▶ </li>
                             <li>고객센터 ▶ </li>
-                            <li>공지사항 리스트</li>
+                            <li>문의사항 리스트</li>
                         </ul>
                     </div>
                     <section class="list-board">
@@ -97,14 +97,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <% for(QnA q : list){ %>
+                            <%
+	                            for(QnA q : list){
+	                            	String answer="답변함";
+	                            	if(q.getAnswer() == 0){
+	                            		answer = "답변안함";
+	                            	}
+                            	%>
                                 <tr>
                                     <td><%= q.getId() %></td>
                                     <td><%=q.getName() %></td>
                                     <td><%=q.getTitle() %></td>
                                     <td><%=q.getPhone() %></td>
                                     <td><%=q.getRegdate() %></td>
-                                    <td>아니오</td>
+                                    <td><%=answer %></td>
                                     <td>
                                         <input type="checkbox" name="" id="">
                                     </td>
@@ -113,7 +119,7 @@
                                 <tr class="btn-delete">
                                     <td colspan="8">
                                         <form action="">
-                                            <input type="submit" value="생성">
+                                            <input type="submit" value="답변">
                                             <input type="submit" value="삭제">
                                         </form>
                                     </td>

@@ -67,7 +67,9 @@
                                     <td class="col-m">제목</td>
                                     <td class="col-sm">날짜</td>
                                     <td class="col-sm">작성자</td>
-                                    <td class="col-s"><input type="checkbox" class="selectAllMembers"></td>
+                                    <td class="col-s">상태</td>
+                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
+                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,42 +78,21 @@
                                     <td>첫 번째 공지사항</td>
                                     <td>2020/11/01</td>
                                     <td>Master</td>
+                                    <td>공개</td>
+                                     <td>
+                                        <input type="checkbox" name="" class=pubChk >
+                                    </td>
                                     <td>
                                         <input type="checkbox" name="" class="memberChk" >
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>두 번째 공지사항</td>
-                                    <td>2020/11/03</td>
-                                    <td>Master</td>
-                                    <td>
-                                        <input type="checkbox" name="" class="memberChk">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>세 번째 공지사항</td>
-                                    <td>2020/11/06</td>
-                                    <td>Master</td>
-                                    <td>
-                                        <input type="checkbox" name="" class="memberChk">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>네 번째 공지사항</td>
-                                    <td>2020/11/07</td>
-                                    <td>Master</td>
-                                    <td>
-                                        <input type="checkbox" name="" class="memberChk">
-                                    </td>
-                                </tr>
+                               
                                 <tr class="btn-delete">
-                                    <td colspan="5">
+                                    <td colspan="7">
                                         <form action="">
                                             <input type="submit" value="생성">
-                                            <input type="submit" value="수정">
+                                            <input type="submit" value="공개">
+                                            <input type="submit" value="비공개">
                                             <input type="submit" value="삭제">
                                         </form>
                                     </td>
@@ -119,11 +100,6 @@
                             </tbody>
                         </table>
                     </section>
-                    <article class="d-none">
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore sit earum provident alias? Neque ex <br> molestias nostrum suscipit reprehenderit a ratione! Vitae neque quae enim temporibus non magnam quibusdam necessitatibus!
-                        </p>
-                    </article>
                     <section>
                         <h1 class="d-none">페이지 정보</h1>
                         <div>

@@ -78,26 +78,37 @@
                                     <td class="col-m">제목</td>
                                     <td class="col-sm">날짜</td>
                                     <td class="col-sm">작성자</td>
-                                    <td class="col-s"><input type="checkbox" class="selectAllMembers"></td>
+                                    <td class="col-s">상태</td>
+                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
+                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
                                 </tr>
                             </thead>
                             <tbody>
-                            	<% for(Notice n : list){ %>
+                            	<% for(Notice n : list){
+                            		String pub="공개";
+	                            	if(n.getPub() == 0){
+	                            		pub = "비공개";
+	                            	}%>
                                 <tr>
                                     <td><%= n.getId() %></td>
                                     <td><%=n.getTitle() %></td>
-                                    <td>2020/11/01</td>
+                                    <td><%=n.getRegdate() %></td>
                                     <td><%=n.getWriterId() %></td>
+                                    <td><%= pub %></td>
                                     <td>
-                                        <input type="checkbox" name="" class="memberChk" >
+                                        <input type="checkbox" name="" class=pubChk >
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="" class="deleteChk" >
                                     </td>
                                 </tr>
                                 <%}%>
                                 <tr class="btn-delete">
-                                    <td colspan="5">
+                                    <td colspan="7">
                                         <form action="">
                                             <input type="submit" value="생성">
-                                            <input type="submit" value="수정">
+                                            <input type="submit" value="공개">
+                                            <input type="submit" value="비공개">
                                             <input type="submit" value="삭제">
                                         </form>
                                     </td>
@@ -105,11 +116,6 @@
                             </tbody>
                         </table>
                     </section>
-                    <article class="d-none">
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore sit earum provident alias? Neque ex <br> molestias nostrum suscipit reprehenderit a ratione! Vitae neque quae enim temporibus non magnam quibusdam necessitatibus!
-                        </p>
-                    </article>
                     <section>
                         <h1 class="d-none">페이지 정보</h1>
                         <div>
@@ -128,18 +134,18 @@
         </div>
     </section>
     <script>
-        var selectAll = document.querySelector(".selectAllMembers");
+        var selectAll = document.querySelector(".selectAllDelete");
         selectAll.addEventListener('click', function(){
-            var objs = document.querySelectorAll(".memberChk");
+            var objs = document.querySelectorAll(".deleteChk");
             for (var i = 0; i < objs.length; i++) {
               objs[i].checked = selectAll.checked;
             };
         }, false);
          
-        var objs = document.querySelectorAll(".memberChk");
+        var objs = document.querySelectorAll(".deleteChk");
         for(var i=0; i<objs.length ; i++){
           objs[i].addEventListener('click', function(){
-            var selectAll = document.querySelector(".selectAllMembers");
+            var selectAll = document.querySelector(".selectAllDelete");
             for (var j = 0; j < objs.length; j++) {
               if (objs[j].checked === false) {
                 selectAll.checked = false;

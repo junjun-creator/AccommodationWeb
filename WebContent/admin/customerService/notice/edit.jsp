@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +58,7 @@
                             <li><i class="fas fa-home"></i>HOME ▶ </li>
                             <li>고객센터 ▶ </li>
                             <li>공지사항 리스트 ▶</li>
+                            <li>공지사항 디테일 ▶</li>
                             <li>공지사항 수정</li>
                         </ul>
                     </div>
@@ -67,7 +70,7 @@
                                     <th class="col-m">제목</th>
                                     <td class="col-l text-left">
                                         <input type="text" class="input-title" autofocus required>
-                                      
+                       
                                     </td>
                                 </tr>
                                 <tr>
