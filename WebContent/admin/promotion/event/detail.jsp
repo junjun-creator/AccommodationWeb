@@ -70,20 +70,21 @@
                     <section class="page-list-sec">
                     	<%Event e1 = list.get(1); %> <!-- 일단 1로 넣어놓음 -->
                     	<%Event e2 = list.get(2); %> <!-- 일단 1로 넣어놓음 -->
-                		<div class="page next-page">
+                    	<div class="page prev-page">
                             <a href="">
-                                <span class="page-direction">다음글</span>
+                                <span class="page-direction">이전글</span>
                                 <span class="page-title"><%=e1.getTitle() %></span>
                                 <span class="page-date">기간: <%=e1.getStartDate() %> ~ <%=e1.getEndDate() %></span>
                             </a>
                         </div>
-                    	<div class="page prev-page">
+                		<div class="page next-page">
                             <a href="">
-                                <span class="page-direction">이전글</span>
+                                <span class="page-direction">다음글</span>
                                 <span class="page-title"><%=e2.getTitle() %></span>
                                 <span class="page-date">기간: <%=e2.getStartDate() %> ~ <%=e2.getEndDate() %></span>
                             </a>
                         </div>
+                    	
                         <div class="btn-container">
                             <button class="btn-list" onclick="location.href='list.jsp'">목록보기</button>
                         </div>
