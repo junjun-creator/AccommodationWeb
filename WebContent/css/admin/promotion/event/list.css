@@ -117,17 +117,17 @@
 
         .main h1 {
             font-size: 20px;
-            margin: 30px 0 0 30px;
+            margin-top: 30px;
         }
 
         .main .list-board > table {
             border-top: 2px solid #5F0080;
             --border-collapse: collapse;
             --border-spacing: 5px 10px;
-            width: 1000px;
+            width: 1100px;
             table-layout: fixed;
             font-size: 14px;
-            margin: 10px 0 0 30px;
+            margin-top: 10px;
         }
 
             .main .list-board > table > thead {
@@ -170,4 +170,31 @@
                         padding-right: 15px;
                         border-bottom: none;
                     }
+        .main .pager-container {
+            display: flex;
+            justify-content: center;
+        }
 
+            .main .pager-container .pager-list {
+                display: flex;
+            }
+
+                .main .pager-container .pager-list li {
+                    margin-left: 15px;
+                }
+
+                .main .pager-container .pager-list li:last-child {
+                    margin-right: 15px;
+                }
+
+                .main .pager-container .pager-list li a {
+                    text-decoration: none;
+                }
+
+                .main .pager-container .pager-list li a:hover {
+                    color: #5F0080;
+                }
+
+            .main .pager-container .btn a {
+                text-decoration: none;
+            }

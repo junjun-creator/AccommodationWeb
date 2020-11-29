@@ -30,6 +30,7 @@ public class EventService {
 				 int status		= rs.getInt("STATUS");
 			     String title 	= rs.getString("TITLE");
 			     Date regDate 	= rs.getDate("REG_DATE");
+			     Date startDate = rs.getDate("START_DATE");
 			     Date endDate 	= rs.getDate("END_DATE");
 			     int pub 		= rs.getInt("PUB");
 			     
@@ -39,6 +40,7 @@ public class EventService {
 			     e.setStatus(status);
 			     e.setTitle(title);
 			     e.setRegDate(regDate);
+			     e.setStartDate(startDate);
 			     e.setEndDate(endDate);
 			     e.setPub(pub);
 			     
