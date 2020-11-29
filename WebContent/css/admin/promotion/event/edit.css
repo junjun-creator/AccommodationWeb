@@ -1,82 +1,86 @@
-.sub-container h1 {
-    font-size: 20px;
-    margin: 30px 0 0 30px;
+.body {
+    width:1200px; /* list.css는 1400px이다. 테이블 크기가 200px 커서 */
 }
 
-.sub-container .form-sec {
-    --background: burlywood;
-    width: 830px; /* form의 margin-left(30) + form의 width(800) */
-}
-
-    .sub-container .reg-form > table {
-        border-top: 2px solid #5F0080;
-        --border-collapse: collapse;
-        --border-spacing: 5px 10px;
-        width: 800px;
-        table-layout: fixed;
-        font-size: 14px;
-        margin: 10px 0 0 30px;
-    }
-
-        .sub-container .reg-form > table tr {
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .sub-container .reg-form > table th {
-                border-bottom: 1px solid #d6d6d6;
-                border-left: 1px solid #d6d6d6;
-                background: #f5f5f5;
-                text-align: center;
-            }
-
-            .sub-container .reg-form > table td {
-                border-bottom: 1px solid #d6d6d6;
-                border-left: 1px solid #d6d6d6;
-                border-right: 1px solid #d6d6d6;
-                padding-left: 10px;
-            }
-
-            .sub-container .reg-form > table th.col-m { 
-                width: 50px;
-            }
-
-            .sub-container .reg-form > table td.col-l { 
-                width: 130px;
-            }
-
-            .sub-container .reg-form > table td.text-left {
-                text-align: left;
-            }
-
-            .sub-container .reg-form > table td > .input-title {
-                width: 350px;
-                height: 25px;
-            }
-
-                .sub-container .reg-form > table td > .checkbox-open {
-                    margin-left: 10px;
-                }
-
-                .sub-container .reg-form > table td > .checkbox-open + span {
-                    margin-left: 10px;
-                }
-
-                .sub-container .reg-form > table td > .textarea {
-                    margin-top: 10px;
-                }
-
-            .sub-container .reg-form > div {
-                width: 800pxpx;
-                margin: 10px 0 0 30px;
-                text-align: center;
-            }
-
-            .sub-container .reg-form > div .btn-submit,
-            .sub-container .reg-form > div .btn-cancel {
-                width: 80px;
-                height: 25px;
-                margin: 0 5px 0 5px;
-                cursor: pointer;
-            }
-
+	.sub-container h1 {
+	    font-size: 20px;
+	    margin: 30px 0 0 30px;
+	}
+	
+	.sub-container .form-sec {
+	    --background: burlywood;
+	    width: 830px; /* form의 margin-left(30) + form의 width(800) */
+	}
+	
+	    .sub-container .reg-form > table {
+	        border-top: 2px solid #5F0080;
+	        --border-collapse: collapse;
+	        --border-spacing: 5px 10px;
+	        width: 800px;
+	        table-layout: fixed;
+	        font-size: 14px;
+	        margin: 10px 0 0 30px;
+	    }
+	
+	        .sub-container .reg-form > table tr {
+	            height: 40px;
+	            line-height: 40px;
+	        }
+	
+	            .sub-container .reg-form > table th {
+	                border-bottom: 1px solid #d6d6d6;
+	                border-left: 1px solid #d6d6d6;
+	                background: #f5f5f5;
+	                text-align: center;
+	            }
+	
+	            .sub-container .reg-form > table td {
+	                border-bottom: 1px solid #d6d6d6;
+	                border-left: 1px solid #d6d6d6;
+	                border-right: 1px solid #d6d6d6;
+	                padding-left: 10px;
+	            }
+	
+	            .sub-container .reg-form > table th.col-m { 
+	                width: 50px;
+	            }
+	
+	            .sub-container .reg-form > table td.col-l { 
+	                width: 130px;
+	            }
+	
+	            .sub-container .reg-form > table td.text-left {
+	                text-align: left;
+	            }
+	
+	            .sub-container .reg-form > table td > .input-title {
+	                width: 350px;
+	                height: 25px;
+	            }
+	
+	                .sub-container .reg-form > table td > .checkbox-open {
+	                    margin-left: 10px;
+	                }
+	
+	                .sub-container .reg-form > table td > .checkbox-open + span {
+	                    margin-left: 10px;
+	                }
+	
+	                .sub-container .reg-form > table td > .textarea {
+	                    margin-top: 10px;
+	                }
+	
+	            .sub-container .reg-form > div {
+	                width: 800pxpx;
+	                margin: 10px 0 0 30px;
+	                text-align: center;
+	            }
+	
+	            .sub-container .reg-form > div .btn-submit,
+	            .sub-container .reg-form > div .btn-cancel {
+	                width: 80px;
+	                height: 25px;
+	                margin: 0 5px 0 5px;
+	                cursor: pointer;
+	            }
+	

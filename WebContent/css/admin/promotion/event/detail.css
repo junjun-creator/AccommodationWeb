@@ -1,59 +1,67 @@
-.sub-container .img-sec .img-container > img {
-    width: 800px;
+.body {
+    width:1200px; /* list.css는 1400px이다. 테이블 크기가 200px 커서 */
 }
-
-.sub-container .page-list-sec {
-    --border: 1px solid blue;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    width: 800px;
-}
-
-    .sub-container .page-list-sec .page {
-        border-bottom: 1px solid #d6d6d6;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-
-    .sub-container .page-list-sec .prev-page {
-        border-top: 1px solid #d6d6d6;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-
-        .sub-container .page-list-sec .page a {
-            text-decoration: none;
-        }
-
-            .sub-container .page-list-sec .page .page-direction {
-                color: #fc0453;
-                padding-left: 30px;
-            }
-
-            .sub-container .page-list-sec .page .page-title {
-                font-weight: bold;
-                padding-left: 100px;
-                display: inline-block;
-                width: 460px;
-            }
-
-            .sub-container .page-list-sec .page .page-date {
-                color: #808080;
-            }
-            
-            
-    .sub-container .page-list-sec .btn-container {
-        width: 180px;
-        margin: 30px auto 0 auto;
-    }
-    
-        .sub-container .page-list-sec .btn-container .btn-list {
-            background-color: #fc0453;
-            border-radius: 3px;
-            border: 1px solid #ff0059;
-            display: inline-block;
-            cursor: pointer;
-            color: #ffffff;
-            padding: 16px 60px;
-            text-decoration: none;
-        }
+	
+	.sub-container .img-sec .img-container {
+		width: 800px;
+		margin: 0 auto;
+	}
+	
+		.sub-container .img-sec .img-container > img {
+		    width: 100%;
+		}
+	
+	.sub-container .page-list-sec {
+	    --border: 1px solid blue;
+	    margin: 50px auto 100px auto;
+	    width: 800px;
+	}
+	
+	    .sub-container .page-list-sec .page {
+	        border-bottom: 1px solid #d6d6d6;
+	        padding-top: 25px;
+	        padding-bottom: 25px;
+	    }
+	
+	    .sub-container .page-list-sec .prev-page {
+	        border-top: 1px solid #d6d6d6;
+	        padding-top: 25px;
+	        padding-bottom: 25px;
+	    }
+	
+	        .sub-container .page-list-sec .page a {
+	            text-decoration: none;
+	        }
+	
+	            .sub-container .page-list-sec .page .page-direction {
+	                color: #fc0453;
+	                padding-left: 30px;
+	            }
+	
+	            .sub-container .page-list-sec .page .page-title {
+	                font-weight: bold;
+	                padding-left: 100px;
+	                display: inline-block;
+	                width: 460px;
+	            }
+	
+	            .sub-container .page-list-sec .page .page-date {
+	                color: #808080;
+	            }
+	            
+	            
+	    .sub-container .page-list-sec .btn-container {
+	        width: 180px;
+	        margin: 30px auto 0 auto;
+	    }
+	    
+	        .sub-container .page-list-sec .btn-container .btn-list {
+	            background-color: #fc0453;
+	            border-radius: 3px;
+	            border: 1px solid #ff0059;
+	            display: inline-block;
+	            cursor: pointer;
+	            color: #ffffff;
+	            padding: 16px 60px;
+	            text-decoration: none;
+	        }
