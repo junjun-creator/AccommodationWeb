@@ -119,7 +119,7 @@
                                     <tr>
                                         <td class="col-s"><%=m.getId() %></td>
                                         <td class="col-sm"><%=m.getName() %></td>
-                                        <td class="col-m"><%=m.getEmail() %></td>
+                                        <td class="col-m"><a href="detail?email=<%=m.getEmail()%>"><%=m.getEmail() %></a></td>
                                         <td class="col-sm"><%=m.getBirthday() %></td>
                                         <td class="col-m"><%=m.getPhone() %></td>
                                         <td class="col-sm user-type">기업회원</td>

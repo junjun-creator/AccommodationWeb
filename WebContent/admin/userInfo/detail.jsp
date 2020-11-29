@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.teum.entity.Member" %>
+<% Member m = (Member)request.getAttribute("member"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +71,11 @@
                             </thead>
                             <tbody>
                                     <td class="col-s"><i class="fas fa-gem" style="color: dimgrey;"></i></td>
-                                    <td class="col-m">kbj@newlecture.com</td>
-                                    <td class="col-sm">개인회원</td>
-                                    <td class="col-m">010-1111-2222</td>
-                                    <td class="col-sm">000000</td>
-                                    <td class="col-m">2011-03-11</td>
+                                    <td class="col-m"><%=m.getEmail() %></td>
+                                    <td class="col-sm"><%=m.getType() %></td>
+                                    <td class="col-m"><%=m.getPhone() %></td>
+                                    <td class="col-sm"><%=m.getBirthday() %></td>
+                                    <td class="col-m"><%=m.getRegdate() %></td>
                             </tbody>
                         </table>
                     </div>
