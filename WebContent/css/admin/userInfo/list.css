@@ -16,7 +16,7 @@
             border-top: 2px solid #5F0080;
             --border-collapse: collapse;
             --border-spacing: 5px 10px;
-            width: 800px;
+            width: 600px;
             table-layout: fixed;
             font-size: 14px;
             margin: 10px 0 0 30px;
@@ -45,7 +45,7 @@
                     }
 
                     .main .list-board > table td.col-m { 
-                        width: 200px;
+                        width: 150px;
                     }
                     .main .list-board > table .btn-delete>td{
                         text-align: right;
