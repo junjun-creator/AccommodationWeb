@@ -15,21 +15,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../../../css/jun.css">
-    <link rel="stylesheet" href="../../../css/admin-form.css">
+    <link rel="stylesheet" href="../../../css/admin/layout.css">
     <link rel="stylesheet" href="../../../css/admin/notice/list.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>noticeList</title>
 </head>
 <body>
-    <div class="sec_header">
-        <header class="header pcHeader">
+     <header class="sec_header">
+        <div class="header pcHeader">
             <div class="header_h1">
                 <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
                 <ul class="main_menu">
-                    <li class="mypage"><a href="">로그아웃</a>
+                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">공지사항</a></li>
+                    <li><a href="">이벤트</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="">로그인</a>
                         <div class="mega_menu">
                             <ul>
                                 <li><a href="">submenu</a></li>
@@ -40,99 +43,101 @@
                     </li>
                 </ul>
             </div>
-        </header>
-    </div>
-    <section class="body">
-        <aside id="aside" class="aside">
-            <h1>고객센터</h1>
-                <ul>
-                    <li><a href="" class="active">공지사항</a></li>
-                    <li><a href="">QnA</a></li>
-                </ul>
-        </aside>
-        <div class="container">
-            <nav id="nav" class="nav">
-                <ul>
-                    <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
-                    <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
-                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-                    <li class="current-tab"><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
-                </ul>
-            </nav>
-            <main id="main" class="main">
-                <h1 class="d-none">공지사항</h1>
-                <section class="sub-container">
-                    <div class="breadcrumb">
-                        <ul class="breadcrumb-list">
-                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-                            <li>고객센터 ▶ </li>
-                            <li>공지사항 리스트</li>
-                        </ul>
-                    </div>
-                    <section class="list-board">
-                        <h1>공지사항 리스트</h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td class="col-s">No.</td>
-                                    <td class="col-m">제목</td>
-                                    <td class="col-sm">날짜</td>
-                                    <td class="col-sm">작성자</td>
-                                    <td class="col-s">상태</td>
-                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
-                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            	<% for(Notice n : list){
-                            		String pub="공개";
-	                            	if(n.getPub() == 0){
-	                            		pub = "비공개";
-	                            	}%>
-                                <tr>
-                                    <td><%= n.getId() %></td>
-                                    <td><%=n.getTitle() %></td>
-                                    <td><%=n.getRegdate() %></td>
-                                    <td><%=n.getWriterId() %></td>
-                                    <td><%= pub %></td>
-                                    <td>
-                                        <input type="checkbox" name="" class=pubChk >
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" name="" class="deleteChk" >
-                                    </td>
-                                </tr>
-                                <%}%>
-                                <tr class="btn-delete">
-                                    <td colspan="7">
-                                        <form action="">
-                                            <input type="submit" value="생성">
-                                            <input type="submit" value="공개">
-                                            <input type="submit" value="비공개">
-                                            <input type="submit" value="삭제">
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                    <section>
-                        <h1 class="d-none">페이지 정보</h1>
-                        <div>
-                            1 / 2 pages
-                        </div>
-                    </section>
-                    <section>
-                        <h1 class="d-none">페이지 요청목록</h1>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                        </ul>
-                    </section>
-                </section>
-            </main>
         </div>
-    </section>
+    </header>
+    <main>
+	    <section class="body">
+	        <aside id="aside" class="aside">
+	            <h1>고객센터</h1>
+	                <ul>
+	                    <li><a href="" class="active">공지사항</a></li>
+	                    <li><a href="">QnA</a></li>
+	                </ul>
+	        </aside>
+	        <div class="container">
+	            <nav id="nav" class="nav">
+	                <ul>
+	                    <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
+	                    <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
+	                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
+	                    <li class="current-tab"><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
+	                </ul>
+	            </nav>
+	            <main id="main" class="main">
+	                <h1 class="d-none">공지사항</h1>
+	                <section class="sub-container">
+	                    <div class="breadcrumb">
+	                        <ul class="breadcrumb-list">
+	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
+	                            <li>고객센터 ▶ </li>
+	                            <li>공지사항 리스트</li>
+	                        </ul>
+	                    </div>
+	                    <section class="list-board">
+	                        <h1>공지사항 리스트</h1>
+	                        <table>
+	                            <thead>
+	                                <tr>
+	                                    <td class="col-s">No.</td>
+	                                    <td class="col-m">제목</td>
+	                                    <td class="col-sm">날짜</td>
+	                                    <td class="col-sm">작성자</td>
+	                                    <td class="col-s">상태</td>
+	                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
+	                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	<% for(Notice n : list){
+	                            		String pub="공개";
+		                            	if(n.getPub() == 0){
+		                            		pub = "비공개";
+		                            	}%>
+	                                <tr>
+	                                    <td><%= n.getId() %></td>
+	                                    <td><%=n.getTitle() %></td>
+	                                    <td><%=n.getRegdate() %></td>
+	                                    <td><%=n.getWriterId() %></td>
+	                                    <td><%= pub %></td>
+	                                    <td>
+	                                        <input type="checkbox" name="" class=pubChk >
+	                                    </td>
+	                                    <td>
+	                                        <input type="checkbox" name="" class="deleteChk" >
+	                                    </td>
+	                                </tr>
+	                                <%}%>
+	                                <tr class="btn-delete">
+	                                    <td colspan="7">
+	                                        <form action="">
+	                                            <input type="submit" value="생성">
+	                                            <input type="submit" value="공개">
+	                                            <input type="submit" value="비공개">
+	                                            <input type="submit" value="삭제">
+	                                        </form>
+	                                    </td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </section>
+	                    <section>
+	                        <h1 class="d-none">페이지 정보</h1>
+	                        <div>
+	                            1 / 2 pages
+	                        </div>
+	                    </section>
+	                    <section>
+	                        <h1 class="d-none">페이지 요청목록</h1>
+	                        <ul>
+	                            <li>1</li>
+	                            <li>2</li>
+	                        </ul>
+	                    </section>
+	                </section>
+	            </main>
+	        </div>
+	    </section>
+    </main>
     <script>
         var selectAll = document.querySelector(".selectAllDelete");
         selectAll.addEventListener('click', function(){
