@@ -1,4 +1,3 @@
-
 <%@page import="com.teum.entity.AccommodationList"%>
 <%@page import="com.teum.service.AccommodationListService"%>
 <%@page import="java.util.List"%>
@@ -86,6 +85,7 @@
                                         <td class="col-m">위치</td>
                                         <td class="col-m">등록일</td>
                                         <td class="col-m">연락처</td>
+                                        <td class="col-sm">업체종류</td>
                                         <td class="col-s"><input type="checkbox"></td>
                                     </tr>
                                 </thead>
@@ -98,6 +98,7 @@
                                         <td><%=al.getLocation() %></td>
                                         <td><%=al.getRegdate() %></td>
                                         <td><%=al.getPhone() %></td>
+                                        <td><%=al.getAccType() %></td>
                                         <td><input type="checkbox"></td>
                                     </tr>
                                     <% } %> 
