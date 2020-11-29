@@ -1,4 +1,3 @@
-
 <%@page import="com.teum.entity.AccommodationList"%>
 <%@page import="com.teum.service.AccommodationListService"%>
 <%@page import="java.util.List"%>
@@ -14,7 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/admin/layout.css">
     <link rel="stylesheet" href="../../css/admin/accommodations/list.css">
+    
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>등록된 업체 리스트</title>
 </head>
@@ -86,6 +87,7 @@
                                         <td class="col-m">위치</td>
                                         <td class="col-m">등록일</td>
                                         <td class="col-m">연락처</td>
+                                        <td class="col-sm">업체종류</td>
                                         <td class="col-s"><input type="checkbox"></td>
                                     </tr>
                                 </thead>
@@ -98,6 +100,7 @@
                                         <td><%=al.getLocation() %></td>
                                         <td><%=al.getRegdate() %></td>
                                         <td><%=al.getPhone() %></td>
+                                        <td><%=al.getAccType() %></td>
                                         <td><input type="checkbox"></td>
                                     </tr>
                                     <% } %> 
