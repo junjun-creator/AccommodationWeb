@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/admin/layout.css">
     <link rel="stylesheet" href="../../../css/admin/promotion/event/list.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>이벤트 리스트</title>
