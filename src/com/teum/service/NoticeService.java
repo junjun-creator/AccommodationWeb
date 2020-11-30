@@ -31,6 +31,7 @@ public class NoticeService {
 			     String writerId=rs.getString("WRITER_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
+			     int pub =rs.getInt("PUB");
 			     
 			     Notice n = new Notice();
 			     n.setId(id);
@@ -38,6 +39,7 @@ public class NoticeService {
 			     n.setWriterId(writerId);
 			     n.setContent(content);
 			     n.setRegdate(regdate);
+			     n.setPub(pub);
 			     
 			     list.add(n);
 				}
