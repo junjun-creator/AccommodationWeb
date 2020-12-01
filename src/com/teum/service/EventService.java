@@ -62,4 +62,49 @@ public class EventService {
 		}
 		return list;
 	}
+	
+	public Event getNo(int eventNo) {
+		Event ev = null;
+		
+		String url = "jdbc:oracle:thin:@HI.namoolab.com:1521/xepdb1";
+		String sql = "SELECT * FROM EVENT WHERE EVENT_NO=" + eventNo;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			if(rs.next()) {
+				 int status		= rs.getInt("STATUS");
+			     String title 	= rs.getString("TITLE");
+			     Date regDate 	= rs.getDate("REG_DATE");
+			     Date startDate = rs.getDate("START_DATE");
+			     Date endDate 	= rs.getDate("END_DATE");
+			     int pub 		= rs.getInt("PUB");
+			     
+			     ev = new Event();
+			     
+			     ev.setEventNo(eventNo);
+			     ev.setStatus(status);
+			     ev.setTitle(title);
+			     ev.setRegDate(regDate);
+			     ev.setStartDate(startDate);
+			     ev.setEndDate(endDate);
+			     ev.setPub(pub);
+			}
+			
+			//꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			rs.close();
+			st.close();
+			con.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ev;
+	}
 }
