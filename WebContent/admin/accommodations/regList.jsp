@@ -3,10 +3,7 @@
 <%@page import="com.teum.service.RegAccommodationListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	RegAccommodationListService service = new RegAccommodationListService();
-	List<AccommodationList> list = service.getList();
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,19 +97,19 @@
 		                                </tr>
 		                            </thead>
 		                            <tbody>
-		                               <% for(AccommodationList al : list){ %>
+		                               <c:forEach var="rl" items="${list}">
 		                                    <tr>
-		                                        <td><%=al.getId() %></td>
-		                                        <td><%=al.getName() %></td>
-		                                        <td><%=al.getAccName() %></td>
-		                                        <td><%=al.getLocation() %></td>
-		                                        <td><%=al.getRegdate() %></td>
-		                                        <td><%=al.getPhone() %></td>
-		                                        <td><%=al.getAccType() %></td>
+		                                      	 <td>${rl.id}</td>
+	                                       		 <td>${rl.name}</td>
+	                                     	  	 <td>${rl.accName}</td>
+	                                   		     <td>${rl.location}</td>
+	                                 		     <td>${rl.regdate}</td>
+	                                 		     <td>${rl.phone}</td>
+	                                		     <td>${rl.accType}</td>
 		                                        <td><input type="checkbox"></td>
 		                                        <td><input type="checkbox"></td>
 		                                    </tr>
-		                                    <% } %> 
+		                                    </c:forEach> 
 		                                    <tr>
 		                                <tr>
 		                                    <td></td>

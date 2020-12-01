@@ -40,3 +40,9 @@ li  a .price{
         .main .product-list{
             display: flex;
         }
+        .container .main .product-list{
+            position: relative;
+        }
+            .container .main .product-list .pic{
+                p
+            }
