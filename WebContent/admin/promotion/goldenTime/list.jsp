@@ -1,10 +1,5 @@
-<%@page import="com.teum.entity.QnA"%>
-<%@page import="java.util.List"%>
-<%@page import="com.teum.service.QnAService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
     <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/QnA/list.css">
+    <link rel="stylesheet" href="../../../css/admin/notice/list.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>questionList</title>
+    <title>골든타임 리스트</title>
 </head>
 <body>
     <header class="sec_header">
@@ -44,10 +39,10 @@
     <main>
 	    <section class="body">
 	        <aside id="aside" class="aside">
-	            <h1>고객센터</h1>
+	            <h1>프로모션 관리</h1>
 	                <ul>
-	                    <li><a href="/admin/customerService/notice/list">공지사항</a></li>
-	                    <li><a href="" class="active">QnA</a></li>
+	                    <li><a href="" class="active">골든타임 관리</a></li>
+	                    <li><a href="" >이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -60,70 +55,57 @@
 	                </ul>
 	            </nav>
 	            <main id="main" class="main">
-	                <h1  class="d-none">문의사항</h1>
+	                <h1 class="d-none">골든타임</h1>
 	                <section class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
 	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>고객센터 ▶ </li>
-	                            <li>문의사항 리스트</li>
+	                            <li>프로모션관리 ▶ </li>
+	                            <li>골든타임 리스트</li>
 	                        </ul>
 	                    </div>
 	                    <section class="list-board">
-	                        <h1>문의사항 리스트</h1>
-	                        <select name="" id="" class="catagory">
-	                            <form action="">
-	                                <option value="" selected disabled>카테고리</option>
-	                                <option value="이벤트">이벤트</option>
-	                                <option value="예약/결제">예약/결제</option>
-	                                <option value="취소/환불">취소/환불</option>
-	                                <option value="서비스 이용">서비스 이용</option>
-	                                <option value="회원/개인정보">회원/개인정보</option>
-	                                <option value="리뷰">리뷰</option>
-	                                <option value="기타">기타</option>
-	                            </form>
-	                        </select>
+	                        <h1>골든타임 리스트</h1>
+	                        <select name="" class="AccTypeCatagory">
+		                       <form action="">
+		                           <option value="" selected disabled>전체보기</option>
+		                           <option value="호텔">호텔</option>
+		                           <option value="모텔">모텔</option>
+		                           <option value="게스트하우스">게스트하우스</option>
+		                           <option value="리조트">리조트</option>
+		                           <option value="펜션">펜션</option>
+		                       </form>
+		                    </select>
 	                        <table>
 	                            <thead>
 	                                <tr>
-	                                    <td class="col-s">No.</td> 
-	                                    <td class="col-sm">회원명</td>
-	                                    <td class="col-ml">문의제목</td>
-	                                    <td class="col-m">연락처</td>
-	                                    <td class="col-sm">문의날짜</td>
-	                                    <td class="col-s">상태</td>
-	                                    <td class="col-s"><input type="checkbox"></td>
+	                                    <td class="col-s">No.</td>
+	                                    <td class="col-s">사업자명</td>
+	                                    <td class="col-sm">숙소명</td>
+	                                    <td class="col-sm">위치</td>
+	                                    <td class="col-sm">등록일</td>
+	                                    <td class="col-sm">연락처</td>
+	                                    <td class="col-s">업체종류</td>
+	                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            <c:forEach var="q" items="${list}">
-	                            
 	                                <tr>
-	                                    <td>${q.id}</td>
-	                                    <td>${q.name}</td>
-	                                    <td><a href="detail?id=${q.id}">${q.title}</td>
-	                                    <td>${q.phone}</td>
-	                                    <td>${q.regdate}</td>
+	                                    <td>1</td>
+	                                    <td>김민영</td>
+	                                    <td>시그니엘 서울</td>
+	                                    <td>서울시 송파구</td>
+	                                    <td>2020-11-10</td>
+	                                    <td>010-7788-9988</td>
+	                                    <td>호텔</td>
 	                                    <td>
-	                                    	<c:choose>
-												<c:when test="${q.answer ==0 }">
-													<%="답변안됨" %>
-												</c:when>
-												<c:otherwise>
-					                            	<%="답변됨" %>
-					                            </c:otherwise>                           
-					                            
-				                            </c:choose>
-	                            		</td>
-	                                    <td>
-	                                        <input type="checkbox" name="" id="">
+	                                        <input type="checkbox" name="" class="memberChk" >
 	                                    </td>
 	                                </tr>
-	                             </c:forEach>
+	                               
 	                                <tr class="btn-delete">
 	                                    <td colspan="8">
 	                                        <form action="">
-	                                            <input type="submit" value="답변">
 	                                            <input type="submit" value="삭제">
 	                                        </form>
 	                                    </td>
@@ -148,6 +130,29 @@
 	            </main>
 	        </div>
 	    </section>
-   </main>
+	</main>
+    <script>
+        var selectAll = document.querySelector(".selectAllDelete");
+        selectAll.addEventListener('click', function(){
+            var objs = document.querySelectorAll(".memberChk");
+            for (var i = 0; i < objs.length; i++) {
+              objs[i].checked = selectAll.checked;
+            };
+        }, false);
+         
+        var objs = document.querySelectorAll(".memberChk");
+        for(var i=0; i<objs.length ; i++){
+          objs[i].addEventListener('click', function(){
+            var selectAll = document.querySelector(".selectAllDelete");
+            for (var j = 0; j < objs.length; j++) {
+              if (objs[j].checked === false) {
+                selectAll.checked = false;
+                return;
+              };
+            };
+            selectAll.checked = true;                                   
+        }, false);
+        } 
+      </script>
 </body>
 </html>

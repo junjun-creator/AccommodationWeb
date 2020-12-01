@@ -56,5 +56,49 @@ public class QnAService {
 		}
 		return list;
 	}
+	public QnA get(int id) {
+		QnA q = null;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT * FROM QNA where ID="+id;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
 
+			if(rs.next()) {
+				 //int id =rs.getInt("ID");
+				 String name =rs.getString("NAME");
+			     String title=rs.getString("TITLE");
+			     String content=rs.getString("CONTENT");
+			     String phone=rs.getString("phone");
+			     Date regdate=rs.getDate("REGDATE");
+			     int answer =rs.getInt("answer");
+			     
+			     q = new QnA(
+			    		 id,
+					     name,
+					     title,
+					     content,
+					     phone,
+					     regdate,
+					     answer
+					     );
+			     
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return q;
+	}
 }
