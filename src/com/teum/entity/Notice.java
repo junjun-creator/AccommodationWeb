@@ -8,6 +8,7 @@ public class Notice {
     private String writerId;
     private String content;
     private Date regdate;
+    private int pub;
 
     
     public Notice() {
@@ -15,13 +16,14 @@ public class Notice {
     }
 
 
-	public Notice(int id, String title, String writerId, String content, Date regdate) {
+	public Notice(int id, String title, String writerId, String content, Date regdate, int pub) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.writerId = writerId;
 		this.content = content;
 		this.regdate = regdate;
+		this.pub = pub;
 	}
 
 
@@ -75,12 +77,22 @@ public class Notice {
 	}
 
 
+	public int getPub() {
+		return pub;
+	}
+
+
+	public void setPub(int pub) {
+		this.pub = pub;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Notice [id=" + id + ", title=" + title + ", writerId=" + writerId + ", content=" + content
-				+ ", regdate=" + regdate + "]";
+				+ ", regdate=" + regdate + ", pub=" + pub + "]";
 	}
 
-    
+
     
 }
