@@ -3,10 +3,6 @@
 <%@page import="com.teum.service.EventService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	EventService service = new EventService();
-	List<Event> list = service.getList();
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
