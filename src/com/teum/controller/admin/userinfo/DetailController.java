@@ -23,6 +23,7 @@ public class DetailController extends HttpServlet {
 		
 		MemberDetailService service = new MemberDetailService();
 		Member m = service.getDetail(email);
+		System.out.println(m.getName());
 		
 		request.setAttribute("member", m);
 		

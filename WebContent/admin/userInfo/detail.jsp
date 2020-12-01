@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.teum.entity.Member" %>
-<% Member m = (Member)request.getAttribute("member"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +43,7 @@
 	        <aside id="aside" class="aside">
 	            <h1>회원관리</h1>
 	                <ul>
+	                	<li><a href="">전체회원리스트</a></li>
 	                    <li><a href="" class="active">개인회원리스트</a></li>
 	                    <li><a href="">기업회원리스트</a></li>
 	                </ul>
@@ -68,7 +68,7 @@
 	                    </div>
 	
 	                    <div class="user-info-member">
-	                        <h1>김병준 님 <i class="fas fa-gem" style="color: dimgrey;"></i></h1>
+	                        <h1>${member.name}님 <i class="fas fa-gem" style="color: dimgrey;"></i></h1>
 	                    </div>
 	                    <!-- 다이아몬드 이런건 나중에 스크립트로 요청 정보 읽어서 등급에 맞게 클래스 이름만 setAttribute 해주면 될듯 -->
 	                    <div class="list-board">
@@ -85,11 +85,11 @@
 	                            </thead>
 	                            <tbody>
 	                                    <td class="col-s"><i class="fas fa-gem" style="color: dimgrey;"></i></td>
-	                                    <td class="col-m"><%=m.getEmail() %></td>
-	                                    <td class="col-sm"><%=m.getType() %></td>
-	                                    <td class="col-m"><%=m.getPhone() %></td>
-	                                    <td class="col-sm"><%=m.getBirthday() %></td>
-	                                    <td class="col-m"><%=m.getRegdate() %></td>
+	                                    <td class="col-m">${member.email }</td>
+	                                    <td class="col-sm">${member.type }</td>
+	                                    <td class="col-m">${member.phone }</td>
+	                                    <td class="col-sm">${member.birthday }</td>
+	                                    <td class="col-m">${member.regdate }</td>
 	                            </tbody>
 	                        </table>
 	                    </div>

@@ -4,7 +4,7 @@
 <%@ page import="com.teum.entity.Member" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,14 +42,14 @@
         </div>
     </header>
 
-	<main>	
+	<main>
 	    <section class="body">
 	        <aside id="aside" class="aside">
 	            <h1>회원관리</h1>
 	                <ul>
-	                	<li><a href="list">전체회원리스트</a></li>
+	                	<li><a href="list" class="active">전체회원리스트</a></li>
 	                    <li><a href="list?type=개인회원">개인회원리스트</a></li>
-	                    <li><a href="list?type=기업회원" class="active">기업회원리스트</a></li>
+	                    <li><a href="list?type=기업회원">기업회원리스트</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -67,49 +67,36 @@
 	                        <ul class="breadcrumb-list">
 	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
 	                            <li>회원관리 ▶ </li>
-	                            <li>기업회원리스트</li>
+	                            <li>회원리스트</li>
 	                        </ul>
 	                    </div>
 	
 	                    <div>
-	                        <h1>업체등록현황</h1>
+	                        <h1>회원구분</h1>
 	                    </div>
 	                    <div class="list-board">
 	                        <table>
 	                            <thead>
 	                                <tr>
-	                                    <td class="col-sm">등록여부</td>
+	                                    <td class="col-sm">회원종류</td>
 	                                    <td class="col-m">인원</td>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
 	                                <tr>
-	                                    <td>등록</td>
-	                                    <td>190명</td>
+	                                    <td>개인회원</td>
+	                                    <td>00명</td>
 	                                </tr>
 	                                <tr>
-	                                    <td>미등록</td>
-	                                    <td>35명</td>
-	                                </tr>
-	                                <tr>
-	                                    <td>신청현황</td>
-	                                    <td><a href="">35개</a>
-	                                    	<input type="button" value="목록보기">
-	                                    </td>
+	                                    <td>기업회원</td>
+	                                    <td>00명</td>
 	                                </tr>
 	                            </tbody>
 	                        </table>
 	                    </div>
 	
 	                    <div>
-	                        <h1>등록된 기업회원리스트</h1>
-	                        <select name="" id="">
-	                            <option value="">전체등급</option>
-	                            <option value="">실버</option>
-	                            <option value="">골드</option>
-	                            <option value="">플레티넘</option>
-	                            <option value="">다이아</option>
-	                        </select>
+	                        <h1>등록된 회원리스트</h1>
 	                    </div>
 	                    <section>
 	                        <form action="" class="list-board">
@@ -122,24 +109,24 @@
 	                                        <td class="col-sm">생년월일</td>
 	                                        <td class="col-m">휴대폰번호</td>
 	                                        <td class="col-sm">회원종류</td>
-	                                        <td class="col-sm">업체등록여부</td>
+	                                        <td class="col-sm">등록일</td>
 	                                        <td class="col-s"><input type="checkbox"></td>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                    <c:forEach var="m" items="${list}">
+	                                	<c:forEach var="m" items="${list}">
+	                                	
 		                                    <tr>
 		                                        <td class="col-s">${m.id }</td>
 		                                        <td class="col-sm">${m.name }</td>
-		                                        <td class="col-m"><a href="detail?email=${m.email }">${m.email }</a></td>
+		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${m.email }</td>
 		                                        <td class="col-sm">${m.birthday }</td>
 		                                        <td class="col-m">${m.phone }</td>
 		                                        <td class="col-sm user-type">${m.type }</td>
-		                                        <td class="col-m">미등록</td>
+		                                        <td class="col-sm">${m.regdate }</td>
 		                                        <td class="col-s"><input type="checkbox"></td>
 		                                    </tr>
-	                                   	</c:forEach>
-	                                    
+	                                	</c:forEach>
 	                                    <!-- <tr>
 	                                        <td class="col-s">2</td>
 	                                        <td class="col-sm">신중언</td>
@@ -182,5 +169,6 @@
 	        </div>
 	    </section>
 	</main>
+    
 </body>
 </html>

@@ -3,11 +3,8 @@
 <%@ page import="com.teum.service.MemberService" %>
 <%@ page import="com.teum.entity.Member" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<% 
-	MemberService service = new MemberService();
-	List<Member> list = service.getList(0);
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +47,9 @@
 	        <aside id="aside" class="aside">
 	            <h1>회원관리</h1>
 	                <ul>
-	                    <li><a href="" class="active">개인회원리스트</a></li>
-	                    <li><a href="">기업회원리스트</a></li>
+	                	<li><a href="list">전체회원리스트</a></li>
+	                    <li><a href="list?type=개인회원" class="active">개인회원리스트</a></li>
+	                    <li><a href="list?type=기업회원">기업회원리스트</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -131,18 +129,18 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                <% for(Member m : list){ %>
-	                                    <tr>
-	                                        <td class="col-s"><%=m.getId() %></td>
-	                                        <td class="col-sm"><%=m.getName() %></td>
-	                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><%=m.getEmail() %></td>
-	                                        <td class="col-sm"><%=m.getBirthday() %></td>
-	                                        <td class="col-m"><%=m.getPhone() %></td>
-	                                        <td class="col-sm user-type">개인회원</td>
-	                                        <td class="col-sm user-rank"><%=m.getRank() %></td>
-	                                        <td class="col-s"><input type="checkbox"></td>
-	                                    </tr>
-	                                    <%} %>
+										<c:forEach var="m" items="${list}">
+		                                    <tr>
+		                                        <td class="col-s">${m.id }</td>
+		                                        <td class="col-sm">${m.name }</td>
+		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?email=${m.email }">${m.email }</a></td>
+		                                        <td class="col-sm">${m.birthday }</td>
+		                                        <td class="col-m">${m.phone }</td>
+		                                        <td class="col-sm user-type">${m.type }</td>
+		                                        <td class="col-sm user-rank">${m.rank }</td>
+		                                        <td class="col-s"><input type="checkbox"></td>
+		                                    </tr>
+										</c:forEach>
 	                                    <!-- <tr>
 	                                        <td class="col-s">2</td>
 	                                        <td class="col-sm">신중언</td>

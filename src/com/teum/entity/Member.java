@@ -9,7 +9,7 @@ public class Member {
 	private String pwd;
 	private String birthday;
 	private String phone;
-	private int type;
+	private String type;
 	private int rank;
 	private Date regdate;
 	
@@ -17,7 +17,7 @@ public class Member {
 		
 	}
 	
-	public Member(int id, String name, String email, String pwd, String birthday, String phone, int type, int rank,
+	public Member(int id, String name, String email, String pwd, String birthday, String phone, String type, int rank,
 			Date regdate) {
 		super();
 		this.id = id;
@@ -79,11 +79,11 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

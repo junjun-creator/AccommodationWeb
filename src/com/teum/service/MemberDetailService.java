@@ -29,11 +29,13 @@ public class MemberDetailService {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				String name = rs.getString("name");
 				String birthday = rs.getString("birthday");
 				String phone = rs.getString("phone");
-				int type = rs.getInt("type");
+				String type = rs.getString("type");
 				int rank = rs.getInt("rank");
 				Date regdate = rs.getDate("regdate");
+				m.setName(name);
 				m.setEmail(email);
 				m.setBirthday(birthday);
 				m.setPhone(phone);
