@@ -3,10 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	AccommodationListService service = new AccommodationListService();
-	List<AccommodationList> list = service.getList();
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,18 +110,18 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                <% for(AccommodationList al : list){ %>
+	                                <c:forEach var="al" items="${list}">
 	                                    <tr>
-	                                        <td><%=al.getId() %></td>
-	                                        <td><%=al.getName() %></td>
-	                                        <td><%=al.getAccName() %></td>
-	                                        <td><%=al.getLocation() %></td>
-	                                        <td><%=al.getRegdate() %></td>
-	                                        <td><%=al.getPhone() %></td>
-	                                        <td><%=al.getAccType() %></td>
+	                                        <td>${al.id}</td>
+	                                        <td>${al.name}</td>
+	                                        <td>${al.accName}</td>
+	                                        <td>${al.location}</td>
+	                                        <td>${al.regdate}</td>
+	                                        <td>${al.phone}</td>
+	                                        <td>${al.accType}</td>
 	                                        <td><input type="checkbox"></td>
 	                                    </tr>
-	                                    <% } %> 
+	                                    </c:forEach> 
 	                                    <tr>
 	                                        <td></td>
 	                                        <td></td>
