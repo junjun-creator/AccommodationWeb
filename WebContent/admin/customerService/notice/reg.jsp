@@ -67,13 +67,13 @@
 	                    </div>
 	                    <section class="form-sec">
 	                        <h1>공지사항 등록</h1>
-	                        <form action="" class="reg-form">
+	                        <form method="post"  class="reg-form">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" autofocus required>
-	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
+	                                        <input type="text"  name="title"  class="input-title" autofocus required>
+	                                        <input type="checkbox" class="checkbox-open"  name="pub" ><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -85,7 +85,7 @@
 	                                <tr>
 	                                    <th>내용</th>
 	                                    <td class="text-left">
-	                                        <textarea class="textarea" cols="75" rows="25"></textarea>
+	                                        <textarea class="textarea" cols="75" rows="25"  name="content"></textarea>
 	                                    </td>
 	                                </tr>
 	                            </table>

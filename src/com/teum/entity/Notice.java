@@ -8,7 +8,7 @@ public class Notice {
     private String writerId;
     private String content;
     private Date regdate;
-    private int pub;
+    private String pub;
 
     
     public Notice() {
@@ -16,7 +16,7 @@ public class Notice {
     }
 
 
-	public Notice(int id, String title, String writerId, String content, Date regdate, int pub) {
+	public Notice(int id, String title, String writerId, String content, Date regdate, String pub) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -24,6 +24,14 @@ public class Notice {
 		this.content = content;
 		this.regdate = regdate;
 		this.pub = pub;
+	}
+
+
+	public Notice(String title, String content, String pub) {
+		this.title = title;
+		this.content = content;
+		this.pub = pub;
+	
 	}
 
 
@@ -77,12 +85,12 @@ public class Notice {
 	}
 
 
-	public int getPub() {
+	public String getPub() {
 		return pub;
 	}
 
 
-	public void setPub(int pub) {
+	public void setPub(String pub) {
 		this.pub = pub;
 	}
 
