@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +42,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="" >공지사항</a></li>
-	                    <li><a href="" class="active">QnA</a></li>
+	                    <li><a href="/admin/customerService/notice/list" >공지사항</a></li>
+	                    <li><a href="list" class="active">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -72,14 +73,14 @@
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" autofocus required>
+	                                       ${q.title}
 	                                      
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
 	                                    <td class="text-left">
-	                                        <textarea class="textarea" cols="75" rows="25"></textarea>
+	                                        ${q.content}
 	                                    </td>
 	                                </tr>
 	                            </table>

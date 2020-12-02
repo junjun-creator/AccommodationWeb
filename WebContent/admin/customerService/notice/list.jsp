@@ -3,12 +3,8 @@
 <%@page import="com.teum.service.NoticeService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
-<%
-	NoticeService service = new NoticeService();
-	List<Notice> list =service.getList();
-%>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +46,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="" class="active">공지사항</a></li>
-	                    <li><a href="">QnA</a></li>
+	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -88,17 +84,22 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            	<% for(Notice n : list){
-	                            		String pub="공개";
-		                            	if(n.getPub() == 0){
-		                            		pub = "비공개";
-		                            	}%>
+	                            	<c:forEach var="n" items="${list}">
 	                                <tr>
-	                                    <td><%= n.getId() %></td>
-	                                    <td><%=n.getTitle() %></td>
-	                                    <td><%=n.getRegdate() %></td>
-	                                    <td><%=n.getWriterId() %></td>
-	                                    <td><%= pub %></td>
+	                                    <td>${n.id}</td>
+	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
+	                                    <td>${n.regdate}</td>
+	                                    <td>${n.writerId}</td>
+	                                    <td>
+	                                    	<c:choose>
+												<c:when test="${n.pub ==0 }">
+													<%="비공개" %>
+												</c:when>
+					                            <c:otherwise>
+					                            	<%="공개" %>
+					                            </c:otherwise>
+				                            </c:choose>
+				                        </td>
 	                                    <td>
 	                                        <input type="checkbox" name="" class=pubChk >
 	                                    </td>
@@ -106,7 +107,7 @@
 	                                        <input type="checkbox" name="" class="deleteChk" >
 	                                    </td>
 	                                </tr>
-	                                <%}%>
+	                               </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="7">
 	                                        <form action="">

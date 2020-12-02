@@ -55,5 +55,45 @@ public class NoticeService {
 		}
 		return list;
 	}
+	public Notice get(int id) {
+		Notice n = null ;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT * FROM NOTICE where ID="+id;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
 
+			if(rs.next()) {
+				 //int id =rs.getInt("ID");
+			     String title=rs.getString("TITLE");
+			     String writerId=rs.getString("WRITER_ID");
+			     String content=rs.getString("CONTENT");
+			     Date regdate=rs.getDate("REGDATE");
+			     int pub =rs.getInt("PUB");
+			     
+			     n = new Notice(
+			    		 id,
+			    		 title,
+			    		 writerId,
+			    		 content,
+			    		 regdate,
+			    		 pub);
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 }
