@@ -3,10 +3,8 @@
 <%@page import="com.teum.service.EventService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	EventService service = new EventService();
-	List<Event> list = service.getList();
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,22 +80,47 @@
 	                        </div>
 	                    </section>
 	                    <section class="page-list-sec">
-	                    	<%Event e1 = list.get(1); %> <!-- 일단 1로 넣어놓음 -->
-	                    	<%Event e2 = list.get(2); %> <!-- 일단 1로 넣어놓음 -->
-	                    	<div class="page prev-page">
-	                            <a href="">
-	                                <span class="page-direction">이전글</span>
-	                                <span class="page-title"><%=e1.getTitle() %></span>
-	                                <span class="page-date">기간: <%=e1.getStartDate() %> ~ <%=e1.getEndDate() %></span>
-	                            </a>
-	                        </div>
-	                		<div class="page next-page">
-	                            <a href="">
-	                                <span class="page-direction">다음글</span>
-	                                <span class="page-title"><%=e2.getTitle() %></span>
-	                                <span class="page-date">기간: <%=e2.getStartDate() %> ~ <%=e2.getEndDate() %></span>
-	                            </a>
-	                        </div>
+	                    	
+	                    	<c:choose>
+	                    		<c:when test="${prevEv == null && nextEv == null}">
+	                    			<!-- 아무런 출력이 없어야함 -->
+	                    		</c:when>
+	                    		<c:when test="${prevEv == null && nextEv != null}">
+	                    			<div class="page next-page">
+			                            <a href="">
+			                                <span class="page-direction">다음글</span>
+			                                <span class="page-title">${nextEv.title}</span>
+			                                <span class="page-date">기간: ${nextEv.startDate} ~ ${nextEv.endDate}</span>
+			                            </a>
+			                        </div>
+	                    		</c:when>
+	                    		<c:when test="${nextEv == null && prevEv != null}">
+	                    			<div class="page prev-page">
+			                            <a href="">
+			                                <span class="page-direction">이전글</span>
+			                                <span class="page-title">${prevEv.title}</span>
+			                                <span class="page-date">기간: ${prevEv.startDate} ~ ${prevEv.endDate}</span>
+			                            </a>
+		                        	</div>
+	                    		</c:when>
+	                    		<c:otherwise>
+		                    		<div class="page prev-page">
+			                            <a href="">
+			                                <span class="page-direction">이전글</span>
+			                                <span class="page-title">${prevEv.title}</span>
+			                                <span class="page-date">기간: ${prevEv.startDate} ~ ${prevEv.endDate}</span>
+			                            </a>
+		                        	</div>
+			                		<div class="page next-page">
+			                            <a href="">
+			                                <span class="page-direction">다음글</span>
+			                                <span class="page-title">${nextEv.title}</span>
+			                                <span class="page-date">기간: ${nextEv.startDate} ~ ${nextEv.endDate}</span>
+			                            </a>
+			                        </div>
+	                    		</c:otherwise>
+	                    	</c:choose>
+	                    	
 	                    	
 	                        <div class="btn-container">
 	                            <button class="btn-list" onclick="location.href='list.jsp'">목록보기</button>

@@ -1,7 +1,6 @@
 package com.teum.controller.admin.promotion.event;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,5 +20,10 @@ public class ListController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 	      
+		EventService service = new EventService();
+		List<Event> list = service.getList();
+		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 }

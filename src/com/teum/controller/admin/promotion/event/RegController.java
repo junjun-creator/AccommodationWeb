@@ -17,6 +17,6 @@ public class RegController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		
+		request.getRequestDispatcher("reg.jsp").forward(request, response);
 	}
 }

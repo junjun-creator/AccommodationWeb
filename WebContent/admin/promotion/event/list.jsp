@@ -3,10 +3,8 @@
 <%@page import="com.teum.service.EventService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	EventService service = new EventService();
-	List<Event> list = service.getList();
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +13,8 @@
     <link rel="stylesheet" href="../../../css/reset.css">
     <link rel="stylesheet" href="../../../css/admin/layout.css">
     <link rel="stylesheet" href="../../../css/admin/promotion/event/list.css">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<script src="/js/admin/promotion/event/list.js"></script>
     <title>이벤트 리스트</title>
 </head>
 <body>
@@ -87,27 +86,32 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                	<%
-	                                	for (Event e : list) {
-	                                		String status = "진행중";
-	                                		if (e.getStatus() == 0)
-	                                			status = "종료";
-	                                	%>
+	                                	
+                                	
+                                	<c:forEach var="ev" items="${list}">
+	                                	<c:choose>
+	                                		<c:when test="${ev.status == 1}" >
+	                                			<c:set var="status" value="진행중"/>
+	                                		</c:when>
+	                                		<c:otherwise>
+	                                			<c:set var="status" value="종료"/>
+	                                		</c:otherwise>
+	                                	</c:choose>
 	                                    <tr>
-	                                        <td><%=e.getEventNo() %></td>
-	                                        <td class="event-ing"><%=status%></td>
-	                                        <td><%=e.getEndDate() %></td>
-	                                        <td class="text-left text-short"><a href="detail.jsp"><%=e.getTitle() %></a></td>
+	                                        <td>${ev.eventNo}</td>
+	                                        <td class="event-ing">${status}</td>
+	                                        <td>${ev.endDate}</td>
+	                                        <td class="text-left text-short"><a href="detail?eventNo=${ev.eventNo}">${ev.title}</a></td>
 	                                        <td>관리자</td>
-	                                        <td><%=e.getRegDate() %></td>
+	                                        <td>${ev.regDate}</td>
 	                                        <td><input type="checkbox"></td>
 	                                        <td><input type="checkbox"></td>
 	                                    </tr>
-	                                    <%}%>
+                                    </c:forEach>
 	                                    
 	                                    <tr>
 	                                        <td colspan="8" class="no-border btn-row">
-	                                            <input type="submit" value="글쓰기">
+	                                            <input type="button" onclick="location.href='reg'" value="글쓰기">
 	                                            <input type="submit" value="일괄공개">
 	                                            <input type="submit" value="일괄삭제">
 	                                        </td>

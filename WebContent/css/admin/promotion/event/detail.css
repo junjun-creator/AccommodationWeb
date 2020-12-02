@@ -11,6 +11,18 @@
 		    width: 100%;
 		}
 	
+	.sub-container .btns-container {
+		width: 186px;
+		margin: 30px auto 0 auto;
+	}
+
+	.sub-container .btns-container .btn {
+		width: 80px;
+		height: 25px;
+		margin: 0 5px 0 5px;
+		cursor: pointer;
+	}
+
 	.sub-container .page-list-sec {
 	    --border: 1px solid blue;
 	    margin: 50px auto 100px auto;

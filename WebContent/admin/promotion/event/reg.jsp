@@ -90,7 +90,7 @@
 	                            </table>
 	                            <div>
 	                                <input class="btn-submit" type="submit" value="등록" />
-	                                <button class="btn-cancel" onclick="location.href='list.jsp'">취소</button>
+	                                <button class="btn-cancel" onclick="location.href='list'">취소</button>
 	                            </div>
 	                        </form>
 	                    </section>

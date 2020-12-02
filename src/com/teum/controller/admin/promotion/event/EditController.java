@@ -21,5 +21,6 @@ public class EditController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 	      
+		
 	}
 }

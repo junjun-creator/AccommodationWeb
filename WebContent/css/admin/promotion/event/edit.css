@@ -76,8 +76,7 @@
 	                text-align: center;
 	            }
 	
-	            .sub-container .reg-form > div .btn-submit,
-	            .sub-container .reg-form > div .btn-cancel {
+	            .sub-container .reg-form > div .btn {
 	                width: 80px;
 	                height: 25px;
 	                margin: 0 5px 0 5px;
