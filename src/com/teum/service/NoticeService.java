@@ -101,7 +101,7 @@ public class NoticeService {
 		int result =0;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "INSERT INTO NOTICE(TITLE,CONTENT,PUB) VALUES(?,?,?)";
+		String sql = "INSERT INTO NOTICE(TITLE,CONTENT,WRITER_ID,PUB) VALUES(?,?,?,?)";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -109,7 +109,8 @@ public class NoticeService {
 			PreparedStatement st =con.prepareStatement(sql);
 			st.setString(1, notice.getTitle());
 			st.setString(2, notice.getContent());
-			st.setString(3, notice.getPub());
+			st.setString(3, notice.getWriterId());
+			st.setString(4, notice.getPub());
 		
 			//ResultSet rs = st.executeQuery(sql); // select 문장에만
 			result =st.executeUpdate();//insert,update,delete 문장일 떄

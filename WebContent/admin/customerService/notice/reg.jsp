@@ -41,8 +41,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="" class="active">공지사항</a></li>
-	                    <li><a href="">QnA</a></li>
+	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -71,27 +71,31 @@
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
-	                                    <td class="col-l text-left">
+	                                    <td class="col-l text-left" colspan="3">
 	                                        <input type="text"  name="title"  class="input-title" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"  name="pub" ><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th>첨부파일</th>
+	                                    <th >첨부파일</th>
 	                                    <td class="text-left">
 	                                        <input type="file">
 	                                    </td>
+	                                    <th class="col-m">작성자</th>
+	                                    <td >
+	                                    <input type="hidden" name="writer_id" value="관리자">
+	                                     <span>관리자</span></td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
-	                                    <td class="text-left">
+	                                    <td class="text-left" colspan="3">
 	                                        <textarea class="textarea" cols="75" rows="25"  name="content"></textarea>
 	                                    </td>
 	                                </tr>
 	                            </table>
 	                            <div>
 	                                <input class="btn-submit" type="submit" value="등록" />
-	                                <button class="btn-cancel" href="">취소</button>
+	                                <button class="btn-cancel"  onclick="location.href='list' ">취소</button>
 	                            </div>
 	                        </form>
 	                    </section>

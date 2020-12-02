@@ -27,9 +27,10 @@ public class Notice {
 	}
 
 
-	public Notice(String title, String content, String pub) {
+	public Notice(String title, String content, String writerId, String pub) {
 		this.title = title;
 		this.content = content;
+		this.writerId = writerId;
 		this.pub = pub;
 	
 	}

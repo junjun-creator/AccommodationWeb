@@ -25,6 +25,7 @@ public class NoticeRegController extends HttpServlet {
 		
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			String writerId =request.getParameter("writer_id");
 			String pub = request.getParameter("pub");
 				if(pub==null) {
 					pub="비공개";
@@ -33,7 +34,7 @@ public class NoticeRegController extends HttpServlet {
 				}
 			
 			
-			Notice notice = new Notice(title,content,pub);
+			Notice notice = new Notice(title,content,writerId,pub);
 			
 			NoticeService service = new NoticeService();
 			service.insert(notice);
