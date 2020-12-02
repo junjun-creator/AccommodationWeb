@@ -115,4 +115,40 @@ public class MemberService {
 		
 		return list;
 	}
+
+	public int insert(Member m) {
+		int result=0;
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String dbid = "TEUM";
+		String dbpwd = "4444";
+		//String sql = "SELECT * FROM MEMBER";
+		
+		List<Member> list = new ArrayList<>();
+		//DriverManager;//Class.forName~
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			String sql = "INSERT INTO MEMBER(name,email,pwd,birthday,phone,type) VALUES(?,?,?,?,?,?)";
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,m.getName());
+			ps.setString(2,m.getEmail());
+			ps.setString(3,m.getPwd());
+			ps.setString(4,m.getBirthday());
+			ps.setString(5,m.getPhone());
+			ps.setString(6,m.getType());
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
