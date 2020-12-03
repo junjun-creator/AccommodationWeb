@@ -24,17 +24,17 @@ public class DetailController extends HttpServlet {
 		
 		EventService service = new EventService();
 		List<Event> list = service.getList();
-		Event ev = service.getNo(eventNo);
+		Event currEv = service.getNo(eventNo);
 		Event prevEv = null;
 		Event nextEv = null;
 		
-		// 이벤트 글이 하나밖에 없을 경우
-		if (list.size() == 1) {
-			
+		
+		if (list.size() == 1) { // 이벤트 글이 하나밖에 없을 경우 
+			// 아무런 동작 X
 		} else {
 			if (eventNo == list.size()) // 맨 마지막 번호인 경우
 				prevEv = service.getNo(eventNo - 1);
-			else if (eventNo == 1) 
+			else if (eventNo == 1) 		// 맨 처음 번호인 경우
 				nextEv = service.getNo(eventNo + 1);
 			else {
 				prevEv = service.getNo(eventNo - 1);
@@ -42,9 +42,9 @@ public class DetailController extends HttpServlet {
 			}
 		}
 			
+		request.setAttribute("currEv", currEv);
 		request.setAttribute("prevEv", prevEv);
 		request.setAttribute("nextEv", nextEv);
-		request.setAttribute("ev", ev);
 		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}

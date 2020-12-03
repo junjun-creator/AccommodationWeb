@@ -26,6 +26,11 @@ public class Event {
 		this.pub = pub;
 	}
 
+	// insert, update용 생성자
+	public Event(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
 		return "Event [eventNo=" + eventNo + ", status=" + status + ", title=" + title + ", regDate=" + regDate

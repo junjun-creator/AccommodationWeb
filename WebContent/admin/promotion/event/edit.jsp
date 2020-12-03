@@ -1,22 +1,16 @@
-<%@page import="com.teum.entity.Event"%>
-<%@page import="java.util.List"%>
-<%@page import="com.teum.service.EventService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	EventService service = new EventService();
-	List<Event> list = service.getList();
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/promotion/event/reg.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/promotion/event/reg.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>이벤트 등록</title>
+    <title>이벤트 수정</title>
 </head>
 <body>
     <header class="sec-header">
@@ -73,13 +67,12 @@
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
-	                        <form action="" class="reg-form">
-	                        <%Event e = list.get(0); %>
+	                        <form action="edit" class="reg-form" method="post">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title"  value="<%=e.getTitle()%>" autofocus required>
+	                                        <input type="text" class="input-title"  value="${ev.title}" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
@@ -97,8 +90,9 @@
 	                                </tr>
 	                            </table>
 	                            <div>
-	                                <input class="btn-submit" type="submit" value="등록" />
-	                                <button class="btn-cancel" onclick="location.href='list.jsp'">취소</button>
+	                            	<input type="hidden" name="eventNo" value="${ev.eventNo}">
+	                                <input class="btn-submit" type="submit" value="등록">
+	                                <button class="btn-cancel" onclick="location.href='detail?eventNo=${ev.eventNo}'">취소</button>
 	                            </div>
 	                        </form>
 	                    </section>
