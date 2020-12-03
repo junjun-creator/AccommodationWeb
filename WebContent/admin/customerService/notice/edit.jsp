@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+ 
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,32 +70,30 @@
 	                        </ul>
 	                    </div>
 	                    <section class="form-sec">
-	                        <h1>공지사항 수정</h1>
-	                        <form action="" class="reg-form">
+	                        <h1>공지사항 디테일</h1>
+	                        <form action="edit" method="post" class="reg-form">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" autofocus required>
-	                       
+	                                    	<input type="text" name="title" value="${n.title}" >
 	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <th>첨부파일</th>
-	                                    <td class="text-left">
-	                                        <input type="file">
+	                                    <th class="col-m">상태</th>
+	                                    <td class="col-l text-left">
+	                                      <input type="checkbox" class="checkbox-open"  name="pub"  ${n.pub}><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
-	                                    <td class="text-left">
-	                                        <textarea class="textarea" cols="75" rows="25"></textarea>
+	                                    <td class="text-left" colspan="3">
+	                                       <textarea rows="25" cols="75" name="content">${n.content}</textarea>
 	                                    </td>
 	                                </tr>
 	                            </table>
 	                            <div>
-	                                <input class="btn-submit" type="submit" value="수정" />
-	                                <button class="btn-cancel" href="">취소</button>
+	                            	<input type="hidden" name="id" value="${n.id}">
+	                                <a class="btn-cancel"  href="detail?id=${n.id}"><span>취소<span></a>
+	                                <input type="submit"  class="btn-submit"  value="저장">
 	                            </div>
 	                        </form>
 	                    </section>

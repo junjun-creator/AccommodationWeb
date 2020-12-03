@@ -73,8 +73,18 @@
 
                     .main .reg-form > div .btn-submit,
                     .main .reg-form > div .btn-cancel {
+                    	
                         width: 80px;
                         height: 25px;
                         margin: 0 5px 0 5px;
+                        border:1px solid #000000;
+                        border-radius: 4px;
+                       
                     }
+                     .main .reg-form > div .btn-cancel {
+                     	display:inline-block;
+                   		text-decoration:none;
+                     	background: #EFEFEF;
+                     	 font-size :15.5px;
+                     }
 /********************************************/

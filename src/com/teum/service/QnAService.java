@@ -2,6 +2,7 @@ package com.teum.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -100,5 +101,30 @@ public class QnAService {
 			e.printStackTrace();
 		}
 		return q;
+	}
+	public int delete(int id) {
+		int result =0;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "DELETE FROM QNA WHERE ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			PreparedStatement st =con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

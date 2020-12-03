@@ -85,8 +85,8 @@
 	                                </tr>
 	                            </table>
 	                            <div>
-	                                <input class="btn-submit" type="submit" value="수정" />
-	                                <input class="btn-submit" type="submit" value="삭제" />
+	                                <a class="btn-cancel" href="reg?id=${q.id}">답변하기</a>
+                    				<a class="btn-cancel" href="del?id=${q.id}">삭제</a>
 	                            </div>
 	                        </form>
 	                    </section>
