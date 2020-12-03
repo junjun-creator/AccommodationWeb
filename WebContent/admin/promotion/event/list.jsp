@@ -68,7 +68,8 @@
 	                    </div>
 	                    <h1>이벤트 리스트</h1>
 	                    <section>
-	                        <form action="" class="list-board">
+	                        <form action="del" method="post" class="list-board">
+	                        	<input type="hidden" name="eventNo" value="${ev.eventNo}">
 	                            <table>
 	                                <thead>
 	                                    <tr>
@@ -78,13 +79,12 @@
 	                                        <td>제목</td>
 	                                        <td class="col-m">작성자</td>
 	                                        <td class="col-m">작성일</td>
-	                                        <td class="col-s">공개<input type="checkbox"></td>
-	                                        <td class="col-s">삭제<input type="checkbox"></td>
+	                                        <td class="col-s">공개<input type="checkbox" class="open-chk-all"></td>
+	                                        <td class="col-s">삭제<input type="checkbox" class="del-chk-all"></td>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
 	                                	
-                                	
                                 	<c:forEach var="ev" items="${list}">
 	                                	<c:choose>
 	                                		<c:when test="${ev.status == 1}" >
@@ -101,8 +101,8 @@
 	                                        <td class="text-left text-short"><a href="detail?eventNo=${ev.eventNo}">${ev.title}</a></td>
 	                                        <td>관리자</td>
 	                                        <td>${ev.regDate}</td>
-	                                        <td><input type="checkbox"></td>
-	                                        <td><input type="checkbox"></td>
+	                                        <td><input type="checkbox" name="open" class="open-chk"></td>
+	                                        <td><input type="checkbox" name="del" class="del-chk"></td>
 	                                    </tr>
                                     </c:forEach>
 	                                    
@@ -146,6 +146,7 @@
 	        </div>
 	    </section>
 	</main>
+	
 </body>
 
 </html>

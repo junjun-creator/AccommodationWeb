@@ -74,9 +74,8 @@
                         </section>
                         <form action="edit" method="post">
                             <div class="btns-container">
-                                <input type="hidden" name="eventNo" value="${currEv.eventNo}">
                                 <button class="btn btn-edit" onclick="location.href='edit.jsp'">수정</button>
-                                <input class="btn btn-delete" type="submit" value="삭제" />
+                                <button class="btn btn-delete" onclick="location.href='del?eventNo=${currEv.eventNo}'">삭제</button>
                             </div>
                         </form>
                         

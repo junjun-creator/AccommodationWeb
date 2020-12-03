@@ -67,12 +67,12 @@
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
-	                        <form action="edit" class="reg-form" method="post">
+	                        <form action="edit" method="post" class="reg-form">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title"  value="${ev.title}" autofocus required>
+	                                        <input type="text" class="input-title" name="title" value="${ev.title}" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
@@ -91,8 +91,8 @@
 	                            </table>
 	                            <div>
 	                            	<input type="hidden" name="eventNo" value="${ev.eventNo}">
-	                                <input class="btn-submit" type="submit" value="등록">
 	                                <button class="btn-cancel" onclick="location.href='detail?eventNo=${ev.eventNo}'">취소</button>
+	                                <input class="btn-submit" type="submit" value="저장">
 	                            </div>
 	                        </form>
 	                    </section>

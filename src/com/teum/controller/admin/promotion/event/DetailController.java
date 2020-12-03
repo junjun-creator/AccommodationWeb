@@ -16,7 +16,7 @@ import com.teum.service.EventService;
 public class DetailController extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 	      
@@ -28,8 +28,7 @@ public class DetailController extends HttpServlet {
 		Event prevEv = null;
 		Event nextEv = null;
 		
-		
-		if (list.size() == 1) { // 이벤트 글이 하나밖에 없을 경우 
+		if (list.size() == 1) { 		// 이벤트 글이 하나밖에 없을 경우 
 			// 아무런 동작 X
 		} else {
 			if (eventNo == list.size()) // 맨 마지막 번호인 경우
@@ -48,4 +47,5 @@ public class DetailController extends HttpServlet {
 		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}
+	
 }

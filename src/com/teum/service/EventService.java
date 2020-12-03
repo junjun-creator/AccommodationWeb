@@ -52,8 +52,6 @@ public class EventService {
 			rs.close();
 			st.close();
 			con.close();
-			
-
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -147,6 +145,33 @@ public class EventService {
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, ev.getTitle());
 			pst.setInt(2, ev.getEventNo());
+			
+			result = pst.executeUpdate();
+			
+			//꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			pst.close();
+			con.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public int delete(int eventNo) {
+		int result = 0;
+		
+		String url = "jdbc:oracle:thin:@HI.namoolab.com:1521/xepdb1";
+		String sql = "DELETE FROM EVENT WHERE EVENT_NO=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, eventNo);
 			
 			result = pst.executeUpdate();
 			

@@ -78,7 +78,7 @@
 	                    </section>
 	                    <div class="btns-container">
                             <button class="btn btn-edit" onclick="location.href='edit?eventNo=${currEv.eventNo}'">수정</button>
-                            <input class="btn btn-delete" type="submit" value="삭제" />
+                            <button class="btn btn-delete" onclick="location.href='del?eventNo=${currEv.eventNo}'">삭제</button>
                         </div>
 	                    <section class="page-list-sec">
 	                    	

@@ -16,7 +16,7 @@ import com.teum.service.EventService;
 public class ListController extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 	      
@@ -26,4 +26,5 @@ public class ListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
+	
 }
