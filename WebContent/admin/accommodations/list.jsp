@@ -12,23 +12,24 @@
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/admin/layout.css">
     <link rel="stylesheet" href="../../css/admin/accommodations/list.css">   
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<script src="../../js/admin/accommodations/list.js"></script>
     <title>등록된 업체 리스트</title>
 </head>
 <body>
-    <header class="sec_header">
+    <header class="sec-header">
         <div class="header pcHeader">
-            <div class="header_h1">
+            <div class="header-h1">
                 <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                <ul class="main-menu">
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">공지사항</a></li>
                     <li><a href="">이벤트</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
                                 <li><a href="">submenu</a></li>
                                 <li><a href="">submenu</a></li>
@@ -45,8 +46,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>업체관리</h1>
 	                <ul>
-	                    <li><a href="" class="active">등록된 업체 리스트</a></li>
-	                    <li><a href="">업체 등록 관리</a></li>
+	                    <li><a href="list" class="active">등록된 업체 리스트</a></li>
+	                    <li><a href="regList">업체 등록 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
