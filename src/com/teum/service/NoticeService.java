@@ -2,6 +2,7 @@ package com.teum.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class NoticeService {
 			     String writerId=rs.getString("WRITER_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
-			     int pub =rs.getInt("PUB");
+			     String pub =rs.getString("PUB");
 			     
 			     Notice n = new Notice();
 			     n.setId(id);
@@ -74,7 +75,7 @@ public class NoticeService {
 			     String writerId=rs.getString("WRITER_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
-			     int pub =rs.getInt("PUB");
+			     String pub =rs.getString("PUB");
 			     
 			     n = new Notice(
 			    		 id,
@@ -96,4 +97,34 @@ public class NoticeService {
 		}
 		return n;
 	}
+	public int insert(Notice notice) {
+		int result =0;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "INSERT INTO NOTICE(TITLE,CONTENT,WRITER_ID,PUB) VALUES(?,?,?,?)";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1, notice.getTitle());
+			st.setString(2, notice.getContent());
+			st.setString(3, notice.getWriterId());
+			st.setString(4, notice.getPub());
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+		
+	}
+	
 }

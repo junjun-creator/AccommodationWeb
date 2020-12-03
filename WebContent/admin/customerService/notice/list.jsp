@@ -90,16 +90,7 @@
 	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
 	                                    <td>${n.regdate}</td>
 	                                    <td>${n.writerId}</td>
-	                                    <td>
-	                                    	<c:choose>
-												<c:when test="${n.pub ==0 }">
-													<%="비공개" %>
-												</c:when>
-					                            <c:otherwise>
-					                            	<%="공개" %>
-					                            </c:otherwise>
-				                            </c:choose>
-				                        </td>
+	                                    <td>${n.pub}</td>
 	                                    <td>
 	                                        <input type="checkbox" name="" class=pubChk >
 	                                    </td>
@@ -110,12 +101,12 @@
 	                               </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="7">
-	                                        <form action="">
-	                                            <input type="submit" value="생성">
+	                                       
+	                                            <a href="reg"><input type="submit" value="생성" ></a>
 	                                            <input type="submit" value="공개">
 	                                            <input type="submit" value="비공개">
 	                                            <input type="submit" value="삭제">
-	                                        </form>
+	                                       
 	                                    </td>
 	                                </tr>
 	                            </tbody>
