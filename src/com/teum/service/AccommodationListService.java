@@ -16,11 +16,11 @@ public class AccommodationListService {
 	   public List<AccommodationList> getList() {
 		      String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		      String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='1'";
-		      Connection con;
+		      
 		      List<AccommodationList> list = new ArrayList<>();
 		      try {
 		         Class.forName("oracle.jdbc.driver.OracleDriver");
-		         con = DriverManager.getConnection(url,"TEUM","4444");
+		         Connection con = DriverManager.getConnection(url,"TEUM","4444");
 		         Statement st = con.createStatement();
 		         ResultSet rs = st.executeQuery(sql);
 		         
@@ -69,5 +69,60 @@ public class AccommodationListService {
 		      }
 		      return list;
 		   }
+
+	public AccommodationList get(String accName) {
+		AccommodationList al = null;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+	    String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='1'";//조건 추가(accName)
+	    
+	      try {
+	         Class.forName("oracle.jdbc.driver.OracleDriver");
+	         Connection con = DriverManager.getConnection(url,"TEUM","4444");
+	         Statement st = con.createStatement();
+	         ResultSet rs = st.executeQuery(sql);
+	         
+	      
+	         
+	         
+	         while(rs.next()) {
+	         
+	            int id = rs.getInt("id"); 
+	            String name = rs.getString("name");
+	            String location = rs.getString("location");
+	            String regdate = rs.getString("regdate");
+	            String phone = rs.getString("phone");
+	            String email = rs. getString("email");
+	            String accType = rs.getString("acc_type");
+	            int registration = rs.getInt("registration");
+	            
+	             al = new AccommodationList(
+	                  id,
+	                  name,
+	                  accName,
+	                  location,
+	                  regdate,
+	                  phone,
+	                  email,
+	                  accType,
+	                  registration
+	            );
+
+	         };
+	         
+	                  
+	         rs.close();
+	         st.close();
+	         con.close();
+	         
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+		return al;
+	}
 		   
 }
