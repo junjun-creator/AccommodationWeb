@@ -36,6 +36,13 @@ public class Notice {
 	}
 
 
+	public Notice(String title, String content, String pub) {
+		this.title = title;
+		this.content = content;
+		this.pub = pub;
+	}
+
+
 	public int getId() {
 		return id;
 	}
