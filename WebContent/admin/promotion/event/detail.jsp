@@ -1,6 +1,3 @@
-<%@page import="com.teum.entity.Event"%>
-<%@page import="java.util.List"%>
-<%@page import="com.teum.service.EventService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,9 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/promotion/event/detail.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/promotion/event/detail.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>이벤트 상세페이지</title>
 </head>
@@ -71,7 +68,7 @@
 	                    </div>
 	                    <section class="img-sec">
 	                        <div class="img-container">
-	                            <img src="../../../images/event/detail1.png" alt="">
+	                            <img src="/images/event/detail1.png" alt="">
 	                            <!-- <img src="../../../images/event/detail2.png" alt="">
 	                            <img src="../../../images/event/detail3.png" alt="">
 	                            <img src="../../../images/event/detail4.png" alt="">
@@ -79,13 +76,17 @@
 	                            <img src="../../../images/event/detail6.png" alt=""> -->
 	                        </div>
 	                    </section>
+	                    <div class="btns-container">
+                            <button class="btn btn-edit" onclick="location.href='edit?eventNo=${currEv.eventNo}'">수정</button>
+                            <button class="btn btn-delete" onclick="location.href='del?eventNo=${currEv.eventNo}'">삭제</button>
+                        </div>
 	                    <section class="page-list-sec">
 	                    	
 	                    	<c:choose>
 	                    		<c:when test="${prevEv == null && nextEv == null}">
 	                    			<!-- 아무런 출력이 없어야함 -->
 	                    		</c:when>
-	                    		<c:when test="${prevEv == null && nextEv != null}">
+	                    		<c:when test="${prevEv == null}">
 	                    			<div class="page next-page">
 			                            <a href="">
 			                                <span class="page-direction">다음글</span>
@@ -94,7 +95,7 @@
 			                            </a>
 			                        </div>
 	                    		</c:when>
-	                    		<c:when test="${nextEv == null && prevEv != null}">
+	                    		<c:when test="${nextEv == null}">
 	                    			<div class="page prev-page">
 			                            <a href="">
 			                                <span class="page-direction">이전글</span>
@@ -105,14 +106,14 @@
 	                    		</c:when>
 	                    		<c:otherwise>
 		                    		<div class="page prev-page">
-			                            <a href="">
+			                            <a href="detail?eventNo=${prevEv.eventNo}">
 			                                <span class="page-direction">이전글</span>
 			                                <span class="page-title">${prevEv.title}</span>
 			                                <span class="page-date">기간: ${prevEv.startDate} ~ ${prevEv.endDate}</span>
 			                            </a>
 		                        	</div>
 			                		<div class="page next-page">
-			                            <a href="">
+			                            <a href="detail?eventNo=${nextEv.eventNo}">
 			                                <span class="page-direction">다음글</span>
 			                                <span class="page-title">${nextEv.title}</span>
 			                                <span class="page-date">기간: ${nextEv.startDate} ~ ${nextEv.endDate}</span>
@@ -121,9 +122,8 @@
 	                    		</c:otherwise>
 	                    	</c:choose>
 	                    	
-	                    	
 	                        <div class="btn-container">
-	                            <button class="btn-list" onclick="location.href='list.jsp'">목록보기</button>
+	                            <button class="btn-list" onclick="location.href='list'">목록보기</button>
 	                        </div>
 	                    </section>
 	                </div>

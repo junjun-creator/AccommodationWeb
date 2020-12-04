@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/promotion/event/reg.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/promotion/event/reg.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>이벤트 등록</title>
 </head>
@@ -66,12 +66,12 @@
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
-	                        <form action="" class="reg-form">
+	                        <form action="reg" method="post" class="reg-form">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" autofocus required>
+	                                        <input type="text" name="title" class="input-title" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>

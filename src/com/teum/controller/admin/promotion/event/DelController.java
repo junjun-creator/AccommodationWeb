@@ -8,31 +8,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Event;
 import com.teum.service.EventService;
 
-@WebServlet("/admin/promotion/event/reg")
-public class RegController extends HttpServlet {
+@WebServlet("/admin/promotion/event/del")
+public class DelController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
-		request.getRequestDispatcher("reg.jsp").forward(request, response);
+		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		
+		EventService service = new EventService();
+		service.delete(eventNo);
+		
+		response.sendRedirect("list");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. 사용자로부터 전달받은 데이터를 변수에 담기
-		String title = request.getParameter("title");
-		Event event = new Event(title);
+		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		String[] delChks = request.getParameterValues("delChk");
 		
-		// 2. 데이터베이스에 넣기
+		for (String s : delChks) 
+			System.out.println(s);
+		
 		EventService service = new EventService();
-		service.insert(event);
-		
-		// 3. 페이지 전환
-		response.sendRedirect("list");
+		//service.delete(eventNo);
 	}
-	
 }
