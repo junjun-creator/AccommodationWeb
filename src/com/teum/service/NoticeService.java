@@ -126,5 +126,59 @@ public class NoticeService {
 		
 		
 	}
+	public int update(Notice notice) {
+		int result =0;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "UPDATE NOTICE SET TITLE=?,CONTENT=?,PUB=? WHERE ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1, notice.getTitle());
+			st.setString(2, notice.getContent());
+			st.setString(3, notice.getPub());
+			st.setInt(4, notice.getId());
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+		
+	}
+	public int delete(int id) {
+		int result =0;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "DELETE FROM NOTICE WHERE ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "TEUM", "4444");
+			PreparedStatement st =con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }

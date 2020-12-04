@@ -78,14 +78,8 @@
 	                                    </td>
 	                                    <th class="col-m">상태</th>
 	                                    <td class="col-l text-left">
-	                                      <c:choose>
-												<c:when test="${n.pub ==0 }">
-													<%="비공개" %>
-												</c:when>
-					                            <c:otherwise>
-					                            	<%="공개" %>
-					                            </c:otherwise>
-				                            </c:choose>
+	                                   	 ${n.pub}
+	                                     
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -96,8 +90,9 @@
 	                                </tr>
 	                            </table>
 	                            <div>
-	                                <input class="btn-submit" type="submit" value="수정" />
-	                                <input class="btn-submit" type="submit" value="삭제" />
+	                            	<a class="btn-cancel" href="list">목록</a>
+	                                <a class="btn-cancel" href="edit?id=${n.id}">수정</a>
+                    				<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
 	                            </div>
 	                        </form>
 	                    </section>
