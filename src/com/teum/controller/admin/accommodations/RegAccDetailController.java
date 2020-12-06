@@ -24,6 +24,6 @@ String accName = request.getParameter("accName");
 		AccommodationList al = service.get(accName);
 		
 		request.setAttribute("al", al);
-		request.getRequestDispatcher("regAccommodationDetail.jsp").forward(request, response);
+		//request.getRequestDispatcher("regAccommodationDetail.jsp").forward(request, response);
 	}
 }

@@ -19,7 +19,7 @@ public class ListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-	      
+	    
 		EventService service = new EventService();
 		List<Event> list = service.getList();
 		

@@ -102,7 +102,7 @@
 		                                    <tr>
 		                                      	 <td>${rl.id}</td>
 	                                       		 <td>${rl.name}</td>
-	                                     	  	 <td>${rl.accName}</td>
+	                                     	  	 <td><a href="accommodationDetail?accName=${rl.accName}">${rl.accName}</a></td>
 	                                   		     <td>${rl.location}</td>
 	                                 		     <td>${rl.regdate}</td>
 	                                 		     <td>${rl.phone}</td>
