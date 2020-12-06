@@ -10,33 +10,6 @@
     font-family: 'Noto Sans KR';
 }
 
-/*-------------메인페이지용 헤더------------*/
-.sec_header_index{
-    background: white;
-}
-.header_index{
-    display: flex;
-    background: white;
-    height: 72px;
-    width: 1200px;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-
-.header_index>.header_h1{
-    flex-basis: 50px;
-    height:70%;
-    background: url(../images/틈로고index.png) 0 0 no-repeat;
-    text-indent: -9999px;
-    background-size: 50px auto;
-}
-
-.teum_logo{
-    box-sizing: border-box;
-    height: 100%;
-} 
-
 header h1{
     margin: 0;
     height: 100%;
@@ -47,12 +20,49 @@ header li{
     list-style: none;
 }
 
-.main_menu{
+/*-------------메인페이지용 헤더------------*/
+.sec-header-page{
+    background: white;
+}
+.header-sec{
+    display: flex;
+    background: white;
+    height: 72px;
+    width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+    .header-sec a {
+        --height: 50%;
+        display: block;
+        text-align: center;
+        padding: .5rem 1rem;
+        text-decoration: none;
+        color: #5f0081;
+        font-weight: bold;
+    }
+
+    .header-sec>.header-logo{
+        flex-basis: 50px;
+        height:70%;
+        background: url(../images/틈로고index.png) 0 0 no-repeat;
+        text-indent: -9999px;
+        background-size: 50px auto;
+    }
+        .header-sec>.header-logo .teum-logo{
+            box-sizing: border-box;
+            height: 100%;
+        } 
+
+.main-menu{
     display: flex;
     margin: 0;
     position: relative;
 }
-.header .mega_menu{
+
+/* ----------------메가메뉴----------------- */
+/* .header .mega_menu{
     display: none;
     position: absolute;
     right: 0;
@@ -67,16 +77,6 @@ header li{
     display: block;
 }
 
-.header_index a {
-    --height: 50%;
-    display: block;
-    text-align: center;
-    padding: .5rem 1rem;
-    text-decoration: none;
-    color: #5f0081;
-    font-weight: bold;
-}
-
 .header_index .mega_menu{
     display: none;
     position: absolute;
@@ -86,7 +86,7 @@ header li{
 }
     .header_index .mega_menu a{
         color: white;
-    }
+    } */
 
 .header_search{
     display: flex;
@@ -96,63 +96,54 @@ header li{
         width: 100px;
     }
 /*---------------------------------------------------------*/
-.sec_main_page{
+.sec-promotion-page{
     min-height: 600px;
 }
 
-.promotion{
+.promotion-sec{
     height: 600px;
     background-color: #f3f3f3;
     --border: 1px solid red;
 }
-    .promotion_bar{
+    .promotion-bar{
         height: 600px;
         width: 1200px;
         margin: 0 auto;
     }
-    .promotion>div>div:first-child{
-        /* width: 1200px;
-        margin: auto; */
-        --border: 1px solid red;
-    }
-    .promotion>div>div:nth-child(2){
-        display: flex;
-        height: 480px;
-        padding-top: 20px;
-        /* width: 1200px;
-        margin: 0 auto; */
-        --border: 1px solid red;
-        justify-content: space-evenly;
-    }
-        .promotion>div>div:first-child{
+        .promotion-bar .btn-left,
+        .promotion-bar .btn-right{
+            align-items: center;
+        }
+
+        .promotion-bar>div:first-child{
             padding-top: 30px;
             text-indent: 100px;
         }
-        
-        .promotion>div>div:nth-child(2)>div{
-            --border: 1px solid red;
-            --text-align: center;
-            height: 100%;
+        .promotion-bar>div:nth-child(2){
             display: flex;
-            margin: 5px;
+            height: 480px;
+            padding-top: 20px;
+            justify-content: space-evenly;
         }
-            .promotion>div>div:nth-child(2)>div:nth-child(1),
-            .promotion>div>div:nth-child(2)>div:nth-child(5){
-                align-items: center;
+            .promotion-bar>div:nth-child(2)>div{
+                height: 100%;
+                display: flex;
+                margin: 5px;
             }
-            
-        .promotion .promotion-item{
+   
+        .promotion-sec .promotion-item{
             align-items: center;
             background-color: #ffffff;
             padding-left: 10px;
             padding-right: 10px;
             border-radius: 3px;
+            width: 300px;
         }
-            .promotion .promotion-item .parent {
+            .promotion-sec .promotion-item .parent {
                 position: relative;
             }
 
-                .promotion .promotion-item .parent .child {
+                .promotion-sec .promotion-item .parent .child {
                     position: absolute;
                     background: black;
                     opacity: 0.5;
@@ -162,56 +153,43 @@ header li{
                     height: 30px;
                 }
 
-            .promotion .promotion-item img{
+            .promotion-sec .promotion-item img{
                 padding-top: 10px;
                 width: 300px;
                 height: 350px;
             }
-            .promotion .promotion-item>div:nth-child(2),
-            .promotion .promotion-item>div:nth-child(3){
+            .promotion-sec .promotion-item>div:nth-child(2),
+            .promotion-sec .promotion-item>div:nth-child(3){
                 align-self: start;
             }
-            .promotion .promotion-item .promotion-item-detail>h2{
+            .promotion-sec .promotion-item .promotion-item-detail>h2{
                 font-size: 16px;
                 font-weight: bold;
             }
-            .promotion .promotion-item .promotion-item-detail>h4{
+            .promotion-sec .promotion-item .promotion-item-detail>h4{
                 font-size: 12px;
                 color: gray;
                 text-decoration: line-through;
             }
-            .promotion .promotion-item .promotion-item-detail>h3{
+            .promotion-sec .promotion-item .promotion-item-detail>h3{
                 font-size: 14px;
                 color: red;
                 font-weight: bold;
             }
-            .promotion .promotion-item .promotion-item-detail>h5{
+            .promotion-sec .promotion-item .promotion-item-detail>h5{
                 font-size: 14px;
                 padding: 5px 0;
                 width: 290px;
                 border-bottom: 1.5px solid rgb(160, 160, 160);
             }
-
-            .promotion>div>div:nth-child(2)>div>a{
-                --border: 1px solid red;
-            }
-            .promotion>div>div:nth-child(2)>div:nth-child(1){
+            .promotion-bar>div:nth-child(2)>div:nth-child(1){
                 margin-left: 80px;
             }
-            .promotion>div>div:nth-child(2)>div:nth-child(5){
+            .promotion-bar>div:nth-child(2)>div:nth-child(5){
                 margin-right: 80px;
             }
-        .promotion>div>div:nth-child(2)>div:nth-child(2){
-            width: 300px;
-        }
-        .promotion>div>div:nth-child(2)>div:nth-child(3){
-            width: 300px;
-        }
-        .promotion>div>div:nth-child(2)>div:nth-child(4){
-            width: 300px;
-        }
 
-.category_bar{
+.category-bar{
     width: 1200px;
     height: 300px;
     margin: 0 auto;
@@ -219,11 +197,11 @@ header li{
     justify-content: center;
     align-items: center;
 }
-    .category_bar>ul{
+    .category-bar>ul{
         display: flex;
         justify-content: center;
     }
-    .category_bar>ul>li>a{
+    .category-bar .category-img{
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -232,12 +210,12 @@ header li{
         text-decoration: none;
         transition: transform 0.5s ease;
     }
-        .category_bar>ul>li>a:hover{
+        .category-bar .category-img:hover{
             color: lightcoral;
             transform: scale(1.2);
         }
         
-    .category_bar>ul>li>a>img{
+    .category-bar>ul>li>a>img{
         width: 80px;
         margin-bottom: 20px;
     }
