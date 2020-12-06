@@ -125,6 +125,9 @@
 	                            <li>2</li>
 	                        </ul>
 	                    </section>
+	                    <div class="btn-container">
+	                            <button class="btn-list" onclick="location.href='list'">제안하기</button>
+	                        </div>
 	                </section>
 	            </main>
 	        </div>
