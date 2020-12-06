@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.teum.entity.AccommodationList;
 import com.teum.service.AccommodationListService;
 
-@WebServlet("admin/accommodations/accommodationDetail")
+@WebServlet("/admin/accommodations/accommodationDetail")
 public class AccDetilController extends HttpServlet{
 
 	@Override
