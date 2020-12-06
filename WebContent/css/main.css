@@ -238,6 +238,7 @@ display: flex;
             --border: 1px solid red;
             margin: 0 auto;
             padding-top: 120px;
+            position: relative;
         }
 
             .event-sec > .event-container h1 {
@@ -245,13 +246,47 @@ display: flex;
                 font-weight: bold;
             }
 
-            .event-sec > .event-container .event-list-container {
-                margin-top: 20px;
+            .event-sec > .event-container .cliper-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 40px;
+                position: absolute;
+                z-index: 1;
+                cursor: pointer;
+                color: rgba(255, 255, 255, 0.5);
             }
 
-                .event-sec > .event-container .event-list-container .event-list img {
-                    width: 900px;
+            .event-sec > .event-container .prev-btn {
+                top: 235px;
+                left: 20px;
+            }
+
+            .event-sec > .event-container .next-btn {
+                top: 235px;
+                left: 855px;
+            }
+
+            .event-sec > .event-container .event-list-container {
+                margin-top: 20px;
+                overflow: hidden;
+            }
+
+                .event-sec > .event-container .event-list-container .event-list {
+                    display: flex;
+                    transition: transform 1s;
                 }
+
+                    .event-sec > .event-container .event-list-container .event-list li {
+                        flex-basis: 900px;
+                    }
+
+                    .event-sec > .event-container .event-list-container .event-list li.current {
+                        
+                    }
+
+                        .event-sec > .event-container .event-list-container .event-list img {
+                            width: 900px;
+                        }
 
             .event-sec > .event-container .etc-container {
                 display: flex;
