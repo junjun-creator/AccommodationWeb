@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.entity.Member;
-import com.teum.service.MemberDetailService;
+import com.teum.service.MemberService;
 
 @WebServlet("/admin/userInfo/detail")
 public class DetailController extends HttpServlet {
@@ -21,7 +21,7 @@ public class DetailController extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		
-		MemberDetailService service = new MemberDetailService();
+		MemberService service = new MemberService();
 		Member m = service.getDetail(email);
 		System.out.println(m.getName());
 		
