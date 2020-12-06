@@ -75,7 +75,7 @@
 	                            <i class="fas fa-headphones"></i><span>고객센터</span>
 	                        </a>
 	                    </li>
-	                </ul>
+	                </ul> 
 	            </nav>
 	            <main id="main" class="main">
 	                <div class="sub-container">
