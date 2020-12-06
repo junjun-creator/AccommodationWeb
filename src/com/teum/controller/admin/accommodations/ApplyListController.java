@@ -1,6 +1,7 @@
 package com.teum.controller.admin.accommodations;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.teum.entity.AccommodationList;
 import com.teum.service.AccommodationListService;
 
-@WebServlet("/admin/accommodations/accommodationDetail")
-public class AccDetilController extends HttpServlet{
-
+@WebServlet("/admin/accommodations/applyList")
+public class ApplyListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String accName = request.getParameter("accName");
-		
 		AccommodationListService service = new AccommodationListService();
-		AccommodationList al = service.get(accName);
+		List<AccommodationList> list = service.applyGetList();
 		
-		request.setAttribute("al", al);
-		request.getRequestDispatcher("accommodationDetail.jsp").forward(request, response);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("applyList.jsp").forward(request, response);
 	}
 }

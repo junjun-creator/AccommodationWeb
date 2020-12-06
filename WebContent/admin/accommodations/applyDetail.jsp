@@ -28,19 +28,35 @@
         <aside id="aside" class="aside">
             <h1>업체관리</h1>
             <ul>
-                <li><a href="">등록된 업체 리스트</a></li>
-                <li><a href="" class="active">업체 등록 관리</a></li>
+                <li><a href="list">등록된 업체 리스트</a></li>
+                <li><a href="applyList" class="active">업체 등록 관리</a></li>
             </ul>
     </aside>
         </aside>
         <div class="container">
             <nav id="nav" class="nav">
                 <ul>
-                    <li class="current-tab"><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></li></a>
-                    <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
-                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-                    <li><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
-                </ul>
+	                    <li class="current-tab">
+	                        <a href="list">
+	                            <i class="fas fa-hotel"></i><span>업체관리</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="/admin/userInfo/list">
+	                            <i class="fas fa-user-circle"></i><span> 회원관리</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="/admin/promotion/goldenTime/list">
+	                            <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="/admin/customerService/notice/list">
+	                            <i class="fas fa-headphones"></i><span>고객센터</span>
+	                        </a>
+	                    </li>
+	                </ul>
             </nav>
             <main id="main" class="main">
                 <div class="sub-container">

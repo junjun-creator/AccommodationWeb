@@ -47,7 +47,7 @@
 	            <h1>업체관리</h1>
 	                <ul>
 	                    <li><a href="list" class="active">등록된 업체 리스트</a></li>
-	                    <li><a href="regList">업체 등록 관리</a></li>
+	                    <li><a href="applyList">업체 등록 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -115,7 +115,7 @@
 	                                    <tr>
 	                                        <td>${al.id}</td>
 	                                        <td>${al.name}</td>
-	                                        <td><a href="accommodationDetail?accName=${al.accName}">${al.accName}</a></td>
+	                                        <td><a href="detail?accName=${al.accName}">${al.accName}</a></td>
 	                                        <td>${al.location}</td>
 	                                        <td>${al.regdate}</td>
 	                                        <td>${al.phone}</td>
