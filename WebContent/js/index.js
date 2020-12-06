@@ -61,25 +61,14 @@ var images = document.querySelectorAll(".category-img");
         var promotionCount = 0;
         var promotionItemContainer = document.querySelector(".promotion-item-container");
         
-        var newOne = promotionItems[promotionItems.length-1].cloneNode();
-        newOne.innerHTML = promotionItems[promotionItems.length-1].innerHTML;
-        promotionItemContainer.prepend(newOne);
-        var newOne = promotionItems[promotionItems.length-2].cloneNode();
-        newOne.innerHTML = promotionItems[promotionItems.length-2].innerHTML;
-        promotionItemContainer.prepend(newOne);
-        var newOne = promotionItems[promotionItems.length-3].cloneNode();
-        newOne.innerHTML = promotionItems[promotionItems.length-3].innerHTML;
-        promotionItemContainer.prepend(newOne);
-
-        promotionItemContainer.style.transform = "translateX("+(-326)*3+"px)";
-
         btnLeft.addEventListener("click",function(){
             if(promotionCount > 0){
                 promotionCount--;
                 promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
             }
             else{
-                
+                promotionCount = promotionItems.length-3;
+                promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
             }
         });
         btnRight.addEventListener("click",function(){
@@ -89,7 +78,22 @@ var images = document.querySelectorAll(".category-img");
                 promotionCount++;
                 promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
             }
+            else{
+                promotionCount = 0;
+                promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+            }
         });
+
+        setInterval(function(){
+            if(promotionCount <= promotionItems.length-3-1){
+                promotionCount++;
+                promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+            }
+            else{
+                promotionCount = 0;
+                promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+            }
+        },3000);
   
   //============================ 이벤트 페이지 ===============================
     var eventList = document.querySelector('.event-list');
