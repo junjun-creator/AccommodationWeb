@@ -52,7 +52,7 @@
         <main class="sec_login_main">
 
             <div>
-                <img src="배경1-1.PNG" alt="">
+                <img src="/images/배경1-1.PNG" alt="">
             </div>
 
             <div class="login_form">
