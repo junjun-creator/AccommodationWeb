@@ -123,6 +123,10 @@ header li{
                 margin: 5px;
             }
 
+        .promotion-item-container{
+            justify-content: space-evenly;
+            transition: transform 1s;
+        }
         .promotion-sec .promotion-item{
             align-items: center;
             background-color: #ffffff;
@@ -130,6 +134,9 @@ header li{
             padding-right: 10px;
             border-radius: 3px;
             width: 300px;
+            margin: 0 3px;
+            display: flex;
+            flex-direction: column;
         }
             .promotion-sec .promotion-item .parent {
                 position: relative;
@@ -174,11 +181,11 @@ header li{
                 width: 290px;
                 border-bottom: 1.5px solid rgb(160, 160, 160);
             }
-            .promotion-bar>div:nth-child(2)>div:nth-child(1){
-                margin-left: 80px;
+            .promotion-bar>div:nth-child(2)>div:first-child{
+                margin-left: 60px;
             }
-            .promotion-bar>div:nth-child(2)>div:nth-child(5){
-                margin-right: 80px;
+            .promotion-bar>div:nth-child(2)>div:last-child{
+                margin-right: 60px;
             }
 
 .category-bar{
@@ -275,7 +282,7 @@ height: 972px;
 
 /*-------------event------------*/
 .sec-event-page {
-    background: #f7f7f7;
+    background: #F9FBFF;
 }
 
     .event-sec {
@@ -290,6 +297,7 @@ height: 972px;
             --border: 1px solid red;
             margin: 0 auto;
             padding-top: 120px;
+            position: relative;
         }
 
             .event-sec > .event-container h1 {
@@ -297,13 +305,47 @@ height: 972px;
                 font-weight: bold;
             }
 
-            .event-sec > .event-container .event-list-container {
-                margin-top: 20px;
+            .event-sec > .event-container .cliper-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 40px;
+                position: absolute;
+                z-index: 1;
+                cursor: pointer;
+                color: rgba(255, 255, 255, 0.5);
             }
 
-                .event-sec > .event-container .event-list-container .event-list img {
-                    width: 900px;
+            .event-sec > .event-container .prev-btn {
+                top: 235px;
+                left: 20px;
+            }
+
+            .event-sec > .event-container .next-btn {
+                top: 235px;
+                left: 855px;
+            }
+
+            .event-sec > .event-container .event-list-container {
+                margin-top: 20px;
+                overflow: hidden;
+            }
+
+                .event-sec > .event-container .event-list-container .event-list {
+                    display: flex;
+                    transition: transform 1s;
                 }
+
+                    .event-sec > .event-container .event-list-container .event-list li {
+                        flex-basis: 900px;
+                    }
+
+                    .event-sec > .event-container .event-list-container .event-list li.current {
+                        
+                    }
+
+                        .event-sec > .event-container .event-list-container .event-list img {
+                            width: 900px;
+                        }
 
             .event-sec > .event-container .etc-container {
                 display: flex;
