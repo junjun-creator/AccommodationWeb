@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/css/user/offer/reg.css" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/user/offer/reg.js"></script>
+    <title>(개인)역제안 등록 페이지</title>
+</head>
+<body>
+    <header class="header pcHeader">
+        <div class="header_h1">
+            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+        </div>
+        <div>
+            <ul class="main_menu">
+                <li class="header_search">
+                    <input type="text" /><a href=""><i class="fas fa-search"></i></a>
+                </li>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">이벤트</a></li>
+                <li><a href="">더보기</a></li>
+                <li class="mypage">
+                    <a href="">로그인</a>
+                    <div class="mega_menu">
+                        <ul>
+                            <li><a href="">submenu</a></li>
+                            <li><a href="">submenu</a></li>
+                            <li><a href="">submenu</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <header class="header mobileHeader">
+        <div>
+            <a href=""><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="header_h1">
+            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+        </div>
+        <div>
+            <a href=""><i class="fas fa-search"></i></a>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <main id="main" class="main">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><i class="fas fa-home"></i>HOME ▶</li>
+                        <li>역제안 등록</li>
+                    </ul>
+                </div>
+                <h1>여러분의 휴식처를 원하는 가격으로 제시해 보세요!</h1>
+                <div class="banner-img"></div>
+
+                <section class="reg-form-sec">
+                    <form action="" method="post" class="reg-form">
+                        <div>
+                            <div class="form-both form-left">
+                                <section>
+                                    <i class="far fa-calendar-alt"></i><span>날짜</span> 
+                                    <input type="date" name="start-date" class="start-date" required>
+                                    <input type="date" name="end-date" class="end-date" required>
+                                </section>
+                                <section>
+                                    <i class="fas fa-map-marker-alt"></i><span>지역</span>
+                                    <select class="main-city">
+                                        <option name="seoul">서울</option>
+                                        <!-- 야나두 참고함 -->
+                                        <option name="busan">부산</option>
+                                        <option name="jeju">제주</option>
+                                        <option name="gyeonggi">경기</option>
+                                        <option name="incheon">인천</option>
+                                        <option name="gangwon">강원</option>
+                                        <option name="gyeongsang">경상</option>
+                                        <option name="jeonla">전라</option>
+                                        <option name="chungcheong">충청</option>
+                                    </select>
+                                    <select class="sub-city">
+                                        <option name="" selected>강남/역삼/삼성</option>
+                                        <option name="">신사/청담/압구정</option>
+                                        <option name="">서초/교대/사당</option>
+                                        <option name="">잠실/송파/강동</option>
+                                        <option name="">을지로/명동/중구</option>
+                                        <option name="">서울역/이태원/용산</option>
+                                        <option name="">종로/인사동</option>
+                                        <option name="">동대문구</option>
+                                        <option name="">홍대/합정/마포/서대문</option>
+                                        <option name="">여의도</option>
+                                        <option name="">영등포역</option>
+                                        <option name="">구로/신도림/금천</option>
+                                        <option name="">김포공항/염창/강서</option>
+                                        <option name="">건대입구/성수/왕십리</option>
+                                        <option name="">성북/강북/노원/도봉</option>
+                                        <option selected>강남/역삼/삼성</option>
+                                        <option>신사/청담/압구정</option>
+                                        <option>서초/교대/사당</option>
+                                        <option>잠실/송파/강동</option>
+                                        <option>을지로/명동/중구</option>
+                                        <option>서울역/이태원/용산</option>
+                                        <option>종로/인사동</option>
+                                        <option>동대문구</option>
+                                        <option>홍대/합정/마포/서대문</option>
+                                        <option>여의도</option>
+                                        <option>영등포역</option>
+                                        <option>구로/신도림/금천</option>
+                                        <option>김포공항/염창/강서</option>
+                                        <option>건대입구/성수/왕십리</option>
+                                        <option>성북/강북/노원/도봉</option>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="form-both form-right">
+                                <section>
+                                    <i class="fas fa-user"></i><span>인원수</span>
+                                    <!-- <input type="button" value="성인 2, 아동 1" required> -->
+                                    <select>
+                                        <option value="">1</option>
+                                        <option value="" selected>2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                        <option value="">9</option>
+                                        <option value="">10</option>
+                                        <option value="">11</option>
+                                        <option value="">12</option>
+                                        <option value="">13</option>
+                                        <option value="">14</option>
+                                        <option value="">15</option>
+                                        <option value="">16</option>
+                                        <option value="">17</option>
+                                        <option value="">18</option>
+                                        <option value="">19</option>
+                                        <option value="">20</option>
+                                    </select>
+                                </section>
+                                <section>
+                                    <i class="fas fa-won-sign"></i><span>가격</span>
+                                    <!-- <input type="text" class="price" placeholder="원 단위로 입력해주세요" required /> -->
+                                    <input type="text" class="price" placeholder="원 단위로 입력해주세요" required>
+                                </section>
+                            </div>
+                        </div>
+                        <section class="submit-btn-sec">
+                            <input type="submit" class="submit-btn" value="등록" />
+                            <a href="">취소</a>
+                        </section>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </section>
+
+    <section>
+        <footer id="footer" class="footer">
+            <div>
+                <ul>
+                    <li>
+                        <a href="">회사소개</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">이용약관</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">개인정보처리방침</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">사업자정보확인</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">여기어때 마케팅센터</a>
+                        <span>|</span>
+                    </li>
+                    <li>
+                        <a href="">액티비티 호스트센터</a>
+                        <span>|</span>
+                    </li>
+                    <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
+                </ul>
+
+                <p><b>고객행복센터 1577-8282</b> 오전 09:00 ~ 오후18:00</p>
+
+                <address>
+                    <span>(주)TEUM</span>
+                    주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                    <br />대표이사 : 신중언 | 사업자등록번호 777-11-45678 <br />통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제
+                    1324-55호 <br />전화번호 : 010-1111-2222 <br />전자우편주소 : teum@teum.co.kr <br />Copyright TEUM COMPANY Corp. All rights
+                    reserved.
+                </address>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
