@@ -14,7 +14,7 @@ import com.teum.service.QnAService;
 
 
 @WebServlet("/admin/customerService/QnA/del")
-public class QnADelController extends HttpServlet{
+public class DeleteController extends HttpServlet{
 	
 	@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,7 +14,7 @@ import com.teum.service.NoticeService;
 
 
 @WebServlet("/admin/customerService/notice/reg")
-public class NoticeRegController extends HttpServlet {
+public class RegController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

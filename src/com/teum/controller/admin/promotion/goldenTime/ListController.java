@@ -1,4 +1,4 @@
-package com.teum.controller.admin.accommodations;
+package com.teum.controller.admin.promotion.goldenTime;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,18 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.AccommodationList;
-import com.teum.service.AccommodationListService;
+import com.teum.entity.GoldenTime;
+import com.teum.service.GoldenTimeService;
 
-@WebServlet("/admin/accommodations/list")
-public class AccListController extends HttpServlet {
+@WebServlet("/admin/promotion/goldenTime/list")
+public class ListController extends HttpServlet {
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AccommodationListService service = new AccommodationListService();
-		List<AccommodationList> list = service.getList();
+		GoldenTimeService service = new GoldenTimeService();
+		List<GoldenTime> list = service.getList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
+		
 	}
 }

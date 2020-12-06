@@ -1,4 +1,4 @@
-package com.teum.controller.admin.customerservice.notice;
+package com.teum.controller.admin.customerservice.qna;
 
 import java.io.IOException;
 
@@ -8,21 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Notice;
-import com.teum.service.NoticeService;
+
+import com.teum.entity.QnA;
+import com.teum.service.QnAService;
 
 
 
-@WebServlet("/admin/customerService/notice/detail")
-public class NoticeDetailController extends HttpServlet{
+@WebServlet("/admin/customerService/QnA/detail")
+public class DetailController extends HttpServlet{
 @Override
 protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	int id = Integer.parseInt(request.getParameter("id"));
 	
-	NoticeService service = new NoticeService();
-	Notice n = service.get(id);
+	QnAService service = new QnAService();
+	QnA q = service.get(id);
 	
-	request.setAttribute("n", n);
+	request.setAttribute("q", q);
 	request.getRequestDispatcher("detail.jsp").forward(request,response);
 }
 }
