@@ -160,4 +160,3 @@ var images = document.querySelectorAll(".category-img");
             currentEvent.classList.add('current');
         }
     }, 3000);
-});
