@@ -122,7 +122,10 @@ header li{
                 display: flex;
                 margin: 5px;
             }
-   
+        .promotion-item-container{
+            justify-content: space-evenly;
+            transition: transform 1s;
+        }
         .promotion-sec .promotion-item{
             align-items: center;
             background-color: #ffffff;
@@ -130,6 +133,9 @@ header li{
             padding-right: 10px;
             border-radius: 3px;
             width: 300px;
+            margin: 0 3px;
+            display: flex;
+            flex-direction: column;
         }
             .promotion-sec .promotion-item .parent {
                 position: relative;
@@ -174,11 +180,11 @@ header li{
                 width: 290px;
                 border-bottom: 1.5px solid rgb(160, 160, 160);
             }
-            .promotion-bar>div:nth-child(2)>div:nth-child(1){
-                margin-left: 80px;
+            .promotion-bar>div:nth-child(2)>div:first-child{
+                margin-left: 60px;
             }
-            .promotion-bar>div:nth-child(2)>div:nth-child(5){
-                margin-right: 80px;
+            .promotion-bar>div:nth-child(2)>div:last-child{
+                margin-right: 60px;
             }
 
 .category-bar{
