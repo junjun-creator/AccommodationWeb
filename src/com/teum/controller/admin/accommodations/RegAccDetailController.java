@@ -12,7 +12,7 @@ import com.teum.entity.AccommodationList;
 import com.teum.service.AccommodationListService;
 
 
-@WebServlet("admin/accommodations/regAccommodationDetail")
+@WebServlet("/admin/accommodations/regAccommodationDetail")
 public class RegAccDetailController extends HttpServlet{
 
 	@Override

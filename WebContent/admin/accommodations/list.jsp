@@ -54,22 +54,22 @@
 	            <nav id="nav" class="nav">
 	                <ul>
 	                    <li class="current-tab">
-	                        <a href="">
+	                        <a href="list">
 	                            <i class="fas fa-hotel"></i><span>업체관리</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="">
+	                        <a href="/admin/userInfo/list">
 	                            <i class="fas fa-user-circle"></i><span> 회원관리</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="">
+	                        <a href="/admin/promotion/goldenTime/list">
 	                            <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="">
+	                        <a href="/admin/customerService/notice/list">
 	                            <i class="fas fa-headphones"></i><span>고객센터</span>
 	                        </a>
 	                    </li>
@@ -115,7 +115,7 @@
 	                                    <tr>
 	                                        <td>${al.id}</td>
 	                                        <td>${al.name}</td>
-	                                        <td>${al.accName}</td>
+	                                        <td><a href="accommodationDetail?accName=${al.accName}">${al.accName}</a></td>
 	                                        <td>${al.location}</td>
 	                                        <td>${al.regdate}</td>
 	                                        <td>${al.phone}</td>
