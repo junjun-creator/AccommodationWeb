@@ -87,7 +87,7 @@
 	                        </ul>
 	                    </div>
 	                    <h1>업체 등록 관리</h1>
-	                    <select name="" class="AccTypeCatagory">
+	                    <select name="" class="acc-type-category">
 		                    <form action="">
 		                        <option value="" selected disabled>전체보기</option>
 		                        <option value="호텔">호텔</option>
