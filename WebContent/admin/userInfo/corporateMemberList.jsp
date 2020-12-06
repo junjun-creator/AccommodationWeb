@@ -48,8 +48,8 @@
 	            <h1>회원관리</h1>
 	                <ul>
 	                	<li><a href="list">전체회원리스트</a></li>
-	                    <li><a href="list?type=개인회원">개인회원리스트</a></li>
-	                    <li><a href="list?type=기업회원" class="active">기업회원리스트</a></li>
+	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=개인회원">개인회원리스트</a></li>
+	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=기업회원" class="active">기업회원리스트</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">

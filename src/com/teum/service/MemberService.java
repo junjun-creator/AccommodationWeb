@@ -151,4 +151,36 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public int delete(String email) {
+		int result=0;
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String dbid = "TEUM";
+		String dbpwd = "4444";
+		//String sql = "SELECT * FROM MEMBER";
+		
+		List<Member> list = new ArrayList<>();
+		//DriverManager;//Class.forName~
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			String sql = "DELETE FROM MEMBER WHERE email=?";
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,email);
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
 }

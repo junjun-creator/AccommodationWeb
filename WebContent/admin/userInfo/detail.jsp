@@ -228,8 +228,11 @@
 	                    </section>
 	
 	                    <section class="user-info-btn">
-	                        <input type="button" value="목록">
-	                        <input type="button" value="탈퇴">
+	                        <input type="button" onclick="location.href='/admin/userInfo/list'" value="목록">
+	                        <form action="delete" method="post">
+	                        	<input type="hidden" name="email" value="${member.email }">
+		                        <input type="submit" value="탈퇴">
+	                        </form>
 	                    </section>
 	                </div>
 	            </main>

@@ -19,22 +19,24 @@ public class ListController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String type = "all";
+		if(request.getParameter("type") != null && !request.getParameter("type").equals(""))
+			type = request.getParameter("type");
+		
 		MemberService service = new MemberService();
-		List<Member> list=null;
-		list = service.getList();
+		List<Member> list = null;
 		RequestDispatcher rd = request.getRequestDispatcher("list.jsp");
-		try {
-			if(request.getParameter("type").equals("기업회원")) {
-				list = service.getListByType(request.getParameter("type"));
-				rd = request.getRequestDispatcher("corporateMemberList.jsp");
-			}
-			else if(request.getParameter("type").equals("개인회원")) {
-				list = service.getListByType(request.getParameter("type"));
-				rd = request.getRequestDispatcher("privateMemberList.jsp");
-			}
-			
-		}catch(Exception e) {
+		if(type.equals("기업회원")) {
+			list = service.getListByType(request.getParameter("type"));
+			rd = request.getRequestDispatcher("corporateMemberList.jsp");
 		}
+		else if(type.equals("개인회원")) {
+			list = service.getListByType(request.getParameter("type"));
+			rd = request.getRequestDispatcher("privateMemberList.jsp");
+		}
+		else
+			list = service.getList();
 		System.out.println(list);
 		request.setAttribute("list", list);
 		rd.forward(request, response);

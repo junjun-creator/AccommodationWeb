@@ -48,8 +48,8 @@
 	            <h1>회원관리</h1>
 	                <ul>
 	                	<li><a href="list" class="active">전체회원리스트</a></li>
-	                    <li><a href="list?type=개인회원">개인회원리스트</a></li>
-	                    <li><a href="list?type=기업회원">기업회원리스트</a></li>
+	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=개인회원">개인회원리스트</a></li>
+	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=기업회원">기업회원리스트</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -115,11 +115,10 @@
 	                                </thead>
 	                                <tbody>
 	                                	<c:forEach var="m" items="${list}">
-	                                	
 		                                    <tr>
 		                                        <td class="col-s">${m.id }</td>
 		                                        <td class="col-sm">${m.name }</td>
-		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${m.email }</td>
+		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?email=${m.email }">${m.email }</a></td>
 		                                        <td class="col-sm">${m.birthday }</td>
 		                                        <td class="col-m">${m.phone }</td>
 		                                        <td class="col-sm user-type">${m.type }</td>
