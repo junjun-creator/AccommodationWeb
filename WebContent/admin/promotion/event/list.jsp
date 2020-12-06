@@ -44,8 +44,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>프로모션 관리</h1>
 	                <ul>
-	                    <li><a href="">골든타임 관리</a></li>
-	                    <li><a href="" class="active">이벤트 관리</a></li>
+	                    <li><a href="/admin/promotion/goldenTime/list">골든타임 관리</a></li>
+	                    <li><a href="/admin/promotion/event/list" class="active">이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -68,7 +68,7 @@
 	                    </div>
 	                    <h1>이벤트 리스트</h1>
 	                    <section>
-	                        <form action="del" method="post" class="list-board">
+	                        <form action="delete" method="post" class="list-board">
 	                        	<input type="hidden" name="eventNo" value="${ev.eventNo}">
 	                            <table>
 	                                <thead>

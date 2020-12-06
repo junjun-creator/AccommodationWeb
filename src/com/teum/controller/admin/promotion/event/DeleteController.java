@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teum.service.EventService;
 
-@WebServlet("/admin/promotion/event/del")
-public class DelController extends HttpServlet {
+@WebServlet("/admin/promotion/event/delete")
+public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
