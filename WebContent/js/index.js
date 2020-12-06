@@ -90,3 +90,73 @@ var images = document.querySelectorAll(".category-img");
                 promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
             }
         });
+  
+  //============================ 이벤트 페이지 ===============================
+    var eventList = document.querySelector('.event-list');
+    var currentEvent = eventList.firstElementChild;
+    var prevButton = document.querySelector('.prev-btn');
+    var nextButton = document.querySelector('.next-btn');
+    var eventIndex = 0;
+    var eventImgCount = eventList.childElementCount;
+
+    currentEvent.classList.add('current');
+
+    prevButton.onclick = function() {
+        if (currentEvent.previousElementSibling == null) {
+            eventIndex -= (eventImgCount - 1); 
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+
+            currentEvent.classList.remove('current');
+            currentEvent = eventList.lastElementChild;
+            currentEvent.classList.add('current');
+        } else {
+            eventIndex++;
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+    
+            currentEvent.classList.remove('current');
+            currentEvent = currentEvent.previousElementSibling;
+            currentEvent.classList.add('current');
+        }
+    }
+
+    nextButton.onclick = function() {
+        if (currentEvent.nextElementSibling == null) {
+            eventIndex += (eventImgCount - 1); 
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+
+            currentEvent.classList.remove('current');
+            currentEvent = eventList.firstElementChild;
+            currentEvent.classList.add('current');
+        } else {
+            eventIndex--;
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+    
+            currentEvent.classList.remove('current');
+            currentEvent = currentEvent.nextElementSibling;
+            currentEvent.classList.add('current');
+        }
+    }
+
+    setInterval(function() {
+        if (currentEvent.nextElementSibling == null) {
+            eventIndex += (eventImgCount - 1); 
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+
+            currentEvent.classList.remove('current');
+            currentEvent = eventList.firstElementChild;
+            currentEvent.classList.add('current');
+        } else {
+            eventIndex--;
+            var x = eventIndex * 900;
+            eventList.style.transform = 'translateX(' + x + 'px)';
+    
+            currentEvent.classList.remove('current');
+            currentEvent = currentEvent.nextElementSibling;
+            currentEvent.classList.add('current');
+        }
+    }, 3000);
