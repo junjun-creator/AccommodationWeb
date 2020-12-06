@@ -12,7 +12,7 @@ import com.teum.entity.AccommodationList;
 import com.teum.service.AccommodationListService;
 
 
-@WebServlet("admin/accommodations/regAccommodationDetail")
+@WebServlet("/admin/accommodations/regAccommodationDetail")
 public class RegAccDetailController extends HttpServlet{
 
 	@Override
@@ -24,6 +24,6 @@ String accName = request.getParameter("accName");
 		AccommodationList al = service.get(accName);
 		
 		request.setAttribute("al", al);
-		request.getRequestDispatcher("regAccommodationDetail.jsp").forward(request, response);
+		//request.getRequestDispatcher("regAccommodationDetail.jsp").forward(request, response);
 	}
 }

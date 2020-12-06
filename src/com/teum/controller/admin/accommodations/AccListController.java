@@ -21,6 +21,6 @@ public class AccListController extends HttpServlet {
 		List<AccommodationList> list = service.getList();
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("list.jsp").forward(request, response);
+		//request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 }
