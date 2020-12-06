@@ -1,12 +1,4 @@
-@font-face {
-    font-family: 'ON-IGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
-    --font-family: 'ON-IGothic';
     font-family: 'Noto Sans KR';
 }
 
@@ -222,24 +214,83 @@ header li{
 
 /*-------------event------------*/
 .sec-event-page {
-    
+    background: #f7f7f7;
 }
 
-    .sec-event-page .event-sec {
+    .event-sec {
         width: 1200px;
         height: 972px;
-        background: blanchedalmond;
         margin: 0 auto;
     }
 
+        .event-sec > .event-container {
+            width: 900px;
+            height: 500px;
+            --border: 1px solid red;
+            margin: 0 auto;
+            padding-top: 120px;
+        }
+
+            .event-sec > .event-container h1 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .event-sec > .event-container .event-list-container {
+                margin-top: 20px;
+            }
+
+                .event-sec > .event-container .event-list-container .event-list img {
+                    width: 900px;
+                }
+
+            .event-sec > .event-container .etc-container {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 30px;
+            }
+
+                .event-sec > .etc-container .etc-img-container {
+                    
+                }
+
+                    .event-sec .etc-container > .etc-img-container img {
+                        width: 440px;
+                        height: 180px;
+                        border: 1px solid rgb(223, 223, 223);
+                    }
+
+        .event-sec > .weather-container {
+            width: 900px;
+            height: 200px;
+            --border: 1px solid red;
+            margin: 0 auto;
+        }
+
+            .event-sec > .weather-container h1 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .event-sec > .weather-container .weather-list-container {
+                width: 900px;
+                height: 200px;
+                --border: 1px solid gray;
+                margin-top: 20px;
+            }
+
+                .event-sec > .weather-container .weather-list-container img {
+                    border: 1px solid rgb(223, 223, 223);
+                }
+
 /*-------------footer------------*/
 .sec_footer{
-    background-color: lightgray;  
+    background-color: white;  
 }
 footer{
     height: 300px;
     width: 1200px;
-    background-color: lightgray;  
+    background-color: white;  
     color :rgba(0,0,0,0.38);
     display: flex;
     justify-content: center;
