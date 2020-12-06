@@ -14,7 +14,7 @@ import com.teum.service.NoticeService;
 
 
 @WebServlet("/admin/customerService/notice/del")
-public class NoticeDelController extends HttpServlet{
+public class DeleteController extends HttpServlet{
 	
 	@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
