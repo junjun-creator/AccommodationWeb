@@ -42,8 +42,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>프로모션 관리</h1>
 	                <ul>
-	                    <li><a href="">골든타임 관리</a></li>
-	                    <li><a href="" class="active">이벤트 관리</a></li>
+	                    <li><a href="/admin/promotion/goldenTime/list">골든타임 관리</a></li>
+	                    <li><a href="/admin/promotion/event/list" class="active">이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
