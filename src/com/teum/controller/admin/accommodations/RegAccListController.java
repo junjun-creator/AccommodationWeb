@@ -19,6 +19,6 @@ public class RegAccListController extends HttpServlet{
 		List<AccommodationList> list = service.getList();
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("regList.jsp").forward(request, response);
+		//request.getRequestDispatcher("regList.jsp").forward(request, response);
 	}
 }
