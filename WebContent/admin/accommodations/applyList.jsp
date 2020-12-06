@@ -1,6 +1,6 @@
 <%@page import="com.teum.entity.AccommodationList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.teum.service.RegAccommodationListService"%>
+<%@page import="com.teum.service.AccommodationListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -75,7 +75,7 @@
 	                            <i class="fas fa-headphones"></i><span>고객센터</span>
 	                        </a>
 	                    </li>
-	                </ul>
+	                </ul> 
 	            </nav>
 	            <main id="main" class="main">
 	                <div class="sub-container">
@@ -118,7 +118,7 @@
 		                                    <tr>
 		                                      	 <td>${rl.id}</td>
 	                                       		 <td>${rl.name}</td>
-	                                     	  	 <td><a href="accommodationDetail?accName=${rl.accName}">${rl.accName}</a></td>
+	                                     	  	 <td><a href="applyDetail?accName=${rl.accName}">${rl.accName}</a></td>
 	                                   		     <td>${rl.location}</td>
 	                                 		     <td>${rl.regdate}</td>
 	                                 		     <td>${rl.phone}</td>

@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.teum.entity.AccommodationList;
 import com.teum.service.AccommodationListService;
 
-
-@WebServlet("/admin/accommodations/regAccommodationDetail")
-public class RegAccDetailController extends HttpServlet{
+@WebServlet("/admin/accommodations/detail")
+public class DetailController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-String accName = request.getParameter("accName");
+		String accName = request.getParameter("accName");
 		
 		AccommodationListService service = new AccommodationListService();
 		AccommodationList al = service.get(accName);
 		
 		request.setAttribute("al", al);
-		request.getRequestDispatcher("regAccommodationDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}
 }
