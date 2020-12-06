@@ -68,7 +68,7 @@
 	                    </div>
 	                    <h1>이벤트 리스트</h1>
 	                    <section>
-	                        <form action="del" method="post" class="list-board">
+	                        <form action="delete" method="post" class="list-board">
 	                        	<input type="hidden" name="eventNo" value="${ev.eventNo}">
 	                            <table>
 	                                <thead>
