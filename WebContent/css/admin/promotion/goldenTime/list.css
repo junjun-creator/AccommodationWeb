@@ -43,6 +43,16 @@
                         height: 25px;
                         margin: 0 5px 0 5px;
                     }
-                 
+                    .btn-container .btn-list {
+	            background-color: #5c007f;
+	            border-radius: 10px;
+	            border: none;
+	            display: inline-block;
+	            cursor: pointer;
+	            color: #ffffff;
+	            padding: 16px 60px;
+	            text-decoration: none;
+	            font-size: 20px;
+	        }
        
 /********************************************/

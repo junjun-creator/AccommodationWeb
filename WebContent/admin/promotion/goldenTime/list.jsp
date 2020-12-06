@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
     <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/notice/list.css">
+    <link rel="stylesheet" href="../../../css/admin/promotion/goldenTime/list.css">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>골든타임 리스트</title>
 </head>
@@ -41,17 +41,17 @@
 	        <aside id="aside" class="aside">
 	            <h1>프로모션 관리</h1>
 	                <ul>
-	                    <li><a href="" class="active">골든타임 관리</a></li>
-	                    <li><a href="" >이벤트 관리</a></li>
+	                    <li><a href="list" class="active">골든타임 관리</a></li>
+	                    <li><a href="/admin/promotion/event/list" >이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
 	            <nav id="nav" class="nav">
 	                <ul>
-	                    <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
-	                    <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
-	                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-	                    <li class="current-tab"><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
+	                    <li><a href="/admin/accommodations/list"><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
+	                    <li><a href="/admin/userInfo/list"><i class="fas fa-user-circle"></i><span> 회원관리</span></a></li>
+	                    <li class="current-tab"><a href="/admin/promotion/goldenTime/list"><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
+	                    <li><a href="/admin/customerService/notice/list"><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
 	                </ul>
 	            </nav>
 	            <main id="main" class="main">
