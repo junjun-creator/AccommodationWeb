@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
     startDate.value = getFormatDate(new Date());
 
     // 가격
-    var priceInput = document.querySelector('.price');
+    var priceInput = document.querySelector('.price-input');
 
     // 위치
     var mainCity = document.querySelector('.main-city');
