@@ -54,9 +54,9 @@ header li{
 }
 
 /* ----------------메가메뉴----------------- */
-.main-menu > li {
+/* .main-menu > li {
     overflow: hidden;
-}
+} */
 
 .sec-header-page .mega-menu{
     position: absolute;
@@ -71,7 +71,6 @@ header li{
 
     .sec-header-page .mypage:hover .mega-menu{
         opacity: 1;
-        overflow: visible;
     }
 
         .sec-header-page .mega-menu a{
