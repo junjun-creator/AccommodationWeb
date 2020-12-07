@@ -1,29 +1,84 @@
-* {
-    box-sizing: border-box;
+/********************************************/
+header h1{
+    margin: 0;
+    height: 100%;
 }
 
-/********************************************/
+header li{
+    color: white;
+    list-style: none;
+}
 
-.header{
+/*-------------메인페이지용 헤더------------*/
+.sec-header-page{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.header-sec{
     display: flex;
-    background: #5f0081;
+    background: white;
     height: 72px;
+    width: 1200px;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 }
-.header_h1{
-    flex-basis: 50px;
-    height:70%;
-    background: url(../../../../틈로고.png) 0 0 no-repeat;
-    text-indent: -9999px;
-    background-size: 50px auto;
+    .header-sec a {
+        --height: 50%;
+        display: block;
+        text-align: center;
+        padding: .5rem 1rem;
+        text-decoration: none;
+        color: #5f0081;
+        font-weight: bold;
+    }
+
+    .header-sec>.header-logo{
+        flex-basis: 50px;
+        height:70%;
+        background: url(/images/틈로고index.png) 0 0 no-repeat;
+        text-indent: -9999px;
+        background-size: 50px auto;
+    }
+        .header-sec>.header-logo .teum-logo{
+            box-sizing: border-box;
+            height: 100%;
+        } 
+
+.main-menu{
+    display: flex;
+    margin: 0;
+    position: relative;
 }
 
-.teum_logo{
-    box-sizing: border-box;
-    height: 100%;
-} 
+/* ----------------메가메뉴----------------- */
+.main-menu > li {
+    overflow: hidden;
+}
 
+.sec-header-page .mega-menu{
+    position: absolute;
+    border: 1px solid rgb(160, 160, 160);
+    border-top: none;
+    background-color: white;
+    --margin-top: 15px;
+    right: -12px;
+    opacity: 0;
+    transition: opacity .25s ease .1s;
+}
+
+    .sec-header-page .mypage:hover .mega-menu{
+        opacity: 1;
+        overflow: visible;
+    }
+
+        .sec-header-page .mega-menu a{
+            color: #5f0081;
+        }
+
+/*---------- 헤더 검색 -----------*/
 .header_search{
     display: flex;
 }
@@ -32,119 +87,126 @@
         width: 100px;
     }
 
-header h1{
-    margin: 0;
-    height: 100%;
-} 
-
-.main_menu{
-    display: flex;
-    margin: 0;
-    position: relative;
-}
-.mega_menu{
-    display: none;
-    position: absolute;
-    right: 0;
-    border: 1px solid black;
-    background-color: black;
-}
-    .mega_menu a{
-        color: white;
-    }
-
-.mypage:hover .mega_menu{
-    display: block;
-}
-
-header li{
-    color: white;
-    list-style: none;
-}
-
-header a {
-    height: 50%;
-    display: block;
-    text-align: center;
-    padding: .5rem 1rem;
-    text-decoration: none;
-    color: white;
-}
-
-@media(max-width: 600px){
-    .mobileHeader{
-        display: flex;
-    }
-    .pcHeader{
-        display: none;
-    }
-}
-
-@media(min-width: 600px){
-    .mobileHeader{
-        display: none;
-    }
-    .pcHeader{
-        display: flex;
-    }
-}
-
 /********************************************/
-
+.container-sec {
+    background:#F9FBFF;
+    border-top: 1px solid #F9FBFF;
+}
 .container {
     width: 1200px;
-    min-height: 550px;
-    --background:orange;
-    margin: 20px auto 0 auto;
+    min-height: 880px;
+    --background:#F9FBFF;
+    margin: 0 auto;
+    padding-top: 100px;
 }
 
-    .main h1 {
-        text-align: center;
-        font-weight: bold;
-        font-size: 30px;
-        margin-top: 30px;
-        border: 1px solid red;
+    .main .ment-container {
+        position: relative;
     }
 
-    .main > .breadcrumb {
-        border: 1px solid red;
-    }
-
-        .breadcrumb > .breadcrumb-list {
-            display: flex;
-            justify-content: flex-end;
+        .main .ment-container .ment-title {
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
         }
 
-    .main > .banner-img {
-        width: 900px;
-        height: 200px;
-        background: url("../../../images/user/counterProposal/banner-1.jpg") no-repeat center;
-        background-size: cover;
-        margin: 20px auto 0 auto;
-        border: 1px solid red;
-    }
+        .main .ment-container .ment-content {
+            margin-top: 100px;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+            .main .ment-container .ment-content .quote {
+                position: absolute;
+                font-size: 30px;
+                color: #bebebe;
+            }
+
+            .main .ment-container .ment-content .left-quote {
+                top: 105px;
+                left: 300px;
+            }
+
+            .main .ment-container .ment-content .right-quote {
+                top: 105px;
+                left: 870px;
+            }
+
+            .main .ment-container .ment-content .ment {
+                display: inilne;
+                text-align: center;
+                padding-top: 5px;
+            }
+
+            .main .ment-container .ment-content .ment span {
+            color: #5f0081;
+            }
 
     .main > .reg-form-sec {
         width: 700px;
         margin: 50px auto 0 auto;
-        border: 1px solid red;
+        --border: 1px solid red;
     }
-        .reg-form-sec > .reg-form > div {
-            display: flex;
+    
+    .main .form-option  {
+        width: 310px;
+        height: 30px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+        .main .date {
+            padding-left: 100px;
         }
 
-            .form-both {
-                width: 50%;
-                flex-grow: 1;
-            }
+        .main .main-city {
+            padding-left: 125px;
+        }
 
-                .form-both > section:nth-child(2) {
-                    margin-top: 20px;
-                }
-    
+        .main .sub-city {
+            padding-left: 90px;
+        }
+
+        .main .people-select {
+            padding-left: 290px;
+            width: 620px;
+        }
+
+        .main .price-input {
+            text-align: center;
+            width: 620px;
+        }
+
     .main  > .reg-form-sec .submit-btn-sec {
-        width: 70px; /* 나중에 버튼 크기에 맞게 너비 수정하기 */
-        margin: 30px auto 0 auto;
+        width: 400px; /* 나중에 버튼 크기에 맞게 너비 수정하기 */
+        margin: 50px auto 0 auto;
+        --border: 1px solid red;
+    }
+
+    .main  > .reg-form-sec .submit-btn-sec .btn {
+        background-color: #5f0081;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        color: #ffffff;
+        padding: 10px 30px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .main  > .reg-form-sec .submit-btn-sec .btn:hover {
+        background-color: #5f0081;
+        opacity: 0.8;
+    }
+
+    .main  > .reg-form-sec .submit-btn-sec .submit-btn {
+        margin-left: 100px;
+    }
+
+    .main  > .reg-form-sec .submit-btn-sec .cancel-btn {
+        margin-left: 30px;
     }
 
 /********************************************/
