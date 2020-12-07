@@ -53,7 +53,15 @@ header li{
     position: relative;
 }
 
+<<<<<<< HEAD
 /* ----------------硫붽�硫붾돱----------------- */
+=======
+/* ----------------메가메뉴----------------- */
+/* .main-menu > li {
+    overflow: hidden;
+} */
+
+>>>>>>> 6f147ea7ea411460b3306d096eeb46dbe630c380
 .sec-header-page .mega-menu{
     position: absolute;
     border: 1px solid rgb(160, 160, 160);
@@ -72,7 +80,10 @@ header li{
 }
     .sec-header-page .mypage:hover .mega-menu{
         opacity: 1;
+<<<<<<< HEAD
        
+=======
+>>>>>>> 6f147ea7ea411460b3306d096eeb46dbe630c380
     }
 .sec-header-page .mypage:hover .mega-menu ul li {
 	height: 36px;
