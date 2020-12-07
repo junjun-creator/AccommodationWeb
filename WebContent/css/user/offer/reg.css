@@ -9,7 +9,7 @@ header li{
     list-style: none;
 }
 
-/*-------------메인페이지용 헤더------------*/
+/*-------------硫붿씤�럹�씠吏��슜 �뿤�뜑------------*/
 .sec-header-page{
     background: white;
     position: sticky;
@@ -38,7 +38,7 @@ header li{
     .header-sec>.header-logo{
         flex-basis: 50px;
         height:70%;
-        background: url(/images/틈로고index.png) 0 0 no-repeat;
+        background: url(/images/�땲濡쒓퀬index.png) 0 0 no-repeat;
         text-indent: -9999px;
         background-size: 50px auto;
     }
@@ -53,11 +53,7 @@ header li{
     position: relative;
 }
 
-/* ----------------메가메뉴----------------- */
-.main-menu > li {
-    overflow: hidden;
-}
-
+/* ----------------硫붽�硫붾돱----------------- */
 .sec-header-page .mega-menu{
     position: absolute;
     border: 1px solid rgb(160, 160, 160);
@@ -68,17 +64,26 @@ header li{
     opacity: 0;
     transition: opacity .25s ease .1s;
 }
-
+.sec-header-page .mega-menu ul li{
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	transition: height .25s ease .1s;
+}
     .sec-header-page .mypage:hover .mega-menu{
         opacity: 1;
-        overflow: visible;
+       
     }
-
+.sec-header-page .mypage:hover .mega-menu ul li {
+	height: 36px;
+	overflow: visible;
+	padding: 0;
+}
         .sec-header-page .mega-menu a{
             color: #5f0081;
         }
 
-/*---------- 헤더 검색 -----------*/
+/*---------- �뿤�뜑 寃��깋 -----------*/
 .header_search{
     display: flex;
 }
@@ -180,7 +185,7 @@ header li{
         }
 
     .main  > .reg-form-sec .submit-btn-sec {
-        width: 400px; /* 나중에 버튼 크기에 맞게 너비 수정하기 */
+        width: 400px; /* �굹以묒뿉 踰꾪듉 �겕湲곗뿉 留욊쾶 �꼫鍮� �닔�젙�븯湲� */
         margin: 50px auto 0 auto;
         --border: 1px solid red;
     }
