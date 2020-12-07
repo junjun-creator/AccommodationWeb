@@ -4,13 +4,6 @@
 .d-none{
     display: none;
 }
-.sec_header .header .header_h1{
-    flex-basis: 50px;
-    height:70%;
-    background: url("../../틈로고.png") 0 0 no-repeat;
-    text-indent: -9999px;
-    background-size: 50px auto;
-}
 
 /********************************************/
 
@@ -43,7 +36,7 @@
             
         }
             .notice-sec-list{
-                min-height: 300px; /* 컨텐츠 크기에 따른 높이 변화 */
+                min-height: 300px; /* 而⑦뀗痢� �겕湲곗뿉 �뵲瑜� �넂�씠 蹂��솕 */
                 display: flex;
                 flex-flow: column wrap;
                 align-items: center;                
