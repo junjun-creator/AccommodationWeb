@@ -74,11 +74,11 @@ header li{
         opacity: 1;
 
     }
-.sec-header-page .mypage:hover .mega-menu ul li {
-	height: 36px;
-	overflow: visible;
-	padding: 0;
-}
+    .sec-header-page .mypage:hover .mega-menu ul li {
+        height: 36px;
+        overflow: visible;
+        padding: 0;
+    }
         .sec-header-page .mega-menu a{
             color: #5f0081;
         }

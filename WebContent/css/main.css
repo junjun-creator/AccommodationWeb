@@ -1,3 +1,4 @@
+/********************************************/
 header h1{
     margin: 0;
     height: 100%;
@@ -8,7 +9,6 @@ header li{
     list-style: none;
 }
 
-/*-------------메인페이지용 헤더------------*/
 .sec-header-page{
     background: white;
     position: sticky;
@@ -37,7 +37,7 @@ header li{
     .header-sec>.header-logo{
         flex-basis: 50px;
         height:70%;
-        background: url(../images/틈로고index.png) 0 0 no-repeat;
+        background: url(/images/틈로고index.png) 0 0 no-repeat;
         text-indent: -9999px;
         background-size: 50px auto;
     }
@@ -52,33 +52,39 @@ header li{
     position: relative;
 }
 
-/* ----------------메가메뉴----------------- */
-/* .header .mega_menu{
-    display: none;
+.sec-header-page .mega-menu{
     position: absolute;
-    right: 0;
-    border: 1px solid black;
-    background-color: black;
+    border: 1px solid rgb(160, 160, 160);
+    border-top: none;
+    background-color: white;
+    --margin-top: 15px;
+    right: -12px;
+    opacity: 0;
+    transition: opacity .25s ease .1s;
 }
-    .header .mega_menu a{
-        color: white;
+.sec-header-page .mega-menu ul li{
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	transition: height .25s ease .1s;
+}
+
+    .sec-header-page .mypage:hover .mega-menu{
+        opacity: 1;
+
     }
 
-.mypage:hover .mega_menu{
-    display: block;
-}
+    .sec-header-page .mypage:hover .mega-menu ul li {
+        height: 36px;
+        overflow: visible;
+        padding: 0;
+    }
 
-.header_index .mega_menu{
-    display: none;
-    position: absolute;
-    right: 0;
-    border: 1px solid #5f0081;
-    background-color: #5f0081;
-}
-    .header_index .mega_menu a{
-        color: white;
-    } */
+        .sec-header-page .mega-menu a{
+            color: #5f0081;
+        }
 
+/*---------- 헤더 검색 -----------*/
 .header_search{
     display: flex;
 }
@@ -86,6 +92,7 @@ header li{
         padding: 8px 16px 8px 16px;
         width: 100px;
     }
+    
 /*---------------------------------------------------------*/
 .sec-promotion-page{
     min-height: 600px;
