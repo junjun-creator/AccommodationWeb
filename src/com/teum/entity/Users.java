@@ -2,31 +2,29 @@ package com.teum.entity;
 
 import java.util.Date;
 
-public class Member {
+public class Users {
 	private int id;
 	private String name;
 	private String email;
-	private String pwd;
+	private String password;
 	private String birthday;
 	private String phone;
-	private String type;
 	private int rank;
 	private Date regdate;
 	
-	public Member() {
+	public Users() {
 		
 	}
 	
-	public Member(int id, String name, String email, String pwd, String birthday, String phone, String type, int rank,
+	public Users(int id, String name, String email, String password, String birthday, String phone, int rank,
 			Date regdate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.pwd = pwd;
+		this.password = password;
 		this.birthday = birthday;
 		this.phone = phone;
-		this.type = type;
 		this.rank = rank;
 		this.regdate = regdate;
 	}
@@ -55,12 +53,12 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getBirthday() {
@@ -77,14 +75,6 @@ public class Member {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public int getRank() {
@@ -105,12 +95,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", birthday=" + birthday
-				+ ", phone=" + phone + ", type=" + type + ", rank=" + rank + ", regdate=" + regdate + "]";
+		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + password + ", birthday=" + birthday
+				+ ", phone=" + phone + ", rank=" + rank + ", regdate=" + regdate + "]";
 	}
 	
 	
-	
-	
 }
-
