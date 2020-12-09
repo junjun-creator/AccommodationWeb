@@ -29,18 +29,18 @@ public class NoticeService {
 			while(rs.next()) {
 				 int id =rs.getInt("ID");
 			     String title=rs.getString("TITLE");
-			     String writerId=rs.getString("WRITER_ID");
+			     int adminId =rs.getInt("ADMIN_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
-			     String pub =rs.getString("PUB");
+			     int openStatus =rs.getInt("OPEN_STATUS");
 			     
 			     Notice n = new Notice();
 			     n.setId(id);
 			     n.setTitle(title);
-			     n.setWriterId(writerId);
+			     n.setAdminId(adminId);
 			     n.setContent(content);
 			     n.setRegdate(regdate);
-			     n.setPub(pub);
+			     n.setOpenStatus(openStatus);
 			     
 			     list.add(n);
 				}
@@ -70,20 +70,20 @@ public class NoticeService {
 			
 
 			if(rs.next()) {
-				 //int id =rs.getInt("ID");
+				//int id =rs.getInt("ID");
 			     String title=rs.getString("TITLE");
-			     String writerId=rs.getString("WRITER_ID");
+			     int adminId =rs.getInt("ADMIN_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
-			     String pub =rs.getString("PUB");
+			     int openStatus =rs.getInt("OPEN_STATUS");
 			     
 			     n = new Notice(
 			    		 id,
 			    		 title,
-			    		 writerId,
+			    		 adminId,
 			    		 content,
 			    		 regdate,
-			    		 pub);
+			    		 openStatus);
 				}
 
 			

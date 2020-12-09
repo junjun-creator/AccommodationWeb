@@ -4,26 +4,33 @@ import java.util.Date;
 
 public class QnA {
 	private int id;
-	private String name;
 	private String title;
 	private String content;
-	private String phone;
 	private Date regdate;
-	private int answer;
+	private int categoryId;
+	private int adminId;
+	private int answerStatus;
+	private int userId;
+	private Date answerRegdate;
+	private String answerContent;
 	
 	public QnA() {
 		
 	}
 
-	public QnA(int id, String name, String title, String content, String phone, Date regdate, int answer) {
+	public QnA(int id, String title, String content, Date regdate, int categoryId, int adminId, int answerStatus,
+			int userId, Date answerRegdate, String answerContent) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.title = title;
 		this.content = content;
-		this.phone = phone;
 		this.regdate = regdate;
-		this.answer = answer;
+		this.categoryId = categoryId;
+		this.adminId = adminId;
+		this.answerStatus = answerStatus;
+		this.userId = userId;
+		this.answerRegdate = answerRegdate;
+		this.answerContent = answerContent;
 	}
 
 	public int getId() {
@@ -32,14 +39,6 @@ public class QnA {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getTitle() {
@@ -58,14 +57,6 @@ public class QnA {
 		this.content = content;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -74,18 +65,61 @@ public class QnA {
 		this.regdate = regdate;
 	}
 
-	public int getAnswer() {
-		return answer;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setAnswer(int answer) {
-		this.answer = answer;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public int getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
+
+	public int getAnswerStatus() {
+		return answerStatus;
+	}
+
+	public void setAnswerStatus(int answerStatus) {
+		this.answerStatus = answerStatus;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public Date getAnswerRegdate() {
+		return answerRegdate;
+	}
+
+	public void setAnswerRegdate(Date answerRegdate) {
+		this.answerRegdate = answerRegdate;
+	}
+
+	public String getAnswerContent() {
+		return answerContent;
+	}
+
+	public void setAnswerContent(String answerContent) {
+		this.answerContent = answerContent;
 	}
 
 	@Override
 	public String toString() {
-		return "QnA [id=" + id + ", name=" + name + ", title=" + title + ", content=" + content + ", phone=" + phone
-				+ ", regdate=" + regdate + ", answer=" + answer + "]";
+		return "QnA [id=" + id + ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", categoryId="
+				+ categoryId + ", adminId=" + adminId + ", answerStatus=" + answerStatus + ", userId=" + userId
+				+ ", answerRegdate=" + answerRegdate + ", answerContent=" + answerContent + "]";
 	}
+
+	
 	
 }

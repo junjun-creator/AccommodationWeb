@@ -4,111 +4,94 @@ import java.util.Date;
 
 public class GoldenTime {
 	private int id;
-	private String name;
-	private String accName;
-	private String location;
 	private Date regdate;
-	private String phone;
-	private String email;
-	private String accType;
-	private int registration;
+	private int price;
+	private Date startDate;
+	private Date endDate;
+	private int accId;
+	
 	
 	public GoldenTime() {
 		
 	}
 
-	public GoldenTime(int id, String name, String accName, String location, Date regdate, String phone, String email,
-			String accType, int registration) {
+
+	public GoldenTime(int id, Date regdate, int price, Date startDate, Date endDate, int accId) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.accName = accName;
-		this.location = location;
 		this.regdate = regdate;
-		this.phone = phone;
-		this.email = email;
-		this.accType = accType;
-		this.registration = registration;
+		this.price = price;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.accId = accId;
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAccName() {
-		return accName;
-	}
-
-	public void setAccName(String accName) {
-		this.accName = accName;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
 
 	public Date getRegdate() {
 		return regdate;
 	}
 
+
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
-	public String getPhone() {
-		return phone;
+
+	public int getPrice() {
+		return price;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public String getEmail() {
-		return email;
+
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getAccType() {
-		return accType;
+
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setAccType(String accType) {
-		this.accType = accType;
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
-	public int getRegistration() {
-		return registration;
+
+	public int getAccId() {
+		return accId;
 	}
 
-	public void setRegistration(int registration) {
-		this.registration = registration;
+
+	public void setAccId(int accId) {
+		this.accId = accId;
 	}
+
 
 	@Override
 	public String toString() {
-		return "GoldenTime [id=" + id + ", name=" + name + ", accName=" + accName + ", location=" + location
-				+ ", regdate=" + regdate + ", phone=" + phone + ", email=" + email + ", accType=" + accType
-				+ ", registration=" + registration + "]";
+		return "GoldenTime [id=" + id + ", regdate=" + regdate + ", price=" + price + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", accId=" + accId + "]";
 	}
-	
+
 	
 }
