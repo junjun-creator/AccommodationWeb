@@ -37,7 +37,7 @@ header li{
     .header-sec>.header-logo{
         flex-basis: 50px;
         height:70%;
-        background: url(/images/틈로고index.png) 0 0 no-repeat;
+        background: url(/images/ 땲濡쒓퀬index.png) 0 0 no-repeat;
         text-indent: -9999px;
         background-size: 50px auto;
     }
@@ -63,10 +63,10 @@ header li{
     transition: opacity .25s ease .1s;
 }
 .sec-header-page .mega-menu ul li{
-	height: 0;
-	overflow: hidden;
-	padding: 0;
-	transition: height .25s ease .1s;
+   height: 0;
+   overflow: hidden;
+   padding: 0;
+   transition: height .25s ease .1s;
 }
 
     .sec-header-page .mypage:hover .mega-menu{
@@ -86,7 +86,7 @@ header li{
             font-weight: none;
         }
 
-/*---------- 헤더 검색 -----------*/
+/*----------  뿤 뜑 寃  깋 -----------*/
 .header_search{
     display: flex;
 }
