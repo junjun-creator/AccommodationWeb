@@ -1,4 +1,4 @@
-package com.teum.controller.admin.accommodations;
+package com.teum.controller.admin.acc;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.entity.AccommodationList;
-import com.teum.service.AccommodationListService;
+import com.teum.service.AccService;
 
 
 @WebServlet("/admin/accommodations/applyDetail")
@@ -20,7 +20,7 @@ public class ApplyDetailController extends HttpServlet{
 		
 String accName = request.getParameter("accName");
 		
-		AccommodationListService service = new AccommodationListService();
+		AccService service = new AccService();
 		AccommodationList al = service.applyGet(accName);
 		
 		request.setAttribute("al", al);

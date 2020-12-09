@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.teum.entity.AccommodationList;
 
-public class AccommodationListService {
+public class AccService {
 
 	   public List<AccommodationList> getList() {
 		      String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
