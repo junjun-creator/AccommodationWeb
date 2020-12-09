@@ -12,13 +12,13 @@ import java.util.List;
 
 import com.teum.dao.EventDao;
 import com.teum.entity.Event;
-import com.teum.entity.Event2;
+import com.teum.entity.Event;
 
 
 public class JdbcEventDao implements EventDao {
 
 	@Override
-	public int insert(Event2 event) {
+	public int insert(Event event) {
 		int result = 0;
 		
 		String url = DBContext.URL;
@@ -46,7 +46,7 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public int update(Event2 event) {
+	public int update(Event event) {
 		int result = 0;
 		
 		String url = DBContext.URL;
@@ -103,8 +103,8 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public Event2 get(int id) {
-		Event2 event = null;
+	public Event get(int id) {
+		Event event = null;
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM EVENT WHERE ID=" + id;
@@ -124,8 +124,9 @@ public class JdbcEventDao implements EventDao {
 				 Date startDate = rs.getDate("START_DATE");
 			     Date endDate 	= rs.getDate("END_DATE");
 			     Date regdate 	= rs.getDate("REGDATE");
+			     int adminId	= rs.getInt("ADMIN_ID");
 			     
-			     event = new Event2();
+			     event = new Event();
 			     event.setId(id);
 			     event.setOpenStatus(openStatus);
 			     event.setImageName(imageName);
@@ -135,6 +136,7 @@ public class JdbcEventDao implements EventDao {
 			     event.setStartDate(startDate);
 			     event.setEndDate(endDate);
 			     event.setRegdate(regdate);
+			     event.setAdminId(adminId);
 			}
 			
 			//꼭 닫아줘야함!!! 안그럼 나중에 오류남
@@ -151,8 +153,8 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public List<Event2> getList() {
-		List<Event2> list = new ArrayList<>();
+	public List<Event> getList() {
+		List<Event> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM EVENT";
@@ -173,8 +175,9 @@ public class JdbcEventDao implements EventDao {
 				 Date startDate = rs.getDate("START_DATE");
 				 Date endDate 	= rs.getDate("END_DATE");
 			     Date regdate 	= rs.getDate("REGDATE");
+			     int adminId	= rs.getInt("ADMIN_ID");
 			     
-			     Event2 event = new Event2();
+			     Event event = new Event();
 			     
 			     event.setId(id);
 			     event.setOpenStatus(openStatus);
@@ -185,6 +188,7 @@ public class JdbcEventDao implements EventDao {
 			     event.setStartDate(startDate);
 			     event.setEndDate(endDate);
 			     event.setRegdate(regdate);
+			     event.setAdminId(adminId);
 			     
 			     list.add(event);
 			}

@@ -1,98 +1,4 @@
 /********************************************/
-header h1{
-    margin: 0;
-    height: 100%;
-}
-
-header li{
-    color: white;
-    list-style: none;
-}
-
-/*-------------硫붿씤�럹�씠吏��슜 �뿤�뜑------------*/
-.sec-header-page{
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-.header-sec{
-    display: flex;
-    background: white;
-    height: 72px;
-    width: 1200px;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-    .header-sec a {
-        --height: 50%;
-        display: block;
-        text-align: center;
-        padding: .5rem 1rem;
-        text-decoration: none;
-        color: #5f0081;
-        font-weight: bold;
-    }
-
-    .header-sec>.header-logo{
-        flex-basis: 50px;
-        height:70%;
-        background: url(/images/�땲濡쒓퀬index.png) 0 0 no-repeat;
-        text-indent: -9999px;
-        background-size: 50px auto;
-    }
-        .header-sec>.header-logo .teum-logo{
-            box-sizing: border-box;
-            height: 100%;
-        } 
-
-.main-menu{
-    display: flex;
-    margin: 0;
-    position: relative;
-}
-
-
-.sec-header-page .mega-menu{
-    position: absolute;
-    border: 1px solid rgb(160, 160, 160);
-    border-top: none;
-    background-color: white;
-    --margin-top: 15px;
-    right: -12px;
-    opacity: 0;
-    transition: opacity .25s ease .1s;
-}
-.sec-header-page .mega-menu ul li{
-	height: 0;
-	overflow: hidden;
-	padding: 0;
-	transition: height .25s ease .1s;
-}
-    .sec-header-page .mypage:hover .mega-menu{
-        opacity: 1;
-
-    }
-    .sec-header-page .mypage:hover .mega-menu ul li {
-        height: 36px;
-        overflow: visible;
-        padding: 0;
-    }
-        .sec-header-page .mega-menu a{
-            color: #5f0081;
-        }
-
-/*---------- �뿤�뜑 寃��깋 -----------*/
-.header_search{
-    display: flex;
-}
-    .header_search>input{
-        padding: 8px 16px 8px 16px;
-        width: 100px;
-    }
-
-/********************************************/
 .container-sec {
     background:#F9FBFF;
     border-top: 1px solid #F9FBFF;
@@ -174,6 +80,11 @@ header li{
             padding-left: 90px;
         }
 
+        .main .category {
+            width: 620px;
+            padding-left: 280px;
+        }
+
         .main .people-select {
             padding-left: 290px;
             width: 620px;
@@ -213,45 +124,3 @@ header li{
     .main  > .reg-form-sec .submit-btn-sec .cancel-btn {
         margin-left: 30px;
     }
-
-/********************************************/
-
-footer{
-    --overflow: auto;
-    --min-width: 1283px;
-    --padding-top: 30px;
-    height: 300px;
-    background-color: lightgray;
-    color :rgba(0,0,0,0.38);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-footer ul{
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-footer ul li{
-    display: flex;
-    flex-shrink: 0;
-}
-
-footer ul li a{
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-}
-
-footer a{
-    color: lightslategray;
-}
-
-footer div p{
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-
