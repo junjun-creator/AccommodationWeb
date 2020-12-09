@@ -44,4 +44,14 @@
             .main .list-board > table tbody tr:last-child >td{
                 border-bottom: 1px solid #ffffff;
             }
-
+    .main .product-list ul li a{
+        position: relative;
+    }
+        .main .product-list ul .pic{
+            position: absolute;
+            
+        }
+        .main .product-list ul .evt-info{
+            position: relative;
+            
+        }

@@ -29,7 +29,7 @@ public class JdbcAccDao implements AccDao{
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,"TEUM","4444");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
@@ -286,6 +286,13 @@ public class JdbcAccDao implements AccDao{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	
+	@Override//수정필요
+	public int[] deleteAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

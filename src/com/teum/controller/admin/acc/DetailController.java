@@ -20,7 +20,7 @@ public class DetailController extends HttpServlet{
 		String accName = request.getParameter("accName");
 		
 		AccService service = new AccService();
-		AccommodationList al = service.get(accName);
+		AccommodationListServiceI al = service.get(accName);
 		
 		request.setAttribute("al", al);
 		request.getRequestDispatcher("detail.jsp").forward(request, response);

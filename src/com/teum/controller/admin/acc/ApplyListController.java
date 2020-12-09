@@ -17,7 +17,7 @@ public class ApplyListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccService service = new AccService();
-		List<AccommodationList> list = service.applyGetList();
+		List<AccommodationListServiceI> list = service.applyGetList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("applyList.jsp").forward(request, response);
