@@ -5,10 +5,10 @@ import java.util.Date;
 public class Notice {
 	private int id;
     private String title;
-    private String writerId;
+    private int adminId;
     private String content;
     private Date regdate;
-    private String pub;
+    private int openStatus;
 
     
     public Notice() {
@@ -16,31 +16,34 @@ public class Notice {
     }
 
 
-	public Notice(int id, String title, String writerId, String content, Date regdate, String pub) {
+
+	public Notice(int id, String title, int adminId, String content, Date regdate, int openStatus) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.writerId = writerId;
+		this.adminId = adminId;
 		this.content = content;
 		this.regdate = regdate;
-		this.pub = pub;
+		this.openStatus = openStatus;
 	}
 
 
-	public Notice(String title, String content, String writerId, String pub) {
+
+	public Notice(String title, String content, int adminId, int openStatus) {
 		this.title = title;
 		this.content = content;
-		this.writerId = writerId;
-		this.pub = pub;
+		this.adminId = adminId;
+		this.openStatus = openStatus;
 	
 	}
 
 
-	public Notice(String title, String content, String pub) {
+	public Notice(String title, String content, int openStatus) {
 		this.title = title;
 		this.content = content;
-		this.pub = pub;
+		this.openStatus = openStatus;
 	}
+
 
 
 	public int getId() {
@@ -48,9 +51,11 @@ public class Notice {
 	}
 
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 
 	public String getTitle() {
@@ -58,19 +63,23 @@ public class Notice {
 	}
 
 
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
 
-	public String getWriterId() {
-		return writerId;
+
+	public int getAdminId() {
+		return adminId;
 	}
 
 
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
+
 
 
 	public String getContent() {
@@ -78,9 +87,11 @@ public class Notice {
 	}
 
 
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 
 
 	public Date getRegdate() {
@@ -88,26 +99,32 @@ public class Notice {
 	}
 
 
+
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
 
-	public String getPub() {
-		return pub;
+
+	public int getOpenStatus() {
+		return openStatus;
 	}
 
 
-	public void setPub(String pub) {
-		this.pub = pub;
+
+	public void setOpenStatus(int openStatus) {
+		this.openStatus = openStatus;
 	}
+
 
 
 	@Override
 	public String toString() {
-		return "Notice [id=" + id + ", title=" + title + ", writerId=" + writerId + ", content=" + content
-				+ ", regdate=" + regdate + ", pub=" + pub + "]";
+		return "Notice [id=" + id + ", title=" + title + ", adminId=" + adminId + ", content=" + content + ", regdate="
+				+ regdate + ", openStatus=" + openStatus + "]";
 	}
+
+
 
 
     
