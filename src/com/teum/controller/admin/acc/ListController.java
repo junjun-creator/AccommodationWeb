@@ -18,7 +18,7 @@ public class ListController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		AccService service = new AccService();
-		List<AccommodationList> list = service.getList();
+		List<AccommodationListServiceI> list = service.getList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);

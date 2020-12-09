@@ -13,11 +13,11 @@ import com.teum.entity.AccommodationList;
 
 public class AccService {
 
-	   public List<AccommodationList> getList() {
+	   public List<AccommodationListServiceI> getList() {
 		      String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		      String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='1'";
 		      
-		      List<AccommodationList> list = new ArrayList<>();
+		      List<AccommodationListServiceI> list = new ArrayList<>();
 		      try {
 		         Class.forName("oracle.jdbc.driver.OracleDriver");
 		         Connection con = DriverManager.getConnection(url,"TEUM","4444");
@@ -39,7 +39,7 @@ public class AccService {
 		            String accType = rs.getString("acc_type");
 		            int registration = rs.getInt("registration");
 		            
-		            AccommodationList al = new AccommodationList(
+		            AccommodationListServiceI al = new AccommodationListServiceI(
 		                  id,
 		                  name,
 		                  accName,
@@ -70,8 +70,8 @@ public class AccService {
 		      return list;
 		   }
 
-	public AccommodationList get(String accName) {
-		AccommodationList al = null;
+	public AccommodationListServiceI get(String accName) {
+		AccommodationListServiceI al = null;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 	    String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='1'";//조건 추가(accName)
@@ -96,7 +96,7 @@ public class AccService {
 	            String accType = rs.getString("acc_type");
 	            int registration = rs.getInt("registration");
 	            
-	             al = new AccommodationList(
+	             al = new AccommodationListServiceI(
 	                  id,
 	                  name,
 	                  accName,
@@ -125,11 +125,11 @@ public class AccService {
 		return al;
 	}
 	
-	public List<AccommodationList> applyGetList() {
+	public List<AccommodationListServiceI> applyGetList() {
 	      String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 	      String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='0'";
 	      Connection con;
-	      List<AccommodationList> list = new ArrayList<>();
+	      List<AccommodationListServiceI> list = new ArrayList<>();
 	      try {
 	         Class.forName("oracle.jdbc.driver.OracleDriver");
 	         con = DriverManager.getConnection(url,"TEUM","4444");
@@ -151,7 +151,7 @@ public class AccService {
 	            String accType = rs.getString("acc_type");
 	            int registration = rs.getInt("registration");
 	            
-	            AccommodationList al = new AccommodationList(
+	            AccommodationListServiceI al = new AccommodationListServiceI(
 	                  id,
 	                  name,
 	                  accName,
@@ -182,8 +182,8 @@ public class AccService {
 	      return list;
 	   }
 	
-	public AccommodationList applyGet(String accName) {
-		AccommodationList al = null;
+	public AccommodationListServiceI applyGet(String accName) {
+		AccommodationListServiceI al = null;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 	    String sql = "SELECT * FROM ACCOMMODATION_LIST WHERE REGISTRATION ='0'";//조건 추가(accName)
@@ -208,7 +208,7 @@ public class AccService {
 	            String accType = rs.getString("acc_type");
 	            int registration = rs.getInt("registration");
 	            
-	             al = new AccommodationList(
+	             al = new AccommodationListServiceI(
 	                  id,
 	                  name,
 	                  accName,

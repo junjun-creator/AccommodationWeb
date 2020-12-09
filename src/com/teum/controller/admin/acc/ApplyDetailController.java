@@ -21,7 +21,7 @@ public class ApplyDetailController extends HttpServlet{
 String accName = request.getParameter("accName");
 		
 		AccService service = new AccService();
-		AccommodationList al = service.applyGet(accName);
+		AccommodationListServiceI al = service.applyGet(accName);
 		
 		request.setAttribute("al", al);
 		request.getRequestDispatcher("applyDetail.jsp").forward(request, response);
