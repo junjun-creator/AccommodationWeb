@@ -69,30 +69,24 @@
                 font-size: 12px;
             }
 
-            .reservation-list-sec>h1{
+            .offer-list-sec>h1{
                 width: 500px;
                 font-weight: bold;
                 font-size: 28px;
                 margin: 50px 0 30px 0;
             }
-            .reservation-list-sec>ul>li{
-                border: 1px solid gray;
-                width: 300px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 0;
-            }
-                .reservation-list-sec>ul>li>img{
-                    width: 280px;
-                    height: 200px;
-                }
-                .reservation-list-sec>ul>li>p{
-                    margin-top: 10px;
-                    color: lightslategrey;
-                }
             
+            .offer-list-sec>ul>li{
+                
+            }
+                .offer-list-sec>ul>li>table{
+                    width: 800px;
+                    --border: 1px solid gray;
+                    text-align: center;
+                }
+                .offer-list-sec>ul>li>table td{
+                    text-align: center;
+                }
 
 
 
