@@ -1,4 +1,3 @@
-/********************************************/
 header h1{
     margin: 0;
     height: 100%;
@@ -195,7 +194,7 @@ header li{
                     --border-right: 1px solid #FC0453;
                     --border-left: 1px solid #FC0453;
                     border-bottom: none;
-                    background: white;
+                    background: #F9FBFF;
                 }
 
                     .event-sec > .event-list > li > a {
@@ -203,11 +202,21 @@ header li{
                     }
 
             .event-sec > .event-img-container {
-                margin-top: 30px;
+                margin-top: 50px;
                 width: 816px;
-                height: 165px;
+                height: 230px;
                 overflow: hidden;
             }
+
+                .event-sec > .event-img-container h1 {
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .event-sec > .event-img-container h2 {
+                    font-size: 16px;
+                    padding-bottom: 10px;
+                }
 
                 .event-sec > .event-img-container > .scale {
                     transform: scale(1);
@@ -222,10 +231,3 @@ header li{
                         width: 816px;
                         height: 165px;
                     }
-
-
-/********************************************/
-.footer {
-    min-height: 100px;
-    background: yellowgreen;
-}
