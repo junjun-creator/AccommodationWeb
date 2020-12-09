@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/admin/accommodations/list.css">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script src="../../js/admin/accommodations/list.js"></script>
+    <link rel="stylesheet" href="../../css/admin/layout.css">
+    <link rel="stylesheet" href="../../css/admin/accommodations/list.css">   
+	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<script src="../../js/admin/accommodations/list.js"></script>
     <title>등록된 업체 리스트</title>
 </head>
 <body>
@@ -34,117 +35,134 @@
             </div>
         </div>
     </header>
-
-    <section class="body">
-        <aside id="aside" class="aside">
-            <h1>업체관리</h1>
-                <ul>
-                    <li><a href="list" class="active">등록된 업체 리스트</a></li>
-                    <li><a href="regList">업체 등록 관리</a></li>
-                </ul>
-        </aside>
-        <div class="container">
-            <nav id="nav" class="nav">
-                <ul>
-                    <li class="current-tab">
-                        <a href="">
-                            <i class="fas fa-hotel"></i><span>업체관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="fas fa-user-circle"></i><span> 회원관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="fas fa-headphones"></i><span>고객센터</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <main id="main" class="main">
-                <div class="sub-container">
-                    <div class="breadcrumb">
-                        <ul class="breadcrumb-list">
-                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-                            <li>업체관리 ▶ </li>
-                            <li>등록된 업체 리스트</li>
-                        </ul>
-                    </div>
-                    <h1>등록된 업체 리스트</h1>
-                    <section>
-                        <form class="list-board">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td class="col-s">No.</td>
-                                        <td class="col-sm">사업자명</td>
-                                        <td class="col-m">숙소명</td>
-                                        <td class="col-m">위치</td>
-                                        <td class="col-m">등록일</td>
-                                        <td class="col-m">연락처</td>
-                                        <td class="col-s"><input type="checkbox"></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>조재희</td>
-                                        <td>강남 리베라</td>
-                                        <td>서울시 강남구</td>
-                                        <td>2020-11-01</td>
-                                        <td>010-2774-5678</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td >2</td>
-                                        <td>신중언</td>
-                                        <td>강남 에이스 호텔</td>
-                                        <td>서울시 삼성동</td>
-                                        <td>2020-11-05</td>
-                                        <td>010-3462-8452</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>김병준</td>
-                                        <td>강남 코엑스 디젠티 호텔</td>
-                                        <td>서울시 강남구</td>
-                                        <td>2020-11-14</td>
-                                        <td>010-2365-5678</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>박수현</td>
-                                        <td>강남 역삼 H 더블 호텔</td>
-                                        <td>서울시 역삼동</td>
-                                        <td>2020-11-23</td>
-                                        <td>010-3863-1263</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><button type="submit">삭제</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    </section>
-                </div>
-            </main>
-        </div>
-    </section>
+	<main>
+		<section class="body">
+			<aside id="aside" class="aside">
+				<h1>업체관리</h1>
+					<ul>
+						<li><a href="list" class="active">등록된 업체 리스트</a></li>
+						<li><a href="applyList">업체 등록 관리</a></li>
+					</ul>
+			</aside>
+			<div class="container">
+				<nav id="nav" class="nav">
+					<ul>
+						<li class="current-tab">
+							<a href="list">
+								<i class="fas fa-hotel"></i><span>업체관리</span>
+							</a>
+						</li>
+						<li>
+							<a href="/admin/userInfo/list">
+								<i class="fas fa-user-circle"></i><span> 회원관리</span>
+							</a>
+						</li>
+						<li>
+							<a href="/admin/promotion/goldenTime/list">
+								<i class="far fa-calendar-alt"></i><span>프로모션관리</span>
+							</a>
+						</li>
+						<li>
+							<a href="/admin/customerService/notice/list">
+								<i class="fas fa-headphones"></i><span>고객센터</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<main id="main" class="main">
+					<div class="sub-container">
+						<div class="breadcrumb">
+							<ul class="breadcrumb-list">
+								<li><i class="fas fa-home"></i>HOME ▶ </li>
+								<li>업체관리 ▶ </li>
+								<li>등록된 업체 리스트</li>
+							</ul>
+						</div>
+						<h1>등록된 업체 리스트</h1>
+						<select name="" class="AccTypeCatagory">
+							<form action="">
+								<option value="" selected disabled>전체보기</option>
+								<option value="호텔">호텔</option>
+								<option value="모텔">모텔</option>
+								<option value="게스트하우스">게스트하우스</option>
+								<option value="리조트">리조트</option>
+								<option value="펜션">펜션</option>
+							</form>
+						</select>
+						<section>
+							<form class="list-board">
+								<table>
+									<thead>
+										<tr>
+											<td class="col-s">No.</td>
+											<td class="col-sm">사업자명</td>
+											<td class="col-m">숙소명</td>
+											<td class="col-m">위치</td>
+											<td class="col-m">등록일</td>
+											<td class="col-m">연락처</td>
+											<td class="col-sm">업체종류</td>
+											<td class="col-s"><input type="checkbox"></td>
+										</tr>
+									</thead>
+									<tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>김민영</td>
+                                            <td>시그니엘 서울</td>
+                                            <td>서울시 송파구</td>
+                                            <td>2020-11-01</td>
+                                            <td>010-2774-5678</td>
+                                            <td>호텔</td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>김동영</td>
+                                            <td>롯데호텔 월드</td>
+                                            <td>서울시 송파구</td>
+                                            <td>2020-11-05</td>
+                                            <td>010-3462-8452</td>
+                                            <td>호텔</td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>정혜진</td>
+                                            <td>그랜드 워커힐 서울</td>
+                                            <td>서울시 광진구</td>
+                                            <td>2020-11-14</td>
+                                            <td>010-2365-5678</td>
+                                            <td>호텔</td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>박은희</td>
+                                            <td>JW 메리어트 호텔 서울</td>
+                                            <td>서울시 서초구</td>
+                                            <td>2020-11-23</td>
+                                            <td>010-3863-1263</td>
+                                            <td>호텔</td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><button type="submit">삭제</button></td>
+                                        </tr>
+                                    </tbody>
+								</table>
+							</form>
+						</section>
+					</div>
+				</main>
+			</div>
+		</section>
+	</main>
 </body>
 </html>

@@ -63,10 +63,10 @@ header li{
     transition: opacity .25s ease .1s;
 }
 .sec-header-page .mega-menu ul li{
-   height: 0;
-   overflow: hidden;
-   padding: 0;
-   transition: height .25s ease .1s;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: height .25s ease .1s;
 }
 
     .sec-header-page .mypage:hover .mega-menu{
