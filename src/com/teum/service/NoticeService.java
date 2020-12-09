@@ -27,6 +27,7 @@ public class NoticeService {
 		return noticeDao.getList();
 			
 	}
+	
 	public Notice get(int id) {
 		
 		return noticeDao.get(id);

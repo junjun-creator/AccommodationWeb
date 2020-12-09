@@ -48,6 +48,9 @@ public class JdbcAccDao implements AccDao{
 				Date approvalDate = rs.getDate("approval_date");
 				int adiminId = rs.getInt("adimin_id");
 				int companyId = rs.getInt("company_id");
+				Date startDate = rs.getDate("START_DATE");
+				Date endDate = rs.getDate("END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
 
 				 a = new Acc(
 						id,
@@ -60,7 +63,10 @@ public class JdbcAccDao implements AccDao{
 						regStatus,
 						approvalDate,
 						adiminId,
-						companyId
+						companyId,
+						startDate,
+						endDate,
+						saleprice
 						);
 
 			};
@@ -108,6 +114,9 @@ public class JdbcAccDao implements AccDao{
 				Date approvalDate = rs.getDate("approval_date");
 				int adiminId = rs.getInt("adimin_id");
 				int companyId = rs.getInt("company_id");
+				Date startDate = rs.getDate("START_DATE");
+				Date endDate = rs.getDate("END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
 
 				Acc a = new Acc(
 						id,
@@ -120,7 +129,10 @@ public class JdbcAccDao implements AccDao{
 						regStatus,
 						approvalDate,
 						adiminId,
-						companyId
+						companyId,
+						startDate,
+						endDate,
+						saleprice
 						);
 
 
@@ -170,6 +182,9 @@ public class JdbcAccDao implements AccDao{
 				Date approvalDate = rs.getDate("approval_date");
 				int adiminId = rs.getInt("adimin_id");
 				int companyId = rs.getInt("company_id");
+				Date startDate = rs.getDate("START_DATE");
+				Date endDate = rs.getDate("END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
 
 				 a = new Acc(
 						id,
@@ -182,7 +197,10 @@ public class JdbcAccDao implements AccDao{
 						regStatus,
 						approvalDate,
 						adiminId,
-						companyId
+						companyId,
+						startDate,
+						endDate,
+						saleprice
 						);
 
 			};
@@ -230,6 +248,9 @@ public class JdbcAccDao implements AccDao{
 				Date approvalDate = rs.getDate("approval_date");
 				int adiminId = rs.getInt("adimin_id");
 				int companyId = rs.getInt("company_id");
+				Date startDate = rs.getDate("START_DATE");
+				Date endDate = rs.getDate("END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
 
 				Acc a = new Acc(
 						id,
@@ -242,7 +263,10 @@ public class JdbcAccDao implements AccDao{
 						regStatus,
 						approvalDate,
 						adiminId,
-						companyId
+						companyId,
+						startDate,
+						endDate,
+						saleprice
 						);
 
 
