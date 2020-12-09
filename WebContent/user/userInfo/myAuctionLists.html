@@ -12,46 +12,68 @@
 </head>
 
 <body>
-    <div class="sec_header">
-        <header class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
+                <ul class="main-menu">
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </header>
-    </div>
-
-    <header class="header mobileHeader">
-        <div>
-            <a href=""><i class="fas fa-bars"></i></a>
-        </div>
-        <div class="header_h1">
-            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        </div>
-        <div>
-            <a href=""><i class="fas fa-search"></i></a>
-        </div>
+        </section>
     </header>
 
-    <section class="userInfo_main">
+    <section class="container-sec">
+        <div class="container">
+            <aside id="aside" class="aside">
+                <!-- <h1>게시판</h1> -->
+                <ul>
+                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li class="active"><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;경매신청관리</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
+                </ul>
+            </aside>
+            <main id="main" class="main">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
+                    </ul>
+                </div>
+                <section class="reservation-list-sec">
+                    <h1>이용/취소내역</h1>
+                    <ul>
+                        <li>
+                            <img src="../../images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt="">
+                            <p>사용완료</p>
+                            <p>신촌 아이다호텔</p>
+                            <p>12.23 일 - 12.23 일 / 대실</p>
+                            <p><input type="button" value="다시예약"></p>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </section>
+
+    <!-- <section class="userInfo_main">
         <main class="sec_userInfo_main">
-            <!-- <h1>회원정보수정</h1> -->
             <aside>
                 <h1>회원정보관리(개인)</h1>
                 <ul>
@@ -81,39 +103,33 @@
                             <table border="1">
                                 <tr>
                                     <td colspan="2">제안정보</td>
-                                    <!-- <td></td> -->
                                     <td colspan="2" rowspan="2"><input type="button" value="오퍼목록보기"></td>
-                                    <!-- <td></td> -->
+                                    
                                 </tr>
                                 <tr>
                                     <td>날짜</td>
                                     <td>2020.12.07 ~ 2020.12.08</td>
-                                    <!-- <td></td> -->
-                                    <!-- <td></td> -->
+                                   
                                 </tr>
                                 <tr>
                                     <td>위치</td>
                                     <td>서울시 강남구</td>
                                     <td colspan="2" rowspan="2"><input type="button" value="역제안 수정"></td>
-                                    <!-- <td></td> -->
+                                    
                                 </tr>
                                 <tr>
                                     <td>인원수</td>
                                     <td>성인2, 아동1</td>
-                                    <!-- <td></td> -->
-                                    <!-- <td></td> -->
                                 </tr>
                                 <tr>
                                     <td>희망가격</td>
                                     <td>50,000원</td>
                                     <td colspan="2" rowspan="2"><input type="button" value="역제안 취소"></td>
-                                    <!-- <td></td> -->
+                                   
                                 </tr>
                                 <tr>
                                     <td>상태</td>
                                     <td>신청중</td>
-                                    <!-- <td></td> -->
-                                    <!-- <td></td> -->
                                 </tr>
                             </table>
                         </li>
@@ -121,10 +137,10 @@
                 </section>
             </div>
         </main>
-    </section>
+    </section> -->
 
-    <section class="sec_footer">
-        <footer>
+    <section>
+        <footer id="footer" class="footer">
             <div>
                 <ul>
                     <li>
@@ -153,9 +169,9 @@
                     </li>
                     <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
                 </ul>
-
-                <p><b>고객행복센터 1577-8282</b> 오전 09:00 ~ 오후18:00</p>
-
+        
+                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
+    
                 <address>
                     <span>(주)TEUM</span>
                     주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
