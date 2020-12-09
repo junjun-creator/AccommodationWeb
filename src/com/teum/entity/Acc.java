@@ -17,8 +17,10 @@ public class Acc {
 	 private int companyId;
 	 
 	
-	 public Acc(int id, String accName, String location, Date regdate, String phone,
-			String email, int accTypeId, int regStatus, Date approvalDate, int adiminId, int companyId) {
+
+
+	public Acc(int id, String accName, String location, Date regdate, String phone, String email, int accTypeId,
+			int regStatus, Date approvalDate, int adiminId, int companyId) {
 		super();
 		this.id = id;
 		this.accName = accName;
@@ -31,7 +33,8 @@ public class Acc {
 		this.approvalDate = approvalDate;
 		this.adiminId = adiminId;
 		this.companyId = companyId;
-	 }
+	}
+
 
 	public int getId() {
 		return id;
