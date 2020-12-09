@@ -38,11 +38,15 @@
         .aside li {
             padding-top: 10px;
             font-size: 20px;
+            font-weight: bold;
+            opacity: 0.2;
         }
 
         .aside .active {
             font-weight: bold;
             color: #fc0453;
+            opacity: 1;
+
         }
 
             .aside li > a {

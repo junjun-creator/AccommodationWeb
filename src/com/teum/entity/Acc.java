@@ -1,30 +1,37 @@
 package com.teum.entity;
 
-public class AccommodationList {
+import java.util.Date;
+
+public class Acc {
 
 	 private int id;
-	 private String name;
 	 private String accName;
 	 private String location;
-	 private String regdate;
+	 private Date regdate;
 	 private String phone;
 	 private String email;
-	 private String accType;
-	 private int registration;
+	 private int accTypeId;
+	 private int regStatus;
+	 private Date approvalDate;
+	 private int adiminId;
+	 private int companyId;
+	 
 	
-	 public AccommodationList(int id, String name, String accName, String location, String regdate, String phone,
-			String email, String accType, int registration) {
+	 public Acc(int id, String accName, String location, Date regdate, String phone,
+			String email, int accTypeId, int regStatus, Date approvalDate, int adiminId, int companyId) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.accName = accName;
 		this.location = location;
 		this.regdate = regdate;
 		this.phone = phone;
 		this.email = email;
-		this.accType = accType;
-		this.registration = registration;
-	}
+		this.accTypeId = accTypeId;
+		this.regStatus = regStatus;
+		this.approvalDate = approvalDate;
+		this.adiminId = adiminId;
+		this.companyId = companyId;
+	 }
 
 	public int getId() {
 		return id;
@@ -32,14 +39,6 @@ public class AccommodationList {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getAccName() {
@@ -58,11 +57,11 @@ public class AccommodationList {
 		this.location = location;
 	}
 
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
@@ -82,20 +81,20 @@ public class AccommodationList {
 		this.email = email;
 	}
 
-	public String getAccType() {
-		return accType;
+	public int getAccTypeId() {
+		return accTypeId;
 	}
 
-	public void setAccType(String accType) {
-		this.accType = accType;
+	public void setAccTypeId(int accTypeId) {
+		this.accTypeId = accTypeId;
 	}
 
-	public int getRegistration() {
-		return registration;
+	public int getRegstatus() {
+		return regStatus;
 	}
 
-	public void setRegistration(int registration) {
-		this.registration = registration;
+	public void setRegstatus(int regStatus) {
+		this.regStatus = regStatus;
 	}
 
 	@Override
