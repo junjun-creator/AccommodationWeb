@@ -86,13 +86,13 @@ header li{
             font-weight: none;
         }
 
-/*----------  뿤 뜑 寃  깋 -----------*/
+/*----------  header search -----------*/
 .header_search{
     display: flex;
 }
     .header_search>input{
-        padding: 8px 16px 8px 16px;
-        width: 100px;
+        --padding: 8px 16px 8px 16px;
+        width: 200px;
     }
 
 /*-------------footer------------*/
@@ -108,6 +108,7 @@ footer{
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    font-size: 14px;
 }
 
 footer ul{

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Offer {
 	private int id;
-	private int companyId;
+	private int accId;
 	private int userId;
 	private int price;
 	private String location;
@@ -12,18 +12,17 @@ public class Offer {
 	private Date checkoutDate;
 	private Date regdate;
 	private int headcount;
-	private Date approvalDate;
 	private Date rejectDate;
 	
 	public Offer() {
 		
 	}
-	
-	public Offer(int id, int companyId, int userId, int price, String location, Date checkinDate, Date checkoutDate,
-			Date regdate, int headcount, Date approvalDate, Date rejectDate) {
+
+	public Offer(int id, int accId, int userId, int price, String location, Date checkinDate, Date checkoutDate,
+			Date regdate, int headcount, Date rejectDate) {
 		super();
 		this.id = id;
-		this.companyId = companyId;
+		this.accId = accId;
 		this.userId = userId;
 		this.price = price;
 		this.location = location;
@@ -31,7 +30,6 @@ public class Offer {
 		this.checkoutDate = checkoutDate;
 		this.regdate = regdate;
 		this.headcount = headcount;
-		this.approvalDate = approvalDate;
 		this.rejectDate = rejectDate;
 	}
 
@@ -43,12 +41,12 @@ public class Offer {
 		this.id = id;
 	}
 
-	public int getCompanyId() {
-		return companyId;
+	public int getAccId() {
+		return accId;
 	}
 
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
+	public void setAccId(int accId) {
+		this.accId = accId;
 	}
 
 	public int getUserId() {
@@ -107,14 +105,6 @@ public class Offer {
 		this.headcount = headcount;
 	}
 
-	public Date getApprovalDate() {
-		return approvalDate;
-	}
-
-	public void setApprovalDate(Date approvalDate) {
-		this.approvalDate = approvalDate;
-	}
-
 	public Date getRejectDate() {
 		return rejectDate;
 	}
@@ -125,12 +115,10 @@ public class Offer {
 
 	@Override
 	public String toString() {
-		return "Offer [id=" + id + ", companyId=" + companyId + ", userId=" + userId + ", price=" + price
-				+ ", location=" + location + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate
-				+ ", regdate=" + regdate + ", headcount=" + headcount + ", approvalDate=" + approvalDate
-				+ ", rejectDate=" + rejectDate + "]";
+		return "Offer [id=" + id + ", accId=" + accId + ", userId=" + userId + ", price=" + price + ", location="
+				+ location + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", regdate=" + regdate
+				+ ", headcount=" + headcount + ", rejectDate=" + rejectDate + "]";
 	}
-	
-	
+
 	
 }

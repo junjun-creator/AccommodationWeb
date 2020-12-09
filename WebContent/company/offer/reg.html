@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../../css/company/offer/reg.css"  type="text/css">
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/company/offer/reg.css"  type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>(기업)회원에게 보낼 오퍼 페이지</title>
+    <title>TEUM | 틈을 채우다</title>
 </head>
 <body>
-    <header id="header" class="header">
-        <h1><a href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        <nav>
-            <h1>메인메뉴</h1>
-            <ul>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">이벤트</a></li>
-                <li><a href="">더보기</a></li>
-                <li><a href="">로그인</a></li>
-            </ul>
-        </nav>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+            </div>
+            <div>
+                <ul class="main-menu">
+                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="">로그인</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </header>
 
-    <section>
+    <section class="container-sec">
         <div class="container">
             <aside id="aside" class="aside">
-                <h1>회원 정보 관리(기업)</h1>
+                <!-- <h1>회원 정보 관리(기업)</h1> -->
                 <ul>
-                    <li><a href="">회원 정보 수정</a></li>
-                    <li><a href="">예약 관리</a></li>
-                    <li><a href="" class="active">역제안 신청 관리</a></li>
-                    <li><a href="">등록된 숙소 정보</a></li>
-                    <li><a href="">숙소 등록</a></li>
-                    <li><a href="">골든타임 관리</a></li>
+                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴1</a></li>
+                    <li class="active"><a><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴2</a></li>
+                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴3</a></li>
                 </ul>
             </aside>
             <main id="main" class="main">
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
-                        <li><i class="fas fa-home"></i>HOME ▶ </li>
-                        <li>회원 정보 관리(기업) ▶ </li>
-                        <li>역제안 신청 관리 ▶ </li>
-                        <li>오퍼 상세정보</li>
+                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                        <li>&nbsp;&nbsp;&nbsp;???&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                        <li>&nbsp;&nbsp;&nbsp;???&nbsp;&nbsp;&nbsp;</li>
                     </ul>
                 </div>
                 <section class="proposal-sec">
-                    <h1>○○○○님이 제안하신 정보에요!</h1>  
-                    <!-- 아래 div태그의 개수는 동적으로 변함 -->
+                    <div class="cliper-btn prev-btn">
+                        <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div class="cliper-btn next-btn">
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                    <h1>고객으로부터 받은 제안목록입니다!</h1>  
                     <div class="proposal-container">
-                        <div>
+                        <div class="proposal-info">
                             <h2>제안정보</h2>
                             <ul>
                                 <li>
@@ -61,7 +78,7 @@
                                 </li>
                                 <li>
                                     <div>인원수</div>
-                                    <div>성인4</div>
+                                    <div>4</div>
                                 </li>
                                 <li>
                                     <div>희망하는 가격</div>
@@ -69,7 +86,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <div class="proposal-info">
                             <h2>제안정보</h2>
                             <ul>
                                 <li>
@@ -82,7 +99,7 @@
                                 </li>
                                 <li>
                                     <div>인원수</div>
-                                    <div>성인2, 아동1</div>
+                                    <div>3</div>
                                 </li>
                                 <li>
                                     <div>희망하는 가격</div>
@@ -94,7 +111,7 @@
                     </div>
                 </section>
                 <section class="offer-sec">
-                    <h1>나의 숙소 정보</h1>
+                    <h1>승인가능한 숙소 정보</h1>
                     <form class="offer-form">
                         <section>
                             <div class="checkbox-container">
@@ -162,7 +179,7 @@
                             </div>
                         </section>
                         <div class="submit-btn-container">
-                            <input type="submit" class="submit-btn" value="오퍼하기">
+                            <input type="submit" class="submit-btn" value="승인하기">
                         </div>
                     </form>
                 </section>
@@ -176,41 +193,39 @@
                 <ul>
                     <li>
                         <a href="">회사소개</a>
-                        <span>|</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li>
                         <a href="">이용약관</a>
-                        <span>|</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li>
                         <a href="">개인정보처리방침</a>
-                        <span>|</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li>
                         <a href="">사업자정보확인</a>
-                        <span>|</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li>
-                        <a href="">여기어때 마케팅센터</a>
-                        <span>|</span>
+                        <a href="">틈 마케팅센터</a>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li>
                         <a href="">액티비티 호스트센터</a>
-                        <span>|</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                     </li>
                     <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
                 </ul>
-        
-                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
-    
+
+                <p><b>고객행복센터 1577-8282</b> 오전 09:00 ~ 오후18:00</p>
+
                 <address>
                     <span>(주)TEUM</span>
                     주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
-                    <br>대표이사 : 신중언 | 사업자등록번호 777-11-45678
-                    <br>통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제 1324-55호
-                    <br>전화번호 : 010-1111-2222
-                    <br>전자우편주소 : teum@teum.co.kr
-                    <br>Copyright TEUM COMPANY Corp. All rights reserved.
+                    <br />대표이사 : 신중언 | 사업자등록번호 777-11-45678 <br />통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제
+                    1324-55호 <br />전화번호 : 010-1111-2222 <br />전자우편주소 : teum@teum.co.kr <br />Copyright TEUM COMPANY Corp. All rights
+                    reserved.
                 </address>
             </div>
         </footer>
