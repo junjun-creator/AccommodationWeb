@@ -1,6 +1,6 @@
-<%@page import="com.teum.entity.AccommodationList"%>
+<%@page import="com.teum.entity.Acc"%>
 <%@page import="java.util.List"%>
-<%@page import="com.teum.service.AccommodationListService"%>
+<%@page import="com.teum.service.AccService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -116,13 +116,13 @@
 		                            <tbody>
 		                               <c:forEach var="rl" items="${list}">
 		                                    <tr>
-		                                      	 <td>${rl.id}</td>
-	                                       		 <td>${rl.name}</td>
-	                                     	  	 <td><a href="applyDetail?accName=${rl.accName}">${rl.accName}</a></td>
-	                                   		     <td>${rl.location}</td>
-	                                 		     <td>${rl.regdate}</td>
-	                                 		     <td>${rl.phone}</td>
-	                                		     <td>${rl.accType}</td>
+		                                      	 <td>${a.id}</td>
+	                                       		 <td>${a.name}</td>
+	                                     	  	 <td><a href="applyDetail?accName=${a.accName}">${a.accName}</a></td>
+	                                   		     <td>${a.location}</td>
+	                                 		     <td>${a.regdate}</td>
+	                                 		     <td>${a.phone}</td>
+	                                		     <td>${a.accType}</td>
 		                                        <td><input type="checkbox"></td>
 		                                        <td><input type="checkbox"></td>
 		                                    </tr>

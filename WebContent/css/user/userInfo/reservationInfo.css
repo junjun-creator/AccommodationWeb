@@ -63,10 +63,10 @@ header li{
     transition: opacity .25s ease .1s;
 }
 .sec-header-page .mega-menu ul li{
-    height: 0;
-    overflow: hidden;
-    padding: 0;
-    transition: height .25s ease .1s;
+   height: 0;
+   overflow: hidden;
+   padding: 0;
+   transition: height .25s ease .1s;
 }
 
     .sec-header-page .mypage:hover .mega-menu{
@@ -164,64 +164,32 @@ header li{
                 justify-content: flex-end;
                 font-size: 12px;
             }
-            
-            .event-sec > h1 {
+
+            .reservation-list-sec>h1{
                 width: 500px;
                 font-weight: bold;
                 font-size: 28px;
                 margin: 50px 0 30px 0;
             }
-
-            .event-sec > .event-list {
+            .reservation-list-sec>ul>li{
+                border: 1px solid gray;
+                width: 300px;
                 display: flex;
-                color: #888888;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 0;
             }
-
-                .event-sec > .event-list > li {
-                    border: 1px solid #c5c7c9;
-                    flex-grow: 1;
-                    text-align: center;
-                    height: 40px;
-                    line-height: 40px;
-                    background: #F2F2F8;
+                .reservation-list-sec>ul>li>img{
+                    width: 280px;
+                    height: 200px;
                 }
-
-                    .event-sec > .event-list > li > a {
-                        display: block;
-                    }
-
-                .event-sec > .event-list > .current-tab {
-                    border-top: 3px solid #FC0453;
-                    --border-right: 1px solid #FC0453;
-                    --border-left: 1px solid #FC0453;
-                    border-bottom: none;
-                    background: white;
+                .reservation-list-sec>ul>li>p{
+                    margin-top: 10px;
+                    color: lightslategrey;
                 }
+            
 
-                    .event-sec > .event-list > li > a {
-                        text-decoration: none;
-                    }
-
-            .event-sec > .event-img-container {
-                margin-top: 30px;
-                width: 816px;
-                height: 165px;
-                overflow: hidden;
-            }
-
-                .event-sec > .event-img-container > .scale {
-                    transform: scale(1);
-                    transition: transform 0.2s;
-                }
-
-                .event-sec > .event-img-container > .scale:hover {
-                    transform: scale(1.03);
-                }
-
-                    .event-sec > .event-img-container img {
-                        width: 816px;
-                        height: 165px;
-                    }
 
 
 /********************************************/
