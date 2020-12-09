@@ -3,28 +3,37 @@ package com.teum.entity;
 import java.util.Date;
 
 public class Event {
-	private int eventNo;
-	private int status;
+	private int id;
 	private String title;
-	private Date regDate;
+	private int openStatus;
+	private String imageName;
+	private String imageRoute;
+	private int status;
 	private Date startDate;
 	private Date endDate;
-	private int pub;
+	private Date regdate;
+	private int adminId;
 	
 	public Event() {
 		
 	}
 
-	public Event(int eventNo, int status, String title, Date regDate, Date startDate, Date endDate, int pub) {
+	public Event(int id, String title, int openStatus, String imageName, String imageRoute, int status, Date startDate,
+			Date endDate, Date regdate, int adminId) {
 		super();
-		this.eventNo = eventNo;
-		this.status = status;
+		this.id = id;
 		this.title = title;
-		this.regDate = regDate;
+		this.openStatus = openStatus;
+		this.imageName = imageName;
+		this.imageRoute = imageRoute;
+		this.status = status;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.pub = pub;
+		this.regdate = regdate;
+		this.adminId = adminId;
 	}
+
+
 
 	// insert, update용 생성자
 	public Event(String title) {
@@ -33,24 +42,17 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [eventNo=" + eventNo + ", status=" + status + ", title=" + title + ", regDate=" + regDate
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", pub=" + pub + "]";
+		return "Event [id=" + id + ", title=" + title + ", openStatus=" + openStatus + ", imageName=" + imageName
+				+ ", imageRoute=" + imageRoute + ", status=" + status + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", regdate=" + regdate + ", adminId=" + adminId + "]";
 	}
 
-	public int getEventNo() {
-		return eventNo;
+	public int getId() {
+		return id;
 	}
 
-	public void setEventNo(int eventNo) {
-		this.eventNo = eventNo;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -61,12 +63,36 @@ public class Event {
 		this.title = title;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public int getOpenStatus() {
+		return openStatus;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setOpenStatus(int openStatus) {
+		this.openStatus = openStatus;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getImageRoute() {
+		return imageRoute;
+	}
+
+	public void setImageRoute(String imageRoute) {
+		this.imageRoute = imageRoute;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public Date getStartDate() {
@@ -85,13 +111,23 @@ public class Event {
 		this.endDate = endDate;
 	}
 
-	public int getPub() {
-		return pub;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setPub(int pub) {
-		this.pub = pub;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
+
+	public int getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
+
+	
 
 	
 }

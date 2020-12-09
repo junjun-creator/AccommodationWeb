@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,23 +7,25 @@
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
     <link rel="stylesheet" href="../../../css/admin/layout.css">
     <link rel="stylesheet" href="../../../css/admin/notice/list.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>noticeList</title>
 </head>
 <body>
-    <header class="sec_header">
-        <div class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+     <header class="sec-header">
+        <div id="header" class="header">
+            <div class="header-h1">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                <ul class="main-menu">
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">공지사항</a></li>
                     <li><a href="">이벤트</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
                                 <li><a href="">submenu</a></li>
                                 <li><a href="">submenu</a></li>
@@ -39,17 +42,17 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="" class="active">공지사항</a></li>
-	                    <li><a href="">QnA</a></li>
+	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
 	            <nav id="nav" class="nav">
 	                <ul>
-	                    <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
-	                    <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
-	                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-	                    <li class="current-tab"><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
+	                    <li><a href="/admin/accommodations/list"><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
+	                    <li><a href="/admin/userInfo/list"><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
+	                    <li><a href="/admin/promotion/goldenTime/list"><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
+	                    <li class="current-tab"><a href="list"><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
 	                </ul>
 	            </nav>
 	            <main id="main" class="main">
@@ -63,7 +66,13 @@
 	                        </ul>
 	                    </div>
 	                    <section class="list-board">
-	                        <h1>공지사항 리스트</h1>
+	                    	<div class="main-search">
+		                        <h1>공지사항 리스트</h1>
+		                        <form action="">
+		                        	<input type="text">
+		                        	<input type="submit" value="검색">
+		                        </form>
+	                        </div>
 	                        <table>
 	                            <thead>
 	                                <tr>
@@ -77,28 +86,29 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
+	                            	<c:forEach var="n" items="${list}">
 	                                <tr>
-	                                    <td>1</td>
-	                                    <td>첫 번째 공지사항</td>
-	                                    <td>2020/11/01</td>
-	                                    <td>Master</td>
-	                                    <td>공개</td>
-	                                     <td>
+	                                    <td>${n.id}</td>
+	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
+	                                    <td>${n.regdate}</td>
+	                                    <td>${n.writerId}</td>
+	                                    <td>${n.pub}</td>
+	                                    <td>
 	                                        <input type="checkbox" name="" class=pubChk >
 	                                    </td>
 	                                    <td>
-	                                        <input type="checkbox" name="" class="memberChk" >
+	                                        <input type="checkbox" name="" class="deleteChk" >
 	                                    </td>
 	                                </tr>
-	                               
+	                               </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="7">
-	                                        <form action="">
-	                                            <input type="submit" value="생성">
+	                                       
+	                                            <a href="reg"><input type="submit" value="생성" ></a>
 	                                            <input type="submit" value="공개">
 	                                            <input type="submit" value="비공개">
 	                                            <input type="submit" value="삭제">
-	                                        </form>
+	                                       
 	                                    </td>
 	                                </tr>
 	                            </tbody>
@@ -121,20 +131,20 @@
 	            </main>
 	        </div>
 	    </section>
-	</main>
+    </main>
     <script>
-        var selectAll = document.querySelector(".selectAllMembers");
+        var selectAll = document.querySelector(".selectAllDelete");
         selectAll.addEventListener('click', function(){
-            var objs = document.querySelectorAll(".memberChk");
+            var objs = document.querySelectorAll(".deleteChk");
             for (var i = 0; i < objs.length; i++) {
               objs[i].checked = selectAll.checked;
             };
         }, false);
          
-        var objs = document.querySelectorAll(".memberChk");
+        var objs = document.querySelectorAll(".deleteChk");
         for(var i=0; i<objs.length ; i++){
           objs[i].addEventListener('click', function(){
-            var selectAll = document.querySelector(".selectAllMembers");
+            var selectAll = document.querySelector(".selectAllDelete");
             for (var j = 0; j < objs.length; j++) {
               if (objs[j].checked === false) {
                 selectAll.checked = false;

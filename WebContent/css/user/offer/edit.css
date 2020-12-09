@@ -1,43 +1,126 @@
-* {
-    box-sizing: border-box;
-}
-
 /********************************************/
-
-.header {
-    min-height: 100px;
-    background: wheat;
+.container-sec {
+    background:#F9FBFF;
+    border-top: 1px solid #F9FBFF;
 }
-
-/********************************************/
-
 .container {
     width: 1200px;
-    min-height: 100px;
-    background: orange;
+    min-height: 880px;
+    --background:#F9FBFF;
     margin: 0 auto;
+    padding-top: 100px;
 }
 
-    .breadcrumb {
-        background: violet;
+    .main .ment-container {
+        position: relative;
     }
 
-    .banner-img {
-        width: 900px;
-        height: 200px;
-        background: url("../../../images/user/counterProposal/banner-2.jpg") no-repeat center;
-        background-size: cover;
-        margin: 0 auto;
+        .main .ment-container .ment-title {
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .main .ment-container .ment-content {
+            margin-top: 100px;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+            .main .ment-container .ment-content .quote {
+                position: absolute;
+                font-size: 30px;
+                color: #bebebe;
+            }
+
+            .main .ment-container .ment-content .left-quote {
+                top: 105px;
+                left: 300px;
+            }
+
+            .main .ment-container .ment-content .right-quote {
+                top: 105px;
+                left: 870px;
+            }
+
+            .main .ment-container .ment-content .ment {
+                display: inilne;
+                text-align: center;
+                padding-top: 5px;
+            }
+
+            .main .ment-container .ment-content .ment span {
+            color: #5f0081;
+            }
+
+    .main > .reg-form-sec {
+        width: 700px;
+        margin: 50px auto 0 auto;
+        --border: 1px solid red;
+    }
+    
+    .main .form-option  {
+        width: 310px;
+        height: 30px;
+        font-size: 16px;
+        margin-top: 20px;
     }
 
-    .reg-form {
-        background: tomato;
+        .main .date {
+            padding-left: 100px;
+        }
+
+        .main .main-city {
+            padding-left: 125px;
+        }
+
+        .main .sub-city {
+            padding-left: 90px;
+        }
+
+        .main .category {
+            width: 620px;
+            padding-left: 280px;
+        }
+
+        .main .people-select {
+            padding-left: 290px;
+            width: 620px;
+        }
+
+        .main .price-input {
+            text-align: center;
+            width: 620px;
+        }
+
+    .main  > .reg-form-sec .submit-btn-sec {
+        width: 400px; /* �굹以묒뿉 踰꾪듉 �겕湲곗뿉 留욊쾶 �꼫鍮� �닔�젙�븯湲� */
+        margin: 50px auto 0 auto;
+        --border: 1px solid red;
     }
 
-/********************************************/
+    .main  > .reg-form-sec .submit-btn-sec .btn {
+        background-color: #5f0081;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        color: #ffffff;
+        padding: 10px 30px;
+        text-decoration: none;
+        font-size: 14px;
+    }
 
-.footer {
-    min-height: 100px;
-    background: yellowgreen;
-}
+    .main  > .reg-form-sec .submit-btn-sec .btn:hover {
+        background-color: #5f0081;
+        opacity: 0.8;
+    }
 
+    .main  > .reg-form-sec .submit-btn-sec .submit-btn {
+        margin-left: 100px;
+    }
+
+    .main  > .reg-form-sec .submit-btn-sec .cancel-btn {
+        margin-left: 30px;
+    }

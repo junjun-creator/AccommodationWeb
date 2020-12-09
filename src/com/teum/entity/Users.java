@@ -9,7 +9,7 @@ public class Users {
 	private String password;
 	private String birthday;
 	private String phone;
-	private int rank;
+	private int rankId;
 	private Date regdate;
 	
 	public Users() {
@@ -25,7 +25,7 @@ public class Users {
 		this.password = password;
 		this.birthday = birthday;
 		this.phone = phone;
-		this.rank = rank;
+		this.rankId = rank;
 		this.regdate = regdate;
 	}
 
@@ -77,12 +77,12 @@ public class Users {
 		this.phone = phone;
 	}
 
-	public int getRank() {
-		return rank;
+	public int getRankId() {
+		return rankId;
 	}
 
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setRankId(int rank) {
+		this.rankId = rank;
 	}
 
 	public Date getRegdate() {
@@ -96,7 +96,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + password + ", birthday=" + birthday
-				+ ", phone=" + phone + ", rank=" + rank + ", regdate=" + regdate + "]";
+				+ ", phone=" + phone + ", rankId=" + rankId + ", regdate=" + regdate + "]";
 	}
 	
 	
