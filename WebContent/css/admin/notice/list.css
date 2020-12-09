@@ -1,10 +1,17 @@
 
-    /********************************************/
-
+    /************************main-search********************/
+		.main .list-board .main-search{
+			width: 900px; /*table size*/
+			display:flex;
+			justify-content: space-between;
+		}
+		
+	 /************************main table********************/
+		
         .main .list-board>table{
             border-top: 2px solid #5f005f;
             table-layout: fixed;
-            width: 800px;
+            width: 900px;
             font-size: 14px;
             margin: 10px 0 0 0px;
         }

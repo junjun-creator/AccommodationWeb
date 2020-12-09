@@ -7,12 +7,13 @@ public class Room {
 	private int accId;
 	private int maxHeadcount;
 	private int bedCount;
+	private String bookedDate;
 	
 	public Room() {
 		
 	}
 
-	public Room(int id, String name, int price, int accId, int maxHeadcount, int bedCount) {
+	public Room(int id, String name, int price, int accId, int maxHeadcount, int bedCount, String bookedDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -20,6 +21,7 @@ public class Room {
 		this.accId = accId;
 		this.maxHeadcount = maxHeadcount;
 		this.bedCount = bedCount;
+		this.bookedDate = bookedDate;
 	}
 
 	public int getId() {
@@ -70,10 +72,20 @@ public class Room {
 		this.bedCount = bedCount;
 	}
 
+	public String getBookedDate() {
+		return bookedDate;
+	}
+
+	public void setBookedDate(String bookedDate) {
+		this.bookedDate = bookedDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", name=" + name + ", price=" + price + ", accId=" + accId + ", maxHeadcount="
-				+ maxHeadcount + ", bedCount=" + bedCount + "]";
+				+ maxHeadcount + ", bedCount=" + bedCount + ", bookedDate=" + bookedDate + "]";
 	}
+
+	
 	
 }
