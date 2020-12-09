@@ -1,0 +1,231 @@
+/********************************************/
+header h1{
+    margin: 0;
+    height: 100%;
+}
+
+header li{
+    color: white;
+    list-style: none;
+}
+
+.sec-header-page{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.header-sec{
+    display: flex;
+    background: white;
+    height: 72px;
+    width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+    .header-sec a {
+        --height: 50%;
+        display: block;
+        text-align: center;
+        padding: .5rem 1rem;
+        text-decoration: none;
+        color: #5f0081;
+        font-weight: bold;
+    }
+
+    .header-sec>.header-logo{
+        flex-basis: 50px;
+        height:70%;
+        background: url(/images/ 땲濡쒓퀬index.png) 0 0 no-repeat;
+        text-indent: -9999px;
+        background-size: 50px auto;
+    }
+        .header-sec>.header-logo .teum-logo{
+            box-sizing: border-box;
+            height: 100%;
+        } 
+
+.main-menu{
+    display: flex;
+    margin: 0;
+    position: relative;
+}
+
+.sec-header-page .mega-menu{
+    position: absolute;
+    border: 1px solid rgb(223, 223, 223);
+    border-top: none;
+    background-color: white;
+    --margin-top: 15px;
+    right: -12px;
+    opacity: 0;
+    transition: opacity .25s ease .1s;
+}
+.sec-header-page .mega-menu ul li{
+   height: 0;
+   overflow: hidden;
+   padding: 0;
+   transition: height .25s ease .1s;
+}
+
+    .sec-header-page .mypage:hover .mega-menu{
+        opacity: 1;
+
+    }
+
+    .sec-header-page .mypage:hover .mega-menu ul li {
+        height: 36px;
+        overflow: visible;
+        padding: 0;
+    }
+
+        .sec-header-page .mega-menu a{
+            color: #5f0081;
+            font-size: 14px;
+            font-weight: none;
+        }
+
+/*----------  뿤 뜑 寃  깋 -----------*/
+.header_search{
+    display: flex;
+}
+    .header_search>input{
+        padding: 8px 16px 8px 16px;
+        width: 100px;
+    }
+
+/********************************************/
+.container-sec {
+    background: #F9FBFF;
+}
+
+    .container {
+        width: 1200px;
+        min-height: 500px;
+        margin:0 auto;
+        display: flex;
+        padding-top: 30px;
+    }
+
+        .aside {
+            width: 300px;
+            height: 330px;
+            margin-top: 70px;
+            padding-left: 40px;
+        }
+
+            .aside > h1 {
+                font-size: 24px;
+                font-weight: bold;
+                padding: 10px 0 0 20px;
+            }
+
+            .aside > ul {
+                width: 200px;
+                padding: 10px 0 0 40px;
+            }
+
+            .aside li {
+                height:60px;
+                padding-top: 20px;
+                padding-bottom: 10px;
+                font-size: 20px;
+                transform: scale(1);
+                transition: transform 0.1s;
+                
+            }
+            .aside li:hover {
+                border-bottom:1px solid #fc0453;
+                transform: scale(1.03);
+                color:#fc0453;
+                font-weight: bold;
+            }
+
+            .aside .active {
+                font-weight: bold;
+                color: #fc0453;
+            }
+
+                .aside li > a {
+                    text-decoration: none;
+                }
+
+        .main {
+            width: 900px;
+            min-height: 500px;
+            --border: 1px solid blue;
+            padding: 0 40px;
+            margin-bottom: 50px;
+        }
+
+            .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 12px;
+            }
+            
+            .event-sec > h1 {
+                width: 500px;
+                font-weight: bold;
+                font-size: 28px;
+                margin: 50px 0 30px 0;
+            }
+
+            .event-sec > .event-list {
+                display: flex;
+                color: #888888;
+            }
+
+                .event-sec > .event-list > li {
+                    border: 1px solid #c5c7c9;
+                    flex-grow: 1;
+                    text-align: center;
+                    height: 40px;
+                    line-height: 40px;
+                    background: #F2F2F8;
+                }
+
+                    .event-sec > .event-list > li > a {
+                        display: block;
+                    }
+
+                .event-sec > .event-list > .current-tab {
+                    border-top: 3px solid #FC0453;
+                    --border-right: 1px solid #FC0453;
+                    --border-left: 1px solid #FC0453;
+                    border-bottom: none;
+                    background: white;
+                }
+
+                    .event-sec > .event-list > li > a {
+                        text-decoration: none;
+                    }
+
+            .event-sec > .event-img-container {
+                margin-top: 30px;
+                width: 816px;
+                height: 165px;
+                overflow: hidden;
+            }
+
+                .event-sec > .event-img-container > .scale {
+                    transform: scale(1);
+                    transition: transform 0.2s;
+                }
+
+                .event-sec > .event-img-container > .scale:hover {
+                    transform: scale(1.03);
+                }
+
+                    .event-sec > .event-img-container img {
+                        width: 816px;
+                        height: 165px;
+                    }
+
+
+/********************************************/
+.footer {
+    min-height: 100px;
+    background: yellowgreen;
+}
