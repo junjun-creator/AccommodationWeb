@@ -171,7 +171,7 @@
                         margin-top: 20px;
                     }
 
-                        .checkbox-container {
+                        .radio-container {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -179,23 +179,23 @@
                             --border: 1px solid rgb(0, 132, 255);
                         }
                         
-                        .offer-form > section > .checkbox-container > input[type="checkbox"] {
+                        .offer-form > section > .radio-container > input[type="radio"] {
                             display: none;
                         }
 
-                        .offer-form > section > .checkbox-container > input[type="checkbox"] + label span {
+                        .offer-form > section > .radio-container > input[type="radio"] + label span {
                             display: inline-block;
                             width: 30px;
                             height: 30px;
                             --margin: -2px 10px 0 0;
                             vertical-align: middle;
-                            background: url(/images/checkbox-bold.svg) left top no-repeat;
+                            background: url(/images/checkbox-bold.svg) 0 top no-repeat;
                             cursor: pointer;
                             background-size: cover;
                         }
 
-                        .offer-form > section > .checkbox-container > input[type="checkbox"]:checked + label span {
-                            background: url(/images/checkbox-bold.svg) -33px top no-repeat;
+                        .offer-form > section > .radio-container > input[type="radio"]:checked + label span {
+                            background: url(/images/checkbox-bold.svg) -30px top no-repeat;
                             background-size: cover;
                         }
 
@@ -204,7 +204,7 @@
                             margin: 0 auto;
                         }
 
-                        .offer-form > section > .checkbox-container {
+                        .offer-form > section > .radio-container {
                             flex-grow: 1;
                         }
 
