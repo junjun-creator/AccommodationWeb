@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/user/userInfo/offerList.css">
+    <link rel="stylesheet" href="../../css/user/userInfo/proposalList.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -47,7 +47,7 @@
                 <ul>
                     <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
                     <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
-                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;경매신청관리</a></li>
+                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>
             </aside>
@@ -58,48 +58,119 @@
                         <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
                     </ul>
                 </div>
-                <section class="offer-list-sec">
-                    <h1>역제안 신청관리</h1>
-                    <ul>
-                        <li>
-                            <table border="1">
-                                <tr>
-                                    <td colspan="2">제안정보</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="오퍼목록보기"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>날짜</td>
-                                    <td>2020.12.07 ~ 2020.12.08</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>위치</td>
-                                    <td>서울시 강남구</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="역제안 수정"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>인원수</td>
-                                    <td>성인2, 아동1</td>
-                                </tr>
-                                <tr>
-                                    <td>희망가격</td>
-                                    <td>50,000원</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="역제안 취소"></td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>상태</td>
-                                    <td>신청중</td>
-                                </tr>
-                            </table>
-                        </li>
-                    </ul>
+                <section class="proposal-sec">
+                    <div class="cliper-btn prev-btn">
+                        <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div class="cliper-btn next-btn">
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                    <h1>제안하신 목록입니다!</h1>  
+                    <div class="proposal-container">
+                        <div class="proposal-info">
+                            <h2>제안정보</h2>
+                            <ul>
+                                <li>
+                                    <div>날짜</div>
+                                    <div>2020.12.12 ~ 2020.12.15</div>
+                                </li>
+                                <li>
+                                    <div>위치</div>
+                                    <div>경기도 하남시</div>
+                                </li>
+                                <li>
+                                    <div>인원수</div>
+                                    <div>4</div>
+                                </li>
+                                <li>
+                                    <div>희망하는 가격</div>
+                                    <div class="wanted-price">120,000원</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="proposal-info">
+                            <h2>제안정보</h2>
+                            <ul>
+                                <li>
+                                    <div>날짜</div>
+                                    <div>2020.12.07 ~ 2020.12.08</div>
+                                </li>
+                                <li>
+                                    <div>위치</div>
+                                    <div>서울시 강남구</div>
+                                </li>
+                                <li>
+                                    <div>인원수</div>
+                                    <div>3</div>
+                                </li>
+                                <li>
+                                    <div>희망하는 가격</div>
+                                    <div class="wanted-price">50,000원</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <section class="offer-sec">
+                    <form class="offer-form">
+                        <h1>글래드 라이브 강남</h1>
+                        <section>
+                            <div class="offer-container">
+                                <div class="offer-img-container">
+                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
+                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/슈페리얼더블1.jpg" alt=""></a>
+                                </div>
+                                <div class="offer-detail-container">
+                                    <div class="offer-room">
+                                        <span>스탠다드 더블</span>
+                                    </div>
+                                    <div class="offer-price">
+                                        <div>가격</div>
+                                        <div>128,260원</div>
+                                    </div>
+                                    <div class="offer-detail-link">객실 자세히 보기</div>
+                                    <div class="submit-btn-container">
+                                        <input type="submit" class="submit-btn" value="승인하기">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </section>
+
+                <section class="offer-sec">
+                    <form class="offer-form">
+                        <h1>글래드 라이브 강남</h1>
+                        <section>
+                            <div class="offer-container">
+                                <div class="offer-img-container">
+                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
+                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/슈페리얼더블1.jpg" alt=""></a>
+                                </div>
+                                <div class="offer-detail-container">
+                                    <div class="offer-room">
+                                        <span>스탠다드 더블</span>
+                                    </div>
+                                    <div class="offer-price">
+                                        <div>가격</div>
+                                        <div>128,260원</div>
+                                    </div>
+                                    <div class="offer-detail-link">객실 자세히 보기</div>
+                                    <div class="submit-btn-container">
+                                        <input type="submit" class="submit-btn" value="승인하기">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
                 </section>
             </main>
         </div>
     </section>
+
+    
 
     <!-- <section class="userInfo_main">
         <main class="sec_userInfo_main">
