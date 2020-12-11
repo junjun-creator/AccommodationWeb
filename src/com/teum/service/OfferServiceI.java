@@ -10,10 +10,10 @@ public interface OfferServiceI {
 	int cancel(int id);
 
 	// offer service
-	// 회원이 제안한 정보
+	// 회원이 제안한 정보(제안 id)
 	public List<Offer> getListByUser(int id);
 
-	// 기업이 역제안한 정보
+	// 기업이 역제안한 정보(역제안 id)
 	public List<Offer> getListByCompany(int id);
 
 	public int insert(Offer offer);

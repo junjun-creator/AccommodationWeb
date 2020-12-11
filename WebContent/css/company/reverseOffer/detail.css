@@ -1,0 +1,273 @@
+/********************************************/
+.container-sec {
+    background: #F9FBFF;
+}
+
+    .container {
+        width: 1200px;
+        min-height: 500px;
+        margin: 0 auto;
+        padding-top: 30px;
+        display: flex;
+    }
+
+    .aside {
+        width: 300px;
+        height: 330px;
+        margin-top: 70px;
+        padding-left: 40px;
+    }
+
+        .aside > h1 {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 0 0 20px;
+        }
+
+        .aside > ul {
+            width: 200px;
+            padding: 10px 0 0 40px;
+        }
+
+        .aside li {
+            height:60px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            transform: scale(1);
+            transition: transform 0.1s;
+            
+        }
+        .aside li:hover {
+            border-bottom:1px solid #fc0453;
+            transform: scale(1.03);
+            color:#fc0453;
+            font-weight: bold;
+        }
+
+        .aside .active {
+            font-weight: bold;
+            color: #fc0453;
+        }
+
+            .aside li > a {
+                text-decoration: none;
+            }
+
+        .main {
+            width: 900px;
+            min-height: 500px;
+        }
+            .breadcrumb {
+                --border: 1px solid red;
+            }
+
+                .breadcrumb > .breadcrumb-list {
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 12px;
+                }
+
+            .proposal-sec {
+                --border: 1px solid red;
+                position: relative;
+            }
+
+                .proposal-sec > h1 {
+                    --border: 1px solid green;
+                    width: 500px;
+                    font-weight: bold;
+                    font-size: 24px;
+                    margin: 50px 0 0 30px;
+                }
+
+                .proposal-sec .cliper-btn {
+                    position: absolute;
+                    z-index: 5;
+                    font-size: 40px;
+                    opacity: 0.2;
+                }
+
+                .proposal-sec .cliper-btn {
+                    cursor: pointer;
+                }
+
+                .proposal-sec .prev-btn {
+                    top: 90px;
+                }
+
+                .proposal-sec .next-btn {
+                    top: 90px;
+                    right: 0;
+                }
+
+                .proposal-sec > .proposal-container {
+                    display: flex;
+                    justify-content: space-evenly;
+                    margin-top: 20px;
+                }
+
+                    .proposal-container > .proposal-info {
+                        border: 1px solid purple;
+                        flex-basis: 350px;
+                    }
+
+                    .proposal-container > div:hover {
+                        background: rgb(203, 185, 221);
+                        cursor: pointer;
+                    }
+
+                        .proposal-container > div > h2 {
+                            padding-left: 10px;
+                            font-weight: bold;
+                        }
+
+                            .proposal-container > div > ul > li {
+                                display: flex;
+                                --flex-grow: 1;
+                                padding-left: 10px;
+                                margin-top: 5px;
+                            }
+
+                                .proposal-container > div > ul > li > div{
+                                    --border: 1px solid red;
+                                    flex-basis: 120px;
+                                    flex-grow: 1;
+                                }
+
+                                .proposal-container > div > ul > li > div:nth-child(2){
+                                    --border: 1px solid red;
+                                    flex-basis: 250px;
+                                    flex-grow: 3;
+                                }
+
+                                .proposal-container > div > ul > li > .wanted-price {
+                                    font-weight: bold;
+                                    color: #FC0453;
+                                }
+
+            .offer-sec {
+                --border: 1px solid red;
+                margin: 70px auto 0 auto;
+            }
+
+                .offer-sec > h1 {
+                    --border: 1px solid green;
+                    width: 500px;
+                    font-weight: bold;
+                    font-size: 24px;
+                    margin-left: 30px;
+                }
+
+                .offer-form {
+                    --border: 1px solid blue;
+                    margin: 20px 0px 0 30px;
+                }
+
+                    .offer-form > section {
+                        display: flex;
+                        border: 1px solid rgb(209, 196, 196);
+                        border-radius: 5px;
+                        margin-top: 20px;
+                    }
+
+                        .offer-form > .back-btn-container {
+                            width: 100px; /* submit 버튼 너비 수정해야함 */
+                            margin: 0 auto;
+                        }
+
+                        .offer-form > section > .checkbox-container {
+                            flex-grow: 1;
+                        }
+
+                        .offer-form > section > .offer-container {
+                            flex-grow: 10;
+                            display: flex;
+                            --border: 1px solid red;
+                            padding-left: 10px;
+                        }
+
+                            .offer-img-container {
+                                margin: 10px auto;
+                                transform: scale(1);
+                                transition: transform 0.2s;
+                            }
+
+                            .offer-img-container:hover {
+                                transform: scale(1.02);
+                            }
+
+                                .offer-img-container img {
+                                    width: 370px;
+                                    height: 220px;
+                                }
+
+                            .offer-detail-container {
+                                width: 100%;
+                                margin-left: 10px;
+                                position: relative;
+                            }
+
+                            .offer-detail-container .offer-room {
+                                --border: 1px solid red;
+                                margin-top: 10px;
+                                --display: inline-block;
+                                position: absolute;
+                            }
+
+                            .offer-detail-container .offer-price {
+                                --display: flex;
+                                --display: inline-block;
+                                margin-top: 30px;
+                            }
+
+                            .offer-detail-container .offer-price > div:nth-child(1) {
+                                --border: 1px solid blue;
+                                margin-top: 40px;
+                                --flex-basis: 200px;
+                                --flex-grow: 1;
+                                position: absolute;
+                                top: 70px;
+                            }
+
+                            .offer-detail-container .offer-price > div:nth-child(2) {
+                                --border: 1px solid green;
+                                margin-top: 40px;
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 70px;
+                                right: 10px;
+                            }
+
+
+                            .offer-detail-container .offer-detail-link {
+                                --border: 1px solid red;
+                                margin-top: 80px;
+                                --display: inline-block;
+                                position: absolute;
+                                top: 120px;
+                            }
+
+                            .offer-form > .back-btn-container  {
+                                margin: 20px auto 100px auto;
+                            }
+
+                            .offer-form > .back-btn-container > .back-btn {
+                                background-color: #fc0453;
+                                border-radius: 28px;
+                                cursor: pointer;
+                                color: #ffffff;
+                                display: block;
+                                text-align: center;
+                                width: 150px;
+                                height: 50px;
+                                line-height: 50px;
+                                text-decoration: none;
+                            }
+
+                            .offer-form > .back-btn-container > .back-btn:hover {
+                                opacity: 0.7;
+                            }
+
+/********************************************/
