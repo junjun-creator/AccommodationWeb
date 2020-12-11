@@ -85,8 +85,28 @@
                     .update-info-sec table>td{
                         margin-top: 100px;
                     }
+                    .update-info-sec .button-submit{
+                        text-align: center;
+                    }
+                        .update-info-sec .button-submit>input{
+                            width: 200px;
+                            margin: 10px 0;
+                            height: 30px;
+                            border: 1px dashed #ff0080;    /*---테두리 정의---*/
+                            background-Color:#ffe6f2;   /*--백그라운드 정의---*/
+                            font:12px 굴림;      /*--폰트 정의---*/
+                            font-weight:bold;   /*--폰트 굵기---*/
+                            color:#ff0080;    /*--폰트 색깔---*/
+                        }
             
-
+                    .member-type{
+                        display: flex;
+                    }
+                        .member-type>div{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
                     .checkbox-container {
                         display: flex;
                         flex-direction: column;
@@ -95,11 +115,11 @@
                         --border: 1px solid rgb(0, 132, 255);
                     }
                     
-                    .checkbox-container > input[type="checkbox"] {
+                    .checkbox-container > input[type="radio"] {
                         display: none;
                     }
 
-                    .checkbox-container > input[type="checkbox"] + label span {
+                    .checkbox-container > input[type="radio"] + label span {
                         display: inline-block;
                         width: 30px;
                         height: 30px;
@@ -110,8 +130,8 @@
                         background-size: cover;
                     }
 
-                    .checkbox-container > input[type="checkbox"]:checked + label span {
-                        background: url(/images/checkbox-bold.svg) -33px top no-repeat;
+                    .checkbox-container > input[type="radio"]:checked + label span {
+                        background: url(/images/checkbox-bold.svg) -30px top no-repeat;
                         background-size: cover;
                     }
 
