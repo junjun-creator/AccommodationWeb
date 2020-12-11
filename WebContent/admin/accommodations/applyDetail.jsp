@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/admin/layout.css">
     <link rel="stylesheet" href="../../css/admin/accommodations/regAccommodationDetail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
@@ -13,17 +14,30 @@
     <title>등록 요청 업체</title>
 </head>
 <body>
-    <header id="header" class="header">
-        <h1><a href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        <nav>
-            <h1>메인메뉴</h1>
-            <ul>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">이벤트</a></li>
-                <li><a href="">더보기</a></li>
-                <li><a href="">로그인</a></li>
-            </ul>
-        </nav>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+            </div>
+            <div>
+                <ul class="main-menu">
+                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="">로그인</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </header>
 
     <section class="body">
