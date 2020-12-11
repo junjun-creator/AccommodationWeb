@@ -1,28 +1,36 @@
 window.addEventListener('load', function() {
-    var openChkAll = document.querySelector('.open-chk-all');
-    var delChkAll = document.querySelector('.del-chk-all');
+    var chkAll = document.querySelector('.checkbox-all');
+    var chks = document.querySelectorAll('.checkbox-single');
 
-    openChkAll.onclick = function() {
-        var openChks = document.querySelectorAll('.open-chk');
-
-        for (var i = 0; i < openChks.length; i++) {
-            if (openChkAll.checked) {
-                openChks[i].checked = true;
+    chkAll.onclick = function() {
+        for (var i = 0; i < chks.length; i++) {
+            if (chkAll.checked) {
+                chks[i].checked = true;
                 continue;
             }
-            openChks[i].checked = false;
+            chks[i].checked = false;
         }
     }
 
-    delChkAll.onclick = function() {
-        var delChks = document.querySelectorAll('.del-chk');
+    for (var i = 0; i < chks.length; i++) {
+        (function(i) {
+            chks[i].onclick = function() {
+                if (!chks[i].checked) {
+                    chkAll.checked = false;
+                    return;
+                }
 
-        for (var i = 0; i < delChks.length; i++) {
-            if (delChkAll.checked) {
-                delChks[i].checked = true;
-                continue;
+                var cnt = 0;
+                for (var j = 0; j < chks.length; j++) {
+                    if (chks[j].checked) {
+                        cnt++;
+                    }
+                }
+                
+                if (cnt == chks.length) 
+                    chkAll.checked = true;
             }
-            delChks[i].checked = false;
-        }
+        })(i);
     }
+
 });
