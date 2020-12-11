@@ -5,7 +5,7 @@
 
 .promotion-sec{
     height: 600px;
-    background-color: #f3f3f3;
+    background-color: #F9FBFF;
     --border: 1px solid red;
 }
     .promotion-bar{
@@ -154,7 +154,7 @@ height: 972px;
                 padding-top: 72px;
         }
             .offer-ment{
-                height: 430px;
+                height: 300px;
                 margin-top: 200px;
                 display: flex;
                 flex-wrap: wrap;
@@ -165,7 +165,6 @@ height: 972px;
                 .offer-ment .ment{
                     font-size: 50px;
                     font-weight: bold;
-                    
                 }
                     .offer-ment .teum{
                         color: #5f0081;
@@ -178,7 +177,6 @@ height: 972px;
                 height: 97px;
             }
             .btn-container .btn-list {
-                
                 background-color: #5f0081;
                 border-radius: 10px;
                 border: none;
@@ -188,6 +186,9 @@ height: 972px;
                 padding: 16px 60px;
                 text-decoration: none;
                 font-size: 30px;
+            }
+            .btn-container .btn-list:hover {
+                opacity: 0.7;
             }
 
 

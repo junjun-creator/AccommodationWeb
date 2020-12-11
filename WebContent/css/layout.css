@@ -93,6 +93,8 @@ header li{
     .header_search>input{
         --padding: 8px 16px 8px 16px;
         width: 200px;
+        padding-left: 20px;
+        font-size: 15px;
     }
 
 /*-------------footer------------*/
