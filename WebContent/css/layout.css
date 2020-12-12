@@ -37,7 +37,7 @@ header li{
     .header-sec>.header-logo{
         flex-basis: 50px;
         height:70%;
-        background: url(/images/틈로고index.png) 0 0 no-repeat;
+        background: url(/images/logo.png) 0 0 no-repeat;
         text-indent: -9999px;
         background-size: 50px auto;
     }
