@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="../../js/notice/list.js"></script>
     <title>noticeList</title>
 </head>
 <body>
@@ -62,7 +63,7 @@
                     
                     <ol class="notice-sec-list">
                         <li>
-                            <input type="checkbox" id="checkbox-1" class="checkbox">
+                            <input type="checkbox" id="checkbox-1" class="checkbox" name="check" onclick="doOpenCheck(this);">
                             <div>
                                 <p>[공지] 코로나19 확산에 따른 대한민국 숙박대전 취소규정</p>
                                 <p class="p-detail">
@@ -83,7 +84,7 @@
                             <label for="checkbox-1"><span></span></label>
                         </li>
                         <li>
-                            <input type="checkbox" id="checkbox-2" class="checkbox">
+                            <input type="checkbox" id="checkbox-2" class="checkbox" name="check" onclick="doOpenCheck(this);">
                             <div>
                                 <p>[공지] 공지사항</p>
                                 <p class="p-detail d-none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.</p>
@@ -93,7 +94,7 @@
                             <label for="checkbox-2"><span></span></label>
                         </li>
                         <li>
-                            <input type="checkbox" id="checkbox-3" class="checkbox">
+                            <input type="checkbox" id="checkbox-3" class="checkbox" name="check" onclick="doOpenCheck(this);">
                             <div>
                                 <p>세 번째 공지사항</p>
                                 <p class="p-detail d-none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.</p>

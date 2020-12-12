@@ -101,6 +101,21 @@
 	                                    </td>
 	                                </tr>
 	                               </c:forEach>
+	                               <c:forEach var="n" items="${list}">
+	                                <tr>
+	                                    <td>${n.id}</td>
+	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
+	                                    <td>${n.regdate}</td>
+	                                    <td>${n.writerId}</td>
+	                                    <td>${n.pub}</td>
+	                                    <td>
+	                                        <input type="checkbox" name="" class=pubChk >
+	                                    </td>
+	                                    <td>
+	                                        <input type="checkbox" name="" class="deleteChk" >
+	                                    </td>
+	                                </tr>
+	                               </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="7">
 	                                       
