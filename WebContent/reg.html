@@ -40,156 +40,32 @@
 
     <section class="container-sec">
         <div class="container">
-            <aside id="aside" class="aside">
-                <!-- <h1>게시판</h1> -->
-                <ul>
-                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
-                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
-                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
-                </ul>
-            </aside>
             <main id="main" class="main">
-                <div class="breadcrumb">
-                    <ul class="breadcrumb-list">
-                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
-                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="배경1-1.PNG" alt="">
-                </div>
-    
+               
+                <!-- <h1>Join Now</h1> -->
+                <img src="/images/join2.png" alt="">
                 <div class="reg-form-sec">
-                    <h1>회원가입</h1>
-                    
-                    <div class="form-sec">
-                        <form action="">
-                            <table>
-                                <tr>
-                                    <th style="white-space: nowrap;">이메일</th>
-                                    <td><input type="text"></td>
-                                    <td><input class="duplicate-check" type="button" value="중복체크"></td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">이름</th>
-                                    <td><input type="text"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">닉네임</th>
-                                    <td><input type="text"></td>
-                                    <td><input class="duplicate-check" type="button" value="중복체크"></td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">비밀번호</th>
-                                    <td><input type="password"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">비밀번호확인</th>
-                                    <td><input type="password"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">연락처</th>
-                                    <td><input type="text"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>회원구분</td>
-                                    <td colspan="3" class="member-type">
-                                        <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-2" class="checkbox" required>
-                                            <label for="checkbox-2"><span></span></label>
-                                        </div>
-                                        <div>
-                                            개인회원
-                                        </div>
-                                        <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-3" class="checkbox" required>
-                                            <label for="checkbox-3"><span></span></label>
-                                        </div>
-                                        <div>
-                                            기업회원
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-        
-                            <div class="button-submit">
-                                <input type="submit" value="여행가격의 빈 틈을 찾으러 GOGO~">
+
+                    <form action="">
+                        <div class="reg-form-container">
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="email" title="이메일">
+                                    <em style="color: red;">*</em>
+                                    이메일
+                                </label>
+                                <div>
+                                    <div style="display: flex; flex-direction: column;">
+                                        <input type="email" placeholder="teum@example.com" id="email" name="email" autocorrect="off" autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">아아</span>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </main>
         </div>
     </section>
-
-    <!-- <section class="main">
-        <main class="sec_login_main">
-
-            <div>
-                <img src="배경1-1.PNG" alt="">
-            </div>
-
-            <div class="login_form">
-                <h1>회원가입</h1>
-                
-                <section class="sec_form">
-                    <form action="">
-                        <table>
-                            <tr>
-                                <th style="white-space: nowrap;">이메일</th>
-                                <td><input type="text"></td>
-                                <td><input type="button" value="중복체크"></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">이름</th>
-                                <td><input type="text"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">닉네임</th>
-                                <td><input type="text"></td>
-                                <td><input type="button" value="중복체크"></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">비밀번호</th>
-                                <td><input type="password"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">비밀번호확인</th>
-                                <td><input type="password"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">연락처</th>
-                                <td><input type="text"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">회원구분</th>
-                                <td colspan="2" style="padding-left: 32px;">
-                                    <input name="memType" type="radio" checked>
-                                    <span>개인회원</span>
-                                    <input name="memType" type="radio">
-                                    <span>기업회원</span>
-                                </td>
-                            </tr>
-                        </table>
-    
-                        <div class="btn_submit">
-                            <input type="submit" value="여행가격의 빈 틈을 찾으러 GOGO~">
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </main>
-    </section> -->
-
     <section>
         <footer id="footer" class="footer">
             <div>
@@ -235,5 +111,8 @@
             </div>
         </footer>
     </section>
+    <script>
+        var email_input = document.querySelector('.email');
+    </script>
 </body>
 </html>
