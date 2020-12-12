@@ -54,6 +54,7 @@
                         width: 250px;
                         height: 30px;
                         border-radius: 5px;
+                        padding-left: 20px;
                     }
 
                     .reservation-form-left > .accept-container {
@@ -80,7 +81,7 @@
 
 
                 .reservation-form-right {
-                    border: 1px solid rgb(189, 189, 189);
+                    border: 1px solid rgb(216, 216, 216);
                     flex-basis: 280px;
                     font-size: 16px;
                     padding: 10px 10px 10px 15px;
@@ -131,11 +132,12 @@
                         background: #fc0453;
                         color: white;
                         font-weight: lighter;
+                        opacity: 0.3;
                     }
                     
                     .reservation-form-right .submit-btn:hover {
                         cursor: pointer;
-                        opacity: 0.8;
+                        --opacity: 0.8;
                     }
 
 
