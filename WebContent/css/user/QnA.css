@@ -72,13 +72,17 @@
             font-size: 28px;
             margin: 30px 0 30px 0;
             --border-bottom:4px solid #000000;
-            padding-bottom:30px;
+            
             
         }
         .qna-sec >h1 span{
          font-size: 20px;
          font-weight: normal;
         }
+         .qna-sec >.change-tap{
+         width:820px;
+         }
+        
         .qna-sec >.change-tap> .change-list {
                 display: flex;
                 color: #888888;
@@ -91,6 +95,7 @@
                     height: 40px;
                     line-height: 40px;
                     background: #F2F2F8;
+                    
                 }
 
                     .qna-sec >.change-tap> .change-list > li > a {
@@ -108,10 +113,7 @@
                     .qna-sec >.change-tap> .change-list > li > a {
                         text-decoration: none;
                     }
-            .qna-list{
-                display: flex;
-                flex-direction: row;
-            }
+            
                 .change-tap-list>li>input{
                     width: 80px;
                     height: 30px;
@@ -126,60 +128,126 @@
                     color:#000000;
                     background:#ffffff; 
                 }
-        .qna-list {
-            min-height: 300px;
-          
-            
-        }
+       		.qna-list{
+                display: none;
+                flex-direction: row;
+                 min-height: 300px;
+                 width: 900px;
+            }
             .qna-list ol{
                 min-height: 200px; 
                 display: flex;
                 flex-flow: column wrap;
                 align-items: center;                
-                justify-content: space-around;
+                justify-content: flex-start;
             }
-            .qna-list ol li{
-                    width: 600px;
-                    flex: 0 0 100px;
-                    padding-right: 50px;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-around;
-                    border: 1.5px solid gray;
-                    border-radius: 20px;
-                    background: url("../../images/icon/notice-button.png") no-repeat  right 3% bottom 50%/7%;
+            .qna-sec-list li{
+                    width: 820px;
+                    --flex: 0 0 100px;
+                    display: inline-block;
+                    border: 1px solid #979797;
+                    border-radius: 10px;
+                    position: relative;
+                    background:white;
+                    margin:20px 0 10px 0;
                 }
 
-                .qna-list ol li>div{
-                        flex: 0 0 400px;
-                        padding: 20px;
+                .qna-sec-list li>div{
+                         width: 400px;
+                        padding:25px 0 20px 20px;
+                        display: inline-block;
                     }
-                    .qna-list ol li:hover .d-none{
-                            display: block;
+                .qna-sec-list li>p{
+                        display: inline-block;
+                        position: absolute;
+                        top: 28px;
+                        right: 50px;
+                    }
+	                    .qna-sec-list li>div .p-detail{
+	                    	width:800px;
+	                    	background:#fafafa;
+	                    	padding:10px;
+	                    	margin-top:20px;
+	                    	display: none;
+	                    	border-top: 0.5px solid #979797;
+	                    	
+	                    }
+                        .qna-sec-list li>div p:nth-child(1){
+                        	width:820px;
+                            --border-bottom: 0.5px solid #979797;
+                            padding-bottom:20px;
+                            font-size:20px;
                         }
-                        .qna-list ol li:hover {
-                            background: url("../../images/icon/notice-button-click.png") no-repeat  right 3% bottom 50%/7%;
+                        .qna-sec-list li>div p:nth-child(3){
+                            padding-top:20px;
+                            font-size:15px;
+                        }    
+                        /********************************************/
 
-                        }
-                        .qna-list ol li>div p:nth-child(1){
-                            border-bottom: 0.5px solid gray;
-                        }
+.qna-sec-list >li> input[type="checkbox"] {
+    display: none;
+}
+
+.qna-sec-list>li> label span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 26px;
+    right: 15px;
+    background: url(../../images/checkbox-bold.svg) 0px top no-repeat;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.qna-sec-list >li> input[type="checkbox"]:checked~label span{
+    background: url(../../images/checkbox-bold.svg) -30px top no-repeat;
+    background-size: cover;
+    
+}
+.qna-sec-list >li>input[type="checkbox"]:checked+div>.p-detail {
+  display: block;
+}
+
+/*========================================================*/
         .qna-creat {
-            height: 300px;
-            border-top: 1px solid gray;
-            display: none;
-            --background: chartreuse;
+			width:820px;       		
+            height: 500px;
+            display: block;
         }
             .qna-creat>form{
-                height: 250px;
+                height: 500px;
                 display: flex;
                 flex-direction: column;
-                justify-content:space-around;
-                border-top: 1px solid #000000;
+                margin-top:20px;
+               
             }
                 .qna-creat>form>select{
                     width: 200px;
+                    
+                }
+                
+                .qna-creat>form textarea{
+               		 margin-top:20px;
+                }
+                
+                .qna-creat>form input[type="submit"]{
+	                width:100px;
+	                align-self:center; 
+	              	background-color: #fc0453;
+		            border-radius: 5px;
+		            border: 1px solid #ff0059;
+		            cursor: pointer;
+		            color: #ffffff;
+		            text-decoration: none;
+		            padding: 15px 30px;
+		            margin-top:40px;
+		             transition: all 0.25s ease-out  ;
+		          
+                }
+                .qna-creat>form input[type="submit"]:hover{
+	               width:110px;
+	               font-size:15px;
                 }
 
            

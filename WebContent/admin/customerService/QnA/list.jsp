@@ -10,36 +10,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/QnA/list.css">
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/QnA/list.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>questionList</title>
+    <script src="/js/admin/customerService/notice/list.js" type="text/javascript"></script>
+    <title>TEUM | 틈을 채우다</title>
 </head>
 <body>
-    <header class="sec-header">
-        <div id="header" class="header">
-            <div class="header-h1">
+   <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
                 <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
     <main>
 	    <section class="body">
@@ -70,19 +75,25 @@
 	                        </ul>
 	                    </div>
 	                    <section class="list-board">
-	                        <h1>문의사항 리스트</h1>
-	                        <select name="" id="" class="catagory">
-	                            <form action="">
-	                                <option value="" selected disabled>카테고리</option>
-	                                <option value="이벤트">이벤트</option>
-	                                <option value="예약/결제">예약/결제</option>
-	                                <option value="취소/환불">취소/환불</option>
-	                                <option value="서비스 이용">서비스 이용</option>
-	                                <option value="회원/개인정보">회원/개인정보</option>
-	                                <option value="리뷰">리뷰</option>
-	                                <option value="기타">기타</option>
-	                            </form>
-	                        </select>
+		                   	<div class="main-search">
+		                        <h1>공지사항 리스트</h1>
+		                        <div>
+			                        <select name="" id="" class="catagory">
+			                            <form action="">
+			                                <option value="" selected disabled>카테고리</option>
+			                                <option value="이벤트">이벤트</option>
+			                                <option value="예약/결제">예약/결제</option>
+			                                <option value="취소/환불">취소/환불</option>
+			                                <option value="서비스 이용">서비스 이용</option>
+			                                <option value="회원/개인정보">회원/개인정보</option>
+			                                <option value="리뷰">리뷰</option>
+			                                <option value="기타">기타</option>
+			                            </form>
+		                                <input type="text">
+			                        	<input type="submit" value="검색">
+			                        </select>
+		                        </div>
+	                        </div>
 	                        <table>
 	                            <thead>
 	                                <tr>
@@ -92,7 +103,7 @@
 	                                    <td class="col-m">연락처</td>
 	                                    <td class="col-sm">문의날짜</td>
 	                                    <td class="col-s">상태</td>
-	                                    <td class="col-s"><input type="checkbox"></td>
+	                                    <td class="col-s"><input type="checkbox" class="selectAllDelete"></td>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
@@ -116,7 +127,7 @@
 				                            </c:choose>
 	                            		</td>
 	                                    <td>
-	                                        <input type="checkbox" name="" id="">
+	                                        <input type="checkbox" name="" class="deleteChk" >
 	                                    </td>
 	                                </tr>
 	                             </c:forEach>
@@ -130,22 +141,22 @@
 	                                </tr>
 	                            </tbody>
 	                        </table>
-	                    </section>
-	                    <section>
-	                        <h1 class="d-none">페이지 정보</h1>
-	                        <div>
-	                            1 / 2 pages
-	                        </div>
-	                    </section>
-	                    <section>
-	                        <h1 class="d-none">페이지 요청목록</h1>
-	                        <ul>
-	                            <li>1</li>
-	                            <li>2</li>
-	                        </ul>
-	                    </section>
-	                </section>
-	            </main>
+                    	</section>
+                    </section>
+                    <section>
+                        <h1 class="d-none">페이지 정보</h1>
+                        <div>
+                            1 / 2 pages
+                        </div>
+                    </section>
+                    <section>
+                        <h1 class="d-none">페이지 요청목록</h1>
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                        </ul>
+                    </section>
+            	</main>
 	        </div>
 	    </section>
    </main>

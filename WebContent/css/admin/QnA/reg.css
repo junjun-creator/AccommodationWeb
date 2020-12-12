@@ -1,10 +1,17 @@
-
+.d-none{
+	display: none;
+}
 /********************************************/
-
-     
+.main .sub-container {
+	margin-left: 30px;
+	}	
+     .main h1 {
+		    font-size: 20px;
+	 		margin-top:30px;
+		}
         .main .form-sec {
            
-            width: 800px; /* form�쓽 margin-left(30) + form�쓽 width(800) */
+            width: 800px;
         }
 
             .main .reg-form > table {
