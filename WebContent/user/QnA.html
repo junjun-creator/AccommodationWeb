@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="../css/user/QnA.css">
+    <link rel="stylesheet" href="/css/user/QnA.css">
      <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -42,9 +42,9 @@
             <aside id="aside" class="aside">
                 <h1 class="d-none">문의사항</h1>
                 <ul>
-                	 <li class="active"><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;공지사항</a></li>
+                	 <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;공지사항</a></li>
 	                 <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;이벤트</a></li>
-	                 <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Q&A</a></li>
+	                 <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Q&A</a></li>
             	</ul>
             </aside>
             <main id="main" class="main">
@@ -72,11 +72,12 @@
                     </section>
                     <section class="qna-list">
                         <h1 class="d-none">내 문의 리스트</h1>
-                        <ol>
+                        <ol class="qna-sec-list">
                             <li>
+                             <input type="checkbox" id="checkbox-1" class="checkbox" name="check" onclick="doOpenCheck(this);">
                                 <div>
                                     <p>답변</p>
-                                    <p class="p-detail d-none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.
+                                    <p class="p-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam placeat eum numquam quia quasi labore, magni itaque quae et quo blanditiis iusto illo aspernatur ab! Ut iusto delectus corrupti modi!
                                     d-none Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur et nam laboriosam unde enim beatae excepturi eius mollitia, quod praesentium ipsam. A quos nostrum aperiam dolorum omnis ab repellendus sint?
                                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem odit impedit unde cumque voluptates quo doloremque, eligendi blanditiis modi deleniti pariatur, nesciunt consequatur quidem vitae quasi voluptate hic. Repellat, rem!
@@ -84,6 +85,7 @@
                                     <p>2020/11/01</p>
                                 </div>
                                 <p>Master</p>
+                                <label for="checkbox-1"><span></span></label>
                             </li>
                         </ol>
                     </section>

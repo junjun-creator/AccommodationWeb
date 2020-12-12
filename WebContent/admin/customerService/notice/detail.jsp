@@ -7,36 +7,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/notice/detail.css">
+     <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/notice/detail.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>공지사항 자세히보기</title>
 </head>
 <body>
-    <header class="sec_header">
-        <div class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
+                <ul class="main-menu">
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
     <main>
 	    <section class="body">
@@ -89,13 +93,30 @@
 	                                    </td>
 	                                </tr>
 	                            </table>
-	                            <div>
+	                           
+	                        </form>
+	                    </section>
+	                    <section class="page-list-sec">
+                            <div class="page prev-page">
+                                <a href="">
+                                    <span class="page-direction">이전글</span>
+                                    <span class="page-title"></span>
+                                </a>
+                            </div>
+                            <div class="page next-page">
+                                <a href="">
+                                    <span class="page-direction">다음글</span>
+                                    <span class="page-title"></span>
+                                    <span class="page-date"></span>
+                                </a>
+                            </div>
+                            
+                        </section>
+                         <div class="btn-list">
 	                            	<a class="btn-cancel" href="list">목록</a>
 	                                <a class="btn-cancel" href="edit?id=${n.id}">수정</a>
                     				<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
-	                            </div>
-	                        </form>
-	                    </section>
+	                     </div>
 	                </section>
 	            </main>
 	        </div>

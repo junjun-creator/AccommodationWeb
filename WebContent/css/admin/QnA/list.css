@@ -1,6 +1,25 @@
-
+.d-none{
+	display: none;
+}
+ /************************main-search********************/
+		
+		.main .list-board .main-search{
+			width: 900px; /*table size*/
+			display:flex;
+			justify-content: space-between;
+			 padding-top: 30px;
+			
+		}
+		
 /********************************************/
-
+.main .sub-container {
+	margin-left: 30px;
+	}	
+	
+		.main h1 {
+		    font-size: 20px;
+	 		
+		}
            .main .list-board>.catagory{
                margin: 10px 0 10px 0 ;
            }
@@ -8,8 +27,9 @@
             .main .list-board > table{
                 border-top: 2px solid #5f005f;
                 table-layout: fixed;
-                width: 800px;
+                width: 900px;
                 font-size: 14px;
+                margin-top:10px;
             }
 
                 .main .list-board > table > thead {
@@ -26,16 +46,16 @@
                             border-bottom: 1px solid #e9e9e9;
                         }
                         .main .list-board>table tr td.col-s{
-                            width: 60px;
+                            width: 50px;
                         }
                         .main .list-board > table td.col-sm { 
                             width: 100px;
                         }
                         .main .list-board>table tr td.col-m{
-                            width: 200px;
+                            width: 250px;
                         }
                         .main .list-board>table tr td.col-ml{
-                            width: 250px;
+                            width: 300px;
                         }
                         .main .list-board > table .btn-delete>td{
                             text-align: right;

@@ -1,13 +1,27 @@
+.d-none{
+	display: none;
+}
+
 
     /************************main-search********************/
+		
 		.main .list-board .main-search{
 			width: 900px; /*table size*/
 			display:flex;
 			justify-content: space-between;
+			 padding-top: 30px;
+			
 		}
 		
 	 /************************main table********************/
-		
+	.main .sub-container {
+	margin-left: 30px;
+	}	
+	
+		.main h1 {
+		    font-size: 20px;
+
+		}
         .main .list-board>table{
             border-top: 2px solid #5f005f;
             table-layout: fixed;

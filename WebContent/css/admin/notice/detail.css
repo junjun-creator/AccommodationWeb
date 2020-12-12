@@ -1,3 +1,6 @@
+.d-none{
+	display: none;
+}
 
 /********************************************/
 
@@ -5,12 +8,18 @@
            
             width: 800px; /* form�쓽 margin-left(30) + form�쓽 width(800) */
         }
-
+		.main .sub-container {
+				margin-left: 30px;
+			}	
+		.main h1 {
+		    font-size: 20px;
+			margin-top:30px;
+		}			
             .main .reg-form > table {
                 border-top: 2px solid #5F0080;
                 --border-collapse: collapse;
                 --border-spacing: 5px 10px;
-                width: 800px;
+                width: 900px;
                 table-layout: fixed;
                 font-size: 14px;
                 margin: 10px 0 0 0px;
@@ -64,24 +73,78 @@
                             margin-top: 10px;
                         }
 
-                    .main .reg-form > div {
+                    .main .btn-list{
                         width: 800pxpx;
                         margin: 10px 0 0 30px;
                         text-align: center;
                     }
 
-                    .main .reg-form > div .btn-submit,
-                    .main .reg-form > div .btn-cancel {
+                    .main .btn-list .btn-submit,
+                    .main .btn-list .btn-cancel {
                         width: 80px;
                         height: 25px;
                         margin: 0 5px 0 5px;
                          border:1px solid #000000;
                           border-radius: 4px;
                     }
-                     .main .reg-form > div .btn-cancel {
+                     .main .btn-list .btn-cancel {
                      	display:inline-block;
                    		text-decoration:none;
                      	background: #EFEFEF;
                      	 font-size :15.5px;
                      }
+    .sub-container .page-list-sec {
+	    --border: 1px solid blue;
+	    margin: 30px auto 50px auto;
+	    width: 800px;
+	}
+	
+	    .sub-container .page-list-sec .page {
+	        border-bottom: 1px solid #d6d6d6;
+	        padding-top: 25px;
+	        padding-bottom: 25px;
+	    }
+	
+	    .sub-container .page-list-sec .prev-page {
+	        border-top: 1px solid #d6d6d6;
+	        padding-top: 25px;
+	        padding-bottom: 25px;
+	    }
+	
+	        .sub-container .page-list-sec .page a {
+	            text-decoration: none;
+	        }
+	
+	            .sub-container .page-list-sec .page .page-direction {
+	                color: #fc0453;
+	                padding-left: 30px;
+	            }
+	
+	            .sub-container .page-list-sec .page .page-title {
+	                font-weight: bold;
+	                padding-left: 100px;
+	                display: inline-block;
+	                width: 460px;
+	            }
+	
+	            .sub-container .page-list-sec .page .page-date {
+	                color: #808080;
+	            }
+	            
+	            
+	    .sub-container .page-list-sec .btn-container {
+	        width: 180px;
+	        margin: 30px auto 0 auto;
+	    }
+	    
+	        .sub-container .page-list-sec .btn-container .btn-list {
+	            background-color: #fc0453;
+	            border-radius: 3px;
+	            border: 1px solid #ff0059;
+	            display: inline-block;
+	            cursor: pointer;
+	            color: #ffffff;
+	            padding: 16px 60px;
+	            text-decoration: none;
+	        }
 /********************************************/

@@ -1,16 +1,25 @@
-
+.d-none{
+	display: none;
+}
 /********************************************/
-
+.main .sub-container {
+	margin-left: 30px;
+	}	
+	
+		.main h1 {
+		    font-size: 20px;
+	 		
+		}
         .main .form-sec {
            
-            width: 800px; /* form�쓽 margin-left(30) + form�쓽 width(800) */
+            width: 900px; 
         }
 
             .main .reg-form > table {
                 border-top: 2px solid #5F0080;
                 --border-collapse: collapse;
                 --border-spacing: 5px 10px;
-                width: 800px;
+                width: 900px;
                 table-layout: fixed;
                 font-size: 14px;
                 margin: 10px 0 0 0px;

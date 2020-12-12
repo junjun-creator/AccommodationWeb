@@ -138,33 +138,73 @@
                 align-items: center;                
                 justify-content: space-around;
             }
-            .qna-list ol li{
-                    width: 600px;
-                    flex: 0 0 100px;
-                    padding-right: 50px;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-around;
-                    border: 1.5px solid gray;
-                    border-radius: 20px;
-                    background: url("../../images/icon/notice-button.png") no-repeat  right 3% bottom 50%/7%;
+            .qna-sec-list li{
+                    width: 900px;
+                    --flex: 0 0 100px;
+                    display: inline-block;
+                    border-bottom: 1px solid #979797;
+                    --border-radius: 10px;
+                    position: relative;
+                    background:white;
+                    margin-bottom:10px;
                 }
 
-                .qna-list ol li>div{
-                        flex: 0 0 400px;
-                        padding: 20px;
+                .qna-sec-list li>div{
+                         width: 400px;
+                        padding:25px 0 20px 20px;
+                        display: inline-block;
                     }
-                    .qna-list ol li:hover .d-none{
-                            display: block;
+                .qna-sec-list li>p{
+                        display: inline-block;
+                        position: absolute;
+                        top: 28px;
+                        right: 50px;
+                    }
+	                    .qna-sec-list li>div .p-detail{
+	                    	width:850px;
+	                    	background:#fafafa;
+	                    	padding:10px;
+	                    	margin-top:20px;
+	                    	display: none;
+	                    	border-top: 0.5px solid #979797;
+	                    	
+	                    }
+                        .qna-sec-list li>div p:nth-child(1){
+                        	width:850px;
+                            --border-bottom: 0.5px solid #979797;
+                            padding-bottom:20px;
+                            font-size:20px;
                         }
-                        .qna-list ol li:hover {
-                            background: url("../../images/icon/notice-button-click.png") no-repeat  right 3% bottom 50%/7%;
+                        .qna-sec-list li>div p:nth-child(3){
+                            padding-top:20px;
+                            font-size:15px;
+                        }    
+                        /********************************************/
 
-                        }
-                        .qna-list ol li>div p:nth-child(1){
-                            border-bottom: 0.5px solid gray;
-                        }
+.qna-sec-list >li> input[type="checkbox"] {
+    display: none;
+}
+
+.qna-sec-list>li> label span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 26px;
+    right: 15px;
+    background: url(../../images/checkbox-bold.svg) 0px top no-repeat;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.qna-sec-list >li> input[type="checkbox"]:checked~label span{
+    background: url(../../images/checkbox-bold.svg) -30px top no-repeat;
+    background-size: cover;
+    
+}
+.qna-sec-list >li>input[type="checkbox"]:checked+div>.p-detail {
+  display: block;
+}
         .qna-creat {
             height: 300px;
             border-top: 1px solid gray;
