@@ -169,6 +169,7 @@
                         border: 1px solid rgb(209, 196, 196);
                         border-radius: 5px;
                         margin-top: 20px;
+                        width: 805px;
                     }
 
                         .offer-form > .back-btn-container {
@@ -188,7 +189,7 @@
                         }
 
                             .offer-img-container {
-                                margin: 10px auto;
+                                margin: 10px 0 5px 0;
                                 transform: scale(1);
                                 transition: transform 0.2s;
                             }
@@ -209,61 +210,96 @@
                             }
 
                             .offer-detail-container .offer-room {
-                                --border: 1px solid red;
-                                margin-top: 10px;
-                                --display: inline-block;
+                                font-size: 20px;
+                                font-weight: bold;
                                 position: absolute;
+                                top: 10px;
                             }
 
-                            .offer-detail-container .offer-price {
-                                --display: flex;
-                                --display: inline-block;
+                            .offer-detail-container .offer-bed-count {
                                 margin-top: 30px;
                             }
 
-                            .offer-detail-container .offer-price > div:nth-child(1) {
-                                --border: 1px solid blue;
-                                margin-top: 40px;
-                                --flex-basis: 200px;
-                                --flex-grow: 1;
-                                position: absolute;
-                                top: 70px;
+                                .offer-detail-container .offer-bed-count > div:nth-child(1) {
+                                    position: absolute;
+                                    top: 55px;
+                                }
+
+                                .offer-detail-container .offer-bed-count > div:nth-child(2) {
+                                    flex-grow: 0;
+                                    margin-right: 10px;
+                                    position: absolute;
+                                    top: 55px;
+                                    right: 10px;
+                                }
+
+                            .offer-detail-container .offer-max-headcount {
+                                margin-top: 30px;
                             }
 
-                            .offer-detail-container .offer-price > div:nth-child(2) {
-                                --border: 1px solid green;
-                                margin-top: 40px;
-                                flex-grow: 0;
-                                margin-right: 10px;
+                                .offer-detail-container .offer-max-headcount > div:nth-child(1) {
+                                    position: absolute;
+                                    top: 95px;
+                                }
+
+                                .offer-detail-container .offer-max-headcount > div:nth-child(2) {
+                                    flex-grow: 0;
+                                    margin-right: 10px;
+                                    position: absolute;
+                                    top: 95px;
+                                    right: 10px;
+                                }
+
+                            .offer-detail-container .offer-price {
+                                margin-top: 30px;
+                            }
+
+                                .offer-detail-container .offer-price > div:nth-child(1) {
+                                    --flex-basis: 200px;
+                                    --flex-grow: 1;
+                                    position: absolute;
+                                    top: 135px;
+                                }
+
+                                .offer-detail-container .offer-price > div:nth-child(2) {
+                                    flex-grow: 0;
+                                    margin-right: 10px;
+                                    position: absolute;
+                                    top: 135px;
+                                    right: 10px;
+                                }
+
+                            .offer-detail-container .highlight-btn {
                                 position: absolute;
-                                top: 70px;
-                                right: 10px;
+                                width: 400px;
+                                height: 40px;
+                                top: 189px;
+                                border: none;
+                                border-radius: 5px;
+                                background: #fc0453;
+                                color: white;
+                                --font-weight: bold;
+                                opacity: 0.8;
                             }
 
 
-                            .offer-detail-container .offer-detail-link {
-                                --border: 1px solid red;
-                                margin-top: 80px;
-                                --display: inline-block;
-                                position: absolute;
-                                top: 120px;
-                            }
-
-                            .offer-form > .back-btn-container  {
-                                margin: 20px auto 100px auto;
+                            .offer-form > .back-btn-container {
+                                margin: 50px auto 100px auto;
+                                width: 100%;
+                                text-align: center;
                             }
 
                             .offer-form > .back-btn-container > .back-btn {
-                                background-color: #fc0453;
+                                background: #fc0453;
                                 border-radius: 28px;
                                 cursor: pointer;
                                 color: #ffffff;
-                                display: block;
                                 text-align: center;
                                 width: 150px;
                                 height: 50px;
                                 line-height: 50px;
                                 text-decoration: none;
+                                padding: 16px 60px;
                             }
 
                             .offer-form > .back-btn-container > .back-btn:hover {
