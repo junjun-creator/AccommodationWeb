@@ -86,34 +86,34 @@ var promotionItemContainer = document.querySelector(".promotion-item-container")
 btnLeft.addEventListener("click",function(){
     if(promotionCount > 0){
         promotionCount--;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
     }
     else{
         promotionCount = promotionItems.length-3;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
-    }
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
+    }x1
 });
 btnRight.addEventListener("click",function(){
     //var promotionItemContainer = document.querySelector(".promotion-item-container");
     if(promotionCount <= promotionItems.length-3-1){
 
         promotionCount++;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
     }
     else{
         promotionCount = 0;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
     }
 });
 
 setInterval(function(){
     if(promotionCount <= promotionItems.length-3-1){
         promotionCount++;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
     }
     else{
         promotionCount = 0;
-        promotionItemContainer.style.transform = "translateX("+(-326)*promotionCount+"px)";
+        promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
     }
 },3000);
   

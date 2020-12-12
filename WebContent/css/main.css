@@ -24,7 +24,7 @@
         }
         .promotion-bar>div:nth-child(2){
             display: flex;
-            height: 480px;
+            height: 500px;
             padding-top: 20px;
             justify-content: space-evenly;
         }

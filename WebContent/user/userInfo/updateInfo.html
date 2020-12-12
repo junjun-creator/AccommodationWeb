@@ -63,15 +63,15 @@
                     <h1>회원정보수정</h1>
                     <div>
                         <form action="">
-                            <table style="width: 400px;">
+                            <table style="border-spacing: 10px;">
                                 <tr>
-                                    <td style="width: 30%;">이메일</td>
+                                    <td style="width: 100px;">이메일</td>
                                     <td colspan="2"><span>등록된 이메일정보</span></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>이름</td>
-                                    <td style="width: 50%;"><span>등록된 이름정보</span></td>
+                                    <td><span>등록된 이름정보</span></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
@@ -97,16 +97,25 @@
                                 </tr>
                                 <tr>
                                     <td>회원구분</td>
-                                    <td colspan="3">
+                                    <td colspan="3" class="member-type">
                                         <div class="checkbox-container">
-                                            <input type="checkbox" id="checkbox-2" class="checkbox" required>
+                                            <input name="member-type" type="radio" id="checkbox-2" class="checkbox" required>
                                             <label for="checkbox-2"><span></span></label>
-                                        </div>개인회원 
-                                        <input type="radio" name="memtype">기업회원
+                                        </div>
+                                        <div>
+                                            개인회원
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-3" class="checkbox" required>
+                                            <label for="checkbox-3"><span></span></label>
+                                        </div>
+                                        <div>
+                                            기업회원
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4"><input type="submit" value="수정하기"></td>
+                                    <td colspan="4" class="button-submit"><input type="submit" value="수정하기"></td>
                                 </tr>
                             </table>
                         </form>

@@ -5,48 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/jun.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/reg.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>
-    <header class="sec_header">
-        <div class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
+                <ul class="main-menu">
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
 
-    <header class="header mobileHeader">
-        <div>
-            <a href=""><i class="fas fa-bars"></i></a>
+    <section class="container-sec">
+        <div class="container">
+            <aside id="aside" class="aside">
+                <!-- <h1>게시판</h1> -->
+                <ul>
+                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
+                </ul>
+            </aside>
+            <main id="main" class="main">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="배경1-1.PNG" alt="">
+                </div>
+    
+                <div class="reg-form-sec">
+                    <h1>회원가입</h1>
+                    
+                    <div class="form-sec">
+                        <form action="">
+                            <table>
+                                <tr>
+                                    <th style="white-space: nowrap;">이메일</th>
+                                    <td><input type="text"></td>
+                                    <td><input class="duplicate-check" type="button" value="중복체크"></td>
+                                </tr>
+                                <tr>
+                                    <th style="white-space: nowrap;">이름</th>
+                                    <td><input type="text"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="white-space: nowrap;">닉네임</th>
+                                    <td><input type="text"></td>
+                                    <td><input class="duplicate-check" type="button" value="중복체크"></td>
+                                </tr>
+                                <tr>
+                                    <th style="white-space: nowrap;">비밀번호</th>
+                                    <td><input type="password"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="white-space: nowrap;">비밀번호확인</th>
+                                    <td><input type="password"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="white-space: nowrap;">연락처</th>
+                                    <td><input type="text"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>회원구분</td>
+                                    <td colspan="3" class="member-type">
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-2" class="checkbox" required>
+                                            <label for="checkbox-2"><span></span></label>
+                                        </div>
+                                        <div>
+                                            개인회원
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-3" class="checkbox" required>
+                                            <label for="checkbox-3"><span></span></label>
+                                        </div>
+                                        <div>
+                                            기업회원
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+        
+                            <div class="button-submit">
+                                <input type="submit" value="여행가격의 빈 틈을 찾으러 GOGO~">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
         </div>
-        <div class="header_h1">
-            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        </div>
-        <div>
-            <a href=""><i class="fas fa-search"></i></a>
-        </div>
-    </header>
+    </section>
 
-    <section class="main">
+    <!-- <section class="main">
         <main class="sec_login_main">
 
             <div>
@@ -107,10 +188,10 @@
                 </section>
             </div>
         </main>
-    </section>
+    </section> -->
 
-    <section class="sec_footer">
-        <footer>
+    <section>
+        <footer id="footer" class="footer">
             <div>
                 <ul>
                     <li>
