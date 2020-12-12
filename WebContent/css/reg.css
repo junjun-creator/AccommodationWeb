@@ -9,132 +9,49 @@
         min-height: 500px;
         margin:0 auto;
         display: flex;
-        padding-top: 30px;
     }
-
-        .aside {
-            width: 300px;
-            height: 330px;
-            margin-top: 70px;
-            padding-left: 40px;
-        }
-
-            .aside > h1 {
-                font-size: 24px;
-                font-weight: bold;
-                padding: 10px 0 0 20px;
-            }
-
-            .aside > ul {
-                width: 200px;
-                padding: 10px 0 0 40px;
-            }
-
-            .aside li {
-                height:60px;
-                padding-top: 20px;
-                padding-bottom: 10px;
-                font-size: 20px;
-                transform: scale(1);
-                transition: transform 0.1s;
-                
-            }
-            .aside li:hover {
-                border-bottom:1px solid #fc0453;
-                transform: scale(1.03);
-                color:#fc0453;
-                font-weight: bold;
-            }
-
-            .aside .active {
-                font-weight: bold;
-                color: #fc0453;
-            }
-
-                .aside li > a {
-                    text-decoration: none;
-                }
 
         .main {
             width: 900px;
             min-height: 500px;
             --border: 1px solid blue;
             padding: 0 40px;
-            margin-bottom: 50px;
+            margin: 0 auto;
         }
+            .main>h1{
+                text-align: center;
+                font-size: 40px;
+                font-weight: bold;
+                color: #5f0081;
+            }
+            .main>img{
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
-            .breadcrumb > .breadcrumb-list {
+            /* .breadcrumb > .breadcrumb-list {
                 display: flex;
                 justify-content: flex-end;
                 font-size: 12px;
+            } */
+            .reg-form-sec{
+                min-height: 300px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
             }
-            .reg-form-sec > h1{
-                width: 500px;
-                font-weight: bold;
-                font-size: 24px;
-                margin: 50px 0 20px 30px;
-            }
-
-            .form-sec{
-                margin: 0 auto;
-                width: 500px;
-                
-            }
-                .form-sec table{
-                    border-spacing: 10px;
-                    text-align: center;
+                .reg-form-sec>.reg-form-bg{
+                    height: 500px;
+                    width: 820px;
+                    background-color: #5f0081;
+                    opacity: 0.16;
+                    position: absolute;
                 }
-                    .form-sec table .duplicate-check:hover,
-                    .form-sec .button-submit>input:hover{
-                        cursor: pointer;
-                    }
-
-                    .form-sec .member-type{
-                        display: flex;
-                    }
-                    .form-sec .member-type>div{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .form-sec .checkbox-container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        --border: 1px solid rgb(0, 132, 255);
-                    }
-                    
-                    .form-sec .checkbox-container > input[type="radio"] {
-                        display: none;
-                    }
-
-                    .form-sec .checkbox-container > input[type="radio"] + label span {
-                        display: inline-block;
-                        width: 30px;
-                        height: 30px;
-                        --margin: -2px 10px 0 0;
-                        vertical-align: middle;
-                        background: url(/images/checkbox-bold.svg) left top no-repeat;
-                        cursor: pointer;
-                        background-size: cover;
-                    }
-
-                    .form-sec .checkbox-container > input[type="radio"]:checked + label span {
-                        background: url(/images/checkbox-bold.svg) -30px top no-repeat;
-                        background-size: cover;
-                    }
-                .form-sec .button-submit{
-                    text-align: center;
-                    width: 420px;
+                .reg-form-sec .reg-form-container>.reg-form-item .caution-mention{
+                    color: red;
+                    font-size: 12px;
                 }
-                    .form-sec .button-submit>input{
-                        width: 200px;
-                        margin: 10px 0;
-                        height: 30px;
-                        border: 1px dashed #ff0080;    /*---테두리 정의---*/
-                        background-Color:#ffe6f2;   /*--백그라운드 정의---*/
-                        font:12px 굴림;      /*--폰트 정의---*/
-                        font-weight:bold;   /*--폰트 굵기---*/
-                        color:#ff0080;    /*--폰트 색깔---*/
-                    }
+            
