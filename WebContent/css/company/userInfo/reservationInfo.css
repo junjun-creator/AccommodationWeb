@@ -1,0 +1,188 @@
+
+/********************************************/
+.container-sec {
+    background: #F9FBFF;
+}
+
+    .container {
+        width: 1200px;
+        min-height: 500px;
+        margin:0 auto;
+        display: flex;
+        padding-top: 30px;
+    }
+
+        .aside {
+            width: 300px;
+            height: 330px;
+            margin-top: 70px;
+            padding-left: 40px;
+        }
+
+            .aside > h1 {
+                font-size: 24px;
+                font-weight: bold;
+                padding: 10px 0 0 20px;
+            }
+
+            .aside > ul {
+                width: 200px;
+                padding: 10px 0 0 40px;
+            }
+
+            .aside li {
+                height:60px;
+                padding-top: 20px;
+                padding-bottom: 10px;
+                font-size: 20px;
+                transform: scale(1);
+                transition: transform 0.1s;
+                
+            }
+            .aside li:hover {
+                border-bottom:1px solid #fc0453;
+                transform: scale(1.03);
+                color:#fc0453;
+                font-weight: bold;
+            }
+
+            .aside .active {
+                font-weight: bold;
+                color: #fc0453;
+            }
+
+                .aside li > a {
+                    text-decoration: none;
+                }
+
+        .main {
+            width: 900px;
+            min-height: 500px;
+            --border: 1px solid blue;
+            padding: 0 40px;
+            margin-bottom: 50px;
+        }
+
+            .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 12px;
+            }
+
+            .reservation-list-sec>h1{
+                width: 500px;
+                font-weight: bold;
+                font-size: 28px;
+                margin: 50px 0 30px 0;
+            }
+            .reservation-list-sec>.table-container{
+                width: 820px;
+                --border: 1px solid gray;
+                height: 500px;
+            }
+                .reservation-list-sec>.table-container>div:first-child{
+                    margin-left: 9px;
+                }
+                    .reservation-list-sec>.table-container>div:first-child>select>option{
+                        font-size: 30px;
+                    }
+                .reservation-list-sec>.table-container>table{
+                    width: 800px;
+                    margin: 0 auto;
+                    margin-top: 10px;
+                }
+                    .reservation-list-sec>.table-container>table>thead{
+                        background-color: rgb(219, 219, 219);
+                        font-weight: bold;
+                    }
+                        .reservation-list-sec>.table-container>table>thead td{
+                            font-weight: bold;
+                        }
+                    .reservation-list-sec>.table-container>table tr>td{
+                        text-align: center;
+                        border: 1px solid rgb(219, 219, 219);
+                        border-collapse: collapse;
+                    }
+
+
+/********************************************/
+.category-bar{
+    height: 140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .category-bar>ul{
+        display: flex;
+        justify-content: center;
+    }
+    /* .category-bar>ul>li{
+        border: 1px solid gray;
+    } */
+    .category-bar .category-img{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0 25px;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.5s ease;
+    }
+        .category-bar .category-img img{
+            width: 50px;
+        }
+            .category-bar .category-img.selected img{
+                width: 80px;
+            }
+        .category-bar .category-img:hover{
+            color: lightcoral;
+        }
+        
+    .category-bar>ul>li>a>img{
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    /**************페이저***************/
+    .main .table-container > table td.no-border {
+        border: none;
+    }
+    .main .table-container input[type=button]{
+        cursor: pointer;
+    }
+
+    .main .pager-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+        .main .pager-container .pager-list {
+            display: flex;
+        }
+    
+            .main .pager-container .pager-list li {
+                margin-left: 15px;
+            }
+    
+            .main .pager-container .pager-list li:last-child {
+                margin-right: 15px;
+            }
+            
+            .main .pager-container .pager-list .active-page {
+                color: #fc0453;
+                font-weight: bold;
+            }
+    
+            .main .pager-container .pager-list li a {
+                text-decoration: none;
+            }
+    
+            .main .pager-container .pager-list li a:hover {
+                color: #fc0453;
+            }
+    
+        .main .pager-container .btn a {
+            text-decoration: none;
+        }

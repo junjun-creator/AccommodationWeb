@@ -6,101 +6,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/jun.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/company/userInfo/myAccommodationLists.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 </head>
 
 <body>
-    <div class="sec_header">
-        <header class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
+                <ul class="main-menu">
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </header>
-    </div>
-
-    <header class="header mobileHeader">
-        <div>
-            <a href=""><i class="fas fa-bars"></i></a>
-        </div>
-        <div class="header_h1">
-            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        </div>
-        <div>
-            <a href=""><i class="fas fa-search"></i></a>
-        </div>
+        </section>
     </header>
 
-    <section class="userInfo_main">
-        <main class="sec_userInfo_main">
-            <!-- <h1>회원정보수정</h1> -->
-            <aside>
-                <h1>회원정보관리(기업)</h1>
+    <section class="container-sec">
+        <div class="container">
+            <aside id="aside" class="aside">
+                <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li>
-                        <a href="">회원정보수정</a>
-                    </li>
-                    <li>
-                        <a href="">예약관리</a>
-                    </li>
-                    <li>
-                        <a href="">경매신청관리</a>
-                    </li>
-                    <li>
-                        <a href="">최근살펴본상품조회</a>
-                    </li>
-                    <li>
-                        <a href="">찜한상품조회</a>
-                    </li>
+                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소등록</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;골든타임관리</a></li>
                 </ul>
             </aside>
+            <main id="main" class="main">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb-list">
+                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
+                    </ul>
+                </div>
+                <section class="reservation-list-sec">
+                    <h1>숙소현황</h1>
+                    <section class="category-sec">
+                        <div class="category-bar">
+                            <ul>
+                                <li>
+                                    <a class="category-img" href="">
+                                        <img src="../../images/main/all-icon.png" alt="">
+                                        <span>전체</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-img selected" href="">
+                                        <img src="../../images/main/hotel-icon.png" alt="">
+                                        <span>호텔</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-img" href="">
+                                        <img src="../../images/main/motel-icon.png" alt="">
+                                        <span>모텔</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-img" href="">
+                                        <img src="../../images/main/guesthouse-icon.png" alt="">
+                                        <span>게스트하우스</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-img" href="">
+                                        <img src="../../images/main/resort-icon.png" alt="">
+                                        <span>리조트</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-img" href="">
+                                        <img src="../../images/main/pension-icon.png" alt="">
+                                        <span>펜션</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
 
-            <div>
-                <section>
-                    <h1>등록된 숙소정보</h1>
-
-                    <div>
-                        <ul style="display: flex;">
-                            <li>전체</li>
-                            <li>호텔</li>
-                            <li>모텔</li>
-                            <li>펜션</li>
-                            <li>리조트</li>
-                            <li>게스트하우스</li>
-                            <li>캠핑/글램핑</li>
-                            <li>한옥</li>
-                            <li>내주변</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div><img src="../../배경1-1.PNG" alt=""></div>
-                        <div><img src="../../배경1-1.PNG" alt=""></div>
-                    </div>
-
+                    <section class="acc-item-sec">
+                        <div class="snip1368">
+                            <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                            <h3>상세보기</h3>
+                            <figcaption>
+                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+                                </div>
+                              </figcaption>
+                            <div class="description-item">
+                                <p>라마다 호텔</p>
+                                <P>9.1 추천해요 (201)</P>
+                                <p>강남구 역삼동</p>
+                            </div>
+                            <div class="item-price">
+                                <div>
+                                    <p>숙박</p>
+                                    <p>예약특가</p>
+                                    <p>30,000원</p>
+                                </div>
+                            </div>
+                            <div class="hovered-item-bg">
+                            </div>
+                        </div>
+                        <div class="snip1368">
+                            <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                            <h3>상세보기</h3>
+                            <figcaption>
+                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+                                </div>
+                              </figcaption>
+                            <div class="description-item">
+                                <p>라마다 호텔</p>
+                                <P>9.1 추천해요 (201)</P>
+                                <p>강남구 역삼동</p>
+                            </div>
+                            <div class="item-price">
+                                <div>
+                                    <p>숙박</p>
+                                    <p>예약특가</p>
+                                    <p>30,000원</p>
+                                </div>
+                            </div>
+                            <div class="hovered-item-bg">
+                            </div>
+                        </div>
+                    </section>
+                    
                 </section>
-            </div>
-        </main>
+            </main>
+        </div>
     </section>
 
-    <section class="sec_footer">
-        <footer>
+    <section>
+        <footer id="footer" class="footer">
             <div>
                 <ul>
                     <li>
@@ -129,9 +192,9 @@
                     </li>
                     <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
                 </ul>
-
-                <p><b>고객행복센터 1577-8282</b> 오전 09:00 ~ 오후18:00</p>
-
+        
+                <p><b>고객행복센터 1577-8282</b>   오전 09:00 ~ 오후18:00</p>
+    
                 <address>
                     <span>(주)TEUM</span>
                     주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층

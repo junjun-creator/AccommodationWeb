@@ -1,5 +1,39 @@
 
+.body {
+    display: flex;
+}
+ .body> .aside {
+    border: 1px solid #e4e3e3;
+    width: 300px;
+    height: 1000px;
+}
 
+    .aside > h1 {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 30px 0 0 20px;
+    }
+
+        .aside > ul {
+            width: 250px;
+            padding: 10px 0 0 40px;
+        }
+
+            .aside > ul li {
+                padding-top: 10px;
+                font-size: 20px;
+            }
+
+            .aside > ul li .active {
+                font-weight: bold;
+                color: #fc0453;
+            }
+
+            .aside > ul li a {
+                text-decoration: none;
+            }
+
+/*---------------------------------------------------------*/
             .sub-container>div:nth-child(4){
                 display: flex;
             }
@@ -49,14 +83,14 @@
                     }
                     .main .list-board > table .btn-delete>td{
                         text-align: right;
-                        padding-right: 15px;
+                        padding-right: 30px;
                         border-bottom: none;
                     }
 
     .user-info-member{
         width: 200px;
         border-bottom: 2px solid #5F0080;
-        margin: 30px 0 30px 30px;
+        margin: 30px 0 30px 32px;
         
     }
     .user-info-btn{
@@ -71,3 +105,42 @@
         margin-left: 5px;
     }
 
+/**************페이저***************/
+.main .table-container > table td.no-border {
+    border: none;
+}
+
+.main .pager-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .main .pager-container .pager-list {
+        display: flex;
+    }
+
+        .main .pager-container .pager-list li {
+            margin-left: 15px;
+        }
+
+        .main .pager-container .pager-list li:last-child {
+            margin-right: 15px;
+        }
+        
+        .main .pager-container .pager-list .active-page {
+            color: #fc0453;
+            font-weight: bold;
+        }
+
+        .main .pager-container .pager-list li a {
+            text-decoration: none;
+        }
+
+        .main .pager-container .pager-list li a:hover {
+            color: #fc0453;
+        }
+
+    .main .pager-container .btn a {
+        text-decoration: none;
+    }
