@@ -58,33 +58,38 @@ header li{
     border-top: none;
     background-color: white;
     --margin-top: 15px;
-    right: -12px;
+    --right: -12px;
     opacity: 0;
     transition: opacity .25s ease .1s;
+    width: 90px;
 }
-.sec-header-page .mega-menu ul li{
-   height: 0;
-   overflow: hidden;
-   padding: 0;
-   transition: height .25s ease .1s;
-}
-
-    .sec-header-page .mypage:hover .mega-menu{
-        opacity: 1;
-
+    .sec-header-page .mega-menu ul li{
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: height .25s ease .1s;
     }
 
-    .sec-header-page .mypage:hover .mega-menu ul li {
-        height: 36px;
-        overflow: visible;
-        padding: 0;
-    }
-
-        .sec-header-page .mega-menu a{
-            color: #5f0081;
+        .sec-header-page .mega-menu ul li a{
+            text-align: left;
             font-size: 14px;
             font-weight: none;
         }
+
+    .sec-header-page .sub-page:hover .mega-menu{
+        opacity: 1;
+    }
+
+        .sec-header-page .sub-page:hover .mega-menu ul li {
+            height: 36px;
+            overflow: visible;
+            padding: 0;
+        }
+
+            .sec-header-page .sub-page:hover .mega-menu ul a:hover {
+                background: #5f0081;
+                color: white;
+            }
 
 /*----------  header search -----------*/
 .header_search{
