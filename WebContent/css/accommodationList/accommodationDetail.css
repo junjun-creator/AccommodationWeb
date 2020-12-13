@@ -1,147 +1,211 @@
-header h1{
-    margin: 0;
-    height: 100%;
-}
 
-header li{
-    color: white;
-    list-style: none;
+.main{
+width: max-content;
+margin: 0px auto;
 }
-
-.sec-header-page{
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-.header-sec{
-    display: flex;
-    background: white;
-    height: 72px;
-    width: 1200px;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-    .header-sec a {
-        --height: 50%;
-        display: block;
-        text-align: center;
-        padding: .5rem 1rem;
-        text-decoration: none;
-        color: #5f0081;
-        font-weight: bold;
-    }
-
-    .header-sec>.header-logo{
-        flex-basis: 50px;
-        height:70%;
-        background: url(/images/틈로고index.png) 0 0 no-repeat;
-        text-indent: -9999px;
-        background-size: 50px auto;
-    }
-        .header-sec>.header-logo .teum-logo{
-            box-sizing: border-box;
-            height: 100%;
-        } 
-        .main-menu{
-            display: flex;
-            margin: 0;
-            position: relative;
-        }
-        
-        .sec-header-page .mega-menu{
-            position: absolute;
-            border: 1px solid rgb(160, 160, 160);
-            border-top: none;
-            background-color: white;
-            --margin-top: 15px;
-            right: -12px;
-            opacity: 0;
-            transition: opacity .25s ease .1s;
-        }
-        .sec-header-page .mega-menu ul li{
-            height: 0;
-            overflow: hidden;
-            padding: 0;
-            transition: height .25s ease .1s;
-        }
-        
-            .sec-header-page .mypage:hover .mega-menu{
-                opacity: 1;
-        
-            }
-        
-            .sec-header-page .mypage:hover .mega-menu ul li {
-                height: 36px;
-                overflow: visible;
-                padding: 0;
-            }
-        
-                .sec-header-page .mega-menu a{
-                    color: #5f0081;
-                }
-                .header_search{
-    display: flex;
-}
-    .header_search>input{
-        padding: 8px 16px 8px 16px;
-        width: 100px;
-    }.header_search{
+    .main .title{
         display: flex;
+        padding-left: 30px;
     }
-        .header_search>input{
-            padding: 8px 16px 8px 16px;
-            width: 100px;
-        }
-        .main{
-        width: max-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
-        .title{
-            display: flex;
-        }
-            .title .main-img{
-
-            }
-            .title .main-info
-        .review{
-
-        }
-        .event{
-            border: 2px solid black;
-            position: relative;
-        }
-        .event h1{
+        .main .title .main-info h1{
+            font-size: 45px;
             font-weight: bold;
+            margin-bottom: 10px;
+        } 
+        .main .title .main-info h2{
+            font-size: 25px;
+            color: gray;
+        } 
+        .main .title .main-info .review{
+            font-size: 25px;
+            color: orange;
         }
-            .event nav a{
-                position: absolute;
-                right: 0px;
-            }
-            .event nav ul{
-                /* align-items: flex-end; */
-            }
-        .dateChange{
-            border: 2px solid black;
+.dateChange{
+    padding-left: 30px;
+
+}
+    .dateChange div p{
+        font-size: 35px;
+    }
+    .dateChange div input{
+        padding-left: 40px;
+    }
+
+
+        .room-sec {
+            --border: 1px solid red;
+            margin: 70px auto 0 auto;
         }
 
-        .information-box{
-            display: flex;
-        }
-        .information-box>div{
-            background-attachment: fixed;
-        }
-        .information-box table{
-            height: 220px;
-            width: 700px;
-            border: 1px solid black;
-            
-        }
-        .information-box table tr:nth-child(3) td:last-child{
-            background-color: pink;
-            color: white;
-        }
-        
-        
+            .room-sec > h1 {
+                --border: 1px solid green;
+                width: 500px;
+                font-weight: bold;
+                font-size: 24px;
+                margin-left: 30px;
+            }
+
+            .room-form {
+                --border: 1px solid blue;
+                margin: 20px 0px 0 30px;
+            }
+
+                .room-form > section {
+                    display: flex;
+                    border: 1px solid rgb(209, 196, 196);
+                    border-radius: 5px;
+                    margin-top: 20px;
+                }
+
+                    .radio-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        --border: 1px solid rgb(0, 132, 255);
+                    }
+                    
+                    .room-form > section > .radio-container > input[type="radio"] {
+                        display: none;
+                    }
+
+                    .room-form > section > .radio-container > input[type="radio"] + label span {
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        --margin: -2px 10px 0 0;
+                        vertical-align: middle;
+                        background: url(/images/checkbox-bold.svg) 0 top no-repeat;
+                        cursor: pointer;
+                        background-size: cover;
+                    }
+
+                    .room-form > section > .radio-container > input[type="radio"]:checked + label span {
+                        background: url(/images/checkbox-bold.svg) -30px top no-repeat;
+                        background-size: cover;
+                    }
+
+                    .room-form > div {
+                        width: 100px; /* submit 버튼 너비 수정해야함 */
+                        margin: 0 auto;
+                    }
+
+                    .room-form > section > .radio-container {
+                        flex-grow: 1;
+                    }
+
+                    .room-form > section > .room-container {
+                        flex-grow: 10;
+                        display: flex;
+                        --border: 1px solid red;
+                    }
+
+                        .room-img-container {
+                            margin: 10px 0 5px 0;
+                            transform: scale(1);
+                            transition: transform 0.2s;
+                        }
+
+                            .room-img-container img {
+                                width: 370px;
+                                height: 220px;
+                                border: 1px solid rgb(199, 199, 199);
+                            }
+
+                        .room-detail-container {
+                            width: 100%;
+                            margin-left: 10px;
+                            position: relative;
+                        }
+
+                        .room-detail-container .room-room {
+                            font-size: 20px;
+                            font-weight: bold;
+                            position: absolute;
+                            top: 10px;
+                        }
+
+                        .room-detail-container .room-bed-count {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-bed-count > div:nth-child(1) {
+                                position: absolute;
+                                top: 55px;
+                            }
+
+                            .room-detail-container .room-bed-count > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 55px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .room-max-headcount {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-max-headcount > div:nth-child(1) {
+                                position: absolute;
+                                top: 95px;
+                            }
+
+                            .room-detail-container .room-max-headcount > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 95px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .room-price {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-price > div:nth-child(1) {
+                                --flex-basis: 200px;
+                                --flex-grow: 1;
+                                position: absolute;
+                                top: 135px;
+                            }
+
+                            .room-detail-container .room-price > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 135px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .highlight-btn {
+                            position: absolute;
+                            width: 400px;
+                            height: 40px;
+                            top: 189px;
+                            border: none;
+                            border-radius: 5px;
+                            background: #fc0453;
+                            color: white;
+                            --font-weight: bold;
+                            opacity: 0.8;
+                        }
+
+                        .room-form > .submit-btn-container  {
+                            margin: 50px auto 100px auto;
+                            width: 100%;
+                            text-align: center;
+                        }
+
+                        .room-form > .submit-btn-container > .submit-btn {
+                            background: #fc0453;
+                            border: 1px solid #fc0453;
+                            border-radius: 28px;
+                            cursor: pointer;
+                            color: #ffffff;
+                            padding: 16px 60px;
+                        }
+
+                        .room-form > .submit-btn-container > .submit-btn:hover {
+                            opacity: 0.7;
+                        }
