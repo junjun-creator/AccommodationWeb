@@ -130,8 +130,8 @@
                         background-color: #5f0081;
                         border: 1px solid #5f0081;
                         border-radius: 15px;
-                        padding: 10px 0;
                         cursor: pointer;
+                        padding: 10px 0;
                     }
                     .button-submit>input.disabled{
                         opacity: 0.5;
