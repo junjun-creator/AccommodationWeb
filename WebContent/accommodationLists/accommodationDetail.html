@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신라스테이 삼성</title>
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/jun.css">
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <link href="../../css/accommodationList/accommodationDetail.css"  rel="stylesheet">
@@ -43,78 +43,85 @@
     <div class="main">
         <section class='title'>
             <div class="main-img">
-                <img src = "../../images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt= "신라스테이 삼성"><br>
+                <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt= "신라스테이 삼성"><br>
             </div>
             <div class="main-info">
                 <h1>신라스테이 삼성</h1>
-                서울 강남구 삼성동 168-3<br>
+                <h2>서울 강남구 삼성동 168-3</h2>
                 <nav class='review'>
-                    ★9.0 <a href="">리뷰 보러 가기</a>
+                    ★9.1 <a href="">리뷰 보러 가기</a>
                 </nav>
             </div>
         </section>
 
         <section class='dateChange'>
             <div>
-                예약 날짜<br>
-                <input type="date"> ~ 
-                <input type="date">
+                <p>예약 날짜</p>
+                <input type="date" name="start-date" class="form-option date start-date" required> ~ 
+                <input type="date" name="end-date" class="form-option date end-date" required>
             </div>
         </section>
 
         <table class= 'information'>
-            <tr><td>
-                <section class='information-box standard-twin'>
-                    <div>
-                        <img src = "../../images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성">
-                    </div>
-                    <div>
-                        <form>
-                            <table border="1">
-                                <tr>
-                                    <td>스탠다드 트윈<br></td>
-                                    <td><a href="">기본정보</a><br></td>
-                                </tr>
+            <tr>
+                <td>
+                    <section class='information-box'>
+                        <div>
+                            <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성">
+                        </div>
+                        <div>
+                            <form>
+                                <table border="1">
+                                    <tr>
+                                        <td colspan="2">&nbsp;&nbsp;스탠다드 트윈<br></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;침대개수</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;최대 수용인원</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><nav><a href="">예약하기</a></nav></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </section>
+                </td>
+            </tr>
 
-                                <tr>
-                                    <td>2인 기준, 최대 2인, 싱글 2개</td>
-                                    <td><a href="">예약공지</a></td>
-                                </tr>
-                                <tr>
-                                    <td>120,032원<br></td>
-                                    <td><a href="">예약하기</a></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-            </td></tr>
-
-            <tr><td>
-                <section class='information-box standard-double'>
-                    <div>
-                        <img src = "../../images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg" alt= "신라스테이 삼성">
-                    </div>
-                    <div>
-                        <form>
-                            <table border="1">
-                                <tr>
-                                    <td>스탠다드 더블<br></td>
-                                    <td><a href="">기본정보</a><br></td>
-                                </tr>
-    
-                                <tr>
-                                    <td>2인 기준, 최대 2인, 더블배드 1개</td>
-                                    <td><a href="">예약공지</a></td>
-                                </tr>
-                                <tr>
-                                    <td>132,132원<br></td>
-                                    <td><a href="">예약하기</a></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-            </section>
-        </td></tr>
+            <tr>
+                <td>
+                    <section class='information-box'>
+                        <div>
+                            <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg" alt= "신라스테이 삼성">
+                        </div>
+                        <div>
+                            <form>
+                                <table border="1">
+                                    <tr>
+                                        <td>&nbsp;&nbsp;스탠다드 더블<br></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;침대개수</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;최대 수용인원</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><nav><a href="">예약하기</a></nav></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </section>
+                </td>
+            </tr>
         </table>
     </div>
 
