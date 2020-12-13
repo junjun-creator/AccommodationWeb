@@ -177,10 +177,6 @@
                             margin: 0 auto;
                         }
 
-                        .offer-form > section > .checkbox-container {
-                            flex-grow: 1;
-                        }
-
                         .offer-form > section > .offer-container {
                             flex-grow: 10;
                             display: flex;
@@ -226,7 +222,6 @@
                                 }
 
                                 .offer-detail-container .offer-bed-count > div:nth-child(2) {
-                                    flex-grow: 0;
                                     margin-right: 10px;
                                     position: absolute;
                                     top: 55px;
@@ -243,7 +238,6 @@
                                 }
 
                                 .offer-detail-container .offer-max-headcount > div:nth-child(2) {
-                                    flex-grow: 0;
                                     margin-right: 10px;
                                     position: absolute;
                                     top: 95px;
@@ -255,18 +249,25 @@
                             }
 
                                 .offer-detail-container .offer-price > div:nth-child(1) {
-                                    --flex-basis: 200px;
-                                    --flex-grow: 1;
                                     position: absolute;
                                     top: 135px;
                                 }
 
                                 .offer-detail-container .offer-price > div:nth-child(2) {
-                                    flex-grow: 0;
                                     margin-right: 10px;
                                     position: absolute;
                                     top: 135px;
                                     right: 10px;
+                                    text-decoration: line-through;
+                                }
+
+                                .offer-detail-container .offer-price > div:nth-child(3) {
+                                    margin-right: 10px;
+                                    position: absolute;
+                                    top: 155px;
+                                    right: 10px;
+                                    font-weight: bold;
+                                    color: #fc0453;
                                 }
 
                             .offer-detail-container .highlight-btn {
