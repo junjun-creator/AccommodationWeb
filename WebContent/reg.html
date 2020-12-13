@@ -53,13 +53,98 @@
                                     <em style="color: red;">*</em>
                                     이메일
                                 </label>
-                                <div>
-                                    <div style="display: flex; flex-direction: column;">
-                                        <input type="email" placeholder="teum@example.com" id="email" name="email" autocorrect="off" autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
-                                        <span class="caution-mention">아아</span>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="email check-validation" class="email check-validation"  
+                                        placeholder="teum@example.com" id="email" name="email" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">올바른 이메일 형식을 입력해주세요</span>
                                     </div>
                                 </div>
                             </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="password" title="비밀번호">
+                                    <em style="color: red;">*</em>
+                                    비밀번호
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="password" class="password check-validation" 
+                                        placeholder="최소8자 영문/숫자/특수문자 필수" id="password" name="password" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">최소8자 영문/숫자/특수문자 필수입니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="password-check" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    비밀번호확인
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="password" class="password-check" 
+                                        placeholder="비밀번호확인" id="password-check" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">비밀번호가 일치하지 않습니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="name" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    이름
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="text" class="name check-validation" 
+                                        placeholder="이름" id="name" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">한글 이름만 허용됩니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="phone" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    연락처
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="tel" class="phone check-validation" 
+                                        placeholder="휴대폰번호" id="phone" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">휴대폰번호를 정확히 입력해주세요</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="phone" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    회원구분
+                                </label>
+                                <div>
+                                    <div class="member-type">
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-2" value="회원" class="checkbox" required>
+                                            <label for="checkbox-2"><span></span></label>
+                                        </div>
+                                        <div>
+                                            개인회원
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-3" value="업체" class="checkbox" required>
+                                            <label for="checkbox-3"><span></span></label>
+                                        </div>
+                                        <div>
+                                            기업회원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-submit">
+                            <input class="disabled" disabled type="submit" value="가입">
                         </div>
                     </form>
                 </div>
@@ -112,7 +197,405 @@
         </footer>
     </section>
     <script>
+        var regExp_list = [/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i,
+                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/,
+                        /^[가-힣]+$/,
+                        /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
+                        ];
+        var checkbox = document.querySelectorAll('.checkbox');
+        var button_submit = document.querySelector('.button-submit').firstElementChild;
+        var inputAll = document.querySelectorAll('.check-validation');
+        
+        // 이메일 유효성 검사
         var email_input = document.querySelector('.email');
+        var input_box_email = email_input.parentNode.parentNode;
+        email_input.addEventListener("change", function(){
+            var regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
+            if(regExp.test(email_input.value)){
+                email_input.classList.add('pass');
+                input_box_email.classList.remove('discorrect');
+            }else{
+                if(email_input.classList.contains('pass'))
+                    email_input.classList.remove('pass');
+                    input_box_email.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        email_input.addEventListener("keydown",function(){
+            var regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
+            if(regExp.test(email_input.value)){
+                email_input.classList.add('pass');
+                input_box_email.classList.remove('discorrect');
+            }
+            else{
+                if(email_input.classList.contains('pass'))
+                    email_input.classList.remove('pass');
+                    input_box_email.classList.add('discorrect');
+            }
+        });
+        email_input.addEventListener("keyup",function(){
+            var regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
+            if(regExp.test(email_input.value)){
+                email_input.classList.add('pass');
+                input_box_email.classList.remove('discorrect');
+            }
+            else{
+                if(email_input.classList.contains('pass'))
+                    email_input.classList.remove('pass');
+                    input_box_email.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        //비밀번호 유효성 검사
+        var password_input = document.querySelector('.password');
+        var input_box_password = password_input.parentNode.parentNode;
+        password_input.addEventListener("change", function(){
+            var regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+            if(regExp.test(password_input.value)){
+                password_input.classList.add('pass');
+                input_box_password.classList.remove('discorrect');
+            }else{
+                if(password_input.classList.contains('pass'))
+                    password_input.classList.remove('pass');
+                    input_box_password.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        password_input.addEventListener("keyup",function(){
+            var regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+            if(regExp.test(password_input.value)){
+                password_input.classList.add('pass');
+                input_box_password.classList.remove('discorrect');
+            }
+            else{
+                if(password_input.classList.contains('pass'))
+                    password_input.classList.remove('pass');
+                    input_box_password.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+        password_input.addEventListener("keydown",function(){
+            var regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+            if(regExp.test(password_input.value)){
+                password_input.classList.add('pass');
+                input_box_password.classList.remove('discorrect');
+            }
+            else{
+                if(password_input.classList.contains('pass'))
+                    password_input.classList.remove('pass');
+                    input_box_password.classList.add('discorrect');
+            }
+        });
+
+        //비밀번호 확인 유효성 검사
+        var password_check_input = document.querySelector('.password-check');
+        var input_box_password_check = password_check_input.parentNode.parentNode;
+
+        password_check_input.addEventListener("change", function(){
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        password_check_input.addEventListener("keyup",function(){
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }
+            else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+        password_check_input.addEventListener("keydown",function(){
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }
+            else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
+            }
+        });
+
+        //이름 유효성 검사
+        var name_input = document.querySelector('.name');
+        var input_box_name = name_input.parentNode.parentNode;
+        name_input.addEventListener("change", function(){
+            var regExp = /^[가-힣]+$/;
+            if(regExp.test(name_input.value)){
+                name_input.classList.add('pass');
+                input_box_name.classList.remove('discorrect');
+            }else{
+                if(name_input.classList.contains('pass'))
+                    name_input.classList.remove('pass');
+                    input_box_name.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        name_input.addEventListener("keyup",function(){
+            var regExp =  /^[가-힣]+$/;
+            if(regExp.test(name_input.value)){
+                name_input.classList.add('pass');
+                input_box_name.classList.remove('discorrect');
+            }
+            else{
+                if(name_input.classList.contains('pass'))
+                    name_input.classList.remove('pass');
+                    input_box_name.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+        name_input.addEventListener("keydown",function(){
+            var regExp =  /^[가-힣]+$/;
+            if(regExp.test(name_input.value)){
+                name_input.classList.add('pass');
+                input_box_name.classList.remove('discorrect');
+            }
+            else{
+                if(name_input.classList.contains('pass'))
+                    name_input.classList.remove('pass');
+                    input_box_name.classList.add('discorrect');
+            }
+        });
+
+        //연락처 유효성 검사
+        var phone_input = document.querySelector('.phone');
+        var input_box_phone = phone_input.parentNode.parentNode;
+        phone_input.addEventListener("change", function(){
+            var regExp =  /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+            if(regExp.test(phone_input.value)){
+                phone_input.classList.add('pass');
+                input_box_phone.classList.remove('discorrect');
+            }else{
+                if(phone_input.classList.contains('pass'))
+                    phone_input.classList.remove('pass');
+                    input_box_phone.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+
+        phone_input.addEventListener("keyup",function(){
+            var regExp =  /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+            if(regExp.test(phone_input.value)){
+                phone_input.classList.add('pass');
+                input_box_phone.classList.remove('discorrect');
+            }
+            else{
+                if(phone_input.classList.contains('pass'))
+                    phone_input.classList.remove('pass');
+                    input_box_phone.classList.add('discorrect');
+            }
+
+            var count_validation = 0;
+            for(var i=0;i<inputAll.length;i++){
+                if(regExp_list[i].test(inputAll[i].value)){
+                    count_validation++;
+                }
+            }
+            if(count_validation == 4 &&
+            password_input.value == password_check_input.value &&
+            (checkbox[0].checked || checkbox[1].checked)){
+                button_submit.classList.remove('disabled');
+                button_submit.disabled = false;
+            }
+            else{
+                button_submit.classList.add('disabled');
+                button_submit.disabled = true;
+            }
+        });
+        phone_input.addEventListener("keydown",function(){
+            var regExp =  /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+            if(regExp.test(phone_input.value)){
+                phone_input.classList.add('pass');
+                input_box_phone.classList.remove('discorrect');
+            }
+            else{
+                if(phone_input.classList.contains('pass'))
+                    phone_input.classList.remove('pass');
+                    input_box_phone.classList.add('discorrect');
+            }
+        });
+
+        for(var j=0;j<checkbox.length;j++){
+            (function(m){
+                checkbox[m].addEventListener("click",function(){
+                    var count_validation = 0;
+                    for(var i=0;i<inputAll.length;i++){
+                        if(regExp_list[i].test(inputAll[i].value)){
+                            count_validation++;
+                        }
+                    }
+                    if(count_validation == 4 &&
+                    password_input.value == password_check_input.value &&
+                    (checkbox[0].checked || checkbox[1].checked)){
+                        button_submit.classList.remove('disabled');
+                        button_submit.disabled = false;
+                    }
+                    else{
+                        button_submit.classList.add('disabled');
+                        button_submit.disabled = true;
+                    }
+                });
+            })(j);
+        }
     </script>
 </body>
 </html>
