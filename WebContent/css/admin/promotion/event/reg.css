@@ -59,13 +59,18 @@
 	            }
 	
 	                .sub-container .reg-form > table td > .checkbox-open {
-	                    margin-left: 10px;
+						margin-left: 10px;
+						cursor: pointer;
 	                }
 	
 	                .sub-container .reg-form > table td > .checkbox-open + span {
 	                    margin-left: 10px;
 	                }
 	
+					.sub-container .reg-form > table td > .input-file {
+						cursor: pointer;
+					}
+
 	                .sub-container .reg-form > table td > .textarea {
 	                    margin-top: 10px;
 	                }

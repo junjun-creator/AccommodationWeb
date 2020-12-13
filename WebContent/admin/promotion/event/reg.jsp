@@ -26,8 +26,18 @@
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
+                    <li class="sub-page">
+                        <a href="">더보기</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">1:1 문의</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                         <div class="mega-menu">
                             <ul>
                                 <li><a href="">내정보</a></li>
