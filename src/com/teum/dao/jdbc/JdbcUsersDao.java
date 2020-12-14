@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.UsersDao;
+import com.teum.dao.entity.UsersListView;
 import com.teum.entity.Member;
 import com.teum.entity.Users;
 
@@ -28,7 +29,7 @@ public class JdbcUsersDao implements UsersDao {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			String sql = "INSERT INTO MEMBER(name,email,password,birthday,phone,rank_id) VALUES(?,?,?,?,?,?)";
+			String sql = "INSERT INTO USERS(name,email,password,birthday,phone) VALUES(?,?,?,?,?)";
 			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1,users.getName());
@@ -36,7 +37,6 @@ public class JdbcUsersDao implements UsersDao {
 			ps.setString(3,users.getPassword());
 			ps.setString(4,users.getBirthday());
 			ps.setString(5,users.getPhone());
-			ps.setInt(6, users.getRankId());
 			result = ps.executeUpdate();
 			
 			
@@ -152,8 +152,11 @@ public class JdbcUsersDao implements UsersDao {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		String sql = "SELECT * FROM (SELECT ROWNUM NUM, U.* FROM (SELECT * FROM USERS ORDER BY REGDATE DESC) U) WHERE NAME LIKE '%?%' AND NUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM USER_LIST WHERE NUM BETWEEN ? AND ? AND NAME LIKE ?";
 		
+		System.out.println(startIndex);
+		System.out.println(endIndex);
+		System.out.println(text);
 		List<Users> list = new ArrayList<>();
 		//DriverManager;//Class.forName~
 		try {
@@ -162,12 +165,13 @@ public class JdbcUsersDao implements UsersDao {
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
 			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1,text);
-			ps.setInt(2, startIndex);
+			ps.setInt(1, startIndex);
 			ps.setInt(2, endIndex);
+			ps.setString(3,"%"+text+"%");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int rownum = rs.getInt("num");
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
 				String email = rs.getString("email");
@@ -176,7 +180,8 @@ public class JdbcUsersDao implements UsersDao {
 				int rankId = rs.getInt("rank_id");
 				Date regdate = rs.getDate("regdate");
 				int type = rs.getInt("type");
-				Users u = new Users();
+				UsersListView u = new UsersListView();
+				u.setRownum(rownum);
 				u.setId(id);
 				u.setName(name);
 				u.setEmail(email);

@@ -5,114 +5,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원가입</title>
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/jun.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/reg.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>
-    <header class="sec_header">
-        <div class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
+                <ul class="main-menu">
                     <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
+                        <div class="mega-menu">
                             <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
 
-    <header class="header mobileHeader">
-        <div>
-            <a href=""><i class="fas fa-bars"></i></a>
-        </div>
-        <div class="header_h1">
-            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        </div>
-        <div>
-            <a href=""><i class="fas fa-search"></i></a>
-        </div>
-    </header>
+    <section class="container-sec">
+        <div class="container">
+            <main id="main" class="main">
+               
+                <!-- <h1>Join Now</h1> -->
+                <img src="/images/join2.png" alt="">
+                <div class="reg-form-sec">
 
-    <section class="main">
-        <main class="sec_login_main">
-
-            <div>
-                <img src="/images/배경1-1.PNG" alt="">
-            </div>
-
-            <div class="login_form">
-                <h1>회원가입</h1>
-                
-                <section class="sec_form">
-                    <form method="post">
-                        <table>
-                            <tr>
-                                <th style="white-space: nowrap;">이메일</th>
-                                <td><input type="text" name="email"></td>
-                                <td><input type="button" value="중복체크"></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">이름</th>
-                                <td><input type="text" name="name"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">비밀번호</th>
-                                <td><input type="password" name="pwd"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">비밀번호확인</th>
-                                <td><input type="password"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">연락처</th>
-                                <td><input type="text" name="phone"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">생년월일</th>
-                                <td><input type="text" name="birthday"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style="white-space: nowrap;">회원구분</th>
-                                <td colspan="2" style="padding-left: 32px;">
-                                    <input name="type" type="radio" value="개인회원" checked>
-                                    <span>개인회원</span>
-                                    <input name="type" type="radio" value="기업회원">
-                                    <span>기업회원</span>
-                                </td>
-                            </tr>
-                        </table>
-    
-                        <div class="btn_submit">
-                            <input type="submit" value="여행가격의 빈 틈을 찾으러 GOGO~">
+                    <form action="/reg" method="post">
+                        <div class="reg-form-container">
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="email" title="이메일">
+                                    <em style="color: red;">*</em>
+                                    이메일
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="email check-validation" class="email check-validation"  
+                                        placeholder="teum@example.com" id="email" name="email" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">올바른 이메일 형식을 입력해주세요</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="password" title="비밀번호">
+                                    <em style="color: red;">*</em>
+                                    비밀번호
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="password" class="password check-validation" 
+                                        placeholder="최소8자 영문/숫자/특수문자 필수" id="password" name="password" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">최소8자 영문/숫자/특수문자 필수입니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="password-check" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    비밀번호확인
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="password" class="password-check" 
+                                        placeholder="비밀번호확인" id="password-check" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">비밀번호가 일치하지 않습니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="name" title="이름">
+                                    <em style="color: red;">*</em>
+                                    이름
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="text" class="name check-validation" name="name"
+                                        placeholder="이름" id="name" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">한글 이름만 허용됩니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="birthday" title="생년월">
+                                    <em style="color: red;">*</em>
+                                    생년월일
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="text" class="birthday check-validation" name="birthday"
+                                        placeholder="YYYYmmDD" id="birthday" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">19990000과 같은 형식으로 입력하세요</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="phone" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    연락처
+                                </label>
+                                <div class="input-box">
+                                    <div>
+                                        <input type="tel" class="phone check-validation" name="phone"
+                                        placeholder="휴대폰번호" id="phone" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">휴대폰번호를 정확히 입력해주세요</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reg-form-item">
+                                <label style="font-size: 12px;" for="checkbox-2" title="비밀번호확인">
+                                    <em style="color: red;">*</em>
+                                    회원구분
+                                </label>
+                                <div>
+                                    <div class="member-type">
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-2" value="회원" class="checkbox" required>
+                                            <label for="checkbox-2"><span></span></label>
+                                        </div>
+                                        <div>
+                                            개인회원
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input name="member-type" type="radio" id="checkbox-3" value="업체" class="checkbox" required>
+                                            <label for="checkbox-3"><span></span></label>
+                                        </div>
+                                        <div>
+                                            기업회원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-submit">
+                            <input class="disabled" disabled type="submit" value="가입">
                         </div>
                     </form>
-                </section>
-            </div>
-        </main>
+                </div>
+            </main>
+        </div>
     </section>
-
-    <section class="sec_footer">
-        <footer>
+    <section>
+        <footer id="footer" class="footer">
             <div>
                 <ul>
                     <li>
@@ -156,5 +212,6 @@
             </div>
         </footer>
     </section>
+    <script src="/js/reg.js"></script>
 </body>
 </html>

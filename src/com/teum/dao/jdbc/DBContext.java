@@ -10,7 +10,7 @@ public class DBContext {
 	// 텍스트 내용만 변경하면 되기 때문에 유지보수 측면에서 장점이 있다.
 	static {
 
-		URL = "jdbc:oracle:thin:@HI.namoolab.com:1521/xepdb1";
+		URL = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		UID = "TEUM";
 		PWD = "4444";
 	}

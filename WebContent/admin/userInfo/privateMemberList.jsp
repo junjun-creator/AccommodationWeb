@@ -122,12 +122,12 @@
 	                                <tbody>
 										<c:forEach var="m" items="${list}">
 		                                    <tr>
-		                                        <td class="col-s">${m.id }</td>
+		                                        <td class="col-s">${m.rownum }</td>
 		                                        <td class="col-sm">${m.name }</td>
 		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?id=${m.id }">${m.email }</a></td>
 		                                        <td class="col-sm">${m.birthday }</td>
 		                                        <td class="col-m">${m.phone }</td>
-		                                        <td class="col-sm user-rank">${m.rank }</td>
+		                                        <td class="col-sm user-rank">${m.rankId }</td>
 		                                        <td class="col-s"><input type="checkbox"></td>
 		                                    </tr>
 										</c:forEach>

@@ -1,4 +1,4 @@
-package com.teum.controller.reg;
+package com.teum.controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.entity.Member;
+import com.teum.entity.Users;
 import com.teum.service.MemberService;
+import com.teum.service.UsersService;
 
 @WebServlet("/reg")
 public class RegController extends HttpServlet{
@@ -21,23 +23,32 @@ public class RegController extends HttpServlet{
 		else if(request.getMethod().equals("POST")) {
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
-			String pwd = request.getParameter("pwd");
+			String pwd = request.getParameter("password");
 			String birthday = request.getParameter("birthday");
 			String phone = request.getParameter("phone");
-			String type = request.getParameter("type");
+			String type = request.getParameter("member-type");
+			System.out.println(phone);
+			if(!phone.contains("-")) {
+				String sub1 = phone.substring(0,3);
+				String sub2 = phone.substring(3,7);
+				String sub3 = phone.substring(7,11);
+				phone = sub1 + "-" + sub2 + "-" + sub3;
+			}
 			
-			Member m = new Member();
-			m.setName(name);
-			m.setEmail(email);
-			m.setPwd(pwd);
-			m.setBirthday(birthday);
-			m.setPhone(phone);
-			m.setType(type);
+			Users u = new Users();
+			u.setName(name);
+			u.setEmail(email);
+			u.setPassword(pwd);
+			u.setBirthday(birthday);
+			u.setPhone(phone);
 			
-			MemberService service = new MemberService();
-			int result = service.insert(m);
-			
-			response.sendRedirect("/admin/userInfo/list");
+			if(type.equals("회원")) {
+				
+				UsersService service = new UsersService();
+				int result = service.insert(u);
+				
+				response.sendRedirect("/admin/userInfo/usersList");
+			}
 			
 		}
 	}
