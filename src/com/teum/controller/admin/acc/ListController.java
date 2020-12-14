@@ -1,7 +1,6 @@
 package com.teum.controller.admin.acc;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,8 +18,7 @@ public class ListController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		AccService service = new AccService();
-		List<Acc> list = new ArrayList<>();
-		
+		List<Acc> list = service.getList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);

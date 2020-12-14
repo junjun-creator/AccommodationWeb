@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import com.teum.entity.AccommodationList;
+import com.teum.entity.Acc;
 import com.teum.service.AccService;
 
 
@@ -18,12 +18,12 @@ public class ApplyDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-String accName = request.getParameter("accName");
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		AccService service = new AccService();
-//		AccommodationListServiceI al = service.applyGet(accName);
+		Acc al = service.applyGet(id);
 		
-//		request.setAttribute("al", al);
+		request.setAttribute("al", al);
 		request.getRequestDispatcher("applyDetail.jsp").forward(request, response);
 	}
 }
