@@ -14,10 +14,6 @@ public class Event {
 	private Date regdate;
 	private int adminId;
 	
-	public Event() {
-		
-	}
-
 	public Event(int id, String title, int openStatus, String imageName, String imageRoute, int status, Date startDate,
 			Date endDate, Date regdate, int adminId) {
 		super();
@@ -33,11 +29,24 @@ public class Event {
 		this.adminId = adminId;
 	}
 
+	public Event() {
+	}
 
-
-	// insert, update용 생성자
-	public Event(String title) {
+	// insert용 생성자
+	public Event(String title, int openStatus, Date startDate, Date endDate) {
 		this.title = title;
+		this.openStatus = openStatus;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+	
+	// update용 생성자
+	public Event(int id, String title, int openStatus, Date startDate, Date endDate) {
+		this.id = id;
+		this.title = title;
+		this.openStatus = openStatus;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	@Override

@@ -13,6 +13,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/admin/promotion/event/reg.js"></script>
     <title>이벤트 등록</title>
 </head>
 <body>
@@ -66,7 +67,14 @@
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
 	                                        <input type="text" name="title" class="input-title" autofocus required>
-	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
+	                                        <input type="checkbox" name="open" value="1" class="checkbox-open"><span>즉시 공개</span>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th class="col-m">이벤트 기간</th>
+	                                    <td class="col-l text-left">
+                                            <input type="date" name="start-date" class="input-date start-date" required> ~ 
+                                            <input type="date" name="end-date" class="input-date end-date" required>
 	                                    </td>
 	                                </tr>
 	                                <tr>

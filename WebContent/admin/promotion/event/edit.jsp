@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +15,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/admin/promotion/event/edit.js"></script>
     <title>이벤트 수정</title>
 </head>
 <body>
@@ -62,12 +64,23 @@
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
 	                        <form action="edit" method="post" class="reg-form">
+	                        	<c:set var="open" value=""/>
+	                        	<c:if test="${event.openStatus == 1}">
+	                        		<c:set var="open" value="checked"/>
+	                        	</c:if>
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
 	                                        <input type="text" class="input-title" name="title" value="${event.title}" autofocus required>
-	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
+	                                        <input type="checkbox" ${open} name="open" value="1" class="checkbox-open"><span>즉시 공개</span>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th class="col-m">이벤트 기간</th>
+	                                    <td class="col-l text-left">
+                                            <input type="date" name="start-date" class="input-date start-date" value="${event.startDate}" required> ~ 
+                                            <input type="date" name="end-date" class="input-date end-date" value="${event.endDate}" required>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -84,8 +97,8 @@
 	                                </tr>
 	                            </table>
 	                            <div>
-	                            	<input type="hidden" name="eventNo" value="${event.id}">
-	                                <button class="btn-cancel" onclick="location.href='detail?eventNo=${event.id}'">취소</button>
+	                            	<input type="hidden" name="id" value="${event.id}">
+	                                <button class="btn-cancel" onclick="location.href='detail?id=${event.id}'">취소</button>
 	                                <input class="btn-submit" type="submit" value="저장">
 	                            </div>
 	                        </form>

@@ -15,23 +15,12 @@ public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		EventService service = new EventService();
-		service.delete(eventNo);
+		service.delete(id);
 		
 		response.sendRedirect("list");
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
-		String[] delChks = request.getParameterValues("delChk");
-		
-		for (String s : delChks) 
-			System.out.println(s);
-		
-		EventService service = new EventService();
-		//service.delete(eventNo);
-	}
 }

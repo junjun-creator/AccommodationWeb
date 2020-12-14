@@ -13,7 +13,6 @@ import java.util.List;
 import com.teum.dao.EventDao;
 import com.teum.dao.entity.EventListView;
 import com.teum.entity.Event;
-import com.teum.entity.Event;
 
 
 public class JdbcEventDao implements EventDao {
@@ -23,13 +22,17 @@ public class JdbcEventDao implements EventDao {
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "INSERT INTO EVENT(TITLE) VALUES(?)";
+		String sql = "INSERT INTO EVENT(TITLE, OPEN_STATUS, START_DATE, END_DATE, ADMIN_ID) VALUES(?, ?, ?, ?, ?)";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, event.getTitle());
+			pst.setInt(2, event.getOpenStatus());
+			pst.setDate(3, new java.sql.Date(event.getStartDate().getTime()));
+			pst.setDate(4, new java.sql.Date(event.getEndDate().getTime()));
+			pst.setInt(5, 1);
 			
 			result = pst.executeUpdate();
 			
@@ -51,14 +54,18 @@ public class JdbcEventDao implements EventDao {
 		int result = 0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE EVENT SET TITLE=? WHERE ID=?";
+		String sql = "UPDATE EVENT SET TITLE=?, OPEN_STATUS=?, START_DATE=?, END_DATE=?, ADMIN_ID=? WHERE ID=?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, event.getTitle());
-			pst.setInt(2, event.getId());
+			pst.setInt(2, event.getOpenStatus());
+			pst.setDate(3, new java.sql.Date(event.getStartDate().getTime()));
+			pst.setDate(4, new java.sql.Date(event.getEndDate().getTime()));
+			pst.setInt(5, 1);
+			pst.setInt(6, event.getId());
 			
 			result = pst.executeUpdate();
 			
