@@ -60,10 +60,10 @@
                                 <li>&nbsp;&nbsp;&nbsp;이벤트 관리&nbsp;&nbsp;&nbsp;</li>
                             </ul>
 	                    </div>
-	                    <form action="" class="search-form">
+	                    <form action="list" class="search-form">
                             <h1>이벤트 리스트</h1>
                             <div>
-                                <input type="text" class="input-search" placeholder="제목을 입력하세요.">
+                                <input type="text" class="input-search" placeholder="제목을 입력하세요." name="search">
                                 <input type="submit" class="search-submit-btn" value="검색">
                             </div>
                         </form>
@@ -95,10 +95,10 @@
 	                                		</c:otherwise>
 	                                	</c:choose>
 	                                    <tr>
-	                                        <td>${event.id}</td>
+	                                        <td>${event.rownum}</td>
 	                                        <td class="event-ing">${status}</td>
 	                                        <td>${event.endDate}</td>
-	                                        <td class="text-left text-short"><a href="detail?eventNo=${event.id}">${event.title}</a></td>
+	                                        <td class="text-left text-short"><a href="detail?id=${event.id}">${event.title}</a></td>
 	                                        <td>관리자</td>
 	                                        <td>${event.regdate}</td>
 	                                        <td><input type="checkbox" name="open" class="open-chk"></td>

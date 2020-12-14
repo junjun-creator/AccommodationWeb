@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.EventDao;
-import com.teum.dao.entity.EventView;
+import com.teum.dao.entity.EventListView;
 import com.teum.entity.Event;
 import com.teum.entity.Event;
 
@@ -158,14 +158,8 @@ public class JdbcEventDao implements EventDao {
 		List<Event> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT NUM, ID, TITLE, OPEN_STATUS, STATUS, TO_CHAR(END_DATE, 'YYYY-MM-DD') END_DATE, TO_CHAR(REGDATE, 'YYYY-MM-DD') REGDATE" + 
-					"FROM (" + 
-					"    SELECT ROWNUM NUM, E.*" + 
-					"    FROM (" + 
-					"        SELECT * FROM EVENT ORDER BY REGDATE DESC" + 
-					"    ) E" + 
-					" )" + 
-					" WHERE NUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM EVENT_LIST_VIEW " + 
+				"WHERE NUM BETWEEN ? AND ? AND TITLE LIKE ?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -174,36 +168,30 @@ public class JdbcEventDao implements EventDao {
 			
 			pst.setInt(1, startIndex);
 			pst.setInt(2, endIndex);
-			//pst.setString(1, query);
+			pst.setString(3, "%" + query + "%");
 			
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				 int id 		= rs.getInt("ID");
-				 String title 	= rs.getString("TITLE");
-				 int openStatus = rs.getInt("OPEN_STATUS");
-				 String imageName = rs.getString("IMAGE_NAME");
-				 String imageRoute = rs.getString("IMAGE_ROUTE");
-				 int status		= rs.getInt("STATUS");
-				 Date startDate = rs.getDate("START_DATE");
-				 Date endDate 	= rs.getDate("END_DATE");
-			     Date regdate 	= rs.getDate("REGDATE");
-			     int adminId	= rs.getInt("ADMIN_ID");
-			     
-			     Event event = new Event();
-			     
-			     event.setId(id);
-			     event.setOpenStatus(openStatus);
-			     event.setImageName(imageName);
-			     event.setImageRoute(imageRoute);
-			     event.setStatus(status);
-			     event.setTitle(title);
-			     event.setStartDate(startDate);
-			     event.setEndDate(endDate);
-			     event.setRegdate(regdate);
-			     event.setAdminId(adminId);
-			     
-			     list.add(event);
+				int rownum = rs.getInt("NUM");
+				int id = rs.getInt("ID");
+				String title = rs.getString("TITLE");
+				int openStatus = rs.getInt("OPEN_STATUS");
+				int status = rs.getInt("STATUS");
+				Date endDate = rs.getDate("END_DATE");
+				Date regdate = rs.getDate("REGDATE");
+
+				EventListView event = new EventListView();
+
+				event.setRownum(rownum);
+				event.setId(id);
+				event.setOpenStatus(openStatus);
+				event.setStatus(status);
+				event.setTitle(title);
+				event.setEndDate(endDate);
+				event.setRegdate(regdate);
+
+				list.add(event);
 			}
 			
 			//꼭 닫아줘야함!!! 안그럼 나중에 오류남
@@ -230,8 +218,8 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public List<EventView> getViewList(int startIndex, int endIndex, String query) {
-		List<EventView> list = new ArrayList<EventView>();
+	public List<EventListView> getViewList(int startIndex, int endIndex, String query) {
+		List<EventListView> list = new ArrayList<EventListView>();
 		
 		String sql = "SELECT * FROM EVENT_VIEW WHERE";
 		
@@ -259,7 +247,7 @@ public class JdbcEventDao implements EventDao {
 			     Date regdate 	= rs.getDate("REGDATE");
 			     int adminId	= rs.getInt("ADMIN_ID");
 			     
-			     EventView event = new EventView(id, title, openStatus, imageName, imageRoute,
+			     EventListView event = new EventListView(id, title, openStatus, imageName, imageRoute,
 			    		 status, startDate, endDate, regdate, adminId);
 			     
 			     list.add(event);
@@ -279,12 +267,12 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public List<EventView> getViewList(int startIndex, int endIndex) {
+	public List<EventListView> getViewList(int startIndex, int endIndex) {
 		return getViewList(startIndex, endIndex, "");
 	}
 
 	@Override
-	public List<EventView> getViewList() {
+	public List<EventListView> getViewList() {
 		
 		return getViewList(1, 10, "");
 	}

@@ -134,6 +134,7 @@
                             padding-left: 5px;
                             border: 1px solid rgb(216, 216, 216);
                             background: rgba(243, 243, 243, 0.514);
+                            resize: none;
                         }
 
                     .review-sec .review-form .submit-btn-container {
