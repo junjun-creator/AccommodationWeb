@@ -64,10 +64,10 @@
 	                <section class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>고객센터 ▶ </li>
-	                            <li>문의사항 리스트 ▶</li>
-	                            <li>문의사항 디테일</li>
+	                              <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        		<li>&nbsp;&nbsp;&nbsp;고객센터&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+	                            <li>&nbsp;&nbsp;&nbsp;QnA&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+	                            <li>&nbsp;&nbsp;&nbsp;문의사항 디테일</li>
 	                        </ul>
 	                    </div>
 	                    <section class="form-sec">
