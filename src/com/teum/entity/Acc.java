@@ -5,7 +5,7 @@ import java.util.Date;
 public class Acc {
 
 	 private int id;
-	 private String accName;
+	 private String name;
 	 private String location;
 	 private Date regdate;
 	 private String phone;
@@ -23,12 +23,12 @@ public class Acc {
 		
 	}
 
-	public Acc(int id, String accName, String location, Date regdate, String phone, String email, int accTypeId,
+	public Acc(int id, String name, String location, Date regdate, String phone, String email, int accTypeId,
 			int regStatus, Date approvalDate, int adiminId, int companyId, Date startDate, Date endDate,
 			int saleprice) {
 		super();
 		this.id = id;
-		this.accName = accName;
+		this.name = name;
 		this.location = location;
 		this.regdate = regdate;
 		this.phone = phone;
@@ -51,12 +51,12 @@ public class Acc {
 		this.id = id;
 	}
 
-	public String getAccName() {
-		return accName;
+	public String getName() {
+		return name;
 	}
 
-	public void setAccName(String accName) {
-		this.accName = accName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getLocation() {
@@ -157,7 +157,7 @@ public class Acc {
 
 	@Override
 	public String toString() {
-		return "Acc [id=" + id + ", accName=" + accName + ", location=" + location + ", regdate=" + regdate + ", phone="
+		return "Acc [id=" + id + ", name=" + name + ", location=" + location + ", regdate=" + regdate + ", phone="
 				+ phone + ", email=" + email + ", accTypeId=" + accTypeId + ", regStatus=" + regStatus
 				+ ", approvalDate=" + approvalDate + ", adiminId=" + adiminId + ", companyId=" + companyId
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", saleprice=" + saleprice + "]";
