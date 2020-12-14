@@ -11,4 +11,6 @@ public interface UsersDao {
 	
 	Users get(int id);
 	List<Users> getList();
+	List<Users> getList(int startIndex, int endIndex);
+	List<Users> getList(int startIndex, int endIndex, String text);
 }

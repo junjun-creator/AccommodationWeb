@@ -11,47 +11,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/admin/layout.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
     <link rel="stylesheet" href="../../css/admin/userInfo/list.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>등록된 업체 리스트</title>
 </head>
 <body>
-    <header class="sec-header">
-        <div id="header" class="header">
-            <div class="header-h1">
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
                 <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                            </ul>
-                        </div>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
 
 	<main>
 	    <section class="body">
 	        <aside id="aside" class="aside">
-	            <h1>회원관리</h1>
-	                <ul>
-	                	<li><a href="list">전체회원리스트</a></li>
-	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=개인회원" class="active">개인회원리스트</a></li>
-	                    <li style="font-size:15px; margin-left:50px;"><a href="list?type=기업회원">기업회원리스트</a></li>
-	                </ul>
-	        </aside>
+				<h1>회원관리</h1>
+					<ul>
+						<li><a href="" class="active">개인회원리스트</a></li>
+						<li><a href="">기업회원리스트</a></li>
+					</ul>
+			</aside>
 	        <div class="container">
 	            <nav id="nav" class="nav">
 	                <ul>
@@ -123,7 +115,6 @@
 	                                        <td class="col-m">이메일</td>
 	                                        <td class="col-sm">생년월일</td>
 	                                        <td class="col-m">휴대폰번호</td>
-	                                        <td class="col-sm">회원종류</td>
 	                                        <td class="col-sm">회원등급</td>
 	                                        <td class="col-s"><input type="checkbox"></td>
 	                                    </tr>
@@ -133,10 +124,9 @@
 		                                    <tr>
 		                                        <td class="col-s">${m.id }</td>
 		                                        <td class="col-sm">${m.name }</td>
-		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?email=${m.email }">${m.email }</a></td>
+		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?id=${m.id }">${m.email }</a></td>
 		                                        <td class="col-sm">${m.birthday }</td>
 		                                        <td class="col-m">${m.phone }</td>
-		                                        <td class="col-sm user-type">${m.type }</td>
 		                                        <td class="col-sm user-rank">${m.rank }</td>
 		                                        <td class="col-s"><input type="checkbox"></td>
 		                                    </tr>
@@ -172,8 +162,44 @@
 	                                        <td class="col-s"><input type="checkbox"></td>
 	                                    </tr> -->
 	                                    <tr class="btn-delete">
-	                                        <td colspan="8"><input type="submit" value="삭제"></td>
-	                                    </tr>
+	                                        <td colspan="7"><input type="submit" value="삭제"></td>
+										</tr>
+										<tr>
+											<td colspan="6" class="no-border">
+												<div class="pager-container">
+													<div class="btn btn-prev">
+														<span><a href="">이전</a></span>
+													</div>
+													<ul class="pager-list">
+														<li class="active-page"><a href="">1</a></li>
+														<li><a href="">2</a></li>
+														<li><a href="">3</a></li>
+														<li><a href="">4</a></li>
+														<li><a href="">5</a></li>
+														<li><a href="">6</a></li>
+														<li><a href="">7</a></li>
+														<li><a href="">8</a></li>
+														<li><a href="">9</a></li>
+														<li><a href="">10</a></li>
+													</ul>
+													<div class="btn btn-next">
+														<span><a href="">다음</a></span>
+													</div>
+												</div>
+												<div>
+													<div>
+														<form action="">
+															<select name="search-category" id="">
+																<option value="숙소명" selected>회원명</option>
+																<option value="예약자">이메일</option>
+															</select>
+															<input type="text">
+															<input type="button" value="검색">
+														</form>
+													</div>
+												</div>
+											</td>
+										</tr>
 	                                </tbody>
 	                            </table>
 	                        </form>

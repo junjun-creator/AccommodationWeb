@@ -140,10 +140,19 @@ public class JdbcUsersDao implements UsersDao {
 
 	@Override
 	public List<Users> getList() {
+		return getList(1,10,"");
+	}
+	@Override
+	public List<Users> getList(int startIndex, int endIndex) {
+		return getList(startIndex,endIndex,"");
+	}
+
+	@Override
+	public List<Users> getList(int startIndex, int endIndex, String text) {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		String sql = "SELECT * FROM MEMBER";
+		String sql = "SELECT * FROM (SELECT ROWNUM NUM, U.* FROM (SELECT * FROM USERS ORDER BY REGDATE DESC) U) WHERE NAME LIKE '%?%' AND NUM BETWEEN ? AND ?";
 		
 		List<Users> list = new ArrayList<>();
 		//DriverManager;//Class.forName~
@@ -151,10 +160,12 @@ public class JdbcUsersDao implements UsersDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
-			Statement st = con.createStatement();
 			//PreparedStatement ps = con.prepareStatement(sql);
-			//ps.setInt(1,t);
-			ResultSet rs = st.executeQuery(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,text);
+			ps.setInt(2, startIndex);
+			ps.setInt(2, endIndex);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				int id = rs.getInt("id");
@@ -164,6 +175,7 @@ public class JdbcUsersDao implements UsersDao {
 				String phone = rs.getString("phone");
 				int rankId = rs.getInt("rank_id");
 				Date regdate = rs.getDate("regdate");
+				int type = rs.getInt("type");
 				Users u = new Users();
 				u.setId(id);
 				u.setName(name);
@@ -172,12 +184,13 @@ public class JdbcUsersDao implements UsersDao {
 				u.setPhone(phone);
 				u.setRankId(rankId);
 				u.setRegdate(regdate);
+				u.setType(type);
 				
 				list.add(u);
 			}
 			
 			rs.close();
-			st.close();
+			ps.close();
 			con.close();
 			
 		} catch (Exception e) {
