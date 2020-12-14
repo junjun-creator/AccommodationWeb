@@ -77,7 +77,7 @@
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left" colspan="3">
 	                                        <input type="text"  name="title"  class="input-title" autofocus required>
-	                                        <input type="checkbox" class="checkbox-open"  name="pub" ><span>즉시 공개</span>
+	                                        <input type="checkbox" class="checkbox-open"  name="OPEN_STATUS" ><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -87,7 +87,7 @@
 	                                    </td>
 	                                    <th class="col-m">작성자</th>
 	                                    <td >
-	                                    <input type="hidden" name="writer_id" value="관리자">
+	                                    <input type="hidden" name="ADMIN_ID" value="1">
 	                                     <span>관리자</span></td>
 	                                </tr>
 	                                <tr>

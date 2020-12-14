@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.GoldenTime;
-import com.teum.service.GoldenTimeService;
 
 @WebServlet("/admin/promotion/goldenTime/list")
 public class ListController extends HttpServlet {
@@ -18,10 +16,12 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		GoldenTimeService service = new GoldenTimeService();
-		List<GoldenTime> list = service.getList();
+		/*
+		 * GoldenTimeService service = new GoldenTimeService(); List<GoldenTime> list =
+		 * service.getList();
+		 */
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 		
 	}

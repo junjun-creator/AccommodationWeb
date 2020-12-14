@@ -19,7 +19,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		int result =0;
 		
 		String url = DBContext.URL;
-		String sql = "INSERT INTO NOTICE(TITLE,CONTENT,WRITER_ID,PUB) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO NOTICE(TITLE,CONTENT,ADMIN_ID,OPEN_STATUS) VALUES(?,?,?,?)";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -29,6 +29,7 @@ public class JdbcNoticeDao implements NoticeDao {
 			st.setString(2, notice.getContent());
 			st.setInt(3, notice.getAdminId());
 			st.setInt(4, notice.getOpenStatus());
+			
 		
 			//ResultSet rs = st.executeQuery(sql); // select 문장에만
 			result =st.executeUpdate();//insert,update,delete 문장일 떄
@@ -101,7 +102,7 @@ public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
 	public Notice get(int id) {
-Notice n = null ;
+		Notice n = null ;
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM NOTICE where ID="+id;
