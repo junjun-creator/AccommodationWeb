@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
     
 <!DOCTYPE html>
@@ -84,12 +84,21 @@
 	                                    </td>
 	                                    <th class="col-m">상태</th>
 	                                    <td class="col-l text-left">
-	                                      <input type="checkbox" class="checkbox-open"  name="pub"  ${n.pub}><span>즉시 공개</span>
+	                                    
+	                                      <input type="checkbox" class="checkbox-open"  name="OPEN_STATUS"  <c:choose>
+	                                    	<c:when test="${n.openStatus eq 1}">
+	                                    	"checked"
+	                                    	</c:when>
+	                                    	<c:otherwise>
+	                                    	"null"
+	                                    	</c:otherwise>
+	                                    </c:choose>><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
 	                                    <td class="text-left" colspan="3">
+	                                    
 	                                       <textarea rows="25" cols="75" name="content">${n.content}</textarea>
 	                                    </td>
 	                                </tr>

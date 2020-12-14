@@ -15,31 +15,53 @@ public class EventService {
 		eventDao = new JdbcEventDao();
 	}
 	
+	public List<Event> getList(int page, int size, String query) {
+		int startIndex = 1 + (page - 1) * size; // 1,11,21,31,...
+		int endIndex = page * size; 			// 10,20,30,40,...
+		return eventDao.getList(startIndex, endIndex, query);
+	}
+	
+	public List<Event> getList(int page, int size) {
+		return eventDao.getList(page, size, "");
+	}
+	
 	public List<Event> getList() {
-		eventDao = new JdbcEventDao();
-		return null;
+		return eventDao.getList(1, 10, "");
 	}
 	
 	public Event get(int id) {
-		eventDao = new JdbcEventDao();
-		return null;
+		return eventDao.get(id);
 	}
 
 	public int insert(Event event) {
-		int result = 0;
-		eventDao = new JdbcEventDao();
+		int result = eventDao.insert(event);
 		return result;
 	}
 
 	public int update(Event event) {
-		int result = 0;
-		eventDao = new JdbcEventDao();
+		int result = eventDao.update(event);
 		return result;
 	}
 	
 	public int delete(int id) {
-		int result = 0;
-		eventDao = new JdbcEventDao();
+		int result = eventDao.delete(id);
 		return result;
+	}
+	
+	public int deleteAll(int[] ids) {
+		int result = 0;
+		
+		for (Integer id : ids)
+			result += eventDao.delete(id);
+		
+		return result;
+	}
+	
+	public int open(int id) {
+		return 0;
+	}
+	
+	public int openAll(int[] ids) {
+		return 0;
 	}
 }

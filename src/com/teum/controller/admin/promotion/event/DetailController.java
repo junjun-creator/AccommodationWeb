@@ -20,30 +20,30 @@ public class DetailController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 	      
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		EventService service = new EventService();
 		List<Event> list = service.getList();
-		Event currEv = service.getNo(eventNo);
-		Event prevEv = null;
-		Event nextEv = null;
+		Event currEvent = service.get(id);
+		Event prevEvent = null;
+		Event nextEvent = null;
 		
 		if (list.size() == 1) { 		// 이벤트 글이 하나밖에 없을 경우 
 			// 아무런 동작 X
 		} else {
-			if (eventNo == list.size()) // 맨 마지막 번호인 경우
-				prevEv = service.getNo(eventNo - 1);
-			else if (eventNo == 1) 		// 맨 처음 번호인 경우
-				nextEv = service.getNo(eventNo + 1);
+			if (id == list.size()) // 맨 마지막 번호인 경우
+				prevEvent = service.get(id - 1);
+			else if (id == 1) 		// 맨 처음 번호인 경우
+				nextEvent = service.get(id + 1);
 			else {
-				prevEv = service.getNo(eventNo - 1);
-				nextEv = service.getNo(eventNo + 1);
+				prevEvent = service.get(id - 1);
+				nextEvent = service.get(id + 1);
 			}
 		}
 			
-		request.setAttribute("currEv", currEv);
-		request.setAttribute("prevEv", prevEv);
-		request.setAttribute("nextEv", nextEv);
+		request.setAttribute("currEv", currEvent);
+		request.setAttribute("prevEv", prevEvent);
+		request.setAttribute("nextEv", nextEvent);
 		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}

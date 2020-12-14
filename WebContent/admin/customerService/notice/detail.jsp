@@ -82,7 +82,7 @@
 	                                    </td>
 	                                    <th class="col-m">상태</th>
 	                                    <td class="col-l text-left">
-	                                   	 ${n.pub}
+	                                   	 ${n.openStatus}
 	                                     
 	                                    </td>
 	                                </tr>

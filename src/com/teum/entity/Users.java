@@ -11,13 +11,14 @@ public class Users {
 	private String phone;
 	private int rankId;
 	private Date regdate;
+	private int type;
 	
 	public Users() {
 		
 	}
-	
-	public Users(int id, String name, String email, String password, String birthday, String phone, int rank,
-			Date regdate) {
+
+	public Users(int id, String name, String email, String password, String birthday, String phone, int rankId,
+			Date regdate, int type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,8 +26,9 @@ public class Users {
 		this.password = password;
 		this.birthday = birthday;
 		this.phone = phone;
-		this.rankId = rank;
+		this.rankId = rankId;
 		this.regdate = regdate;
+		this.type = type;
 	}
 
 	public int getId() {
@@ -81,8 +83,8 @@ public class Users {
 		return rankId;
 	}
 
-	public void setRankId(int rank) {
-		this.rankId = rank;
+	public void setRankId(int rankId) {
+		this.rankId = rankId;
 	}
 
 	public Date getRegdate() {
@@ -93,11 +95,21 @@ public class Users {
 		this.regdate = regdate;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + password + ", birthday=" + birthday
-				+ ", phone=" + phone + ", rankId=" + rankId + ", regdate=" + regdate + "]";
+		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", birthday="
+				+ birthday + ", phone=" + phone + ", rankId=" + rankId + ", regdate=" + regdate + ", type=" + type
+				+ "]";
 	}
+	
 	
 	
 }

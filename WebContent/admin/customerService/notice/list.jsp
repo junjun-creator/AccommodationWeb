@@ -100,8 +100,8 @@
 	                                    <td>${n.id}</td>
 	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
 	                                    <td>${n.regdate}</td>
-	                                    <td>${n.writerId}</td>
-	                                    <td>${n.pub}</td>
+	                                    <td>${n.adminId}</td>
+	                                    <td>${n.openStatus}</td>
 	                                    <td>
 	                                        <input type="checkbox" name="" class=pubChk >
 	                                    </td>

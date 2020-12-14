@@ -12,6 +12,19 @@ public interface UsersServiceI {
 	//회원정보수정 페이지(업체와 동일)
 	int update(Users users);
 	
+	//회원가입
+	int insert(Users users);
+	
+	//상세정보 페이지
+	Users get(int id);
+	
+	// 관리자페이지
+	//개인회원리스트
+	List<Users> getList();
+	List<Users> getList(int page);
+	List<Users> getList(int page, String text);//text 는 문자열로 검
+	int delete(int[] id);
+
 	//예약관리 페이지(회원)
 //	List<Reservation> getList(int id, String type);
 //	List<Reservation> getList(String type, Date fromDate, Date toDate); // 기간별 내역 조회
@@ -49,10 +62,6 @@ public interface UsersServiceI {
 //	List<Acc> getList(int id, Date currentDate);
 	
 	
-	// 관리자페이지
-	//개인회원리스트
-	List<Users> getList(int page, int rank, String text);//text 는 문자열로 검
-	int delete(int[] id);
 	
 	//기업회원리스트
 //	List<Company> getList(int page, String text);//text 는 문자열로 검
