@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.AccDao;
+import com.teum.dao.entity.AccListForAdminView;
 import com.teum.dao.jdbc.DBContext;
 //import com.teum.dao.jdbc.JdbcAccDao;
 import com.teum.entity.Acc;
-import com.teum.entity.AccListForAdminView;
 
 
 public class AccService {
@@ -30,6 +30,9 @@ public class AccService {
 		
 		return accDao.getList(startIndex, endIndex, accType, qeury);
 	}
+	public List<Acc> getList() {
+		return accDao.getList(1,10,"","");
+	}
 	public List<AccListForAdminView> getViewList(int page, int size, String accType, String qeury) {
 		
 		int startIndex =1+(page-1)*size;//1, 11, 21, 31, ...
@@ -37,6 +40,7 @@ public class AccService {
 		
 		return accDao.getViewList(startIndex, endIndex, accType, qeury);
 	}
+	
 
 	public Acc get(int id) {
 		return accDao.get(id);
@@ -49,7 +53,9 @@ public class AccService {
 		
 		return accDao.applyGetList(startIndex, endIndex, accType, qeury);
 	}
-
+	public List<Acc> applyGetList() {
+		return accDao.applyGetList(1,10,"","");
+	}
 	public Acc applyGet(int id) {
 		return accDao.applyGet(id);
 	}
@@ -77,4 +83,15 @@ public class AccService {
 		result = accDao.update(acc);
 		return result;
 	}
+
+	
+	
+
+	
+
+
+
+
+
+
 }

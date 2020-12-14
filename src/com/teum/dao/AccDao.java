@@ -2,8 +2,8 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.AccListForAdminView;
 import com.teum.entity.Acc;
-import com.teum.entity.AccListForAdminView;
 
 public interface AccDao {
 	
