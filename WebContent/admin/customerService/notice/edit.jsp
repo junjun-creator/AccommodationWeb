@@ -87,10 +87,10 @@
 	                                    
 	                                      <input type="checkbox" class="checkbox-open"  name="OPEN_STATUS"  <c:choose>
 	                                    	<c:when test="${n.openStatus eq 1}">
-	                                    	"checked"
+	                                    	checked
 	                                    	</c:when>
 	                                    	<c:otherwise>
-	                                    	"null"
+	                                    	null
 	                                    	</c:otherwise>
 	                                    </c:choose>><span>즉시 공개</span>
 	                                    </td>
@@ -104,6 +104,7 @@
 	                                </tr>
 	                            </table>
 	                            <div>
+	                            	<input type="hidden" name="ADMIN_ID" value="${n.adminId}">
 	                            	<input type="hidden" name="id" value="${n.id}">
 	                                <a class="btn-cancel"  href="detail?id=${n.id}"><span>취소<span></a>
 	                                <input type="submit"  class="btn-submit"  value="저장">

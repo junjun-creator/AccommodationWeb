@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.QnADao;
+import com.teum.dao.entity.QnAView;
 import com.teum.entity.QnA;
 
 public class JdbcQnADao implements QnADao {
@@ -110,7 +111,7 @@ public class JdbcQnADao implements QnADao {
 
 	@Override
 	public List<QnA> getList() {
-List<QnA>list = new ArrayList<>();
+		List<QnA>list = new ArrayList<>();
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM QNA ";
@@ -159,6 +160,69 @@ List<QnA>list = new ArrayList<>();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+
+	@Override
+	public List<QnAView> getViewList() {
+		// TODO Auto-generated method stub
+		return getViewList(1,10,"");
+	}
+
+	@Override
+	public List<QnAView> getViewList(int startIndex, int endIndex) {
+		// TODO Auto-generated method stub
+		return getViewList(startIndex,endIndex,"");
+	}
+
+
+	@Override
+	public List<QnAView> getViewList(int startIndex, int endIndex, String category) {
+		
+		List<QnAView> list = new ArrayList<QnAView>();
+		
+		String sql = "SELECT * FROM QNA_LIST_FOR_ADMIN";
+		String url = DBContext.URL;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+
+			while(rs.next()) {
+				 int id =rs.getInt("ID");
+				 String userName =rs.getString("USER_NAME");
+			     String title=rs.getString("TITLE");
+			     Date regdate=rs.getDate("REGDATE");
+			     int answerStatus =rs.getInt("ANSWER_STATUS");
+			     String phone = rs.getString("PHONE");
+			     String categoryType= rs.getString("CATEGORY");
+			     
+			     QnAView QnA = new QnAView(
+			    		 id,
+			    		 userName,
+					     title,
+					     regdate,
+					     answerStatus,
+					     phone,
+					     categoryType
+					     );
+			     
+			     list.add(QnA);
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 

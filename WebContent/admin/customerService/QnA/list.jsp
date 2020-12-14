@@ -1,4 +1,4 @@
-<%@page import="com.teum.entity.QnA"%>
+
 <%@page import="java.util.List"%>
 <%@page import="com.teum.service.QnAService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -111,13 +111,13 @@
 	                            
 	                                <tr>
 	                                    <td>${q.id}</td>
-	                                    <td>${q.name}</td>
+	                                    <td>${q.userName}</td>
 	                                    <td><a href="detail?id=${q.id}">${q.title}</td>
 	                                    <td>${q.phone}</td>
 	                                    <td>${q.regdate}</td>
 	                                    <td>
 	                                    	<c:choose>
-												<c:when test="${q.answer ==0 }">
+												<c:when test="${q.answerStatus ==0 }">
 													<%="답변안됨" %>
 												</c:when>
 												<c:otherwise>
