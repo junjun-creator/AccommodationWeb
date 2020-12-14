@@ -1,48 +1,25 @@
 window.addEventListener('load', function() {
     var starContainer = document.querySelector('.star-container');
-    var stars = document.querySelectorAll('.fa-star');
     var comment = document.querySelector('.comment');
     var submitBtn = document.querySelector('.submit-btn');
-    
-    stars[0].onclick = function() {
-        
-        if (stars[0].classList[3] == 'pick') {
-            console.log(stars[0].classList[3]);
-            starContainer.children[0].style.color = 'rgba(209, 209, 209, 0.596)';
-            stars[0].classList.remove('pick');
-            console.log(stars[0].classList[3]);
-        } else if (stars[0].classList[3] == undefined) {
-            starContainer.children[0].style.color = 'gold';
-            stars[0].classList.add('pick');
+
+    starContainer.onclick = function(e) {
+        var t = e.target;
+        if (t.nodeName != 'DIV' && t.classList.contains('pick')) {
+            t.style.color = 'rgba(209, 209, 209, 0.596)';
+            t.classList.remove('pick');
+        } else if (t.nodeName != 'DIV' && !t.classList.contains('pick')) {
+            t.style.color = 'gold';
+            t.classList.add('pick');
         }
     }
 
-    // stars[1].onclick = function() {
-    //     console.log(stars[1].classList[3]);
-    //     for (var key in stars[1].classList) {
-    //         console.log(stars[1].classList[key]);
-    //     }
-    // }
-
-    // stars[2].onclick = function() {
-        
-    // }
-
-    // stars[3].onclick = function() {
-        
-    // }
-
-    // stars[4].onclick = function() {
-    //     console.log(stars[4].classList[3]);
-    //     for (var key in stars[4].classList) {
-    //         console.log(stars[4].classList[key]);
-    //     }
-    // }
-
     submitBtn.onclick = function() {
-        if (comment.innerText == '') {
-            alert('리뷰를 등록해주세요!');
+        if (comment.value == '') {
+            alert('리뷰를 등록해주세요.');
+            comment.style.border = '1px solid #fc0453';
             return false;
-        }
+        } else
+            alert('리뷰가 등록되었습니다.')
     }
 });
