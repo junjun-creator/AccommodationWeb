@@ -26,29 +26,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
                     <li class="sub-page">
                         <a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -60,7 +39,7 @@
 	            <h1>프로모션 관리</h1>
 	                <ul>
 	                    <li><a href="/admin/promotion/goldenTime/list">골든타임 관리</a></li>
-	                    <li><a href="/admin/promotion/event/list" class="active">이벤트 관리</a></li>
+	                    <li class="active"><a href="/admin/promotion/event/list">이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -76,15 +55,21 @@
 	                <div class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>프로모션관리 ▶ </li>
-	                            <li>이벤트 관리</li>
-	                        </ul>
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;프로모션 관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;이벤트 관리&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
 	                    </div>
-	                    <h1>이벤트 리스트</h1>
+	                    <form action="" class="search-form">
+                            <h1>이벤트 리스트</h1>
+                            <div>
+                                <input type="text" class="input-search" placeholder="제목을 입력하세요.">
+                                <input type="submit" class="search-submit-btn" value="검색">
+                            </div>
+                        </form>
 	                    <section>
 	                        <form action="delete" method="post" class="list-board">
-	                        	<input type="hidden" name="eventNo" value="${ev.eventNo}">
+	                        	<input type="hidden" name="id" value="${event.id}">
 	                            <table>
 	                                <thead>
 	                                    <tr>
@@ -100,9 +85,9 @@
 	                                </thead>
 	                                <tbody>
 	                                	
-                                	<c:forEach var="ev" items="${list}">
+                                	<c:forEach var="event" items="${list}">
 	                                	<c:choose>
-	                                		<c:when test="${ev.status == 1}" >
+	                                		<c:when test="${event.status == 1}" >
 	                                			<c:set var="status" value="진행중"/>
 	                                		</c:when>
 	                                		<c:otherwise>
@@ -110,12 +95,12 @@
 	                                		</c:otherwise>
 	                                	</c:choose>
 	                                    <tr>
-	                                        <td>${ev.eventNo}</td>
+	                                        <td>${event.id}</td>
 	                                        <td class="event-ing">${status}</td>
-	                                        <td>${ev.endDate}</td>
-	                                        <td class="text-left text-short"><a href="detail?eventNo=${ev.eventNo}">${ev.title}</a></td>
+	                                        <td>${event.endDate}</td>
+	                                        <td class="text-left text-short"><a href="detail?eventNo=${event.id}">${event.title}</a></td>
 	                                        <td>관리자</td>
-	                                        <td>${ev.regDate}</td>
+	                                        <td>${event.regdate}</td>
 	                                        <td><input type="checkbox" name="open" class="open-chk"></td>
 	                                        <td><input type="checkbox" name="del" class="del-chk"></td>
 	                                    </tr>

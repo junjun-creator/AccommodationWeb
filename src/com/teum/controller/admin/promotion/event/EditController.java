@@ -18,27 +18,27 @@ public class EditController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		EventService service = new EventService();
-		Event ev = service.getNo(eventNo);
+		Event event = service.get(id);
 		
-		request.setAttribute("ev", ev);
+		request.setAttribute("event", event);
 		request.getRequestDispatcher("edit.jsp").forward(request, response);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		
 		EventService service = new EventService();
-		Event ev = new Event(title);
+		Event event = new Event(title);
 		
-		ev.setEventNo(eventNo);
-		service.update(ev);
+		event.setId(id);
+		service.update(event);
 		
-		response.sendRedirect("detail?eventNo=" + eventNo);
+		response.sendRedirect("detail?id=" + id);
 	}
 	
 }

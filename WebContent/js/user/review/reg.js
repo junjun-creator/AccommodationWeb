@@ -5,34 +5,39 @@ window.addEventListener('load', function() {
     var submitBtn = document.querySelector('.submit-btn');
     
     stars[0].onclick = function() {
-        if (stars[0].classList[3].indexOf('pick') != -1) {
+        
+        if (stars[0].classList[3] == 'pick') {
+            console.log(stars[0].classList[3]);
             starContainer.children[0].style.color = 'rgba(209, 209, 209, 0.596)';
             stars[0].classList.remove('pick');
-        } else if (stars[0].classList[3].indexOf('pick') == -1) {
+            console.log(stars[0].classList[3]);
+        } else if (stars[0].classList[3] == undefined) {
             starContainer.children[0].style.color = 'gold';
             stars[0].classList.add('pick');
         }
     }
 
-    stars[1].onclick = function() {
-        for (var key in stars[1].classList) {
-            console.log(stars[1].classList[key]);
-        }
-    }
+    // stars[1].onclick = function() {
+    //     console.log(stars[1].classList[3]);
+    //     for (var key in stars[1].classList) {
+    //         console.log(stars[1].classList[key]);
+    //     }
+    // }
 
-    stars[2].onclick = function() {
+    // stars[2].onclick = function() {
         
-    }
+    // }
 
-    stars[3].onclick = function() {
+    // stars[3].onclick = function() {
         
-    }
+    // }
 
-    stars[4].onclick = function() {
-        for (var key in stars[4].classList) {
-            console.log(stars[4].classList[key]);
-        }
-    }
+    // stars[4].onclick = function() {
+    //     console.log(stars[4].classList[3]);
+    //     for (var key in stars[4].classList) {
+    //         console.log(stars[4].classList[key]);
+    //     }
+    // }
 
     submitBtn.onclick = function() {
         if (comment.innerText == '') {

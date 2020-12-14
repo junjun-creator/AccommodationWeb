@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/admin/layout.css">
-	<link rel="stylesheet" href="/css/admin/promotion/event/reg.css">
+	<link rel="stylesheet" href="/css/admin/promotion/event/edit.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -24,29 +24,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
                     <li class="sub-page">
                         <a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -59,7 +38,7 @@
 	            <h1>프로모션 관리</h1>
 	                <ul>
 	                    <li><a href="/admin/promotion/goldenTime/list">골든타임 관리</a></li>
-	                    <li><a href="/admin/promotion/event/list" class="active">이벤트 관리</a></li>
+	                    <li class="active"><a href="/admin/promotion/event/list">이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -75,10 +54,10 @@
 	                <div class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>프로모션관리 ▶ </li>
-	                            <li>이벤트 관리</li>
-	                        </ul>
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;프로모션 관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;이벤트 관리&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
@@ -87,7 +66,7 @@
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" name="title" value="${ev.title}" autofocus required>
+	                                        <input type="text" class="input-title" name="title" value="${event.title}" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
@@ -105,8 +84,8 @@
 	                                </tr>
 	                            </table>
 	                            <div>
-	                            	<input type="hidden" name="eventNo" value="${ev.eventNo}">
-	                                <button class="btn-cancel" onclick="location.href='detail?eventNo=${ev.eventNo}'">취소</button>
+	                            	<input type="hidden" name="eventNo" value="${event.id}">
+	                                <button class="btn-cancel" onclick="location.href='detail?eventNo=${event.id}'">취소</button>
 	                                <input class="btn-submit" type="submit" value="저장">
 	                            </div>
 	                        </form>

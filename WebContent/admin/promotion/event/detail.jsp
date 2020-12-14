@@ -25,29 +25,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
                     <li class="sub-page">
                         <a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -60,7 +39,7 @@
 	            <h1>프로모션 관리</h1>
 	                <ul>
 	                    <li><a href="/admin/promotion/goldenTime/list">골든타임 관리</a></li>
-	                    <li><a href="/admin/promotion/event/list" class="active">이벤트 관리</a></li>
+	                    <li class="active"><a href="/admin/promotion/event/list">이벤트 관리</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -76,10 +55,10 @@
 	                <div class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>프로모션관리 ▶ </li>
-	                            <li>이벤트 관리</li>
-	                        </ul>
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;프로모션 관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;이벤트 관리&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
 	                    </div>
 	                    <section class="img-sec">
 	                        <div class="img-container">
@@ -92,46 +71,46 @@
 	                        </div>
 	                    </section>
 	                    <div class="btns-container">
-                            <button class="btn btn-edit" onclick="location.href='edit?eventNo=${currEv.eventNo}'">수정</button>
-                            <button class="btn btn-delete" onclick="location.href='delete?eventNo=${currEv.eventNo}'">삭제</button>
+                            <button class="btn btn-edit" onclick="location.href='edit?id=${currEvent.id}'">수정</button>
+                            <button class="btn btn-delete" onclick="location.href='delete?id=${currEvent.id}'">삭제</button>
                         </div>
 	                    <section class="page-list-sec">
 	                    	
 	                    	<c:choose>
-	                    		<c:when test="${prevEv == null && nextEv == null}">
+	                    		<c:when test="${prevEvent == null && nextEvent == null}">
 	                    			<!-- 아무런 출력이 없어야함 -->
 	                    		</c:when>
-	                    		<c:when test="${prevEv == null}">
+	                    		<c:when test="${prevEvent == null}">
 	                    			<div class="page next-page">
 			                            <a href="">
 			                                <span class="page-direction">다음글</span>
-			                                <span class="page-title">${nextEv.title}</span>
-			                                <span class="page-date">기간: ${nextEv.startDate} ~ ${nextEv.endDate}</span>
+			                                <span class="page-title">${nextEvent.title}</span>
+			                                <span class="page-date">기간: ${nextEvent.startDate} ~ ${nextEvent.endDate}</span>
 			                            </a>
 			                        </div>
 	                    		</c:when>
-	                    		<c:when test="${nextEv == null}">
+	                    		<c:when test="${nextEvent == null}">
 	                    			<div class="page prev-page">
 			                            <a href="">
 			                                <span class="page-direction">이전글</span>
-			                                <span class="page-title">${prevEv.title}</span>
-			                                <span class="page-date">기간: ${prevEv.startDate} ~ ${prevEv.endDate}</span>
+			                                <span class="page-title">${prevEvent.title}</span>
+			                                <span class="page-date">기간: ${prevEvent.startDate} ~ ${prevEvent.endDate}</span>
 			                            </a>
 		                        	</div>
 	                    		</c:when>
 	                    		<c:otherwise>
 		                    		<div class="page prev-page">
-			                            <a href="detail?eventNo=${prevEv.eventNo}">
+			                            <a href="detail?id=${prevEvent.id}">
 			                                <span class="page-direction">이전글</span>
-			                                <span class="page-title">${prevEv.title}</span>
-			                                <span class="page-date">기간: ${prevEv.startDate} ~ ${prevEv.endDate}</span>
+			                                <span class="page-title">${prevEvent.title}</span>
+			                                <span class="page-date">기간: ${prevEvent.startDate} ~ ${prevEvent.endDate}</span>
 			                            </a>
 		                        	</div>
 			                		<div class="page next-page">
-			                            <a href="detail?eventNo=${nextEv.eventNo}">
+			                            <a href="detail?id=${nextEvent.id}">
 			                                <span class="page-direction">다음글</span>
-			                                <span class="page-title">${nextEv.title}</span>
-			                                <span class="page-date">기간: ${nextEv.startDate} ~ ${nextEv.endDate}</span>
+			                                <span class="page-title">${nextEvent.title}</span>
+			                                <span class="page-date">기간: ${nextEvent.startDate} ~ ${nextEvent.endDate}</span>
 			                            </a>
 			                        </div>
 	                    		</c:otherwise>
