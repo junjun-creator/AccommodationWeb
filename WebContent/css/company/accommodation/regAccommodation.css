@@ -1,23 +1,17 @@
 
 main{
-    padding-top: 10px;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
+    /* width: 500px;
+margin: 10px auto 0px auto; */
 }  
     main .content-box{
-        margin-left: auto;
-        margin-right: auto;
+        width: 500px;
+        margin: 10px auto 0px auto;
     }
-    .content-box h1{
-        font-weight: bold;
-        font-size: 40px;
-        color: #5F0080;
-        text-align: center;
-        padding-bottom: 10px;
-    }
+
         .content-box div{
             padding-bottom: 5px;
+            margin-left: 50px;
+            color: #5f0081;
         }
         .content-box .text-box{
             height: 30px;
@@ -31,13 +25,32 @@ main{
         .content-box select{
             height: 30px;
         }
-
+        .button{
+            width: px;
+            border:1px dashed #ff0080;
+            border-radius: 5px;
+            background: #ffe6f2;
+            padding:5px 10px;
+            vertical-align: middle;
+            cursor: pointer;
+            color: #ff0080;
+            font-weight: bold;
+            
+        }
+        .button:hover{
+            background-color: #ff0080;
+            opacity: 0.8;
+            color: white;
+        }
     .add-room{
         display: inline-block;
         border: 0.5px solid #fc0453;
-        margin: 5px;
+        margin: 10px;
         padding : 10px;
     }
+        .add-room div{
+            padding-left: -40px;
+        }
     .submit-btn{
         background-color: #5f0081;
         border-radius: 20px;
@@ -49,6 +62,7 @@ main{
         font-size: 14px;
         height: 50px;
         width: 90px;
+        
     }
     .submit-btn:hover{
         background-color: #5f0081;

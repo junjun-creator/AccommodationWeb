@@ -1,39 +1,111 @@
 
 .main{
 width: max-content;
-margin: 0px auto;
+margin: 50px auto 0px auto;
 }
     .main .title{
         display: flex;
         padding-left: 30px;
+        align-content: flex-start;
     }
+        .main .title .main-image{
+            width: 500px;
+            height: 360px;
+            overflow: hidden;
+        }
+        .main .title .pic .cliper-btn{
+            width: 20px;
+            height: 20px;
+            font-size: 40px;
+            position: absolute;
+            z-index: 1;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .pic .prev-btn{
+            top: 235px;
+            left: 390px;
+        }
+        .pic .next-btn {
+            top: 235px;
+            left: 840px;
+        }
+        .main .title .cliper{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .main .title .cliper ul{
+            display: flex;
+            height: 100px;
+            padding: 0px;
+            --position: absolute;
+            transform: translateX(0px);
+            transition: transform 500ms ease-in-out;
+        }
+            .main .title .cliper ul li{
+                list-style-type: none;
+                overflow: hidden;
+                flex-basis: 100px;
+                flex-shrink: 0;
+                
+                
+            }
+            ul li img{
+                object-fit: fill;
+                width :100px;
+                height: 100px;
+            }
+        .main .title .main-info{
+            margin-left: 20px;
+        }
         .main .title .main-info h1{
-            font-size: 45px;
+            font-size: 35px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin: auto 0px;
+            padding-bottom: 10px;
         } 
         .main .title .main-info h2{
-            font-size: 25px;
+            
+            font-size: 20px;
             color: gray;
+            margin: auto 0px;
+            padding-bottom: 30px;
         } 
-        .main .title .main-info .review{
-            font-size: 25px;
-            color: orange;
+        .main .title .main-info p{
+            font-weight: bold;
+            color: #fc0453;
+            margin: auto 0px;
         }
+        .main .title .main-info .rule{
+            font-size: 15px;
+            padding-bottom: 10px;
+            margin: auto 0px;
+        }
+        .main .title .main-info .check{
+            font-size: 15px;
+            padding-bottom: 10px;
+            margin: auto 0px;
+        }
+
 .dateChange{
+    margin-top: 10px;
     padding-left: 30px;
 
 }
-    .dateChange div p{
-        font-size: 35px;
+    .dateChange p{
+        font-size: 20px;
+        margin: auto 0px;
     }
-    .dateChange div input{
+    .dateChange input{
         padding-left: 40px;
     }
 
 
         .room-sec {
-            --border: 1px solid red;
+        
             margin: 70px auto 0 auto;
         }
 
@@ -180,7 +252,7 @@ margin: 0px auto;
 
                         .room-detail-container .highlight-btn {
                             position: absolute;
-                            width: 400px;
+                            width: 100%;
                             height: 40px;
                             top: 189px;
                             border: none;
