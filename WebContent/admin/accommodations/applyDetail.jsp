@@ -78,10 +78,10 @@
                 <div class="sub-container">
                     <div class="breadcrumb">
                         <ul class="breadcrumb-list">
-                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-                            <li>업체관리 ▶ </li>
-                            <li>업체 등록 관리 ▶</li>
-                            <li>요청 업체</li>
+                            <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;업체관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;미승인 업체 리스트&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;미승인 업체&nbsp;&nbsp;&nbsp;</li>
                         </ul>
                     </div>
                     <h1>요청 업체</h1>

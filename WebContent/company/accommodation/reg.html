@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https//fonts.gstatic.com">
     <link href="https//fonts.googleapis.com/css2?family=Noto+Sans+KRwght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/company/accommodation/regAccommodation.css ">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <Script src="/js/company/accommodation/regAccommodation.js"></Script>
 </head>
 
@@ -16,15 +17,25 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http//127.0.0.15500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
+                    <li class="sub-page">
+                        <a href="">더보기</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">1:1 문의</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sub-page">
+                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
                         <div class="mega-menu">
                             <ul>
                                 <li><a href="">내정보</a></li>
@@ -45,13 +56,14 @@
             <h1><img src="/images/company/reg.png"></h1>
             <div>
                 <div>
-                    업체명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="text-box">
+                    <em style="color: red;">*</em>업체명<br>
+                    <input type="text" class="text-box">
                 </div>
-                <div>전화번호 
+                <div><em style="color: red;">*</em>전화번호<br> 
                     <input type="text" class="text-box">
                 </div>
                 <div>
-                    위치&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <em style="color: red;">*</em>위치<br>
                     <select>
                         <option>서울</option>
                         <option>제주</option>
@@ -277,13 +289,15 @@
                     </select>
                 </div>
                 <div>
-                    상세주소  <input type="text" class="text-box">
+                    <em style="color: red;">*</em>상세주소<br>
+                    <input type="text" class="text-box">
                 </div>
                 <div>
-                    이메일  <input type="text" class="text-box">
+                    <em style="color: red;">*</em>이메일<br>
+                    <input type="text" class="text-box">
                 </div>
                 <div>
-                    숙소유형  
+                    <em style="color: red;">*</em>숙소유형  
                     <select>
                         <option>호텔</option>
                         <option>모텔</option>
@@ -294,10 +308,10 @@
                     
                 </div>
                 <div>
-                    숙소사진 추가  
+                    <em style="color: red;">*</em>숙소사진 추가  
                     <input type="file" accept="image">
                 </div>
-                <div>사업자 등록증  
+                <div><em style="color: red;">*</em>사업자 등록증  
                     <input type="file" accept="image">
                 </div>
                 <div>
@@ -306,13 +320,25 @@
                 </div>
                 
                 <section class='add-room'>
-                    <div>방 이름<input type="text"  class="text-box"></div>
-                    <div>방 갯수  <input type="text" class="text-box"></div>
-                    <div>최대 인원 수  <input type="text" class="text-box"></div>
-                    <div>침대 갯수  <input type="text" class="text-box"></div>
-                    <div>가격  <input type="text" class="text-box"></div>
-                    <div>방사진 추가 <input type="file" accept="image" class="text-box"></div>
-                    <div>추가 사항  <input type="text" class="text-box"></div>
+                    <div><em style="color: red;">*</em>방 이름<br>
+                        <input type="text"  class="text-box">
+                    </div>
+                    <div><em style="color: red;">*</em>방 갯수<br>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div><em style="color: red;">*</em>최대 인원 수<br>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div><em style="color: red;">*</em>침대 갯수<br>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div><em style="color: red;">*</em>가격<br>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div><em style="color: red;">*</em>방사진 추가<br>
+                        <input type="file" accept="image" class="text-box"></div>
+                    <div>추가 사항<br>
+                        <input type="text" class="text-box"></div>
                 </section>  
                 
                 <section>

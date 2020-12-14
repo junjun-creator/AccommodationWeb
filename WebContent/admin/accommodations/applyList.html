@@ -21,11 +21,21 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
+                    <li class="sub-page">
+                        <a href="">더보기</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">1:1 문의</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sub-page">
+                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
                         <div class="mega-menu">
                             <ul>
                                 <li><a href="">내정보</a></li>
@@ -41,61 +51,66 @@
     </header>
     
     <main>
-	    <section class="body">
-	        <aside id="aside" class="aside">
-	            <h1>업체관리</h1>
-	            <ul>
-	                <li><a href="list">등록된 업체 리스트</a></li>
-	                <li><a href="regList" class="active">업체 등록 관리</a></li>
-	            </ul>
-	        </aside>
-	        <div class="container">
-	            <nav id="nav" class="nav">
-	                <ul>
-	                    <li class="current-tab">
-	                        <a href="list">
-	                            <i class="fas fa-hotel"></i><span>업체관리</span>
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="/admin/userInfo/list">
-	                            <i class="fas fa-user-circle"></i><span> 회원관리</span>
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="/admin/promotion/goldenTime/list">
-	                            <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="/admin/customerService/notice/list">
-	                            <i class="fas fa-headphones"></i><span>고객센터</span>
-	                        </a>
-	                    </li>
-	                </ul> 
-	            </nav>
-	            <main id="main" class="main">
-	                <div class="sub-container">
-	                    <div class="breadcrumb">
-	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>업체관리 ▶ </li>
-	                            <li>업체 등록 관리</li>
-	                        </ul>
-	                    </div>
-	                    <h1>업체 등록 관리</h1>
-	                    <select name="" class="acc-type-category">
-		                    <form action="">
-		                        <option value="" selected disabled>전체보기</option>
-		                        <option value="호텔">호텔</option>
-		                        <option value="모텔">모텔</option>
-		                        <option value="게스트하우스">게스트하우스</option>
-		                        <option value="리조트">리조트</option>
-		                        <option value="펜션">펜션</option>
-		                    </form>
-		                </select>
-		                <section>
-		                    <form class="list-board">
+        <section class="body">
+            <aside id="aside" class="aside">
+                <h1>업체관리</h1>
+                <ul>
+                    <li><a href="list">등록된 업체 리스트</a></li>
+                    <li><a href="regList" class="active">업체 등록 관리</a></li>
+                </ul>
+            </aside>
+            <div class="container">
+                <nav id="nav" class="nav">
+                    <ul>
+                        <li class="current-tab">
+                            <a href="list">
+                                <i class="fas fa-hotel"></i><span>업체관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/userInfo/list">
+                                <i class="fas fa-user-circle"></i><span> 회원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/promotion/goldenTime/list">
+                                <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/customerService/notice/list">
+                                <i class="fas fa-headphones"></i><span>고객센터</span>
+                            </a>
+                        </li>
+                    </ul> 
+                </nav>
+                <main id="main" class="main">
+                    <div class="sub-container">
+                        <div class="breadcrumb">
+                            <ul class="breadcrumb-list">
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;업체관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;업체 등록 관리&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+
+                        <div class="main-search">
+                            <h1>업체 등록 관리</h1>
+                            <form action="">
+                                <select name="" class="acc-catagory">
+                                    <option value="" selected disabled>전체보기</option>
+                                    <option value="호텔">호텔</option>
+                                    <option value="모텔">모텔</option>
+                                    <option value="게스트하우스">게스트하우스</option>
+                                    <option value="리조트">리조트</option>
+                                    <option value="펜션">펜션</option>
+                                </select>
+                                <input type="text">
+                                <input type="submit" value="검색">
+                            </form>
+                        </div>
+                        <section>
+                            <form class="list-board">
                         <table>
                             <thead>
                                 <tr>

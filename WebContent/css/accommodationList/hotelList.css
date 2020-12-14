@@ -17,6 +17,10 @@
         position: sticky;
         top: 72px;
     }
+    .aside .head-counter .form-option {
+        width: 60px;
+        padding-left: 20px;
+    }
 
 
     /* ---------메인---------- */
