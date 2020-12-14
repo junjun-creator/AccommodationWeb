@@ -4,39 +4,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.teum.dao.UsersDao;
+import com.teum.dao.CompanyDao;
+import com.teum.dao.entity.CompanyListView;
 import com.teum.dao.entity.UsersListView;
+import com.teum.entity.Company;
 import com.teum.entity.Member;
 import com.teum.entity.Users;
 
-public class JdbcUsersDao implements UsersDao {
+public class JdbcCompanyDao implements CompanyDao {
 
 	@Override
-	public int insert(Users users) {
+	public int insert(Company company) {
 		int result=0;
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		//String sql = "SELECT * FROM MEMBER";
 		
-		List<Users> list = new ArrayList<>();
-		//DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			String sql = "INSERT INTO USERS(name,email,password,birthday,phone) VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO COMPANY(name,email,password,birthday,phone) VALUES(?,?,?,?,?)";
 			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1,users.getName());
-			ps.setString(2,users.getEmail());
-			ps.setString(3,users.getPassword());
-			ps.setString(4,users.getBirthday());
-			ps.setString(5,users.getPhone());
+			ps.setString(1,company.getName());
+			ps.setString(2,company.getEmail());
+			ps.setString(3,company.getPassword());
+			ps.setString(4,company.getBirthday());
+			ps.setString(5,company.getPhone());
 			result = ps.executeUpdate();
 			
 			
@@ -53,7 +51,7 @@ public class JdbcUsersDao implements UsersDao {
 	}
 
 	@Override
-	public int update(Users users) {
+	public int update(Company company) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -64,14 +62,11 @@ public class JdbcUsersDao implements UsersDao {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		//String sql = "SELECT * FROM MEMBER";
-		
-		List<Member> list = new ArrayList<>();
-		//DriverManager;//Class.forName~
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			String sql = "DELETE FROM USERS WHERE id=?";
+			String sql = "DELETE FROM COMPANY WHERE id=?";
 			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,id);
@@ -91,18 +86,18 @@ public class JdbcUsersDao implements UsersDao {
 	}
 
 	@Override
-	public Users get(int id) {
+	public Company get(int id) {
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String dbid = "TEUM";
 		String dbpwd = "4444";
 		//String sql = "SELECT * FROM MEMBER";
 		
-		Users u = new Users();
+		Company c = new Company();
 		//DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			String sql = "SELECT * FROM USERS WHERE id = ?";
+			String sql = "SELECT * FROM COMPANY WHERE id = ?";
 			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1,id);
@@ -113,15 +108,13 @@ public class JdbcUsersDao implements UsersDao {
 				String email = rs.getString("email");
 				String birthday = rs.getString("birthday");
 				String phone = rs.getString("phone");
-				int rankId = rs.getInt("rank_id");
 				Date regdate = rs.getDate("regdate");
-				u.setId(id);
-				u.setName(name);
-				u.setEmail(email);
-				u.setBirthday(birthday);
-				u.setPhone(phone);
-				u.setRankId(rankId);
-				u.setRegdate(regdate);
+				c.setId(id);
+				c.setName(name);
+				c.setEmail(email);
+				c.setBirthday(birthday);
+				c.setPhone(phone);
+				c.setRegdate(regdate);
 				
 			}
 			
@@ -135,29 +128,29 @@ public class JdbcUsersDao implements UsersDao {
 			e.printStackTrace();
 		}
 		
-		return u;
+		return c;
 	}
 
 	@Override
-	public List<Users> getList() {
-		return getList(1,10,"");
-	}
-	@Override
-	public List<Users> getList(int startIndex, int endIndex) {
-		return getList(startIndex,endIndex,"");
+	public List<Company> getList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Users> getList(int startIndex, int endIndex, String text) {
+	public List<Company> getList(int startIndex, int endIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Company> getList(int startIndex, int endIndex, String text) {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		String sql = "SELECT * FROM USER_LIST WHERE NUM BETWEEN ? AND ? AND NAME LIKE ?";
+		String sql = "SELECT * FROM COMPANY_LIST WHERE NUM BETWEEN ? AND ? AND NAME LIKE ?";
 		
-		System.out.println(startIndex);
-		System.out.println(endIndex);
-		System.out.println(text);
-		List<Users> list = new ArrayList<>();
+		List<Company> list = new ArrayList<>();
 		//DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -177,21 +170,19 @@ public class JdbcUsersDao implements UsersDao {
 				String email = rs.getString("email");
 				String birthday = rs.getString("birthday");
 				String phone = rs.getString("phone");
-				int rankId = rs.getInt("rank_id");
 				Date regdate = rs.getDate("regdate");
 				int type = rs.getInt("type");
-				UsersListView u = new UsersListView();
-				u.setRownum(rownum);
-				u.setId(id);
-				u.setName(name);
-				u.setEmail(email);
-				u.setBirthday(birthday);
-				u.setPhone(phone);
-				u.setRankId(rankId);
-				u.setRegdate(regdate);
-				u.setType(type);
+				CompanyListView c = new CompanyListView();
+				c.setRownum(rownum);
+				c.setId(id);
+				c.setName(name);
+				c.setEmail(email);
+				c.setBirthday(birthday);
+				c.setPhone(phone);
+				c.setRegdate(regdate);
+				c.setType(type);
 				
-				list.add(u);
+				list.add(c);
 			}
 			
 			rs.close();
@@ -206,5 +197,6 @@ public class JdbcUsersDao implements UsersDao {
 		
 		return list;
 	}
+	
 
 }

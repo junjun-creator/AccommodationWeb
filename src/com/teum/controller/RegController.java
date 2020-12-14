@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teum.entity.Company;
 import com.teum.entity.Member;
 import com.teum.entity.Users;
+import com.teum.service.CompanyService;
 import com.teum.service.MemberService;
 import com.teum.service.UsersService;
 
@@ -35,20 +37,41 @@ public class RegController extends HttpServlet{
 				phone = sub1 + "-" + sub2 + "-" + sub3;
 			}
 			
-			Users u = new Users();
-			u.setName(name);
-			u.setEmail(email);
-			u.setPassword(pwd);
-			u.setBirthday(birthday);
-			u.setPhone(phone);
+			if(!birthday.contains("-")) {
+				String sub1 = birthday.substring(0,4);
+				String sub2 = birthday.substring(4,6);
+				String sub3 = birthday.substring(6,8);
+				birthday = sub1 + "-" + sub2 + "-" + sub3;
+			}
 			
 			if(type.equals("회원")) {
+				Users u = new Users();
+				u.setName(name);
+				u.setEmail(email);
+				u.setPassword(pwd);
+				u.setBirthday(birthday);
+				u.setPhone(phone);
 				
 				UsersService service = new UsersService();
 				int result = service.insert(u);
 				
 				response.sendRedirect("/admin/userInfo/usersList");
 			}
+			else {
+				Company c = new Company();
+				c.setName(name);
+				c.setName(name);
+				c.setEmail(email);
+				c.setPassword(pwd);
+				c.setBirthday(birthday);
+				c.setPhone(phone);
+				
+				CompanyService service = new CompanyService();
+				int result = service.insert(c);
+				
+				response.sendRedirect("/admin/userInfo/companyList");
+			}
+			
 			
 		}
 	}

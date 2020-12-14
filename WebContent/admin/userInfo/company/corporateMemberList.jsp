@@ -1,12 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.teum.service.MemberService" %>
+<%@ page import="com.teum.entity.Users" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/admin/layout.css">
-    <link rel="stylesheet" href="../../css/admin/userInfo/list.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/layout.css">
+    <link rel="stylesheet" href="../../../css/admin/layout.css">
+    <link rel="stylesheet" href="../../../css/admin/userInfo/list.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -92,7 +99,7 @@
                         </select>
                     </div>
                     <section>
-                        <form action="" class="list-board">
+                        <form action="delete" class="list-board" method="post">
                             <table>
                                 <thead>
                                     <tr>
@@ -106,42 +113,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="col-s">1</td>
-                                        <td class="col-sm">조재희</td>
-                                        <td class="col-m">cjh@newlecture.com</td>
-                                        <td class="col-sm">2020-00-00</td>
-                                        <td class="col-m">010-0000-1111</td>
-                                        <td class="col-m">2020-11-05</td>
-                                        <td class="col-s"><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-s">2</td>
-                                        <td class="col-sm">신중언</td>
-                                        <td class="col-m">sje@newlecture.com</td>
-                                        <td class="col-sm">0000-00-00</td>
-                                        <td class="col-m">010-3462-8452</td>
-                                        <td class="col-m">2020-11-05</td>
-                                        <td class="col-s"><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-s">3</td>
-                                        <td class="col-sm">김병준</td>
-                                        <td class="col-m">kbj@newlecture.com</td>
-                                        <td class="col-sm">0000-00-00</td>
-                                        <td class="col-m">010-2365-5678</td>
-                                        <td class="col-m">2020-11-14</td>
-                                        <td class="col-s"><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-s">4</td>
-                                        <td class="col-sm">박수현</td>
-                                        <td class="col-m">psh@newlecture.com</td>
-                                        <td class="col-sm">0000-00-00</td>
-                                        <td class="col-m">010-3863-1263</td>
-                                        <td class="col-m">2020-11-23</td>
-                                        <td class="col-s"><input type="checkbox"></td>
-                                    </tr>
+                                    <c:forEach var="m" items="${list}">
+		                                    <tr>
+		                                        <td class="col-s">${m.rownum }</td>
+		                                        <td class="col-sm">${m.name }</td>
+		                                        <td class="col-m"><a href="detail?id=${m.id }">${m.email }</a></td>
+		                                        <td class="col-sm">${m.birthday }</td>
+		                                        <td class="col-m">${m.phone }</td>
+		                                        <td class="col-m">${m.regdate }</td>
+		                                        <td class="col-s">
+		                                        	<input type="hidden" name="type" value="${m.type }">
+		                                       		<input type="checkbox" name="selected" value="${m.id }">
+		                                        </td>
+		                                    </tr>
+	                                 </c:forEach>
                                     <tr class="btn-delete">
                                         <td colspan="8"><input type="submit" value="탈퇴"></td>
                                     </tr>
@@ -167,24 +152,24 @@
                                                     <span><a href="">다음</a></span>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div>
-                                                    <form action="">
-                                                        <select name="search-category" id="">
-                                                            <option value="숙소명" selected>사업주명</option>
-                                                            <option value="예약자">이메일</option>
-                                                        </select>
-                                                        <input type="text">
-                                                        <input type="button" value="검색">
-                                                    </form>
-                                                </div>
-                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </form>
                     </section>
+                    <div class="search-container">
+                        <div>
+                            <form action="">
+                                <select name="search-category" id="">
+                                    <option value="숙소명" selected>사업주명</option>
+                                    <option value="예약자">이메일</option>
+                                </select>
+                                <input type="text">
+                                <input type="button" value="검색">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>

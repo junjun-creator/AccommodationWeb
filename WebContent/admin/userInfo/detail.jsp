@@ -230,7 +230,8 @@
 	                    <section class="user-info-btn">
 	                        <input type="button" onclick="location.href='/admin/userInfo/list'" value="목록">
 	                        <form action="delete" method="post">
-	                        	<input type="hidden" name="email" value="${member.email }">
+	                        	<input type="hidden" name="id" value="${member.id }">
+	                        	<input type="hidden" name="type" value="${member.type }">
 		                        <input type="submit" value="탈퇴">
 	                        </form>
 	                    </section>
