@@ -5,10 +5,27 @@
 	.main .sub-container {
 		margin-left: 30px;
 	}	
-		.main h1 {
-		    font-size: 20px;
-		    margin-top: 30px;
+
+		.main .search-form {
+			display: flex;
+			margin-top: 30px;
 		}
+
+			.main .search-form h1 {
+				font-size: 20px;
+				flex-basis: 150px;
+			}
+
+				.main .search-form .input-search {
+					width: 150px;
+					height: 25px;
+				}
+
+				.main .search-form .search-submit-btn {
+					margin-left: 1px;
+					width: 45px;
+					height: 25px;
+				}
 		
 		.main .list-board > table {
 		    border-top: 2px solid #5F0080;

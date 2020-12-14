@@ -76,6 +76,13 @@ header li{
             font-weight: none;
         }
 
+    .sec-header-page .sub-page .character {
+        background: url(/images/smile.png) 0 8px no-repeat;
+        background-size: 25px;
+        margin-left: 20px;
+        padding-left: 30px;
+    }
+
     .sec-header-page .sub-page:hover .mega-menu{
         opacity: 1;
     }
@@ -92,10 +99,10 @@ header li{
             }
 
 /*----------  header search -----------*/
-.header_search{
+.header-search{
     display: flex;
 }
-    .header_search>input{
+    .header-search>input{
         --padding: 8px 16px 8px 16px;
         width: 200px;
         padding-left: 20px;
