@@ -2,6 +2,7 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.QnAView;
 import com.teum.entity.QnA;
 
 public interface QnADao {
@@ -12,4 +13,9 @@ public interface QnADao {
 	
 	QnA get(int id);
 	List<QnA> getList();
+	
+	List<QnAView> getViewList();
+	List<QnAView> getViewList(int startIndex, int endIndex);
+	List<QnAView> getViewList(int startIndex, int endIndex,String category);
+	
 }

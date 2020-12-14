@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.QnADao;
+import com.teum.dao.entity.QnAView;
 import com.teum.dao.jdbc.JdbcQnADao;
 import com.teum.entity.QnA;
 
@@ -21,6 +22,27 @@ public class QnAService {
 		
 		qnaDao = new JdbcQnADao();
 	}
+	
+	public List<QnAView> getViewList(int page, int size, String category){
+		int startIndex = 1 + (page-1)*size;
+		int endIndex = page*size;
+		
+		return qnaDao.getViewList(startIndex,endIndex,category);
+	}
+	
+	public List<QnAView> getViewList(int page, int size){
+		int startIndex = 1 + (page-1)*size;
+		int endIndex = page*size;
+		
+		return qnaDao.getViewList(page,size,"");
+	}
+	
+	public List<QnAView> getViewList(){
+		
+		
+		return qnaDao.getViewList(1,10,"");
+	}
+	
 	
 	public List<QnA> getList() {
 		

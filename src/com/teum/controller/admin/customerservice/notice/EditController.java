@@ -20,12 +20,8 @@ public class EditController extends HttpServlet{
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		NoticeService service = new NoticeService();
-		Notice n = service.get(id);
-		/*
-		 * Notice n = service.get(id); String pub = ""; if(n.getOpenStatus()=='1') {
-		 * 
-		 * pub="checked"; }else pub=null;
-		 */
+		Notice n = service.get(id); 
+		
 		request.setAttribute("n", n);
 		request.getRequestDispatcher("edit.jsp").forward(request,response);
 		
@@ -36,19 +32,20 @@ public class EditController extends HttpServlet{
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		int adminId = Integer.parseInt(request.getParameter("ADMIN_ID"));
 		String open =request.getParameter("OPEN_STATUS");
 		
 		System.out.println(open);
-		/*if(open.equals("on")) {
+		if(open.equals("on")) {
 			open ="1";
 		}else {
 			open="0";
 		}
-		*/
-		//int openStatus = Integer.parseInt(open);
+		
+		int openStatus = Integer.parseInt(open);
 		
 		/* Notice notice = new Notice(title,content,openStatus); */
-		Notice notice = new Notice(title,content);
+		Notice notice = new Notice(title,content,adminId,openStatus);
 		notice.setId(Integer.parseInt(id));
 		
 		NoticeService service = new NoticeService();

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.QnA;
+import com.teum.dao.entity.QnAView;
 import com.teum.service.QnAService;
 @WebServlet("/admin/customerService/QnA/list")
 public class ListController extends HttpServlet {
@@ -17,7 +17,7 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		QnAService service = new QnAService();
-		List<QnA> list = service.getList();
+		List<QnAView> list = service.getViewList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);

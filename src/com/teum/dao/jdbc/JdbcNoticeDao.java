@@ -49,7 +49,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		int result =0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE NOTICE SET TITLE=?,CONTENT=?,PUB=? WHERE ID=?";
+		String sql = "UPDATE NOTICE SET TITLE=?,CONTENT=?,OPEN_STATUS=? WHERE ID=?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
