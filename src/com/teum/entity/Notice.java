@@ -29,19 +29,27 @@ public class Notice {
 
 
 
-	public Notice(String title, String content, int adminId, int openStatus) {
+	public Notice(String title, String content, int adminId) {
 		this.title = title;
-		this.content = content;
 		this.adminId = adminId;
-		this.openStatus = openStatus;
-	
+		this.content = content;
+		
 	}
 
 
-	public Notice(String title, String content, int openStatus) {
+
+	public Notice(String title, String content, int adminId, int openStatus) {
 		this.title = title;
+		this.adminId = adminId;
 		this.content = content;
 		this.openStatus = openStatus;
+	}
+
+
+
+	public Notice(String title, String content) {
+		this.title = title;
+		this.content = content;
 	}
 
 

@@ -21,27 +21,34 @@ public class EditController extends HttpServlet{
 		int id = Integer.parseInt(request.getParameter("id"));
 		NoticeService service = new NoticeService();
 		Notice n = service.get(id);
-		if(n.getPub().equals("공개")) {
-			n.setPub("checked");
-		}else
-			n.setPub(null);
+		/*
+		 * Notice n = service.get(id); String pub = ""; if(n.getOpenStatus()=='1') {
+		 * 
+		 * pub="checked"; }else pub=null;
+		 */
 		request.setAttribute("n", n);
 		request.getRequestDispatcher("edit.jsp").forward(request,response);
 		
 		}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String pub = request.getParameter("pub");
-		if(pub==null) {
-			pub="비공개";
-		}else {
-			pub = "공개";
-		}
+		String open =request.getParameter("OPEN_STATUS");
 		
-		Notice notice = new Notice(title,content,pub);
+		System.out.println(open);
+		/*if(open.equals("on")) {
+			open ="1";
+		}else {
+			open="0";
+		}
+		*/
+		//int openStatus = Integer.parseInt(open);
+		
+		/* Notice notice = new Notice(title,content,openStatus); */
+		Notice notice = new Notice(title,content);
 		notice.setId(Integer.parseInt(id));
 		
 		NoticeService service = new NoticeService();
