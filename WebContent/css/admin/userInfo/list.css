@@ -81,6 +81,9 @@
                     .main .list-board > table td.col-m { 
                         width: 150px;
                     }
+                    .main .list-board > table td.col-l { 
+                        width: 250px;
+                    }
                     .main .list-board > table .btn-delete>td{
                         text-align: right;
                         padding-right: 30px;
@@ -106,7 +109,7 @@
     }
 
 /**************페이저***************/
-.main .table-container > table td.no-border {
+.main table td.no-border {
     border: none;
 }
 
@@ -143,4 +146,14 @@
 
     .main .pager-container .btn a {
         text-decoration: none;
+    }
+
+    .main .search-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main .search-container.private-list{
+        padding-right: 140px;
     }

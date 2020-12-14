@@ -95,6 +95,16 @@
                     password_input.classList.remove('pass');
                     input_box_password.classList.add('discorrect');
             }
+            
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }
+            else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
+            }
 
             var count_validation = 0;
             for(var i=0;i<inputAll.length;i++){
@@ -125,6 +135,16 @@
                     password_input.classList.remove('pass');
                     input_box_password.classList.add('discorrect');
             }
+            
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }
+            else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
+            }
 
             var count_validation = 0;
             for(var i=0;i<inputAll.length;i++){
@@ -153,6 +173,16 @@
                 if(password_input.classList.contains('pass'))
                     password_input.classList.remove('pass');
                     input_box_password.classList.add('discorrect');
+            }
+            
+            if(password_input.value == password_check_input.value){
+                password_check_input.classList.add('pass');
+                input_box_password_check.classList.remove('discorrect');
+            }
+            else{
+                if(password_check_input.classList.contains('pass'))
+                    password_check_input.classList.remove('pass');
+                    input_box_password_check.classList.add('discorrect');
             }
         });
 
@@ -230,16 +260,16 @@
 
         //이름 유효성 검사
         var name_input = document.querySelector('.name');
-        var input_box_birthday = name_input.parentNode.parentNode;
+        var input_box_name = name_input.parentNode.parentNode;
         name_input.addEventListener("change", function(){
             var regExp = /^[가-힣]+$/;
             if(regExp.test(name_input.value)){
                 name_input.classList.add('pass');
-                input_box_birthday.classList.remove('discorrect');
+                input_box_name.classList.remove('discorrect');
             }else{
                 if(name_input.classList.contains('pass'))
                     name_input.classList.remove('pass');
-                    input_box_birthday.classList.add('discorrect');
+                    input_box_name.classList.add('discorrect');
             }
 
             var count_validation = 0;
@@ -264,12 +294,12 @@
             var regExp =  /^[가-힣]+$/;
             if(regExp.test(name_input.value)){
                 name_input.classList.add('pass');
-                input_box_birthday.classList.remove('discorrect');
+                input_box_name.classList.remove('discorrect');
             }
             else{
                 if(name_input.classList.contains('pass'))
                     name_input.classList.remove('pass');
-                    input_box_birthday.classList.add('discorrect');
+                    input_box_name.classList.add('discorrect');
             }
 
             var count_validation = 0;
@@ -293,12 +323,12 @@
             var regExp =  /^[가-힣]+$/;
             if(regExp.test(name_input.value)){
                 name_input.classList.add('pass');
-                input_box_birthday.classList.remove('discorrect');
+                input_box_name.classList.remove('discorrect');
             }
             else{
                 if(name_input.classList.contains('pass'))
                     name_input.classList.remove('pass');
-                    input_box_birthday.classList.add('discorrect');
+                    input_box_name.classList.add('discorrect');
             }
         });
         

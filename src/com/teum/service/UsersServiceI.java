@@ -18,12 +18,14 @@ public interface UsersServiceI {
 	//상세정보 페이지
 	Users get(int id);
 	
+	
 	// 관리자페이지
 	//개인회원리스트
 	List<Users> getList();
 	List<Users> getList(int page);
 	List<Users> getList(int page, String text);//text 는 문자열로 검
 	int delete(int[] id);
+	int delete(int id);
 
 	//예약관리 페이지(회원)
 //	List<Reservation> getList(int id, String type);

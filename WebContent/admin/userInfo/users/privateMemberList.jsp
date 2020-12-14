@@ -1,15 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.teum.service.MemberService" %>
+<%@ page import="com.teum.entity.Users" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/admin/layout.css">
-    <link rel="stylesheet" href="../../css/admin/userInfo/list.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/layout.css">
+    <link rel="stylesheet" href="../../../css/admin/layout.css">
+    <link rel="stylesheet" href="../../../css/admin/userInfo/list.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>등록된 업체 리스트</title>
 </head>
 <body>
     <header class="sec-header-page">
@@ -98,7 +106,7 @@
 	                        </select>
 	                    </div>
 	                    <section>
-	                        <form action="" class="list-board">
+	                        <form action="delete" class="list-board" method="post">
 	                            <table>
 	                                <thead>
 	                                    <tr>
@@ -107,7 +115,6 @@
 	                                        <td class="col-m">이메일</td>
 	                                        <td class="col-sm">생년월일</td>
 	                                        <td class="col-m">휴대폰번호</td>
-	                                        <td class="col-sm">회원종류</td>
 	                                        <td class="col-sm">회원등급</td>
 	                                        <td class="col-s"><input type="checkbox"></td>
 	                                    </tr>
@@ -115,14 +122,13 @@
 	                                <tbody>
 										<c:forEach var="m" items="${list}">
 		                                    <tr>
-		                                        <td class="col-s">${m.id }</td>
+		                                        <td class="col-s">${m.rownum }</td>
 		                                        <td class="col-sm">${m.name }</td>
-		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?email=${m.email }">${m.email }</a></td>
+		                                        <td class="col-m" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"><a href="detail?id=${m.id }">${m.email }</a></td>
 		                                        <td class="col-sm">${m.birthday }</td>
 		                                        <td class="col-m">${m.phone }</td>
-		                                        <td class="col-sm user-type">${m.type }</td>
-		                                        <td class="col-sm user-rank">${m.rank }</td>
-		                                        <td class="col-s"><input type="checkbox"></td>
+		                                        <td class="col-sm user-rank">${m.rankId }</td>
+		                                        <td class="col-s"><input type="checkbox" name="selected" value="${m.id }"></td>
 		                                    </tr>
 										</c:forEach>
 	                                    <!-- <tr>
@@ -156,10 +162,10 @@
 	                                        <td class="col-s"><input type="checkbox"></td>
 	                                    </tr> -->
 	                                    <tr class="btn-delete">
-	                                        <td colspan="8"><input type="submit" value="삭제"></td>
+	                                        <td colspan="7"><input type="submit" value="삭제"></td>
 										</tr>
 										<tr>
-											<td colspan="7" class="no-border">
+											<td colspan="6" class="no-border">
 												<div class="pager-container">
 													<div class="btn btn-prev">
 														<span><a href="">이전</a></span>
@@ -180,24 +186,24 @@
 														<span><a href="">다음</a></span>
 													</div>
 												</div>
-												<div>
-													<div>
-														<form action="">
-															<select name="search-category" id="">
-																<option value="숙소명" selected>회원명</option>
-																<option value="예약자">이메일</option>
-															</select>
-															<input type="text">
-															<input type="button" value="검색">
-														</form>
-													</div>
-												</div>
 											</td>
 										</tr>
 	                                </tbody>
 	                            </table>
 	                        </form>
 	                    </section>
+						<div class="search-container private-list">
+							<div>
+								<form action="">
+									<select name="search-category" id="">
+										<option value="숙소명" selected>회원명</option>
+										<option value="예약자">이메일</option>
+									</select>
+									<input type="text">
+									<input type="button" value="검색">
+								</form>
+							</div>
+						</div>
 	                </div>
 	            </main>
 	        </div>
