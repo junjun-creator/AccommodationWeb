@@ -88,10 +88,10 @@
 	                                    <td class="col-s">No.</td>
 	                                    <td class="col-m">제목</td>
 	                                    <td class="col-sm">날짜</td>
-	                                    <td class="col-sm">작성자</td>
+	                                    <td class="col-s">작성자</td>
 	                                    <td class="col-s">상태</td>
 	                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
-	                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
+	                                    <td class="col-s">삭제<input type="checkbox" class="selectAllDelete"></td>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
@@ -100,8 +100,18 @@
 	                                    <td>${n.id}</td>
 	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
 	                                    <td>${n.regdate}</td>
-	                                    <td>${n.adminId}</td>
-	                                    <td>${n.openStatus}</td>
+	                                    <td>관리자</td>
+	                                    <td>
+	                                    <c:choose>
+	                                    	<c:when test="${n.openStatus eq 1}">
+	                                    		공개중
+	                                    	</c:when>
+	                                    	<c:otherwise>
+	                                    		비공개
+	                                    	</c:otherwise>
+	                                    </c:choose>
+	                                    
+	                                    </td>
 	                                    <td>
 	                                        <input type="checkbox" name="" class=pubChk >
 	                                    </td>

@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="com.teum.service.QnAService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -76,7 +75,7 @@
 	                    </div>
 	                    <section class="list-board">
 		                   	<div class="main-search">
-		                        <h1>공지사항 리스트</h1>
+		                        <h1>문의사항 리스트</h1>
 		                        <div>
 			                        <select name="" id="" class="catagory">
 			                            <form action="">

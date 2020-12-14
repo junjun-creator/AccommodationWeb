@@ -28,10 +28,11 @@ public class RegController extends HttpServlet {
 			int adminId = Integer.parseInt(request.getParameter("ADMIN_ID"));
 			String open =request.getParameter("OPEN_STATUS");
 			
-			if(open.equals("on")) {
+			if(open!=null) {
 				open ="1";
 			}else {
 				open="0";
+				
 			}
 			
 			int openStatus = Integer.parseInt(open);

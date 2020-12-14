@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,12 +82,8 @@
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th >첨부파일</th>
-	                                    <td class="text-left">
-	                                        <input type="file">
-	                                    </td>
 	                                    <th class="col-m">작성자</th>
-	                                    <td >
+	                                    <td colspan="3">
 	                                    <input type="hidden" name="ADMIN_ID" value="1">
 	                                     <span>관리자</span></td>
 	                                </tr>

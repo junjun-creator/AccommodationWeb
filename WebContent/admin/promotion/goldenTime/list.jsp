@@ -5,36 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../../css/admin/promotion/goldenTime/list.css">
+     <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/promotion/goldenTime/list.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>골든타임 리스트</title>
 </head>
 <body>
-    <header class="sec_header">
-        <div class="header pcHeader">
-            <div class="header_h1">
-                <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+    <header class="sec-header-page">
+        <section class="header-sec pcHeader">
+            <div class="header-logo">
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
-                <ul class="main_menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">이벤트</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega_menu">
-                            <ul>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                                <li><a href="">submenu</a></li>
-                            </ul>
-                        </div>
+                <ul class="main-menu">
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </header>
     <main>
 	    <section class="body">
@@ -59,23 +52,29 @@
 	                <section class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>프로모션관리 ▶ </li>
-	                            <li>골든타임 리스트</li>
+	                             <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        		<li>&nbsp;&nbsp;&nbsp;프로모션관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+	                            <li>&nbsp;&nbsp;&nbsp;골든타임 리스트</li>
 	                        </ul>
 	                    </div>
 	                    <section class="list-board">
-	                        <h1>골든타임 리스트</h1>
-	                        <select name="" class="AccTypeCatagory">
-		                       <form action="">
-		                           <option value="" selected disabled>전체보기</option>
-		                           <option value="호텔">호텔</option>
-		                           <option value="모텔">모텔</option>
-		                           <option value="게스트하우스">게스트하우스</option>
-		                           <option value="리조트">리조트</option>
-		                           <option value="펜션">펜션</option>
-		                       </form>
-		                    </select>
+	                    	<div class="main-search">	
+		                        <h1>골든타임 리스트</h1>
+		                        <div>
+			                        <select name="" class="AccTypeCatagory">
+				                       <form action="">
+				                           <option value="" selected disabled>전체보기</option>
+				                           <option value="호텔">호텔</option>
+				                           <option value="모텔">모텔</option>
+				                           <option value="게스트하우스">게스트하우스</option>
+				                           <option value="리조트">리조트</option>
+				                           <option value="펜션">펜션</option>
+				                       </form>
+				                       	<input type="text">
+			                        	<input type="submit" value="검색">
+				                    </select>
+			                    </div>
+	                    	</div>	
 	                        <table>
 	                            <thead>
 	                                <tr>

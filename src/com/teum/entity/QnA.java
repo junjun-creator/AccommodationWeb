@@ -33,6 +33,13 @@ public class QnA {
 		this.answerContent = answerContent;
 	}
 
+	public QnA(String title, String answerContent, int adminId, int answerStatus) {
+		this.title = title;
+		this.answerContent = answerContent;
+		this.adminId = adminId;
+		this.answerStatus = answerStatus;
+	}
+
 	public int getId() {
 		return id;
 	}

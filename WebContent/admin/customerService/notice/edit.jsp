@@ -99,7 +99,7 @@
 	                                    <th>내용</th>
 	                                    <td class="text-left" colspan="3">
 	                                    
-	                                       <textarea rows="25" cols="75" name="content">${n.content}</textarea>
+	                                       <textarea rows="25" cols="100" name="content">${n.content}</textarea>
 	                                    </td>
 	                                </tr>
 	                            </table>
