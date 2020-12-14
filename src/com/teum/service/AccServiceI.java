@@ -12,7 +12,7 @@ public interface AccServiceI {
 	//숙소리스트 정보(관리자)
 //	public List<Acc> getList();
 //	public List<Acc> getList(String type, int page, String accType, String search);
-	//숙소 승인(관리자)
+	//숙소 승인(관리자)//다오에 추가해야함
 	public int[] approvalAll(int[] ids);
 	//숙소 삭제(관리자)
 	public int[] deleteAll(int[] ids);
@@ -27,7 +27,7 @@ public interface AccServiceI {
 		
 	//미승인 숙소리스트 정보(관리자)
 //	public List<Acc> applyGetList();
-	public List<Acc> applyGetList(int page, String type, String search);
+	public List<Acc> applyGetList(int page, String accType, String search);
 
 	//미승인 숙소디테일 페이지(관리자)
 	public Acc applyGet(int id);

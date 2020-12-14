@@ -1,4 +1,99 @@
-.main .sub-container h1 {
+header h1{
+    margin: 0;
+    height: 100%;
+}
+
+header li{
+    color: white;
+    list-style: none;
+}
+
+.sec-header-page{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.header-sec{
+    display: flex;
+    background: white;
+    height: 72px;
+    width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+    .header-sec a {
+        --height: 50%;
+        display: block;
+        text-align: center;
+        padding: .5rem 1rem;
+        text-decoration: none;
+        color: #5f0081;
+        font-weight: bold;
+    }
+
+    .header-sec>.header-logo{
+        flex-basis: 50px;
+        height:70%;
+        background: url(/images/틈로고index.png) 0 0 no-repeat;
+        text-indent: -9999px;
+        background-size: 50px auto;
+    }
+        .header-sec>.header-logo .teum-logo{
+            box-sizing: border-box;
+            height: 100%;
+        } 
+        .main-menu{
+            display: flex;
+            margin: 0;
+            position: relative;
+        }
+        
+        .sec-header-page .mega-menu{
+            position: absolute;
+            border: 1px solid rgb(160, 160, 160);
+            border-top: none;
+            background-color: white;
+            --margin-top: 15px;
+            right: -12px;
+            opacity: 0;
+            transition: opacity .25s ease .1s;
+        }
+        .sec-header-page .mega-menu ul li{
+            height: 0;
+            overflow: hidden;
+            padding: 0;
+            transition: height .25s ease .1s;
+        }
+        
+            .sec-header-page .mypage:hover .mega-menu{
+                opacity: 1;
+        
+            }
+        
+            .sec-header-page .mypage:hover .mega-menu ul li {
+                height: 36px;
+                overflow: visible;
+                padding: 0;
+            }
+        
+                .sec-header-page .mega-menu a{
+                    color: #5f0081;
+                }
+                .header_search{
+    display: flex;
+}
+    .header_search>input{
+        padding: 8px 16px 8px 16px;
+        width: 100px;
+    }.header_search{
+        display: flex;
+    }
+        .header_search>input{
+            padding: 8px 16px 8px 16px;
+            width: 100px;
+        }.main .sub-container h1 {
     font-size: 20px;
     margin: 30px 0 0 30px;
 }
@@ -10,7 +105,7 @@
     border-top: 2px solid #5F0080;
     --border-collapse: collapse;
     --border-spacing: 5px 10px;
-    width: 700px;
+    width: 800px;
     table-layout: fixed;
     font-size: 14px;
     margin: 10px 0 0 30px;
@@ -44,51 +139,38 @@
             .main .list-board > table tbody tr:last-child >td{
                 border-bottom: 1px solid #ffffff;
             }
-    .main .product-list ul li a{
-        position: relative;
-    }
-        .main .product-list ul .pic{
-            position: absolute;
-            
-        }
-        .main .product-list ul .evt-info{
-            position: relative;
-            
-        }
-        table td.no-border {
-            border-bottom: none;
-        }
-		.pager-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-		}
-		
-            .pager-container .pager-list {
+
+            .pager-container {
                 display: flex;
+                justify-content: center;
+                margin-top: 20px;
             }
-		
-                .pager-container .pager-list li {
-                    margin-left: 15px;
+            
+                .pager-container .pager-list {
+                    display: flex;
                 }
-		
-                .pager-container .pager-list li:last-child {
-                    margin-right: 15px;
-                }
-                
-                .pager-container .pager-list .active-page {
-                    color: #fc0453;
-                    font-weight: bold;
-                }
-        
-                .pager-container .pager-list li a {
+            
+                    .pager-container .pager-list li {
+                        margin-left: 15px;
+                    }
+            
+                    .pager-container .pager-list li:last-child {
+                        margin-right: 15px;
+                    }
+                    
+                    .pager-container .pager-list .active-page {
+                        color: #fc0453;
+                        font-weight: bold;
+                    }
+            
+                    .pager-container .pager-list li a {
+                        text-decoration: none;
+                    }
+            
+                    .pager-container .pager-list li a:hover {
+                        color: #fc0453;
+                    }
+            
+                .pager-container .btn a {
                     text-decoration: none;
                 }
-        
-                .pager-container .pager-list li a:hover {
-                    color: #fc0453;
-                }
-        
-            .pager-container .btn a {
-                text-decoration: none;
-            }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.AccommodationList;
+//import com.teum.entity.AccommodationList;
 import com.teum.service.AccService;
 
 
@@ -21,9 +21,9 @@ public class ApplyDetailController extends HttpServlet{
 String accName = request.getParameter("accName");
 		
 		AccService service = new AccService();
-		AccommodationListServiceI al = service.applyGet(accName);
+//		AccommodationListServiceI al = service.applyGet(accName);
 		
-		request.setAttribute("al", al);
+//		request.setAttribute("al", al);
 		request.getRequestDispatcher("applyDetail.jsp").forward(request, response);
 	}
 }
