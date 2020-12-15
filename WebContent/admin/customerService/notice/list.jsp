@@ -28,19 +28,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
@@ -90,7 +79,7 @@
 	                                    <td class="col-sm">날짜</td>
 	                                    <td class="col-s">작성자</td>
 	                                    <td class="col-s">상태</td>
-	                                    <td class="col-sm">공개선택<input type="checkbox" class="selectAllPubs"></td>
+	                                    <td class="col-s">공개<input type="checkbox" class="selectAllPubs"></td>
 	                                    <td class="col-s">삭제<input type="checkbox" class="selectAllDelete"></td>
 	                                </tr>
 	                            </thead>
@@ -98,7 +87,7 @@
 	                            	<c:forEach var="n" items="${list}">
 	                                <tr>
 	                                    <td>${n.id}</td>
-	                                    <td><a href="detail?id=${n.id}">${n.title}</td>
+	                                    <td class="ellips"><a href="detail?id=${n.id}">${n.title}</td>
 	                                    <td>${n.regdate}</td>
 	                                    <td>관리자</td>
 	                                    <td>

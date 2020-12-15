@@ -23,19 +23,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
@@ -72,24 +61,29 @@
 	                    </div>
 	                    <section class="form-sec">
 	                        <h1>공지사항 등록</h1>
-	                        <form method="post"  class="reg-form">
+	                        <form method="post"  class="reg-form" enctype="multipart/form-data">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
-	                                    <td class="col-l text-left" colspan="3">
+	                                    <td class="col-l text-left" colspan="4">
 	                                        <input type="text"  name="title"  class="input-title" autofocus required>
 	                                        <input type="checkbox" class="checkbox-open"  name="OPEN_STATUS" ><span>즉시 공개</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th class="col-m">작성자</th>
-	                                    <td colspan="3">
-	                                    <input type="hidden" name="ADMIN_ID" value="1">
-	                                     <span>관리자</span></td>
+                                		<th>첨부파일</th>
+                                		<td colspan="2">
+                                			<input type="file" accept=".jpg,.png" name="IMAGE_NAME">
+                                		</td>
+	                                    <th >작성자</th>
+	                                    <td>
+	                                    	<input type="hidden" name="ADMIN_ID" value="1">
+	                                     	<span>관리자</span>
+                                     	</td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
-	                                    <td class="text-left" colspan="3">
+	                                    <td class="text-left" colspan="4">
 	                                        <textarea class="textarea" cols="75" rows="25"  name="content"></textarea>
 	                                    </td>
 	                                </tr>

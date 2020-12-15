@@ -67,7 +67,7 @@
                     <ol class="notice-sec-list">
                     <c:forEach var="n" items="${list}" varStatus="status">
                         <li>
-                            <input type="checkbox" id="${status.current}" class="checkbox" name="check" onclick="doOpenCheck(this);">
+                            <input type="checkbox" id="${status.index}" class="checkbox" name="check" onclick="doOpenCheck(this);">
                             <div>
                                 <p>${n.title}</p>
                                 <p class="p-detail" style=" font-size: 11pt;">
@@ -76,7 +76,7 @@
                                 <p>${n.regdate}</p>
                             </div>
                             <p>Master</p>
-                            <label for="${status.current}"><span></span></label>
+                            <label for="${status.index}"><span></span></label>
                         </li>
                         </c:forEach>
                     </ol>
