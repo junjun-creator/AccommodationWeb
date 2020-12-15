@@ -158,7 +158,7 @@ public class JdbcAccDao implements AccDao{
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,"TEUM","4444");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
@@ -219,11 +219,10 @@ public class JdbcAccDao implements AccDao{
 	public List<Acc> applyGetList() {
 		String url = "DBContext.URL";
 		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";
-		Connection con;
 		List<Acc> list = new ArrayList<>();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url,"TEUM","4444");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
@@ -282,10 +281,31 @@ public class JdbcAccDao implements AccDao{
 		}
 		return list;
 	}
+	
 	@Override
 	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+
+		String url = "DBContext.URL";
+		String sql = "DELETE FROM ACC_LIST_FOR_ADMIN WHERE ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);         
+	         st.setInt(1, id);
+	         result = st.executeUpdate();    
+	         st.close();
+	         con.close();         
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+		return result;
+		
 	}
 	
 	@Override//수정필요
@@ -293,15 +313,40 @@ public class JdbcAccDao implements AccDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public int update(Acc acc) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int approval(int id) {
+		int result=0;
+		
+		String url = "DBContext.URL";
+		String sql = "UPDATE ACC_LIST_FOR_ADMIN SET REG_STATUS=1 WHERE ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);         
+	         st.setInt(1, id);
+	         result = st.executeUpdate();    
+	         st.close();
+	         con.close();         
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+		return result;
 	}
 
 	@Override
-	public List<Acc> getList(int startIndex) {
+	public int[] approvalAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Acc> getList(int startIndex, int endIndex) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -313,7 +358,7 @@ public class JdbcAccDao implements AccDao{
 	}
 
 	@Override
-	public List<Acc> applyGetList(int startIndex) {
+	public List<Acc> applyGetList(int startIndex, int endIndex) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -344,9 +389,9 @@ public class JdbcAccDao implements AccDao{
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM( " + 
 						"    SELECT ROWNUM NUM, N.* FROM( " + 
-						"        SELECT * FROM ACC_LIST_FOR_ADMIN ORDER BY REGDATE DESC " + 
+						"    SELECT * FROM ACC_LIST_FOR_ADMIN ORDER BY REGDATE DESC " + 
 						"    ) N " + 
-						") WHERE NUM BETWEEN ? AND ?;";
+						" ) WHERE NUM BETWEEN ? AND ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

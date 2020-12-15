@@ -7,7 +7,8 @@ import com.teum.entity.Acc;
 
 public interface AccDao {
 	
-	int update(Acc acc);
+	int approval(int id);
+	int[] approvalAll(int[] ids);
 	int delete(int id);
 	int[] deleteAll(int[] ids);
 	
@@ -15,11 +16,11 @@ public interface AccDao {
 	Acc applyGet(int id);
 	
 	List<Acc> getList();
-	List<Acc> getList(int startIndex);
+	List<Acc> getList(int startIndex, int endIndex);
 	List<Acc> getList(int startIndex, int endIndex,String accType, String qeury);
 	
 	List<Acc> applyGetList();
-	List<Acc> applyGetList(int startIndex);
+	List<Acc> applyGetList(int startIndex, int endIndex);
 	List<Acc> applyGetList(int startIndex, int endIndex, String accType, String qeury);
 	
 	List<AccListForAdminView> getViewList();
