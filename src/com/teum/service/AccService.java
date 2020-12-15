@@ -76,22 +76,19 @@ public class AccService {
 		}
 		return null;
 	}
-
-	public int update(Acc acc) {
-		int result = 0;
-		
-		result = accDao.update(acc);
+	public int approval(int id) {
+		int result =0;
+		Acc acc = accDao.applyGet(id);
+		acc.setRegStatus(1);
+		result = accDao.approval(id);
 		return result;
 	}
-
-	
-	
-
-	
-
-
-
-
-
-
+	public int[] approvalAll(int[] ids) {
+		int result=0;
+		for(int i=0; i<ids.length;i++) {
+			int id=ids[i];
+			result+= accDao.approval(id);
+		}
+		return null;
+	}
 }
