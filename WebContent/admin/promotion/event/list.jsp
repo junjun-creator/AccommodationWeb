@@ -86,7 +86,7 @@
 	                                <tbody>
 	                                	
                                 	<c:forEach var="event" items="${list}">
-                                		<c:set var="open" value=""/>
+                                		<c:set var="open" value=""/> 
                                 		<c:set var="status" value="진행중"/>
                                 		<c:if test="${event.openStatus == 1}">
                                 			<c:set var="open" value="checked"/>
@@ -104,13 +104,18 @@
 	                                        <td><input type="checkbox" name="open-id" ${open} value="${event.id}" class="open-chk"></td>
 	                                        <td><input type="checkbox" name="del-id" value="${event.id}" class="del-chk"></td>
 	                                    </tr>
-                                    </c:forEach>
+                                     </c:forEach>
 	                                    
 	                                    <tr>
 	                                        <td colspan="8" class="no-border btn-row">
+	                                        	<c:set var="ids" value=""/>
+	                                        	<c:forEach var="event" items="${list}">
+	                                        		<c:set var="ids" value="${ids} ${event.id}"/>
+	                                        	</c:forEach>
+	                                        	<input type="hidden" name="ids" value="${ids}">
 	                                            <input type="button" onclick="location.href='reg'" value="글쓰기">
-	                                            <input type="submit" name="cmd" value="일괄공개">
-	                                            <input type="submit" name="cmd" value="일괄삭제">
+	                                            <input type="submit" class="open-btn" name="cmd" value="일괄공개">
+	                                            <input type="submit" class="del-btn" name="cmd" value="일괄삭제">
 	                                        </td>
 	                                    </tr>
 	                                    <tr>

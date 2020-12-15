@@ -1,4 +1,4 @@
-package com.teum.controller.admin.promotion.event;
+package com.teum.controller.event;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,14 +13,14 @@ import com.teum.dao.entity.EventListView;
 import com.teum.entity.Event;
 import com.teum.service.EventService;
 
-@WebServlet("/admin/promotion/event/detail")
-public class DetailController extends HttpServlet {
+@WebServlet("/event/detail")
+public class DetailController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-	      
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		EventService service = new EventService();
@@ -51,8 +51,6 @@ public class DetailController extends HttpServlet {
 		request.setAttribute("currEvent", currEvent);
 		request.setAttribute("prevEvent", prevEvent);
 		request.setAttribute("nextEvent", nextEvent);
-		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}
-	
 }

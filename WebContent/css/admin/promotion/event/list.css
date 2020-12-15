@@ -19,6 +19,7 @@
 				.main .search-form .input-search {
 					width: 150px;
 					height: 25px;
+					padding-left: 10px;
 				}
 
 				.main .search-form .search-submit-btn {
@@ -120,5 +121,6 @@
 		        }
 		
 		    .main .pager-container .btn a {
-		        text-decoration: none;
+				text-decoration: none;
+				cursor: hover;
 		    }

@@ -21,4 +21,7 @@ public interface EventDao {
 	List<EventListView> getViewList(int startIndex, int endIndex, String query);
 	List<EventListView> getViewList(int startIndex, int endIndex);
 	List<EventListView> getViewList();
+	Event getLast();
+	
+	int openAll(String oIdsCSV, String cIdsCSV);
 }

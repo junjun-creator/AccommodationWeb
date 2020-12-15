@@ -1,10 +1,11 @@
 package com.teum.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.teum.dao.EventDao;
+import com.teum.dao.entity.EventListView;
 import com.teum.dao.jdbc.JdbcEventDao;
-import com.teum.entity.Event;
 import com.teum.entity.Event;;
 
 public class EventService {
@@ -27,6 +28,18 @@ public class EventService {
 	
 	public List<Event> getList() {
 		return eventDao.getList(1, 10, "");
+	}
+	
+	public List<EventListView> getViewList(int startIndex, int endIndex, String query) {
+		return eventDao.getViewList(startIndex, endIndex, query);
+	}
+	
+	public List<EventListView> getViewList(int startIndex, int endIndex) {
+		return eventDao.getViewList(startIndex, endIndex);
+	}
+
+	public List<EventListView> getViewList() {
+		return eventDao.getViewList(1, 10, "");
 	}
 	
 	public Event get(int id) {
@@ -61,7 +74,35 @@ public class EventService {
 		return 0;
 	}
 	
-	public int openAll(int[] ids) {
-		return 0;
+	public int openAll(int[] oIds, int[] cIds) {
+		List<String> oIdsList = new ArrayList<>();
+		List<String> cIdsList = new ArrayList<>();
+		
+		for (int i = 0; i < oIds.length; i++)
+			oIdsList.add(String.valueOf(oIds[i]));
+		
+		for (int i = 0; i < cIds.length; i++)
+			cIdsList.add(String.valueOf(cIds[i]));
+		
+		return openAll(oIdsList, cIdsList);
 	}
+	
+	public int openAll(List<String> oIds, List<String> cIds) {
+		String oIdsCSV = String.join(",", oIds);
+		String cIdsCSV = String.join(",", cIds);
+		
+		return openAll(oIdsCSV, cIdsCSV);
+	}
+	
+	public int openAll(String oIdsCSV, String cIdsCSV) {
+		return eventDao.openAll(oIdsCSV, cIdsCSV);
+	}
+
+	public int getLastId() {
+		Event event = eventDao.getLast();
+		
+		return event.getId();
+	}
+
+	
 }

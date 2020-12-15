@@ -62,12 +62,12 @@
 	                    </div>
 	                    <section class="img-sec">
 	                        <div class="img-container">
-	                            <img src="/images/event/detail1.png" alt="">
-	                            <!-- <img src="../../../images/event/detail2.png" alt="">
-	                            <img src="../../../images/event/detail3.png" alt="">
-	                            <img src="../../../images/event/detail4.png" alt="">
-	                            <img src="../../../images/event/detail5.png" alt="">
-	                            <img src="../../../images/event/detail6.png" alt=""> -->
+	                        	<c:forTokens var="imageName" items="${currEvent.imageName}" delims="," varStatus="st">
+	                        		<c:if test="${st.last == true}">
+	                        			<img src="/images/event/2020/${currEvent.id}/${imageName}">
+	                        		</c:if>
+	                        	</c:forTokens>
+	                            
 	                        </div>
 	                    </section>
 	                    <div class="btns-container">
@@ -82,7 +82,7 @@
 	                    		</c:when>
 	                    		<c:when test="${prevEvent == null}">
 	                    			<div class="page next-page">
-			                            <a href="">
+			                            <a href="detail?id=${nextEvent.id}">
 			                                <span class="page-direction">다음글</span>
 			                                <span class="page-title">${nextEvent.title}</span>
 			                                <span class="page-date">기간: ${nextEvent.startDate} ~ ${nextEvent.endDate}</span>
@@ -91,7 +91,7 @@
 	                    		</c:when>
 	                    		<c:when test="${nextEvent == null}">
 	                    			<div class="page prev-page">
-			                            <a href="">
+			                            <a href="detail?id=${prevEvent.id}">
 			                                <span class="page-direction">이전글</span>
 			                                <span class="page-title">${prevEvent.title}</span>
 			                                <span class="page-date">기간: ${prevEvent.startDate} ~ ${prevEvent.endDate}</span>

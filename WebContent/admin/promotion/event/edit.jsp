@@ -63,7 +63,7 @@
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
-	                        <form action="edit" method="post" class="reg-form">
+	                        <form action="edit" method="post" class="reg-form" enctype="multipart/form-data">
 	                        	<c:set var="open" value=""/>
 	                        	<c:if test="${event.openStatus == 1}">
 	                        		<c:set var="open" value="checked"/>
@@ -84,9 +84,15 @@
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th>첨부파일</th>
+	                                    <th>첨부파일(타이틀용)</th>
 	                                    <td class="text-left">
-	                                        <input type="file">
+	                                        <input type="file" name="file" value="/images/event/2020/${event.id}/${event.imageName}" multiple required>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th>첨부파일(컨텐츠용)</th>
+	                                    <td class="text-left">
+	                                        <input type="file" name="file" value="/images/event/2020/${event.id}/${event.imageName}" multiple required>
 	                                    </td>
 	                                </tr>
 	                                <tr>

@@ -1,10 +1,11 @@
 window.addEventListener('load', function() {
-    var activeMenu = document.querySelector('.aside');
-    activeMenu.children[1].children[1].classList.add('active');
     var openChkAll = document.querySelector('.open-chk-all');
     var delChkAll = document.querySelector('.del-chk-all');
     var openChks = document.querySelectorAll('.open-chk');
     var delChks = document.querySelectorAll('.del-chk');
+
+    var openBtn = document.querySelector('.open-btn');
+    var delBtn = document.querySelector('.del-btn');
 
     openChkAll.onclick = function() {
         for (var i = 0; i < openChks.length; i++) {
@@ -66,5 +67,27 @@ window.addEventListener('load', function() {
                     delChkAll.checked = true;
             }
         })(i);
+    }
+
+    openBtn.onclick = function() {
+        if (!confirm("선택한 게시물을 공개하시겠습니까?"))
+            return false;
+    }
+
+    delBtn.onclick = function() {
+        var flag = false;
+
+        for (var i = 0; i < delChks.length; i++) {
+            if (delChks[i].checked)
+                flag = true;
+        }
+
+        if (!flag) {
+            alert('삭제할 게시물을 선택해 주세요.');
+            return false;
+        } 
+
+        if (!confirm("선택한 게시물을 삭제하시겠습니까?"))
+            return false;
     }
 });
