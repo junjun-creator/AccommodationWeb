@@ -163,7 +163,4 @@ public class Acc {
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", saleprice=" + saleprice + "]";
 	}
 
-
-	 
-	 
 }

@@ -1,68 +1,85 @@
 
 main{
-    /* width: 500px;
-margin: 10px auto 0px auto; */
+    width: 600px;
+margin-top: 10px;
+margin-left: auto;
+        margin-right: auto;
 }  
     main .content-box{
-        width: 500px;
-        margin: 10px auto 0px auto;
+        
+        margin-left: auto;
+        margin-right: auto;
     }
 
         .content-box div{
-            padding-bottom: 5px;
-            /* margin-left: 50px; */
+            padding-bottom: 10px;
             padding-left: 50px;
-            color: #5f0081;
+            color: black;
         }
         .content-box .text-box{
             height: 30px;
-            width: 250px;
+            width: 400px;
 
         }
         .content-box select{
-            width: 130px;
-            padding-left: 40px;
+            width: 190px;
+            padding-left: 75px;
         }
         .content-box select{
             height: 30px;
         }
         .button{
-            width: px;
-            border:1px dashed #ff0080;
+            height: 40px;
+            width: 190px;
+            border:1px dashed black;
             border-radius: 5px;
-            background: #ffe6f2;
+            background: white;
             padding:5px 10px;
             vertical-align: middle;
             cursor: pointer;
-            color: #ff0080;
+            color: black;
             font-weight: bold;
         }
         .button:hover{
-            background-color: #ff0080;
+            background-color: gray;
             opacity: 0.8;
             color: white;
         }
-    .add-room{
-        display: inline-block;
-        border: 0.5px solid #fc0453;
-        margin-top: 20px;
-        padding: 10px 30px 10px 0px;
-        margin-bottom: 10px;
-    }
-        .add-room div{
-            padding-left: -40px;
-        }
+
+            .add-room{
+                width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                display: inline-block;
+                border: 0.5px solid #fc0453;
+            }  
+                .add-room div{
+                    padding-left: 50px;
+                    padding-top: 5px;
+                    padding-bottom: 10px;
+                }
+                .add-room .text-box{
+                    height: 30px;
+                    width: 400px;
+                }
+                .add-room .textarea{
+                    height: 250px;
+                    width: 400px;
+                    padding-left: 50px;
+                }
+    
     .submit-btn{
+        margin-left: 50px;
+        margin-top: 20px;
         background-color: #5f0081;
         border-radius: 20px;
         border: none;
         cursor: pointer;
         color: #ffffff;
-        padding: 10px 20px;
         text-decoration: none;
         font-size: 14px;
         height: 50px;
-        width: 200px;
+        width: 400px;
         
     }
     .submit-btn:hover{

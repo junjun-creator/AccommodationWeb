@@ -12,6 +12,7 @@ import java.util.List;
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.dao.jdbc.DBContext;
+import com.teum.dao.jdbc.JdbcAccDao;
 //import com.teum.dao.jdbc.JdbcAccDao;
 import com.teum.entity.Acc;
 
@@ -20,25 +21,30 @@ public class AccService {
 	
 	private AccDao accDao;
 	public AccService() {
-//		accDao = new JdbcAccDao();
+		accDao = new JdbcAccDao();
 	}
 	
-	public List<Acc> getList(int page, int size, String accType, String qeury) {
+	public List<Acc> getList(int page, int size, String qeury) {
 		
 		int startIndex =1+(page-1)*size;//1, 11, 21, 31, ...
 		int endIndex = page*10;//10,20,30,40,50,60... 
 		
-		return accDao.getList(startIndex, endIndex, accType, qeury);
+		return accDao.getList(startIndex, endIndex,  qeury);
 	}
+	
+	public List<Acc> getList(int page,int size) {
+		return accDao.getList(page,size,"");
+	}
+	
 	public List<Acc> getList() {
-		return accDao.getList(1,10,"","");
+		return accDao.getList(1,10,"");
 	}
 	public List<AccListForAdminView> getViewList(int page, int size, String accType, String qeury) {
 		
 		int startIndex =1+(page-1)*size;//1, 11, 21, 31, ...
 		int endIndex = page*10;//10,20,30,40,50,60... 
 		
-		return accDao.getViewList(startIndex, endIndex, accType, qeury);
+		return accDao.getViewList(startIndex, endIndex,qeury);
 	}
 	
 
@@ -46,15 +52,18 @@ public class AccService {
 		return accDao.get(id);
 	}
 
-	public List<Acc> applyGetList(int page, int size, String accType, String qeury) {
+	public List<Acc> applyGetList(int page, int size, String qeury) {
 		
 		int startIndex =1+(page-1)*size;//1, 11, 21, 31, ...
 		int endIndex = page*10;//10,20,30,40,50,60... 
 		
-		return accDao.applyGetList(startIndex, endIndex, accType, qeury);
+		return accDao.applyGetList(startIndex, endIndex, qeury);
+	}
+	public List<Acc> applyGetList(int page,int size) {
+		return accDao.getList(page,size,"");
 	}
 	public List<Acc> applyGetList() {
-		return accDao.applyGetList(1,10,"","");
+		return accDao.applyGetList(1,10,"");
 	}
 	public Acc applyGet(int id) {
 		return accDao.applyGet(id);
