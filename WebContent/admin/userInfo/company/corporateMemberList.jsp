@@ -39,8 +39,8 @@
         <aside id="aside" class="aside">
             <h1>회원관리</h1>
                 <ul>
-                    <li><a href="">개인회원리스트</a></li>
-                    <li><a href="" class="active">기업회원리스트</a></li>
+                    <li><a href="/admin/userInfo/users/usersList">개인회원리스트</a></li>
+                    <li><a href="companyList" class="active">기업회원리스트</a></li>
                 </ul>
         </aside>
         <div class="container">
@@ -64,7 +64,7 @@
                     </div>
 
                     <div>
-                        <h1>업체등록현황</h1>
+                        <h1>숙소등록현황</h1>
                     </div>
                     <div class="list-board">
                         <table>
@@ -76,15 +76,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>등록</td>
-                                    <td>190명</td>
+                                    <td>등록숙소</td>
+                                    <td>190건</td>
                                 </tr>
                                 <tr>
-                                    <td>미등록</td>
-                                    <td>35명</td>
-                                </tr>
-                                <tr>
-                                    <td>신청</td>
+                                    <td>신청숙소</td>
                                     <td><a href="">4건</a></td>
                                 </tr>
                             </tbody>
@@ -137,7 +133,7 @@
                                                     <span><a href="">이전</a></span>
                                                 </div>
                                                 <ul class="pager-list">
-                                                    <li class="active-page"><a href="">1</a></li>
+                                                    <!-- <li class="active-page"><a href="">1</a></li>
                                                     <li><a href="">2</a></li>
                                                     <li><a href="">3</a></li>
                                                     <li><a href="">4</a></li>
@@ -146,7 +142,7 @@
                                                     <li><a href="">7</a></li>
                                                     <li><a href="">8</a></li>
                                                     <li><a href="">9</a></li>
-                                                    <li><a href="">10</a></li>
+                                                    <li><a href="">10</a></li> -->
                                                 </ul>
                                                 <div class="btn btn-next">
                                                     <span><a href="">다음</a></span>
@@ -160,13 +156,13 @@
                     </section>
                     <div class="search-container">
                         <div>
-                            <form action="">
-                                <select name="search-category" id="">
-                                    <option value="숙소명" selected>사업주명</option>
-                                    <option value="예약자">이메일</option>
+                            <form action="companyList">
+                                <select name="field" id="">
+                                    <option value="name" selected>사업주명</option>
+                                    <option value="email">이메일</option>
                                 </select>
-                                <input type="text">
-                                <input type="button" value="검색">
+                                <input type="text" name="query">
+                                <input type="submit" value="검색">
                             </form>
                         </div>
                     </div>
@@ -174,5 +170,27 @@
             </main>
         </div>
     </section>
+    
+    <script type="pager-template" id="pagerList">
+		<li class><a href="usersList?page={id}">{page}</a></li>
+	</script>
+	
+	<script>
+		var pagerList = document.querySelector(".pager-list");
+		var html = document.querySelector("#pagerList").innerHTML;
+		var resultHTML = "";
+		for(var i=1;i<="${pageCount}";i++){
+			resultHTML = html.replace("{id}",i)
+							.replace("{page}",i);
+			pagerList.innerHTML+=resultHTML;
+		}
+		
+		if("${page}"==""){
+			pagerList.firstElementChild.setAttribute('class','active-page');
+		}
+		else{
+			pagerList.children[${page}-1].setAttribute('class','active-page');
+		}
+	</script>
 </body>
 </html>

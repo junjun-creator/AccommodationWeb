@@ -137,26 +137,115 @@ public class JdbcUsersDao implements UsersDao {
 		
 		return u;
 	}
-
+	
+//	@Override
+//	public int getCount() {
+//		
+//		return getCount("","");
+//	}
+	
 	@Override
-	public List<Users> getList() {
-		return getList(1,10,"");
-	}
-	@Override
-	public List<Users> getList(int startIndex, int endIndex) {
-		return getList(startIndex,endIndex,"");
-	}
-
-	@Override
-	public List<Users> getList(int startIndex, int endIndex, String text) {
+	public int getCount(String field, String query) {
+		int result = 0;
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		String sql = "SELECT * FROM USER_LIST WHERE NUM BETWEEN ? AND ? AND NAME LIKE ?";
 		
-		System.out.println(startIndex);
-		System.out.println(endIndex);
-		System.out.println(text);
+		String sql = "SELECT COUNT(*) FROM USERS";
+		
+		if(!field.equals("")) {
+			String sql_ = " WHERE "+ field + " LIKE ?";
+			sql = sql + sql_;
+		}
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			if(!field.equals("")) {
+				ps.setString(1,"%"+query+"%");
+			}
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
+	
+	@Override
+	public ArrayList<Integer> getRankCount() {
+		ArrayList<Integer> result = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(id),RANK_ID FROM USERS GROUP BY RANK_ID";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			int i=0;
+			while(rs.next()) {
+				result.add(Integer.parseInt(rs.getString("count(id)")));
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<Users> getList() {
+		return getList(1,10,"","");
+	}
+	@Override
+	public List<Users> getList(int startIndex, int endIndex) {
+		return getList(startIndex,endIndex,"","");
+	}
+
+	@Override
+	public List<Users> getList(int startIndex, int endIndex,String field, String query) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		String sql = "SELECT * FROM USER_LIST WHERE NUM BETWEEN ? AND ?";
+		
+		if(!field.equals("")) {
+			String sql_ = " AND "+ field + " LIKE ?";
+			sql = sql + sql_;
+		}
+//		
+//		System.out.println(startIndex);
+//		System.out.println(endIndex);
+//		System.out.println(text);
 		List<Users> list = new ArrayList<>();
 		//DriverManager;//Class.forName~
 		try {
@@ -167,7 +256,9 @@ public class JdbcUsersDao implements UsersDao {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, startIndex);
 			ps.setInt(2, endIndex);
-			ps.setString(3,"%"+text+"%");
+			if(!field.equals("")) {
+				ps.setString(3,"%"+query+"%");
+			}
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {

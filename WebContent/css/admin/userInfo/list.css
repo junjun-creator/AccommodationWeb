@@ -90,6 +90,18 @@
                         border-bottom: none;
                     }
 
+    .user-info{
+        display: flex;
+    }
+        .user-info img{
+            width: 100px;
+            height: 100px;
+        }
+        .user-info>div:last-child{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+        }
     .user-info-member{
         width: 200px;
         border-bottom: 2px solid #5F0080;

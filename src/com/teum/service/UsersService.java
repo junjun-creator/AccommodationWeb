@@ -37,20 +37,25 @@ public class UsersService implements UsersServiceI{
 	
 	@Override
 	public List<Users> getList(){
-		return getList(1,"");
+		return getList(1,"","");
 	}
+	@Override
+	public List<Users> getList(String field, String query){
+		return getList(1,field,query);
+	}
+	
 	@Override
 	public List<Users> getList(int page){
-		return getList(page,"");
+		return getList(page,"","");
 	}
 	@Override
-	public List<Users> getList(int page, String text) {
+	public List<Users> getList(int page, String field, String query) {
 		List<Users> list = new ArrayList<>();
 		
 		int startIndex = 1+(page-1)*10;
 		int endIndex = page*10;
 		
-		list = usersDao.getList(startIndex,endIndex,text);
+		list = usersDao.getList(startIndex,endIndex,field,query);
 		
 		return list;
 	}
@@ -70,6 +75,29 @@ public class UsersService implements UsersServiceI{
 		int result = 0;
 		
 		result = usersDao.update(users);
+		
+		return result;
+	}
+	
+	@Override
+	public int getCount() {
+		return getCount("","");
+	}
+	
+	@Override
+	public int getCount(String field, String query) {
+		int result = 0;
+		
+		result = usersDao.getCount(field,query);
+		
+		return result;
+	}
+	
+	@Override
+	public ArrayList<Integer> getRankCount() {
+		ArrayList<Integer> result = null;
+		
+		result = usersDao.getRankCount();
 		
 		return result;
 	}

@@ -1,5 +1,6 @@
 package com.teum.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,13 +18,17 @@ public interface UsersServiceI {
 	
 	//상세정보 페이지
 	Users get(int id);
+	int getCount();
+	int getCount(String field, String query);
+	ArrayList<Integer> getRankCount();
 	
 	
 	// 관리자페이지
 	//개인회원리스트
 	List<Users> getList();
+	List<Users> getList(String field, String query);
 	List<Users> getList(int page);
-	List<Users> getList(int page, String text);//text 는 문자열로 검
+	List<Users> getList(int page, String field, String query);//text 는 문자열로 검
 	int delete(int[] id);
 	int delete(int id);
 

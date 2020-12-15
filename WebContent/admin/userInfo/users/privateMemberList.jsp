@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>등록된 업체 리스트</title>
+    <title>등록된 회원 리스트</title>
 </head>
 <body>
     <header class="sec-header-page">
@@ -40,8 +40,8 @@
 	        <aside id="aside" class="aside">
 				<h1>회원관리</h1>
 					<ul>
-						<li><a href="" class="active">개인회원리스트</a></li>
-						<li><a href="">기업회원리스트</a></li>
+						<li><a href="usersList" class="active">개인회원리스트</a></li>
+						<li><a href="/admin/userInfo/company/companyList">기업회원리스트</a></li>
 					</ul>
 			</aside>
 	        <div class="container">
@@ -57,9 +57,9 @@
 	                <div class="sub-container">
 	                    <div class="breadcrumb">
 	                        <ul class="breadcrumb-list">
-	                            <li><i class="fas fa-home"></i>HOME ▶ </li>
-	                            <li>회원관리 ▶ </li>
-	                            <li>개인회원리스트</li>
+	                            <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+	                            <li>&nbsp;&nbsp;&nbsp;회원관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+	                            <li>&nbsp;&nbsp;&nbsp;기업회원리스트&nbsp;&nbsp;&nbsp;</li>
 	                        </ul>
 	                    </div>
 	
@@ -74,10 +74,10 @@
 	                                    <td class="col-m">인원</td>
 	                                </tr>
 	                            </thead>
-	                            <tbody>
-	                                <tr>
+	                            <tbody class="rank-count">
+	                                <!-- <tr>
 	                                    <td>실버</td>
-	                                    <td>100명</td>
+	                                    <td>명</td>
 	                                </tr>
 	                                <tr>
 	                                    <td>골드</td>
@@ -90,7 +90,7 @@
 	                                <tr>
 	                                    <td>다이아</td>
 	                                    <td>1명</td>
-	                                </tr>
+	                                </tr> -->
 	                            </tbody>
 	                        </table>
 	                    </div>
@@ -171,8 +171,8 @@
 														<span><a href="">이전</a></span>
 													</div>
 													<ul class="pager-list">
-														<li class="active-page"><a href="">1</a></li>
-														<li><a href="">2</a></li>
+														<!-- <li class="active-page"><a href="usersList?page=1">1</a></li>
+														<li><a href="usersList?page=2">2</a></li>
 														<li><a href="">3</a></li>
 														<li><a href="">4</a></li>
 														<li><a href="">5</a></li>
@@ -180,7 +180,7 @@
 														<li><a href="">7</a></li>
 														<li><a href="">8</a></li>
 														<li><a href="">9</a></li>
-														<li><a href="">10</a></li>
+														<li><a href="">10</a></li> -->
 													</ul>
 													<div class="btn btn-next">
 														<span><a href="">다음</a></span>
@@ -194,13 +194,13 @@
 	                    </section>
 						<div class="search-container private-list">
 							<div>
-								<form action="">
-									<select name="search-category" id="">
-										<option value="숙소명" selected>회원명</option>
-										<option value="예약자">이메일</option>
+								<form action="usersList">
+									<select name="field" id="">
+										<option value="name" selected>회원명</option>
+										<option value="email">이메일</option>
 									</select>
-									<input type="text">
-									<input type="button" value="검색">
+									<input type="text" name="query">
+									<input type="submit" value="검색">
 								</form>
 							</div>
 						</div>
@@ -209,6 +209,17 @@
 	        </div>
 	    </section>
 	</main>
+	
+	<script type="pager-template" id="pagerList">
+		<li class><a href="usersList?page={id}">{page}</a></li>
+	</script>
+	
+	<script type="rank-count-template" id="rankCount">
+		<tr>
+		    <td>{rank}</td>
+		    <td>{count}명</td>
+		</tr>
+	</script>
     
     <script type="text/javascript">
     	window.addEventListener("load",function(){
@@ -258,20 +269,20 @@
 					
 					switch(rank[m].innerText){
 		    		
-					case "0":
+					case "1":
 						rank[m].style.color = "green";
 						rank[m].innerHTML = "실버<i class='fas fa-gem'></i>";
 						break;
-					case "1":
+					case "2":
 						rank[m].style.color = "gold";
 						rank[m].innerHTML = "골드<i class='fas fa-gem'></i>";
 						break;
-					case "2":
+					case "3":
 						rank[m].style.color = "gray";
 						rank[m].innerHTML = "플래티넘<i class='fas fa-gem'></i>";
 						console.log(m);
 						break;
-					case "3":
+					case "4":
 						rank[m].style.color = "black";
 						rank[m].innerHTML = "다이아<i class='fas fa-gem'></i>";
 						console.log(m);
@@ -280,7 +291,35 @@
 				})(i);
 	    	}
     	});
-
+    	
+    	/*  페이저 구현 */
+    	var pagerList = document.querySelector(".pager-list");
+    	var html = document.querySelector("#pagerList").innerHTML;
+    	var resultHTML = "";
+    	for(var i=1;i<="${pageCount}";i++){
+    		resultHTML = html.replace("{id}",i)
+    						.replace("{page}",i);
+    		pagerList.innerHTML+=resultHTML;
+    	}
+    	
+    	if("${page}"==""){
+    		pagerList.firstElementChild.setAttribute('class','active-page');
+    	}
+    	else{
+    		pagerList.children[${page}-1].setAttribute('class','active-page');
+    	}
+		
+    	/* 랭크별 인원수 구현 */
+    	var ranks = ['실버','골드','플레티넘','다이아'];
+    	
+    	var rankCount = document.querySelector(".rank-count");
+    	var html_rank_count = document.querySelector("#rankCount").innerHTML;
+    	var resultHTML_rank = "";
+    	<c:forEach items="${rankCount}" var="rankCount" varStatus="status">
+    		resultHTML_rank = html_rank_count.replace("{rank}",ranks[${status.index}])
+    										.replace("{count}","${rankCount}")
+    		rankCount.innerHTML += resultHTML_rank;
+    	</c:forEach>
     </script>
 </body>
 </html>

@@ -37,23 +37,27 @@ public class CompanyService implements CompanyServiceI {
 
 	@Override
 	public List<Company> getList() {
-		return getList(1,"");
+		return getList(1,"","");
+	}
+	@Override
+	public List<Company> getList(String field,String query) {
+		return getList(1,field,query);
 	}
 
 	@Override
 	public List<Company> getList(int page) {
-		return getList(page,"");
+		return getList(page,"","");
 	}
 
 	@Override
-	public List<Company> getList(int page, String text) {
+	public List<Company> getList(int page,String field, String query) {
 
 		List<Company> list = new ArrayList<>();
 		
 		int startIndex = 1+(page-1)*10;
 		int endIndex = page*10;
 		
-		list = companyDao.getList(startIndex,endIndex,text);
+		list = companyDao.getList(startIndex,endIndex,field,query);
 		
 		return list;
 	}
@@ -77,6 +81,21 @@ public class CompanyService implements CompanyServiceI {
 		int result = 0;
 		
 		result = companyDao.insert(company);
+		
+		return result;
+	}
+	
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return getCount("","");
+	}
+	
+	@Override
+	public int getCount(String field, String query) {
+		int result = 0;
+		
+		result = companyDao.getCount(field,query);
 		
 		return result;
 	}

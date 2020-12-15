@@ -12,5 +12,6 @@ public interface CompanyDao {
 	Company get(int id);
 	List<Company> getList();
 	List<Company> getList(int startIndex, int endIndex);
-	List<Company> getList(int startIndex, int endIndex, String text);
+	List<Company> getList(int startIndex, int endIndex, String field, String query);
+	int getCount(String field, String query);
 }
