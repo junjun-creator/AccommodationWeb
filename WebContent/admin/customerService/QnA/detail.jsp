@@ -82,8 +82,29 @@
 	                                    </td>
 	                                    <th class="col-m">카테고리</th>
 	                                    <td class="col-l text-left">
-	                                   	
-	                                     
+	                                     <c:choose>
+											<c:when test="${q.categoryId eq 1}">
+												이벤트
+											</c:when>
+											<c:when test="${q.categoryId eq 2}">
+												예약/결제
+											</c:when>
+											<c:when test="${q.categoryId eq 3}">
+												취소/환불
+											</c:when>
+											<c:when test="${q.categoryId eq 4}">
+												서비스이용
+											</c:when>
+											<c:when test="${q.categoryId eq 5}">
+												회원/개인정보
+											</c:when>
+											<c:when test="${q.categoryId eq 6}">
+												리뷰
+											</c:when>
+											<c:otherwise>
+												기타
+											</c:otherwise>
+	                                     </c:choose>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -92,8 +113,15 @@
 	                                        ${q.content}
 	                                    </td>
 	                                </tr>
+	                                <tr>
+	                                    <th>답변내용</th>
+	                                    <td class="text-left" colspan="3">
+	                                        ${q.answerContent}
+	                                    </td>
+	                                </tr>
 	                            </table>
 	                            <div>
+	                            	<a class="btn-cancel" href="list">목록</a>
 	                                <a class="btn-cancel" href="reg?id=${q.id}">답변하기</a>
                     				<a class="btn-cancel" href="del?id=${q.id}">삭제</a>
 	                            </div>

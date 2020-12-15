@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +55,8 @@
                 <h1 class="d-none">공지사항</h1>
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
-                        <li><i class="fas fa-home"></i>HOME></li>
-                        <li>Notice</li>
+                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
+                        <li>&nbsp;&nbsp;&nbsp;NOTICE</li>
                     </ul>
                 </div>
                 <section class="notice-sec">
@@ -62,47 +65,20 @@
                     </h1>
                     
                     <ol class="notice-sec-list">
+                    <c:forEach var="n" items="${list}" varStatus="status">
                         <li>
-                            <input type="checkbox" class="checkbox" name="check" onclick="doOpenCheck(this);">
+                            <input type="checkbox" id="${status.current}" class="checkbox" name="check" onclick="doOpenCheck(this);">
                             <div>
-                                <p>[공지] 코로나19 확산에 따른 대한민국 숙박대전 취소규정</p>
-                                <p class="p-detail">
-                                <span style=" font-size: 11pt;">11월 4일부터 재개된 "안전여행과 함께하는 대한민국 숙박대전" 행사가&nbsp;</span>
-                               <span style=" font-size: 11pt;">코로나19 확산으로 인하여 11월 23일 오전 10시 부터 잠정 중지됨을 알려드립니다.</span>
-                                <br><br>
-                                <span style=" font-size: 11pt;">위에 공지 드린 바와 같이,</span>
-                                <span style=" font-size: 11pt;">본 행사를 통해 숙박 시설을 예약하신 경우에는 사회적 거리두기 2단계 격상 시 고객의 상품취소에 의한 환불 수수료는 공정거래위원회 소비자분쟁해결 기준에 준용하여 처리되며, 다만 투숙이 임박한 당일 또는 1일전 취소 건은 숙박시설의 개별약관이 적용되어 환불이 불가할 수 있음을 알려드립니다.</span>
-                                <br><br>
-                                <span style="font-size: 11pt;">참고로 기존 예약자는 정상적으로 숙박시설을 이용 하실 수 있으나,</span>
-                                <span style="font-size: 11pt;">취소 시 중지기간 동안에는 재발급이 불가합니다</span>
-                                <br><br>
-                                <span style="font-size: 11pt;">감사합니다.</span>
+                                <p>${n.title}</p>
+                                <p class="p-detail" style=" font-size: 11pt;">
+                                	${n.content}
                                 </p>
-                                <p>2020/11/01</p>
+                                <p>${n.regdate}</p>
                             </div>
                             <p>Master</p>
-                            <label for="checkbox-1"><span></span></label>
+                            <label for="${status.current}"><span></span></label>
                         </li>
-                        <li>
-                            <input type="checkbox" class="checkbox" name="check" onclick="doOpenCheck(this);">
-                            <div>
-                                <p>[공지] 공지사항</p>
-                                <p class="p-detail d-none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.</p>
-                                <p>2020/11/01</p>
-                            </div>
-                            <p>Master</p>
-                            <label for="checkbox-2"><span></span></label>
-                        </li>
-                        <li>
-                            <input type="checkbox" class="checkbox" name="check" onclick="doOpenCheck(this);">
-                            <div>
-                                <p>세 번째 공지사항</p>
-                                <p class="p-detail d-none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.</p>
-                                <p>2020/11/01</p>
-                            </div>
-                            <p>Master</p>
-                            <label for="checkbox-3"><span></span></label>
-                        </li>
+                        </c:forEach>
                     </ol>
                 </section>
             </main>

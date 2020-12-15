@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,25 +72,28 @@
 	                    </div>
 	                    <section class="form-sec">
 	                        <h1>문의사항 답변</h1>
-	                        <form action="" class="reg-form">
+	                        <form action=""  method="post"  class="reg-form">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
 	                                    <td class="col-l text-left">
-	                                        <input type="text" class="input-title" autofocus required>
+	                                        <input type="text" class="input-title" name="title"  value="${q.title}" autofocus required>
 	                                       
 	                                    </td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>
 	                                    <td class="text-left">
-	                                        <textarea class="textarea" cols="75" rows="25"></textarea>
+	                                        <textarea class="textarea" cols="75" rows="25" name="ANSWER_CONTENT"></textarea>
 	                                    </td>
 	                                </tr>
 	                            </table>
 	                            <div>
+	                            	<input type="hidden" name="ANSWER_STATUS" value="1">
+	                            	<input type="hidden" name="ADMIN_ID" value="${q.adminId}">
+	                            	<input type="hidden" name="ID" value="${q.id}">
 	                                <input class="btn-submit" type="submit" value="답변" />
-	                                <button class="btn-cancel" href="">취소</button>
+	                                <a class="btn-cancel"  href="detail?id=${q.id}"><span>취소<span></a>
 	                            </div>
 	                        </form>
 	                    </section>

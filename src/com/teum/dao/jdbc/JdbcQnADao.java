@@ -25,6 +25,28 @@ public class JdbcQnADao implements QnADao {
 	public int update(QnA qna) {
 		int result =0;
 		
+		String url = DBContext.URL;
+		String sql = "UPDATE QNA SET TITLE=?,ANSWER_CONTENT=?,ANSWER_STATUS=? WHERE ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1, qna.getTitle());
+			st.setString(2, qna.getAnswerContent());
+			st.setInt(3, qna.getAnswerStatus());
+			st.setInt(4, qna.getId());
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 
@@ -200,17 +222,16 @@ public class JdbcQnADao implements QnADao {
 			     String phone = rs.getString("PHONE");
 			     String categoryType= rs.getString("CATEGORY");
 			     
-			     QnAView QnA = new QnAView(
-			    		 id,
-			    		 userName,
-					     title,
-					     regdate,
-					     answerStatus,
-					     phone,
-					     categoryType
-					     );
+			     QnAView qv = new QnAView();
+			     qv.setId(id);
+			     qv.setUserName(userName);
+			     qv.setTitle(title);
+			     qv.setRegdate(regdate);
+			     qv.setAnswerStatus(answerStatus);
+			     qv.setPhone(phone);
+			     qv.setCategoryType(categoryType);
 			     
-			     list.add(QnA);
+			     list.add(qv);
 				}
 
 			

@@ -60,4 +60,12 @@ public class QnAService {
 		
 		return result;
 	}
+
+	public int update(QnA qna) {
+		int result =0;
+		
+		result = qnaDao.update(qna);
+		
+		return result;
+	}
 }

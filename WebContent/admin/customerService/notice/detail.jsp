@@ -82,7 +82,14 @@
 	                                    </td>
 	                                    <th class="col-m">상태</th>
 	                                    <td class="col-l text-left">
-	                                   	 ${n.openStatus}
+	                                   	<c:choose>
+	                                    	<c:when test="${n.openStatus eq 1}">
+	                                    		공개중
+	                                    	</c:when>
+	                                    	<c:otherwise>
+	                                    		비공개
+	                                    	</c:otherwise>
+	                                    </c:choose>
 	                                     
 	                                    </td>
 	                                </tr>
