@@ -63,12 +63,12 @@
 	                    <form action="list" class="search-form">
                             <h1>이벤트 리스트</h1>
                             <div>
-                                <input type="text" class="input-search" placeholder="제목을 입력하세요." name="search">
+                                <input type="text" class="input-search" placeholder="제목을 입력하세요." name="search-title">
                                 <input type="submit" class="search-submit-btn" value="검색">
                             </div>
                         </form>
 	                    <section>
-	                        <form action="delete" method="post" class="list-board">
+	                        <form action="list" method="post" class="list-board">
 	                        	<input type="hidden" name="id" value="${event.id}">
 	                            <table>
 	                                <thead>
@@ -86,14 +86,14 @@
 	                                <tbody>
 	                                	
                                 	<c:forEach var="event" items="${list}">
-	                                	<c:choose>
-	                                		<c:when test="${event.status == 1}" >
-	                                			<c:set var="status" value="진행중"/>
-	                                		</c:when>
-	                                		<c:otherwise>
-	                                			<c:set var="status" value="종료"/>
-	                                		</c:otherwise>
-	                                	</c:choose>
+                                		<c:set var="open" value=""/>
+                                		<c:set var="status" value="진행중"/>
+                                		<c:if test="${event.openStatus == 1}">
+                                			<c:set var="open" value="checked"/>
+                                		</c:if>
+                                		<c:if test="${event.status == 0}" >
+                                			<c:set var="status" value="종료"/>
+                                		</c:if>
 	                                    <tr>
 	                                        <td>${event.rownum}</td>
 	                                        <td class="event-ing">${status}</td>
@@ -101,16 +101,16 @@
 	                                        <td class="text-left text-short"><a href="detail?id=${event.id}">${event.title}</a></td>
 	                                        <td>관리자</td>
 	                                        <td>${event.regdate}</td>
-	                                        <td><input type="checkbox" name="open" class="open-chk"></td>
-	                                        <td><input type="checkbox" name="del" class="del-chk"></td>
+	                                        <td><input type="checkbox" name="open-id" ${open} value="${event.id}" class="open-chk"></td>
+	                                        <td><input type="checkbox" name="del-id" value="${event.id}" class="del-chk"></td>
 	                                    </tr>
                                     </c:forEach>
 	                                    
 	                                    <tr>
 	                                        <td colspan="8" class="no-border btn-row">
 	                                            <input type="button" onclick="location.href='reg'" value="글쓰기">
-	                                            <input type="submit" value="일괄공개">
-	                                            <input type="submit" value="일괄삭제">
+	                                            <input type="submit" name="cmd" value="일괄공개">
+	                                            <input type="submit" name="cmd" value="일괄삭제">
 	                                        </td>
 	                                    </tr>
 	                                    <tr>

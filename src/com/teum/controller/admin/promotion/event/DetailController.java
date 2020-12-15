@@ -28,22 +28,18 @@ public class DetailController extends HttpServlet {
 		Event prevEvent = null;
 		Event nextEvent = null;
 		
-		if (list.size() == 1) { 		// 이벤트 글이 하나밖에 없을 경우 
-			// 아무런 동작 X
-		} else {
-			if (id == list.size()) // 맨 마지막 번호인 경우
-				prevEvent = service.get(id - 1);
-			else if (id == 1) 		// 맨 처음 번호인 경우
-				nextEvent = service.get(id + 1);
-			else {
-				prevEvent = service.get(id - 1);
-				nextEvent = service.get(id + 1);
-			}
+		if (id == list.size()) 	// 맨 마지막 번호인 경우
+			prevEvent = service.get(id - 1);
+		else if (id == 1) 		// 맨 처음 번호인 경우
+			nextEvent = service.get(id + 1);
+		else {
+			prevEvent = service.get(id - 1);
+			nextEvent = service.get(id + 1);
 		}
 			
-		request.setAttribute("currEv", currEvent);
-		request.setAttribute("prevEv", prevEvent);
-		request.setAttribute("nextEv", nextEvent);
+		request.setAttribute("currEvent", currEvent);
+		request.setAttribute("prevEvent", prevEvent);
+		request.setAttribute("nextEvent", nextEvent);
 		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}

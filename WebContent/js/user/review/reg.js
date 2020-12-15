@@ -5,13 +5,11 @@ window.addEventListener('load', function() {
 
     starContainer.onclick = function(e) {
         var t = e.target;
-        if (t.nodeName != 'DIV' && t.classList.contains('pick')) {
+        if (t.nodeName != 'DIV' && t.classList.contains('pick'))
             t.style.color = 'rgba(209, 209, 209, 0.596)';
-            t.classList.remove('pick');
-        } else if (t.nodeName != 'DIV' && !t.classList.contains('pick')) {
+        else if (t.nodeName != 'DIV' && !t.classList.contains('pick'))
             t.style.color = 'gold';
-            t.classList.add('pick');
-        }
+        t.classList.toggle('pick');
     }
 
     submitBtn.onclick = function() {

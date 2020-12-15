@@ -1,1 +1,1 @@
-# AccommodationWeb
+## 가격을 역으로 제안할 수 있는 숙박 서비스
