@@ -17,14 +17,14 @@ public interface AccDao {
 	
 	List<Acc> getList();
 	List<Acc> getList(int startIndex, int endIndex);
-	List<Acc> getList(int startIndex, int endIndex,String accType, String qeury);
+	List<Acc> getList(int startIndex, int endIndex, String qeury);
 	
 	List<Acc> applyGetList();
 	List<Acc> applyGetList(int startIndex, int endIndex);
-	List<Acc> applyGetList(int startIndex, int endIndex, String accType, String qeury);
+	List<Acc> applyGetList(int startIndex, int endIndex, String qeury);
 	
 	List<AccListForAdminView> getViewList();
 	List<AccListForAdminView> getViewList(int startIndex, int endIndex);
-	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String accType, String qeury);
+	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String qeury);
 	
 }

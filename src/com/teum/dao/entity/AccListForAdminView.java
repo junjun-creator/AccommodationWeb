@@ -6,13 +6,12 @@ import com.teum.entity.Acc;
 
 public class AccListForAdminView extends Acc{
 
-	private int rownum;
 	private String companyName;
 	private String accType;
+	
 
-	public AccListForAdminView() {
+	public AccListForAdminView(int id, String accName, String location, Date regdate, String phone, String email, int accTypeId, int regStatus, Date approvalDate, int adiminId, int companyId, Date startDate, Date endDate, int saleprice, String companyName, String accType) {
 		super();
-		this.rownum = rownum;
 		this.companyName = companyName;
 		this.accType = accType;
 	}
@@ -33,17 +32,11 @@ public class AccListForAdminView extends Acc{
 		this.accType = accType;
 	}
 
-	public int getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "AccListForAdminView [rownum=" + rownum + ", companyName=" + companyName + ", accType=" + accType + "]";
+		return "AccListForAdminView [companyName=" + companyName + ", accType=" + accType + ", toString()=" + super.toString() +"]";
 	}
 
 

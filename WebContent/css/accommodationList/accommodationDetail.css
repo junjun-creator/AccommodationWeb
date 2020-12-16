@@ -23,12 +23,12 @@ margin: 50px auto 0px auto;
             color: rgba(255, 255, 255, 0.5);
         }
         .pic .prev-btn{
-            top: 235px;
-            left: 390px;
+            top: 280px;
+            left: 500px;
         }
         .pic .next-btn {
-            top: 235px;
-            left: 840px;
+            top: 280px;
+            left: 915px;
         }
         .main .title .cliper{
             border: 1px solid black;
@@ -36,6 +36,7 @@ margin: 50px auto 0px auto;
             height: 100px;
             overflow: hidden;
             position: relative;
+            
         }
         .main .title .cliper ul{
             display: flex;
@@ -59,7 +60,7 @@ margin: 50px auto 0px auto;
                 height: 100px;
             }
         .main .title .main-info{
-            margin-left: 20px;
+            margin-left: 40px;
         }
         .main .title .main-info h1{
             font-size: 35px;
@@ -72,7 +73,7 @@ margin: 50px auto 0px auto;
             font-size: 20px;
             color: gray;
             margin: auto 0px;
-            padding-bottom: 30px;
+            padding-bottom: 5px;
         } 
         .main .title .main-info p{
             font-weight: bold;
@@ -88,6 +89,7 @@ margin: 50px auto 0px auto;
             font-size: 15px;
             padding-bottom: 10px;
             margin: auto 0px;
+            padding-top: 10px;
         }
 
 .dateChange{
@@ -170,6 +172,7 @@ margin: 50px auto 0px auto;
                         flex-grow: 10;
                         display: flex;
                         --border: 1px solid red;
+                        margin: 0px 10px 0px 10px;
                     }
 
                         .room-img-container {

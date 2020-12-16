@@ -6,7 +6,7 @@
     <title>호텔리스트</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="../css/accommodationList/hotelList.css">
+    <link rel="stylesheet" href="/css/accommodationList/hotelList.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -53,7 +53,7 @@
         <aside class='aside'>
             <h1>지역</h1>
             <div>
-                <select>
+                <select name="big-location">
                     <option>서울</option>
                     <option>제주</option>
                     <option>부산</option>
@@ -64,7 +64,7 @@
                     <option>전라</option>
                     <option>충청</option>
                 </select>
-                <select>
+                <select name="small-location">
                     <!-- 서울 -->
                     <option value="">강남</option>
                     <option value="">역삼</option>
@@ -272,13 +272,13 @@
 
             <h1>날짜</h1>
             <div class='calander'>
-                입실 : <input type="date">
-                퇴실 : <input type="date">
+                입실 : <input type="date" name="start-date">
+                퇴실 : <input type="date" name="end-date">
             </div>
             <br>
 
             <h1>인원수</h1>
-            <div class='head-counter'>
+            <div class='head-counter' name="head-counter">
                 <section>
                     <select class="form-option people-select">
                         <option value="" name="people">1</option>
@@ -309,8 +309,8 @@
             <h1>상세조건</h1>
             
             <form>
-                <input type="checkbox" name="예약가능">예약가능
-                <input type="checkbox" name="프로모션">골든타임
+                <input type="checkbox" name="reserv">예약가능
+                <input type="checkbox" name="goldentime">골든타임
             </form><br>
 
             <h1>배트 타입</h1>
@@ -322,13 +322,13 @@
             <br>
 
             <form>
-                <button type="button">초기화</button>
-                <button type="submit">적용</button>
+                <button type="reset" value="초기화" class="btn">초기화</button>
+                <button type="submit" value="적용" class="btn">적용</button>
             </form>
         </aside>
         
         <main class= 'main'>
-            <div class='location'>
+            <!-- <div class='location'>
                 <nav>
                     <ul>
                         <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
@@ -336,7 +336,7 @@
                         <li><a href="">&nbsp;&nbsp;&nbsp;강남,삼성,역삼&nbsp;&nbsp;&nbsp;</a></li>
                     </ul>
                 </nav>
-            </div>
+            </div> -->
     
             <section class="picked-item-sec">
                 <div class="snip1368">

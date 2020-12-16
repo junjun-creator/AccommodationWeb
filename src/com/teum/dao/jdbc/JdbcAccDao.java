@@ -16,7 +16,7 @@ import com.teum.entity.Acc;
 
 public class JdbcAccDao implements AccDao{
 
-	
+
 
 	@Override
 	public Acc get(int id) {
@@ -47,7 +47,7 @@ public class JdbcAccDao implements AccDao{
 				Date endDate = rs.getDate("END_DATE");
 				int saleprice = rs.getInt("SALEPRICE");
 
-				 a = new Acc(
+				a = new Acc(
 						id,
 						accName,
 						location,
@@ -83,8 +83,17 @@ public class JdbcAccDao implements AccDao{
 
 	@Override
 	public List<Acc> getList() {
+		return getList(1,10,"");
+	}
+	@Override
+	public List<Acc> getList(int startIndex, int endIndex) {
+		
+		return getList( startIndex,  endIndex, "");
+	}
+	@Override
+	public List<Acc> getList(int startIndex, int endIndex, String qeury) {
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1";
+		String sql = "SELECT * FROM ACC WHERE REG_STATUS=1";
 
 		List<Acc> list = new ArrayList<>();
 		try {
@@ -99,7 +108,7 @@ public class JdbcAccDao implements AccDao{
 			while(rs.next()) {
 
 				int id = rs.getInt("id"); 
-				String accName = rs. getString("acc_name");
+				String name = rs. getString("name");
 				String location = rs.getString("location");
 				Date regdate = rs.getDate("regdate");
 				String phone = rs.getString("phone");
@@ -107,7 +116,7 @@ public class JdbcAccDao implements AccDao{
 				int accTypeId = rs.getInt("acc_type_id");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
-				int adiminId = rs.getInt("adimin_id");
+				int adminId = rs.getInt("admin_id");
 				int companyId = rs.getInt("company_id");
 				Date startDate = rs.getDate("START_DATE");
 				Date endDate = rs.getDate("END_DATE");
@@ -115,7 +124,7 @@ public class JdbcAccDao implements AccDao{
 
 				Acc a = new Acc(
 						id,
-						accName,
+						name,
 						location,
 						regdate,
 						phone,
@@ -123,7 +132,7 @@ public class JdbcAccDao implements AccDao{
 						accTypeId,
 						regStatus,
 						approvalDate,
-						adiminId,
+						adminId,
 						companyId,
 						startDate,
 						endDate,
@@ -147,8 +156,9 @@ public class JdbcAccDao implements AccDao{
 			e.printStackTrace();
 		}
 		return list;
+		
 	}
-
+	
 	@Override
 	public Acc applyGet(int id) {
 		Acc a = null;
@@ -181,7 +191,7 @@ public class JdbcAccDao implements AccDao{
 				Date endDate = rs.getDate("END_DATE");
 				int saleprice = rs.getInt("SALEPRICE");
 
-				 a = new Acc(
+				a = new Acc(
 						id,
 						accName,
 						location,
@@ -217,6 +227,16 @@ public class JdbcAccDao implements AccDao{
 
 	@Override
 	public List<Acc> applyGetList() {
+		return applyGetList(1, 10,"");
+	}
+	@Override
+	public List<Acc> applyGetList(int startIndex, int endIndex) {
+		
+		return applyGetList(startIndex, endIndex,"");
+	}
+	
+	@Override
+	public List<Acc> applyGetList(int startIndex, int endIndex, String qeury) {
 		String url = "DBContext.URL";
 		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";
 		List<Acc> list = new ArrayList<>();
@@ -293,31 +313,31 @@ public class JdbcAccDao implements AccDao{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);         
-	         st.setInt(1, id);
-	         result = st.executeUpdate();    
-	         st.close();
-	         con.close();         
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      } catch (ClassNotFoundException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      }
+			st.setInt(1, id);
+			result = st.executeUpdate();    
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
-		
+
 	}
-	
+
 	@Override//수정필요
 	public int[] deleteAll(int[] ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public int approval(int id) {
 		int result=0;
-		
+
 		String url = "DBContext.URL";
 		String sql = "UPDATE ACC_LIST_FOR_ADMIN SET REG_STATUS=1 WHERE ID=?";
 
@@ -325,17 +345,17 @@ public class JdbcAccDao implements AccDao{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);         
-	         st.setInt(1, id);
-	         result = st.executeUpdate();    
-	         st.close();
-	         con.close();         
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      } catch (ClassNotFoundException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      }
+			st.setInt(1, id);
+			result = st.executeUpdate();    
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 
@@ -346,52 +366,28 @@ public class JdbcAccDao implements AccDao{
 	}
 
 	@Override
-	public List<Acc> getList(int startIndex, int endIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Acc> getList(int startIndex, int endIndex, String accType, String qeury) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Acc> applyGetList(int startIndex, int endIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Acc> applyGetList(int startIndex, int endIndex, String accType, String qeury) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<AccListForAdminView> getViewList() {
-		
-		return getViewList(1,10, "hotel", "");
+
+		return getViewList(1,10, "");
 	}
 
 	@Override
 	public List<AccListForAdminView> getViewList(int startIndex, int endIndex) {
-		
-		return getViewList(startIndex, endIndex, "hotel", "");
+
+		return getViewList(startIndex, endIndex, "");
 	}
 
 	@Override
-	public List<AccListForAdminView> getViewList(int startIndex, int endIndex, String accType, String qeury) {
-		
+	public List<AccListForAdminView> getViewList(int startIndex, int endIndex, String qeury) {
+
 		List<AccListForAdminView> list = new ArrayList<AccListForAdminView>();
-		
+
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM( " + 
-						"    SELECT ROWNUM NUM, N.* FROM( " + 
-						"    SELECT * FROM ACC_LIST_FOR_ADMIN ORDER BY REGDATE DESC " + 
-						"    ) N " + 
-						" ) WHERE NUM BETWEEN ? AND ?";
+				"    SELECT ROWNUM NUM, N.* FROM( " + 
+				"    SELECT * FROM ACC_LIST_FOR_ADMIN ORDER BY REGDATE DESC " + 
+				"    ) N " + 
+				" ) WHERE NUM BETWEEN ? AND ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -399,7 +395,7 @@ public class JdbcAccDao implements AccDao{
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1,  startIndex);
 			st.setInt(2, endIndex);
-			
+
 			ResultSet rs = st.executeQuery(sql);
 
 
@@ -421,11 +417,13 @@ public class JdbcAccDao implements AccDao{
 				Date startDate = rs.getDate("START_DATE");
 				Date endDate = rs.getDate("END_DATE");
 				int saleprice = rs.getInt("SALEPRICE");
+				String companyName = rs.getNString("company_name");
+				String accType = rs.getString("acc_type");
 
 				AccListForAdminView a = new AccListForAdminView(
 						id,
 						accName,
-						location,
+						location, 
 						regdate,
 						phone,
 						email,
@@ -459,4 +457,8 @@ public class JdbcAccDao implements AccDao{
 		}
 		return list;
 	}
+
+	
+
+	
 }

@@ -9,14 +9,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../css/admin/accommodations/list.css">   
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+	<link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/accommodations/list.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-	<script src="../../js/admin/accommodations/list.js"></script>
-    <title>등록된 업체 리스트</title>
+	<script src="../../js/admin/accommodations/regList.js"></script>
+    <title>승인등록 요청 리스트</title>
 </head>
 <body>
     <header class="sec-header-page">
@@ -26,11 +26,21 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
+                    <li class="sub-page">
+                        <a href="">더보기</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">1:1 문의</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sub-page">
+                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
                         <div class="mega-menu">
                             <ul>
                                 <li><a href="">내정보</a></li>
@@ -43,64 +53,68 @@
                 </ul>
             </div>
         </section>
-	</header>
-	
-	<main>
-		<section class="body">
-			<aside id="aside" class="aside">
-				<h1>업체관리</h1>
-					<ul>
-						<li><a href="list" class="active">등록된 업체 리스트</a></li>
-						<li><a href="applyList">업체 등록 관리</a></li>
-					</ul>
-			</aside>
-			<div class="container">
-				<nav id="nav" class="nav">
-					<ul>
-						<li class="current-tab">
-							<a href="list">
-								<i class="fas fa-hotel"></i><span>업체관리</span>
-							</a>
-						</li>
-						<li>
-							<a href="/admin/userInfo/list">
-								<i class="fas fa-user-circle"></i><span> 회원관리</span>
-							</a>
-						</li>
-						<li>
-							<a href="/admin/promotion/goldenTime/list">
-								<i class="far fa-calendar-alt"></i><span>프로모션관리</span>
-							</a>
-						</li>
-						<li>
-							<a href="/admin/customerService/notice/list">
-								<i class="fas fa-headphones"></i><span>고객센터</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<main id="main" class="main">
-					<div class="sub-container">
-						<div class="breadcrumb">
-							<ul class="breadcrumb-list">
-								<li><i class="fas fa-home"></i>HOME ▶ </li>
-								<li>업체관리 ▶ </li>
-								<li>등록된 업체 리스트</li>
-							</ul>
-						</div>
-						<h1>등록된 업체 리스트</h1>
-						<select name="" class="AccTypeCatagory">
-							<form action="">
-								<option value="" selected disabled>전체보기</option>
-								<option value="호텔">호텔</option>
-								<option value="모텔">모텔</option>
-								<option value="게스트하우스">게스트하우스</option>
-								<option value="리조트">리조트</option>
-								<option value="펜션">펜션</option>
-							</form>
-							<input>
-						</select>
-						<section>
+    </header>
+    
+    <main>
+        <section class="body">
+            <aside id="aside" class="aside">
+                <h1>업체관리</h1>
+                <ul>
+                    <li><a href="list" class="active">승인된 업체 리스트</a></li>
+                    <li><a href="regList">업체 등록 관리</a></li>
+                </ul>
+            </aside>
+            <div class="container">
+                <nav id="nav" class="nav">
+                    <ul>
+                        <li class="current-tab">
+                            <a href="list">
+                                <i class="fas fa-hotel"></i><span>업체관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/userInfo/list">
+                                <i class="fas fa-user-circle"></i><span> 회원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/promotion/goldenTime/list">
+                                <i class="far fa-calendar-alt"></i><span>프로모션관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/customerService/notice/list">
+                                <i class="fas fa-headphones"></i><span>고객센터</span>
+                            </a>
+                        </li>
+                    </ul> 
+                </nav>
+                <main id="main" class="main">
+                    <div class="sub-container">
+                        <div class="breadcrumb">
+                            <ul class="breadcrumb-list">
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;업체관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;승인된 업체 리스트&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+                        <div class="main-search">
+                            <h1>승인된 업체 리스트</h1>
+                            <form action="">
+                                <select name="acc-type" class="acc-catagory">
+                                    <option value="" selected disabled>전체보기</option>
+                                    <option value="호텔">호텔</option>
+                                    <option value="모텔">모텔</option>
+                                    <option value="게스트하우스">게스트하우스</option>
+                                    <option value="리조트">리조트</option>
+                                    <option value="펜션">펜션</option>
+                                </select>
+                                <input type="text" name="search">
+                                <input type="submit" value="검색">
+                            </form>
+                        </div>
+                        
+                        <section>
 							<form class="list-board">
 								<table>
 									<thead>
@@ -116,29 +130,53 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach var="al" items="${list}">
+                                        <c:forEach var="al" items="${list}">
 										<tr>
-											<td>${a.id}</td>
-											<td>${a.name}</td>
-											<td><a href="detail?accName=${a.accName}">${al.accName}</a></td>
-											<td>${a.location}</td>
-											<td>${a.regdate}</td>
-											<td>${a.phone}</td>
-											<td>${a.accType}</td>
+											<td>${al.id}</td>
+											<td>${al.name}</td>
+											<td><a href="detail?accName=${al.name}">${al.name}</a></td>
+											<td>${al.location}</td>
+											<td>${al.regdate}</td>
+											<td>${al.phone}</td>
+											<td>${al.accTypeId}</td>
 											<td><input type="checkbox"></td>
 										</tr>
 										</c:forEach> 
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="submit">삭제</button></td>
-										</tr>
-									</tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><button type="submit">삭제</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8" class="no-border">
+                                                <div class="pager-container">
+                                                    <div class="btn btn-prev">
+                                                        <span><a href="">이전</a></span>
+                                                    </div>
+                                                    <ul class="pager-list">
+                                                        <li class="active-page"><a href="">1</a></li>
+                                                        <li><a href="">2</a></li>
+                                                        <li><a href="">3</a></li>
+                                                        <li><a href="">4</a></li>
+                                                        <li><a href="">5</a></li>
+                                                        <li><a href="">6</a></li>
+                                                        <li><a href="">7</a></li>
+                                                        <li><a href="">8</a></li>
+                                                        <li><a href="">9</a></li>
+                                                        <li><a href="">10</a></li>
+                                                    </ul>
+                                                    <div class="btn btn-next">
+                                                        <span><a href="">다음</a></span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
 								</table>
 							</form>
 						</section>
