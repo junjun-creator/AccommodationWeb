@@ -33,20 +33,24 @@ public class Event {
 	}
 
 	// insert용 생성자
-	public Event(String title, int openStatus, Date startDate, Date endDate) {
+	public Event(String title, int openStatus, Date startDate, Date endDate, String imageName, String imageRoute) {
 		this.title = title;
 		this.openStatus = openStatus;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.imageName = imageName;
+		this.imageRoute = imageRoute;
 	}
 	
 	// update용 생성자
-	public Event(int id, String title, int openStatus, Date startDate, Date endDate) {
+	public Event(int id, String title, int openStatus, Date startDate, Date endDate, String imageName, String imageRoute) {
 		this.id = id;
 		this.title = title;
 		this.openStatus = openStatus;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.imageName = imageName;
+		this.imageRoute = imageRoute;
 	}
 
 	@Override

@@ -12,11 +12,11 @@ public class EventListView extends Event {
 		
 	}
 	
-	public EventListView(int id, String title, int openStatus, String imageName, String imageRoute, int status, Date startDate, Date endDate, Date regdate, int adminId) {
-		
+	public EventListView(int id, String title, int openStatus, String imageName, String imageRoute, int status,
+			Date startDate, Date endDate, Date regdate, int adminId, int rownum) {
+		super(id, title, openStatus, imageName, imageRoute, status, startDate, endDate, regdate, adminId);
+		this.rownum = rownum;
 	}
-	
-	
 
 	public int getRownum() {
 		return rownum;

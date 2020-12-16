@@ -61,7 +61,7 @@
 	                    </div>
 	                    <h1>이벤트 등록</h1>
 	                    <section class="form-sec">
-	                        <form action="reg" method="post" class="reg-form">
+	                        <form action="reg" method="post" class="reg-form" enctype="multipart/form-data">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
@@ -78,9 +78,15 @@
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th>첨부파일</th>
+	                                    <th>첨부파일(타이틀용)</th>
 	                                    <td class="text-left">
-	                                        <input type="file">
+	                                        <input type="file" name="file">
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th>첨부파일(컨텐츠용)</th>
+	                                    <td class="text-left">
+	                                        <input type="file" name="file">
 	                                    </td>
 	                                </tr>
 	                                <tr>

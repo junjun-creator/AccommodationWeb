@@ -2,6 +2,7 @@ package com.teum.controller.admin.promotion.event;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class ListController extends HttpServlet {
 		String searchTitle = request.getParameter("search-title");
 		
 		EventService service = new EventService();
-		List<Event> list = new ArrayList<Event>(); // null로 해야하나?
+		List<Event> list = new ArrayList<Event>();
 		
 		if (searchTitle != null) 
 			list = service.getList(1, 10, searchTitle);
@@ -40,19 +41,30 @@ public class ListController extends HttpServlet {
 		String[] openIds = request.getParameterValues("open-id");
 		String[] delIds = request.getParameterValues("del-id");
 		String cmd = request.getParameter("cmd");
+		String ids_ = request.getParameter("ids");
+		String[] ids = ids_.trim().split(" ");
+		
+		EventService service = new EventService();
 		
 		switch (cmd) {
 		case "일괄공개":
+			List<String> oIds = Arrays.asList(openIds);
+			
+			// 공개할 id와 비공개할 id를 나눈다.
+			List<String> cIds = new ArrayList(Arrays.asList(ids));
+			cIds.removeAll(oIds); // 비공개할 id
+			
+			service.openAll(oIds, cIds);
+			
 			break;
+			
 		case "일괄삭제":
-			EventService service = new EventService();
-			int[] ids = new int[delIds.length];
+			int[] ids1 = new int[delIds.length];
 			
-			for (int i = 0; i < delIds.length; i++) {
-				ids[i] = Integer.parseInt(delIds[i]);
-			}
+			for (int i = 0; i < delIds.length; i++)
+				ids1[i] = Integer.parseInt(delIds[i]);
 			
-			int result = service.deleteAll(ids);
+			int result = service.deleteAll(ids1);
 			break;
 		}
 		
