@@ -25,38 +25,35 @@ public class ListController extends HttpServlet{
 		
 		UsersService service = new UsersService();
 		List<Users> list = new ArrayList<>();
-		int count = service.getCount();
+		
+		String field_ = request.getParameter("field");
+		String query_ = request.getParameter("query");
+		String page_ = request.getParameter("page");
+		
+		String field = "name";
+		String query = "";
+		int page = 1;
+		if(field_ != null && !field_.equals("")) {
+			field = field_;
+		}
+		if(query_ != null && !query_.equals("")) {
+			query = query_;
+		}
+		if(page_ != null && !page_.equals("")) {
+			page = Integer.parseInt(page_);
+		}
+		
+		list = service.getList(page, field, query);
+		int count = service.getCount(field,query);
+
+		//페이저 전체 수
+		double pageLastCount = Math.ceil(count/10.0);
+		
 		ArrayList<Integer> rankCount = service.getRankCount();
 		
-		String queryString = request.getQueryString();
-		
-		if(queryString ==null) {
-			list = service.getList();
-		}
-		else if(queryString.contains("field")){
-			count = service.getCount(request.getParameter("field"),request.getParameter("query"));
-			if(queryString.contains("page")) {
-				int page = Integer.parseInt(request.getParameter("page"));
-				list = service.getList(page, request.getParameter("field"),request.getParameter("query"));
-			}
-			else {
-				list = service.getList(request.getParameter("field"),request.getParameter("query"));
-			}
-		}
-		else {
-			int page = Integer.parseInt(request.getParameter("page"));
-			list = service.getList(page);
-			request.setAttribute("page", page);
-		}
-		//페이저 전체 수
-		int pageCount = count/10 +1;
-		
-		if(count % 10 == 0)
-			pageCount = count/10;
-//		System.out.println(pageCount);
-		
+//		
 		request.setAttribute("list", list);
-		request.setAttribute("pageCount",pageCount);
+		request.setAttribute("pageLastCount",(int)pageLastCount);
 		request.setAttribute("rankCount",rankCount);
 		
 		request.getRequestDispatcher("privateMemberList.jsp").forward(request, response);

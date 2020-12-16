@@ -132,18 +132,13 @@
                                                 <div class="btn btn-prev">
                                                     <span><a href="">이전</a></span>
                                                 </div>
-                                                <ul class="pager-list">
-                                                    <!-- <li class="active-page"><a href="">1</a></li>
-                                                    <li><a href="">2</a></li>
-                                                    <li><a href="">3</a></li>
-                                                    <li><a href="">4</a></li>
-                                                    <li><a href="">5</a></li>
-                                                    <li><a href="">6</a></li>
-                                                    <li><a href="">7</a></li>
-                                                    <li><a href="">8</a></li>
-                                                    <li><a href="">9</a></li>
-                                                    <li><a href="">10</a></li> -->
-                                                </ul>
+                                                <input type="hidden" value="${page}" class="page">
+													<ul class="pager-list">
+														<c:forEach var="pageC" begin="1" end="${pageCount }" varStatus="status">
+															<li class=""><a href="usersList?page=${pageC}">${pageC}</a></li>
+														</c:forEach>
+														
+													</ul>
                                                 <div class="btn btn-next">
                                                     <span><a href="">다음</a></span>
                                                 </div>
@@ -175,22 +170,6 @@
 		<li class><a href="usersList?page={id}">{page}</a></li>
 	</script>
 	
-	<script>
-		var pagerList = document.querySelector(".pager-list");
-		var html = document.querySelector("#pagerList").innerHTML;
-		var resultHTML = "";
-		for(var i=1;i<="${pageCount}";i++){
-			resultHTML = html.replace("{id}",i)
-							.replace("{page}",i);
-			pagerList.innerHTML+=resultHTML;
-		}
-		
-		if("${page}"==""){
-			pagerList.firstElementChild.setAttribute('class','active-page');
-		}
-		else{
-			pagerList.children[${page}-1].setAttribute('class','active-page');
-		}
-	</script>
+	<script src="/js/admin/userInfo/company/corporateMemberList.js"></script>
 </body>
 </html>

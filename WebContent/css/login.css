@@ -123,7 +123,7 @@
                     margin-bottom: 20px;
                     padding: 10px 0;
                 }
-                    .button-submit>input{
+                    .button-submit>button{
                         width: 100%;
                         color: white;
                         font-size: 16px;
@@ -133,7 +133,7 @@
                         cursor: pointer;
                         padding: 10px 0;
                     }
-                    .button-submit>input.disabled{
+                    .button-submit>button.disabled{
                         opacity: 0.5;
                         cursor: initial;
                     }

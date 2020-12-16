@@ -17,4 +17,5 @@ public interface UsersDao {
 //	int getCount();
 	int getCount(String field, String query);
 	ArrayList<Integer> getRankCount();
+	int valid(String email, String password);
 }

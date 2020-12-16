@@ -101,4 +101,13 @@ public class UsersService implements UsersServiceI{
 		
 		return result;
 	}
+	
+	@Override
+	public int valid(String email, String password) {
+		int result = 0;
+		
+		result = usersDao.valid(email,password);
+		
+		return result;
+	}
 }
