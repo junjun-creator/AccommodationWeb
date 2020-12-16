@@ -64,6 +64,12 @@
                         height: 25px;
                         margin: 0 5px 0 5px;
                     }
-                 
+                 	.ellips{
+	                 	text-overflow:ellipsis;
+						white-space:nowrap;
+						word-wrap:normal;
+						width:100px;
+						overflow:hidden;
+					}
        
 /********************************************/

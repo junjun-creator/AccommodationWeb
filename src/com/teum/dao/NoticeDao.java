@@ -11,5 +11,7 @@ public interface NoticeDao {
 	int delete(int id);
 	
 	Notice get(int id);
+	Notice getLast();
 	List<Notice> getList();
+	List<Notice> getUserList();
 }

@@ -187,13 +187,13 @@ public class JdbcQnADao implements QnADao {
 
 	@Override
 	public List<QnAView> getViewList() {
-		// TODO Auto-generated method stub
+
 		return getViewList(1,10,"");
 	}
 
 	@Override
 	public List<QnAView> getViewList(int startIndex, int endIndex) {
-		// TODO Auto-generated method stub
+		
 		return getViewList(startIndex,endIndex,"");
 	}
 

@@ -25,19 +25,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +64,7 @@
 	                    </div>
 	                    <section class="form-sec">
 	                        <h1>공지사항 수정</h1>
-	                        <form action="edit" method="post" class="reg-form">
+	                        <form action="edit" method="post" class="reg-form" enctype="multipart/form-data">
 	                            <table class="table">
 	                                <tr>
 	                                    <th class="col-m">제목</th>
@@ -94,6 +83,24 @@
 	                                    	</c:otherwise>
 	                                    </c:choose>><span>즉시 공개</span>
 	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                	<th>첨부파일</th>
+                                		<td colspan="3">
+                                			<input type="file" accept=".jpg,.png" name="IMAGE_NAME" >
+                                		</td>
+	                                </tr>
+	                                <tr>
+										<th>첨부된파일</th>
+			                                <td colspan="3" class="text-align-left text-indent">
+			                                <c:forTokens var="fileName" items="${n.imageName}" delims="," varStatus="st">
+			                                	<fmt:formatDate var="year" value="${n.regdate}"  pattern="yyyy"/>
+			                                	<a download href="/static/notice/${year}/${n.id}/${fileName}">${fileName}</a>
+			                                	<c:if test="${st.last ==false }">
+			                                		/
+			                                	</c:if>
+			                                </c:forTokens>
+		                                </td>
 	                                </tr>
 	                                <tr>
 	                                    <th>내용</th>

@@ -28,6 +28,11 @@ public class NoticeService {
 			
 	}
 	
+	public List<Notice> getUserList() {
+		return noticeDao.getUserList();
+		
+	}
+	
 	public Notice get(int id) {
 		
 		return noticeDao.get(id);
@@ -55,5 +60,13 @@ public class NoticeService {
 		result = noticeDao.delete(id);
 		return result;
 	}
+
+	public int getLastId() {
+		Notice n =noticeDao.getLast();
+		
+		return n.getId();
+	}
+
+	
 	
 }

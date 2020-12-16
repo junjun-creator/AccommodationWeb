@@ -34,7 +34,7 @@ public class QnAService {
 		int startIndex = 1 + (page-1)*size;
 		int endIndex = page*size;
 		
-		return qnaDao.getViewList(page,size,"");
+		return qnaDao.getViewList(startIndex,endIndex,"");
 	}
 	
 	public List<QnAView> getViewList(){

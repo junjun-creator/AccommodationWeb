@@ -27,19 +27,8 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="sub-page">
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
@@ -98,10 +87,11 @@
 	                                <tr>
 	                                    <td class="col-s">No.</td> 
 	                                    <td class="col-sm">회원명</td>
+	                                    <td class="col-sm">카테고리</td>
 	                                    <td class="col-ml">문의제목</td>
-	                                    <td class="col-m">연락처</td>
+	                                    <td class="col-sm">연락처</td>
 	                                    <td class="col-sm">문의날짜</td>
-	                                    <td class="col-s">상태</td>
+	                                    <td class="col-sm">상태</td>
 	                                    <td class="col-s"><input type="checkbox" class="selectAllDelete"></td>
 	                                </tr>
 	                            </thead>
@@ -111,6 +101,31 @@
 	                                <tr>
 	                                    <td>${q.id}</td>
 	                                    <td>${q.userName}</td>
+	                                    <td>
+	                                    <c:choose>
+											<c:when test="${q.categoryId eq 1}">
+												이벤트
+											</c:when>
+											<c:when test="${q.categoryId eq 2}">
+												예약/결제
+											</c:when>
+											<c:when test="${q.categoryId eq 3}">
+												취소/환불
+											</c:when>
+											<c:when test="${q.categoryId eq 4}">
+												서비스이용
+											</c:when>
+											<c:when test="${q.categoryId eq 5}">
+												회원/개인정보
+											</c:when>
+											<c:when test="${q.categoryId eq 6}">
+												리뷰
+											</c:when>
+											<c:otherwise>
+												기타
+											</c:otherwise>
+	                                     </c:choose>
+	                                    </td>
 	                                    <td><a href="detail?id=${q.id}">${q.title}</td>
 	                                    <td>${q.phone}</td>
 	                                    <td>${q.regdate}</td>
