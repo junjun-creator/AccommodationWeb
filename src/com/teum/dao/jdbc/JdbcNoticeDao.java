@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.NoticeDao;
+import com.teum.dao.entity.NoticeView;
 import com.teum.entity.Notice;
 
 public class JdbcNoticeDao implements NoticeDao {
@@ -151,33 +152,62 @@ public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
 	public List<Notice> getList() {
+		return getList(1,10,"");
+	}
+
+	@Override
+	public List<Notice> getList(int startIndex, int endIndex) {
+		return getList(startIndex,endIndex,"");
+	}
+	
+	@Override
+	public List<Notice> getList(int startIndex, int endIndex, String query) {
 		List<Notice>list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM NOTICE ";
+		String sql = "SELECT * FROM ADMIN_NOTICE WHERE NUM BETWEEN ? AND ? AND TITLE LIKE ?";
+		
+		/*
+		 * if(!query.equals("")) { String sql_ = " AND TITLE LIKE ?"; sql = sql + sql_;
+		 * }
+		 */
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, startIndex);
+			st.setInt(2, endIndex);
+			
+			/*
+			 * if(!query.equals("")) { st.setString(3,"%"+query+"%"); }
+			 */
+			st.setString(3,"%"+query+"%");
+			ResultSet rs = st.executeQuery();
 			
 
 			while(rs.next()) {
+				 int rownum = rs.getInt("NUM");
 				 int id =rs.getInt("ID");
 			     String title=rs.getString("TITLE");
 			     int adminId =rs.getInt("ADMIN_ID");
 			     String content=rs.getString("CONTENT");
 			     Date regdate=rs.getDate("REGDATE");
 			     int openStatus =rs.getInt("OPEN_STATUS");
+			     String imageName =rs.getString("IMAGE_NAME");
+			     String imageRoute =rs.getString("IMAGE_ROUTE");
 			     
-			     Notice n = new Notice();
+			     NoticeView n = new NoticeView();
+			     n.setNum(rownum);
 			     n.setId(id);
 			     n.setTitle(title);
 			     n.setAdminId(adminId);
 			     n.setContent(content);
 			     n.setRegdate(regdate);
 			     n.setOpenStatus(openStatus);
+			     n.setImageName(imageName);
+			     n.setImageRoute(imageRoute);
 			     
 			     list.add(n);
 				}
@@ -193,7 +223,6 @@ public class JdbcNoticeDao implements NoticeDao {
 		}
 		return list;
 	}
-
 	@Override
 	public Notice getLast() {
 		Notice n = null ;
@@ -243,7 +272,7 @@ public class JdbcNoticeDao implements NoticeDao {
 
 	@Override
 	public List<Notice> getUserList() {
-List<Notice>list = new ArrayList<>();
+		List<Notice>list = new ArrayList<>();
 		
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM NOTICE WHERE OPEN_STATUS=1";
@@ -285,5 +314,46 @@ List<Notice>list = new ArrayList<>();
 		}
 		return list;
 	}
+	
+
+	@Override
+	public int getCount(String query) {
+		int result = 0;
+		
+		
+		String url = DBContext.URL;
+		String sql = "SELECT count(*) FROM NOTICE WHERE TITLE LIKE ?";
+		
+		/*
+		 * if(!query.equals("")) { String sql_ ="WHERE TITLE LIKE ?"; sql =sql + sql_; }
+		 */
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1,"%"+query+"%" );
+			/*
+			 * if(!query.equals("")) { st.setString(1,"%"+query+"%" ); }
+			 */
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			ResultSet rs =st.executeQuery();//insert,update,delete 문장일 떄
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.printf("rs = %d\n",result);
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 
 }
