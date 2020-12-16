@@ -102,11 +102,11 @@
                             <h1>승인된 업체 리스트</h1>
                             <form action="">
                             	<select name="ac" class="acc-catagory">
-                                    <option ${(param.ac == "hotel")?"selecte":"" } value="hotel">호텔</option>
-									<option ${(param.ac == "motel")?"selecte":"" }value="motel">모텔</option>
-									<option ${(param.ac == "guesthouse")?"selecte":"" } value="guesthouse">게스트하우스</option>
-									<option ${(param.ac == "resort")?"selecte":"" }value="resort">리조트</option>
-									<option ${(param.ac == "pension")?"selecte":"" }value="pension">펜션</option>
+                                    <option ${(param.ac == "hotel")?"selecte":"" } value="호텔">호텔</option>
+									<option ${(param.ac == "motel")?"selecte":"" }value="모텔">모텔</option>
+									<option ${(param.ac == "guesthouse")?"selecte":"" } value="게스트하우스">게스트하우스</option>
+									<option ${(param.ac == "resort")?"selecte":"" }value="게스트하우스">리조트</option>
+									<option ${(param.ac == "pension")?"selecte":"" }value="펜션">펜션</option>
                                 </select>
                             	<select name="f">
                             		<option ${(param.f == "company_name")?"selecte":"" } value="company_name">사업자</option>
