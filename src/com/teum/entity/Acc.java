@@ -6,41 +6,43 @@ public class Acc {
 
 	 private int id;
 	 private String name;
-	 private String location;
-	 private Date regdate;
 	 private String phone;
+	 private String location;
 	 private String email;
-	 private int accTypeId;
 	 private int regStatus;
 	 private Date approvalDate;
-	 private int adiminId;
+	 private int adminId;
 	 private int companyId;
-	 private Date startDate;
-	 private Date endDate;
+	 private Date regdate;
+	 private int accTypeId;
+	 private Date gtStartDate;
+	 private Date gtEndDate;
 	 private int saleprice;
+	 private int goldentimeStatus;
 	 
 	public Acc() {
 		
 	}
 
-	public Acc(int id, String name, String location, Date regdate, String phone, String email, int accTypeId,
-			int regStatus, Date approvalDate, int adiminId, int companyId, Date startDate, Date endDate,
-			int saleprice) {
+	public Acc(int id, String name, String phone, String location, String email, int regStatus, Date approvalDate,
+			int adminId, int companyId, Date regdate, int accTypeId, Date gtStartDate, Date gtEndDate, int saleprice,
+			int goldentimeStatus) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.location = location;
-		this.regdate = regdate;
 		this.phone = phone;
+		this.location = location;
 		this.email = email;
-		this.accTypeId = accTypeId;
 		this.regStatus = regStatus;
 		this.approvalDate = approvalDate;
-		this.adiminId = adiminId;
+		this.adminId = adminId;
 		this.companyId = companyId;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.regdate = regdate;
+		this.accTypeId = accTypeId;
+		this.gtStartDate = gtStartDate;
+		this.gtEndDate = gtEndDate;
 		this.saleprice = saleprice;
+		this.goldentimeStatus = goldentimeStatus;
 	}
 
 	public int getId() {
@@ -59,22 +61,6 @@ public class Acc {
 		this.name = name;
 	}
 
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -83,20 +69,20 @@ public class Acc {
 		this.phone = phone;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public int getAccTypeId() {
-		return accTypeId;
-	}
-
-	public void setAccTypeId(int accTypeId) {
-		this.accTypeId = accTypeId;
 	}
 
 	public int getRegStatus() {
@@ -115,12 +101,12 @@ public class Acc {
 		this.approvalDate = approvalDate;
 	}
 
-	public int getAdiminId() {
-		return adiminId;
+	public int getAdminId() {
+		return adminId;
 	}
 
-	public void setAdiminId(int adiminId) {
-		this.adiminId = adiminId;
+	public void setAdminId(int adiminId) {
+		this.adminId = adiminId;
 	}
 
 	public int getCompanyId() {
@@ -131,20 +117,36 @@ public class Acc {
 		this.companyId = companyId;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public int getAccTypeId() {
+		return accTypeId;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setAccTypeId(int accTypeId) {
+		this.accTypeId = accTypeId;
+	}
+
+	public Date getGtStartDate() {
+		return gtStartDate;
+	}
+
+	public void setGtStartDate(Date gtStartDate) {
+		this.gtStartDate = gtStartDate;
+	}
+
+	public Date getGtEndDate() {
+		return gtEndDate;
+	}
+
+	public void setGtEndDate(Date gtEndDate) {
+		this.gtEndDate = gtEndDate;
 	}
 
 	public int getSaleprice() {
@@ -155,12 +157,23 @@ public class Acc {
 		this.saleprice = saleprice;
 	}
 
+	public int getGoldentimeStatus() {
+		return goldentimeStatus;
+	}
+
+	public void setGoldentimeStatus(int goldentimeStatus) {
+		this.goldentimeStatus = goldentimeStatus;
+	}
+
 	@Override
 	public String toString() {
-		return "Acc [id=" + id + ", name=" + name + ", location=" + location + ", regdate=" + regdate + ", phone="
-				+ phone + ", email=" + email + ", accTypeId=" + accTypeId + ", regStatus=" + regStatus
-				+ ", approvalDate=" + approvalDate + ", adiminId=" + adiminId + ", companyId=" + companyId
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", saleprice=" + saleprice + "]";
+		return "Acc [id=" + id + ", name=" + name + ", phone=" + phone + ", location=" + location + ", email=" + email
+				+ ", regStatus=" + regStatus + ", approvalDate=" + approvalDate + ", adminId=" + adminId
+				+ ", companyId=" + companyId + ", regdate=" + regdate + ", accTypeId=" + accTypeId + ", gtStartDate="
+				+ gtStartDate + ", gtEndDate=" + gtEndDate + ", saleprice=" + saleprice + ", goldentimeStatus="
+				+ goldentimeStatus + "]";
 	}
+
+	
 
 }
