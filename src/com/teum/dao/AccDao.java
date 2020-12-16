@@ -16,15 +16,15 @@ public interface AccDao {
 	Acc applyGet(int id);
 	
 	List<Acc> getList();
-	List<Acc> getList(int startIndex, int endIndex);
-	List<Acc> getList(int startIndex, int endIndex, String qeury);
-	
 	List<Acc> applyGetList();
-	List<Acc> applyGetList(int startIndex, int endIndex);
-	List<Acc> applyGetList(int startIndex, int endIndex, String qeury);
-	
 	List<AccListForAdminView> getViewList();
 	List<AccListForAdminView> getViewList(int startIndex, int endIndex);
-	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String qeury);
+	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String ac, String field,  String query);
+	List<AccListForAdminView> getApplyViewList();
+	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex);
+	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex,String ac,String field,  String query);
+
+	
+	
 	
 }

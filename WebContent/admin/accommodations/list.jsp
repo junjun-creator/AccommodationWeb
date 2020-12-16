@@ -101,15 +101,19 @@
                         <div class="main-search">
                             <h1>승인된 업체 리스트</h1>
                             <form action="">
-                                <select name="acc-type" class="acc-catagory">
-                                    <option value="" selected disabled>전체보기</option>
-                                    <option value="호텔">호텔</option>
-                                    <option value="모텔">모텔</option>
-                                    <option value="게스트하우스">게스트하우스</option>
-                                    <option value="리조트">리조트</option>
-                                    <option value="펜션">펜션</option>
+                            	<select name="ac" class="acc-catagory">
+                                    <option ${(param.ac == "hotel")?"selecte":"" } value="hotel">호텔</option>
+									<option ${(param.ac == "motel")?"selecte":"" }value="motel">모텔</option>
+									<option ${(param.ac == "guesthouse")?"selecte":"" } value="guesthouse">게스트하우스</option>
+									<option ${(param.ac == "resort")?"selecte":"" }value="resort">리조트</option>
+									<option ${(param.ac == "pension")?"selecte":"" }value="pension">펜션</option>
                                 </select>
-                                <input type="text" name="search">
+                            	<select name="f">
+                            		<option ${(param.f == "company_name")?"selecte":"" } value="company_name">사업자</option>
+                            		<option ${(param.f == "acc_name")?"selecte":"" } value="acc_name">숙소</option>
+                         	   </select>
+                                
+                                <input type="text" name="search" value="${param.search}">
                                 <input type="submit" value="검색">
                             </form>
                         </div>
@@ -130,15 +134,15 @@
 										</tr>
 									</thead>
 									<tbody>
-                                        <c:forEach var="al" items="${list}">
+                                        <c:forEach var="a" items="${list}">
 										<tr>
-											<td>${al.id}</td>
-											<td>${al.name}</td>
-											<td><a href="detail?accName=${al.name}">${al.name}</a></td>
-											<td>${al.location}</td>
-											<td>${al.regdate}</td>
-											<td>${al.phone}</td>
-											<td>${al.accTypeId}</td>
+											<td>${a.id}</td>
+											<td>${a.companyName}</td>
+											<td><a href="detail?accName=${a.name}">${a.name}</a></td>
+											<td>${a.location}</td>
+											<td>${a.regdate}</td>
+											<td>${a.phone}</td>
+											<td>${a.accType}</td>
 											<td><input type="checkbox"></td>
 										</tr>
 										</c:forEach> 
