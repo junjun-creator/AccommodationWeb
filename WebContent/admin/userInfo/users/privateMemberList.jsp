@@ -4,6 +4,7 @@
 <%@ page import="com.teum.entity.Users" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/admin/userInfo/users/privateMemberList.js"></script>
     <title>등록된 회원 리스트</title>
 </head>
 <body>
@@ -75,29 +77,21 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody class="rank-count">
-	                                <!-- <tr>
-	                                    <td>실버</td>
-	                                    <td>명</td>
-	                                </tr>
+	                            <c:set var="ranks" value="${fn:split('실버,골드,플레티넘,다이아',',')}" />
+	                            
+	                            <c:forEach items="${ranks}" var="ranks" varStatus="status">
 	                                <tr>
-	                                    <td>골드</td>
-	                                    <td>30명</td>
+	                                    <td>${ranks}</td>
+	                                    <td>${rankCount[status.index]}명</td>
 	                                </tr>
-	                                <tr>
-	                                    <td>플레티넘</td>
-	                                <td>3명</td>
-	                                </tr>
-	                                <tr>
-	                                    <td>다이아</td>
-	                                    <td>1명</td>
-	                                </tr> -->
+	                            </c:forEach>
 	                            </tbody>
 	                        </table>
 	                    </div>
 	
 	                    <div>
 	                        <h1>등록된 개인회원리스트</h1>
-	                        <select name="" id="">
+	                        <select name="" id="" class="order-by-rank">
 	                            <option value="">전체등급</option>
 	                            <option value="">실버</option>
 	                            <option value="">골드</option>
@@ -131,59 +125,39 @@
 		                                        <td class="col-s"><input type="checkbox" name="selected" value="${m.id }"></td>
 		                                    </tr>
 										</c:forEach>
-	                                    <!-- <tr>
-	                                        <td class="col-s">2</td>
-	                                        <td class="col-sm">신중언</td>
-	                                        <td class="col-sm">닉네임</td>
-	                                        <td class="col-m">sje@newlecture.com</td>
-	                                        <td class="col-sm">000000</td>
-	                                        <td class="col-m">010-3462-8452</td>
-	                                        <td class="col-m">2020-11-05</td>
-	                                        <td class="col-s"><input type="checkbox"></td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="col-s">3</td>
-	                                        <td class="col-sm">김병준</td>
-	                                        <td class="col-sm">닉네임</td>
-	                                        <td class="col-m">kbj@newlecture.com</td>
-	                                        <td class="col-sm">000000</td>
-	                                        <td class="col-m">010-2365-5678</td>
-	                                        <td class="col-m">2020-11-14</td>
-	                                        <td class="col-s"><input type="checkbox"></td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="col-s">4</td>
-	                                        <td class="col-sm">박수현</td>
-	                                        <td class="col-sm">닉네임</td>
-	                                        <td class="col-m">psh@newlecture.com</td>
-	                                        <td class="col-sm">000000</td>
-	                                        <td class="col-m">010-3863-1263</td>
-	                                        <td class="col-m">2020-11-23</td>
-	                                        <td class="col-s"><input type="checkbox"></td>
-	                                    </tr> -->
 	                                    <tr class="btn-delete">
 	                                        <td colspan="7"><input type="submit" value="삭제"></td>
 										</tr>
 										<tr>
 											<td colspan="6" class="no-border">
 												<div class="pager-container">
+													<!--start index 구하기! -->
+													<c:set var="page" value="${(empty param.page)?1:param.page }"/>
+													<c:set var="startNum" value="${page-(page-1)%5}"/>
+													<c:set var="lastNum" value="${pageLastCount }"/>
 													<div class="btn btn-prev">
-														<span><a href="">이전</a></span>
+														<c:if test="${startNum > 1 }">
+															<span><a href="?page=${startNum-1 }&field=&query=">이전</a></span>
+														</c:if>
+														<c:if test="${startNum <= 1 }">
+															<span><a href="" onclick="alert('이전페이지가 없습니다.');">이전</a></span>
+														</c:if>
 													</div>
 													<ul class="pager-list">
-														<!-- <li class="active-page"><a href="usersList?page=1">1</a></li>
-														<li><a href="usersList?page=2">2</a></li>
-														<li><a href="">3</a></li>
-														<li><a href="">4</a></li>
-														<li><a href="">5</a></li>
-														<li><a href="">6</a></li>
-														<li><a href="">7</a></li>
-														<li><a href="">8</a></li>
-														<li><a href="">9</a></li>
-														<li><a href="">10</a></li> -->
+														<c:forEach var="i" begin="0" end="4" varStatus="status">
+															<c:if test="${startNum+i <=lastNum }">
+																<li class="${(page == (startNum+i))?'active-page':'' }"><a href="?page=${i+startNum }&field=${param.field }&query=${param.query}">${i+startNum }</a></li>
+															</c:if>
+														</c:forEach>
+														
 													</ul>
 													<div class="btn btn-next">
-														<span><a href="">다음</a></span>
+														<c:if test="${startNum+4<lastNum }">
+															<span><a href="?page=${startNum+5 }&field=&query=">다음</a></span>
+														</c:if>
+														<c:if test="${startNum+4>=lastNum }">
+															<span><a href="" onclick="alert('다음페이지가 없습니다.');">다음</a></span>
+														</c:if>
 													</div>
 												</div>
 											</td>
@@ -194,12 +168,12 @@
 	                    </section>
 						<div class="search-container private-list">
 							<div>
-								<form action="usersList">
+								<form>
 									<select name="field" id="">
-										<option value="name" selected>회원명</option>
-										<option value="email">이메일</option>
+										<option value="name" ${(param.field=="name")?"selected":"" }>회원명</option>
+										<option value="email" ${(param.field=="email")?"selected":"" }>이메일</option>
 									</select>
-									<input type="text" name="query">
+									<input type="text" name="query" value="${param.query }">
 									<input type="submit" value="검색">
 								</form>
 							</div>
@@ -209,117 +183,5 @@
 	        </div>
 	    </section>
 	</main>
-	
-	<script type="pager-template" id="pagerList">
-		<li class><a href="usersList?page={id}">{page}</a></li>
-	</script>
-	
-	<script type="rank-count-template" id="rankCount">
-		<tr>
-		    <td>{rank}</td>
-		    <td>{count}명</td>
-		</tr>
-	</script>
-    
-    <script type="text/javascript">
-    	window.addEventListener("load",function(){
-    		
-	    	var rank = document.querySelectorAll(".user-rank");
-    		console.log(rank);
-    		/* var icon = document.createElement('i');
-    		icon.setAttribute("class","far fa-gem");
-    		icon.style.color="red";
-    		
-			for(var v of rank){
-				console.log(icon);
-				v.append(icon);
-				switch(v.innerText){
-				case "0":
-					v.innerText = "실버";
-					break;
-				case "1":
-					v.innerText = "골드";
-					break;
-				case "2":
-					v.innerText = "플래티넘";
-					break;
-				case "3":
-					v.innerText = "다이아";
-					break;
-				}
-			}
-			
-			var type = document.querySelectorAll(".user-type");
-			for(var v of type){
-				switch(v.innerText){
-				case "0":
-					v.innerText ="개인회원";
-					break;
-				case "1":
-					v.innerText = "기업회원";
-					break;
-				}
-			} */
-		
-			var icon = document.createElement('i');
-	    	icon.setAttribute("class","far fa-gem");
-	    	
-			for(var i=0;i<rank.length;i++){
-				(function(m){
-					
-					switch(rank[m].innerText){
-		    		
-					case "1":
-						rank[m].style.color = "green";
-						rank[m].innerHTML = "실버<i class='fas fa-gem'></i>";
-						break;
-					case "2":
-						rank[m].style.color = "gold";
-						rank[m].innerHTML = "골드<i class='fas fa-gem'></i>";
-						break;
-					case "3":
-						rank[m].style.color = "gray";
-						rank[m].innerHTML = "플래티넘<i class='fas fa-gem'></i>";
-						console.log(m);
-						break;
-					case "4":
-						rank[m].style.color = "black";
-						rank[m].innerHTML = "다이아<i class='fas fa-gem'></i>";
-						console.log(m);
-						break;
-					}
-				})(i);
-	    	}
-    	});
-    	
-    	/*  페이저 구현 */
-    	var pagerList = document.querySelector(".pager-list");
-    	var html = document.querySelector("#pagerList").innerHTML;
-    	var resultHTML = "";
-    	for(var i=1;i<="${pageCount}";i++){
-    		resultHTML = html.replace("{id}",i)
-    						.replace("{page}",i);
-    		pagerList.innerHTML+=resultHTML;
-    	}
-    	
-    	if("${page}"==""){
-    		pagerList.firstElementChild.setAttribute('class','active-page');
-    	}
-    	else{
-    		pagerList.children[${page}-1].setAttribute('class','active-page');
-    	}
-		
-    	/* 랭크별 인원수 구현 */
-    	var ranks = ['실버','골드','플레티넘','다이아'];
-    	
-    	var rankCount = document.querySelector(".rank-count");
-    	var html_rank_count = document.querySelector("#rankCount").innerHTML;
-    	var resultHTML_rank = "";
-    	<c:forEach items="${rankCount}" var="rankCount" varStatus="status">
-    		resultHTML_rank = html_rank_count.replace("{rank}",ranks[${status.index}])
-    										.replace("{count}","${rankCount}")
-    		rankCount.innerHTML += resultHTML_rank;
-    	</c:forEach>
-    </script>
 </body>
 </html>

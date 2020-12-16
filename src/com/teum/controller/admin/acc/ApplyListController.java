@@ -9,15 +9,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Acc;
+import com.teum.dao.entity.AccListForAdminView;
 import com.teum.service.AccService;
 
 @WebServlet("/admin/accommodations/applyList")
 public class ApplyListController extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String ac_ = request.getParameter("ac");
+		String field_ = request.getParameter("f");
+		String query_ =request.getParameter("search");
+		
+		String ac="hotel";
+		if(ac_ != null)
+			ac = ac_;
+		
+		String field="companyName";
+		if(field_ != null)
+			field = field_;
+
+		String query = "";
+		if(query_ != null&& query_.equals(""))
+			query = query_;
+		
+		
 		AccService service = new AccService();
-		List<Acc> list = service.applyGetList();
+		List<AccListForAdminView> list = service.getApplyViewList(1,10,field,ac,query);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("applyList.jsp").forward(request, response);

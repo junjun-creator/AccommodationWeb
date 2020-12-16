@@ -76,7 +76,7 @@
 		            }
 		
 		            .main .list-board > table td.event-end {
-		                font-weight: bold;
+		                --font-weight: bold;
 		            }
 		
 		            .main .list-board > table td.btn-row {

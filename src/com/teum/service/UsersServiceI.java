@@ -31,6 +31,9 @@ public interface UsersServiceI {
 	List<Users> getList(int page, String field, String query);//text 는 문자열로 검
 	int delete(int[] id);
 	int delete(int id);
+	
+	//로그인 유효성검사
+	int valid(String email, String password);
 
 	//예약관리 페이지(회원)
 //	List<Reservation> getList(int id, String type);

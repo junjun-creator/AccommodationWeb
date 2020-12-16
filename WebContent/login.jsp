@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +8,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/reg.css">
+    <link rel="stylesheet" href="../../css/login.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/login.js"></script>
+
 </head>
 <body>
     <header class="sec-header-page">
@@ -19,7 +23,7 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
@@ -43,10 +47,10 @@
             <main id="main" class="main">
                
                 <!-- <h1>Join Now</h1> -->
-                <img src="/images/join2.png" alt="">
+                <img src="/images/login.png" alt="">
                 <div class="reg-form-sec">
 
-                    <form action="">
+                   <!--  <form> -->
                         <div class="reg-form-container">
                             <div class="reg-form-item">
                                 <label style="font-size: 12px;" for="email" title="이메일">
@@ -76,77 +80,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="reg-form-item">
-                                <label style="font-size: 12px;" for="password-check" title="비밀번호확인">
-                                    <em style="color: red;">*</em>
-                                    비밀번호확인
-                                </label>
-                                <div class="input-box">
-                                    <div>
-                                        <input type="password" class="password-check" 
-                                        placeholder="비밀번호확인" id="password-check" autocorrect="off" 
-                                        autocapitalize="off" autocomplete="off" name="password-check" aria-autocomplete="none" inputmode="text">
-                                        <span class="caution-mention">비밀번호가 일치하지 않습니다</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reg-form-item">
-                                <label style="font-size: 12px;" for="name" title="비밀번호확인">
-                                    <em style="color: red;">*</em>
-                                    이름
-                                </label>
-                                <div class="input-box">
-                                    <div>
-                                        <input type="text" class="name check-validation" 
-                                        placeholder="이름" id="name" autocorrect="off" 
-                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
-                                        <span class="caution-mention">한글 이름만 허용됩니다</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reg-form-item">
-                                <label style="font-size: 12px;" for="phone" title="비밀번호확인">
-                                    <em style="color: red;">*</em>
-                                    연락처
-                                </label>
-                                <div class="input-box">
-                                    <div>
-                                        <input type="tel" class="phone check-validation" 
-                                        placeholder="휴대폰번호" id="phone" autocorrect="off" 
-                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
-                                        <span class="caution-mention">휴대폰번호를 정확히 입력해주세요</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reg-form-item">
-                                <label style="font-size: 12px;" for="phone" title="비밀번호확인">
-                                    <em style="color: red;">*</em>
-                                    회원구분
-                                </label>
-                                <div>
-                                    <div class="member-type">
-                                        <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-2" value="회원" class="checkbox" required>
-                                            <label for="checkbox-2"><span></span></label>
-                                        </div>
-                                        <div>
-                                            개인회원
-                                        </div>
-                                        <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-3" value="업체" class="checkbox" required>
-                                            <label for="checkbox-3"><span></span></label>
-                                        </div>
-                                        <div>
-                                            기업회원
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            
                         <div class="button-submit">
-                            <input class="disabled" disabled type="submit" value="가입">
+                            <button class="disabled">로그인</button>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </main>
         </div>
@@ -196,6 +134,6 @@
             </div>
         </footer>
     </section>
-    <script src="/js/reg.js"></script>
+    
 </body>
 </html>

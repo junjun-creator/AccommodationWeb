@@ -151,12 +151,7 @@ public class JdbcUsersDao implements UsersDao {
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
 		
-		String sql = "SELECT COUNT(*) FROM USERS";
-		
-		if(!field.equals("")) {
-			String sql_ = " WHERE "+ field + " LIKE ?";
-			sql = sql + sql_;
-		}
+		String sql = "SELECT COUNT(*) FROM USERS WHERE "+field + " LIKE ?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -164,9 +159,8 @@ public class JdbcUsersDao implements UsersDao {
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
 			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			if(!field.equals("")) {
-				ps.setString(1,"%"+query+"%");
-			}
+			ps.setString(1,"%"+query+"%");
+			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -236,12 +230,16 @@ public class JdbcUsersDao implements UsersDao {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		String sql = "SELECT * FROM USER_LIST WHERE NUM BETWEEN ? AND ?";
-		
-		if(!field.equals("")) {
-			String sql_ = " AND "+ field + " LIKE ?";
-			sql = sql + sql_;
-		}
+		String sql = "SELECT * FROM (" +
+				"SELECT ROWNUM NUM, U.* " +
+				"FROM (SELECT * FROM USERS WHERE "+field+" LIKE ? ORDER BY REGDATE DESC) U) "+
+				"WHERE NUM BETWEEN ? AND ?";
+				
+//		
+//		if(!field.equals("")) {
+//			String sql_ = " AND "+ field + " LIKE ?";
+//			sql = sql + sql_;
+//		}
 //		
 //		System.out.println(startIndex);
 //		System.out.println(endIndex);
@@ -254,11 +252,11 @@ public class JdbcUsersDao implements UsersDao {
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
 			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, startIndex);
-			ps.setInt(2, endIndex);
-			if(!field.equals("")) {
-				ps.setString(3,"%"+query+"%");
-			}
+			ps.setString(1,"%"+query+"%");
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
+//			if(!field.equals("")) {
+//			}
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -297,5 +295,44 @@ public class JdbcUsersDao implements UsersDao {
 		
 		return list;
 	}
+
+	@Override
+	public int valid(String email, String password) {
+		int result = 0;
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(*) FROM USERS WHERE EMAIL=? AND PASSWORD=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,email);
+			ps.setString(2, password);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
 
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +65,7 @@
 	                    <form action="list" class="search-form">
                             <h1>이벤트 리스트</h1>
                             <div>
-                                <input type="text" class="input-search" placeholder="제목을 입력하세요." name="search-title">
+                                <input type="text" class="input-search" placeholder="제목을 입력하세요." value="${param.search}" name="search">
                                 <input type="submit" class="search-submit-btn" value="검색">
                             </div>
                         </form>
@@ -84,23 +86,24 @@
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
-	                                	
                                 	<c:forEach var="event" items="${list}">
-                                		<c:set var="open" value=""/> 
                                 		<c:set var="status" value="진행중"/>
+										<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
+										<c:if test="${today > event.endDate}">
+											<c:set var="status" value="종료"/>
+										</c:if>
+										<c:set var="open" value=""/> 
                                 		<c:if test="${event.openStatus == 1}">
                                 			<c:set var="open" value="checked"/>
                                 		</c:if>
-                                		<c:if test="${event.status == 0}" >
-                                			<c:set var="status" value="종료"/>
-                                		</c:if>
 	                                    <tr>
 	                                        <td>${event.rownum}</td>
-	                                        <td class="event-ing">${status}</td>
+                                        	<td class="${today > event.endDate ? 'event-end' : 'event-ing'}">${status}</td>
 	                                        <td>${event.endDate}</td>
 	                                        <td class="text-left text-short"><a href="detail?id=${event.id}">${event.title}</a></td>
 	                                        <td>관리자</td>
 	                                        <td>${event.regdate}</td>
+	                                        
 	                                        <td><input type="checkbox" name="open-id" ${open} value="${event.id}" class="open-chk"></td>
 	                                        <td><input type="checkbox" name="del-id" value="${event.id}" class="del-chk"></td>
 	                                    </tr>
@@ -119,25 +122,37 @@
 	                                        </td>
 	                                    </tr>
 	                                    <tr>
+	                                    	<c:set var="page" value="${(empty param.p) ? 1 : param.p}"/>
+	                                    	<c:set var="startNum" value="${page - (page - 1) % 5}"/>
+	                                    	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count / 10), '.')}"/>
 	                                    	<td colspan="8" class="no-border">
 	                                    		<div class="pager-container">
 						                            <div class="btn btn-prev">
-						                                <span><a href="">이전</a></span>
+					                            	<c:if test="${startNum > 1}">
+						                            	<span><a href="?p=${startNum - 1}&search=">이전</a></span>
+					                            	</c:if>
+					                            	<c:if test="${startNum <= 1}">
+						                            	<span><a href="?p=${startNum - 1}&search=" onclick="alert('이전 페이지가 없습니다.')">이전</a></span>
+					                            	</c:if>
 						                            </div>
+						                            
 						                            <ul class="pager-list">
-						                                <li class="active-page"><a href="">1</a></li>
-						                                <li><a href="">2</a></li>
-						                                <li><a href="">3</a></li>
-						                                <li><a href="">4</a></li>
-						                                <li><a href="">5</a></li>
-						                                <li><a href="">6</a></li>
-						                                <li><a href="">7</a></li>
-						                                <li><a href="">8</a></li>
-						                                <li><a href="">9</a></li>
-						                                <li><a href="">10</a></li>
+					                            	<c:forEach var="i" begin="0" end="4">
+						                            	<c:if test="${(startNum + i) <= lastNum}">
+						                            		<li class="${(page == (startNum + i)) ? 'active-page' : ''}">
+							                                	<a href="?p=${startNum + i}&search=${param.search}">${startNum + i}</a>
+							                                </li>
+							                            </c:if>
+				                            		</c:forEach>
 						                            </ul>
+						                            
 						                            <div class="btn btn-next">
-						                                <span><a href="">다음</a></span>
+					                                <c:if test="${startNum + 4 < lastNum}">
+						                            	<span><a href="?p=${startNum + 5}&search=">다음</a></span>
+					                            	</c:if>
+					                            	<c:if test="${startNum + 4 >= lastNum}">
+						                            	<span><a href="?p=${startNum + 5}&search=" onclick="alert('다음 페이지가 없습니다.')">다음</a></span>
+					                            	</c:if>
 						                            </div>
 						                       	</div>
 	                                    	</td>
