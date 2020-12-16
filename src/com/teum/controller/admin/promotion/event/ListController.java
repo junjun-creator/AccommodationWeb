@@ -3,6 +3,7 @@ package com.teum.controller.admin.promotion.event;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Event;
+import com.teum.dao.entity.EventListView;
 import com.teum.service.EventService;
 
 @WebServlet("/admin/promotion/event/list")
@@ -21,18 +22,29 @@ public class ListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-	    
-		String searchTitle = request.getParameter("search-title");
+
+		String page_ = request.getParameter("p");
+		String search_ = request.getParameter("search");
+		int page = 1;
+		String search = "";
+		
+		if (page_ != null && !page_.equals(""))
+			page = Integer.parseInt(page_);
+		
+		if (search_ != null && !search_.equals(""))
+			search = search_;
 		
 		EventService service = new EventService();
-		List<Event> list = new ArrayList<Event>();
+		List<EventListView> list = new ArrayList<EventListView>();
 		
-		if (searchTitle != null) 
-			list = service.getList(1, 10, searchTitle);
-		else
-			list = service.getList();
+		list = service.getViewList(page, 10, search);
+		int count = service.getCount(search);
+		
+		Date now = new Date();
 		
 		request.setAttribute("list", list);
+		request.setAttribute("count", count);
+		request.setAttribute("now", now);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 	

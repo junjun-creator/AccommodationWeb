@@ -14,14 +14,15 @@ public interface EventDao {
 	int delete(int id);
 	
 	Event get(int id);
-	List<Event> getList(int startIndex, int endIndex, String query);
+	List<Event> getList(int startIndex, int endIndex, String search);
 	List<Event> getList(int startIndex, int endIndex);
 	List<Event> getList();
 	
-	List<EventListView> getViewList(int startIndex, int endIndex, String query);
+	List<EventListView> getViewList(int startIndex, int endIndex, String search);
 	List<EventListView> getViewList(int startIndex, int endIndex);
 	List<EventListView> getViewList();
 	Event getLast();
 	
 	int openAll(String oIdsCSV, String cIdsCSV);
+	int getCount(String search);
 }

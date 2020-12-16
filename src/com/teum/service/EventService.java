@@ -16,10 +16,10 @@ public class EventService {
 		eventDao = new JdbcEventDao();
 	}
 	
-	public List<Event> getList(int page, int size, String query) {
+	public List<Event> getList(int page, int size, String search) {
 		int startIndex = 1 + (page - 1) * size; // 1,11,21,31,...
 		int endIndex = page * size; 			// 10,20,30,40,...
-		return eventDao.getList(startIndex, endIndex, query);
+		return eventDao.getList(startIndex, endIndex, search);
 	}
 	
 	public List<Event> getList(int page, int size) {
@@ -30,16 +30,20 @@ public class EventService {
 		return eventDao.getList(1, 10, "");
 	}
 	
-	public List<EventListView> getViewList(int startIndex, int endIndex, String query) {
-		return eventDao.getViewList(startIndex, endIndex, query);
+	public List<EventListView> getViewList(int page, int size, String search) {
+		int startIndex = 1 + (page - 1) * size; // 1,11,21,31,...
+		int endIndex = page * size; 			// 10,20,30,40,...
+		return eventDao.getViewList(startIndex, endIndex, search);
 	}
 	
-	public List<EventListView> getViewList(int startIndex, int endIndex) {
+	public List<EventListView> getViewList(int page, int size) {
+		int startIndex = 1 + (page - 1) * size; // 1,11,21,31,...
+		int endIndex = page * size; 			// 10,20,30,40,...
 		return eventDao.getViewList(startIndex, endIndex);
 	}
 
 	public List<EventListView> getViewList() {
-		return eventDao.getViewList(1, 10, "");
+		return eventDao.getViewList();
 	}
 	
 	public Event get(int id) {
@@ -102,6 +106,14 @@ public class EventService {
 		Event event = eventDao.getLast();
 		
 		return event.getId();
+	}
+
+	public int getCount(String search) {
+		return eventDao.getCount(search);
+	}
+
+	public int getCount() {
+		return eventDao.getCount("");
 	}
 
 	
