@@ -24,8 +24,23 @@ public class NoticeService {
 	
 	public List<Notice> getList() {
 		
-		return noticeDao.getList();
+		return getList(1,"");
 			
+	}
+	public List<Notice> getList(int page) {
+		
+		
+		return  getList(page,"");
+	}
+	
+	public List<Notice> getList(int page,String query) {
+		List<Notice> list = new ArrayList<Notice>();
+		
+		int startIndex = 1+(page-1)*3;
+		int endIndex = page*3;
+		
+		list= noticeDao.getList(startIndex,endIndex,query);
+		return list;
 	}
 	
 	public List<Notice> getUserList() {
@@ -67,6 +82,18 @@ public class NoticeService {
 		return n.getId();
 	}
 
+	public int getCount() {
+		
+		return getCount("");
+	}
 	
+	public int getCount(String query ) {
+		int result = 0;
+		
+		result =noticeDao.getCount(query);
+		
+		return result;
+	}
+
 	
 }

@@ -12,6 +12,12 @@ public interface NoticeDao {
 	
 	Notice get(int id);
 	Notice getLast();
+
+	int getCount(String query);
+	
 	List<Notice> getList();
+	List<Notice> getList(int startIndex, int endIndex);
+	List<Notice> getList(int startIndex, int endIndex, String query);
+	
 	List<Notice> getUserList();
 }
