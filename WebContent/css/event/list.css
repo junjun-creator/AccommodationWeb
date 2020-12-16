@@ -69,10 +69,12 @@
             }
             
             .event-sec > h1 {
-                width: 500px;
+                width: 100%;
                 font-weight: bold;
                 font-size: 28px;
                 margin: 50px 0 30px 0;
+                border-bottom: 3px solid black;
+                padding-bottom: 10px;
             }
 
                 .event-sec > h1 > span {
@@ -131,11 +133,64 @@
                     transition: transform 0.2s;
                 }
 
+                    .event-sec > .event-img-container > .scale > a {
+                        position: relative;
+                    }
+
                 .event-sec > .event-img-container > .scale:hover {
                     transform: scale(1.03);
                 }
 
-                    .event-sec > .event-img-container img {
-                        width: 816px;
-                        height: 165px;
+                    .event-sec > .event-img-container .event-end {
+                        background: black;
+                        opacity: 0.2;
                     }
+
+                        .event-sec > .event-img-container img {
+                            width: 816px;
+                            height: 165px;
+                        }
+
+                        .event-sec > .event-img-container .event-end-ment {
+                            position: absolute;
+                            font-size: 34px;
+                            font-weight: bold;
+                            top: -85px;
+                            left: 260px;
+                        }
+
+            .main .pager-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+            }
+            
+                .main .pager-container .pager-list {
+                    display: flex;
+                }
+            
+                    .main .pager-container .pager-list li {
+                        margin-left: 15px;
+                    }
+            
+                    .main .pager-container .pager-list li:last-child {
+                        margin-right: 15px;
+                    }
+                    
+                    .main .pager-container .pager-list .active-page {
+                        color: #fc0453;
+                        font-weight: bold;
+                    }
+            
+                    .main .pager-container .pager-list li a {
+                        text-decoration: none;
+                    }
+            
+                    .main .pager-container .pager-list li a:hover {
+                        color: #fc0453;
+                    }
+            
+                .main .pager-container .btn a {
+                    text-decoration: none;
+                    cursor: hover;
+                }

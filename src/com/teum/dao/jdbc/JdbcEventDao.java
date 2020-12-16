@@ -164,7 +164,7 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public List<Event> getList(int startIndex, int endIndex, String query) {
+	public List<Event> getList(int startIndex, int endIndex, String search) {
 		List<Event> list = new ArrayList<>();
 
 		String url = DBContext.URL;
@@ -177,7 +177,7 @@ public class JdbcEventDao implements EventDao {
 
 			pst.setInt(1, startIndex);
 			pst.setInt(2, endIndex);
-			pst.setString(3, "%" + query + "%");
+			pst.setString(3, "%" + search + "%");
 
 			ResultSet rs = pst.executeQuery();
 
@@ -227,7 +227,7 @@ public class JdbcEventDao implements EventDao {
 	}
 
 	@Override
-	public List<EventListView> getViewList(int startIndex, int endIndex, String query) {
+	public List<EventListView> getViewList(int startIndex, int endIndex, String search) {
 		List<EventListView> list = new ArrayList<EventListView>();
 
 		String sql = "SELECT * FROM EVENT_LIST_VIEW WHERE NUM BETWEEN ? AND ? AND TITLE LIKE ?";
@@ -241,7 +241,7 @@ public class JdbcEventDao implements EventDao {
 
 			pst.setInt(1, startIndex);
 			pst.setInt(2, endIndex);
-			pst.setString(3, "%" + query + "%");
+			pst.setString(3, "%" + search + "%");
 
 			ResultSet rs = pst.executeQuery();
 
@@ -290,7 +290,6 @@ public class JdbcEventDao implements EventDao {
 
 	@Override
 	public List<EventListView> getViewList() {
-
 		return getViewList(1, 10, "");
 	}
 
@@ -308,7 +307,7 @@ public class JdbcEventDao implements EventDao {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
-			if (rs.next()) {
+			while (rs.next()) {
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
 				int openStatus = rs.getInt("OPEN_STATUS");
@@ -366,6 +365,39 @@ public class JdbcEventDao implements EventDao {
 			e.printStackTrace();
 		}
 
+		return result;
+	}
+
+	@Override
+	public int getCount(String search) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String sql = "SELECT COUNT(*) COUNT FROM EVENT WHERE TITLE LIKE ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			pst.setString(1, "%" + search + "%");
+			
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println(result);
+
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 

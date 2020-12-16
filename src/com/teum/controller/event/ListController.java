@@ -1,6 +1,8 @@
 package com.teum.controller.event;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.dao.entity.EventListView;
-import com.teum.entity.Event;
 import com.teum.service.EventService;
 
 @WebServlet("/event/list")
@@ -21,10 +22,24 @@ public class ListController extends HttpServlet{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
+		String page_ = request.getParameter("p");
+		int page = 1;
+		
+		if (page_ != null && !page_.equals(""))
+			page = Integer.parseInt(page_);
+		
 		EventService service = new EventService();
-		List<EventListView> list = service.getViewList();
+		List<EventListView> list = new ArrayList<EventListView>();
+				
+		list = service.getViewList(page, 5);
+		
+		int count = service.getCount(); // 모든 컬럼의 수를 가져옴
+		
+		Date now = new Date();
 		
 		request.setAttribute("list", list);
+		request.setAttribute("count", count);
+		request.setAttribute("now", now);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,46 +76,64 @@
                     <h1>이벤트 / <span>Event</span></h1>
                     <ul class="event-list">
                         <li class="current-tab"><a href="">진행중인 이벤트</a></li>
-                        <li><a href="">종료된 이벤트</a></li>
                     </ul>
                     <c:forEach var="event" items="${list}">
-                    	<c:if test="${event.openStatus == 1}">
-	                    	<div class="event-img-container">
-		                        <h1>${event.title}</h1>
-		                        <h2>${event.regdate} ~ ${event.endDate}</h2>
-		                        <div class="scale">
-		                            <a href="detail?id=${event.id}">
-			                            <c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
-			                        		<c:if test="${st.first == true}">
-			                        			<img src="/images/event/2020/${event.id}/${imageName}">
-			                        		</c:if>
-			                        	</c:forTokens>
-		                            </a>
-		                        </div>
-		                    </div>
-                    	</c:if>
+                    	<%-- <c:if test="${event.openStatus == 1}"> --%>
+                    	<div class="event-img-container">
+	                        <h1>${event.title}</h1>
+	                        <h2>${event.regdate} ~ ${event.endDate}</h2>
+	                        <div class="scale">
+	                            <a href="detail?id=${event.id}">
+		                            <c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
+		                            	<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
+		                        		<c:if test="${st.first == true && today > event.endDate}">
+		                        			<img class="event-end" src="/images/event/2020/${event.id}/${imageName}">
+		                        		</c:if>
+		                        		<c:if test="${st.first == true && today <= event.endDate}">
+		                        			<img src="/images/event/2020/${event.id}/${imageName}">
+		                        		</c:if>
+		                        		<c:if test="${today > event.endDate}">
+		                        			<h1 class="event-end-ment">종료된 이벤트입니다.</h1>
+		                        		</c:if>
+		                        	</c:forTokens>
+	                            </a>
+	                        </div>
+	                    </div>
+                    	<%-- </c:if> --%>
                     </c:forEach>
-                    <!-- <div class="event-img-container">
-                        <h1>세스코 인증 청결 숙소 이벤트에 참여해 보세요!</h1>
-                        <h2>2020.01.01 ~ 2020.12.31</h2>
-                        <div class="scale">
-                            <a href=""><img src="/images/event/event1.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="event-img-container">
-                        <h1>더블 혜택 할인받고 예약하세요!</h1>
-                        <h2>2020.01.01 ~ 2020.12.31</h2>
-                        <div class="scale">
-                            <a href=""><img src="/images/event/event2.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="event-img-container">
-                        <h1>안전여행 떠나고 10만원 상품권 획득기회!</h1>
-                        <h2>2020.01.01 ~ 2020.12.31</h2>
-                        <div class="scale">
-                            <a href=""><img src="/images/event/event3.png" alt=""></a>
-                        </div>
-                    </div> -->
+                    <c:set var="page" value="${(empty param.p) ? 1 : param.p}"/>
+                   	<c:set var="startNum" value="${page - (page - 1) % 5}"/>
+                   	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count / 5), '.')}"/>
+                    
+                    <div class="pager-container">
+	                    <div class="btn btn-prev">
+	                   	<c:if test="${startNum > 1}">
+	                    	<span><a href="?p=${startNum - 1}&search=">이전</a></span>
+	                   	</c:if>
+	                   	<c:if test="${startNum <= 1}">
+	                    	<span><a href="?p=${startNum - 1}&search=" onclick="alert('이전 페이지가 없습니다.')">이전</a></span>
+	                   	</c:if>
+	                    </div>
+	                   
+	                    <ul class="pager-list">
+	                   	<c:forEach var="i" begin="0" end="4">
+	                    	<c:if test="${(startNum + i) <= lastNum}">
+	                    		<li class="${(page == (startNum + i)) ? 'active-page' : ''}">
+	                         	<a href="?p=${startNum + i}&search=${param.search}">${startNum + i}</a>
+	                         </li>
+	                     	</c:if>
+                  		</c:forEach>
+	                    </ul>
+	                    
+	                    <div class="btn btn-next">
+                       	<c:if test="${startNum + 4 < lastNum}">
+	                    	<span><a href="?p=${startNum + 5}&search=">다음</a></span>
+	                   	</c:if>
+	                   	<c:if test="${startNum + 4 >= lastNum}">
+	                    	<span><a href="?p=${startNum + 5}&search=" onclick="alert('다음 페이지가 없습니다.')">다음</a></span>
+	                   	</c:if>
+	                    </div>
+	               	</div>
                 </section>
             </main>
         </div>
