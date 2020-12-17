@@ -187,6 +187,7 @@ public class JdbcEventDao implements EventDao {
 				String title = rs.getString("TITLE");
 				int openStatus = rs.getInt("OPEN_STATUS");
 				int status = rs.getInt("STATUS");
+				Date startDate = rs.getDate("START_DATE");
 				Date endDate = rs.getDate("END_DATE");
 				Date regdate = rs.getDate("REGDATE");
 
@@ -197,6 +198,7 @@ public class JdbcEventDao implements EventDao {
 				event.setOpenStatus(openStatus);
 				event.setStatus(status);
 				event.setTitle(title);
+				event.setStartDate(startDate);
 				event.setEndDate(endDate);
 				event.setRegdate(regdate);
 
@@ -251,17 +253,20 @@ public class JdbcEventDao implements EventDao {
 				String title = rs.getString("TITLE");
 				int openStatus = rs.getInt("OPEN_STATUS");
 				int status = rs.getInt("STATUS");
+				Date startDate = rs.getDate("START_DATE");
 				Date endDate = rs.getDate("END_DATE");
 				Date regdate = rs.getDate("REGDATE");
 				String imageName = rs.getString("IMAGE_NAME");
 				String imageRoute = rs.getString("IMAGE_ROUTE");
-
+				
 				EventListView event = new EventListView();
+				
 				event.setRownum(rownum);
 				event.setId(id);
 				event.setTitle(title);
 				event.setOpenStatus(openStatus);
 				event.setStatus(status);
+				event.setStartDate(startDate);
 				event.setEndDate(endDate);
 				event.setRegdate(regdate);
 				event.setImageName(imageName);
@@ -324,7 +329,7 @@ public class JdbcEventDao implements EventDao {
 						imageRoute, status, startDate, 
 						endDate, regdate, adminId);
 			}
-
+			System.out.printf("가져온 id: %d", event.getId());
 			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
 			rs.close();
 			st.close();
@@ -398,6 +403,38 @@ public class JdbcEventDao implements EventDao {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+
+	@Override
+	public int getId() {
+		int result = 0;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT EVENT_ID_SEQ.NEXTVAL FROM DUAL";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println(result);
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

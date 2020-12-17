@@ -102,7 +102,7 @@
 	                                        <td>${event.endDate}</td>
 	                                        <td class="text-left text-short"><a href="detail?id=${event.id}">${event.title}</a></td>
 	                                        <td>관리자</td>
-	                                        <td>${event.regdate}</td>
+	                                        <td>${event.startDate}</td>
 	                                        
 	                                        <td><input type="checkbox" name="open-id" ${open} value="${event.id}" class="open-chk"></td>
 	                                        <td><input type="checkbox" name="del-id" value="${event.id}" class="del-chk"></td>

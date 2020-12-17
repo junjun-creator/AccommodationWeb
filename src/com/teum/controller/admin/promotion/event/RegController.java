@@ -59,8 +59,13 @@ public class RegController extends HttpServlet {
 		// 파일 다중 업로드
 		for (Part p : fileParts) {
 			if (p.getName().equals("file") && p.getSize() > 0) {
+				// 만약 처음으로 등록하는 글이라면?
+				
 				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
 				int newId = service.getLastId() + 1;
+				System.out.printf("newId: %d", newId);
+				if (newId == 0)
+					newId = service.getId();
 				
 				// 서블릿들이 필요로하는 공동자원들
 				// getRealPath는 상대경로를 넘겨주면 물리경로를 알려준다
@@ -93,8 +98,6 @@ public class RegController extends HttpServlet {
 			}
 		}
 		builder.delete(builder.length() - 1, builder.length());
-		
-		
 		
 		// String -> Date 변환
 		DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
