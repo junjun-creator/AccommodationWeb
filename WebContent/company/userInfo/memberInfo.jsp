@@ -24,9 +24,9 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">숙소등록</a></li>
+                    <li><a href="">예약현황</a></li>
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="/logout">로그아웃</a>
                         
@@ -41,7 +41,7 @@
             <aside id="aside" class="aside">
                 <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li class="active"><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li class="active"><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
                     <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>

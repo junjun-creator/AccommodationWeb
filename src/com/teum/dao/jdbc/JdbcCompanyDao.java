@@ -52,8 +52,33 @@ public class JdbcCompanyDao implements CompanyDao {
 
 	@Override
 	public int update(Company company) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "UPDATE COMPANY SET PASSWORD=?, PHONE=? WHERE ID=?";
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,company.getPassword());
+			ps.setString(2,company.getPhone());
+			ps.setInt(3,company.getId());
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -106,15 +131,19 @@ public class JdbcCompanyDao implements CompanyDao {
 			while(rs.next()) {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
+				String password = rs.getString("password");
 				String birthday = rs.getString("birthday");
 				String phone = rs.getString("phone");
 				Date regdate = rs.getDate("regdate");
+				int type = rs.getInt("type");
 				c.setId(id);
 				c.setName(name);
 				c.setEmail(email);
+				c.setPassword(password);
 				c.setBirthday(birthday);
 				c.setPhone(phone);
 				c.setRegdate(regdate);
+				c.setType(type);
 				
 			}
 			

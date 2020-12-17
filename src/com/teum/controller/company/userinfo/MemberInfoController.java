@@ -17,7 +17,11 @@ public class MemberInfoController extends HttpServlet {
 		System.out.println(session.getAttribute("email"));
 		if(session.getAttribute("email")==null) {
 			response.sendRedirect("/signin");
-		}else {
+		}
+		else if(((int)session.getAttribute("type")) != 1) {
+			response.sendRedirect("/index");
+		}
+		else {
 			request.getRequestDispatcher("memberInfo.jsp").forward(request, response);
 		}
 		

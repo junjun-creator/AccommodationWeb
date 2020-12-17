@@ -1,4 +1,4 @@
-package com.teum.controller.user.userinfo;
+package com.teum.controller.company.userinfo;
 
 import java.io.IOException;
 
@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teum.entity.Company;
 import com.teum.entity.Users;
+import com.teum.service.CompanyService;
 import com.teum.service.UsersService;
 
-@WebServlet("/user/userInfo/updateInfo")
+@WebServlet("/company/userInfo/updateInfo")
 public class UpdateInfoController extends HttpServlet {
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -22,16 +23,16 @@ public class UpdateInfoController extends HttpServlet {
 		if(session.getAttribute("email")==null) {
 			response.sendRedirect("/signin");
 		}
-		else if(((int)session.getAttribute("type")) != 0) {
+		else if(((int)session.getAttribute("type")) != 1) {
 			response.sendRedirect("/index");
 		}
 		else {
 			
-			UsersService service = new UsersService();
-			Users u = service.get((int)session.getAttribute("id"));
+			CompanyService service = new CompanyService();
+			Company c = service.get((int)session.getAttribute("id"));
 			System.out.println(session.getAttribute("password"));
 			
-			request.setAttribute("u", u);
+			request.setAttribute("c", c);
 			request.getRequestDispatcher("updateInfo.jsp").forward(request, response);
 		}
 		
@@ -41,25 +42,23 @@ public class UpdateInfoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		UsersService service = new UsersService();
-		Users u = service.get((int)session.getAttribute("id"));
+		CompanyService service = new CompanyService();
+		Company c = service.get((int)session.getAttribute("id"));
 		
 		String password = request.getParameter("password");
 		String phone = request.getParameter("phone");
 		
 		if(password != null && !password.equals("")) {
-			u.setPassword(password);
+			c.setPassword(password);
 		}
 		if(phone != null && !phone.equals("")) {
-			u.setPhone(phone);
+			c.setPhone(phone);
 		}
 		
-		int update = service.update(u);
-		session.setAttribute("password", u.getPassword());
+		int update = service.update(c);
+		session.setAttribute("password", c.getPassword());
 		
 		response.sendRedirect("memberInfo");
 	}
-	
-	
 	
 }

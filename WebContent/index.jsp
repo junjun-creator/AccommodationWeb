@@ -75,7 +75,7 @@
 			                        </c:if>
 	                                <li><a href="">제안내역</a></li>
 	                                <c:if test="${type == 0 }">
-			                    		 <li><a href="">찜한숙소</a></li>
+			                    		 <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
 			                        </c:if>
 			                        <c:if test="${type == 1 }">
 			                    		 <li><a href="">골든타임</a></li>

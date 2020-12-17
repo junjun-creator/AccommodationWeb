@@ -28,15 +28,8 @@
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                        
                     </li>
                 </ul>
             </div>
@@ -48,10 +41,10 @@
             <aside id="aside" class="aside">
                 <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
                     <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
-                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
+                    <li class="active"><a href="pickList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>
             </aside>
             <main id="main" class="main">
@@ -64,7 +57,7 @@
                 <section class="picked-item-sec">
                     <h1>찜한 상품</h1>
                     <div class="snip1368">
-                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/메인.jpg" alt="">
                         <h3>예약하기</h3>
                         <figcaption>
                             <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
@@ -88,7 +81,7 @@
                         </div>
                     </div>
                     <div class="snip1368">
-                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/메인.jpg" alt="">
                         <h3>예약하기</h3>
                         <figcaption>
                             <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>

@@ -91,7 +91,7 @@ window.addEventListener("load",function(){
 					if(JSON.parse(valid).valid == 0)
 						alert('비밀번호가 정확하지 않습니다.');
 					else
-						window.location.href="/user/userInfo/updateInfo";
+						window.location.href="/company/userInfo/updateInfo";
 				}
 			}
 			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
