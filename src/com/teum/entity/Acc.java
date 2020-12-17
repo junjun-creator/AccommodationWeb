@@ -8,7 +8,6 @@ public class Acc {
 	 private String name;
 	 private String phone;
 	 private String location;
-	 private String email;
 	 private int regStatus;
 	 private Date approvalDate;
 	 private int adminId;
@@ -24,7 +23,7 @@ public class Acc {
 		
 	}
 
-	public Acc(int id, String name, String phone, String location, String email, int regStatus, Date approvalDate,
+	public Acc(int id, String name, String phone, String location, int regStatus, Date approvalDate,
 			int adminId, int companyId, Date regdate, int accTypeId, Date gtStartDate, Date gtEndDate, int saleprice,
 			int goldentimeStatus) {
 		super();
@@ -32,7 +31,6 @@ public class Acc {
 		this.name = name;
 		this.phone = phone;
 		this.location = location;
-		this.email = email;
 		this.regStatus = regStatus;
 		this.approvalDate = approvalDate;
 		this.adminId = adminId;
@@ -75,14 +73,6 @@ public class Acc {
 
 	public void setLocation(String location) {
 		this.location = location;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public int getRegStatus() {
@@ -167,11 +157,10 @@ public class Acc {
 
 	@Override
 	public String toString() {
-		return "Acc [id=" + id + ", name=" + name + ", phone=" + phone + ", location=" + location + ", email=" + email
-				+ ", regStatus=" + regStatus + ", approvalDate=" + approvalDate + ", adminId=" + adminId
-				+ ", companyId=" + companyId + ", regdate=" + regdate + ", accTypeId=" + accTypeId + ", gtStartDate="
-				+ gtStartDate + ", gtEndDate=" + gtEndDate + ", saleprice=" + saleprice + ", goldentimeStatus="
-				+ goldentimeStatus + "]";
+		return "Acc [id=" + id + ", name=" + name + ", phone=" + phone + ", location=" + location + ", regStatus="
+				+ regStatus + ", approvalDate=" + approvalDate + ", adminId=" + adminId + ", companyId=" + companyId
+				+ ", regdate=" + regdate + ", accTypeId=" + accTypeId + ", gtStartDate=" + gtStartDate + ", gtEndDate="
+				+ gtEndDate + ", saleprice=" + saleprice + ", goldentimeStatus=" + goldentimeStatus + "]";
 	}
 
 	

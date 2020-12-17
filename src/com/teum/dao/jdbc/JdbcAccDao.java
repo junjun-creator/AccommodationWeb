@@ -13,10 +13,9 @@ import java.util.List;
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.entity.Acc;
+import com.teum.entity.Event;
 
 public class JdbcAccDao implements AccDao{
-
-
 
 	@Override
 	public Acc get(int id) {
@@ -32,11 +31,9 @@ public class JdbcAccDao implements AccDao{
 			ResultSet rs = st.executeQuery(sql);
 
 			while(rs.next()) {
-				
 				String name = rs. getString("name");
 				String phone = rs.getString("phone");
 				String location = rs.getString("location");
-				String email = rs. getString("email");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -52,7 +49,6 @@ public class JdbcAccDao implements AccDao{
 						name,
 						phone,
 						location,
-						email,
 						regStatus,
 						approvalDate,
 						adminId,
@@ -67,16 +63,13 @@ public class JdbcAccDao implements AccDao{
 
 			};
 
-
 			rs.close();
 			st.close();
 			con.close();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return a;
@@ -94,16 +87,11 @@ public class JdbcAccDao implements AccDao{
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
-
-
-
 			while(rs.next()) {
-
 				int id = rs.getInt("id"); 
 				String name = rs. getString("name");
 				String phone = rs.getString("phone");
 				String location = rs.getString("location");
-				String email = rs. getString("email");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -119,7 +107,6 @@ public class JdbcAccDao implements AccDao{
 						name,
 						phone,
 						location,
-						email,
 						regStatus,
 						approvalDate,
 						adminId,
@@ -131,11 +118,8 @@ public class JdbcAccDao implements AccDao{
 						saleprice,
 						goldentimeStatus
 						);
-
-
 				list.add(a);
 			};
-
 
 			rs.close();
 			st.close();
@@ -164,16 +148,10 @@ public class JdbcAccDao implements AccDao{
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
-
-
-
 			while(rs.next()) {
-
-
 				String name = rs. getString("name");
 				String phone = rs.getString("phone");
 				String location = rs.getString("location");
-				String email = rs. getString("email");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -189,7 +167,6 @@ public class JdbcAccDao implements AccDao{
 						name,
 						phone,
 						location,
-						email,
 						regStatus,
 						approvalDate,
 						adminId,
@@ -203,7 +180,6 @@ public class JdbcAccDao implements AccDao{
 						);
 
 			};
-
 
 			rs.close();
 			st.close();
@@ -230,16 +206,11 @@ public class JdbcAccDao implements AccDao{
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
-
-
-
 			while(rs.next()) {
-
 				int id = rs.getInt("id"); 
 				String name = rs. getString("name");
 				String phone = rs.getString("phone");
 				String location = rs.getString("location");
-				String email = rs. getString("email");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -255,7 +226,6 @@ public class JdbcAccDao implements AccDao{
 						name,
 						phone,
 						location,
-						email,
 						regStatus,
 						approvalDate,
 						adminId,
@@ -268,10 +238,8 @@ public class JdbcAccDao implements AccDao{
 						goldentimeStatus
 						);
 
-
 				list.add(a);
 			};
-
 
 			rs.close();
 			st.close();
@@ -350,8 +318,6 @@ public class JdbcAccDao implements AccDao{
 		return null;
 	}
 
-
-
 	@Override
 	public List<AccListForAdminView> getViewList() {
 
@@ -374,7 +340,6 @@ public class JdbcAccDao implements AccDao{
 						" WHERE REG_STATUS=1 AND NUM BETWEEN ? AND ? AND" +
 						" ACC_TYPE = ? AND "+ field +" LIKE ? ORDER BY REGDATE DESC"; 
 
-
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
@@ -384,12 +349,7 @@ public class JdbcAccDao implements AccDao{
 			st.setString(3, ac);
 			st.setString(4, query);
 			
-			
-			
 			ResultSet rs = st.executeQuery();
-
-
-
 
 			while(rs.next()) {
 				int id = rs.getInt("id");
@@ -416,7 +376,6 @@ public class JdbcAccDao implements AccDao{
 				
 				list.add(a);
 			};
-
 
 			rs.close();
 			st.close();
@@ -464,9 +423,6 @@ public class JdbcAccDao implements AccDao{
 
 			ResultSet rs = st.executeQuery();
 
-
-
-
 			while(rs.next()) {
 				int id = rs.getInt("id");
 				int num = rs.getInt("NUM"); 
@@ -506,5 +462,89 @@ public class JdbcAccDao implements AccDao{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public Acc getLast() {
+		// 마지막 인덱스의 event를 뽑아오는 쿼리문을 작성하자
+		Acc acc = null;
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ACC WHERE ID = (SELECT MAX(ID) FROM ACC)";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				String phone = rs.getString("PHONE");
+				String location = rs.getString("LOCATION");
+				int regStatus = rs.getInt("REG_STATUS");
+				Date approvalDate = rs.getDate("APPROVAL_DATE");
+				int adminId = rs.getInt("ADMIN_ID");
+				int companyId = rs.getInt("COMPANY_ID");
+				Date regdate = rs.getDate("REGDATE");
+				int accTypeId = rs.getInt("ACC_TYPE_ID");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int salePrice = rs.getInt("SALEPRICE");
+				int goldenTimeStatus = rs.getInt("GOLDENTIME_STATUS");
+
+				acc = new Acc(
+						id, name, phone, location,
+						regStatus, approvalDate, adminId,
+						companyId, regdate, accTypeId, gtStartDate,
+						gtEndDate, salePrice, goldenTimeStatus);
+			}
+			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return acc;
+	}
+
+	@Override
+	public int insert(Acc acc) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String sql = "INSERT INTO ACC(NAME, PHONE, LOCATION, ACC_TYPE_ID, COMPANY_ID, ADMIN_ID) VALUES(?, ?, ?, ?, ?, ?)";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setString(1, acc.getName());
+			pst.setString(2, acc.getPhone());
+			pst.setString(3, acc.getLocation());
+			pst.setInt(4, acc.getAccTypeId());
+			pst.setInt(5, acc.getCompanyId());
+			pst.setInt(6, acc.getAdminId());
+			
+			result = pst.executeUpdate();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int update(Acc acc) {
+		return 0;
 	}
 }

@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +12,19 @@
     <title>신라스테이 삼성</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link href="/css/accommodationList/accommodationDetail.css"  rel="stylesheet">
+    <link rel="stylesheet" href="/css/company/accommodation/detail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <script src="/js/accommodationLists/accommodationDetail.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 
 
 <body>
     <header class="sec-header-page">
-        <section class="header-sec pcHeader">
+        <section class="header-sec">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -35,8 +35,8 @@
                         <a href="">더보기</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
+                                <li><a href="/notice/list">공지사항</a></li>
+                                <li><a href="/event/list">이벤트</a></li>
                                 <li><a href="">1:1 문의</a></li>
                             </ul>
                         </div>
@@ -60,29 +60,68 @@
 
         
     <div class="main">
-        <section class='title'>
-            <div class="main-img">
-                <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt= "신라스테이 삼성"><br>
+        <section class="title">
+            <div class="pic">
+                <div class="main-img">
+                    <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png" alt= "신라스테이 삼성"><br>
+                </div>
+                <!-- <div class="cliper-btn prev-btn">
+                    <i class="fas fa-angle-left"></i>
+                </div>
+                <div class="cliper-btn next-btn">
+                    <i class="fas fa-angle-right"></i>
+                </div> -->
+                <div class="cliper">
+                    <ul>
+                        <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성"></li> 
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
+                    </ul>
+                </div>
             </div>
             <div class="main-info">
                 <h1>신라스테이 삼성</h1>
                 <h2>서울 강남구 삼성동 168-3</h2>
-                <nav class='review'>
-                    ★9.1 <a href="">리뷰 보러 가기</a>
-                </nav>
+                <div class="rule">
+                    <p>취소 및 환불 규정</p>
+                    <ul>
+                        <li> → 체크인일 기준 1일전 18시까지 : 100% 환불</li>
+                        <li> → 체크인일 기준 1일전 18시이후~당일 : 환불불가</li>
+                        <li> → 취소, 환불시 수수료가 발생할 수 있습니다</li>
+                    </ul>
+                </div>
+                <div class="check">
+                    <p>확인사항 및 기타</p>
+                    <ul>
+                        <li> → 거리두기 단계 상향에 따라 일부 시설 이용이 제한될 수 있습니다</li>
+                        <li> → 최대인원 초과시 입실 불가합니다</li>
+                        <li> → 위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li>
+                        <li> → 해당 이미지는 실제와 상이 할 수 있습니다</li>
+                        <li> → 체크인 시 배정 또는 베드타입 미기재 상품은 특정객실과 베드타입을 보장하지 않습니다</li>
+                        <li> → 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
+                        <li> → 미성년자는 보호자 동반없이 이용하실 수 없습니다</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class='dateChange'>
-            <div>
-                <p>예약 날짜</p>
+
+            
+        
+        <section class="room-sec">
+
+            <div class="subtitle">
+            <h1>객실 안내 및 예약</h1>
+                <ul>
+                <li class="reserve-date">예약 날짜</li>
+                <li>&nbsp;&nbsp;/&nbsp;&nbsp;</li>
+                <li class="review">리뷰</li>
+                </ul>
                 <input type="date" name="start-date" class="form-option date start-date" required> ~ 
                 <input type="date" name="end-date" class="form-option date end-date" required>
             </div>
-        </section>
-        
-        <section class="room-sec">
-            <h1>객실 안내 및 예약</h1>
             <form class="room-form">
                 <section>
                     <!-- <div class="radio-container">
@@ -91,7 +130,7 @@
                     </div> -->
                     <div class="room-container">
                         <div class="room-img-container">
-                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성">
+                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성">
                         </div>
                         <div class="room-detail-container">
                             <div class="room-room">
@@ -122,7 +161,7 @@
                     </div> -->
                     <div class="room-container">
                         <div class="room-img-container">
-                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg">
+                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg">
                         </div>
                         <div class="room-detail-container">
                             <div class="room-room">
