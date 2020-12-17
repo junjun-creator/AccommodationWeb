@@ -1,0 +1,314 @@
+
+.main{
+width: max-content;
+margin: 50px auto 0px auto;
+}
+    .main .title{
+        display: flex;
+        padding-left: 30px;
+        align-content: flex-start;
+    }
+        .main .title .main-image{
+            width: 500px;
+            height: 360px;
+            overflow: hidden;
+        }
+        .main .title .pic .cliper-btn{
+            width: 20px;
+            height: 20px;
+            font-size: 40px;
+            position: absolute;
+            z-index: 1;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .pic .prev-btn{
+            top: 280px;
+            left: 500px;
+        }
+        .pic .next-btn {
+            top: 280px;
+            left: 915px;
+        }
+        .main .title .cliper{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            
+        }
+        .main .title .cliper ul{
+            display: flex;
+            height: 100px;
+            padding: 0px;
+            --position: absolute;
+            transform: translateX(0px);
+            transition: transform 500ms ease-in-out;
+        }
+            .main .title .cliper ul li{
+                list-style-type: none;
+                overflow: hidden;
+                flex-basis: 100px;
+                flex-shrink: 0;
+                
+                
+            }
+            ul li img{
+                object-fit: fill;
+                width :100px;
+                height: 100px;
+            }
+        .main .title .main-info{
+            margin-left: 40px;
+        }
+        .main .title .main-info h1{
+            font-size: 35px;
+            font-weight: bold;
+            margin: auto 0px;
+            padding-bottom: 10px;
+        } 
+        .main .title .main-info h2{
+            
+            font-size: 20px;
+            color: gray;
+            margin: auto 0px;
+            padding-bottom: 5px;
+        } 
+        .main .title .main-info p{
+            font-weight: bold;
+            color: #fc0453;
+            margin: auto 0px;
+        }
+        .main .title .main-info .rule{
+            font-size: 15px;
+            padding-bottom: 10px;
+            margin: auto 0px;
+        }
+        .main .title .main-info .check{
+            font-size: 15px;
+            padding-bottom: 10px;
+            margin: auto 0px;
+            padding-top: 10px;
+        }
+
+.dateChange{
+    margin-top: 10px;
+    padding-left: 30px;
+
+}
+    .dateChange p{
+        font-size: 20px;
+        margin: auto 0px;
+    }
+    .dateChange input{
+        padding-left: 40px;
+    }
+
+
+        .room-sec {
+        
+            margin: 70px auto 0 auto;
+        }
+        .room-sec .subtitle{
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+        }
+        
+        
+            .room-sec .subtitle h1 {
+                --border: 1px solid green;
+                width: 500px;
+                font-weight: bold;
+                font-size: 24px;
+            }
+            .room-sec ul{
+                display: flex;
+                margin-bottom: 5px;
+                font-size: 20px;
+                
+            }
+
+                .room-sec ul .reserve-date:hover{
+                    color:  #fc0453;
+                }
+                .room-sec ul .reserve-date:onclick{
+                    color:  #fc0453;
+                }
+                .room-sec ul .review:hover{
+                    color:  #fc0453;
+                }
+                .room-sec ul .review:onclick{
+                    color:  #fc0453;
+                }
+            .room-form {
+                --border: 1px solid blue;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+                .room-form > section {
+                    display: flex;
+                    border: 1px solid rgb(209, 196, 196);
+                    border-radius: 5px;
+                    margin-top: 20px;
+                    width: 800px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                    .radio-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        --border: 1px solid rgb(0, 132, 255);
+                    }
+                    
+                    .room-form > section > .radio-container > input[type="radio"] {
+                        display: none;
+                    }
+
+                    .room-form > section > .radio-container > input[type="radio"] + label span {
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        --margin: -2px 10px 0 0;
+                        vertical-align: middle;
+                        background: url(/images/checkbox-bold.svg) 0 top no-repeat;
+                        cursor: pointer;
+                        background-size: cover;
+                    }
+
+                    .room-form > section > .radio-container > input[type="radio"]:checked + label span {
+                        background: url(/images/checkbox-bold.svg) -30px top no-repeat;
+                        background-size: cover;
+                    }
+
+                    .room-form > div {
+                        width: 100px; /* submit 버튼 너비 수정해야함 */
+                        margin: 0 auto;
+                    }
+
+                    .room-form > section > .radio-container {
+                        flex-grow: 1;
+                    }
+
+                    .room-form > section > .room-container {
+                        flex-grow: 10;
+                        display: flex;
+                        --border: 1px solid red;
+                        margin: 0px 10px 0px 10px;
+                    }
+
+                        .room-img-container {
+                            margin: 10px 0 5px 0;
+                            transform: scale(1);
+                            transition: transform 0.2s;
+                        }
+
+                            .room-img-container img {
+                                width: 370px;
+                                height: 220px;
+                                border: 1px solid rgb(199, 199, 199);
+                            }
+
+                        .room-detail-container {
+                            width: 100%;
+                            margin-left: 10px;
+                            position: relative;
+                        }
+
+                        .room-detail-container .room-room {
+                            font-size: 20px;
+                            font-weight: bold;
+                            position: absolute;
+                            top: 10px;
+                        }
+
+                        .room-detail-container .room-bed-count {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-bed-count > div:nth-child(1) {
+                                position: absolute;
+                                top: 55px;
+                            }
+
+                            .room-detail-container .room-bed-count > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 55px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .room-max-headcount {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-max-headcount > div:nth-child(1) {
+                                position: absolute;
+                                top: 95px;
+                            }
+
+                            .room-detail-container .room-max-headcount > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 95px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .room-price {
+                            margin-top: 30px;
+                        }
+
+                            .room-detail-container .room-price > div:nth-child(1) {
+                                --flex-basis: 200px;
+                                --flex-grow: 1;
+                                position: absolute;
+                                top: 135px;
+                            }
+
+                            .room-detail-container .room-price > div:nth-child(2) {
+                                flex-grow: 0;
+                                margin-right: 10px;
+                                position: absolute;
+                                top: 135px;
+                                right: 10px;
+                            }
+
+                        .room-detail-container .highlight-btn {
+                            position: absolute;
+                            width: 100%;
+                            height: 40px;
+                            top: 189px;
+                            border: none;
+                            border-radius: 5px;
+                            background: #fc0453;
+                            color: white;
+                            --font-weight: bold;
+                            opacity: 0.8;
+                        }
+
+                        .room-form > .submit-btn-container  {
+                            margin: 50px auto 100px auto;
+                            width: 100%;
+                            text-align: center;
+                        }
+
+                        .room-form > .submit-btn-container > .submit-btn {
+                            background: #fc0453;
+                            border: 1px solid #fc0453;
+                            border-radius: 28px;
+                            cursor: pointer;
+                            color: #ffffff;
+                            padding: 16px 60px;
+                        }
+
+                        .room-form > .submit-btn-container > .submit-btn:hover {
+                            opacity: 0.7;
+                        }
