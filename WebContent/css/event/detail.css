@@ -69,10 +69,12 @@
             }
             
             .event-sec > h1 {
-                width: 500px;
+                width: 100%;
                 font-weight: bold;
                 font-size: 28px;
                 margin: 50px 0 30px 0;
+                border-bottom: 3px solid black;
+                padding-bottom: 10px;
             }
 
             .event-sec > h2 {
