@@ -28,15 +28,8 @@
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                       
                     </li>
                 </ul>
             </div>
@@ -64,7 +57,7 @@
                 <section class="update-info-sec">
                     <h1>회원정보수정</h1>
                     <div class="update-form-sec">
-                        <form action="">
+                        <form action="updateInfo" method="post">
                             <div class="reg-form-container">
                                 <div class="reg-form-item">
                                     <label style="font-size: 12px;" for="email" title="이메일">
@@ -73,7 +66,7 @@
                                     </label>
                                     <div class="input-box">
                                         <div>
-                                            <input type="email check-validation" value="등록된이메일" disabled class="email check-validation"  
+                                            <input type="email" value="${u.email }" disabled class="email"  
                                             placeholder="teum@example.com" id="email" name="email" autocorrect="off" 
                                             autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
                                             <span class="caution-mention">올바른 이메일 형식을 입력해주세요</span>
@@ -109,13 +102,13 @@
                                     </div>
                                 </div>
                                 <div class="reg-form-item">
-                                    <label style="font-size: 12px;" for="name" title="비밀번호확인">
+                                    <label style="font-size: 12px;" for="name" title="이름">
                                         <em style="color: red;">*</em>
                                         이름
                                     </label>
                                     <div class="input-box">
                                         <div>
-                                            <input type="text" value="등록된이름" disabled class="name check-validation" 
+                                            <input type="text" value="${u.name }" disabled class="name" 
                                             placeholder="이름" id="name" autocorrect="off" 
                                             autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
                                             <span class="caution-mention">한글 이름만 허용됩니다</span>
@@ -123,13 +116,13 @@
                                     </div>
                                 </div>
                                 <div class="reg-form-item">
-                                    <label style="font-size: 12px;" for="birthday" title="비밀번호확인">
+                                    <label style="font-size: 12px;" for="birthday" title="생년월일">
                                         <em style="color: red;">*</em>
                                         생년월일
                                     </label>
                                     <div class="input-box">
                                         <div>
-                                            <input type="text" disabled class="birthday check-validation" value="등록된생년월일"
+                                            <input type="text" disabled class="birthday" value="${u.birthday }"
                                             placeholder="휴대폰번호" id="birthday" autocorrect="off" 
                                             autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
                                             <span class="caution-mention">휴대폰번호를 정확히 입력해주세요</span>
@@ -137,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div class="reg-form-item">
-                                    <label style="font-size: 12px;" for="phone" title="비밀번호확인">
+                                    <label style="font-size: 12px;" for="phone" title="연락처">
                                         <em style="color: red;">*</em>
                                         연락처
                                     </label>
@@ -151,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="reg-form-item">
-                                    <label style="font-size: 12px;" for="phone" title="비밀번호확인">
+                                    <label style="font-size: 12px;" for="checkbox-2" title="회원구분">
                                         <em style="color: red;">*</em>
                                         회원구분
                                     </label>

@@ -1,22 +1,18 @@
 window.addEventListener("load",function(){
-		var regExp_list = [/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i,
+		var regExp_list = [
                     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/
                         ];
         var checkbox = document.querySelectorAll('.checkbox');
         var button_submit = document.querySelector('.button-submit').firstElementChild;
         var inputAll = document.querySelectorAll('.check-validation');
         
-        var reg_form_container = document.querySelector(".reg-form-container");
+        var reg_form_item = document.querySelector(".reg-form-item");
 
-        reg_form_container.addEventListener("change",function(e){
+        reg_form_item.addEventListener("change",function(e){
             
             var input_box = e.target.parentNode.parentNode;
             var regExp;
             switch(e.target.id){
-                case "email":
-                    regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
-                    
-                    break;
                 case "password":
                     regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
                     break;
@@ -29,7 +25,7 @@ window.addEventListener("load",function(){
                 }
             }
 
-            if(count_validation == 2){
+            if(count_validation == 1){
                 button_submit.classList.remove('disabled');
                 button_submit.disabled = false;
             }
@@ -48,14 +44,10 @@ window.addEventListener("load",function(){
             }
         });
 
-        reg_form_container.addEventListener("keyup",function(e){
+        reg_form_item.addEventListener("keyup",function(e){
             var input_box = e.target.parentNode.parentNode;
             var regExp;
             switch(e.target.id){
-                case "email":
-                    regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
-                    
-                    break;
                 case "password":
                     regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
                     break;
@@ -67,8 +59,7 @@ window.addEventListener("load",function(){
                     count_validation++;
                 }
             }
-
-            if(count_validation == 2){
+            if(count_validation == 1){
                 button_submit.classList.remove('disabled');
                 button_submit.disabled = false;
             }
@@ -87,30 +78,27 @@ window.addEventListener("load",function(){
             }
         });
 
-		//로그인 ajax 유효성검사
+		//비밀번호 확인 ajax 유효성검사
+		var password_check_button = document.querySelector(".button-submit").firstElementChild;
 		
-		var login_button = document.querySelector(".button-submit").firstElementChild;
-		
-		login_button.addEventListener("click",function(){
+		password_check_button.addEventListener("click",function(){
 			var xhr = new XMLHttpRequest();
-			xhr.open('post','./signin');
+			xhr.open('post','/checkPwd');
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState === 4 && xhr.status === 200){
 					var valid = xhr.response;
 					console.log(JSON.parse(valid).valid);
 					if(JSON.parse(valid).valid == 0)
-						alert('아이디 또는 비밀번호가 정확하지 않습니다.');
+						alert('비밀번호가 정확하지 않습니다.');
 					else
-						window.location.href="http://localhost:8080/index";
+						window.location.href="/user/userInfo/updateInfo";
 				}
 			}
 			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 			var data='';
-			var email = document.querySelector(".email").value;
 			var password = document.querySelector(".password").value;
-			data += 'email='+email;
-			data += '&password='+password;
+			data += 'password='+password;
 			xhr.send(data);
 		});
-
+		
 });
