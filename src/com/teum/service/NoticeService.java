@@ -96,6 +96,13 @@ public List<NoticeView> getViewList() {
 		result = noticeDao.delete(id);
 		return result;
 	}
+	
+	public int deleteAll(int[] ids) {
+		int result =0;
+		for(Integer id : ids)
+		result += noticeDao.delete(id);
+		return result;
+	}
 
 	public int getLastId() {
 		Notice n =noticeDao.getLast();
@@ -114,6 +121,54 @@ public List<NoticeView> getViewList() {
 		result =noticeDao.getCount(query);
 		
 		return result;
+	}
+	public int openAll(int[] oIds, int[] cIds) {
+		List<String> oIdsList = new ArrayList<>();
+		List<String> cIdsList = new ArrayList<>();
+		
+		for (int i = 0; i < oIds.length; i++)
+			oIdsList.add(String.valueOf(oIds[i]));
+		
+		for (int i = 0; i < cIds.length; i++)
+			cIdsList.add(String.valueOf(cIds[i]));
+		
+		return openAll(oIdsList, cIdsList);
+	}
+	
+	public int openAll(List<String> oIds, List<String> cIds) {
+		String oIdsCSV = String.join(",", oIds);
+		String cIdsCSV = String.join(",", cIds);
+		
+		return openAll(oIdsCSV, cIdsCSV);
+		
+	}
+
+	private int openAll(String oIdsCSV, String cIdsCSV) {
+		return noticeDao.openAll(oIdsCSV, cIdsCSV);
+	}
+
+	public int closeAll(int[] oIds, int[] cIds) {
+		List<String> oIdsList = new ArrayList<>();
+		List<String> cIdsList = new ArrayList<>();
+		
+		for (int i = 0; i < oIds.length; i++)
+			oIdsList.add(String.valueOf(oIds[i]));
+		
+		for (int i = 0; i < cIds.length; i++)
+			cIdsList.add(String.valueOf(cIds[i]));
+		
+		return closeAll(oIdsList, cIdsList);
+	}
+	
+	public int closeAll(List<String> oIds, List<String> cIds) {
+		String oIdsCSV = String.join(",", oIds);
+		String cIdsCSV = String.join(",", cIds);
+		
+		return closeAll(oIdsCSV, cIdsCSV);
+	}
+
+	private int closeAll(String oIdsCSV, String cIdsCSV) {
+		return noticeDao.closeAll(oIdsCSV, cIdsCSV);
 	}
 
 	

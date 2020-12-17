@@ -73,6 +73,7 @@
 									<input type="submit" value="검색">
 								</form>
 	                        </div>
+	                        <form action="list" method="post">
 	                        <table>
 	                            <thead>
 	                                <tr>
@@ -104,20 +105,24 @@
 	                                    
 	                                    </td>
 	                                    <td>
-	                                        <input type="checkbox" name="" class=pubChk >
+	                                        <input type="checkbox" name="open-id" value="${n.id}"class=pubChk >
 	                                    </td>
 	                                    <td>
-	                                        <input type="checkbox" name="" class="deleteChk" >
+	                                        <input type="checkbox" name="del-id"  value="${n.id}"class="deleteChk" >
 	                                    </td>
 	                                </tr>
 	                               </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="7">
-	                                       
+	                                       		<c:set var="ids" value=""/>
+	                                        	<c:forEach var="event" items="${list}">
+	                                        		<c:set var="ids" value="${ids} ${n.id}"/>
+	                                        	</c:forEach>
+	                                        	<input type="hidden" name="ids" value="${ids}">
 	                                            <a href="reg"><input type="submit" value="생성" ></a>
-	                                            <input type="submit" value="공개">
-	                                            <input type="submit" value="비공개">
-	                                            <input type="submit" value="삭제">
+	                                            <input type="submit" value="공개" name="cmd">
+	                                            <input type="submit" value="비공개"name="cmd">
+	                                            <input type="submit" value="삭제" name="cmd">
 	                                       
 	                                    </td>
 	                                </tr>
@@ -157,6 +162,7 @@
 										</tr>
 	                            </tbody>
 	                        </table>
+	                        </form>
 	                    </section>
 	                </section>
 	            </main>

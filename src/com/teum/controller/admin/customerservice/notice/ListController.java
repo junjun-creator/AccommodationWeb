@@ -2,6 +2,7 @@ package com.teum.controller.admin.customerservice.notice;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,24 +16,11 @@ import com.teum.service.NoticeService;
 
 @WebServlet("/admin/customerService/notice/list")
 public class ListController extends HttpServlet {
-
+	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NoticeService service = new NoticeService();
 		List<NoticeView> list =new ArrayList<>();
-		//int count = service.getCount();
-		/*
-		 * String queryString = request.getQueryString(); if(queryString ==null) { list
-		 * = service.getList(); }else if(queryString.contains("query")) { count =
-		 * service.getCount(request.getParameter("query"));
-		 * if(queryString.contains("page")) { int page =
-		 * Integer.parseInt(request.getParameter("page")); list =
-		 * service.getList(page,request.getParameter("query")); } else { list =
-		 * service.getList(1,request.getParameter("query")); } } else { int page =
-		 * Integer.parseInt(request.getParameter("page")); list = service.getList(page);
-		 * request.setAttribute("page", page); }
-		 */
-
 		String query_ = request.getParameter("query");
 		String page_ = request.getParameter("page");
 		
@@ -53,6 +41,44 @@ public class ListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("pageCount", count);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
-		
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String[] openIds = request.getParameterValues("open-id");
+		String[] delIds = request.getParameterValues("del-id");
+		String cmd = request.getParameter("cmd");
+		String ids_ = request.getParameter("ids");
+		String[] ids = ids_.trim().split(" ");
+		
+		NoticeService service = new NoticeService();
+		List<String> oIds = Arrays.asList(openIds);
+		// 공개할 id와 비공개할 id를 나눈다.
+		List<String> cIds = new ArrayList(Arrays.asList(ids));
+		cIds.removeAll(oIds); // 비공개할 id
+		switch (cmd) {
+		case "공개":
+			
+			service.openAll(oIds, cIds);
+			
+			break;
+			
+		case "비공개":
+			
+			service.closeAll(oIds, cIds);
+			
+			break;
+		case "삭제":
+			int[] ids1 = new int[delIds.length];
+			
+			for (int i = 0; i < delIds.length; i++)
+				ids1[i] = Integer.parseInt(delIds[i]);
+			
+			int result = service.deleteAll(ids1);
+			break;
+		}
+		
+		response.sendRedirect("list");
+	}
+	
 }
