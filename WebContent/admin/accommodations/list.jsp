@@ -102,15 +102,15 @@
                             <h1>승인된 업체 리스트</h1>
                             <form action="">
                             	<select name="ac" class="acc-catagory">
-                                    <option ${(param.ac == "hotel")?"selecte":"" } value="호텔">호텔</option>
-									<option ${(param.ac == "motel")?"selecte":"" }value="모텔">모텔</option>
-									<option ${(param.ac == "guesthouse")?"selecte":"" } value="게스트하우스">게스트하우스</option>
-									<option ${(param.ac == "resort")?"selecte":"" }value="게스트하우스">리조트</option>
-									<option ${(param.ac == "pension")?"selecte":"" }value="펜션">펜션</option>
+                                    <option ${(param.ac == "호텔")?"selecte":"" } value="호텔">호텔</option>
+									<option ${(param.ac == "모텔")?"selecte":"" }value="모텔">모텔</option>
+									<option ${(param.ac == "게스트하우스")?"selecte":"" } value="게스트하우스">게스트하우스</option>
+									<option ${(param.ac == "리조트")?"selecte":"" }value="리조트">리조트</option>
+									<option ${(param.ac == "펜션")?"selecte":"" }value="펜션">펜션</option>
                                 </select>
                             	<select name="f">
-                            		<option ${(param.f == "company_name")?"selecte":"" } value="company_name">사업자</option>
-                            		<option ${(param.f == "acc_name")?"selecte":"" } value="acc_name">숙소</option>
+                            		<option ${(param.f == "companyName")?"selecte":"" } value="companyName">사업자</option>
+                            		<option ${(param.f == "accName")?"selecte":"" } value="accName">숙소</option>
                          	   </select>
                                 
                                 <input type="text" name="search" value="${param.search}">

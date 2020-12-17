@@ -35,7 +35,7 @@ public class ListController extends HttpServlet {
 			query = "%"+query_+"%";
 		
 		AccService service = new AccService();
-		List<AccListForAdminView> list = service.getViewList(ac,field,query,1,10);
+		List<AccListForAdminView> list = service.getViewList(1,10,ac,field,query);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
