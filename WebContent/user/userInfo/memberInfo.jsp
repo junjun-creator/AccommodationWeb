@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/user/userInfo/memberInfo.js"></script>
 
 </head>
 <body>
@@ -22,7 +23,7 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
@@ -66,10 +67,21 @@
                         <p>비밀번호를 다시 입력해주세요.</p>
                     </div>
                     <div>
-                        <form action="">
-                            <input type="password" name="password">
-                            <input type="submit" value="확인">
-                        </form>
+                        <!-- <form action=""> -->
+                            <div class="reg-form-item">
+                                <div class="input-box">
+                                    <div>
+                                        <input type="password" class="password check-validation" 
+                                        placeholder="최소8자 영문/숫자/특수문자 필수" id="password" name="password" autocorrect="off" 
+                                        autocapitalize="off" autocomplete="off" aria-autocomplete="none" inputmode="text">
+                                        <span class="caution-mention">최소8자 영문/숫자/특수문자 필수입니다</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-submit">
+	                            <button class="disabled">확인</button>
+                            </div>
+                        <!-- </form> -->
                     </div>
                 </section>
             </main>

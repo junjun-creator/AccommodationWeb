@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teum.dao.entity.Member;
 import com.teum.entity.Users;
-import com.teum.service.MemberService;
 import com.teum.service.UsersService;
 
 @WebServlet("/admin/userInfo/users/usersList")
