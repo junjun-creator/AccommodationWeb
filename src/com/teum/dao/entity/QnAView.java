@@ -8,17 +8,17 @@ public class QnAView extends QnA {
 
 	private String userName;
 	private String phone;
-	private String categoryType;
+	private String category;
 	
 	public QnAView() {
 		
 	}
 
-	public QnAView(int id,String userName, String title, Date regdate, int answerStatus, String phone, String categoryType) {
+	public QnAView(int id,String userName, String title, Date regdate, int answerStatus, String phone, String category) {
 		super();
 		this.userName=userName;
 		this.phone = phone;
-		this.categoryType = categoryType;
+		this.category = category;
 	}
 
 
@@ -42,19 +42,18 @@ public class QnAView extends QnA {
 	}
 
 
-	public String getCategoryType() {
-		return categoryType;
+
+	public String getCategory() {
+		return category;
 	}
 
-
-	public void setCategoryType(String categoryType) {
-		this.categoryType = categoryType;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-
 
 	@Override
 	public String toString() {
-		return "QnAView [userName=" + userName + ", phone=" + phone + ", categoryType=" + categoryType + "]";
+		return "QnAView [userName=" + userName + ", phone=" + phone + ", category=" + category + "]";
 	}
 
 

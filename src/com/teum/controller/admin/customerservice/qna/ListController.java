@@ -27,9 +27,11 @@ public class ListController extends HttpServlet {
 		String query = "";
 		
 		int page = 1;
+		
 		if(category_ != null && !category_.equals("")) {
 			category = category_;
 		}
+		
 		if(query_ != null && !query_.equals("")) {
 			query = query_;
 		}
@@ -37,10 +39,10 @@ public class ListController extends HttpServlet {
 			page = Integer.parseInt(page_);
 		}
 		int size = 3;
-		list = service.getVIewList(page,size,category, query);
+		list = service.getVIewList(page,size,category,query);
 		int count = service.getCount(category,query);
 		
-		
+		request.setAttribute("categoryType", category);
 		request.setAttribute("list", list);
 		request.setAttribute("pageCount", count);
 		request.getRequestDispatcher("list.jsp").forward(request, response);

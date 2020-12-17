@@ -207,8 +207,9 @@ public class JdbcQnADao implements QnADao {
 	public List<QnAView> getViewList(int startIndex, int endIndex, String category, String query) {
 		List<QnAView> list = new ArrayList<QnAView>();
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM NUM, Q.* FROM QNA_LIST_FOR_ADMIN Q)\r\n" + 
-				"WHERE NUM BETWEEN ? AND ? AND CATEGORY LIKE ? AND USER_NAME LIKE ?";
+		String sql = "SELECT * FROM\r\n" + 
+				"(SELECT ROWNUM NUM, Q.* FROM QNA_LIST_FOR_ADMIN Q WHERE CATEGORY LIKE ? AND USER_NAME LIKE ?)\r\n" + 
+				"WHERE NUM BETWEEN ? AND ?";
 		String url = DBContext.URL;
 		
 		try {
@@ -216,10 +217,10 @@ public class JdbcQnADao implements QnADao {
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
 			 
-			st.setInt(1, startIndex); 
-			st.setInt(2, endIndex);
-			st.setString(3, "%"+category+"%");
-			st.setString(4, "%"+query+"%");
+			st.setString(1, "%"+category+"%");
+			st.setString(2, "%"+query+"%");
+			st.setInt(3, startIndex); 
+			st.setInt(4, endIndex);
 			
 			ResultSet rs = st.executeQuery();
 			
@@ -240,7 +241,7 @@ public class JdbcQnADao implements QnADao {
 			     qv.setRegdate(regdate);
 			     qv.setAnswerStatus(answerStatus);
 			     qv.setPhone(phone);
-			     qv.setCategoryType(categoryType);
+			     qv.setCategory(categoryType);
 			     
 			     list.add(qv);
 				}
