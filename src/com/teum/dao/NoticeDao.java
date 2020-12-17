@@ -15,6 +15,8 @@ public interface NoticeDao {
 	Notice getLast();
 
 	int getCount(String query);
+	int openAll(String oIdsCSV, String cIdsCSV);
+	int closeAll(String oIdsCSV, String cIdsCSV);
 	
 	List<Notice> getList();
 	List<Notice> getList(int startIndex, int endIndex);

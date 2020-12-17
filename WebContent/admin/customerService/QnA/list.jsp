@@ -68,7 +68,7 @@
 		                        <div>
 			                        <form action="list">
 			                        <select name="category" id="" class="category" >
-			                                <option value="" selected disabled>카테고리</option>
+			                                <option value="" selected>전체</option>
 			                                <option value="이벤트" ${(param.category=="이벤트")?"selected":"" }>이벤트</option>
 			                                <option value="예약" ${(param.category=="예약")?"selected":"" }>예약/결제</option>
 			                                <option value="취소"  ${(param.category=="취소")?"selected":"" }>취소/환불</option>
@@ -83,6 +83,7 @@
 			                    	</form>
 		                        </div>
 	                        </div>
+	                        <form action="list" method="post">
 	                        <table>
 	                            <thead>
 	                                <tr>
@@ -120,16 +121,13 @@
 				                            </c:choose>
 	                            		</td>
 	                                    <td>
-	                                        <input type="checkbox" name="" class="deleteChk" >
+	                                        <input type="checkbox" name="del-id"  value="${q.id}"class="deleteChk" >
 	                                    </td>
 	                                </tr>
 	                             </c:forEach>
 	                                <tr class="btn-delete">
 	                                    <td colspan="8">
-	                                        <form action="">
-	                                            <input type="submit" value="답변">
-	                                            <input type="submit" value="삭제">
-	                                        </form>
+	                                           <input type="submit" value="삭제" >
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -169,6 +167,7 @@
 										</tr>
 	                            </tbody>
 	                        </table>
+	                        </form>
                     	</section>
                     </section>
             	</main>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -431,6 +432,62 @@ public class JdbcNoticeDao implements NoticeDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public int openAll(String oIdsCSV, String cIdsCSV) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String openSql = String.format("UPDATE NOTICE SET OPEN_STATUS = 1 WHERE ID IN (%s)", oIdsCSV);
+		String closeSql = String.format("UPDATE NOTICE SET OPEN_STATUS = 0 WHERE ID IN (%s)", cIdsCSV);
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement openSt = con.createStatement();
+			result += openSt.executeUpdate(openSql);
+			
+			Statement closeSt = con.createStatement();
+			result += closeSt.executeUpdate(closeSql);
+			
+			openSt.close();
+			closeSt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int closeAll(String oIdsCSV, String cIdsCSV) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String openSql = String.format("UPDATE NOTICE SET OPEN_STATUS = 0 WHERE ID IN (%s)", oIdsCSV);
+		String closeSql = String.format("UPDATE NOTICE SET OPEN_STATUS = 1 WHERE ID IN (%s)", cIdsCSV);
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement openSt = con.createStatement();
+			result += openSt.executeUpdate(openSql);
+			
+			Statement closeSt = con.createStatement();
+			result += closeSt.executeUpdate(closeSql);
+			
+			openSt.close();
+			closeSt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 

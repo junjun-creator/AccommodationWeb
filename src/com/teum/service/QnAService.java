@@ -82,6 +82,12 @@ public class QnAService {
 		
 		return result;
 	}
+	public int deleteAll(int[] ids) {
+		int result =0;
+		for(Integer id : ids)
+		result += qnaDao.delete(id);
+		return result;
+	}
 
 	
 }
