@@ -158,19 +158,6 @@
 	                            </tbody>
 	                        </table>
 	                    </section>
-	                    <!-- <section>
-	                        <h1 class="d-none">페이지 정보</h1>
-	                        <div>
-	                            1 / 2 pages
-	                        </div>
-	                    </section>
-	                    <section>
-	                        <h1 class="d-none">페이지 요청목록</h1>
-	                        <ul>
-	                            <li>1</li>
-	                            <li>2</li>
-	                        </ul>
-	                    </section> -->
 	                </section>
 	            </main>
 	        </div>

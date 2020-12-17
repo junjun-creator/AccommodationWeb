@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,8 +66,8 @@
 		                   	<div class="main-search">
 		                        <h1>문의사항 리스트</h1>
 		                        <div>
-			                        <select name="" id="" class="catagory">
-			                            <form action="">
+			                        <form action="list">
+			                        <select name="catagory" id="" class="catagory">
 			                                <option value="" selected disabled>카테고리</option>
 			                                <option value="이벤트">이벤트</option>
 			                                <option value="예약/결제">예약/결제</option>
@@ -76,10 +76,12 @@
 			                                <option value="회원/개인정보">회원/개인정보</option>
 			                                <option value="리뷰">리뷰</option>
 			                                <option value="기타">기타</option>
-			                            </form>
-		                                <input type="text">
-			                        	<input type="submit" value="검색">
 			                        </select>
+			                        </form>
+			                          <form action="list">
+		                                <input type="text" name="query">
+			                        	<input type="submit" value="검색">
+			                    	</form>
 		                        </div>
 	                        </div>
 	                        <table>
@@ -102,7 +104,8 @@
 	                                    <td>${q.id}</td>
 	                                    <td>${q.userName}</td>
 	                                    <td>
-	                                    <c:choose>
+	                                    ${q.categoryType}
+	                                    <%-- <c:choose>
 											<c:when test="${q.categoryId eq 1}">
 												이벤트
 											</c:when>
@@ -124,9 +127,9 @@
 											<c:otherwise>
 												기타
 											</c:otherwise>
-	                                     </c:choose>
+	                                     </c:choose> --%>
 	                                    </td>
-	                                    <td><a href="detail?id=${q.id}">${q.title}</td>
+	                                    <td><a href="detail?id=${q.id}">${q.title}</a></td>
 	                                    <td>${q.phone}</td>
 	                                    <td>${q.regdate}</td>
 	                                    <td>
@@ -153,22 +156,43 @@
 	                                        </form>
 	                                    </td>
 	                                </tr>
+	                                <tr>
+											<td colspan="6" class="no-border">
+												<div class="pager-container">
+													<div class="btn btn-prev">
+													<!--<c:set var="pageCnt" value="${fn:substringBefore(Math.ceil(pageCount/3)+1,'.')}"/>-->
+													<c:set var="page" value="${(empty param.page)?1:param.page}"/>
+													<c:set var="startNum" value="${page-(page-1)%5}" />
+													<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(pageCount/3),'.') }" /><!--6-->
+														<c:if test="${startNum>1}">
+															<a href="list?page=${startNum-1}">이전</a>
+														</c:if>
+														<c:if test="${startNum<=1}">
+															<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+														</c:if>
+													</div>
+													<ul class="pager-list">
+													
+													<c:forEach var="i"  begin="0"  end="4">
+													<c:if test="${(startNum+i)<=lastNum}">
+														<li><a class="${(page==(startNum+i))?'active-page':''}" href="list?page=${startNum+i}&query=${param.query}">${startNum+i}</a></li>
+													</c:if>
+													</c:forEach>
+													</ul>
+													<div class="btn btn-next">
+														<c:if test="${startNum+5<=lastNum}">
+															<a href="list?page=${startNum+5}">다음</a>
+														</c:if>
+														<c:if test="${startNum+5>lastNum}">
+															<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+														</c:if>
+													</div>
+												</div>
+											</td>
+										</tr>
 	                            </tbody>
 	                        </table>
                     	</section>
-                    </section>
-                    <section>
-                        <h1 class="d-none">페이지 정보</h1>
-                        <div>
-                            1 / 2 pages
-                        </div>
-                    </section>
-                    <section>
-                        <h1 class="d-none">페이지 요청목록</h1>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                        </ul>
                     </section>
             	</main>
 	        </div>

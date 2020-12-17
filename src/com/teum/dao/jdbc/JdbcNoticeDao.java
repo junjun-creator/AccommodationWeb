@@ -322,7 +322,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		
 		
 		String url = DBContext.URL;
-		String sql = "SELECT count(*) FROM NOTICE WHERE TITLE LIKE ?";
+		String sql = "SELECT COUNT(*) FROM NOTICE WHERE TITLE LIKE ?";
 		
 		/*
 		 * if(!query.equals("")) { String sql_ ="WHERE TITLE LIKE ?"; sql =sql + sql_; }
