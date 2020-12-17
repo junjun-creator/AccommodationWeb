@@ -74,9 +74,6 @@
                 </div>
                 <section class="event-sec">
                     <h1>이벤트 / <span>Event</span></h1>
-                    <ul class="event-list">
-                        <li class="current-tab"><a href="">진행중인 이벤트</a></li>
-                    </ul>
                     <c:forEach var="event" items="${list}">
                     	<%-- <c:if test="${event.openStatus == 1}"> --%>
                     	<div class="event-img-container">

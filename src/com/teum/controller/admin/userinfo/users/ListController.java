@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Member;
+import com.teum.dao.entity.Member;
 import com.teum.entity.Users;
 import com.teum.service.MemberService;
 import com.teum.service.UsersService;

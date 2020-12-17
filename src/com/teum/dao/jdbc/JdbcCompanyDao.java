@@ -10,9 +10,9 @@ import java.util.List;
 
 import com.teum.dao.CompanyDao;
 import com.teum.dao.entity.CompanyListView;
+import com.teum.dao.entity.Member;
 import com.teum.dao.entity.UsersListView;
 import com.teum.entity.Company;
-import com.teum.entity.Member;
 import com.teum.entity.Users;
 
 public class JdbcCompanyDao implements CompanyDao {

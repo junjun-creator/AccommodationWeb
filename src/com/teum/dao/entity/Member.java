@@ -1,4 +1,4 @@
-package com.teum.entity;
+package com.teum.dao.entity;
 
 import java.util.Date;
 
@@ -6,28 +6,26 @@ public class Member {
 	private int id;
 	private String name;
 	private String email;
-	private String pwd;
+	private String password;
 	private String birthday;
 	private String phone;
-	private String type;
-	private int rank;
+	private int type;
 	private Date regdate;
 	
 	public Member() {
 		
 	}
-	
-	public Member(int id, String name, String email, String pwd, String birthday, String phone, String type, int rank,
+
+	public Member(int id, String name, String email, String password, String birthday, String phone, int type,
 			Date regdate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.pwd = pwd;
+		this.password = password;
 		this.birthday = birthday;
 		this.phone = phone;
 		this.type = type;
-		this.rank = rank;
 		this.regdate = regdate;
 	}
 
@@ -55,12 +53,12 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getBirthday() {
@@ -79,20 +77,12 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
-	}
-
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
 	}
 
 	public Date getRegdate() {
@@ -105,11 +95,10 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", birthday=" + birthday
-				+ ", phone=" + phone + ", type=" + type + ", rank=" + rank + ", regdate=" + regdate + "]";
+		return "Member [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", birthday="
+				+ birthday + ", phone=" + phone + ", type=" + type + ", regdate=" + regdate + "]";
 	}
-	
-	
+
 	
 	
 }

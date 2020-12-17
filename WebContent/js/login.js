@@ -110,8 +110,12 @@ window.addEventListener("load",function(){
 			var password = document.querySelector(".password").value;
 			data += 'email='+email;
 			data += '&password='+password;
-			
+			//unsent 0
 			xhr.send(data);
+			// 1
+			//2
+			//3
+			//4
 		});
 
 });

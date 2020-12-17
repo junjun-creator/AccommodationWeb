@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
+import com.teum.dao.entity.Member;
+import com.teum.service.LoginService;
 import com.teum.service.UsersService;
 
 @WebServlet("/login")
@@ -30,20 +32,34 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		UsersService service = new UsersService();
+		//UsersService service = new UsersService();
+		LoginService service = new LoginService();
 		
-		int emailValid = service.valid(email,password);
+//		int emailValid = service.valid(email,password);
+		Member m = service.get(email,password);
 		
 		JSONObject obj = new JSONObject();
+		int emailValid=0;
 		
-		//if(emailValid == 1){
+		if(m.getId() != 0)
+			emailValid = 1;
+		
 		obj.put("valid", emailValid);
 		//}
-		System.out.println("valid = " +emailValid);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("email", email);
+		if(emailValid == 1) {
+			session.setAttribute("email", email);
+			session.setAttribute("id",m.getId());
+			session.setAttribute("type",m.getType());
+		}
 		
+		System.out.println("valid = " +emailValid);
+		System.out.println("id = " +m.getId());
+		System.out.println("type = " +m.getType());
+		System.out.println("email = " +email);
+
+
 		response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(obj);
 	}

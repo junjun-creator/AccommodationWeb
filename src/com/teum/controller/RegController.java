@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teum.dao.entity.Member;
 import com.teum.entity.Company;
-import com.teum.entity.Member;
 import com.teum.entity.Users;
 import com.teum.service.CompanyService;
 import com.teum.service.MemberService;

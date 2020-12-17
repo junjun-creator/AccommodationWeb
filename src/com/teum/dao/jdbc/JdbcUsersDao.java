@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.UsersDao;
+import com.teum.dao.entity.Member;
 import com.teum.dao.entity.UsersListView;
-import com.teum.entity.Member;
 import com.teum.entity.Users;
 
 public class JdbcUsersDao implements UsersDao {
