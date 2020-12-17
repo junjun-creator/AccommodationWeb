@@ -1,8 +1,6 @@
 package com.teum.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,15 +13,30 @@ import org.json.simple.JSONObject;
 
 import com.teum.dao.entity.Member;
 import com.teum.service.LoginService;
-import com.teum.service.UsersService;
 
-@WebServlet("/login")
+@WebServlet("/signin")
 public class LoginController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("email")+"개빡치네 시부레");
 		
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		super.service(request, response);
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("email")+"개빡치네 시부레222222");
+		
+		if(session.getAttribute("email")!=null) {
+			response.sendRedirect("/index");
+		}else {
+			
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 	@Override
@@ -32,12 +45,9 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		//UsersService service = new UsersService();
 		LoginService service = new LoginService();
 		
-//		int emailValid = service.valid(email,password);
 		Member m = service.get(email,password);
-		
 		JSONObject obj = new JSONObject();
 		int emailValid=0;
 		

@@ -54,8 +54,33 @@ public class JdbcUsersDao implements UsersDao {
 
 	@Override
 	public int update(Users users) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "UPDATE USERS SET PASSWORD=?, PHONE=? WHERE ID=?";
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,users.getPassword());
+			ps.setString(2,users.getPhone());
+			ps.setInt(3,users.getId());
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -109,19 +134,24 @@ public class JdbcUsersDao implements UsersDao {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				
 				String name = rs.getString("name");
 				String email = rs.getString("email");
+				String password = rs.getString("password");
 				String birthday = rs.getString("birthday");
 				String phone = rs.getString("phone");
 				int rankId = rs.getInt("rank_id");
 				Date regdate = rs.getDate("regdate");
+				int type = rs.getInt("type");
 				u.setId(id);
 				u.setName(name);
 				u.setEmail(email);
+				u.setPassword(password);
 				u.setBirthday(birthday);
 				u.setPhone(phone);
 				u.setRankId(rankId);
 				u.setRegdate(regdate);
+				u.setType(type);
 				
 			}
 			

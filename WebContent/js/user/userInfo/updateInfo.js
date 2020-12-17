@@ -1,8 +1,6 @@
 window.addEventListener("load",function(){
-			var regExp_list = [/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i,
+			var regExp_list = [
                         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/,
-                        /^[가-힣]+$/,
-                        /^[0-9]{8}$/,
                         /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
                         ];
         var checkbox = document.querySelectorAll('.checkbox');
@@ -16,23 +14,11 @@ window.addEventListener("load",function(){
             var input_box = e.target.parentNode.parentNode;
             var regExp;
             switch(e.target.id){
-                case "email":
-                    regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
-                    
-                    break;
                 case "password":
                     regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
                     break;
-                case "password-check":
-                    break;
-                case "name":
-                    regExp = /^[가-힣]+$/;
-                    break;
                 case "phone":
                     regExp =  /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-                    break;
-                case "birthday":
-                    regExp =  /^[0-9]{8}$/;
                     break;
             }
 
@@ -60,16 +46,8 @@ window.addEventListener("load",function(){
                 }
             }
 
-            var count_validation = 0;
-            for(var i=0;i<inputAll.length;i++){
-                if(regExp_list[i].test(inputAll[i].value)){
-                    count_validation++;
-                }
-            }
-
-            if(count_validation == 5 &&
-            password_input.value == password_check_input.value &&
-            (checkbox[0].checked || checkbox[1].checked)){
+            if(regExp_list[1].test(inputAll[1].value) ||
+            password_input.value == password_check_input.value){
                 button_submit.classList.remove('disabled');
                 button_submit.disabled = false;
             }
@@ -82,24 +60,13 @@ window.addEventListener("load",function(){
         reg_form_container.addEventListener("keyup",function(e){
             var input_box = e.target.parentNode.parentNode;
             var regExp;
+            var regExp;
             switch(e.target.id){
-                case "email":
-                    regExp =  /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
-                    
-                    break;
                 case "password":
                     regExp =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
                     break;
-                case "password-check":
-                    break;
-                case "name":
-                    regExp = /^[가-힣]+$/;
-                    break;
                 case "phone":
                     regExp =  /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-                    break;
-                case "birthday":
-                    regExp =  /^[0-9]{8}$/;
                     break;
             }
 
@@ -127,16 +94,8 @@ window.addEventListener("load",function(){
                 }
             }
 
-            var count_validation = 0;
-            for(var i=0;i<inputAll.length;i++){
-                if(regExp_list[i].test(inputAll[i].value)){
-                    count_validation++;
-                }
-            }
-
-            if(count_validation == 5 &&
-            password_input.value == password_check_input.value &&
-            (checkbox[0].checked || checkbox[1].checked)){
+            if(regExp_list[1].test(inputAll[1].value) ||
+            password_input.value == password_check_input.value){
                 button_submit.classList.remove('disabled');
                 button_submit.disabled = false;
             }
@@ -146,27 +105,4 @@ window.addEventListener("load",function(){
             }
         });
 
-
-        for(var j=0;j<checkbox.length;j++){
-            (function(m){
-                checkbox[m].addEventListener("click",function(){
-                    var count_validation = 0;
-                    for(var i=0;i<inputAll.length;i++){
-                        if(regExp_list[i].test(inputAll[i].value)){
-                            count_validation++;
-                        }
-                    }
-                    if(count_validation == 5 &&
-                    password_input.value == password_check_input.value &&
-                    (checkbox[0].checked || checkbox[1].checked)){
-                        button_submit.classList.remove('disabled');
-                        button_submit.disabled = false;
-                    }
-                    else{
-                        button_submit.classList.add('disabled');
-                        button_submit.disabled = true;
-                    }
-                });
-            })(j);
-        }
 });
