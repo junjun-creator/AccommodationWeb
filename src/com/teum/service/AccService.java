@@ -1,9 +1,11 @@
 package com.teum.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.GoldenTimeView;
 import com.teum.dao.jdbc.JdbcAccDao;
 //import com.teum.dao.jdbc.JdbcAccDao;
 import com.teum.entity.Acc;
@@ -108,5 +110,11 @@ public class AccService {
 	public int getLastId() {
 		Acc acc = accDao.getLast();
 		return acc.getId();
+	}
+
+	public List<GoldenTimeView> getGoldenList() {
+		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
+		list =accDao.getGoldenList();
+		return list;
 	}
 }

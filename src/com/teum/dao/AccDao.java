@@ -3,6 +3,7 @@ package com.teum.dao;
 import java.util.List;
 
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.GoldenTimeView;
 import com.teum.entity.Acc;
 
 public interface AccDao {
@@ -28,5 +29,6 @@ public interface AccDao {
 	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex,String ac, String field,  String query);
 	
 	Acc getLast();
+	List<GoldenTimeView> getGoldenList();
 	
 }

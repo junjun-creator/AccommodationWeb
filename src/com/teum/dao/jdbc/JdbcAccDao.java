@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.GoldenTimeView;
 import com.teum.entity.Acc;
 import com.teum.entity.Event;
 
@@ -546,5 +547,49 @@ public class JdbcAccDao implements AccDao{
 	@Override
 	public int update(Acc acc) {
 		return 0;
+	}
+
+	@Override
+	public List<GoldenTimeView> getGoldenList() {
+		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM GOLDENTIME_LIST_VIEW WHERE REG_STATUS = 1 AND COMPANY_ID = 1 "; 
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				int num = rs.getInt("NUM"); 
+				String companyName = rs.getString("company_name");
+				String accName = rs. getString("acc_name");
+				String location = rs.getString("location");
+				Date regdate = rs.getDate("regdate");
+				String phone = rs.getString("phone");
+				int regStatus = rs.getInt("reg_status");
+				String accType = rs.getString("acc_type");
+
+				GoldenTimeView G = new GoldenTimeView();
+				
+			
+				
+				list.add(G);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
