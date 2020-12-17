@@ -67,20 +67,19 @@
 		                        <h1>문의사항 리스트</h1>
 		                        <div>
 			                        <form action="list">
-			                        <select name="catagory" id="" class="catagory">
+			                        <select name="category" id="" class="category" >
 			                                <option value="" selected disabled>카테고리</option>
-			                                <option value="이벤트">이벤트</option>
-			                                <option value="예약/결제">예약/결제</option>
-			                                <option value="취소/환불">취소/환불</option>
-			                                <option value="서비스 이용">서비스 이용</option>
-			                                <option value="회원/개인정보">회원/개인정보</option>
-			                                <option value="리뷰">리뷰</option>
-			                                <option value="기타">기타</option>
+			                                <option value="이벤트" ${(param.category=="이벤트")?"selected":"" }>이벤트</option>
+			                                <option value="예약" ${(param.category=="예약")?"selected":"" }>예약/결제</option>
+			                                <option value="취소"  ${(param.category=="취소")?"selected":"" }>취소/환불</option>
+			                                <option value="서비스"  ${(param.category=="서비스")?"selected":"" }>서비스 이용</option>
+			                                <option value="회원"  ${(param.category=="회원")?"selected":"" }>회원/개인정보</option>
+			                                <option value="리뷰"  ${(param.category=="리뷰")?"selected":"" }>리뷰</option>
+			                                <option value="기타"  ${(param.category=="기타")?"selected":"" }>기타</option>
 			                        </select>
-			                        </form>
-			                          <form action="list">
-		                                <input type="text" name="query">
-			                        	<input type="submit" value="검색">
+			                        <input type="hidden" name="page">
+			                         <input type="text" name="query" value="${param.query}">
+			                        <input type="submit" value="검색">
 			                    	</form>
 		                        </div>
 	                        </div>
@@ -104,30 +103,7 @@
 	                                    <td>${q.id}</td>
 	                                    <td>${q.userName}</td>
 	                                    <td>
-	                                    ${q.categoryType}
-	                                    <%-- <c:choose>
-											<c:when test="${q.categoryId eq 1}">
-												이벤트
-											</c:when>
-											<c:when test="${q.categoryId eq 2}">
-												예약/결제
-											</c:when>
-											<c:when test="${q.categoryId eq 3}">
-												취소/환불
-											</c:when>
-											<c:when test="${q.categoryId eq 4}">
-												서비스이용
-											</c:when>
-											<c:when test="${q.categoryId eq 5}">
-												회원/개인정보
-											</c:when>
-											<c:when test="${q.categoryId eq 6}">
-												리뷰
-											</c:when>
-											<c:otherwise>
-												기타
-											</c:otherwise>
-	                                     </c:choose> --%>
+	                                   	 	${q.category}
 	                                    </td>
 	                                    <td><a href="detail?id=${q.id}">${q.title}</a></td>
 	                                    <td>${q.phone}</td>
@@ -161,6 +137,7 @@
 												<div class="pager-container">
 													<div class="btn btn-prev">
 													<!--<c:set var="pageCnt" value="${fn:substringBefore(Math.ceil(pageCount/3)+1,'.')}"/>-->
+													<c:set var="category" value="${categoryType}"/>
 													<c:set var="page" value="${(empty param.page)?1:param.page}"/>
 													<c:set var="startNum" value="${page-(page-1)%5}" />
 													<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(pageCount/3),'.') }" /><!--6-->
@@ -175,7 +152,7 @@
 													
 													<c:forEach var="i"  begin="0"  end="4">
 													<c:if test="${(startNum+i)<=lastNum}">
-														<li><a class="${(page==(startNum+i))?'active-page':''}" href="list?page=${startNum+i}&query=${param.query}">${startNum+i}</a></li>
+														<li><a class="${(page==(startNum+i))?'active-page':''}" href="list?page=${startNum+i}&category=${category}&query=${param.query}">${startNum+i}</a></li>
 													</c:if>
 													</c:forEach>
 													</ul>
