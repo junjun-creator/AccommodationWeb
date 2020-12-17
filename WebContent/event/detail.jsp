@@ -20,7 +20,7 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -31,8 +31,8 @@
                         <a href="">더보기</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
+                                <li><a href="/notice/list">공지사항</a></li>
+                                <li><a href="list">이벤트</a></li>
                                 <li><a href="">1:1 문의</a></li>
                             </ul>
                         </div>
@@ -58,8 +58,8 @@
             <aside id="aside" class="aside">
                 <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;공지사항</a></li>
-                    <li class="active"><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;이벤트</a></li>
+                    <li><a href="/notice/list"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;공지사항</a></li>
+                    <li class="active"><a href="list"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;이벤트</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Q&A</a></li>
                 </ul>
             </aside>
@@ -125,7 +125,7 @@
                     	</c:choose>
                         
                         <div class="btn-container">
-                            <button class="btn-list" onclick="location.href='list.jsp'">목록보기</button>
+                            <button class="btn-list" onclick="location.href='list'">목록보기</button>
                         </div>
                     </section>
                 </section>

@@ -29,7 +29,7 @@ public class ListController extends HttpServlet{
 			page = Integer.parseInt(page_);
 		
 		EventService service = new EventService();
-		List<EventListView> list = new ArrayList<EventListView>();
+		List<EventListView> list = new ArrayList<>();
 				
 		list = service.getViewList(page, 5);
 		

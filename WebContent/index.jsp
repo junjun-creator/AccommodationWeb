@@ -47,8 +47,8 @@
                         <a href="">더보기</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
+                                <li><a href="/notice/list">공지사항</a></li>
+                                <li><a href="/event/list">이벤트</a></li>
                                 <c:if test="${type == 0 }">
                                 	<li><a href="">1:1 문의</a></li>
                         		</c:if>
@@ -256,10 +256,24 @@
                 </div>
                 <div class="event-list-container">
                     <ul class="event-list">
-                        <li><a href=""><img src="/images/event/event1.png" alt=""></a></li>
-                        <li><a href=""><img src="/images/event/event2.png" alt=""></a></li>
-                        <li><a href=""><img src="/images/event/event3.png" alt=""></a></li>
-                        <li><a href=""><img src="/images/event/event4.jpg" alt=""></a></li>
+                    	<c:if test="${count < 3}">
+	                    	<c:forEach var="event" begin="0" end="${count}" items="${eventList}">
+	                    		<c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
+		                    		<c:if test="${st.first == true}">
+		                    			<li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>
+		                    		</c:if>
+	                    		</c:forTokens>
+	                    	</c:forEach>
+                    	</c:if>
+                    	<c:if test="${count >= 3}">
+                    		<c:forEach var="event" begin="0" end="3" items="${eventList}">
+                    			<c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
+	                    			<c:if test="${st.first == true}">
+	                    				<li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>                    			
+	                    			</c:if>
+                    			</c:forTokens>
+                    		</c:forEach>
+                    	</c:if>
                     </ul>
                 </div>
                 <div class="etc-container">
