@@ -26,18 +26,18 @@ public class AccService {
 
 	public List<AccListForAdminView> getViewList() {
 
-		return accDao.getViewList("","","",1,10);
+		return accDao.getViewList(1,10,"","companyName","");
 	}
 	public List<AccListForAdminView> getViewList(int page, int size) {
 
-		return accDao.getViewList("","","", page,size);
+		return accDao.getViewList(page,size,"","companyName","");
 	}
-	public List<AccListForAdminView> getViewList(String ac, String field,  String qeury, int page, int size ) {
+	public List<AccListForAdminView> getViewList(int page, int size,String ac, String field, String qeury ) {
 
 		int startIndex =1+(page-1)*size;//1, 11, 21, 31, ...
 		int endIndex = page*10;//10,20,30,40,50,60... 
 
-		return accDao.getViewList(ac, field,  qeury, startIndex, endIndex);
+		return accDao.getViewList(startIndex, endIndex, ac, field,  qeury);
 	}
 	
 	public List<AccListForAdminView> getApplyViewList() {
