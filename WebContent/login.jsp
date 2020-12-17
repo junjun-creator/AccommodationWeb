@@ -74,6 +74,7 @@
                             
                         <div class="button-submit">
                             <button class="disabled">로그인</button>
+                            <button style="margin-left:5px;">회원가입</button>
                         </div>
                     <!-- </form> -->
                 </div>

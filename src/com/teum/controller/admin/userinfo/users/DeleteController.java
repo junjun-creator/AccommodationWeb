@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.service.CompanyService;
-import com.teum.service.MemberService;
 import com.teum.service.UsersService;
 
 @WebServlet("/admin/userInfo/users/delete")

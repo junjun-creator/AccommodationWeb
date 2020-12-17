@@ -52,12 +52,8 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("email", email);
 			session.setAttribute("id",m.getId());
 			session.setAttribute("type",m.getType());
+			session.setAttribute("password", m.getPassword());
 		}
-		
-		System.out.println("valid = " +emailValid);
-		System.out.println("id = " +m.getId());
-		System.out.println("type = " +m.getType());
-		System.out.println("email = " +email);
 
 
 		response.setContentType("application/x-json; charset=UTF-8");
