@@ -35,11 +35,5 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(request, response);
-	}
 	
 }

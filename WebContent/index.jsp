@@ -32,7 +32,7 @@
                     		<a href="">제안하기</a>
                         </c:if>
                         <c:if test="${type == 1 }">
-                    		<a href="">숙소등록</a>
+                    		<a href="/company/accommodation/reg">숙소등록</a>
                         </c:if>
                     </li>
                     <li>
@@ -58,10 +58,10 @@
                     </li>
                     <li class="sub-page">
                     	<c:if test="${empty email }">
-                        	<a href="login" class="character">로그인</a>
+                        	<a href="signin" class="character">로그인</a>
                         </c:if>
                         <c:if test="${email ne null}">
-                        	<a href="login" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
+                        	<a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
                         </c:if>
                         
                         <c:if test="${type == 0 || type == 1 }">

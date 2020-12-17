@@ -1,4 +1,4 @@
-package com.teum.controller;
+package com.teum.controller.company.userinfo;
 
 import java.io.IOException;
 
@@ -9,16 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
-
+@WebServlet("/company/userInfo/memberInfo")
+public class MemberInfoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("email"));
+		if(session.getAttribute("email")==null) {
+			response.sendRedirect("/signin");
+		}else {
+			request.getRequestDispatcher("memberInfo.jsp").forward(request, response);
+		}
 		
-		session.invalidate();
-		
-		response.sendRedirect("/index");
 	}
-	
 }
