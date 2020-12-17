@@ -59,13 +59,13 @@ public class RegController extends HttpServlet {
 		// 파일 다중 업로드
 		for (Part p : fileParts) {
 			if (p.getName().equals("file") && p.getSize() > 0) {
-				// 만약 처음으로 등록하는 글이라면?
+				// 만약 처음으로 등록하는 글이라면? 일단 수동으로 한 개의 이벤트는 넣는 것으로 패스
 				
 				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
 				int newId = service.getLastId() + 1;
-				System.out.printf("newId: %d", newId);
-				if (newId == 0)
-					newId = service.getId();
+//				System.out.printf("newId: %d", newId);
+//				if (newId == 0)
+//					newId = service.getId(); 이걸 안쓸거면 getId 메서드 지워도됨!
 				
 				// 서블릿들이 필요로하는 공동자원들
 				// getRealPath는 상대경로를 넘겨주면 물리경로를 알려준다
@@ -114,7 +114,7 @@ public class RegController extends HttpServlet {
 		Event event = new Event(title, openStatus, startDate, endDate, builder.toString(), filePath);
 		
 		// 2. 데이터베이스에 넣기
-		EventService service = new EventService();
+		//EventService service = new EventService(); 생성자로 만들었으므로
 		service.insert(event);
 		
 		// 3. 페이지 전환

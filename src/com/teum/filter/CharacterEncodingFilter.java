@@ -28,9 +28,9 @@ public class CharacterEncodingFilter implements Filter{
 		//�̰͵� ����ȭ�ȰͰ� �ٸ� ����. jar������ ���� ���뼺�� ���̱� ���ؼ��� �̰��� ����ȭ�ؼ� �����Ͽ� ��� �����ϵ��� �ؾ��Ѵ�.
 		request.setCharacterEncoding(encoding);
 		
-		System.out.println("before 필터");
+		//System.out.println("before 필터");
 		chain.doFilter(request, response);
-		System.out.println("after 필터");
+		//System.out.println("after 필터");
 	}
 	
 	@Override

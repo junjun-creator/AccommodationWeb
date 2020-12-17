@@ -6,18 +6,18 @@
     <title>(기업)업체등록</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/company/accommodation/reg.css ">
     <link rel="preconnect" href="https//fonts.gstatic.com">
     <link href="https//fonts.googleapis.com/css2?family=Noto+Sans+KRwght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/company/accommodation/reg.css ">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <!-- <Script src="/js/company/accommodation/regAccommodation.js"></Script> -->
 </head>
 
 <body>
     <header class="sec-header-page">
-        <section class="header-sec pcHeader">
+        <section class="header-sec">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -28,8 +28,8 @@
                         <a href="">더보기</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
+                                <li><a href="/notice/list">공지사항</a></li>
+                                <li><a href="/event/list">이벤트</a></li>
                                 <li><a href="">1:1 문의</a></li>
                             </ul>
                         </div>
@@ -54,9 +54,9 @@
     <main>
         <div>
             <h1><img src="/images/company/reg.png"></h1>
-            <div class='content-box'>
+            <div class="content-box">
 
-                <form action='' name='regstration' method='post'>
+                <form action="reg" method="post" enctype="multipart/form-data">
                     <div>
                         <em style="color: red;">*</em>업체명<br>
                         <input type="text" class="text-box acc-name" name="acc-name" placeholder="틈 호텔" required>
@@ -70,26 +70,26 @@
                     <div>
                         <em style="color: red;">*</em>위치<br>
                         <select name="big-location">
-                            <option>서울</option>
-                            <option>제주</option>
-                            <option>부산</option>
-                            <option>강원</option>
-                            <option>경기</option>
-                            <option>인천</option>
-                            <option>경상</option>
-                            <option>전라</option>
-                            <option>충청</option>
+                            <option value="서울">서울</option>
+                            <option value="제주">제주</option>
+                            <option value="부산">부산</option>
+                            <option value="강원">강원</option>
+                            <option value="경기">경기</option>
+                            <option value="인천">인천</option>
+                            <option value="경상">경상</option>
+                            <option value="전라">전라</option>
+                            <option value="충청">충청</option>
                         </select>
                     
                         <select name="small-location">
                             <!-- 서울 -->
-                            <option value="">강남</option>
-                            <option value="">역삼</option>
-                            <option value="">삼성</option>
-                            <option value="">신사</option>
-                            <option value="">청담</option>
-                            <option value="">압구정</option>
-                            <option value="">서초</option>
+                            <option value="강남">강남</option>
+                            <option value="역삼">역삼</option>
+                            <option value="삼성">삼성</option>
+                            <option value="신사">신사</option>
+                            <option value="청담">청담</option>
+                            <option value="압구정">압구정</option>
+                            <option value="서초">서초</option>
                             <option value="">교대</option>
                             <option value="">사당</option>
                             <option value="">잠실</option>
@@ -290,65 +290,76 @@
                             <option value="">충주</option>
                             <option value="">제천</option>
                             <option value="">단양</option>
-                            
                         </select>
                     </div>
                     <div>
                         <em style="color: red;">*</em>상세주소<br>
-                        <input type="text" class="text-box address" name="address" placeholder="서울특별시 종로구 인사동길 12 대일빌딩 15층" required>
+                        <input type="text" class="text-box address" name="detail-address" placeholder="서울특별시 종로구 인사동길 12 대일빌딩 15층" required>
                     </div>
                     <div>
                         <em style="color: red;">*</em>숙소유형  
                         <select name="acc-type">
-                            <option>호텔</option>
-                            <option>모텔</option>
-                            <option>게스트하우스</option>
-                            <option>리조트</option>
-                            <option>펜션</option>
+                            <option value="호텔">호텔</option>
+                            <option value="모텔">모텔</option>
+                            <option value="게스트하우스">게스트하우스</option>
+                            <option value="리조트">리조트</option>
+                            <option value="펜션">펜션</option>
                         </select>
                         
                     </div>
                     <div>
-                        <em style="color: red;">*</em>숙소사진 추가  
-                        <input type="file" accept="image acc_image" name="acc_image" required>
-                    </div>
-                    <div><em style="color: red;">*</em>사업자 등록증  
-                        <input type="file" accept="image company-reg" name="company-reg" required>
+                        <em style="color: red;">*</em>숙소사진1 추가  
+                        <input type="file" accept="image acc_image" name="file" required>
                     </div>
                     <div>
-                        <button type="button" class="button add-button">방 추가</button>
-                        <button type="submit" class="button del-button">방 삭제</button>
+                        <em style="color: red;">*</em>숙소사진2 추가  
+                        <input type="file" accept="image acc_image" name="file" required>
                     </div>
+                    <!-- <div>
+                    	<em style="color: red;">*</em>사업자 등록증  
+                        <input type="file" accept="image company-reg" name="company-reg" required>
+                    </div> -->
+                    <div>
+                        <input type="button" class="button add-button" value="방 추가">
+                        <input type="button" class="button del-button" value="방 삭제">
                     </div>
                         
                     <div class="box">
-                        <section class='add-room'>
-                            <div><em style="color: red;">*</em>방 이름<br>
+                        <section class="add-room">
+                            <div>
+                            	<em style="color: red;">*</em>방 이름<br>
                                 <input type="text"  class="text-box room-name" name="room-name"  placeholder="스위트룸" required>
                             </div>
-                            <div><em style="color: red;">*</em>방 갯수<br>
+                            <div>
+                            	<em style="color: red;">*</em>방 갯수<br>
                                 <input type="text" class="text-box room-count" name="room-count" placeholder="5" required>
                             </div>
-                            <div><em style="color: red;">*</em>최대 인원 수<br>
-                                <input type="text" class="text-box max-headcounter" name="max-headcounter" placeholder="2" required>
+                            <div>
+                            	<em style="color: red;">*</em>최대 인원 수<br>
+                                <input type="text" class="text-box max-headcounter" name="max-headcount" placeholder="2" required>
                             </div>
-                            <div><em style="color: red;">*</em>침대 갯수<br>
+                            <div>
+                            	<em style="color: red;">*</em>침대 갯수<br>
                                 <input type="text" class="text-box bed-count" name="bed-count" placeholder="2" required>
                             </div>
-                            <div><em style="color: red;">*</em>가격<br>
+                            <div>
+                            	<em style="color: red;">*</em>가격<br>
                                 <input type="text" class="text-box price" name="price" placeholder="100000 (돈의 단위는 적지 마세요.)" required>
                             </div>
-                            <div><em style="color: red;">*</em>방사진 추가<br>
-                                <input type="file" accept="image text-box" class="text-box" name="room-image" required></div>
-                            <div>추가 사항<br>
-                                <textarea name="add-info" class="textarea"></textarea>
+                            <div>
+                            	<em style="color: red;">*</em>방사진1 추가<br>
+                                <input type="file" accept="image text-box" class="text-box" name="file" required>
+                            </div>
+                            <div>
+                            	<em style="color: red;">*</em>방사진2 추가<br>
+                                <input type="file" accept="image text-box" class="text-box" name="file" required>
                             </div>
                         </section>  
                     </div>
                         
                     <section>
                         <div>
-                            <input type="submit" class="btn submit-btn" value="등록하기" onclick="submit()">
+                            <input type="submit" class="btn submit-btn" value="등록하기">
                         </div>
                     </section>
                 </form>

@@ -12,6 +12,9 @@ public interface AccDao {
 	int delete(int id);
 	int[] deleteAll(int[] ids);
 	
+	int insert(Acc acc);
+	int update(Acc acc);
+	
 	Acc get(int id);
 	Acc applyGet(int id);
 	
@@ -23,8 +26,7 @@ public interface AccDao {
 	List<AccListForAdminView> getApplyViewList();
 	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex);
 	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex,String ac, String field,  String query);
-
 	
-	
+	Acc getLast();
 	
 }
