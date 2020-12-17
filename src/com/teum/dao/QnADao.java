@@ -10,6 +10,7 @@ public interface QnADao {
 	int insert(QnA qna);
 	int update(QnA qna);
 	int delete(int id);
+	int getCount(String category, String query);
 	
 	QnA get(int id);
 	List<QnA> getList();
@@ -17,5 +18,6 @@ public interface QnADao {
 	List<QnAView> getViewList();
 	List<QnAView> getViewList(int startIndex, int endIndex);
 	List<QnAView> getViewList(int startIndex, int endIndex,String category);
+	List<QnAView> getViewList(int startIndex, int endIndex, String category, String query);
 	
 }

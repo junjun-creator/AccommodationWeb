@@ -2,6 +2,7 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.NoticeView;
 import com.teum.entity.Notice;
 
 public interface NoticeDao {
@@ -20,4 +21,7 @@ public interface NoticeDao {
 	List<Notice> getList(int startIndex, int endIndex, String query);
 	
 	List<Notice> getUserList();
+	List<NoticeView> getViewList();
+	List<NoticeView> getViewList(int startIndex,  int endIndex);
+	List<NoticeView> getViewList(int startIndex, int endIndex, String query);
 }

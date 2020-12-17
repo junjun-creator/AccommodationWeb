@@ -22,25 +22,31 @@ public class QnAService {
 		
 		qnaDao = new JdbcQnADao();
 	}
-	
-	public List<QnAView> getViewList(int page, int size, String category){
+	public List<QnAView> getVIewList(int page,int size,String category, String query) {
+		
+		List<QnAView> list = new ArrayList<QnAView>();
+		
 		int startIndex = 1 + (page-1)*size;
 		int endIndex = page*size;
+		list = qnaDao.getViewList(startIndex,endIndex,category,query);
+		return list;
+	}
+	public List<QnAView> getViewList(int page,int size, String category){
 		
-		return qnaDao.getViewList(startIndex,endIndex,category);
+		
+		return qnaDao.getViewList(page, size, category,"");
 	}
 	
-	public List<QnAView> getViewList(int page, int size){
-		int startIndex = 1 + (page-1)*size;
-		int endIndex = page*size;
+	public List<QnAView> getViewList(int page,int size){
 		
-		return qnaDao.getViewList(startIndex,endIndex,"");
+		
+		return qnaDao.getViewList(page,size,"","");
 	}
 	
 	public List<QnAView> getViewList(){
 		
 		
-		return qnaDao.getViewList(1,10,"");
+		return qnaDao.getViewList(1, 3, "", "");
 	}
 	
 	
@@ -68,4 +74,14 @@ public class QnAService {
 		
 		return result;
 	}
+
+	public int getCount(String category, String query) {
+		int result = 0;
+		
+		result = qnaDao.getCount(category,query);
+		
+		return result;
+	}
+
+	
 }

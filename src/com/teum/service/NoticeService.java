@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.NoticeDao;
+import com.teum.dao.entity.NoticeView;
 import com.teum.dao.jdbc.JdbcNoticeDao;
 import com.teum.entity.Notice;
 
@@ -40,6 +41,26 @@ public class NoticeService {
 		int endIndex = page*3;
 		
 		list= noticeDao.getList(startIndex,endIndex,query);
+		return list;
+	}
+public List<NoticeView> getViewList() {
+		
+		return getViewList(1,"");
+			
+	}
+	public List<NoticeView> getViewList(int page) {
+		
+		
+		return  getViewList(page,"");
+	}
+	
+	public List<NoticeView> getViewList(int page,String query) {
+		List<NoticeView> list = new ArrayList<NoticeView>();
+		
+		int startIndex = 1+(page-1)*3;
+		int endIndex = page*3;
+		
+		list= noticeDao.getViewList(startIndex,endIndex,query);
 		return list;
 	}
 	

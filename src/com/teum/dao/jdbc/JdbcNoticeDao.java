@@ -165,7 +165,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		List<Notice>list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ADMIN_NOTICE WHERE NUM BETWEEN ? AND ? AND TITLE LIKE ?";
+		String sql = "SELECT * FROM(SELECT ROWNUM NUM2, AN.* FROM ADMIN_NOTICE AN WHERE TITLE LIKE ? )WHERE NUM2 BETWEEN ? AND ?";
 		
 		/*
 		 * if(!query.equals("")) { String sql_ = " AND TITLE LIKE ?"; sql = sql + sql_;
@@ -322,7 +322,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		
 		
 		String url = DBContext.URL;
-		String sql = "SELECT count(*) FROM NOTICE WHERE TITLE LIKE ?";
+		String sql = "SELECT COUNT(*) FROM NOTICE WHERE TITLE LIKE ?";
 		
 		/*
 		 * if(!query.equals("")) { String sql_ ="WHERE TITLE LIKE ?"; sql =sql + sql_; }
@@ -342,7 +342,7 @@ public class JdbcNoticeDao implements NoticeDao {
 			while(rs.next()) {
 				result = rs.getInt(1);
 			}
-			System.out.printf("rs = %d\n",result);
+			
 			
 			st.close();
 			con.close();
@@ -353,6 +353,84 @@ public class JdbcNoticeDao implements NoticeDao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public List<NoticeView> getViewList() {
+		// TODO Auto-generated method stub
+		return getViewList(1,3,"");
+	}
+
+	@Override
+	public List<NoticeView> getViewList(int startIndex, int endIndex) {
+		// TODO Auto-generated method stub
+		return getViewList(startIndex,endIndex,"");
+	}
+
+	@Override
+	public List<NoticeView> getViewList(int startIndex, int endIndex, String query) {
+		
+		List<NoticeView> list =new ArrayList<NoticeView>();
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM(SELECT ROWNUM NUM2, AN.* FROM ADMIN_NOTICE AN WHERE TITLE LIKE ? )WHERE NUM2 BETWEEN ? AND ?";
+		
+		/*
+		 * if(!query.equals("")) { String sql_ = " AND TITLE LIKE ?"; sql = sql + sql_;
+		 * }
+		 */
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+				st.setString(1,"%"+query+"%");
+			  st.setInt(2, startIndex); 
+			  st.setInt(3, endIndex);
+			 
+			
+			/*
+			 * if(!query.equals("")) { st.setString(3,"%"+query+"%"); }
+			 */
+		
+			ResultSet rs = st.executeQuery();
+			
+
+			while(rs.next()) {
+				 int rownum = rs.getInt("NUM");
+				 int id =rs.getInt("ID");
+			     String title=rs.getString("TITLE");
+			     int adminId =rs.getInt("ADMIN_ID");
+			     String content=rs.getString("CONTENT");
+			     Date regdate=rs.getDate("REGDATE");
+			     int openStatus =rs.getInt("OPEN_STATUS");
+			     String imageName =rs.getString("IMAGE_NAME");
+			     String imageRoute =rs.getString("IMAGE_ROUTE");
+			     
+			     NoticeView n = new NoticeView();
+			     n.setNum(rownum);
+			     n.setId(id);
+			     n.setTitle(title);
+			     n.setAdminId(adminId);
+			     n.setContent(content);
+			     n.setRegdate(regdate);
+			     n.setOpenStatus(openStatus);
+			     n.setImageName(imageName);
+			     n.setImageRoute(imageRoute);
+			     
+			     list.add(n);
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 

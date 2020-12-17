@@ -188,29 +188,40 @@ public class JdbcQnADao implements QnADao {
 	@Override
 	public List<QnAView> getViewList() {
 
-		return getViewList(1,10,"");
+		return getViewList(1,3,"","");
 	}
 
 	@Override
 	public List<QnAView> getViewList(int startIndex, int endIndex) {
 		
-		return getViewList(startIndex,endIndex,"");
+		return getViewList(startIndex,endIndex,"","");
 	}
 
 
 	@Override
 	public List<QnAView> getViewList(int startIndex, int endIndex, String category) {
 		
+		return getViewList(startIndex,endIndex,category,"");
+	}
+	@Override
+	public List<QnAView> getViewList(int startIndex, int endIndex, String category, String query) {
 		List<QnAView> list = new ArrayList<QnAView>();
 		
-		String sql = "SELECT * FROM QNA_LIST_FOR_ADMIN";
+		String sql = "SELECT * FROM (SELECT ROWNUM NUM, Q.* FROM QNA_LIST_FOR_ADMIN Q)\r\n" + 
+				"WHERE NUM BETWEEN ? AND ? AND CATEGORY LIKE ? AND USER_NAME LIKE ?";
 		String url = DBContext.URL;
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
+			PreparedStatement st = con.prepareStatement(sql);
+			 
+			st.setInt(1, startIndex); 
+			st.setInt(2, endIndex);
+			st.setString(3, "%"+category+"%");
+			st.setString(4, "%"+query+"%");
+			
+			ResultSet rs = st.executeQuery();
 			
 
 			while(rs.next()) {
@@ -246,5 +257,41 @@ public class JdbcQnADao implements QnADao {
 		
 		return list;
 	}
+	@Override
+	public int getCount(String category, String query) {
+		int result = 0;
+		
+		String url = DBContext.URL;
+		String sql ="SELECT COUNT(*) FROM qna_list_for_admin WHERE USER_NAME LIKE ? AND CATEGORY LIKE ?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1,"%"+query+"%" );
+			st.setString(2, "%"+category+"%");
+			/*
+			 * if(!query.equals("")) { st.setString(1,"%"+query+"%" ); }
+			 */
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			ResultSet rs =st.executeQuery();//insert,update,delete 문장일 떄
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	
 
 }

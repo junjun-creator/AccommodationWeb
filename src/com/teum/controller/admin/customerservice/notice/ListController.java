@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teum.entity.Notice;
+import com.teum.dao.entity.NoticeView;
 import com.teum.service.NoticeService;
 
 @WebServlet("/admin/customerService/notice/list")
@@ -19,7 +19,7 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NoticeService service = new NoticeService();
-		List<Notice> list =new ArrayList<>();
+		List<NoticeView> list =new ArrayList<>();
 		//int count = service.getCount();
 		/*
 		 * String queryString = request.getQueryString(); if(queryString ==null) { list
@@ -47,15 +47,8 @@ public class ListController extends HttpServlet {
 			page = Integer.parseInt(page_);
 		}
 		
-		list = service.getList(page, query);
+		list = service.getViewList(page, query);
 		int count = service.getCount(query);
-		
-		//페이저 전체 수
-		/*
-		 * int pageCount = count/10 +1;
-		 * 
-		 * if(count % 10 == 0) pageCount = count/10;
-		 */
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageCount", count);
