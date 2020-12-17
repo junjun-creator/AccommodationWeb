@@ -75,10 +75,10 @@
                 <section class="event-sec">
                     <h1>이벤트 / <span>Event</span></h1>
                     <c:forEach var="event" items="${list}">
-                    	<%-- <c:if test="${event.openStatus == 1}"> --%>
+                    	<c:if test="${event.openStatus == 1}">
                     	<div class="event-img-container">
 	                        <h1>${event.title}</h1>
-	                        <h2>${event.regdate} ~ ${event.endDate}</h2>
+	                        <h2>${event.startDate} ~ ${event.endDate}</h2>
 	                        <div class="scale">
 	                            <a href="detail?id=${event.id}">
 		                            <c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
@@ -96,7 +96,7 @@
 	                            </a>
 	                        </div>
 	                    </div>
-                    	<%-- </c:if> --%>
+                    	</c:if>
                     </c:forEach>
                     <c:set var="page" value="${(empty param.p) ? 1 : param.p}"/>
                    	<c:set var="startNum" value="${page - (page - 1) % 5}"/>

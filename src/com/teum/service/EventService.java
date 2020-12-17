@@ -104,7 +104,6 @@ public class EventService {
 
 	public int getLastId() {
 		Event event = eventDao.getLast();
-		
 		return event.getId();
 	}
 
@@ -114,6 +113,10 @@ public class EventService {
 
 	public int getCount() {
 		return eventDao.getCount("");
+	}
+
+	public int getId() {
+		return eventDao.getId();
 	}
 
 	

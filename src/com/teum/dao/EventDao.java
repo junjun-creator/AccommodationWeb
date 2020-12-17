@@ -24,5 +24,6 @@ public interface EventDao {
 	Event getLast();
 	
 	int openAll(String oIdsCSV, String cIdsCSV);
-	int getCount(String search);
+	int getCount(String search); // 이벤트 모든 컬럼수
+	int getId(); // 이벤트를 맨 처음에 등록할 때 기존에 등록된 id가 없기 때문에 시퀀스로 불러옴
 }

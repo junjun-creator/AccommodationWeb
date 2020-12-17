@@ -73,7 +73,7 @@
                 <section class="event-sec">
                     <h1>이벤트 / <span>Event</span></h1>
                     <h2>${currEvent.title}</h2>
-                    <h2>${currEvent.regdate} ~ ${currEvent.endDate}</h2>
+                    <h2>${currEvent.startDate} ~ ${currEvent.endDate}</h2>
                     <section class="img-sec">
                         <div class="img-container">
                         	<c:forTokens var="imageName" items="${currEvent.imageName}" delims="," varStatus="st">

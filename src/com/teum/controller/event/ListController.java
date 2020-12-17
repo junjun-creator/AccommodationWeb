@@ -33,6 +33,11 @@ public class ListController extends HttpServlet{
 				
 		list = service.getViewList(page, 5);
 		
+//		for (EventListView view : list) {
+//			System.out.println(view.getStartDate());
+//			System.out.println(view.getTitle());
+//		}
+			
 		int count = service.getCount(); // 모든 컬럼의 수를 가져옴
 		
 		Date now = new Date();

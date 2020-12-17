@@ -1,6 +1,7 @@
 package com.teum.controller.event;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,9 @@ public class DetailController extends HttpServlet{
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		EventService service = new EventService();
-		List<EventListView> list = service.getViewList(); // 구현부에서 문제가 있는거같은데
+		List<EventListView> list = new ArrayList<>();
+		
+		list = service.getViewList(); // 구현부에서 문제가 있는거같은데
 		int size = list.size();
 		
 		Event currEvent = service.get(id);
