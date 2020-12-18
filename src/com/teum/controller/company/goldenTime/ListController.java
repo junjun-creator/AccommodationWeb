@@ -36,7 +36,7 @@ public class ListController extends HttpServlet {
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 	
-	@SuppressWarnings("unused")
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GoldenTimeService service = new GoldenTimeService();
@@ -44,22 +44,12 @@ public class ListController extends HttpServlet {
 		String cmd = request.getParameter("cmd");
 		int chk = Integer.parseInt(request.getParameter("check"));
 		String saleprice_=request.getParameter("price");
-		
 		int status = Integer.parseInt(request.getParameter("status"));
-		DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
-		Date startDate = null;
-		Date endDate = null;
 		
 		int saleprice=0;
-		
-		
-			try {
-				startDate = dateFormat.parse(request.getParameter("start"));
-				endDate = dateFormat.parse(request.getParameter("end"));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		
+		if(saleprice_!=null&&!saleprice_.equals("")) {
+			saleprice =Integer.parseInt(saleprice_);
+		}
 		
 			Acc acc = new Acc(chk,status);
 		switch (cmd) {
@@ -70,8 +60,23 @@ public class ListController extends HttpServlet {
 			break;
 		
 		case "수정":
-			 acc = new Acc(chk,startDate,endDate,saleprice);
-			service.update(acc);
+			DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+			Date startDate = null;
+			Date endDate = null;
+			
+			try {
+				startDate = dateFormat.parse(request.getParameter("start"));
+				endDate = dateFormat.parse(request.getParameter("end"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			 acc.setId(chk);
+			 acc.setGtStartDate(startDate);
+			 acc.setGtEndDate(endDate);
+			 acc.setSaleprice(saleprice);
+			
+			 service.update(acc);
 			break;
 		}
 		
