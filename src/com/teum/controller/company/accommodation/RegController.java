@@ -211,25 +211,15 @@ public class RegController extends HttpServlet {
 		
 		int accId = accService.getLastId();
 		
-		AccImage accImage = new AccImage();
-		accImage.setAccId(accId);
-		accImage.setFilename(accBuilder.toString());
-		accImage.setFileroute(accFilePath);
+		AccImage accImage = new AccImage(accBuilder.toString(), accFilePath, accId);
 		accImageService.insert(accImage);
 		
-		Room room = new Room();
-		room.setAccId(accId);
-		room.setName(roomName);
-		room.setPrice(price);
-		room.setMaxHeadcount(maxHeadcount);
-		room.setBedCount(bedCount);
+		Room room = new Room(roomName, price, accId, maxHeadcount, bedCount);
 		roomService.insert(room);
 
-		RoomImage roomImage = new RoomImage();
 		int roomId = roomService.getLastId(); // insert를 하고 난 후에 방금 넣은 room의 id값 받아오기
-		roomImage.setRoomId(roomId);
-		roomImage.setFilename(roomBuilder.toString());
-		roomImage.setFileroute(roomFilePath);
+
+		RoomImage roomImage = new RoomImage(roomBuilder.toString(), roomFilePath, roomId);
 		roomImageService.insert(roomImage);
 
 		response.sendRedirect("/index");

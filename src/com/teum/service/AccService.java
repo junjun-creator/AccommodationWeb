@@ -114,7 +114,12 @@ public class AccService {
 
 	public List<GoldenTimeView> getGoldenList() {
 		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
-		list =accDao.getGoldenList();
+		list = accDao.getGoldenList();
+		return list;
+	}
+
+	public List<Acc> getList(String location) {
+		List<Acc> list = accDao.getList(location);
 		return list;
 	}
 }

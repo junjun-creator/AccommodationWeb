@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
     var mainCity = document.querySelector('.main-city');
 
     priceInput.onkeyup = function() {
-        inputNumberFormat(this);
+        //inputNumberFormat(this);
     }
 
     mainCity.onchange = function () {
@@ -18,9 +18,9 @@ window.addEventListener('load', function() {
         var mainOption = mainCity.options[mainCity.selectedIndex].innerText;
 
         var subOptions = {
-            seoul: ['강남/역삼/삼성', '신사/청담/압구정', '서초/교대/사당', '잠실/송파/강동',
-                    '을지로/명동/중구', '서울역/이태원/용산', '종로/인사동', '동대문구', '홍대/합정/마포/서대문',
-                    '여의도', '영등포역', '구로/신도림/금천', '김포공항/염창/강서', '건대입구/성수/왕십리', '성북/강북/노원/도봉'],
+            seoul: ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구',
+                    '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구',
+                    '종로구', '중구', '중랑구'],
             busan: ['해운대/마린시티', '벡스코/센텀시티', '송정/기장', '광안리/경성대', '부산역',
                     '자갈치/남포동/영도', '송도/다대포', '서면/연산/범일', '동래/온천,금정구', '사상/강서/김해공항'],
             jeju: ['제주시/제주국제공항', '서귀포시', '애월/한림/협재', '중문', '표선/성산', '함덕/김녕/세화'],

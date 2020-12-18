@@ -29,7 +29,7 @@
                     </li>
                     <li>
                     	<c:if test="${type == 0 }">
-                    		<a href="">제안하기</a>
+                    		<a href="/user/offer/reg">제안하기</a>
                         </c:if>
                         <c:if test="${type == 1 }">
                     		<a href="/company/accommodation/reg">숙소등록</a>
