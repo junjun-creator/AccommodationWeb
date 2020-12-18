@@ -21,22 +21,17 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 		int result =0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE ACC SET GOLDENTIME_STATUS=? WHERE ID=?";
+		String sql = "UPDATE ACC SET GOLDENTIME_STATUS="+((acc.getGoldentimeStatus()==0)?"1":"0")+" WHERE ID=?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st =con.prepareStatement(sql);
 			
-			if(acc.getGoldentimeStatus()==1) {
-				acc.setGoldentimeStatus(0);
-			}else {
-				acc.setGoldentimeStatus(1);
-			}
 			
 			
-			st.setInt(1, acc.getGoldentimeStatus());
-			st.setInt(2, acc.getId());
+			//st.setInt(, acc.getGoldentimeStatus());
+			st.setInt(1, acc.getId());
 			
 		
 			//ResultSet rs = st.executeQuery(sql); // select 문장에만
@@ -176,8 +171,8 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 		 List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
 		 
 			String sql = "SELECT * FROM\r\n" + 
-					"(SELECT ROWNUM NUM, G.* FROM GOLDENTIME_LIST_VIEW G WHERE TYPE LIKE ? AND USER_NAME LIKE ?)\r\n" + 
-					"WHERE NUM BETWEEN ? AND ?";
+					"(SELECT ROWNUM NUM, G.* FROM GOLDENTIME_LIST_VIEW G WHERE  REG_STATUS = 1 AND TYPE LIKE ? AND USER_NAME LIKE ?)\r\n" + 
+					"WHERE NUM BETWEEN ? AND ? ";
 			String url = DBContext.URL;
 		 
 			try {
@@ -245,7 +240,7 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 	int result = 0;
 		
 		String url = DBContext.URL;
-		String sql ="SELECT COUNT(*) FROM GOLDENTIME_LIST_VIEW WHERE USER_NAME LIKE ? AND CATEGORY LIKE ?";
+		String sql ="SELECT COUNT(*) FROM GOLDENTIME_LIST_VIEW WHERE REG_STATUS = 1 AND USER_NAME LIKE ? AND TYPE LIKE ?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
