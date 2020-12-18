@@ -61,55 +61,62 @@
                     </ul>
                 </div>
                 
+		                    <form action="list"  method="post">
                 <section class="golden-sec">
                     <h1>골든타임 리스트 /
                     	<span>GoldenTime List</span>
                     </h1>
-                    <div>
-                    	<form action="">
-                    	<div class="option-list">
-	                    	<div>
-				             	<span>시작일 :</span> <input type="date">
-				               	<span>종료일 : </span> <input type="date">
-				            </div>
-				            <div>    
-				                <span>인하가격 : </span> <input type="text" class="form-option price-input" placeholder="원(￦) 단위로 입력해 주세요" >
-			                </div>
-		                </div>
-		                <div class="btn-list">
-		                	<input type="button" value="등록"><input type="button" value="해제"><input type="button"value="수정">
-		                </div>
-		                </form>
-                    </div>
-                    <c:forEach var="g"  items="${list}">
-                    <div class="snip1368">
-                        <img src="${g.fileroute}" alt="">
-                       <!--  <div class="radio">
-                        	<input type="radio" class="radio">
-                        </div> -->
-                        <input type="radio" class="radio" name="check">
-                        <h3>진행중</h3>
-                        <figcaption>
-                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                            </div>
-                          </figcaption>
-                        <div class="description-item">
-                            <p>${g.accName}</p>
-                            <P>2020/12/01 ~ 2020/12/24</P>
-                            <p>강남구 역삼동</p>
-                        </div>
-                        <div class="item-price">
-                            <div>
-                                <p>인하가격</p>
-                                <p>30,000원</p>
-                            </div>
-                        </div>
-                        <div class="hovered-item-bg">
-                        </div>
-                    </div>
-                    </c:forEach>
+                    	<div class="formbox">
+                    		<div class="form">
+		                    	<div class="option-list">
+			                    	<div>
+						             	<span>시작일 :</span> <input type="date" name="start">
+						               	<span>종료일 : </span> <input type="date"name="end">
+						            </div>
+						            <div>    
+						                <span>인하가격 : </span> <input type="text" class="form-option price-input" placeholder="원(￦) 단위로 입력해 주세요"  name="price">
+					                </div>
+				                </div>
+				                <div class="btn-list">
+				                	<input type="submit"  name="cmd"value="전환"><input type="submit" name="cmd"value="수정">
+				                </div>
+					           </div>  
+	                    </div>
+	                    <c:forEach var="g"  items="${list}">
+		                    <div class="snip1368">
+		                        <img src="../..${g.fileroute}/메인.jpg" alt="">
+		                       	<input type="hidden" name="status" value="${g.goldentimeStatus}">
+		                        	<input type="radio" class="radio" name="check" value="${g.id}" >
+		                         <c:set var="status" value=""/>
+		                         <c:if test="${g.goldentimeStatus==1}">
+		                        	 <c:set var="status" value="진행중"/>
+		                         </c:if> 
+		                         <c:if test="${g.goldentimeStatus==0}">
+		                        	 <c:set var="status" value="대기중"/>
+		                         </c:if>     
+		                        <h3>${status}</h3>
+		                        <figcaption>
+		                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+		                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+		                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+		                            </div>
+		                          </figcaption>
+		                        <div class="description-item">
+		                            <p>${g.name}</p>
+		                            <P>${g.gtStartDate} ~ ${g.gtEndDate}</P>
+		                            <p>${g.location }</p>
+		                        </div>
+		                        <div class="item-price">
+		                            <div>
+		                                <p>인하가격</p>
+		                                <p>${g.saleprice}원</p>
+		                            </div>
+		                        </div>
+		                        <div class="hovered-item-bg">
+		                        </div>
+		                    </div>
+	                    </c:forEach>
+                  
                     <!-- <div class="snip1368">
                         <img src="../../images/company/호텔/부산/해운대/신라스테이_해운대/신라스테이_해운대_메인.jpg" alt="">
                         <input type="radio" class="radio" name="check">
@@ -135,6 +142,7 @@
                         </div>
                     </div> -->
                 </section>
+                </form>
             </main>
         </div>
     </section>

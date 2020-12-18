@@ -76,18 +76,14 @@
 	         font-size: 20px;
 	         font-weight: normal;
         }
-        
-        .golden-sec>div{
+         .golden-sec>div{
         	width: 600px;
             margin: 0 auto;
             position: relative;
             margin-bottom:20px;
         }
-        .golden-sec form{
-        	width:600px;
-        	display: flex;
-        	flex-direction: row;
-        }
+       
+       
         .golden-sec .option-list{
         	width:400px;
         }
@@ -97,7 +93,7 @@
         	justify-content: space-between;
         }
         
-	        .golden-sec .btn-list input[type="button"]{
+	        .golden-sec .btn-list input[type="submit"]{
 	   	 		width:60px;
 	            align-self:center; 
 	          	background-color: #fc0453;
@@ -168,6 +164,22 @@
                     top: 0;
                     opacity: 0;
                 }
+                 .golden-sec>.formbox{
+        	width: 600px;
+            margin: 0 auto;
+            position: relative;
+            margin-bottom:20px;
+         height: 60px;
+           
+        }
+         .golden-sec>.formbox> .form{
+        	width:600px;
+        	display: flex;
+        	flex-direction: row;
+        	 opacity: 1;
+        	  background-color: white;
+        	   height: 60px;
+        }
 /*======================================================*/
 .snip1368 {
   position: relative;
