@@ -91,7 +91,7 @@ btnLeft.addEventListener("click",function(){
     else{
         promotionCount = promotionItems.length-3;
         promotionItemContainer.style.transform = "translateX("+(-306)*promotionCount+"px)";
-    }x1
+    }
 });
 btnRight.addEventListener("click",function(){
     //var promotionItemContainer = document.querySelector(".promotion-item-container");

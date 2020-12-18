@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +23,7 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -26,15 +31,8 @@
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                      
                     </li>
                 </ul>
             </div>
@@ -48,7 +46,7 @@
                 <ul>
                     <li><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
                     <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
-                    <li class="active"><a href=offerList""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li class="active"><a href="offerList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li><a href="pickList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>
             </aside>
@@ -60,92 +58,31 @@
                     <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
                     <div style="width: 700px; overflow:hidden;">
                         <div class="proposal-item-container" style="display: flex;">
-
-                            <div class="proposal-info">
-                                <h2>제안정보</h2>
-                                <ul>
-                                    <li>
-                                        <div>날짜</div>
-                                        <div>2020.12.12 ~ 2020.12.15</div>
-                                    </li>
-                                    <li>
-                                        <div>위치</div>
-                                        <div>경기도 하남시</div>
-                                    </li>
-                                    <li>
-                                        <div>인원수</div>
-                                        <div>4</div>
-                                    </li>
-                                    <li>
-                                        <div>희망하는 가격</div>
-                                        <div class="wanted-price">120,000원</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="proposal-info">
-                                <h2>제안정보</h2>
-                                <ul>
-                                    <li>
-                                        <div>날짜</div>
-                                        <div>2020.12.12 ~ 2020.12.15</div>
-                                    </li>
-                                    <li>
-                                        <div>위치</div>
-                                        <div>경기도 하남시</div>
-                                    </li>
-                                    <li>
-                                        <div>인원수</div>
-                                        <div>4</div>
-                                    </li>
-                                    <li>
-                                        <div>희망하는 가격</div>
-                                        <div class="wanted-price">120,000원</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="proposal-info">
-                                <h2>제안정보</h2>
-                                <ul>
-                                    <li>
-                                        <div>날짜</div>
-                                        <div>2020.12.12 ~ 2020.12.15</div>
-                                    </li>
-                                    <li>
-                                        <div>위치</div>
-                                        <div>경기도 하남시</div>
-                                    </li>
-                                    <li>
-                                        <div>인원수</div>
-                                        <div>4</div>
-                                    </li>
-                                    <li>
-                                        <div>희망하는 가격</div>
-                                        <div class="wanted-price">120,000원</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="proposal-info">
-                                <h2>제안정보</h2>
-                                <ul>
-                                    <li>
-                                        <div>날짜</div>
-                                        <div>2020.12.12 ~ 2020.12.15</div>
-                                    </li>
-                                    <li>
-                                        <div>위치</div>
-                                        <div>경기도 하남시</div>
-                                    </li>
-                                    <li>
-                                        <div>인원수</div>
-                                        <div>4</div>
-                                    </li>
-                                    <li>
-                                        <div>희망하는 가격</div>
-                                        <div class="wanted-price">120,000원</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
+				
+							<c:forEach items="${offerList }" var="offer" varStatus="status">
+							
+	                            <div class="proposal-info">
+	                                <h2>제안정보</h2>
+	                                <ul>
+	                                    <li>
+	                                        <div>날짜</div>
+	                                        <div>${offer.checkinDate } ~ ${offer.checkoutDate }</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>위치</div>
+	                                        <div>${offer.location }</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>인원수</div>
+	                                        <div>${offer.headcount }</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>희망하는 가격</div>
+	                                        <div class="wanted-price"><fmt:formatNumber value="${offer.price }" pattern="#,###" />원</div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+							</c:forEach>
                         </div>
                     </div>
                     <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
