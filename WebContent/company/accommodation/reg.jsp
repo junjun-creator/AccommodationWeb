@@ -315,11 +315,11 @@
                     </div>
                     <div>
                         <em style="color: red;">*</em>숙소사진1 추가  
-                        <input type="file" accept="image acc_image" name="file" required>
+                        <input type="file" accept="image acc_image" name="acc-file" required>
                     </div>
                     <div>
                         <em style="color: red;">*</em>숙소사진2 추가  
-                        <input type="file" accept="image acc_image" name="file" required>
+                        <input type="file" accept="image acc_image" name="acc-file" required>
                     </div>
                     <!-- <div>
                     	<em style="color: red;">*</em>사업자 등록증  
@@ -354,11 +354,11 @@
                             </div>
                             <div>
                             	<em style="color: red;">*</em>방사진1 추가<br>
-                                <input type="file" accept="image text-box" class="text-box" name="file" required>
+                                <input type="file" accept="image text-box" class="text-box" name="room-file" required>
                             </div>
                             <div>
                             	<em style="color: red;">*</em>방사진2 추가<br>
-                                <input type="file" accept="image text-box" class="text-box" name="file" required>
+                                <input type="file" accept="image text-box" class="text-box" name="room-file" required>
                             </div>
                         </section>  
                     </div>
