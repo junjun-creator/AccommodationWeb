@@ -157,6 +157,7 @@
             .snip1368 img {
                 opacity: 1;
                 width: 100%;
+                object-fit: fill;
                 vertical-align: top;
             }
             .snip1368 h3 {

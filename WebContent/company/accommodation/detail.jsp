@@ -65,6 +65,7 @@
                 <div class="main-img">
                     <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png" alt= "신라스테이 삼성"><br>
                 </div>
+                
                 <!-- <div class="cliper-btn prev-btn">
                     <i class="fas fa-angle-left"></i>
                 </div>
