@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/js/user/userInfo/proposalList.js"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
@@ -45,73 +46,190 @@
             <aside id="aside" class="aside">
                 <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
                     <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
-                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
-                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
+                    <li class="active"><a href=offerList""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li><a href="pickList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>
             </aside>
             <main id="main" class="main">
-                <div class="breadcrumb">
-                    <ul class="breadcrumb-list">
-                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
-                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
-                    </ul>
+                <div>
+
                 </div>
-                <section class="proposal-sec">
+                <div>
+                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
+                    <div style="width: 700px; overflow:hidden;">
+                        <div class="proposal-item-container" style="display: flex;">
+
+                            <div class="proposal-info">
+                                <h2>제안정보</h2>
+                                <ul>
+                                    <li>
+                                        <div>날짜</div>
+                                        <div>2020.12.12 ~ 2020.12.15</div>
+                                    </li>
+                                    <li>
+                                        <div>위치</div>
+                                        <div>경기도 하남시</div>
+                                    </li>
+                                    <li>
+                                        <div>인원수</div>
+                                        <div>4</div>
+                                    </li>
+                                    <li>
+                                        <div>희망하는 가격</div>
+                                        <div class="wanted-price">120,000원</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="proposal-info">
+                                <h2>제안정보</h2>
+                                <ul>
+                                    <li>
+                                        <div>날짜</div>
+                                        <div>2020.12.12 ~ 2020.12.15</div>
+                                    </li>
+                                    <li>
+                                        <div>위치</div>
+                                        <div>경기도 하남시</div>
+                                    </li>
+                                    <li>
+                                        <div>인원수</div>
+                                        <div>4</div>
+                                    </li>
+                                    <li>
+                                        <div>희망하는 가격</div>
+                                        <div class="wanted-price">120,000원</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="proposal-info">
+                                <h2>제안정보</h2>
+                                <ul>
+                                    <li>
+                                        <div>날짜</div>
+                                        <div>2020.12.12 ~ 2020.12.15</div>
+                                    </li>
+                                    <li>
+                                        <div>위치</div>
+                                        <div>경기도 하남시</div>
+                                    </li>
+                                    <li>
+                                        <div>인원수</div>
+                                        <div>4</div>
+                                    </li>
+                                    <li>
+                                        <div>희망하는 가격</div>
+                                        <div class="wanted-price">120,000원</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="proposal-info">
+                                <h2>제안정보</h2>
+                                <ul>
+                                    <li>
+                                        <div>날짜</div>
+                                        <div>2020.12.12 ~ 2020.12.15</div>
+                                    </li>
+                                    <li>
+                                        <div>위치</div>
+                                        <div>경기도 하남시</div>
+                                    </li>
+                                    <li>
+                                        <div>인원수</div>
+                                        <div>4</div>
+                                    </li>
+                                    <li>
+                                        <div>희망하는 가격</div>
+                                        <div class="wanted-price">120,000원</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
+                </div>
+                <!-- <section class="proposal-sec">
                     <div class="cliper-btn prev-btn">
                         <i class="fas fa-angle-left"></i>
                     </div>
                     <div class="cliper-btn next-btn">
                         <i class="fas fa-angle-right"></i>
                     </div>
-                    <h1>제안하신 목록입니다!</h1>  
+                    <h1>제안하신 목록입니다!</h1> 
                     <div class="proposal-container">
-                        <div class="proposal-info">
-                            <h2>제안정보</h2>
-                            <ul>
-                                <li>
-                                    <div>날짜</div>
-                                    <div>2020.12.12 ~ 2020.12.15</div>
-                                </li>
-                                <li>
-                                    <div>위치</div>
-                                    <div>경기도 하남시</div>
-                                </li>
-                                <li>
-                                    <div>인원수</div>
-                                    <div>4</div>
-                                </li>
-                                <li>
-                                    <div>희망하는 가격</div>
-                                    <div class="wanted-price">120,000원</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="proposal-info">
-                            <h2>제안정보</h2>
-                            <ul>
-                                <li>
-                                    <div>날짜</div>
-                                    <div>2020.12.07 ~ 2020.12.08</div>
-                                </li>
-                                <li>
-                                    <div>위치</div>
-                                    <div>서울시 강남구</div>
-                                </li>
-                                <li>
-                                    <div>인원수</div>
-                                    <div>3</div>
-                                </li>
-                                <li>
-                                    <div>희망하는 가격</div>
-                                    <div class="wanted-price">50,000원</div>
-                                </li>
-                            </ul>
+                        <div class="proposal-ul">
+                            <div>
+                                
+                                <div class="proposal-info">
+                                    <h2>제안정보</h2>
+                                    <ul>
+                                        <li>
+                                            <div>날짜</div>
+                                            <div>2020.12.12 ~ 2020.12.15</div>
+                                        </li>
+                                        <li>
+                                            <div>위치</div>
+                                            <div>경기도 하남시</div>
+                                        </li>
+                                        <li>
+                                            <div>인원수</div>
+                                            <div>4</div>
+                                        </li>
+                                        <li>
+                                            <div>희망하는 가격</div>
+                                            <div class="wanted-price">120,000원</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="proposal-info">
+                                    <h2>제안정보</h2>
+                                    <ul>
+                                        <li>
+                                            <div>날짜</div>
+                                            <div>2020.12.07 ~ 2020.12.08</div>
+                                        </li>
+                                        <li>
+                                            <div>위치</div>
+                                            <div>서울시 강남구</div>
+                                        </li>
+                                        <li>
+                                            <div>인원수</div>
+                                            <div>3</div>
+                                        </li>
+                                        <li>
+                                            <div>희망하는 가격</div>
+                                            <div class="wanted-price">50,000원</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="proposal-info">
+                                    <h2>제안정보</h2>
+                                    <ul>
+                                        <li>
+                                            <div>날짜</div>
+                                            <div>2020.12.07 ~ 2020.12.08</div>
+                                        </li>
+                                        <li>
+                                            <div>위치</div>
+                                            <div>서울시 강남구</div>
+                                        </li>
+                                        <li>
+                                            <div>인원수</div>
+                                            <div>3</div>
+                                        </li>
+                                        <li>
+                                            <div>희망하는 가격</div>
+                                            <div class="wanted-price">50,000원</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
-                </section>
+                </section> -->
 
                 <section class="offer-sec">
                     <form class="offer-form">
@@ -120,7 +238,7 @@
                             <div class="offer-container">
                                 <div class="offer-img-container">
                                     <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
-                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/슈페리얼더블1.jpg" alt=""></a>
+                                    <a href=""><img src="../../images/company/호텔/서울/강남구/라마다호텔/슈페리얼더블/메인.jpg" alt=""></a>
                                 </div>
                                 <div class="offer-detail-container">
                                     <div class="offer-room">
@@ -154,7 +272,7 @@
                             <div class="offer-container">
                                 <div class="offer-img-container">
                                     <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
-                                    <a href=""><img src="../../images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/슈페리얼더블1.jpg" alt=""></a>
+                                    <a href=""><img src="../../images/company/호텔/서울/강남구/라마다호텔/슈페리얼더블/메인.jpg" alt=""></a>
                                 </div>
                                 <div class="offer-detail-container">
                                     <div class="offer-room">
@@ -183,75 +301,6 @@
             </main>
         </div>
     </section>
-
-    
-
-    <!-- <section class="userInfo_main">
-        <main class="sec_userInfo_main">
-            <aside>
-                <h1>회원정보관리(개인)</h1>
-                <ul>
-                    <li>
-                        <a href="">회원정보수정</a>
-                    </li>
-                    <li>
-                        <a href="">예약관리</a>
-                    </li>
-                    <li>
-                        <a href="">경매신청관리</a>
-                    </li>
-                    <li>
-                        <a href="">최근살펴본상품조회</a>
-                    </li>
-                    <li>
-                        <a href="">찜한상품조회</a>
-                    </li>
-                </ul>
-            </aside>
-
-            <div>
-                <section>
-                    <h1>역제안 신청 관리</h1>
-                    <div>
-                        <li>
-                            <table border="1">
-                                <tr>
-                                    <td colspan="2">제안정보</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="오퍼목록보기"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>날짜</td>
-                                    <td>2020.12.07 ~ 2020.12.08</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>위치</td>
-                                    <td>서울시 강남구</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="역제안 수정"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>인원수</td>
-                                    <td>성인2, 아동1</td>
-                                </tr>
-                                <tr>
-                                    <td>희망가격</td>
-                                    <td>50,000원</td>
-                                    <td colspan="2" rowspan="2"><input type="button" value="역제안 취소"></td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>상태</td>
-                                    <td>신청중</td>
-                                </tr>
-                            </table>
-                        </li>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </section> -->
 
     <section>
         <footer id="footer" class="footer">

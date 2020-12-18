@@ -68,84 +68,85 @@
                 justify-content: flex-end;
                 font-size: 12px;
             }
-
-            .proposal-sec {
-                --border: 1px solid red;
-                position: relative;
+/* ㅈㅔ안 리스트  */
+            .main{
+                width: 900px;
+                margin: 0 auto;
             }
-
-                .proposal-sec > h1 {
-                    --border: 1px solid green;
-                    width: 500px;
-                    font-weight: bold;
-                    font-size: 24px;
-                    margin: 50px 0 0 30px;
+                .main .btn-left,
+                .main .btn-right{
+                    align-items: center;
                 }
-
-                .proposal-sec .cliper-btn {
-                    position: absolute;
-                    z-index: 5;
-                    font-size: 40px;
-                    opacity: 0.2;
+            
+                .main>div:first-child{
+                    padding-top: 30px;
+                    text-indent: 100px;
                 }
-
-                .proposal-sec .cliper-btn {
-                    cursor: pointer;
-                }
-
-                .proposal-sec .prev-btn {
-                    top: 90px;
-                }
-
-                .proposal-sec .next-btn {
-                    top: 90px;
-                    right: 0;
-                }
-
-                .proposal-sec > .proposal-container {
+                .main>div:nth-child(2){
                     display: flex;
+                    padding-top: 20px;
                     justify-content: space-evenly;
-                    margin-top: 20px;
                 }
-
-                    .proposal-container > .proposal-info {
-                        border: 1px solid purple;
-                        flex-basis: 350px;
+                    .main>div:nth-child(2)>div{
+                        height: 100%;
+                        display: flex;
+                        margin: 5px;
                     }
-
-                    .proposal-container > div:hover {
+            
+                .proposal-item-container{
+                    justify-content: space-evenly;
+                    transition: transform 1s;
+                }
+                    
+                    .main>div:nth-child(2)>div:first-child{
+                        margin-left: 0px;
+                    }
+                    .main>div:nth-child(2)>div:last-child{
+                        margin-right: 0px;
+                    }
+            
+            
+                    .proposal-info {
+                        border: 1px solid purple;
+                        width: 330px;
+                        margin: 0px 10px;
+                    }
+            
+                    .proposal-info:hover {
                         background: rgb(203, 185, 221);
                         cursor: pointer;
                     }
-
-                        .proposal-container > div > h2 {
+            
+                    .proposal-info> h2 {
                             padding-left: 10px;
                             font-weight: bold;
                         }
-
-                            .proposal-container > div > ul > li {
+            
+                        .proposal-info> ul > li {
                                 display: flex;
                                 --flex-grow: 1;
                                 padding-left: 10px;
                                 margin-top: 5px;
                             }
-
-                                .proposal-container > div > ul > li > div{
+            
+                            .proposal-info> ul > li > div{
                                     --border: 1px solid red;
                                     flex-basis: 120px;
                                     flex-grow: 1;
                                 }
-
-                                .proposal-container > div > ul > li > div:nth-child(2){
+            
+                                .proposal-info> ul > li > div:nth-child(2){
                                     --border: 1px solid red;
                                     flex-basis: 250px;
                                     flex-grow: 3;
                                 }
-
-                                .proposal-container > div > ul > li > .wanted-price {
+            
+                                .proposal-info> ul > li > .wanted-price {
                                     font-weight: bold;
                                     color: #FC0453;
                                 }
+
+/* -------------------------------------------------------------------------- */
 
             .offer-sec {
                 --border: 1px solid red;

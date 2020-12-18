@@ -5,6 +5,7 @@ import java.util.List;
 import com.teum.dao.PickDao;
 import com.teum.dao.entity.PickListView;
 import com.teum.dao.jdbc.JdbcPickDao;
+import com.teum.entity.Pick;
 
 public class PickService implements PickServiceI{
 	private PickDao pickDao;
@@ -24,6 +25,14 @@ public class PickService implements PickServiceI{
 		List<Double> pointList = pickDao.getPointList(accIds);
 		
 		return pointList;
+	}
+	@Override
+	public int delete(Pick p) {
+		int result = 0;
+		
+		result = pickDao.delete(p);
+		
+		return result;
 	}
 	
 }

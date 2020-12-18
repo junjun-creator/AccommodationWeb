@@ -97,7 +97,6 @@ window.addEventListener("load",function(){
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState === 4 && xhr.status === 200){
 					var valid = xhr.response;
-					console.log(JSON.parse(valid).valid);
 					if(JSON.parse(valid).valid == 0)
 						alert('아이디 또는 비밀번호가 정확하지 않습니다.');
 					else

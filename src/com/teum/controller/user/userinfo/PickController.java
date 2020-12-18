@@ -53,7 +53,12 @@ public class PickController extends HttpServlet {
 		Pick p = new Pick(accId,userId);
 		
 		PickService service = new PickService();
-		int delete = service.delete(p);
+		int delete = 0;
+				
+		delete = service.delete(p);
+		
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().print(delete);
 	}
 	
 	
