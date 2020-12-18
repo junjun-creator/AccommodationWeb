@@ -3,9 +3,14 @@ package com.teum.dao.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.teum.dao.OfferDao;
+import com.teum.dao.entity.UsersListView;
 import com.teum.entity.Offer;
 
 public class JdbcOfferDao implements OfferDao {
@@ -40,6 +45,65 @@ public class JdbcOfferDao implements OfferDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public List<Offer> getList(int id, int type) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT * FROM OFFER WHERE "+((type==0)?"USER_ID":"ACC_ID")+"=?";
+		
+		List<Offer> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,id);
+//			if(!field.equals("")) {
+//			}
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int offerId = rs.getInt("id");
+				int accId = rs.getInt("acc_id");
+				int userId = rs.getInt("user_id");
+				int price = rs.getInt("price");
+				String location = rs.getString("location");
+				Date checkIn = rs.getDate("checkin_date");
+				Date checkOut = rs.getDate("checkout_date");
+				Date regdate = rs.getDate("regdate");
+				int headcount = rs.getInt("headcount");
+				
+				Offer o = new Offer();
+				o.setId(offerId);
+				o.setAccId(accId);
+				o.setUserId(userId);
+				o.setPrice(price);
+				o.setLocation(location);
+				o.setCheckinDate(checkIn);
+				o.setCheckoutDate(checkOut);
+				o.setRegdate(regdate);
+				o.setHeadcount(headcount);
+				
+				list.add(o);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }
