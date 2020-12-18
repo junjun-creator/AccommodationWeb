@@ -8,6 +8,12 @@ public class Pick {
 	public Pick() {
 		
 	}
+	
+	public Pick(int accId, int userId) {
+		super();
+		this.accId=accId;
+		this.userId=userId;
+	}
 
 	public Pick(int id, int userId, int accId) {
 		super();
