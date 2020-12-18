@@ -33,6 +33,18 @@ public class Offer {
 		this.rejectDate = rejectDate;
 	}
 
+	// insert용
+	public Offer(int accId, int userId, int price, String location, Date checkinDate, Date checkoutDate,
+			int headcount) {
+		this.accId = accId;
+		this.userId = userId;
+		this.price = price;
+		this.location = location;
+		this.checkinDate = checkinDate;
+		this.checkoutDate = checkoutDate;
+		this.headcount = headcount;
+	}
+
 	public int getId() {
 		return id;
 	}
