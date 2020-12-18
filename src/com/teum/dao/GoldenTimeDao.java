@@ -10,6 +10,16 @@ public interface GoldenTimeDao {
 	int updateStatus(Acc acc);
 	
 	
+	List<GoldenTimeView> getGoldenList();
 	List<GoldenTimeView> getGoldenList(int id);
+	
+	
+	
+	List<GoldenTimeView> getVIewList(int startIndex, int endIndex, String category, String query);
+	List<GoldenTimeView> getVIewList(int startIndex, int endIndex, String category);
+	List<GoldenTimeView> getVIewList(int startIndex, int endIndex);
+	List<GoldenTimeView> getVIewList();
+	int getCount(String category, String query);
+	
 
 }
