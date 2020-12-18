@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,97 +63,95 @@
 	                    	<div class="main-search">	
 		                        <h1>골든타임 리스트</h1>
 		                        <div>
-			                        <select name="" class="AccTypeCatagory">
-				                       <form action="">
-				                           <option value="" selected disabled>전체보기</option>
-				                           <option value="호텔">호텔</option>
-				                           <option value="모텔">모텔</option>
-				                           <option value="게스트하우스">게스트하우스</option>
-				                           <option value="리조트">리조트</option>
-				                           <option value="펜션">펜션</option>
-				                       </form>
-				                       	<input type="text">
-			                        	<input type="submit" value="검색">
+		                      	<form action="list">
+			                        <select name="category" class="AccTypeCatagory">
+				                           <option value="" selected>전체보기</option>
+				                           <option value="호텔" ${(param.category=="호텔")?"selected":"" }>호텔</option>
+				                           <option value="모텔" ${(param.category=="모텔")?"selected":"" }>모텔</option>
+				                           <option value="게스트하우스" ${(param.category=="게스트하우스")?"selected":"" }>게스트하우스</option>
+				                           <option value="리조트" ${(param.category=="리조트")?"selected":"" }>리조트</option>
+				                           <option value="펜션" ${(param.category=="펜션")?"selected":"" }>펜션</option>
 				                    </select>
+				                    	<input type="hidden" name="page">
+				                    	<input type="text" name="query" value="${param.query}">
+			                        	<input type="submit" value="검색">
+				                     </form>
 			                    </div>
-	                    	</div>	
+	                    	</div>
+	                    	<form action="list" method="post">	
 	                        <table>
 	                            <thead>
 	                                <tr>
 	                                    <td class="col-s">No.</td>
 	                                    <td class="col-s">사업자명</td>
-	                                    <td class="col-sm">숙소명</td>
+	                                    <td class="col-m">숙소명</td>
 	                                    <td class="col-sm">위치</td>
-	                                    <td class="col-sm">등록일</td>
+	                                    <td class="col-sm">기간</td>
 	                                    <td class="col-sm">연락처</td>
-	                                    <td class="col-s">업체종류</td>
-	                                    <td class="col-sm">삭제<input type="checkbox" class="selectAllDelete"></td>
+	                                    <td class="col-s">상태</td>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
+	                            <c:forEach var="g" items="${list}">
+	                            <c:set var="status" value=""/>
+		                         <c:if test="${g.goldentimeStatus==1}">
+		                        	 <c:set var="status" value="진행중"/>
+		                         </c:if> 
+		                         <c:if test="${g.goldentimeStatus==0}">
+		                        	 <c:set var="status" value="대기중"/>
+		                         </c:if>  
 	                                <tr>
-	                                    <td>1</td>
-	                                    <td>김민영</td>
-	                                    <td>시그니엘 서울</td>
-	                                    <td>서울시 송파구</td>
-	                                    <td>2020-11-10</td>
-	                                    <td>010-7788-9988</td>
-	                                    <td>호텔</td>
-	                                    <td>
-	                                        <input type="checkbox" name="" class="memberChk" >
-	                                    </td>
+	                                    <td>${g.id}</td>
+	                                    <td>${g.userName}</td>
+	                                    <td>${g.name}</td>
+	                                    <td>${g.location }</td>
+	                                    <td>${g.gtStartDate}~<br>${g.gtEndDate}</td>
+	                                    <td>${g.phone}</td>
+	                                    <td>${status}</td>
 	                                </tr>
-	                               
-	                                <tr class="btn-delete">
-	                                    <td colspan="8">
-	                                        <form action="">
-	                                            <input type="submit" value="삭제">
-	                                        </form>
-	                                    </td>
-	                                </tr>
+	                               </c:forEach>
+	                                 <tr>
+											<td colspan="7" class="no-border">
+												<div class="pager-container">
+													<div class="btn btn-prev">
+													<c:set var="category" value="${categoryType}"/>
+													<c:set var="page" value="${(empty param.page)?1:param.page}"/>
+													<c:set var="startNum" value="${page-(page-1)%5}" />
+													<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(pageCount/3),'.') }" /><!--6-->
+														<c:if test="${startNum>1}">
+															<a href="list?page=${startNum-1}">이전</a>
+														</c:if>
+														<c:if test="${startNum<=1}">
+															<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+														</c:if>
+													</div>
+													<ul class="pager-list">
+													
+													<c:forEach var="i"  begin="0"  end="4">
+													<c:if test="${(startNum+i)<=lastNum}">
+														<li><a class="${(page==(startNum+i))?'active-page':''}" href="list?page=${startNum+i}&category=${category}&query=${param.query}">${startNum+i}</a></li>
+													</c:if>
+													</c:forEach>
+													</ul>
+													<div class="btn btn-next">
+														<c:if test="${startNum+5<=lastNum}">
+															<a href="list?page=${startNum+5}">다음</a>
+														</c:if>
+														<c:if test="${startNum+5>lastNum}">
+															<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+														</c:if>
+													</div>
+												</div>
+											</td>
+										</tr>
 	                            </tbody>
 	                        </table>
-	                    </section>
-	                    <section>
-	                        <h1 class="d-none">페이지 정보</h1>
-	                        <div>
-	                            1 / 2 pages
-	                        </div>
-	                    </section>
-	                    <section>
-	                        <h1 class="d-none">페이지 요청목록</h1>
-	                        <ul>
-	                            <li>1</li>
-	                            <li>2</li>
-	                        </ul>
+	                         </form>
 	                    </section>
 	                </section>
 	            </main>
 	        </div>
 	    </section>
 	</main>
-    <script>
-        var selectAll = document.querySelector(".selectAllDelete");
-        selectAll.addEventListener('click', function(){
-            var objs = document.querySelectorAll(".memberChk");
-            for (var i = 0; i < objs.length; i++) {
-              objs[i].checked = selectAll.checked;
-            };
-        }, false);
-         
-        var objs = document.querySelectorAll(".memberChk");
-        for(var i=0; i<objs.length ; i++){
-          objs[i].addEventListener('click', function(){
-            var selectAll = document.querySelector(".selectAllDelete");
-            for (var j = 0; j < objs.length; j++) {
-              if (objs[j].checked === false) {
-                selectAll.checked = false;
-                return;
-              };
-            };
-            selectAll.checked = true;                                   
-        }, false);
-        } 
-      </script>
 </body>
 </html>

@@ -90,7 +90,7 @@
         .golden-sec .btn-list{
         	width:200px;
         	display: flex;
-        	justify-content: space-between;
+        	justify-content: space-around;
         }
         
 	        .golden-sec .btn-list input[type="submit"]{

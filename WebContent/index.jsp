@@ -83,7 +83,7 @@
 			                    		 <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
 			                        </c:if>
 			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="">골든타임</a></li>
+			                    		 <li><a href="/company/goldenTime/list">골든타임</a></li>
 			                        </c:if>
 	                                <li><a href="logout">로그아웃</a></li>
 	                            </ul>

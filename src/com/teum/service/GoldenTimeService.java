@@ -16,7 +16,13 @@ public class GoldenTimeService {
 	public GoldenTimeService() {
 		goldenTimeDao =new JdbcGoldenTimeDao();
 	}
-	
+
+	public List<GoldenTimeView> getGoldenList() {
+		
+		return getGoldenList(0);
+	}
+
+
 	public List<GoldenTimeView> getGoldenList(int id) {
 		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
 			list =goldenTimeDao.getGoldenList(id);
@@ -39,5 +45,43 @@ public class GoldenTimeService {
 		
 	}
 
+	public List<GoldenTimeView> getVIewList(int page, int size, String category, String query) {
+		
+		 List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
+		 
+		 int startIndex = 1 + (page-1)*size;
+		int endIndex = page*size;
+		
+		list = goldenTimeDao.getVIewList(startIndex,endIndex,category,query);
+		return list;
+	}
+	public List<GoldenTimeView> getViewList(int page,int size, String category){
+		
+		
+		return goldenTimeDao.getVIewList(page, size, category,"");
+	}
+	
+	public List<GoldenTimeView> getViewList(int page,int size){
+		
+		
+		return goldenTimeDao.getVIewList(page,size,"","");
+	}
+	
+	public List<GoldenTimeView> getViewList(){
+		
+		
+		return goldenTimeDao.getVIewList(1, 3, "", "");
+	}
+
+	public int getCount(String category, String query) {
+		int result = 0;
+		
+		result = goldenTimeDao.getCount(category,query);
+		
+		return result;
+	}
+
+	
+	
 
 }
