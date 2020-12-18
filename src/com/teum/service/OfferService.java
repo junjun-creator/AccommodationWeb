@@ -14,6 +14,7 @@ public class OfferService implements OfferServiceI{
 		offerDao = new JdbcOfferDao();
 	}
 	
+	@Override
 	public int insert(Offer offer) {
 		int result = offerDao.insert(offer);
 		return result;
@@ -36,6 +37,10 @@ public class OfferService implements OfferServiceI{
 	public int update(Offer offer) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public List<Offer> getList(String accIdsCSV) {
+		return offerDao.getList(accIdsCSV);
 	}
 
 }

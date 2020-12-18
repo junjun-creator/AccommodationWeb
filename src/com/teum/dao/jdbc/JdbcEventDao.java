@@ -343,7 +343,7 @@ public class JdbcEventDao implements EventDao {
 		return event;
 	}
 
-	@Override
+	@Override 
 	public int openAll(String oIdsCSV, String cIdsCSV) {
 		int result = 0;
 

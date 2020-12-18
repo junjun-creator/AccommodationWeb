@@ -10,4 +10,6 @@ public interface OfferDao {
 
 	List<Offer> getList(int id, int type);
 
+	List<Offer> getList(String accIdsCSV);
+
 }

@@ -19,5 +19,5 @@ public interface OfferServiceI {
 	public int insert(Offer offer);
 
 	public int update(Offer offer);
-	
+
 }

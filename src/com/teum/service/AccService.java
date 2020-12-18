@@ -122,4 +122,9 @@ public class AccService {
 		List<Acc> list = accDao.getList(location);
 		return list;
 	}
+
+	public List<Acc> getList(int companyId) {
+		List<Acc> list = accDao.getList(companyId);
+		return list;
+	}
 }
