@@ -15,6 +15,9 @@ public class AccImage {
 		this.accId = accId;
 	}
 	
+	public AccImage() {
+	}
+
 	@Override
 	public String toString() {
 		return "AccImage [id=" + id + ", filename=" + filename + ", fileroute=" + fileroute + ", accId=" + accId + "]";

@@ -1,4 +1,4 @@
-package com.teum.controller.company.accommodation;
+package com.teum.controller.user.offer;
 
 import java.io.IOException;
 
@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/company/accommodation/detail")
-public class DetailController extends HttpServlet {
+@WebServlet("/user/offer/edit")
+public class EditController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		request.getRequestDispatcher("detail.jsp").forward(request, response);
+		request.getRequestDispatcher("edit.jsp").forward(request, response);
 	}
 	
 	@Override

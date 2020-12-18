@@ -135,6 +135,15 @@
                             font-weight: bold;
                             margin-left: 5px;
                         }
+                        .picked-item-sec .delete-button{
+                        	position: absolute;
+                        	top: 200px;
+                        	right:0;
+                        	z-index:30;
+                        }
+                        .picked-item-sec .delete-button>button{
+                        	cursor:pointer;
+                        }
                 .picked-item-sec>div>div:last-child{
                     width: 600px;
                     background-color: black;
