@@ -26,6 +26,14 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement st =con.prepareStatement(sql);
+			
+			if(acc.getGoldentimeStatus()==1) {
+				acc.setGoldentimeStatus(0);
+			}else {
+				acc.setGoldentimeStatus(1);
+			}
+			
+			
 			st.setInt(1, acc.getGoldentimeStatus());
 			st.setInt(2, acc.getId());
 			
