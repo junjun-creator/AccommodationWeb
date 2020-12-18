@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../css/admin/accommodations/regAccommodationDetail.css">
+    <link rel="stylesheet" href="../../css/admin/accommodations/applyDetail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -158,7 +158,7 @@
 									</div> -->
 									<div class="room-container">
 										<div class="room-img-container">
-											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성">
+											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성">
 										</div>
 										<div class="room-detail-container">
 											<div class="room-room">
@@ -180,35 +180,7 @@
 										</div>
 									</div>
 								</section>
-								<section>
-									<!-- <div class="radio-container">
-										<input type="radio" name="radio" id="radio-2" class="radio" required>
-										<label for="radio-2"><span></span></label>
-									</div> -->
-									<div class="room-container">
-										<div class="room-img-container">
-											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg">
-										</div>
-										<div class="room-detail-container">
-											<div class="room-room">
-												<span>스탠다드 더블</span>
-											</div>
-											<div class="room-bed-count">
-												<div>침대개수</div>
-												<div>1</div>
-											</div>
-											<div class="room-max-headcount">
-												<div>최대 수용인원</div>
-												<div>2</div>
-											</div>
-											<div class="room-price">
-												<div>가격</div>
-												<div>500,260원</div>
-											</div>
-											
-										</div>
-									</div>
-								</section>
+							
 								<input type="button" value="삭제" class="btn delete-btn">
 								<input type="button" value="승인" class="btn approval-btn">
 								
