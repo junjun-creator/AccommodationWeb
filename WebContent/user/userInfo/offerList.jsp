@@ -235,6 +235,9 @@
                         </section>
                     </form>
                 </section>
+	            <div class="btn-more-sec">
+	            	<button class="btn-more">더보기</button>
+	            </div>
             </main>
         </div>
     </section>

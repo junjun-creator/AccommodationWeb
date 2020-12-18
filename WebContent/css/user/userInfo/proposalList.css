@@ -150,7 +150,7 @@
 
             .offer-sec {
                 --border: 1px solid red;
-                margin: 70px auto 0 auto;
+                margin: 40px auto 0 auto;
             }
 
                 .offer-sec > .offer-form> h1 {
@@ -329,3 +329,18 @@
 
 
 /********************************************/
+.btn-more-sec{
+	display:flex;
+	justify-content:center;
+}
+.btn-more{
+    margin: 20px 0 0 30px;
+    padding:0;
+    text-align : center;
+    width:790px;
+    height:50px;
+    line-height:50px;
+    font-size:24px;
+    opacity:0.5;
+    cursor:pointer;
+}
