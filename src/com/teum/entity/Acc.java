@@ -43,6 +43,19 @@ public class Acc {
 		this.goldentimeStatus = goldentimeStatus;
 	}
 
+
+	public Acc(int chk, Date startDate, Date endDate, int saleprice) {
+		this.id = chk;
+		this.gtStartDate = startDate;
+		this.gtEndDate = endDate;
+		this.saleprice = saleprice;
+	}
+
+	public Acc(int chk, int status) {
+		this.id = chk;
+		this.goldentimeStatus = status;
+	}
+
 	public int getId() {
 		return id;
 	}

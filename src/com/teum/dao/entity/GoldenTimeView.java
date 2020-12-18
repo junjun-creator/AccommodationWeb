@@ -19,6 +19,8 @@ public class GoldenTimeView extends Acc {
 		this.fileroute=fileroute;
 	}
 
+	
+
 	public String getFileroute() {
 		return fileroute;
 	}

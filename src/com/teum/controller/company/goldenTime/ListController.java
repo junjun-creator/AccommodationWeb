@@ -1,6 +1,10 @@
 package com.teum.controller.company.goldenTime;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.GoldenTimeView;
+import com.teum.entity.Acc;
 import com.teum.service.GoldenTimeService;
 
 @WebServlet("/company/goldenTime/list")
@@ -30,31 +35,43 @@ public class ListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
+	
+	@SuppressWarnings("unused")
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String chk_ = request.getParameter("check");
-		String cmd = request.getParameter("cmd");
-		String ids_ = request.getParameter("ids");
-		
-		int chk = Integer.parseInt(chk_);
 		GoldenTimeService service = new GoldenTimeService();
 		
+		String cmd = request.getParameter("cmd");
+		int chk = Integer.parseInt(request.getParameter("check"));
+		String saleprice_=request.getParameter("price");
 		
-	
+		int status = Integer.parseInt(request.getParameter("status"));
+		DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+		Date startDate = null;
+		Date endDate = null;
+		
+		int saleprice=0;
+		
+		
+			try {
+				startDate = dateFormat.parse(request.getParameter("start"));
+				endDate = dateFormat.parse(request.getParameter("end"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		
+		
+			Acc acc = new Acc(chk,status);
 		switch (cmd) {
-		case "진행":
+		case "전환":
 			
-			service.open(chk);
-			
-			break;
-			
-		case "대기":
-			
-			service.close(chk);
+			service.updateStatus(acc);
 			
 			break;
+		
 		case "수정":
-			
+			 acc = new Acc(chk,startDate,endDate,saleprice);
+			service.update(acc);
 			break;
 		}
 		
