@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/layout.css">
 
     <link rel="stylesheet" href="/css/admin/layout.css">
-    <link rel="stylesheet" href="/css/admin/accommodations/regAccommodationDetail.css">
+    <link rel="stylesheet" href="/css/admin/accommodations/detail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -139,7 +139,7 @@
 									</div> -->
 									<div class="room-container">
 										<div class="room-img-container">
-											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성">
+											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성">
 										</div>
 										<div class="room-detail-container">
 											<div class="room-room">
@@ -161,10 +161,10 @@
 										</div>
 									</div>
 								</section>
-							
-								<input type="button" value="삭제" class="btn delete-btn">
-								<input type="button" value="승인" class="btn approval-btn">
-								
+								<div class="btn-box">
+									<input type="button" value="삭제" class="btn delete-btn">
+									<input type="button" value="승인" class="btn approval-btn">
+								</div>
 							</form>
 						</section>
 					</div>

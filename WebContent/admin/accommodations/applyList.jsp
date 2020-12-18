@@ -103,7 +103,7 @@
                   <section class='title'>
                      <div class="pic">
                         <div class="main-img">
-                           <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt= "신라스테이 삼성"><br>
+                           <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.jpg" alt= "신라스테이 삼성"><br>
                         </div>
                         <div class="cliper-btn prev-btn">
                            <i class="fas fa-angle-left"></i>
@@ -113,11 +113,11 @@
                         </div>
                         <div class="cliper">
                            <ul>
-                              <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
+                              <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.jpg"></li>
                               <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg"></li>
-                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
-                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성"></li> 
-                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
+                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.jpg"></li>
+                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.jpg" alt= "신라스테이 삼성"></li> 
+                              <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.jpg"></li>
                            </ul>
                         </div>
                      </div>
