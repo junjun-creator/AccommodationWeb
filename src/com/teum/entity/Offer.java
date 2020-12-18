@@ -3,6 +3,7 @@ package com.teum.entity;
 import java.util.Date;
 
 public class Offer {
+	
 	private int id;
 	private int accId;
 	private int userId;

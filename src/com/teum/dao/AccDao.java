@@ -20,7 +20,8 @@ public interface AccDao {
 	Acc applyGet(int id);
 	
 	List<Acc> getList();
-	List<Acc> getList(String location);
+	List<Acc> getList(String location);	// 개인회원으로부터 제안받은 위치에 일치하는 숙소목록 얻어오기
+	List<Acc> getList(int companyId); 	// 개인회원으로부터 제안받은 숙소 중 기업회원 id와 일치하는 것만 얻어오기
 	List<Acc> applyGetList();
 	
 	List<AccListForAdminView> getViewList();
@@ -32,5 +33,6 @@ public interface AccDao {
 	
 	Acc getLast();
 	List<GoldenTimeView> getGoldenList();
+	
 	
 }

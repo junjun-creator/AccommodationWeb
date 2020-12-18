@@ -5,12 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.OfferDao;
 import com.teum.dao.entity.UsersListView;
+import com.teum.entity.Acc;
 import com.teum.entity.Offer;
 
 public class JdbcOfferDao implements OfferDao {
@@ -98,11 +100,60 @@ public class JdbcOfferDao implements OfferDao {
 			con.close();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			
 			e.printStackTrace();
 		}
 		
+		return list;
+	}
+
+	@Override
+	public List<Offer> getList(String accIdsCSV) {
+		List<Offer> list = new ArrayList<>();
+
+		String url = DBContext.URL;
+		String sql = String.format("SELECT * FROM OFFER WHERE ACC_ID IN (%s)", accIdsCSV);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				int offerId = rs.getInt("id");
+				int accId = rs.getInt("acc_id");
+				int userId = rs.getInt("user_id");
+				int price = rs.getInt("price");
+				String location = rs.getString("location");
+				Date checkIn = rs.getDate("checkin_date");
+				Date checkOut = rs.getDate("checkout_date");
+				Date regdate = rs.getDate("regdate");
+				int headcount = rs.getInt("headcount");
+				
+				Offer o = new Offer();
+				o.setId(offerId);
+				o.setAccId(accId);
+				o.setUserId(userId);
+				o.setPrice(price);
+				o.setLocation(location);
+				o.setCheckinDate(checkIn);
+				o.setCheckoutDate(checkOut);
+				o.setRegdate(regdate);
+				o.setHeadcount(headcount);
+				
+				list.add(o);
+			}
+			
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		return list;
 	}
 

@@ -6,10 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.teum.dao.RoomDao;
 import com.teum.entity.Acc;
+import com.teum.entity.Offer;
 import com.teum.entity.Room;
 
 public class JdbcRoomDao implements RoomDao {
@@ -67,6 +70,7 @@ public class JdbcRoomDao implements RoomDao {
 				int bedCount = rs.getInt("BED_COUNT");
 
 				room = new Room();
+				
 				room.setId(id);
 				room.setName(name);
 				room.setAccId(accId);
@@ -85,6 +89,52 @@ public class JdbcRoomDao implements RoomDao {
 			e.printStackTrace();
 		}
 		return room;
+	}
+
+	@Override
+	public List<Room> getList(String accIdsCSV) {
+		List<Room> list = new ArrayList<>();
+
+		String url = DBContext.URL;
+		String sql = String.format("SELECT * FROM ROOM WHERE ACC_ID IN (%s)", accIdsCSV);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int accId = rs.getInt("ACC_ID");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+				
+				Room room = new Room();
+				
+				room.setId(id);
+				room.setName(name);
+				room.setAccId(accId);
+				room.setMaxHeadcount(maxHeadcount);
+				room.setBedCount(bedCount);
+				room.setBookedDate(bookedDate);
+				
+				list.add(room);
+			}
+			
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 }
