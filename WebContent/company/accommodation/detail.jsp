@@ -63,7 +63,7 @@
         <section class="title">
             <div class="pic">
                 <div class="main-img">
-                    <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png" alt= "신라스테이 삼성"><br>
+                    <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg" alt= "신라스테이 삼성"><br>
                 </div>
                 
                 <!-- <div class="cliper-btn prev-btn">
@@ -74,11 +74,11 @@
                 </div> -->
                 <div class="cliper">
                     <ul>
-                        <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
+                        <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
                         <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
-                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
-                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성"></li> 
-                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.png"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.pnjpgg" alt= "신라스테이 삼성"></li> 
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
                     </ul>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                     </div> -->
                     <div class="room-container">
                         <div class="room-img-container">
-                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.png" alt= "신라스테이 삼성">
+                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성">
                         </div>
                         <div class="room-detail-container">
                             <div class="room-room">
@@ -186,6 +186,9 @@
                         </div>
                     </div>
                 </section>
+                <div class="btn-box">
+                    <input type="button" value="삭제" class="btn delete-btn">
+                </div>
             </form>
         </section>
     </div>

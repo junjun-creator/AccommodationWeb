@@ -1,73 +1,105 @@
-
 main{
-    width: 600px;
-margin-top: 10px;
-margin-left: auto;
+    background: #F9FBFF;
+    
+}
+    main>div{
+        width: 1200px;
+        margin-left: auto;
         margin-right: auto;
-}  
-    main .content-box{
-        
+        margin-top: 10px;
+    }  
+    main>div>h1{
+        width: 500px;
         margin-left: auto;
         margin-right: auto;
     }
+    main div .megabox{
+        display: flex;
+        justify-content: center;
+        width: 800px;
+        /* border: 1px solid black; */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    main .content-box{
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
 
-        .content-box div{
+    }
+
+        .content-box .insert-box{
+            height: 62px;
             padding-bottom: 10px;
-            padding-left: 50px;
+            padding-left: 100px;
             color: black;
+            
         }
+
         .content-box .text-box{
             height: 30px;
-            width: 400px;
-
+            width: 320px;
+            padding-left: 10px;
         }
         .content-box select{
-            width: 190px;
-            padding-left: 75px;
-        }
-        .content-box select{
+            width: 157px;
             height: 30px;
+            padding-left: 50px;
         }
-        .button{
-            height: 40px;
-            width: 190px;
-            border:1px dashed black;
-            border-radius: 5px;
-            background: white;
-            padding:5px 10px;
-            vertical-align: middle;
-            cursor: pointer;
-            color: black;
-            font-weight: bold;
-        }
-        .button:hover{
-            background-color: gray;
-            opacity: 0.8;
-            color: white;
-        }
+        .insert-box .acc-type{
+            width: 320px;
+            height: 30px;
+            padding-left: 145px;
 
-            .add-room{
-                width: 500px;
+        }
+            .button{
+                height: 40px;
+                width: 158px;
+                border-radius: 5px;
+                background: white;
+                padding:5px 10px;
+                vertical-align: middle;
+                cursor: pointer;
+                color: #5f0081;
+                font-weight: bold;
+                border: 1px solid #F9FBFF;
+            }
+            .button:hover{
+                background-color: #F9FBFF;
+                opacity: 0.8;
+                color: #5f0081;
+                border: 2px solid #5f0081;
+            }
+        .box{
+            width: 423px;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: start;
+        }
+            .box .add-room{
+                width: 440px;
                 margin-left: auto;
                 margin-right: auto;
                 display: inline-block;
-                border: 0.5px solid #fc0453;
+                /* border: 0.5px solid #fc0453; */
             }  
                 .add-room div{
-                    padding-left: 50px;
-                    padding-top: 5px;
+                    padding-left: 60px;
+                    /* padding-top: 5px; */
                     padding-bottom: 10px;
+                    /* padding-right: 30px; */
                 }
                 .add-room .text-box{
                     height: 30px;
-                    width: 400px;
+                    width: 320px;
                 }
-                .add-room .textarea{
-                    height: 250px;
-                    width: 400px;
-                    padding-left: 50px;
-                }
-    
+
+
+    .btn-box{
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .submit-btn{
         margin-left: 50px;
         margin-top: 20px;
@@ -80,6 +112,7 @@ margin-left: auto;
         font-size: 14px;
         height: 50px;
         width: 400px;
+
         
     }
     .submit-btn:hover{

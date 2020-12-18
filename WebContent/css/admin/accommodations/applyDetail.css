@@ -269,6 +269,12 @@
                 .room-form > .submit-btn-container > .submit-btn:hover {
                     opacity: 0.7;
                 }
-                .btn{
+                .btn-box{
+                    width: 105px;
+                    margin-left: auto;
+                }
+                .btn-box .btn{
                     margin-bottom: 30px;
+                    width: 50px;
+                    height: 30px;
                 }
