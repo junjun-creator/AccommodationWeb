@@ -53,99 +53,92 @@
             .aside li > a {
                 text-decoration: none;
             }
-
-        .main {
+/***********************************/
+        .main{
             width: 900px;
-            min-height: 500px;
+            margin: 0 auto;
         }
-            .breadcrumb {
-                --border: 1px solid red;
+
+            .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 12px;
+                margin-bottom: 30px;
             }
 
-                .breadcrumb > .breadcrumb-list {
+            .main .btn-left,
+            .main .btn-right{
+                align-items: center;
+            }
+
+            .main>div:first-child{
+                padding-top: 30px;
+                --text-indent: 100px;
+            }
+            .main>div:nth-child(2){
+                display: flex;
+                padding-top: 20px;
+                justify-content: space-evenly;
+            }
+                .main>div:nth-child(2)>div{
+                    height: 100%;
                     display: flex;
-                    justify-content: flex-end;
-                    font-size: 12px;
+                    margin: 5px;
                 }
 
-            .proposal-sec {
-                border: 1px solid red;
-                position: relative;
+            .proposal-item-container{
+                justify-content: space-evenly;
+                transition: transform 1s;
             }
-
-                .proposal-sec > h1 {
-                    --border: 1px solid green;
-                    width: 500px;
-                    font-weight: bold;
-                    font-size: 24px;
-                    margin: 50px 0 0 30px;
+                
+                .main>div:nth-child(2)>div:first-child{
+                    margin-left: 0px;
+                }
+                .main>div:nth-child(2)>div:last-child{
+                    margin-right: 0px;
                 }
 
-                .proposal-sec .cliper-btn {
-                    position: absolute;
-                    z-index: 5;
-                    font-size: 40px;
-                    opacity: 0.2;
+
+                .proposal-info {
+                    border: 1px solid purple;
+                    width: 330px;
+                    margin: 0px 10px;
                 }
 
-                .proposal-sec .cliper-btn {
+                .proposal-info:hover {
+                    background: rgb(203, 185, 221);
                     cursor: pointer;
                 }
 
-                .proposal-sec .prev-btn {
-                    top: 90px;
-                }
-
-                .proposal-sec .next-btn {
-                    top: 90px;
-                    right: 0;
-                }
-
-                .proposal-sec > .proposal-container {
-                    display: flex;
-                    justify-content: space-evenly;
-                    margin-top: 20px;
-                }
-
-                    .proposal-container > .proposal-info {
-                        border: 1px solid purple;
-                        flex-basis: 350px;
+                .proposal-info> h2 {
+                        padding-left: 10px;
+                        font-weight: bold;
                     }
 
-                    .proposal-container > div:hover {
-                        background: rgb(203, 185, 221);
-                        cursor: pointer;
-                    }
-
-                        .proposal-container > div > h2 {
+                    .proposal-info> ul > li {
+                            display: flex;
+                            --flex-grow: 1;
                             padding-left: 10px;
-                            font-weight: bold;
+                            margin-top: 5px;
                         }
 
-                            .proposal-container > div > ul > li {
-                                display: flex;
-                                --flex-grow: 1;
-                                padding-left: 10px;
-                                margin-top: 5px;
+                        .proposal-info> ul > li > div{
+                                --border: 1px solid red;
+                                flex-basis: 120px;
+                                flex-grow: 1;
                             }
 
-                                .proposal-container > div > ul > li > div{
-                                    --border: 1px solid red;
-                                    flex-basis: 120px;
-                                    flex-grow: 1;
-                                }
+                            .proposal-info> ul > li > div:nth-child(2){
+                                --border: 1px solid red;
+                                flex-basis: 250px;
+                                flex-grow: 3;
+                            }
 
-                                .proposal-container > div > ul > li > div:nth-child(2){
-                                    --border: 1px solid red;
-                                    flex-basis: 250px;
-                                    flex-grow: 3;
-                                }
-
-                                .proposal-container > div > ul > li > .wanted-price {
-                                    font-weight: bold;
-                                    color: #FC0453;
-                                }
-
+                            .proposal-info> ul > li > .wanted-price {
+                                font-weight: bold;
+                                color: #FC0453;
+                            }
+/**********************************/
             .offer-sec {
                 border: 1px solid red;
                 margin: 70px auto 0 auto;
