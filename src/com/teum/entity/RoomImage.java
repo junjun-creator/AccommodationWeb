@@ -18,6 +18,12 @@ public class RoomImage {
 		this.roomId = roomId;
 	}
 
+	public RoomImage(String filename, String fileroute, int roomId) {
+		this.filename = filename;
+		this.fileroute = fileroute;
+		this.roomId = roomId;
+	}
+
 	public int getId() {
 		return id;
 	}

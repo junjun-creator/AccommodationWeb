@@ -11,6 +11,7 @@ import java.util.List;
 import com.teum.dao.PickDao;
 import com.teum.dao.entity.PickListView;
 import com.teum.dao.entity.UsersListView;
+import com.teum.entity.Pick;
 import com.teum.entity.Users;
 
 public class JdbcPickDao implements PickDao {
@@ -112,6 +113,38 @@ public class JdbcPickDao implements PickDao {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public int delete(Pick p) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "DELETE FROM PICK WHERE ACC_ID=? AND USER_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,p.getAccId());
+			ps.setInt(2, p.getUserId());
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

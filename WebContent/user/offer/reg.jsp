@@ -28,7 +28,7 @@
             <div>
                 <ul class="main-menu">
                     <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
+                    <li><a href="reg">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li class="sub-page">
                         <a href="">더보기</a>
@@ -58,8 +58,8 @@
 
     <section class="container-sec">
         <div class="container">
-            <main id="main" class="main">
-                <div class="ment-container">
+			<main id="main" class="main">
+				<div class="ment-container">
                     <div class="ment-title">Teum</div>
                     <div class="ment-content">
                         <div class="quote left-quote">
@@ -72,90 +72,100 @@
                         <div class="ment">숙박 시장에 새로운 <span>패러다임(Paradigm)</span>과 <span>혁신(Innovation)</span>으로</div>
                         <div class="ment">틈을 이용하는 모든 고객들에게 새로운 가치를 제공합니다.</div>
                     </div>
-                </div>
+				</div>
 
                 <section class="reg-form-sec">
-                    <form action="" method="post" class="reg-form">
+                    <form action="reg" method="post" class="reg-form">
                         <div>
                             <section>
                                 <i class="far fa-calendar-alt"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;날짜&nbsp;&nbsp;&nbsp;</span> 
-                                <input type="date" name="start-date" class="form-option date start-date" required>
-                                <input type="date" name="end-date" class="form-option date end-date" required>
+                                <input type="date" name="checkin-date" class="form-option date start-date" required>
+                                <input type="date" name="checkout-date" class="form-option date end-date" required>
                             </section>
                             <section>
                                 <i class="fas fa-map-marker-alt"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;지역&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <select class="form-option main-city">
-                                    <option name="서울">서울</option>
-                                    <option name="부산">부산</option>
-                                    <option name="제주">제주</option>
-                                    <option name="경기">경기</option>
-                                    <option name="인천">인천</option>
-                                    <option name="강원">강원</option>
-                                    <option name="경상">경상</option>
-                                    <option name="전라">전라</option>
-                                    <option name="충청">충청</option>
+                                <select name="main-city" class="form-option main-city">
+                                    <option value="서울">서울</option>
+                                    <option value="부산">부산</option>
+                                    <option value="제주">제주</option>
+                                    <option value="경기">경기</option>
+                                    <option value="인천">인천</option>
+                                    <option value="강원">강원</option>
+                                    <option value="경상">경상</option>
+                                    <option value="전라">전라</option>
+                                    <option value="충청">충청</option>
                                 </select>
-                                <select class="form-option sub-city">
-                                    <option value="" selected>강남/역삼/삼성</option>
-                                    <option value="">신사/청담/압구정</option>
-                                    <option value="">서초/교대/사당</option>
-                                    <option value="">잠실/송파/강동</option>
-                                    <option value="">을지로/명동/중구</option>
-                                    <option value="">서울역/이태원/용산</option>
-                                    <option value="">종로/인사동</option>
-                                    <option value="">동대문구</option>
-                                    <option value="">홍대/합정/마포/서대문</option>
-                                    <option value="">여의도</option>
-                                    <option value="">영등포역</option>
-                                    <option value="">구로/신도림/금천</option>
-                                    <option value="">김포공항/염창/강서</option>
-                                    <option value="">건대입구/성수/왕십리</option>
-                                    <option value="">성북/강북/노원/도봉</option>
+                                <select name="sub-city" class="form-option sub-city">
+                                    <option value="강남구">강남구</option>
+				                    <option value="강동구">강동구</option>
+				                    <option value="강북구">강북구</option>
+				                    <option value="강서구">강서구</option>
+				                    <option value="관악구">관악구</option>
+				                    <option value="광진구">광진구</option>
+				                    <option value="구로구">구로구</option>
+				                    <option value="금천구">금천구</option>
+				                    <option value="노원구">노원구</option>
+				                    <option value="도봉구">도봉구</option>
+				                    <option value="동대문구">동대문구</option>
+				                    <option value="동작구">동작구</option>
+				                    <option value="마포구">마포구</option>
+				                    <option value="서대문구">서대문구</option>
+				                    <option value="서초구">서초구</option>
+				                    <option value="성동구">성동구</option>
+				                    <option value="성북구">성북구</option>
+				                    <option value="송파구">송파구</option>
+				                    <option value="양천구">양천구</option>
+				                    <option value="영등포구">영등포구</option>
+				                    <option value="용산구">용산구</option>
+				                    <option value="은평구">은평구</option>
+				                    <option value="종로구">종로구</option>
+				                    <option value="중구">중구</option>
+				                    <option value="중랑구">중랑구</option>
                                 </select>
                             </section>
                             <section>
                                 <i class="fas fa-hotel"></i><span>&nbsp;&nbsp;&nbsp;타입&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <select class="form-option category">
-                                    <option value="">호텔</option>
-                                    <option value="">모텔</option>
-                                    <option value="">펜션</option>
-                                    <option value="">리조트</option>
-                                    <option value="">게스트하우스</option>
+                                <select name="acc-type" class="form-option category">
+                                    <option value="호텔">호텔</option>
+                                    <option value="모텔">모텔</option>
+                                    <option value="펜션">펜션</option>
+                                    <option value="리조트">리조트</option>
+                                    <option value="게스트하우스">게스트하우스</option>
                                 </select>
                             </section>
                             <section>
                                 <i class="fas fa-user"></i><span>&nbsp;&nbsp;&nbsp;인원수&nbsp;</span>
-                                <select name="people-count" class="form-option people-select">
-                                    <option value="">1</option>
-                                    <option value="" selected>2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                    <option value="" name="people">5</option>
-                                    <option value="" name="people">6</option>
-                                    <option value="" name="people">7</option>
-                                    <option value="" name="people">8</option>
-                                    <option value="" name="people">9</option>
-                                    <option value="" name="people">10</option>
-                                    <option value="" name="people">11</option>
-                                    <option value="" name="people">12</option>
-                                    <option value="" name="people">13</option>
-                                    <option value="" name="people">14</option>
-                                    <option value="" name="people">15</option>
-                                    <option value="" name="people">16</option>
-                                    <option value="" name="people">17</option>
-                                    <option value="" name="people">18</option>
-                                    <option value="" name="people">19</option>
-                                    <option value="" name="people">20</option>
+                                <select name="headcount" class="form-option people-select">
+                                    <option value="1">1</option>
+                                    <option value="2" selected>2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
                                 </select>
                             </section>
                             <section>
                                 <i class="fas fa-won-sign"></i><span>&nbsp;&nbsp;&nbsp;가격&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <input type="text" class="form-option price-input" placeholder="원(￦) 단위로 입력해 주세요" required>
+                                <input type="text" name="price" class="form-option price-input" placeholder="원(￦) 단위로 입력해 주세요" required>
                             </section>
                         </div>
                         <section class="submit-btn-sec">
                             <input type="submit" class="btn submit-btn" value="제안하기" />
-                            <a href="" class="btn cancel-btn">돌아가기</a>
+                            <a href="/index" class="btn cancel-btn">돌아가기</a>
                         </section>
                     </form>
                 </section>

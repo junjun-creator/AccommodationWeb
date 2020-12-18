@@ -18,6 +18,13 @@ public class AccImage {
 	public AccImage() {
 	}
 
+	// insert용
+	public AccImage(String filename, String fileroute, int accId) {
+		this.filename = filename;
+		this.fileroute = fileroute;
+		this.accId = accId;
+	}
+
 	@Override
 	public String toString() {
 		return "AccImage [id=" + id + ", filename=" + filename + ", fileroute=" + fileroute + ", accId=" + accId + "]";

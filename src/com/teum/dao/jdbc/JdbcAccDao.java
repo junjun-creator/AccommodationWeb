@@ -574,8 +574,6 @@ public class JdbcAccDao implements AccDao{
 
 				GoldenTimeView G = new GoldenTimeView();
 				
-			
-				
 				list.add(G);
 			};
 
@@ -590,6 +588,47 @@ public class JdbcAccDao implements AccDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return list;
+	}
+
+	@Override
+	public List<Acc> getList(String location) {
+		List<Acc> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ACC WHERE LOCATION LIKE ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			pst.setString(1, "%" + location + "%");
+			
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("ID"); 
+				int accTypeId = rs.getInt("ACC_TYPE_ID");
+				
+				Acc acc = new Acc();
+				
+				acc.setId(id);
+				acc.setAccTypeId(accTypeId);
+				
+				list.add(acc);
+			};
+
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 }

@@ -24,6 +24,14 @@ public class Room {
 		this.bookedDate = bookedDate;
 	}
 
+	public Room(String name, int price, int accId, int maxHeadcount, int bedCount) {
+		this.name = name;
+		this.price = price;
+		this.accId = accId;
+		this.maxHeadcount = maxHeadcount;
+		this.bedCount = bedCount;
+	}
+
 	public int getId() {
 		return id;
 	}

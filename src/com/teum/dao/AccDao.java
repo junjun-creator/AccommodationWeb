@@ -20,7 +20,9 @@ public interface AccDao {
 	Acc applyGet(int id);
 	
 	List<Acc> getList();
+	List<Acc> getList(String location);
 	List<Acc> applyGetList();
+	
 	List<AccListForAdminView> getViewList();
 	List<AccListForAdminView> getViewList(int startIndex, int endIndex);
 	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String ac, String field,  String query);
