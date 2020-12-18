@@ -17,6 +17,8 @@ public class ApplyDetailController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
