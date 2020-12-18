@@ -83,7 +83,7 @@
                     </div>
                     <c:forEach var="g"  items="${list}">
                     <div class="snip1368">
-                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                        <img src="${g.fileroute}" alt="">
                        <!--  <div class="radio">
                         	<input type="radio" class="radio">
                         </div> -->
@@ -96,7 +96,7 @@
                             </div>
                           </figcaption>
                         <div class="description-item">
-                            <p>리베라 호텔</p>
+                            <p>${g.accName}</p>
                             <P>2020/12/01 ~ 2020/12/24</P>
                             <p>강남구 역삼동</p>
                         </div>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     </c:forEach>
-                    <div class="snip1368">
+                    <!-- <div class="snip1368">
                         <img src="../../images/company/호텔/부산/해운대/신라스테이_해운대/신라스테이_해운대_메인.jpg" alt="">
                         <input type="radio" class="radio" name="check">
                         <h3>대기중</h3>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="hovered-item-bg">
                         </div>
-                    </div>
+                    </div> -->
                 </section>
             </main>
         </div>
