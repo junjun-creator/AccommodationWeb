@@ -16,8 +16,10 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.teum.entity.Acc;
+import com.teum.entity.AccImage;
 import com.teum.entity.Room;
 import com.teum.entity.RoomImage;
+import com.teum.service.AccImageService;
 import com.teum.service.AccService;
 import com.teum.service.RoomImageService;
 import com.teum.service.RoomService;
@@ -30,12 +32,14 @@ import com.teum.service.RoomService;
 public class RegController extends HttpServlet {
 
 	private AccService accService;
+	private AccImageService accImageService;
 	private RoomService roomService;
 	private RoomImageService roomImageService;
 	
 	public RegController() {
 		accService = new AccService();
 		roomService = new RoomService();
+		accImageService = new AccImageService();
 		roomImageService = new RoomImageService();
 	}
 	
@@ -109,31 +113,36 @@ public class RegController extends HttpServlet {
 		
 		// 숙소, 방 사진 데이터
 		Collection<Part> fileParts = request.getParts();
-		String fileName = null;
-		String filePath = null;
-		StringBuilder builder = new StringBuilder();
+		String accFileName = null;
+		String roomFileName = null;
+		String accFilePath = null;
+		String roomFilePath = null;
+		StringBuilder accBuilder = new StringBuilder();
+		StringBuilder roomBuilder = new StringBuilder();
+		int newAccId = 0;
+		int newRoomId = 0;
 		
-		// 파일 다중 업로드
+		// 숙소전경 이미지 다중 업로드
 		for (Part p : fileParts) {
-			if (p.getName().equals("file") && p.getSize() > 0) {
+			if (p.getName().equals("acc-file") && p.getSize() > 0) {
 				// 만약 처음으로 등록하는 글이라면? 일단 수동으로 한 개의 이벤트는 넣는 것으로 패스
 				
 				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
-				int newId = accService.getLastId() + 1;
+				newAccId = accService.getLastId() + 1;
 				
-				String pathTemp = request.getServletContext().getRealPath("/images/company/accommodation/2020/" + newId); 
+				String pathTemp = request.getServletContext().getRealPath("/images/company/accommodation/2020/" + newAccId); 
 				
 				File path = new File(pathTemp); // 얘는 절대경로만 받는다.
 				if (!path.exists())
 					path.mkdirs();
 				
-				fileName = p.getSubmittedFileName();
-				filePath = pathTemp + File.separator + fileName;
-				builder.append(fileName);
-				builder.append(",");
+				accFileName = p.getSubmittedFileName();
+				accFilePath = pathTemp + File.separator + accFileName;
+				accBuilder.append(accFileName);
+				accBuilder.append(",");
 				
 				InputStream fis = p.getInputStream();
-				FileOutputStream fos = new FileOutputStream(filePath);
+				FileOutputStream fos = new FileOutputStream(accFilePath);
 				
 				byte[] buf = new byte[1024];
 				int size = 0;
@@ -144,17 +153,53 @@ public class RegController extends HttpServlet {
 				fos.close();
 				fis.close();
 				
-				System.out.printf("filename: %s, filepath: %s", fileName, filePath);
+				System.out.printf("acc-filename: %s\n, acc-filepath: %s\n", accFileName, accFilePath);
 			}
 		}
-		builder.delete(builder.length() - 1, builder.length());
 		
-		System.out.printf("accName: %s\n", accName);
-		System.out.printf("phone: %s\n", phone);
-		System.out.printf("location: %s\n", fullAddress);
-		System.out.printf("accTypeId: %d\n", accTypeNum);
-		System.out.printf("companyId: %d\n", (int)session.getAttribute("id"));
-		System.out.printf("adminId: %d\n", 1);
+		// 방 이미지 다중 업로드
+		for (Part p : fileParts) {
+			if (p.getName().equals("room-file") && p.getSize() > 0) {
+				// 만약 처음으로 등록하는 글이라면? 일단 수동으로 한 개의 이벤트는 넣는 것으로 패스
+				
+				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
+				newRoomId = roomService.getLastId() + 1;
+				
+				String pathTemp = request.getServletContext().getRealPath("/images/company/accommodation/2020/" + newAccId + "/" + newRoomId); 
+				
+				File path = new File(pathTemp); // 얘는 절대경로만 받는다.
+				if (!path.exists())
+					path.mkdirs();
+				
+				roomFileName = p.getSubmittedFileName();
+				roomFilePath = pathTemp + File.separator + roomFileName;
+				roomBuilder.append(roomFileName);
+				roomBuilder.append(",");
+				
+				InputStream fis = p.getInputStream();
+				FileOutputStream fos = new FileOutputStream(roomFilePath);
+				
+				byte[] buf = new byte[1024];
+				int size = 0;
+				
+				while((size = fis.read(buf)) != -1)
+					fos.write(buf, 0, size);
+				
+				fos.close();
+				fis.close();
+				
+				System.out.printf("room-filename: %s\n, room-filepath: %s\n", roomFileName, roomFilePath);
+			}
+		}
+		accBuilder.delete(accBuilder.length() - 1, accBuilder.length());
+		roomBuilder.delete(roomBuilder.length() - 1, roomBuilder.length());
+		
+//		System.out.printf("accName: %s\n", accName);
+//		System.out.printf("phone: %s\n", phone);
+//		System.out.printf("location: %s\n", fullAddress);
+//		System.out.printf("accTypeId: %d\n", accTypeNum);
+//		System.out.printf("companyId: %d\n", (int)session.getAttribute("id"));
+//		System.out.printf("adminId: %d\n", 1);
 		Acc acc = new Acc();
 		acc.setName(accName);
 		acc.setPhone(phone);
@@ -162,28 +207,29 @@ public class RegController extends HttpServlet {
 		acc.setAccTypeId(accTypeNum);
 		acc.setCompanyId((int)session.getAttribute("id"));
 		acc.setAdminId(1);
-		
 		accService.insert(acc); // insert를 하고 난 후에 방금 넣은 acc의 id값 받아오기
-
+		
 		int accId = accService.getLastId();
-
+		
+		AccImage accImage = new AccImage();
+		accImage.setAccId(accId);
+		accImage.setFilename(accBuilder.toString());
+		accImage.setFileroute(accFilePath);
+		accImageService.insert(accImage);
+		
 		Room room = new Room();
 		room.setAccId(accId);
 		room.setName(roomName);
 		room.setPrice(price);
 		room.setMaxHeadcount(maxHeadcount);
 		room.setBedCount(bedCount);
-
 		roomService.insert(room);
 
 		RoomImage roomImage = new RoomImage();
-
 		int roomId = roomService.getLastId(); // insert를 하고 난 후에 방금 넣은 room의 id값 받아오기
-
 		roomImage.setRoomId(roomId);
-		roomImage.setFilename(fileName);
-		roomImage.setFileroute(filePath);
-
+		roomImage.setFilename(roomBuilder.toString());
+		roomImage.setFileroute(roomFilePath);
 		roomImageService.insert(roomImage);
 
 		response.sendRedirect("/index");

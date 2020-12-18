@@ -14,8 +14,11 @@ import com.teum.service.AccService;
 
 @WebServlet("/admin/accommodations/applyList")
 public class ApplyListController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String ac_ = request.getParameter("ac");
 		String field_ = request.getParameter("f");

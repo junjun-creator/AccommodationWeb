@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,54 +59,43 @@
                 </div>
                 <section class="picked-item-sec">
                     <h1>찜한 상품</h1>
-                    <div class="snip1368">
-                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/메인.jpg" alt="">
-                        <h3>예약하기</h3>
-                        <figcaption>
-                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                            </div>
-                          </figcaption>
-                        <div class="description-item">
-                            <p>라마다 호텔</p>
-                            <P>9.1 추천해요 (201)</P>
-                            <p>강남구 역삼동</p>
-                        </div>
-                        <div class="item-price">
-                            <div>
-                                <p>숙박</p>
-                                <p>예약특가</p>
-                                <p>30,000원</p>
-                            </div>
-                        </div>
-                        <div class="hovered-item-bg">
-                        </div>
-                    </div>
-                    <div class="snip1368">
-                        <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/메인.jpg" alt="">
-                        <h3>예약하기</h3>
-                        <figcaption>
-                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                            </div>
-                          </figcaption>
-                        <div class="description-item">
-                            <p>라마다 호텔</p>
-                            <P>9.1 추천해요 (201)</P>
-                            <p>강남구 역삼동</p>
-                        </div>
-                        <div class="item-price">
-                            <div>
-                                <p>숙박</p>
-                                <p>예약특가</p>
-                                <p>30,000원</p>
-                            </div>
-                        </div>
-                        <div class="hovered-item-bg">
-                        </div>
-                    </div>
+                    <c:if test="${list ne null}">
+                    
+	                    <c:forEach items="${list}" var="pick" varStatus="status">
+		                    <div class="snip1368">
+		                        <img src="../..${pick.accFileRoute }/${pick.accFileName}" alt="">
+		                        <h3>예약하기</h3>
+		                        <figcaption>
+		                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+		                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+		                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+		                            </div>
+		                          </figcaption>
+		                        <div class="description-item">
+		                            <p>${pick.accName }</p>
+		                            <P>리뷰 ${pointList.get(status.index) } 추천해요</P>
+	                            	<p>${fn:substring(pick.accLocation,0,7) }</p>
+		                        </div>
+		                        <div class="item-price">
+		                            <div>
+		                                <p>숙박</p>
+		                                <p>예약특가</p>
+		                                <p><fmt:formatNumber value="${pick.price }" pattern="#,###" />원</p>
+		                            </div>
+		                        </div>
+		                        <div class="delete-button">
+		                        	<button>삭제</button>
+		                        	<input type="hidden" value="${pick.accId }">
+		                        	<input type="hidden" value="${pick.userId }">
+		                       	</div>
+		                        <div class="hovered-item-bg">
+		                        </div>
+		                    </div>
+	                    </c:forEach>
+                    </c:if>
+                    <c:if test="${empty list}">
+                    	<div>찜한 상품이 없습니다.</div>
+                    </c:if>
                 </section>
             </main>
         </div>

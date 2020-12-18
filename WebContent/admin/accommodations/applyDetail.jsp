@@ -1,17 +1,19 @@
-<%@page import="com.teum.entity.Acc"%>
-<%@page import="com.teum.service.AccService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="../../css/admin/layout.css">
-    <link rel="stylesheet" href="../../css/admin/accommodations/applyDetail.css">
+
+    <link rel="stylesheet" href="/css/admin/layout.css">
+    <link rel="stylesheet" href="/css/admin/accommodations/regAccommodationDetail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -21,33 +23,12 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/admin/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
                     <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                        <a href="">로그인</a>
                     </li>
                 </ul>
             </div>
