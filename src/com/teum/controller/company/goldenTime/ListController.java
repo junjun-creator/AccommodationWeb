@@ -27,8 +27,8 @@ public class ListController extends HttpServlet {
 		HttpSession session = request.getSession();	
 			
 		
-		int id = (int)session.getAttribute("id");
-		//int id =1;
+		//int id = (int)session.getAttribute("id");
+		int id =1;
 		GoldenTimeService service = new GoldenTimeService();
 		List<GoldenTimeView> list = service.getGoldenList(id); 
 		
@@ -46,12 +46,16 @@ public class ListController extends HttpServlet {
 		String saleprice_=request.getParameter("price");
 		int status = Integer.parseInt(request.getParameter("status"));
 		
+		//가격
 		int saleprice=0;
 		if(saleprice_!=null&&!saleprice_.equals("")) {
 			saleprice =Integer.parseInt(saleprice_);
 		}
+		System.out.println(chk);
+		System.out.println(status);
 		
-			Acc acc = new Acc(chk,status);
+		Acc acc = new Acc(chk,status);
+		
 		switch (cmd) {
 		case "전환":
 			
