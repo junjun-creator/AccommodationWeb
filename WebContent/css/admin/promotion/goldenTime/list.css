@@ -82,3 +82,37 @@
 	        }
        
 /********************************************/
+.main .pager-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .main .pager-container .pager-list {
+        display: flex;
+    }
+
+        .main .pager-container .pager-list li {
+            margin-left: 15px;
+        }
+
+        .main .pager-container .pager-list li:last-child {
+            margin-right: 15px;
+        }
+        
+        .main .pager-container .pager-list .active-page {
+            color: #fc0453;
+            font-weight: bold;
+        }
+
+        .main .pager-container .pager-list li a {
+            text-decoration: none;
+        }
+
+        .main .pager-container .pager-list li a:hover {
+            color: #fc0453;
+        }
+
+    .main .pager-container .btn a {
+        text-decoration: none;
+    }
