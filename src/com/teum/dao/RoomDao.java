@@ -15,4 +15,6 @@ public interface RoomDao {
 
 	List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId);
 
+	int getOfferCount(int offerId);
+
 }

@@ -23,7 +23,16 @@ window.addEventListener("load",function(){
         proposal_.style.transform="translateX("+(-350)*proposalCount+"px)";
     });
 
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	var btn_more = document.querySelector(".btn-more");
+	var offer_count = document.querySelector(".offer-count");
+	
+	if(offer_count.value <= 3)
+		btn_more.style.display='none';
+		
 	btn_more.addEventListener("click",function(e){
 		e.preventDefault();
 		
@@ -34,8 +43,32 @@ window.addEventListener("load",function(){
 		xhr.open('post','./offerList');
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState === 4 && xhr.status === 200){
+				var html = document.querySelector("#more-template").innerHTML;
 				var result = xhr.response;
-				console.log(JSON.parse(result));
+				var jsonResult = JSON.parse(result);
+				var offer_sec = document.querySelector(".offer-sec");
+				var currentOffer = document.querySelector(".picked");
+				var offerPrice = currentOffer.lastElementChild.value;
+				
+				for(var i=0;i<jsonResult.length-1;i++){
+					var resultHTML = '';
+					resultHTML = html.replace("{accName}",jsonResult[i].accName)
+									.replace("{fileRoute}",jsonResult[i].fileRoute)
+									.replace("{roomName}",jsonResult[i].roomName)
+									.replace("{bedCount}",jsonResult[i].bedCount)
+									.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
+									.replace("{price}",numberWithCommas(jsonResult[i].price))
+									.replace("{offerPrice}",numberWithCommas(offerPrice));
+									
+					offer_sec.insertAdjacentHTML('beforeend',resultHTML);
+					
+				}//아이템 추가 완료
+				var pageNum = document.querySelector(".page");
+				pageNum.value= (page)*1+1;
+				if(jsonResult[jsonResult.length-1].offerCount <= page*3)
+					btn_more.style.display = 'none';
+				else
+					btn_more.href = "?page="+((page)*1+1)+"&offerId="+offer_id;
 				
 				/* 불러온 결과를 insertajacent로 삽입 해주고, 다음 페이지 번호값을 변경해서 input에 저장해주고
 					전체 갯수를 input hidden으로 받아와서 전체갯수와 현재 페이지*3을 비교해서 전체갯수가 더 적으면 더보기 버튼비활성화*/ 
@@ -47,4 +80,60 @@ window.addEventListener("load",function(){
 		data += '&offerId='+offer_id;
 		xhr.send(data);
 	});
+	
+	var proposalInfo = document.querySelectorAll(".proposal-info");
+	for(var card of proposalInfo){
+		card.addEventListener("click",function(e){
+			e.stopPropagation();
+			
+			var beforeTarget = document.querySelector(".picked");
+			beforeTarget.classList.remove("picked");
+			e.currentTarget.classList.add("picked");
+			var offerPrice = e.currentTarget.lastElementChild.value;
+			var offer_id = e.currentTarget.querySelector("input").value;
+			
+			
+			var xhr = new XMLHttpRequest();
+			xhr.open('post','./offerList');
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState === 4 && xhr.status === 200){
+					var result = xhr.response;
+					
+					document.querySelector(".page").value=2;
+					document.querySelector(".offer-id").value=offer_id;
+					
+					var html = document.querySelector("#more-template").innerHTML;
+					var jsonResult = JSON.parse(result);
+					var offer_sec = document.querySelector(".offer-sec");
+					var resultHTML = '';
+					for(var i=0;i<jsonResult.length-1;i++){
+						resultHTML += html.replace("{accName}",jsonResult[i].accName)
+										.replace("{fileRoute}",jsonResult[i].fileRoute)
+										.replace("{roomName}",jsonResult[i].roomName)
+										.replace("{bedCount}",jsonResult[i].bedCount)
+										.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
+										.replace("{price}",numberWithCommas(jsonResult[i].price))
+										.replace("{offerPrice}",numberWithCommas(offerPrice));
+										
+					}
+					offer_sec.innerHTML = resultHTML;
+					
+					if(jsonResult[jsonResult.length-1].offerCount <= 3)
+						btn_more.style.display = 'none';
+					else{
+						btn_more.href = "?page=2&offerId="+offer_id;
+						btn_more.style.display = 'block';
+					}
+					
+					
+				}
+			}
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			var data='';
+			data += 'page=1';
+			data += '&offerId='+offer_id;
+			xhr.send(data);
+		},true);
+	}
+	
 });
