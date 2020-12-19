@@ -28,9 +28,7 @@ main{
         margin-right: auto;
 
     }
-    .img-box{
-        border-bottom: 10px outset gray;
-    }
+    
         .content-box .insert-box{
             height: 62px;
             padding-bottom: 10px;
@@ -60,6 +58,13 @@ main{
             margin-left: auto;
             margin-right: auto;
             width: 250px;
+        }
+        .img-box{
+            border-bottom: 1px dashed gray;
+            opacity: 0.5;
+        }
+        .img-box .insert-box{
+            opacity: 1.0;
         }
             .button{
                 height: 40px;
@@ -94,6 +99,10 @@ main{
                 display: inline-block;
                 /* border: 0.5px solid #fc0453; */
             }  
+            .add-room .text-box{
+                padding-left: 10px;
+            }
+
                 .add-room div{
                     padding-left: 60px;
                     /* padding-top: 5px; */
@@ -110,6 +119,8 @@ main{
         width: 320px;
         margin-left: auto;
         margin-right: auto;
+        padding-top: 30px;
+        padding-left: 10px;
     }
     .submit-btn{
         margin-left: auto;
