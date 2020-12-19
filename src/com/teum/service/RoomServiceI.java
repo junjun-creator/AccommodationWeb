@@ -16,4 +16,5 @@ public interface RoomServiceI {
 //	//숙소디테일 페이지(유저)
 //	public List<Room> getListByUser(int accId);
 	List<OfferInfoView> getOfferInfoList(int page,int offerId);
+	int getOfferCount(int offerId);
 }
