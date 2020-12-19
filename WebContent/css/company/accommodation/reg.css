@@ -17,6 +17,7 @@ main{
         display: flex;
         justify-content: center;
         width: 800px;
+        flex-wrap: wrap;
         /* border: 1px solid black; */
         margin-left: auto;
         margin-right: auto;
@@ -27,7 +28,9 @@ main{
         margin-right: auto;
 
     }
-
+    .img-box{
+        border-bottom: 10px outset gray;
+    }
         .content-box .insert-box{
             height: 62px;
             padding-bottom: 10px;
@@ -50,19 +53,27 @@ main{
             width: 320px;
             height: 30px;
             padding-left: 145px;
-
+            
+        }
+        .insert-button{
+            padding-top: 20px ;
+            margin-left: auto;
+            margin-right: auto;
+            width: 250px;
         }
             .button{
                 height: 40px;
-                width: 158px;
+                width: 120px;
                 border-radius: 5px;
                 background: white;
-                padding:5px 10px;
+                /* padding:5px 10px; */
                 vertical-align: middle;
                 cursor: pointer;
                 color: #5f0081;
                 font-weight: bold;
                 border: 1px solid #F9FBFF;
+                margin-left: auto;
+                margin-right: auto;
             }
             .button:hover{
                 background-color: #F9FBFF;
@@ -96,13 +107,13 @@ main{
 
 
     .btn-box{
-        width: 500px;
+        width: 320px;
         margin-left: auto;
         margin-right: auto;
     }
     .submit-btn{
-        margin-left: 50px;
-        margin-top: 20px;
+        margin-left: auto;
+        margin-top: auto;
         background-color: #5f0081;
         border-radius: 20px;
         border: none;
@@ -111,7 +122,7 @@ main{
         text-decoration: none;
         font-size: 14px;
         height: 50px;
-        width: 400px;
+        width: 320px;
 
         
     }
