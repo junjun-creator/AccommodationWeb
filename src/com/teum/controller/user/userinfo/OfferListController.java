@@ -59,11 +59,13 @@ public class OfferListController extends HttpServlet {
 			
 			RoomService roomService = new RoomService();
 			List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
+			int offerCount = roomService.getOfferCount(offerId);
 			
 			request.setAttribute("oiv", oiv);
 			request.setAttribute("offerList", offerList);
 			request.setAttribute("page", page);
 			request.setAttribute("oi", offerId);
+			request.setAttribute("offerCount", offerCount);
 			
 			request.getRequestDispatcher("offerList.jsp").forward(request, response);
 			
@@ -100,9 +102,9 @@ public class OfferListController extends HttpServlet {
 		List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
 		
 		JSONArray jArray = new JSONArray();
-		JSONObject obj = new JSONObject();
 		int count = 0;
 		for(OfferInfoView o : oiv) {
+			JSONObject obj = new JSONObject();
 			obj.put("roomId", o.getRoomId());
 			obj.put("roomName", o.getRoomName());
 			obj.put("maxHeadcount", o.getMaxHeadcount());
@@ -114,7 +116,11 @@ public class OfferListController extends HttpServlet {
 			
 			jArray.add(obj);
 		}
-		
+		JSONObject obj = new JSONObject();
+		int offerCount = roomService.getOfferCount(offerId);
+		obj.put("offerCount", offerCount);
+		jArray.add(obj);
+
 		response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(jArray);
 	}

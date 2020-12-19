@@ -81,6 +81,8 @@
 	                                        <div class="wanted-price"><fmt:formatNumber value="${offer.price }" pattern="#,###" />원</div>
 	                                    </li>
 	                                </ul>
+	                                <input type="hidden" value="${offer.id }">
+	                                <input type="hidden" value="${offer.price }">
 	                            </div>
 							</c:forEach>
                         </div>
@@ -170,8 +172,8 @@
              
 
                 <section class="offer-sec">
-                    <div class="offer-form">
-                    	<c:forEach items="${oiv }" var="roomList" varStatus="status">
+                   	<c:forEach items="${oiv }" var="roomList" varStatus="status">
+                   		<div class="offer-form">
 	                    	
 	                        <h1>${roomList.accName }</h1>
 	                        <section>
@@ -195,6 +197,7 @@
 	                                    <div class="offer-price">
 	                                        <div>가격</div>
 	                                        <div><fmt:formatNumber value="${roomList.price }" pattern="#,###" />원</div>
+	                                    	<div><fmt:formatNumber value="${offerList[0].price }" pattern="#,###" />원</div>
 	                                    </div>
 	                                    <div class="submit-btn-container">
 	                                        <input type="button" class="submit-btn" value="승인하기">
@@ -202,13 +205,14 @@
 	                                </div>
 	                            </div>
 	                        </section>
-                    	</c:forEach>
-                    </div>
+                    	</div>
+                    </c:forEach>
                 </section>
 	            <div class="btn-more-sec">
 	            	<a href="?page=${page+1 }&offerId=${oi}" class="btn-more">더보기</a>
 	            	<input type="hidden" value="${page+1 }" class="page">
 	            	<input type="hidden" value="${oi }" class="offer-id">
+	            	<input type="hidden" value="${offerCount }" class="offer-count">
 	            </div>
             </main>
         </div>
@@ -259,6 +263,40 @@
             </div>
         </footer>
     </section>
+    
+    <script type="more-template" id="more-template">
+			<div class="offer-form">
+				<h1>{accName}</h1>
+	                        <section>
+	                            <div class="offer-container">
+	                                <div class="offer-img-container">
+	                                    <a href=""><img src="../..{fileRoute}" alt=""></a>
+	                                </div>
+	                                <div class="offer-detail-container">
+	                                    <div class="offer-room">
+	                                        <span>{roomName}</span>
+	                                    </div>
+	                                    <div class="offer-bed-count">
+	                                        <div>침대개수</div>
+	                                        <div>{bedCount}</div>
+	                                    </div>
+	                                    <div class="offer-max-headcount">
+	                                        <div>최대 수용인원</div>
+	                                        <div>{maxHeadcount}</div>
+	                                    </div>
+	                                    <div class="offer-price">
+	                                        <div>가격</div>
+	                                        <div>{price}원</div>
+											<div>{offerPrice}원</div>
+	                                    </div>
+	                                    <div class="submit-btn-container">
+	                                        <input type="button" class="submit-btn" value="승인하기">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </section>
+					</div>
+	</script>
 </body>
 
 </html>

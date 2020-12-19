@@ -30,38 +30,38 @@ public class AccService {
 
 	public List<AccListForAdminView> getViewList() {
 
-		return accDao.getViewList(1, 10, "", "companyName", "");
+		return accDao.getViewList("", "companyName", "", 1, 10);
 	}
 
 	public List<AccListForAdminView> getViewList(int page, int size) {
 
-		return accDao.getViewList(page, size, "", "companyName", "");
+		return accDao.getViewList("", "companyName", "", page, size);
 	}
 
-	public List<AccListForAdminView> getViewList(int page, int size, String ac, String field, String qeury) {
+	public List<AccListForAdminView> getViewList(String ac, String field, String qeury, int page, int size) {
 
 		int startIndex = 1 + (page - 1) * size;// 1, 11, 21, 31, ...
 		int endIndex = page * 10;// 10,20,30,40,50,60...
 
-		return accDao.getViewList(startIndex, endIndex, ac, field, qeury);
+		return accDao.getViewList(ac, field, qeury,startIndex, endIndex);
 	}
 
 	public List<AccListForAdminView> getApplyViewList() {
 
-		return accDao.getApplyViewList(1, 10, "", "", "");
+		return accDao.getApplyViewList("", "companyName", "", 1, 10);
 	}
 
 	public List<AccListForAdminView> getApplyViewList(int page, int size) {
 
-		return accDao.getApplyViewList(page, size, "", "", "");
+		return accDao.getApplyViewList("", "companyName", "", page, size);
 	}
 
-	public List<AccListForAdminView> getApplyViewList(int page, int size, String ac, String field, String qeury) {
+	public List<AccListForAdminView> getApplyViewList(String ac, String field, String qeury, int page, int size) {
 
 		int startIndex = 1 + (page - 1) * size;// 1, 11, 21, 31, ...
 		int endIndex = page * 10;// 10,20,30,40,50,60...
 
-		return accDao.getApplyViewList(startIndex, endIndex, ac, field, qeury);
+		return accDao.getApplyViewList(ac, field, qeury, startIndex, endIndex);
 	}
 
 	public Acc get(int id) {

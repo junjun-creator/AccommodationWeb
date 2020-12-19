@@ -9,11 +9,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
-
-    <link rel="stylesheet" href="/css/admin/layout.css">
-    <link rel="stylesheet" href="/css/admin/accommodations/detail.css">
+    <link rel="stylesheet" href="../../css/admin/layout.css">
+    <link rel="stylesheet" href="../../css/admin/accommodations/applyDetail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -23,12 +22,33 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="/admin/index">틈</a></h1>
+                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="">제안하기</a></li>
+                    <li><a href="">예약내역</a></li>
                     <li class="sub-page">
-                        <a href="">로그인</a>
+                        <a href="">더보기</a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">1:1 문의</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="sub-page">
+                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="">내정보</a></li>
+                                <li><a href="">제안내역</a></li>
+                                <li><a href="">찜한 숙소</a></li>
+                                <li><a href="">로그아웃</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -73,32 +93,26 @@
 					<div class="sub-container">
 						<div class="breadcrumb">
 							<ul class="breadcrumb-list">
-								<li><i class="fas fa-home"></i>HOME ▶ </li>
-								<li>업체관리 ▶ </li>
-								<li>업체된 업체 리스트 ▶ </li>
-								<li>업체된 업체</li>
-							</ul>
+                                <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+                                <li>&nbsp;&nbsp;&nbsp;업체관리&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
+								<li>&nbsp;&nbsp;&nbsp;업체 등록 관리&nbsp;&nbsp;&nbsp;</li>
+								<li>&nbsp;&nbsp;&nbsp;미승인 업체&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
 						</div>
-						<h1>등록된 업체</h1><br>
+						<h1>미승인 업체</h1><br>
 						
 						<section class='title'>
 							<div class="pic">
 								<div class="main-img">
-									<img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png" alt= "신라스테이 삼성"><br>
-								</div>
-								<div class="cliper-btn prev-btn">
-									<i class="fas fa-angle-left"></i>
-								</div>
-								<div class="cliper-btn next-btn">
-									<i class="fas fa-angle-right"></i>
+									<img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg" alt= "신라스테이 삼성"><br>
 								</div>
 								<div class="cliper">
 									<ul>
-										<li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
-										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/신라스테이_삼성_스탠다드더블_메인.jpg"></li>
-										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
-										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/신라스테이_삼성_스탠다드트윈_메인.png" alt= "신라스테이 삼성"></li> 
-										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/신라스테이_삼성_메인.png"></li>
+										<li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
+										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성"></li> 
+										<li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
 									</ul>
 								</div>
 							</div>
@@ -161,11 +175,41 @@
 										</div>
 									</div>
 								</section>
-								<div class="btn-box">
-									<input type="button" value="삭제" class="btn delete-btn">
-									<input type="button" value="승인" class="btn approval-btn">
-								</div>
+								<section>
+									<!-- <div class="radio-container">
+										<input type="radio" name="radio" id="radio-2" class="radio" required>
+										<label for="radio-2"><span></span></label>
+									</div> -->
+									<div class="room-container">
+										<div class="room-img-container">
+											<img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg">
+										</div>
+										<div class="room-detail-container">
+											<div class="room-room">
+												<span>스탠다드 더블</span>
+											</div>
+											<div class="room-bed-count">
+												<div>침대개수</div>
+												<div>1</div>
+											</div>
+											<div class="room-max-headcount">
+												<div>최대 수용인원</div>
+												<div>2</div>
+											</div>
+											<div class="room-price">
+												<div>가격</div>
+												<div>500,260원</div>
+											</div>
+											
+										</div>
+									</div>
+								</section>
+								
 							</form>
+							<div class="btn-box">
+							<input type="button" value="삭제" class="btn delete-btn">
+							<input type="button" value="승인" class="btn approval-btn">
+							</div>
 						</section>
 					</div>
 				</main>
