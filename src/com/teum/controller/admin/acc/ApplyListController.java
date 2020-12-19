@@ -17,8 +17,8 @@ public class ApplyListController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=utf-8");
 		
 		String ac_ = request.getParameter("ac");
 		String field_ = request.getParameter("f");
@@ -33,12 +33,15 @@ public class ApplyListController extends HttpServlet{
 			field = field_;
 
 		String query = "";
-		if(query_ != null&& query_.equals(""))
-			query = query_;
+		if(query_ != null&& !query_.equals(""))
+			query = "%" +query_+"%";
 		
+		System.out.println(ac);
+		System.out.println(field);
+		System.out.println(query);
 		
 		AccService service = new AccService();
-		List<AccListForAdminView> list = service.getApplyViewList(1,10,field,ac,query);
+		List<AccListForAdminView> list = service.getApplyViewList(ac,field,query,1,10);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("applyList.jsp").forward(request, response);

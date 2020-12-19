@@ -322,33 +322,51 @@ public class JdbcAccDao implements AccDao{
 	@Override
 	public List<AccListForAdminView> getViewList() {
 
-		return getViewList(1,10, "","companyName","");
+		return getViewList("","companyName","", 1,10);
 	}
 
 	@Override
 	public List<AccListForAdminView> getViewList(int startIndex, int endIndex) {
 
-		return getViewList(startIndex, endIndex,"","companyName","");
+		return getViewList("","companyName","", startIndex, endIndex);
 	}
 
 	@Override
-	public List<AccListForAdminView> getViewList( int startIndex, int endIndex, String ac, String field,  String query) {
+	public List<AccListForAdminView> getViewList(String ac, String field,  String query, int startIndex, int endIndex ) {
 
 		List<AccListForAdminView> list = new ArrayList<AccListForAdminView>();
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN " +
-						" WHERE REG_STATUS=1 AND NUM BETWEEN ? AND ? AND" +
-						" ACC_TYPE = ? AND "+ field +" LIKE ? ORDER BY REGDATE DESC"; 
+		String sql;
+		
+		if(query == null || query.equals("")) {
+			sql = "SELECT * FROM ( SELECT ROWNUM NUM, A.* " +
+					"FROM (SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 1 ORDER BY REGDATE DESC) A ) " +
+					"WHERE NUM BETWEEN ? AND ?"; 
+		}else {
+			sql = "SELECT * FROM "+
+					"(SELECT ROWNUM NUM, A.* FROM "+
+					"(SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 1 "+
+					"AND ACC_TYPE = ? AND " + field + " LIKE ? ORDER BY REGDATE DESC) A )" + 
+					"WHERE NUM BETWEEN ? AND ?";
+		}
+		
+
+		
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, startIndex);
-			st.setInt(2, endIndex);
-			st.setString(3, ac);
-			st.setString(4, query);
+			if(query == null || query.equals("")) {
+				st.setInt(1, startIndex);
+				st.setInt(2, endIndex);
+			} else {
+				st.setString(1, ac);
+				st.setString(2, query);
+				st.setInt(3, startIndex);
+				st.setInt(4, endIndex);
+			}
 			
 			ResultSet rs = st.executeQuery();
 
@@ -391,37 +409,60 @@ public class JdbcAccDao implements AccDao{
 		}
 		return list;
 	}
+	
 	@Override
 	public List<AccListForAdminView> getApplyViewList() {
 
-		return getApplyViewList(1,10, "","","");
+		return getApplyViewList("","companyName","",1,10);
 	}
 
 	@Override
 	public List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex) {
 
-		return getApplyViewList(startIndex, endIndex, "","","");
+		return getApplyViewList("","companyName","",startIndex, endIndex);
 	}
 
 	@Override
-	public List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex, String ac,String field, String query) {
+	public List<AccListForAdminView> getApplyViewList(String ac,String field, String query, int startIndex, int endIndex ) {
 
 		List<AccListForAdminView> list = new ArrayList<AccListForAdminView>();
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0 AND NUM BETWEEN ? AND ?  ORDER BY REGDATE DESC"; 
+		String sql;
+		
+		if(query == null || query.equals("")) {
+			sql = "SELECT * FROM ( SELECT ROWNUM NUM, A.* " +
+					"FROM (SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 0 ORDER BY REGDATE DESC) A ) " +
+					"WHERE NUM BETWEEN ? AND ?"; 
+		}else {
+			sql = "SELECT * FROM "+
+					"(SELECT ROWNUM NUM, A.* FROM "+
+					"(SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 0 "+
+					"AND ACC_TYPE = ? AND " + field + " LIKE ? ORDER BY REGDATE DESC) A )" + 
+					"WHERE NUM BETWEEN ? AND ?";
+		}
+		
 
+		
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1,  startIndex);
-			st.setInt(2, endIndex);
-			st.setString(3, ac);
-			st.setString(4, field);
-			st.setString(5, query);		
+			if(query == null || query.equals("")) {
+				st.setInt(1, startIndex);
+				st.setInt(2, endIndex);
+			} else {
+				st.setString(1, ac);
+				st.setString(2, query);
+				st.setInt(3, startIndex);
+				st.setInt(4, endIndex);
+				
 
+			}
+			System.out.println(ac);
+			System.out.println(field);
+			System.out.println(query);
 			ResultSet rs = st.executeQuery();
 
 			while(rs.next()) {
@@ -449,7 +490,6 @@ public class JdbcAccDao implements AccDao{
 				
 				list.add(a);
 			};
-
 
 			rs.close();
 			st.close();

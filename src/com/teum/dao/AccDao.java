@@ -26,10 +26,10 @@ public interface AccDao {
 	
 	List<AccListForAdminView> getViewList();
 	List<AccListForAdminView> getViewList(int startIndex, int endIndex);
-	List<AccListForAdminView> getViewList(int startIndex, int endIndex, String ac, String field,  String query);
+	List<AccListForAdminView> getViewList(String ac, String field,  String query, int startIndex, int endIndex);
 	List<AccListForAdminView> getApplyViewList();
 	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex);
-	List<AccListForAdminView> getApplyViewList(int startIndex, int endIndex,String ac, String field,  String query);
+	List<AccListForAdminView> getApplyViewList(String ac, String field,  String query, int startIndex, int endIndex);
 	
 	Acc getLast();
 	List<GoldenTimeView> getGoldenList();
