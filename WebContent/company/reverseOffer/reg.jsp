@@ -109,7 +109,7 @@
                 </div>
                 <section class="offer-sec">
                     <h1>역제안이 가능한 방 목록</h1>
-                    <form class="offer-form">
+                    <form action="reg" method="post" class="offer-form">
                     	<c:forEach var="room" items="${showRoomList}" varStatus="status">
                         <section>
                             <div class="radio-container">

@@ -182,10 +182,17 @@ public class RegController extends HttpServlet {
 		if (roomId_ != null && !roomId_.equals(""))
 			roomId = Integer.parseInt(roomId_);
 		
-		int offerId = offerService.getId(roomId);
+		System.out.printf("roomId: %d\n", roomId);
+		
+		int accId = roomService.getId(roomId);
+		System.out.printf("accId: %d\n", accId);
+		int offerId = offerService.getId(accId);
+		System.out.printf("offerId:%d\n", offerId);
 		
 		ReverseOffer reverseOffer = new ReverseOffer(offerId, roomId);
 		
 		reverseOfferService.insert(reverseOffer);
+		
+		response.sendRedirect("/index");
 	}
 }

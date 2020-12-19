@@ -53,4 +53,8 @@ public class RoomService implements RoomServiceI {
 		// TODO Auto-generated method stub
 		return result;
 	}
+
+	public int getId(int roomId) {
+		return roomDao.getId(roomId);
+	}
 }

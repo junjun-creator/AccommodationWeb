@@ -21,6 +21,8 @@ public class ReverseOffer {
 	}
 
 	public ReverseOffer(int offerId, int roomId) {
+		this.offerId = offerId;
+		this.roomId = roomId;
 	}
 
 	public int getId() {

@@ -205,7 +205,7 @@ public class JdbcRoomDao implements RoomDao {
    public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
       String url = DBContext.URL;
       
-      String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID = ?";
+      String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID = ?";
       
       List<OfferableRoomListView> list = new ArrayList<>();
       
@@ -296,5 +296,37 @@ public class JdbcRoomDao implements RoomDao {
 		
 		return result;
 	}
+
+@Override
+public int getId(int roomId) {
+	int result = 0;
+
+	String url = DBContext.URL;
+	String sql = "SELECT ACC_ID FROM ROOM WHERE ID = ?";
+
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+		PreparedStatement pst = con.prepareStatement(sql);
+		
+		pst.setInt(1, roomId);
+		
+		ResultSet rs = pst.executeQuery();
+		
+		while(rs.next()) {
+			result = rs.getInt("ACC_ID");
+		}
+		
+		pst.close();
+		con.close();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+
+	return result;
+}
 
 }
