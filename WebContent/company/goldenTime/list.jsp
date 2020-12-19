@@ -26,15 +26,7 @@
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="">로그아웃</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +53,7 @@
                     </ul>
                 </div>
                 
-		                    <form action="list"  method="post">
+		        <form action="list"  method="post">
                 <section class="golden-sec">
                     <h1>골든타임 리스트 /
                     	<span>GoldenTime List</span>
@@ -78,15 +70,16 @@
 					                </div>
 				                </div>
 				                <div class="btn-list">
-				                	<input type="submit"  name="cmd"value="전환"><input type="submit" name="cmd"value="수정">
+				                	<input type="submit"  name="cmd"value="진행">
+				                	<input type="submit"  name="cmd"value="대기">
+				                	<input type="submit" name="cmd"value="수정">
 				                </div>
 					           </div>  
 	                    </div>
 	                    <c:forEach var="g"  items="${list}">
 		                    <div class="snip1368">
-		                        <img src="../..${g.fileroute}/메인.jpg" alt="">
-		                       	<input type="hidden" name="status" value="${g.goldentimeStatus}">
-		                        	<input type="radio" class="radio" name="check" value="${g.id}" >
+		                        <img src="../..${g.fileroute}" alt="">
+		                        <input type="radio" class="radio" name="check" value="${g.id}" >
 		                         <c:set var="status" value=""/>
 		                         <c:if test="${g.goldentimeStatus==1}">
 		                        	 <c:set var="status" value="진행중"/>
@@ -116,31 +109,6 @@
 		                        </div>
 		                    </div>
 	                    </c:forEach>
-                  
-                    <!-- <div class="snip1368">
-                        <img src="../../images/company/호텔/부산/해운대/신라스테이_해운대/신라스테이_해운대_메인.jpg" alt="">
-                        <input type="radio" class="radio" name="check">
-                        <h3>대기중</h3>
-                        <figcaption>
-                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                              <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                              <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                            </div>
-                          </figcaption>
-                        <div class="description-item">
-                            <p>신라스테이 해운대</p>
-                            <P>2020/12/01 ~ 2020/12/24</P>
-                            <p>부산광역시 해운대구</p>
-                        </div>
-                        <div class="item-price">
-                            <div>
-                                <p>인하가격</p>
-                                <p>30,000원</p>
-                            </div>
-                        </div>
-                        <div class="hovered-item-bg">
-                        </div>
-                    </div> -->
                 </section>
                 </form>
             </main>

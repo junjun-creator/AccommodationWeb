@@ -13,7 +13,7 @@ public interface QnADao {
 	int getCount(String category, String query);
 	
 	QnA get(int id);
-	List<QnA> getList();
+	List<QnA> getList(int id);
 	
 	List<QnAView> getViewList();
 	List<QnAView> getViewList(int startIndex, int endIndex);

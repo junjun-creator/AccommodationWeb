@@ -16,12 +16,13 @@ import com.teum.dao.entity.QnAView;
 import com.teum.entity.Acc;
 
 public class JdbcGoldenTimeDao implements GoldenTimeDao {
+	
 	@Override
-	public int updateStatus(Acc acc) {
+	public int updateStatus(int status, int chk) {
 		int result =0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE ACC SET GOLDENTIME_STATUS="+((acc.getGoldentimeStatus()==0)?"1":"0")+" WHERE ID=?";
+		String sql = "UPDATE ACC SET GOLDENTIME_STATUS=? WHERE ID=?";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,8 +31,8 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 			
 			
 			
-			//st.setInt(, acc.getGoldentimeStatus());
-			st.setInt(1, acc.getId());
+			st.setInt(1,status);
+			st.setInt(2,chk);
 			
 		
 			//ResultSet rs = st.executeQuery(sql); // select 문장에만
@@ -46,6 +47,8 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 		}
 		return result;
 	}
+
+	
 
 	@Override
 	public int update(Acc acc) {
@@ -270,8 +273,6 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 		return result;
 	}
 
-	
 
-	
 	
 }

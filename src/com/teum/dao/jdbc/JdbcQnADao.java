@@ -130,61 +130,8 @@ public class JdbcQnADao implements QnADao {
 		}
 		return q;
 	}
-
-	@Override
-	public List<QnA> getList() {
-		List<QnA>list = new ArrayList<>();
-		
-		String url = DBContext.URL;
-		String sql = "SELECT * FROM QNA ";
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,  DBContext.UID, DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			
-
-			while(rs.next()) {
-				 int id =rs.getInt("ID");
-			     String title=rs.getString("TITLE");
-			     String content=rs.getString("CONTENT");
-			     Date regdate=rs.getDate("REGDATE");
-			     int categoryId =rs.getInt("CATEGORY_ID");
-			     int adminId =rs.getInt("ADMIN_ID");
-			     int answerStatus =rs.getInt("ANSWER_STATUS");
-			     int userId =rs.getInt("USER_ID");
-			     Date answerRegdate=rs.getDate("ANSWER_REGDATE");
-			     String answerContent =rs.getString("ANSWER_CONTENT");
-			     
-			     QnA q = new QnA();
-			     q.setId(id);
-			     q.setTitle(title);
-			     q.setContent(content);
-			     q.setRegdate(regdate);
-			     q.setCategoryId(categoryId);
-			     q.setAdminId(adminId);
-			     q.setAnswerStatus(answerStatus);
-			     q.setUserId(userId);
-			     q.setAnswerRegdate(answerRegdate);
-			     q.setContent(answerContent);
-			   
-			     
-			     list.add(q);
-				}
-
-			
-			rs.close();
-			st.close();
-			con.close();
-			
-		
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
+	
+	
 	@Override
 	public List<QnAView> getViewList() {
 
@@ -291,6 +238,52 @@ public class JdbcQnADao implements QnADao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public List<QnA> getList(int id) {
+		List<QnA>list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM QNA where user_id ="+id+"and answer_status=1";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,  DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+
+			while(rs.next()) {
+				 int id2 =rs.getInt("ID");
+			     String title=rs.getString("TITLE");
+			     String content=rs.getString("CONTENT");
+			     int userId =rs.getInt("USER_ID");
+			     Date answerRegdate=rs.getDate("ANSWER_REGDATE");
+			     String answerContent =rs.getString("ANSWER_CONTENT");
+			     
+			     QnA q = new QnA();
+			     q.setId(id2);
+			     q.setTitle(title);
+			     q.setContent(content);
+			     q.setUserId(userId);
+			     q.setAnswerRegdate(answerRegdate);
+			     q.setAnswerContent(answerContent);
+			   
+			     
+			     list.add(q);
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	

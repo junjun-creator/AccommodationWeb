@@ -37,13 +37,23 @@ public class GoldenTimeService {
 		
 	}
 
-	public int updateStatus(Acc acc) {
-		int result =0;
+	public int closeStatus(int chk) {
+	int result =0;
+		int status = 0;
+		result = goldenTimeDao.updateStatus(status,chk);
 		
-		result = goldenTimeDao.updateStatus(acc);
+		return result;
+	}
+
+	public int openStatus(int chk) {
+	int result =0;
+	int status = 1;
+	result = goldenTimeDao.updateStatus(status,chk);
+		
 		return result;
 		
 	}
+
 
 	public List<GoldenTimeView> getVIewList(int page, int size, String category, String query) {
 		
@@ -80,6 +90,7 @@ public class GoldenTimeService {
 		
 		return result;
 	}
+
 
 	
 	
