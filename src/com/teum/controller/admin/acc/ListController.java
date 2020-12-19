@@ -26,16 +26,17 @@ public class ListController extends HttpServlet {
 		if(ac_ != null)
 			ac = ac_;
 		
-		String field = "companyName";
+		String field = "company_name";
 		if(field_ != null)
 			field = field_;
 		
 		String query = "";
-		if(query_ != null && query_.equals(""))
+		if(query_ != null && !query_.equals(""))
 			query = "%"+query_+"%";
 		
+
 		AccService service = new AccService();
-		List<AccListForAdminView> list = service.getViewList(1,10,ac,field,query);
+		List<AccListForAdminView> list = service.getViewList(ac,field,query, 1,10);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);

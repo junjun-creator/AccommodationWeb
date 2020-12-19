@@ -109,8 +109,8 @@
                                     <option ${(param.ac == "펜션")?"selecte":"" }value="펜션">펜션</option>
                                 </select>
                                 <select name="f">
-                                    <option ${(param.f == "companyName")?"selecte":"" } value="companyName">사업자</option>
-                                    <option ${(param.f == "accName")?"selecte":"" } value="accName">숙소</option>
+                                    <option ${(param.f == "company_name")?"selecte":"" } value="company_name">사업자</option>
+                                    <option ${(param.f == "acc_name")?"selecte":"" } value="acc_name">숙소</option>
                                 </select>
                                 <input type="text" name="search" value="${param.search}">
                                 <input type="submit" value="검색">
@@ -135,7 +135,7 @@
 									<tbody>
                                         <c:forEach var="a" items="${list}">
 										<tr>
-											<td>${a.id}</td>
+											<td>${a.num}</td>
 											<td>${a.companyName}</td>
 											<td><a href="detail?accName=${a.name}">${a.name}</a></td>
 											<td>${a.location}</td>
