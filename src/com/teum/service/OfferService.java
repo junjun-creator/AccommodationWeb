@@ -43,8 +43,8 @@ public class OfferService implements OfferServiceI{
 		return offerDao.getList(accIdsCSV);
 	}
 
-	public int getId(int roomId) {
-		return offerDao.getId(roomId);
+	public int getId(int accId) {
+		return offerDao.getId(accId);
 	}
 
 }

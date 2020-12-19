@@ -158,18 +158,18 @@ public class JdbcOfferDao implements OfferDao {
 	}
 
 	@Override
-	public int getId(int roomId) {
+	public int getId(int accId) {
 		int result = 0;
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM OFFER WHERE ROOM_ID = ?";
+		String sql = "SELECT * FROM OFFER WHERE ACC_ID = ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
 			
-			pst.setInt(1, roomId);
+			pst.setInt(1, accId);
 			
 			ResultSet rs = pst.executeQuery();
 			
