@@ -93,6 +93,15 @@ public class QnAService {
 		return result;
 	}
 
+	public int insert(QnA qna) {
+		int result =0;
+		
+		result = qnaDao.insert(qna);
+		
+		return result;
+		
+	}
+
 
 	
 }
