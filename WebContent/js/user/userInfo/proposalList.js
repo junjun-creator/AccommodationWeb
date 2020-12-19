@@ -22,4 +22,29 @@ window.addEventListener("load",function(){
 
         proposal_.style.transform="translateX("+(-350)*proposalCount+"px)";
     });
+
+	var btn_more = document.querySelector(".btn-more");
+	btn_more.addEventListener("click",function(e){
+		e.preventDefault();
+		
+		var page = document.querySelector(".page").value;
+		var offer_id = document.querySelector(".offer-id").value;
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('post','./offerList');
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState === 4 && xhr.status === 200){
+				var result = xhr.response;
+				console.log(JSON.parse(result));
+				
+				/* 불러온 결과를 insertajacent로 삽입 해주고, 다음 페이지 번호값을 변경해서 input에 저장해주고
+					전체 갯수를 input hidden으로 받아와서 전체갯수와 현재 페이지*3을 비교해서 전체갯수가 더 적으면 더보기 버튼비활성화*/ 
+			}
+		}
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		var data='';
+		data += 'page='+page;
+		data += '&offerId='+offer_id;
+		xhr.send(data);
+	});
 });

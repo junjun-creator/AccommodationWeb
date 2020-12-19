@@ -60,8 +60,8 @@
                         <div class="proposal-item-container" style="display: flex;">
 				
 							<c:forEach items="${offerList }" var="offer" varStatus="status">
-							
-	                            <div class="proposal-info">
+								
+	                            <div class="proposal-info ${(status.index==0)?'picked':'' }">
 	                                <h2>제안정보</h2>
 	                                <ul>
 	                                    <li>
@@ -167,76 +167,48 @@
                         
                     </div>
                 </section> -->
+             
 
                 <section class="offer-sec">
-                    <form class="offer-form">
-                        <h1>글래드 라이브 강남</h1>
-                        <section>
-                            <div class="offer-container">
-                                <div class="offer-img-container">
-                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
-                                    <a href=""><img src="../../images/company/호텔/서울/강남구/라마다호텔/슈페리얼더블/메인.jpg" alt=""></a>
-                                </div>
-                                <div class="offer-detail-container">
-                                    <div class="offer-room">
-                                        <span>스위트룸</span>
-                                    </div>
-                                    <div class="offer-bed-count">
-                                        <div>침대개수</div>
-                                        <div>3</div>
-                                    </div>
-                                    <div class="offer-max-headcount">
-                                        <div>최대 수용인원</div>
-                                        <div>2</div>
-                                    </div>
-                                    <div class="offer-price">
-                                        <div>가격</div>
-                                        <div>258,220원</div>
-                                    </div>
-                                    <div class="submit-btn-container">
-                                        <input type="submit" class="submit-btn" value="승인하기">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </form>
-                </section>
-
-                <section class="offer-sec">
-                    <form class="offer-form">
-                        <h1>글래드 라이브 강남</h1>
-                        <section>
-                            <div class="offer-container">
-                                <div class="offer-img-container">
-                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
-                                    <a href=""><img src="../../images/company/호텔/서울/강남구/라마다호텔/슈페리얼더블/메인.jpg" alt=""></a>
-                                </div>
-                                <div class="offer-detail-container">
-                                    <div class="offer-room">
-                                        <span>스위트룸</span>
-                                    </div>
-                                    <div class="offer-bed-count">
-                                        <div>침대개수</div>
-                                        <div>3</div>
-                                    </div>
-                                    <div class="offer-max-headcount">
-                                        <div>최대 수용인원</div>
-                                        <div>2</div>
-                                    </div>
-                                    <div class="offer-price">
-                                        <div>가격</div>
-                                        <div>258,220원</div>
-                                    </div>
-                                    <div class="submit-btn-container">
-                                        <input type="submit" class="submit-btn" value="승인하기">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </form>
+                    <div class="offer-form">
+                    	<c:forEach items="${oiv }" var="roomList" varStatus="status">
+	                    	
+	                        <h1>${roomList.accName }</h1>
+	                        <section>
+	                            <div class="offer-container">
+	                                <div class="offer-img-container">
+	                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
+	                                    <a href=""><img src="../..${roomList.fileRoute }" alt=""></a>
+	                                </div>
+	                                <div class="offer-detail-container">
+	                                    <div class="offer-room">
+	                                        <span>${roomList.roomName }</span>
+	                                    </div>
+	                                    <div class="offer-bed-count">
+	                                        <div>침대개수</div>
+	                                        <div>${roomList.bedCount }</div>
+	                                    </div>
+	                                    <div class="offer-max-headcount">
+	                                        <div>최대 수용인원</div>
+	                                        <div>${roomList.maxHeadcount }</div>
+	                                    </div>
+	                                    <div class="offer-price">
+	                                        <div>가격</div>
+	                                        <div><fmt:formatNumber value="${roomList.price }" pattern="#,###" />원</div>
+	                                    </div>
+	                                    <div class="submit-btn-container">
+	                                        <input type="button" class="submit-btn" value="승인하기">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </section>
+                    	</c:forEach>
+                    </div>
                 </section>
 	            <div class="btn-more-sec">
-	            	<button class="btn-more">더보기</button>
+	            	<a href="?page=${page+1 }&offerId=${oi}" class="btn-more">더보기</a>
+	            	<input type="hidden" value="${page+1 }" class="page">
+	            	<input type="hidden" value="${oi }" class="offer-id">
 	            </div>
             </main>
         </div>

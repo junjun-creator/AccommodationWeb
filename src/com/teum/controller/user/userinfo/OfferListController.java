@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import com.teum.dao.entity.OfferInfoView;
 import com.teum.entity.Offer;
 import com.teum.service.OfferService;
 import com.teum.service.ReverseOfferService;
@@ -37,17 +41,83 @@ public class OfferListController extends HttpServlet {
 			List<Offer> offerList = service.getList(userId,type);
 			
 			//오퍼 온 방리스트 가져오기
-			ReverseOfferService reverseService = new ReverseOfferService();
-			List<Integer> roomIds = reverseService.getRoomIds(offerList.get(0).getId());
+//			ReverseOfferService reverseService = new ReverseOfferService();
+//			List<Integer> roomIds = reverseService.getRoomIds(offerList.get(0).getId());
+			
+			int page = 1;
+			String page_ = request.getParameter("page");
+			int offerId=0;
+			if(!offerList.isEmpty())
+				offerId = offerList.get(0).getId();
+			String offerId_ = request.getParameter("offerId");
+			
+			if(page_ != null && !page_.equals(""))
+				page = Integer.parseInt(page_);
+			
+			if(offerId_ != null && !offerId_.equals(""))
+				offerId = Integer.parseInt(offerId_);
 			
 			RoomService roomService = new RoomService();
+			List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
 			
-			List<OfferdRoomView> orv = roomService.getOfferedRoomList()
-			
-			
+			request.setAttribute("oiv", oiv);
 			request.setAttribute("offerList", offerList);
+			request.setAttribute("page", page);
+			request.setAttribute("oi", offerId);
+			
 			request.getRequestDispatcher("offerList.jsp").forward(request, response);
+			
 		}
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//제안 리스트 가져오기
+		int userId = (int) session.getAttribute("id");
+		int type = (int) session.getAttribute("type");
+		OfferService service = new OfferService();
+		List<Offer> offerList = service.getList(userId,type);
+		
+		//오퍼 온 방리스트 가져오기
+//		ReverseOfferService reverseService = new ReverseOfferService();
+//		List<Integer> roomIds = reverseService.getRoomIds(offerList.get(0).getId());
+		
+		int page = 1;
+		String page_ = request.getParameter("page");
+		int offerId=0;
+		if(!offerList.isEmpty())
+			offerId = offerList.get(0).getId();
+		String offerId_ = request.getParameter("offerId");
+		
+		if(page_ != null && !page_.equals(""))
+			page = Integer.parseInt(page_);
+		
+		if(offerId_ != null && !offerId_.equals(""))
+			offerId = Integer.parseInt(offerId_);
+		
+		RoomService roomService = new RoomService();
+		List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
+		
+		JSONArray jArray = new JSONArray();
+		JSONObject obj = new JSONObject();
+		int count = 0;
+		for(OfferInfoView o : oiv) {
+			obj.put("roomId", o.getRoomId());
+			obj.put("roomName", o.getRoomName());
+			obj.put("maxHeadcount", o.getMaxHeadcount());
+			obj.put("bedCount", o.getBedCount());
+			obj.put("fileName", o.getFileName());
+			obj.put("fileRoute", o.getFileRoute());
+			obj.put("price", o.getPrice());
+			obj.put("accName", o.getAccName());
+			
+			jArray.add(obj);
+		}
+		
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().print(jArray);
+	}
+	
 	
 }

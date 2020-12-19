@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.RoomDao;
+import com.teum.dao.entity.OfferInfoView;
+import com.teum.dao.entity.PickListView;
 import com.teum.entity.Acc;
 import com.teum.entity.Offer;
 import com.teum.entity.Room;
@@ -134,6 +136,68 @@ public class JdbcRoomDao implements RoomDao {
 			e.printStackTrace();
 		}
 
+		return list;
+	}
+
+	@Override
+	public List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, OFFER_INFO_VIEW.* FROM OFFER_INFO_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
+		
+		List<OfferInfoView> list = new ArrayList<>();
+		//DriverManager;//Class.forName~
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,offerId);
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
+//			if(!field.equals("")) {
+//			}
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int roomId = rs.getInt("room_id");
+				String roomName = rs.getString("room_name");
+				int accId = rs.getInt("acc_id");
+				int price = rs.getInt("price");
+				int maxHeadcount = rs.getInt("max_headcount");
+				int bedCount = rs.getInt("bed_count");
+				String fileName = rs.getString("filename");
+				String fileRoute = rs.getString("fileroute");
+				String accName = rs.getString("acc_name");
+				
+				OfferInfoView oiv = new OfferInfoView();
+				oiv.setRoomId(roomId);
+				oiv.setRoomName(roomName);
+				oiv.setMaxHeadcount(maxHeadcount);
+				oiv.setBedCount(bedCount);
+				oiv.setFileName(fileName);
+				oiv.setFileRoute(fileRoute);
+				oiv.setAccId(accId);
+				oiv.setPrice(price);
+				oiv.setAccName(accName);
+				
+				list.add(oiv);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 

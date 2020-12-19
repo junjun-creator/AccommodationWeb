@@ -2,6 +2,7 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.OfferInfoView;
 import com.teum.entity.Room;
 
 public interface RoomDao {
@@ -11,5 +12,7 @@ public interface RoomDao {
 	Room getLast();
 
 	List<Room> getList(String accIdsCSV);
+
+	List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId);
 
 }

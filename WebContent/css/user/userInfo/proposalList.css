@@ -111,6 +111,9 @@
                         width: 330px;
                         margin: 0px 10px;
                     }
+                    .picked{
+                        background: rgb(203, 185, 221);
+                    }
             
                     .proposal-info:hover {
                         background: rgb(203, 185, 221);
