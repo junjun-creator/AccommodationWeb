@@ -44,4 +44,13 @@ public class RoomService implements RoomServiceI {
 //		return roomDao.getOfferableRoomList(startIndex, endIndex, offerId);
 		return roomDao.getOfferableRoomList(offerId);
 	}
+
+	@Override
+	public int getOfferCount(int offerId) {
+		int result=0;
+		
+		result = roomDao.getOfferCount(offerId);
+		// TODO Auto-generated method stub
+		return result;
+	}
 }

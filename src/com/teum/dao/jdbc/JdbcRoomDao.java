@@ -200,53 +200,88 @@ public class JdbcRoomDao implements RoomDao {
 		
 		return list;
 	}
+  
+  @Override
+   public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
+      String url = DBContext.URL;
+      
+      String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID = ?";
+      
+      List<OfferableRoomListView> list = new ArrayList<>();
+      
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+         PreparedStatement ps = con.prepareStatement(sql);
+         
+         ps.setInt(1, offerId);
 
-	@Override
-	public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
+         ResultSet rs = ps.executeQuery();
+         
+         while(rs.next()) {
+            int id = rs.getInt("ID");
+            String name = rs.getString("NAME");
+            int price = rs.getInt("PRICE");
+            int accId = rs.getInt("ACC_ID");
+            int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+            int bedCount = rs.getInt("BED_COUNT");
+            String bookedDate = rs.getString("BOOKED_DATE");
+            int roomImageId = rs.getInt("ROOM_IMAGE_ID");
+            String fileName = rs.getString("FILENAME");
+            String fileRoute = rs.getString("FILEROUTE");
+            Date checkinDate = rs.getDate("CHECKIN_DATE");
+            Date checkoutDate = rs.getDate("CHECKOUT_DATE");
+            
+            OfferableRoomListView orlv = new OfferableRoomListView();
+            
+            orlv.setId(id);
+            orlv.setName(name);
+            orlv.setPrice(price);
+            orlv.setAccId(accId);
+            orlv.setMaxHeadcount(maxHeadcount);
+            orlv.setBedCount(bedCount);
+            orlv.setRoomImageId(roomImageId);
+            orlv.setFileName(fileName);
+            orlv.setFileRoute(fileRoute);
+            orlv.setCheckinDate(checkinDate);
+            orlv.setCheckoutDate(checkoutDate);
+            
+            list.add(orlv);
+         }
+         
+         rs.close();
+         ps.close();
+         con.close();
+         
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      
+      return list;
+   }
+  
+  @Override
+	public int getOfferCount(int offerId) {
+		int result = 0;
 		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
 		
-		String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID = ?";
 		
-		List<OfferableRoomListView> list = new ArrayList<>();
+		String sql = "SELECT COUNT(*) FROM OFFER_INFO_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID=?";
 		
+		//DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, offerId);
-
+			ps.setInt(1,offerId);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				int id = rs.getInt("ID");
-				String name = rs.getString("NAME");
-				int price = rs.getInt("PRICE");
-				int accId = rs.getInt("ACC_ID");
-				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
-				int bedCount = rs.getInt("BED_COUNT");
-				String bookedDate = rs.getString("BOOKED_DATE");
-				int roomImageId = rs.getInt("ROOM_IMAGE_ID");
-				String fileName = rs.getString("FILENAME");
-				String fileRoute = rs.getString("FILEROUTE");
-				Date checkinDate = rs.getDate("CHECKIN_DATE");
-				Date checkoutDate = rs.getDate("CHECKOUT_DATE");
-				
-				OfferableRoomListView orlv = new OfferableRoomListView();
-				
-				orlv.setId(id);
-				orlv.setName(name);
-				orlv.setPrice(price);
-				orlv.setAccId(accId);
-				orlv.setMaxHeadcount(maxHeadcount);
-				orlv.setBedCount(bedCount);
-				orlv.setRoomImageId(roomImageId);
-				orlv.setFileName(fileName);
-				orlv.setFileRoute(fileRoute);
-				orlv.setCheckinDate(checkinDate);
-				orlv.setCheckoutDate(checkoutDate);
-				
-				list.add(orlv);
+				result = rs.getInt(1);
 			}
 			
 			rs.close();
@@ -254,10 +289,12 @@ public class JdbcRoomDao implements RoomDao {
 			con.close();
 			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 
 }

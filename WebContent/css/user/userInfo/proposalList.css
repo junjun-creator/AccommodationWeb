@@ -299,6 +299,17 @@
                                     position: absolute;
                                     top: 135px;
                                     right: 10px;
+                                    text-decoration:line-through;
+                                    color:gray;
+                                }
+                                .offer-detail-container .offer-price > div:nth-child(3) {
+                                    flex-grow: 0;
+                                    margin-right: 10px;
+                                    position: absolute;
+                                    top: 155px;
+                                    right: 10px;
+                                    color:#fc0453;
+                                    font-weight:bold;
                                 }
 
                             .offer-detail-container .submit-btn {
