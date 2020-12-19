@@ -105,8 +105,12 @@
                     margin: 0px 10px;
                 }
 
+                    .proposal-info.picked {
+                        background: rgb(244, 232, 255);
+                    }
+
                 .proposal-info:hover {
-                    background: rgb(203, 185, 221);
+                    background: rgb(244, 232, 255);
                     cursor: pointer;
                 }
 

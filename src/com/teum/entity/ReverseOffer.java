@@ -5,19 +5,22 @@ import java.util.Date;
 public class ReverseOffer {
 	private int id;
 	private int offerId;
-	private int roomIndex;
+	private int roomId;
 	private Date approvalDate;
 	
 	public ReverseOffer() {
 		
 	}
 
-	public ReverseOffer(int id, int offerId, int roomIndex, Date approvalDate) {
+	public ReverseOffer(int id, int offerId, int roomId, Date approvalDate) {
 		super();
 		this.id = id;
 		this.offerId = offerId;
-		this.roomIndex = roomIndex;
+		this.roomId = roomId;
 		this.approvalDate = approvalDate;
+	}
+
+	public ReverseOffer(int offerId, int roomId) {
 	}
 
 	public int getId() {
@@ -36,12 +39,12 @@ public class ReverseOffer {
 		this.offerId = offerId;
 	}
 
-	public int getRoomIndex() {
-		return roomIndex;
+	public int getRoomId() {
+		return roomId;
 	}
 
-	public void setRoomIndex(int roomIndex) {
-		this.roomIndex = roomIndex;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	public Date getApprovalDate() {
@@ -54,8 +57,9 @@ public class ReverseOffer {
 
 	@Override
 	public String toString() {
-		return "ReverseOffer [id=" + id + ", offerId=" + offerId + ", roomIndex=" + roomIndex + ", approvalDate="
+		return "ReverseOffer [id=" + id + ", offerId=" + offerId + ", roomId=" + roomId + ", approvalDate="
 				+ approvalDate + "]";
 	}
+
 	
 }

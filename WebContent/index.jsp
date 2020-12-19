@@ -77,7 +77,7 @@
 			                    		 <li><a href="/user/userInfo/offerList">제안내역</a></li>
 			                        </c:if>
 			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="/company/userInfo/offerList">제안내역</a></li>
+			                    		 <li><a href="/company/reverseOffer/reg">제안내역</a></li>
 			                        </c:if>
 	                                <c:if test="${type == 0 }">
 			                    		 <li><a href="/user/userInfo/pickList">찜한숙소</a></li>

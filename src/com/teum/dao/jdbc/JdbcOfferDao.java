@@ -157,4 +157,36 @@ public class JdbcOfferDao implements OfferDao {
 		return list;
 	}
 
+	@Override
+	public int getId(int roomId) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM OFFER WHERE ROOM_ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			pst.setInt(1, roomId);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt("ID");
+			}
+			
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 }
