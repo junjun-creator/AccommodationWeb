@@ -47,7 +47,7 @@ public class ListController extends HttpServlet {
 		qna.setTitle(title);
 		qna.setContent(content);
 		
-		service.update(qna);
+		service.insert(qna);
 		
 		response.sendRedirect("QnA");
 	}

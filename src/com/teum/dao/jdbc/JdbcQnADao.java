@@ -17,8 +17,33 @@ public class JdbcQnADao implements QnADao {
 
 	@Override
 	public int insert(QnA qna) {
-		// TODO Auto-generated method stub
-		return 0;
+	int result =0;
+		
+		String url = DBContext.URL;
+		String sql = "INSERT INTO QNA(TITLE,CONTENT,USER_ID,ADMIN_ID,CATEGORY_ID) VALUES(?,?,?,?,?)";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setString(1, qna.getTitle());
+			st.setString(2, qna.getContent());
+			st.setInt(3, qna.getUserId());
+			st.setInt(4, 1);
+			st.setInt(5, qna.getCategoryId());
+			
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
