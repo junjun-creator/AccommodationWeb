@@ -12,4 +12,6 @@ public interface OfferDao {
 
 	List<Offer> getList(String accIdsCSV);
 
+	int getId(int roomId);
+
 }

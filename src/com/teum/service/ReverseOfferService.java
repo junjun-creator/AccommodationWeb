@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.teum.dao.ReverseOfferDao;
 import com.teum.dao.jdbc.JdbcReverseOfferDao;
+import com.teum.entity.ReverseOffer;
 
 public class ReverseOfferService {
 	
@@ -17,6 +18,11 @@ public class ReverseOfferService {
 		List<Integer> list = reverseOfferDao.getRoomIds(id);
 		
 		return list;
+	}
+
+	public int insert(ReverseOffer reverseOffer) {
+		int result = reverseOfferDao.insert(reverseOffer);
+		return result;
 	}
 	
 	
