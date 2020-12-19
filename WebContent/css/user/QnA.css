@@ -129,15 +129,15 @@
                     background:#ffffff; 
                 }
        		.qna-list{
-                display: none;
+                display: block;
                 flex-direction: row;
                  min-height: 300px;
                  width: 900px;
             }
             .qna-list ol{
                 min-height: 200px; 
-                display: flex;
-                flex-flow: column wrap;
+                /*display: flex;
+                flex-flow: column wrap;*/
                 align-items: center;                
                 justify-content: flex-start;
             }
@@ -224,7 +224,7 @@
             }
                 .qna-creat>form>select{
                     width: 200px;
-                    
+                    margin-bottom:20px;
                 }
                 
                 .qna-creat>form textarea{

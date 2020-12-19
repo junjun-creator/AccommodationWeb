@@ -27,8 +27,8 @@ public class ListController extends HttpServlet {
 		HttpSession session = request.getSession();	
 			
 		
-		//int id = (int)session.getAttribute("id");
-		int id =1;
+		int id = (int)session.getAttribute("id");
+		//int id =1;
 		GoldenTimeService service = new GoldenTimeService();
 		List<GoldenTimeView> list = service.getGoldenList(id); 
 		
@@ -44,25 +44,28 @@ public class ListController extends HttpServlet {
 		String cmd = request.getParameter("cmd");
 		int chk = Integer.parseInt(request.getParameter("check"));
 		String saleprice_=request.getParameter("price");
-		int status = Integer.parseInt(request.getParameter("status"));
+		
 		
 		//가격
 		int saleprice=0;
 		if(saleprice_!=null&&!saleprice_.equals("")) {
 			saleprice =Integer.parseInt(saleprice_);
 		}
-		System.out.println(chk);
-		System.out.println(status);
 		
-		Acc acc = new Acc(chk,status);
+		
+		Acc acc = new Acc();
 		
 		switch (cmd) {
-		case "전환":
+		case "진행":
+			service.openStatus(chk);
 			
-			service.updateStatus(acc);
 			
 			break;
 		
+		case "대기":
+			service.closeStatus(chk);
+			
+			break;
 		case "수정":
 			DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
 			Date startDate = null;
@@ -74,6 +77,7 @@ public class ListController extends HttpServlet {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			
 			
 			 acc.setId(chk);
 			 acc.setGtStartDate(startDate);

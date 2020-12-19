@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,7 @@
      <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+   	<script src="/js/user/qna.js"></script>
     <title>userQuestion</title>
 </head>
 <body>
@@ -62,7 +66,7 @@
                     <section class="change-tap">
                         <h1 class="d-none">체인지 탭</h1>
                         <ul class="change-list">
-                            <li class="current-tab">
+                            <li class="current-tab myQnA">
                               	<a>내 문의</a>
                             </li>
                             <li>
@@ -71,39 +75,38 @@
                         </ul>
                     </section>
                     <div class="section">
-	                    <section class="qna-list">
+	                   <section class="qna-list">
 	                        <h1 class="d-none">내 문의 리스트</h1>
 	                        <ol class="qna-sec-list">
-	                            <li>
-	                             <input type="checkbox" id="checkbox-1" class="checkbox" name="check" onclick="doOpenCheck(this);">
+	                        <c:forEach var="q" items="${list}" varStatus="status">
+	                           <li>
+	                             <input type="checkbox" id="${status.index}" class="checkbox" name="check" onclick="doOpenCheck(this);">
 	                                <div>
-	                                    <p>ooo 님을 위한 답변</p>
-	                                    <p class="p-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos, <br> sunt eaque officiis atque quae quod officia illum, ratione esse! Quidem possimus assumenda pariatur deserunt, quisquam id explicabo vero.
-	                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam placeat eum numquam quia quasi labore, magni itaque quae et quo blanditiis iusto illo aspernatur ab! Ut iusto delectus corrupti modi!
-	                                    d-none Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur et nam laboriosam unde enim beatae excepturi eius mollitia, quod praesentium ipsam. A quos nostrum aperiam dolorum omnis ab repellendus sint?
-	                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem odit impedit unde cumque voluptates quo doloremque, eligendi blanditiis modi deleniti pariatur, nesciunt consequatur quidem vitae quasi voluptate hic. Repellat, rem!
-	                                    </p>
-	                                    <p>2020/11/01</p>
+	                                    <p>${q.title}</p>
+	                                    <p class="p-detail">${q.answerContent}</p>
+	                                    <p>${q.answerRegdate}</p>
 	                                </div>
 	                                <p>Master</p>
-	                                <label for="checkbox-1"><span></span></label>
+	                                <label for="${status.index}"><span></span></label>
 	                            </li>
+	                             </c:forEach>
 	                        </ol>
 	                    </section>
-	                    <section class="qna-creat">
+	                    <section class="qna-creat" style="display:none">
 	                        <h1 class="d-none">문의 작성</h1>
-	                        <form action="">
-	                            <select name="" id="" class="category">
-	                                <option value="" selected disabled>문의 유형을 선택해 주세요</option>
-	                                <option value="이벤트">이벤트</option>
-	                                <option value="예약/결제">예약/결제</option>
-	                                <option value="취소/환불">취소/환불</option>
-	                                <option value="서비스 이용">서비스 이용</option>
-	                                <option value="회원/개인정보">회원/개인정보</option>
-	                                <option value="리뷰">리뷰</option>
-	                                <option value="기타">기타</option>
-	                            </select>
-	                            <textarea name="" id="" cols="50" rows="10" placeholder="문의할 내용을 적어주세요." required autofocus></textarea>
+	                       <form action="">
+	                           <select name="category" id="" class="category" >
+		                                <option value="" selected disabled>전체</option>
+		                                <option value="1"  ${(param.category=="1")?"selected":"" }>이벤트</option>
+		                                <option value="2"  ${(param.category=="2")?"selected":"" }>예약/결제</option>
+		                                <option value="3"  ${(param.category=="3")?"selected":"" }>취소/환불</option>
+		                                <option value="4"  ${(param.category=="4")?"selected":"" }>서비스 이용</option>
+		                                <option value="5"  ${(param.category=="5")?"selected":"" }>회원/개인정보</option>
+		                                <option value="6"  ${(param.category=="6")?"selected":"" }>리뷰</option>
+		                                <option value="7"  ${(param.category=="7")?"selected":"" }>기타</option>
+			                        </select>
+			                     <input type="text"  name="title"placeholder="제목을 적어주세요." required autofocus>  
+	                            <textarea name="content" cols="50" rows="10" placeholder="문의할 내용을 적어주세요." required autofocus></textarea>
 	                            <input type="submit" value="보내기" >
 	                        </form>
 	                    </section>

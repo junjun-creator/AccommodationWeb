@@ -7,7 +7,6 @@ import com.teum.entity.Acc;
 
 public interface GoldenTimeDao {
 	int update(Acc acc);
-	int updateStatus(Acc acc);
 	
 	
 	List<GoldenTimeView> getGoldenList();
@@ -20,6 +19,10 @@ public interface GoldenTimeDao {
 	List<GoldenTimeView> getVIewList(int startIndex, int endIndex);
 	List<GoldenTimeView> getVIewList();
 	int getCount(String category, String query);
+
+
+
+	int updateStatus(int status, int chk);
 	
 
 }

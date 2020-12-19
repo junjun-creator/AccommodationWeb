@@ -22,6 +22,7 @@ public class QnAService {
 		
 		qnaDao = new JdbcQnADao();
 	}
+
 	public List<QnAView> getVIewList(int page,int size,String category, String query) {
 		
 		List<QnAView> list = new ArrayList<QnAView>();
@@ -50,11 +51,14 @@ public class QnAService {
 	}
 	
 	
-	public List<QnA> getList() {
+	public List<QnA> getList(int id) {
 		
-		return qnaDao.getList();
+		 List<QnA> list = new ArrayList<QnA>();
+		 list = qnaDao.getList(id);
+		return list;
 		
 	}
+
 	public QnA get(int id) {
 		
 		return qnaDao.get(id);
@@ -88,6 +92,7 @@ public class QnAService {
 		result += qnaDao.delete(id);
 		return result;
 	}
+
 
 	
 }
