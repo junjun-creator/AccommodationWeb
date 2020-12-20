@@ -3,6 +3,7 @@ package com.teum.dao.entity;
 import java.util.Date;
 
 public class ReservationListView {
+	private int id;
 	private int userId;
 	private int accId;
 	private int roomId;
@@ -16,9 +17,10 @@ public class ReservationListView {
 		
 	}
 
-	public ReservationListView(int userId, int accId, int roomId, int price, Date checkinDate, Date checkoutDate,
-			String accName, String fileName) {
+	public ReservationListView(int id, int userId, int accId, int roomId, int price, Date checkinDate,
+			Date checkoutDate, String accName, String fileName) {
 		super();
+		this.id = id;
 		this.userId = userId;
 		this.accId = accId;
 		this.roomId = roomId;
@@ -27,6 +29,14 @@ public class ReservationListView {
 		this.checkoutDate = checkoutDate;
 		this.accName = accName;
 		this.fileName = fileName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getUserId() {
@@ -95,10 +105,10 @@ public class ReservationListView {
 
 	@Override
 	public String toString() {
-		return "ReservationListView [userId=" + userId + ", accId=" + accId + ", roomId=" + roomId + ", price=" + price
-				+ ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", accName=" + accName
-				+ ", fileName=" + fileName + "]";
+		return "ReservationListView [id=" + id + ", userId=" + userId + ", accId=" + accId + ", roomId=" + roomId
+				+ ", price=" + price + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", accName="
+				+ accName + ", fileName=" + fileName + "]";
 	}
-
+	
 	
 }

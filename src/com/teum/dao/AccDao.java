@@ -36,7 +36,7 @@ public interface AccDao {
 	Acc getLast();
 	List<GoldenTimeView> getGoldenList();
 	
-	List<Integer> getIds(int companyId);
+	List<Integer> getIds(int companyId, int accType);
 	
 	
 }

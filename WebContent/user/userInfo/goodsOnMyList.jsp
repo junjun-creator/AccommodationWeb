@@ -46,7 +46,7 @@
                 <!-- <h1>게시판</h1> -->
                 <ul>
                     <li><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href="reservationInfo"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href="offerList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li class="active"><a href="pickList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>

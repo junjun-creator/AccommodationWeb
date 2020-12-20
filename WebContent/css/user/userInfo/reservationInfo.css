@@ -90,6 +90,11 @@
                 padding: 10px 0;
                 margin: 10px 0;
             }
+            .reservation-list-sec>ul>li:hover{
+            	
+                background: rgb(203, 185, 221);
+                cursor: pointer;
+            }
                 .reservation-list-sec>ul>li>img{
                     width: 280px;
                     height: 200px;

@@ -53,7 +53,7 @@ public class DetailController extends HttpServlet {
 			
 			
 			/*----companyId로 등록된 모든 숙소 ID 뽑기----*/
-			List<Integer> accIds = accService.getIds(companyId);
+			List<Integer> accIds = accService.getIds(companyId,0);
 			Integer[] accIds_ = accIds.toArray(new Integer[accIds.size()]);
 			List<String> accIdsList = new ArrayList<>();
 			
