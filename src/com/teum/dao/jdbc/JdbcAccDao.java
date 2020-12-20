@@ -110,67 +110,6 @@ public class JdbcAccDao implements AccDao{
 	}
 	
 	@Override
-	public Acc get(int id) {
-		Acc a = null;
-
-		String url = "DBContext.URL";
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1 AND ID=?";//조건 추가(accName)
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);
-			
-			st.setInt(1, id);
-			ResultSet rs = st.executeQuery(sql);
-
-			if(rs.next()) {
-				int nid = rs.getInt("ID");
-				String name = rs. getString("name");
-				String phone = rs.getString("phone");
-				String location = rs.getString("location");
-				int regStatus = rs.getInt("reg_status");
-				Date approvalDate = rs.getDate("approval_date");
-				int adminId = rs.getInt("admin_id");
-				int companyId = rs.getInt("company_id");
-				Date regdate = rs.getDate("regdate");
-				int accTypeId = rs.getInt("acc_type_id");
-				Date gtStartDate = rs.getDate("GT_START_DATE");
-				Date gtEndDate = rs.getDate("GT_END_DATE");
-				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
-				
-				a = new Acc(
-						nid,
-						name,
-						phone,
-						location,
-						regStatus,
-						approvalDate,
-						adminId,
-						companyId,
-						regdate,
-						accTypeId,
-						gtStartDate,
-						gtEndDate,
-						saleprice,
-						goldentimeStatus
-						);
-
-			};
-
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return a;
-	}
-	@Override
 	public List<AccListForAdminView> getApplyViewList() {
 
 		return getApplyViewList("","companyName","",1,10);
@@ -202,7 +141,8 @@ public class JdbcAccDao implements AccDao{
 					"WHERE NUM BETWEEN ? AND ?";
 		}
 		
-
+		System.out.println(startIndex);
+		System.out.println(endIndex);
 		
 
 		try {
@@ -264,6 +204,69 @@ public class JdbcAccDao implements AccDao{
 		}
 		return list;
 	}
+	
+	@Override
+	public Acc get(int id) {
+		Acc a = null;
+
+		String url = "DBContext.URL";
+		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1 AND ID=?";//조건 추가(accName)
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				int nid = rs.getInt("ID");
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				
+				a = new Acc(
+						nid,
+						name,
+						phone,
+						location,
+						regStatus,
+						approvalDate,
+						adminId,
+						companyId,
+						regdate,
+						accTypeId,
+						gtStartDate,
+						gtEndDate,
+						saleprice,
+						goldentimeStatus
+						);
+
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return a;
+	}
+	
 	
 	@Override
 	public Acc applyGet(int id) {
@@ -333,8 +336,8 @@ public class JdbcAccDao implements AccDao{
 	public int delete(int id) {
 		int result=0;
 
-		String url = "DBContext.URL";
-		String sql = "DELETE FROM ACC_LIST_FOR_ADMIN WHERE ID=?";
+		String url = DBContext.URL;
+		String sql = "DELETE FROM ACC WHERE ID=?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -355,10 +358,38 @@ public class JdbcAccDao implements AccDao{
 
 	}
 
-	@Override//수정필요
-	public int[] deleteAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public int deleteAll(int[] ids) {
+		int result = 0;
+		
+		String url = "DBContext.URL";
+		
+		String params = "";
+		for(int i = 0; i<ids.length; i++) {
+			params += ids[i];
+			if(i < ids.length-1)
+				params+= ",";
+			System.out.println(params);
+		}
+		String sql = "DELETE ACC WHERE ID IN("+params+")";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			result = st.executeUpdate(sql);//이 업데이트 문은 insert, update, delete를 실행할때 사용
+			
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(result);
+		return result;
 	}
 
 	@Override
@@ -366,7 +397,7 @@ public class JdbcAccDao implements AccDao{
 		int result=0;
 
 		String url = "DBContext.URL";
-		String sql = "UPDATE ACC_LIST_FOR_ADMIN SET REG_STATUS=1 WHERE ID=?";
+		String sql = "UPDATE ACC SET REG_STATUS=1 WHERE ID=?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -385,17 +416,39 @@ public class JdbcAccDao implements AccDao{
 		}
 		return result;
 	}
-
 	@Override
-	public int[] approvalAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public int approval(int[] ids) {
+int result = 0;
+		
+		String url = "DBContext.URL";
+		
+		String params = "";
+		for(int i = 0; i<ids.length; i++) {
+			params += ids[i];
+			if(i < ids.length-1)
+				params+= ",";
+		}
+		String sql = "UPDATE ACC SET REG_STATUS=1 WHERE ID IN("+params+")";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			result = st.executeUpdate(sql);//이 업데이트 문은 insert, update, delete를 실행할때 사용
+			
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return result;
 	}
-
 	
-	
-	
-
 	@Override
 	public Acc getLast() {
 		// 마지막 인덱스의 event를 뽑아오는 쿼리문을 작성하자
@@ -854,6 +907,7 @@ int count = 0;
 		
 		return list;
 	}
+
 
 	@Override
 	public List<Acc> getList(int type, String location) {

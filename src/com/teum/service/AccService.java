@@ -74,22 +74,20 @@ public class AccService {
 
 	public int delete(int id) {
 		int result = 0;
+		
 		result = accDao.delete(id);
 
 		return result;
 	}
-
-	// 수정필요
-	public int[] deleteAll(int[] ids) {
-
-		int result = 0;
-		for (int i = 0; i < ids.length; i++) {
-			int id = ids[i];
+	
+	public int deleteAll(int[] ids) {
+		int result =0;
+		for(Integer id : ids) 
 			result += accDao.delete(id);
-		}
-		return null;
-	}
 
+		return result;
+	}
+	
 	public int approval(int id) {
 		int result = 0;
 		Acc acc = accDao.applyGet(id);
@@ -98,14 +96,13 @@ public class AccService {
 		return result;
 	}
 
-	public int[] approvalAll(int[] ids) {
-		int result = 0;
-		for (int i = 0; i < ids.length; i++) {
-			int id = ids[i];
-			result += accDao.approval(id);
-		}
-		return null;
+	public int approvalAll(int[] ids) {
+		int aResult =0;
+		for(Integer id : ids)
+			aResult += accDao.delete(id);
+		return aResult;
 	}
+	
 
 	public int getLastId() {
 		Acc acc = accDao.getLast();
@@ -141,7 +138,6 @@ public class AccService {
 		
 		return count;
 	}
-
 
 	public List<Integer> getIds(int companyId,int accType) {
 		return accDao.getIds(companyId,accType);

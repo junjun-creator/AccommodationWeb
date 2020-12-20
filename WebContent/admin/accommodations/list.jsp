@@ -119,7 +119,7 @@
                         </div>
                         
                         <section>
-							<form class="list-board">
+							<form class="list-board" action="list" method="post">
 								<table>
 									<thead>
 										<tr>
@@ -138,15 +138,15 @@
 										<tr>
 											<td>${a.num}</td>
 											<td>${a.companyName}</td>
-											<td><a href="detail?accName=${a.name}">${a.name}</a></td>
+											<td><a href="detail?id=${a.id}">${a.name}</a></td>
 											<td>${a.location}</td>
 											<td>${a.regdate}</td>
 											<td>${a.phone}</td>
 											<td>${a.accType}</td>
-											<td><input type="checkbox"></td>
+											<td><input type="checkbox" name="del-id"  value="${a.id}"></td>
 										</tr>
 										</c:forEach> 
-                                        <tr>
+                                        <tr class="btn-line">
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -154,7 +154,9 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td><button type="submit">삭제</button></td>
+                                            <td>
+                                            	<button type="submit"name="cmd" value = "삭제">삭제</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="8" class="no-border">
