@@ -10,4 +10,6 @@ public interface ReverseOfferDao {
 
 	int insert(ReverseOffer reverseOffer);
 
+	List<ReverseOffer> getList(String offerIdsCSV);
+
 }
