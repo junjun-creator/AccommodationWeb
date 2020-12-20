@@ -120,14 +120,19 @@ public class JdbcReservationDao implements ReservationDao {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
+		List<ReservationForCompanyView> list = new ArrayList<>();
 		
 		String sql;
-		if(accType != 0)
-			sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
-		else
-			sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s)) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
-		
-		List<ReservationForCompanyView> list = new ArrayList<>();
+		if(accIdsCSV.equals("") || accIdsCSV == null) {
+			return list;
+			
+		}
+		else {
+			if(accType != 0)
+				sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+			else
+				sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s)) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+		}
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -135,15 +140,23 @@ public class JdbcReservationDao implements ReservationDao {
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
 			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,startIndex);
-			ps.setInt(2,endIndex);
-			if(accType !=0)
-				ps.setInt(3,accType);
+			if(accType !=0) {
+				ps.setInt(1,accType);
+				ps.setInt(2,startIndex);
+				ps.setInt(3,endIndex);
+			}else {
+
+				ps.setInt(1,startIndex);
+				ps.setInt(2,endIndex);
+			}
+			
+			
 //			if(!field.equals("")) {
 //			}
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int rownum = rs.getInt("num");
 				int id = rs.getInt("id");
 				int userId = rs.getInt("user_id");
 				Date regdate = rs.getDate("regdate");
@@ -159,9 +172,11 @@ public class JdbcReservationDao implements ReservationDao {
 				String userName = rs.getString("user_name");
 				String accName = rs.getString("acc_name");
 				int accTypeId = rs.getInt("acc_type_id");
+				int headcount = rs.getInt("headcount");
 				
 				ReservationForCompanyView r = new ReservationForCompanyView();
 				
+				r.setRownum(rownum);
 				r.setId(id);
 				r.setUserId(userId);
 				r.setRegdate(regdate);
@@ -177,6 +192,7 @@ public class JdbcReservationDao implements ReservationDao {
 				r.setUserName(userName);
 				r.setAccName(accName);
 				r.setAccTypeId(accTypeId);
+				r.setHeadcount(headcount);
 				
 				list.add(r);
 			}
@@ -202,19 +218,26 @@ public class JdbcReservationDao implements ReservationDao {
 		String dbpwd = DBContext.PWD;
 		
 		String sql;
-		if(accType != 0)
-			sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
-		else
-			sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s)) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
-		
-		
+		if(accIdsCSV.equals("") || accIdsCSV == null) {
+			return 0;
+			
+		}
+		else {
+			
+			if(accType != 0)
+				sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?)", accIdsCSV);
+			else
+				sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s))", accIdsCSV);
+			
+		}
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
 			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
 			//PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1,"%"+query+"%");
+			if(accType!=0)
+				ps.setInt(1,accType);
 			
 			ResultSet rs = ps.executeQuery();
 			

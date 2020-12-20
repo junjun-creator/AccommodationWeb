@@ -29,14 +29,14 @@ public class ReservationInfoController extends HttpServlet {
 		}
 		else {
 			int accType = 0;
-			int accType_ = Integer.parseInt(request.getParameter("accType"));
+			String accType_ = request.getParameter("accType");
 			if(request.getParameter("accType") != null && !request.getParameter("accType").equals(""))
-				accType = accType_;
+				accType = Integer.parseInt(accType_);
 			
 			int page = 1;
-			int page_ = Integer.parseInt(request.getParameter("page"));
+			String page_ = request.getParameter("page");
 			if(request.getParameter("page") != null && !request.getParameter("page").equals(""))
-				page = page_;
+				page = Integer.parseInt(page_);
 			
 			int companyId = (int)session.getAttribute("id");
 			AccService service = new AccService();
@@ -53,9 +53,11 @@ public class ReservationInfoController extends HttpServlet {
 			ReservationService reservationService = new ReservationService();
 			List<ReservationForCompanyView> list = reservationService.getList(accIdsCSV, accType, page);
 			int count = reservationService.getItemCount(accIdsCSV, accType);
+			double pageLastCount = Math.ceil(count/10.0);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("accType", accType);
+			request.setAttribute("pageLastCount",(int)pageLastCount);
 			request.getRequestDispatcher("reservationInfo.jsp").forward(request, response);
 			
 		}

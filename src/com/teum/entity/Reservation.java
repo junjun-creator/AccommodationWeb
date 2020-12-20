@@ -15,13 +15,15 @@ public class Reservation {
 	private Date checkinDate;
 	private Date checkoutDate;
 	private int price;
+	private int headcount;
 	
 	public Reservation() {
 		
 	}
 
 	public Reservation(int id, int userId, Date regdate, int cancelStatus, Date reviewRegdate, int reviewScore,
-			int accId, int roomId, String reviewContent, Date checkinDate, Date checkoutDate, int price) {
+			int accId, int roomId, String reviewContent, Date checkinDate, Date checkoutDate, int price,
+			int headcount) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -35,6 +37,7 @@ public class Reservation {
 		this.checkinDate = checkinDate;
 		this.checkoutDate = checkoutDate;
 		this.price = price;
+		this.headcount = headcount;
 	}
 
 	public int getId() {
@@ -133,14 +136,21 @@ public class Reservation {
 		this.price = price;
 	}
 
+	public int getHeadcount() {
+		return headcount;
+	}
+
+	public void setHeadcount(int headcount) {
+		this.headcount = headcount;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", userId=" + userId + ", regdate=" + regdate + ", cancelStatus="
 				+ cancelStatus + ", reviewRegdate=" + reviewRegdate + ", reviewScore=" + reviewScore + ", accId="
 				+ accId + ", roomId=" + roomId + ", reviewContent=" + reviewContent + ", checkinDate=" + checkinDate
-				+ ", checkoutDate=" + checkoutDate + ", price=" + price + "]";
+				+ ", checkoutDate=" + checkoutDate + ", price=" + price + ", headcount=" + headcount + "]";
 	}
-	
-	
+
 	
 }

@@ -72,37 +72,37 @@
                         <div class="category-bar">
                             <ul>
                                 <li>
-                                    <a class="category-img ${(accType==0)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==0)?'selected':''}" href="reservationInfo">
                                         <img src="../../images/main/all-icon.png" alt="">
                                         <span>전체</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==1)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==1)?'selected':''}" href="?accType=1">
                                         <img src="../../images/main/hotel-icon.png" alt="">
                                         <span>호텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==2)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==2)?'selected':''}" href="?accType=2">
                                         <img src="../../images/main/motel-icon.png" alt="">
                                         <span>모텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==3)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==3)?'selected':''}" href="?accType=3">
                                         <img src="../../images/main/guesthouse-icon.png" alt="">
                                         <span>게스트하우스</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==4)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==4)?'selected':''}" href="?accType=4">
                                         <img src="../../images/main/resort-icon.png" alt="">
                                         <span>리조트</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==5)?'selected':''}" href="">
+                                    <a class="category-img ${(accType==5)?'selected':''}" href="?accType=5">
                                         <img src="../../images/main/pension-icon.png" alt="">
                                         <span>펜션</span>
                                     </a>
@@ -134,64 +134,70 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${list }" var="item" varStatus="status">
+                            
                                 <tr>
-                                    <td>1</td>
-                                    <td>가람슬기 스파펜션</td>
-                                    <td>펜션</td>
-                                    <td>3인</td>
-                                    <td>119,000원</td>
-                                    <td>2020-11-01</td>
-                                    <td>2020-11-02</td>
-                                    <td>김병준</td>
-                                    <td>이용완료</td>
+                                    <td>${item.rownum }</td>
+                                    <td>${item.accName }</td>
+                                    <td>${item.accTypeId }</td>
+                                    <td>${item.headcount }인</td>
+                                    <td><fmt:formatNumber value="${item.price }" pattern="#,###" />원</td>
+                                    <td>${item.checkinDate }</td>
+                                    <td>${item.checkoutDate }</td>
+                                    <td>${item.userName }</td>
+                                    
+                                		<c:if test="${item.cancelStatus == 0 }">
+                                			<c:set var="now" value="<%=new java.util.Date()%>" />
+                                			<c:choose>
+                                				<c:when test="${item.checkinDate  >= now}">
+                                					<td>이용예정</td>
+                                				</c:when>
+                                				<c:otherwise>
+                                					<td>이용완료</td>
+                                				</c:otherwise>
+                                			</c:choose>
+                                		</c:if>
+                                		<c:if test="${item.cancelStatus == 1 }">
+                                			<td>취소</td>
+                                		</c:if>
+                                    
                                     <td><input type="button" value="상세보기"></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>가람슬기 스파펜션</td>
-                                    <td>펜션</td>
-                                    <td>3인</td>
-                                    <td>119,000원</td>
-                                    <td>2020-11-01</td>
-                                    <td>2020-11-02</td>
-                                    <td>김병준</td>
-                                    <td>이용완료</td>
-                                    <td><input type="button" value="상세보기"></td>
-                                </tr>
+                            </c:forEach>
+                               
                                 <tr>
                                     <td colspan="10" class="no-border">
                                         <div class="pager-container">
-                                            <div class="btn btn-prev">
-                                                <span><a href="">이전</a></span>
-                                            </div>
-                                            <ul class="pager-list">
-                                                <li class="active-page"><a href="">1</a></li>
-                                                <li><a href="">2</a></li>
-                                                <li><a href="">3</a></li>
-                                                <li><a href="">4</a></li>
-                                                <li><a href="">5</a></li>
-                                                <li><a href="">6</a></li>
-                                                <li><a href="">7</a></li>
-                                                <li><a href="">8</a></li>
-                                                <li><a href="">9</a></li>
-                                                <li><a href="">10</a></li>
-                                            </ul>
-                                            <div class="btn btn-next">
-                                                <span><a href="">다음</a></span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <form action="">
-                                                    <select name="search-category" id="">
-                                                        <option value="숙소명" selected>숙소명</option>
-                                                        <option value="예약자">예약자</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="button" value="검색">
-                                                </form>
-                                            </div>
-                                        </div>
+													<!--start index 구하기! -->
+													<c:set var="page" value="${(empty param.page)?1:param.page }"/>
+													<c:set var="startNum" value="${page-(page-1)%5}"/>
+													<c:set var="lastNum" value="${pageLastCount }"/>
+													<div class="btn btn-prev">
+														<c:if test="${startNum > 1 }">
+															<span><a href="?page=${startNum-1 }&accType=${accType}">이전</a></span>
+														</c:if>
+														<c:if test="${startNum <= 1 }">
+															<span><a href="" onclick="alert('이전페이지가 없습니다.');">이전</a></span>
+														</c:if>
+													</div>
+													<ul class="pager-list">
+														<c:forEach var="i" begin="0" end="4" varStatus="status">
+															<c:if test="${startNum+i <=lastNum }">
+																<li class="${(page == (startNum+i))?'active-page':'' }"><a href="?page=${i+startNum }&accType=${accType}">${i+startNum }</a></li>
+															</c:if>
+														</c:forEach>
+														
+													</ul>
+													<div class="btn btn-next">
+														<c:if test="${startNum+4<lastNum }">
+															<span><a href="?page=${startNum+5 }&accType=${accType}">다음</a></span>
+														</c:if>
+														<c:if test="${startNum+4>=lastNum }">
+															<span><a href="" onclick="alert('다음페이지가 없습니다.');">다음</a></span>
+														</c:if>
+													</div>
+												</div>
+                                        
                                     </td>
                                 </tr>
                             </tbody>
