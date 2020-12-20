@@ -194,4 +194,45 @@ public class JdbcReservationDao implements ReservationDao {
 		return list;
 	}
 
+	@Override
+	public int getItemCount(String accIdsCSV, int accType) {
+		int result = 0;
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql;
+		if(accType != 0)
+			sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+		else
+			sql = String.format("SELECT COUNT(*) FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s)) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,"%"+query+"%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }

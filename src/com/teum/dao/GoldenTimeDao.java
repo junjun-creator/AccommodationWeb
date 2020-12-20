@@ -10,8 +10,8 @@ public interface GoldenTimeDao {
 	
 	
 	List<GoldenTimeView> getGoldenList();
-	List<GoldenTimeView> getGoldenList(int id);
-	
+	List<GoldenTimeView> getGoldenList(int open);
+	List<GoldenTimeView> getGoldenList(int id, int open);
 	
 	
 	List<GoldenTimeView> getVIewList(int startIndex, int endIndex, String category, String query);
@@ -23,6 +23,8 @@ public interface GoldenTimeDao {
 
 
 	int updateStatus(int status, int chk);
+
+
 	
 
 }

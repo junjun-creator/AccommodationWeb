@@ -903,7 +903,57 @@ int count = 0;
 		return list;
 	}
 
-	
 
+	@Override
+	public List<Acc> getList(int type, String location) {
+		List<Acc> list = new ArrayList<>();
+		System.out.println(location);
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
 
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			pst.setInt(1, type);
+			pst.setString(2, "%" + location + "%");
+			
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentime_Status");
+				
+				Acc acc = new Acc(id, name, phone, location, regStatus,
+						approvalDate, adminId, companyId, regdate,
+						accTypeId, gtStartDate, gtEndDate,
+						saleprice, goldentimeStatus);
+				
+				list.add(acc);
+			};
+
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

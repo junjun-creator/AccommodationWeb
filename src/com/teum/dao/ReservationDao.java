@@ -13,4 +13,6 @@ public interface ReservationDao {
 
 	List<ReservationForCompanyView> getList(int startIndex, int endIndex, String accIdsCSV, int accType);
 
+	int getItemCount(String accIdsCSV, int accType);
+
 }

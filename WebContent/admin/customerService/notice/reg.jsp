@@ -35,7 +35,7 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li class="active"><a href="list" >공지사항</a></li>
 	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
