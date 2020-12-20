@@ -53,7 +53,7 @@
         <aside class='aside'>
             <h1>지역</h1>
             <div>
-                <select name="big-location">
+                <select name="big-city" class="big-city">
                     <option value="서울">서울</option>
                     <option value="제주">제주</option>
                     <option value="부산">부산</option>
@@ -64,7 +64,7 @@
                     <option value="전라">전라</option>
                     <option value="충청">충청</option>
                 </select>
-                <select name="small-location">
+                <select name="small-city" class="small-city">
                     <!-- 서울 -->
                     <option value="강남구">강남구</option>
                     <option value="강동구">강동구</option>
@@ -307,22 +307,15 @@
             <br>
 
             <form>
-                <button type="reset" value="초기화" class="btn">초기화</button>
-                <button type="submit" value="적용" class="btn">적용</button>
+                <button type="reset" value="초기화" class="btn init-btn">초기화</button>
+                <button type="submit" value="적용" class="btn app-btn">적용</button>
             </form>
         </aside>
         
         <main class= 'main'>
-            <!-- <div class='location'>
-                <nav>
-                    <ul>
-                        <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
-                        <li><a href="">&nbsp;&nbsp;&nbsp;서울&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></a></li>
-                        <li><a href="">&nbsp;&nbsp;&nbsp;강남,삼성,역삼&nbsp;&nbsp;&nbsp;</a></li>
-                    </ul>
-                </nav>
-            </div> -->
-    
+            <section class="main-header">
+                <span class="acc-type">호텔리스트 / Hotel List</span>
+            </section>
             <section class="picked-item-sec">
                 <div class="snip1368">
                     <img src="/images/company/호텔/서울/강남구/신라스테이_삼성/메인.jpg" alt="">
@@ -405,7 +398,7 @@
 </body>
 
 
-    <section class="sec_footer">
+    <section class="sec-footer">
         <footer>
             <div>
                 <ul>

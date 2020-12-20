@@ -20,25 +20,31 @@ public class ListController extends HttpServlet {
 		
 		String ac_ = request.getParameter("ac");
 		String field_ = request.getParameter("f");
-		String query_ = request.getParameter("search");
+		String query_ = request.getParameter("q");
+		String page_ = request.getParameter("p");
 		
 		String ac = "hotel";
-		if(ac_ != null)
+		if(ac_ != null && !ac_.equals(""))
 			ac = ac_;
 		
 		String field = "company_name";
-		if(field_ != null)
+		if(field_ != null && !field_.equals(""))
 			field = field_;
 		
 		String query = "";
 		if(query_ != null && !query_.equals(""))
 			query = "%"+query_+"%";
 		
+		int page = 1;
+		if(page_ != null && !page_.equals(""))
+			page = Integer.parseInt(page_);
 
 		AccService service = new AccService();
-		List<AccListForAdminView> list = service.getViewList(ac,field,query, 1,10);
+		List<AccListForAdminView> list = service.getViewList(ac,field,query, page,(page+9));
+		int count = service.getAccCount(ac,field,query);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("count", count);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
 }
