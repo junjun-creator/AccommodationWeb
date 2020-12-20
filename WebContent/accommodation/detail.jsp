@@ -12,12 +12,13 @@
     <title>신라스테이 삼성</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link href="/css/accommodationList/detail.css"  rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <link href="/css/accommodationList/detail.css"  rel="stylesheet">
+    <script src="/js/accommodationLists/accommodationDetail.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script src="/js/accommodationLists/detail.js"></script>
 </head>
+
 
 <body>
     <header class="sec-header-page">
@@ -57,166 +58,141 @@
     </header>
     
 
-    <section class="main-container">
-        <div class="main">
-            <section class="title">
-                <div class="pic">
-                    <div class="main-img">
-                        <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg" alt= "신라스테이 삼성"><br>
-                    </div>
-                    <!-- <div class="cliper-btn prev-btn">
-                        <i class="fas fa-angle-left"></i>
-                    </div>
-                    <div class="cliper-btn next-btn">
-                        <i class="fas fa-angle-right"></i>
-                    </div> -->
-                    <div class="cliper">
-                        <ul>
-                            <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성"></li> 
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
-                        </ul>
-                    </div>
+        
+    <div class="main">
+        <section class='title'>
+            <div class="pic">
+                <div class="main-img">
+                    <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg" alt= "신라스테이 삼성"><br>
                 </div>
-                <div class="main-info">
-                    <h1>신라스테이 삼성</h1>
-                    <h2>서울 강남구 삼성동 168-3</h2>
-                    <div class="rule">
-                        <p>취소 및 환불 규정</p>
-                        <ul>
-                            <li> <i class="far fa-check-square"></i> 체크인일 기준 1일전 18시까지 : 100% 환불</li>
-                            <li> <i class="far fa-check-square"></i> 체크인일 기준 1일전 18시이후~당일 : 환불불가</li>
-                            <li> <i class="far fa-check-square"></i> 취소, 환불시 수수료가 발생할 수 있습니다</li>
-                        </ul>
-                    </div>
-                    <div class="check">
-                        <p>확인사항 및 기타</p>
-                        <ul>
-                            <li> <i class="far fa-check-square"></i> 거리두기 단계 상향에 따라 일부 시설 이용이 제한될 수 있습니다</li>
-                            <li> <i class="far fa-check-square"></i> 최대인원 초과시 입실 불가합니다</li>
-                            <li> <i class="far fa-check-square"></i> 위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li>
-                            <li> <i class="far fa-check-square"></i> 해당 이미지는 실제와 상이 할 수 있습니다</li>
-                            <li> <i class="far fa-check-square"></i> 체크인 시 배정 또는 베드타입 미기재 상품은 특정객실과 베드타입을 보장하지 않습니다</li>
-                            <li> <i class="far fa-check-square"></i> 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
-                            <li> <i class="far fa-check-square"></i> 미성년자는 보호자 동반없이 이용하실 수 없습니다</li>
-                        </ul>
-                    </div>
+                <!-- <div class="cliper-btn prev-btn">
+                    <i class="fas fa-angle-left"></i>
                 </div>
-            </section>
+                <div class="cliper-btn next-btn">
+                    <i class="fas fa-angle-right"></i>
+                </div> -->
+                <div class="cliper">
+                    <ul>
+                        <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성"></li> 
+                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-info">
+                <h1>신라스테이 삼성</h1>
+                <h2>서울 강남구 삼성동 168-3</h2>
+                <div class="rule">
+                    <p>취소 및 환불 규정</p>
+                    <ul>
+                        <li> → 체크인일 기준 1일전 18시까지 : 100% 환불</li>
+                        <li> → 체크인일 기준 1일전 18시이후~당일 : 환불불가</li>
+                        <li> → 취소, 환불시 수수료가 발생할 수 있습니다</li>
+                    </ul>
+                </div>
+                <div class="check">
+                    <p>확인사항 및 기타</p>
+                    <ul>
+                        <li> → 거리두기 단계 상향에 따라 일부 시설 이용이 제한될 수 있습니다</li>
+                        <li> → 최대인원 초과시 입실 불가합니다</li>
+                        <li> → 위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li>
+                        <li> → 해당 이미지는 실제와 상이 할 수 있습니다</li>
+                        <li> → 체크인 시 배정 또는 베드타입 미기재 상품은 특정객실과 베드타입을 보장하지 않습니다</li>
+                        <li> → 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
+                        <li> → 미성년자는 보호자 동반없이 이용하실 수 없습니다</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-            <div class="empty-line"></div>
-    
-            <section class="room-sec">
-                <div class="subtitle">
-                    <h1>객실 안내 및 예약</h1>
-                    <form action="detail" method="get">
-                        체크인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" name="checkin-date" class="form-option date checkin-date" required><br>
-                        체크아웃 &nbsp;&nbsp;&nbsp; <input type="date" name="checkout-date" class="form-option date checkout-date" required><br>
-                        <input type="submit" class="submit-btn" value="적용하기">
-                    </form>
+
+            
+        
+        <section class="room-sec">
+
+            <div class="subtitle">
+            <h1>객실 안내 및 예약</h1>
+                <ul>
+                <li class="reserve-date">예약 날짜</li>
+                <li>&nbsp;&nbsp;/&nbsp;&nbsp;</li>
+                <li class="review">리뷰</li>
+                </ul>
+                <input type="date" name="start-date" class="form-option date start-date" name="start-date" required> ~ 
+                <input type="date" name="end-date" class="form-option date end-date" name="end-date" required>
+            </div>
+            <form class="room-form">
+                <section>
+                    <!-- <div class="radio-container">
+                        <input type="radio" name="radio" id="radio-1" class="radio" required>
+                        <label for="radio-1"><span></span></label>
+                    </div> -->
+                    <div class="room-container">
+                        <div class="room-img-container">
+                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성">
+                        </div>
+                        <div class="room-detail-container">
+                            <div class="room-room">
+                                <span>스탠다드 트윈</span>
+                            </div>
+                            <div class="room-bed-count">
+                                <div>침대개수</div>
+                                <div>2</div>
+                            </div>
+                            <div class="room-max-headcount">
+                                <div>최대 수용인원</div>
+                                <div>2</div>
+                            </div>
+                            <div class="room-price">
+                                <div>가격</div>
+                                <div>128,260원</div>
+                            </div>
+                            <div class="highlight-btn-container">
+                                <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <!-- <div class="radio-container">
+                        <input type="radio" name="radio" id="radio-2" class="radio" required>
+                        <label for="radio-2"><span></span></label>
+                    </div> -->
+                    <div class="room-container">
+                        <div class="room-img-container">
+                            <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg">
+                        </div>
+                        <div class="room-detail-container">
+                            <div class="room-room">
+                                <span>스탠다드 더블</span>
+                            </div>
+                            <div class="room-bed-count">
+                                <div>침대개수</div>
+                                <div>1</div>
+                            </div>
+                            <div class="room-max-headcount">
+                                <div>최대 수용인원</div>
+                                <div>2</div>
+                            </div>
+                            <div class="room-price">
+                                <div>가격</div>
+                                <div>500,260원</div>
+                            </div>
+                            <div class="highlight-btn-container">
+                                <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            <section class="goodsonmylist-box">
+                <div class="goodsonmylist">
+                    <a href="">♥ 찜</a>
                 </div>
-                <form class="room-form">
-                    <section>
-                        <!-- <div class="radio-container">
-                            <input type="radio" name="radio" id="radio-1" class="radio" required>
-                            <label for="radio-1"><span></span></label>
-                        </div> -->
-                        <div class="room-container">
-                            <div class="room-img-container">
-                                <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성">
-                            </div>
-                            <div class="room-detail-container">
-                                <div class="room-room">
-                                    <span>스탠다드 트윈</span>
-                                </div>
-                                <div class="room-bed-count">
-                                    <div>침대개수</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-max-headcount">
-                                    <div>최대 수용인원</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-price">
-                                    <div>가격</div>
-                                    <div>128,260원</div>
-                                </div>
-                                <div class="highlight-btn-container">
-                                    <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="room-container">
-                            <div class="room-img-container">
-                                <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg">
-                            </div>
-                            <div class="room-detail-container">
-                                <div class="room-room">
-                                    <span>스탠다드 더블</span>
-                                </div>
-                                <div class="room-bed-count">
-                                    <div>침대개수</div>
-                                    <div>1</div>
-                                </div>
-                                <div class="room-max-headcount">
-                                    <div>최대 수용인원</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-price">
-                                    <div>가격</div>
-                                    <div>500,260원</div>
-                                </div>
-                                <div class="highlight-btn-container">
-                                    <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </form>
-                <section class="goodsonmylist-box">
-                    <div class="goodsonmylist">
-                        <a href="">♥ 찜</a>
-                    </div>
-                </section>
-                <section class="review-section">
-                    <h1>리뷰</h1>
-                    <div class="review-info">
-                        <span class="review-span">추천해요!</span><br>
-                        <span class="review-span">평점 4.8 / 5.0</span><br>
-                        <span class="review-total">전체 리뷰 352개</span>
-                    </div>
-                    <div class="review">
-                        <img src="/images/review/face.png" class="review-img">
-                        <div class="review-ment-container">
-                            <div class="review-title">여기만한 곳은 어디에도 없을 거예요.</div>
-                            <div class="review-ment">카운터분도 친절하시고 깨끗합니다!</div>
-                            <div class="review-regdate">2020-01-25</div>
-                        </div>
-                    </div>
-                    <div class="review">
-                        <img src="/images/review/face.png" class="review-img">
-                        <div class="review-ment-container">
-                            <div class="review-title">청결 최고 ㅋㅋㅋㅋㅋ.</div>
-                            <div class="review-ment">카운터 누나 존옠ㅋㅋㅋㅋ 내일 또감</div>
-                            <div class="review-regdate">2020-01-25</div>
-                        </div>
-                    </div>
-                    <div class="review">
-                        <img src="/images/review/face.png" class="review-img">
-                        <div class="review-ment-container">
-                            <div class="review-title">여기만한 곳은 어디에도 없을 거예요.</div>
-                            <div class="review-ment">카운터분도 친절하시고 깨끗합니다!</div>
-                            <div class="review-regdate">2020-01-25</div>
-                        </div>
-                    </div>
-                </section>
             </section>
-        </div>
-    </section>
+        </section>
+    </div>
     
     
     <section class="sec_footer">

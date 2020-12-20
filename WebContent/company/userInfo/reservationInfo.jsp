@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +12,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/company/userInfo/myAccommodationLists.css">
+    <link rel="stylesheet" href="../../css/company/userInfo/reservationInfo.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -47,9 +52,9 @@
                 <!-- <h1>게시판</h1> -->
                 <ul>
                     <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li class="active"><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
-                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
+                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소등록</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;골든타임관리</a></li>
                 </ul>
@@ -62,42 +67,42 @@
                     </ul>
                 </div>
                 <section class="reservation-list-sec">
-                    <h1>숙소현황</h1>
+                    <h1>예약관리</h1>
                     <section class="category-sec">
                         <div class="category-bar">
                             <ul>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==0)?'selected':''}" href="">
                                         <img src="../../images/main/all-icon.png" alt="">
                                         <span>전체</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img selected" href="">
+                                    <a class="category-img ${(accType==1)?'selected':''}" href="">
                                         <img src="../../images/main/hotel-icon.png" alt="">
                                         <span>호텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==2)?'selected':''}" href="">
                                         <img src="../../images/main/motel-icon.png" alt="">
                                         <span>모텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==3)?'selected':''}" href="">
                                         <img src="../../images/main/guesthouse-icon.png" alt="">
                                         <span>게스트하우스</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==4)?'selected':''}" href="">
                                         <img src="../../images/main/resort-icon.png" alt="">
                                         <span>리조트</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==5)?'selected':''}" href="">
                                         <img src="../../images/main/pension-icon.png" alt="">
                                         <span>펜션</span>
                                     </a>
@@ -105,58 +110,93 @@
                             </ul>
                         </div>
                     </section>
-
-                    <section class="acc-item-sec">
-                        <div class="snip1368">
-                            <img src="../../images/company/호텔/서울/강남구/리베라/메인.jpg" alt="">
-                            <h3>상세보기</h3>
-                            <figcaption>
-                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                                </div>
-                              </figcaption>
-                            <div class="description-item">
-                                <p>라마다 호텔</p>
-                                <P>9.1 추천해요 (201)</P>
-                                <p>강남구 역삼동</p>
-                            </div>
-                            <div class="item-price">
-                                <div>
-                                    <p>숙박</p>
-                                    <p>예약특가</p>
-                                    <p>30,000원</p>
-                                </div>
-                            </div>
-                            <div class="hovered-item-bg">
-                            </div>
+                    <div class="table-container">
+                        <div>
+                            <select name="order-category" id="">
+                                <option value="체크인날짜순">체크인날짜순</option>
+                                <option value="예약자이름순">예약자이름순</option>
+                                <option value="예약상태순">예약상태순</option>
+                            </select>
                         </div>
-                        <div class="snip1368">
-                            <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
-                            <h3>상세보기</h3>
-                            <figcaption>
-                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                                </div>
-                              </figcaption>
-                            <div class="description-item">
-                                <p>라마다 호텔</p>
-                                <P>9.1 추천해요 (201)</P>
-                                <p>강남구 역삼동</p>
-                            </div>
-                            <div class="item-price">
-                                <div>
-                                    <p>숙박</p>
-                                    <p>예약특가</p>
-                                    <p>30,000원</p>
-                                </div>
-                            </div>
-                            <div class="hovered-item-bg">
-                            </div>
-                        </div>
-                    </section>
-                    
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>목록</td>
+                                    <td>숙소명</td>
+                                    <td>숙소종류</td>
+                                    <td>인원</td>
+                                    <td>금액</td>
+                                    <td>체크인</td>
+                                    <td>체크아웃</td>
+                                    <td>예약자</td>
+                                    <td>상태</td>
+                                    <td>비고</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>가람슬기 스파펜션</td>
+                                    <td>펜션</td>
+                                    <td>3인</td>
+                                    <td>119,000원</td>
+                                    <td>2020-11-01</td>
+                                    <td>2020-11-02</td>
+                                    <td>김병준</td>
+                                    <td>이용완료</td>
+                                    <td><input type="button" value="상세보기"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>가람슬기 스파펜션</td>
+                                    <td>펜션</td>
+                                    <td>3인</td>
+                                    <td>119,000원</td>
+                                    <td>2020-11-01</td>
+                                    <td>2020-11-02</td>
+                                    <td>김병준</td>
+                                    <td>이용완료</td>
+                                    <td><input type="button" value="상세보기"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="10" class="no-border">
+                                        <div class="pager-container">
+                                            <div class="btn btn-prev">
+                                                <span><a href="">이전</a></span>
+                                            </div>
+                                            <ul class="pager-list">
+                                                <li class="active-page"><a href="">1</a></li>
+                                                <li><a href="">2</a></li>
+                                                <li><a href="">3</a></li>
+                                                <li><a href="">4</a></li>
+                                                <li><a href="">5</a></li>
+                                                <li><a href="">6</a></li>
+                                                <li><a href="">7</a></li>
+                                                <li><a href="">8</a></li>
+                                                <li><a href="">9</a></li>
+                                                <li><a href="">10</a></li>
+                                            </ul>
+                                            <div class="btn btn-next">
+                                                <span><a href="">다음</a></span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <form action="">
+                                                    <select name="search-category" id="">
+                                                        <option value="숙소명" selected>숙소명</option>
+                                                        <option value="예약자">예약자</option>
+                                                    </select>
+                                                    <input type="text">
+                                                    <input type="button" value="검색">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </main>
         </div>

@@ -143,11 +143,12 @@ public class AccService {
 	}
 
 
-	public List<Integer> getIds(int companyId) {
-		return accDao.getIds(companyId);
+	public List<Integer> getIds(int companyId,int accType) {
+		return accDao.getIds(companyId,accType);
 	}
 
 	public List<Acc> getList(int type, String location) {
 		return accDao.getList(type, location);
 	}
+
 }
