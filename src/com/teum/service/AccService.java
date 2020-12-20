@@ -127,4 +127,20 @@ public class AccService {
 		List<Acc> list = accDao.getList(companyId);
 		return list;
 	}
+
+	public int getAccCount(String ac, String field, String query) {
+		int count = 0;
+		count = accDao.getAccCount(ac, field, query);
+		
+		return count;
+	}
+
+	public int getApplyAccCount(String ac, String field, String query) {
+		int count = 0;
+		count = accDao.getApplyAccCount(ac, field, query);
+		
+		return count;
+	}
+
+
 }
