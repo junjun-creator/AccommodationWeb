@@ -1,6 +1,8 @@
 package com.teum.controller.admin.acc;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,7 +16,61 @@ import com.teum.service.AccService;
 
 @WebServlet("/admin/accommodations/applyList")
 public class ApplyListController extends HttpServlet{
-	
+	//404 url이 없는경우(url오류)
+	//405 받을 수 없는 메소드가 있을경우(메소드오류)
+	//403 권한이 없을때(보안오류)
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//		String[] appIds = request.getParameterValues("app-id");
+//		String[] delIds = request.getParameterValues("del-id");
+//		String ids_ = request.getParameter("ids1");
+//		String[] ids1 = ids_.split(" ");
+//		
+//		AccService service = new AccService();
+//		String cmd = request.getParameter("cmd");
+//		
+//		switch(cmd) {
+//		case "승인" :
+//			for(String appId : appIds)
+//				System.out.printf("apply id : %s\n, appId");
+//			
+//			List<String> aids = Arrays.asList(appIds);
+//				List<String> uids = new ArrayList(Arrays.asList(ids1));
+//				uids.remove(aids);
+//				System.out.println(uids);
+//				System.out.println(aids);
+//
+//			break;
+//			
+//		case "삭제" :
+////			AccService service = new AccService();
+//			int[] ids = new int[delIds.length];
+//			for(int i =0; i<delIds.length; i++) {
+//				ids[i] = Integer.parseInt(delIds[i]);
+//				System.out.printf("del id : %s\n",delIds);
+//			}
+//			int result = service.deleteAll(ids);
+//			break;
+//		}
+//		response.sendRedirect("applyList");
+		String[] delIds = request.getParameterValues("del-id");
+		
+		AccService service = new AccService();
+		
+		
+			int[] ids = new int[delIds.length];
+			
+			for (int i = 0; i < delIds.length; i++) 
+				ids[i] = Integer.parseInt(delIds[i]);
+
+			
+			int result = service.deleteAll(ids);
+
+		
+		response.sendRedirect("list");
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.setCharacterEncoding("UTF-8");
@@ -42,11 +98,13 @@ public class ApplyListController extends HttpServlet{
 			page = Integer.parseInt(page_);
 		
 		AccService service = new AccService();
-		List<AccListForAdminView> list = service.getApplyViewList(ac,field,query,1,10);
+		List<AccListForAdminView> list = service.getApplyViewList(ac,field,query,page,(page+9));
 		int count = service.getApplyAccCount(ac,field,query);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("applyList.jsp").forward(request, response);
 	}
+	
+	
 }

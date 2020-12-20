@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.entity.Acc;
 import com.teum.service.AccService;
+import com.teum.service.QnAService;
 
 @WebServlet("/admin/accommodations/list")
 public class ListController extends HttpServlet {
@@ -46,5 +47,24 @@ public class ListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	String[] delIds = request.getParameterValues("del-id");
+	
+	AccService service = new AccService();
+	
+	
+		int[] ids = new int[delIds.length];
+		
+		for (int i = 0; i < delIds.length; i++) 
+			ids[i] = Integer.parseInt(delIds[i]);
+
+		
+		int result = service.deleteAll(ids);
+
+	
+	response.sendRedirect("list");
 	}
 }
