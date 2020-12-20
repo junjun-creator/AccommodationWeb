@@ -710,4 +710,39 @@ public class JdbcAccDao implements AccDao{
 		
 		return list;
 	}
+
+	@Override
+	public List<Integer> getIds(int companyId) {
+		List<Integer> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT ID FROM ACC WHERE COMPANY_ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			pst.setInt(1, companyId);
+			
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("ID"); 
+				
+				list.add(id);
+			};
+
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

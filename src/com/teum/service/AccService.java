@@ -127,4 +127,8 @@ public class AccService {
 		List<Acc> list = accDao.getList(companyId);
 		return list;
 	}
+
+	public List<Integer> getIds(int companyId) {
+		return accDao.getIds(companyId);
+	}
 }
