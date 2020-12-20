@@ -19,307 +19,6 @@ import com.teum.entity.Event;
 public class JdbcAccDao implements AccDao{
 
 	@Override
-	public Acc get(int id) {
-		Acc a = null;
-
-		String url = "DBContext.URL";
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1";//조건 추가(accName)
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
-			while(rs.next()) {
-				String name = rs. getString("name");
-				String phone = rs.getString("phone");
-				String location = rs.getString("location");
-				int regStatus = rs.getInt("reg_status");
-				Date approvalDate = rs.getDate("approval_date");
-				int adminId = rs.getInt("admin_id");
-				int companyId = rs.getInt("company_id");
-				Date regdate = rs.getDate("regdate");
-				int accTypeId = rs.getInt("acc_type_id");
-				Date gtStartDate = rs.getDate("GT_START_DATE");
-				Date gtEndDate = rs.getDate("GT_END_DATE");
-				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
-				a = new Acc(
-						id,
-						name,
-						phone,
-						location,
-						regStatus,
-						approvalDate,
-						adminId,
-						companyId,
-						regdate,
-						accTypeId,
-						gtStartDate,
-						gtEndDate,
-						saleprice,
-						goldentimeStatus
-						);
-
-			};
-
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return a;
-	}
-
-	@Override
-	public List<Acc> getList() {
-		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1";
-
-		List<Acc> list = new ArrayList<>();
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
-			while(rs.next()) {
-				int id = rs.getInt("id"); 
-				String name = rs. getString("name");
-				String phone = rs.getString("phone");
-				String location = rs.getString("location");
-				int regStatus = rs.getInt("reg_status");
-				Date approvalDate = rs.getDate("approval_date");
-				int adminId = rs.getInt("admin_id");
-				int companyId = rs.getInt("company_id");
-				Date regdate = rs.getDate("regdate");
-				int accTypeId = rs.getInt("acc_type_id");
-				Date gtStartDate = rs.getDate("GT_START_DATE");
-				Date gtEndDate = rs.getDate("GT_END_DATE");
-				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
-				Acc a = new Acc(
-						id,
-						name,
-						phone,
-						location,
-						regStatus,
-						approvalDate,
-						adminId,
-						companyId,
-						regdate,
-						accTypeId,
-						gtStartDate,
-						gtEndDate,
-						saleprice,
-						goldentimeStatus
-						);
-				list.add(a);
-			};
-
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	@Override
-	public Acc applyGet(int id) {
-		Acc a = null;
-
-		String url = "DBContext.URL";
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";//조건 추가(accName)
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
-			while(rs.next()) {
-				String name = rs. getString("name");
-				String phone = rs.getString("phone");
-				String location = rs.getString("location");
-				int regStatus = rs.getInt("reg_status");
-				Date approvalDate = rs.getDate("approval_date");
-				int adminId = rs.getInt("admin_id");
-				int companyId = rs.getInt("company_id");
-				Date regdate = rs.getDate("regdate");
-				int accTypeId = rs.getInt("acc_type_id");
-				Date gtStartDate = rs.getDate("GT_START_DATE");
-				Date gtEndDate = rs.getDate("GT_END_DATE");
-				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
-				 a = new Acc(
-						id,
-						name,
-						phone,
-						location,
-						regStatus,
-						approvalDate,
-						adminId,
-						companyId,
-						regdate,
-						accTypeId,
-						gtStartDate,
-						gtEndDate,
-						saleprice,
-						goldentimeStatus
-						);
-
-			};
-
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return a;
-	}
-
-	@Override
-	public List<Acc> applyGetList() {
-		String url = "DBContext.URL";
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";
-		List<Acc> list = new ArrayList<>();
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
-			while(rs.next()) {
-				int id = rs.getInt("id"); 
-				String name = rs. getString("name");
-				String phone = rs.getString("phone");
-				String location = rs.getString("location");
-				int regStatus = rs.getInt("reg_status");
-				Date approvalDate = rs.getDate("approval_date");
-				int adminId = rs.getInt("admin_id");
-				int companyId = rs.getInt("company_id");
-				Date regdate = rs.getDate("regdate");
-				int accTypeId = rs.getInt("acc_type_id");
-				Date gtStartDate = rs.getDate("GT_START_DATE");
-				Date gtEndDate = rs.getDate("GT_END_DATE");
-				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
-				Acc a = new Acc(
-						id,
-						name,
-						phone,
-						location,
-						regStatus,
-						approvalDate,
-						adminId,
-						companyId,
-						regdate,
-						accTypeId,
-						gtStartDate,
-						gtEndDate,
-						saleprice,
-						goldentimeStatus
-						);
-
-				list.add(a);
-			};
-
-			rs.close();
-			st.close();
-			con.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	@Override
-	public int delete(int id) {
-		int result=0;
-
-		String url = "DBContext.URL";
-		String sql = "DELETE FROM ACC_LIST_FOR_ADMIN WHERE ID=?";
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);         
-			st.setInt(1, id);
-			result = st.executeUpdate();    
-			st.close();
-			con.close();         
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-
-	}
-
-	@Override//수정필요
-	public int[] deleteAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int approval(int id) {
-		int result=0;
-
-		String url = "DBContext.URL";
-		String sql = "UPDATE ACC_LIST_FOR_ADMIN SET REG_STATUS=1 WHERE ID=?";
-
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
-			PreparedStatement st = con.prepareStatement(sql);         
-			st.setInt(1, id);
-			result = st.executeUpdate();    
-			st.close();
-			con.close();         
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-	}
-
-	@Override
-	public int[] approvalAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<AccListForAdminView> getViewList() {
 
 		return getViewList("","companyName","", 1,10);
@@ -410,6 +109,67 @@ public class JdbcAccDao implements AccDao{
 		return list;
 	}
 	
+	@Override
+	public Acc get(int id) {
+		Acc a = null;
+
+		String url = "DBContext.URL";
+		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1 AND ID=?";//조건 추가(accName)
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				int nid = rs.getInt("ID");
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				
+				a = new Acc(
+						nid,
+						name,
+						phone,
+						location,
+						regStatus,
+						approvalDate,
+						adminId,
+						companyId,
+						regdate,
+						accTypeId,
+						gtStartDate,
+						gtEndDate,
+						saleprice,
+						goldentimeStatus
+						);
+
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return a;
+	}
 	@Override
 	public List<AccListForAdminView> getApplyViewList() {
 
@@ -504,6 +264,137 @@ public class JdbcAccDao implements AccDao{
 		}
 		return list;
 	}
+	
+	@Override
+	public Acc applyGet(int id) {
+		Acc a = null;
+
+		String url = "DBContext.URL";
+		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0 AND ID=?";//조건 추가(accName)
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int nid = rs.getInt("id");
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				 a = new Acc(
+						nid,
+						name,
+						phone,
+						location,
+						regStatus,
+						approvalDate,
+						adminId,
+						companyId,
+						regdate,
+						accTypeId,
+						gtStartDate,
+						gtEndDate,
+						saleprice,
+						goldentimeStatus
+						);
+
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return a;
+	}
+
+	
+	@Override
+	public int delete(int id) {
+		int result=0;
+
+		String url = "DBContext.URL";
+		String sql = "DELETE FROM ACC_LIST_FOR_ADMIN WHERE ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);         
+			st.setInt(1, id);
+			result = st.executeUpdate();    
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+
+	}
+
+	@Override//수정필요
+	public int[] deleteAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int approval(int id) {
+		int result=0;
+
+		String url = "DBContext.URL";
+		String sql = "UPDATE ACC_LIST_FOR_ADMIN SET REG_STATUS=1 WHERE ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);         
+			st.setInt(1, id);
+			result = st.executeUpdate();    
+			st.close();
+			con.close();         
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int[] approvalAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
 
 	@Override
 	public Acc getLast() {
@@ -710,6 +601,219 @@ public class JdbcAccDao implements AccDao{
 		
 		return list;
 	}
+  
+	public int getAccCount(String ac,String field, String query) {
+		int count = 0;
+		
+		String url = DBContext.URL;
+		String sql;
+		
+		if(query == null || query.equals("")) {
+			sql = "SELECT COUNT(ID) COUNT FROM ( SELECT ROWNUM NUM, A.* " +
+					"FROM (SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 1 ORDER BY REGDATE DESC) A ) "; 
+		}else {
+			sql = "SELECT COUNT(ID) COUNT FROM "+
+					"(SELECT ROWNUM NUM, A.* FROM "+
+					"(SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 1 "+
+					"AND ACC_TYPE = ? AND " + field + " LIKE ? ORDER BY REGDATE DESC) A )";
+		}
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			if(query == null || query.equals("")) {
+				
+			} else {
+				st.setString(1, ac);
+				st.setString(2, query);
+			}
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next())
+				count = rs.getInt("count");
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+	@Override
+	public int getApplyAccCount(String ac, String field, String query) {
+int count = 0;
+		
+		String url = DBContext.URL;
+		String sql;
+		
+		if(query == null || query.equals("")) {
+			sql = "SELECT COUNT(ID) COUNT FROM ( SELECT ROWNUM NUM, A.* " +
+					"FROM (SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 0 ORDER BY REGDATE DESC) A ) "; 
+		}else {
+			sql = "SELECT COUNT(ID) COUNT FROM "+
+					"(SELECT ROWNUM NUM, A.* FROM "+
+					"(SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS = 0 "+
+					"AND ACC_TYPE = ? AND " + field + " LIKE ? ORDER BY REGDATE DESC) A )";
+		}
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			if(query == null || query.equals("")) {
+				
+			} else {
+				st.setString(1, ac);
+				st.setString(2, query);
+			}
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next())
+				count = rs.getInt("count");
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+	@Override
+	public List<Acc> getList() {
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1";
+
+		List<Acc> list = new ArrayList<>();
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				Acc a = new Acc(
+						id,
+						name,
+						phone,
+						location,
+						regStatus,
+						approvalDate,
+						adminId,
+						companyId,
+						regdate,
+						accTypeId,
+						gtStartDate,
+						gtEndDate,
+						saleprice,
+						goldentimeStatus
+						);
+				list.add(a);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	@Override
+	public List<Acc> applyGetList() {
+		String url = "DBContext.URL";
+		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";
+		List<Acc> list = new ArrayList<>();
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String name = rs. getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				int regStatus = rs.getInt("reg_status");
+				Date approvalDate = rs.getDate("approval_date");
+				int adminId = rs.getInt("admin_id");
+				int companyId = rs.getInt("company_id");
+				Date regdate = rs.getDate("regdate");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date gtStartDate = rs.getDate("GT_START_DATE");
+				Date gtEndDate = rs.getDate("GT_END_DATE");
+				int saleprice = rs.getInt("SALEPRICE");
+				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				Acc a = new Acc(
+						id,
+						name,
+						phone,
+						location,
+						regStatus,
+						approvalDate,
+						adminId,
+						companyId,
+						regdate,
+						accTypeId,
+						gtStartDate,
+						gtEndDate,
+						saleprice,
+						goldentimeStatus
+						);
+
+				list.add(a);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	@Override
 	public List<Integer> getIds(int companyId) {

@@ -22,7 +22,8 @@ public class ApplyListController extends HttpServlet{
 		
 		String ac_ = request.getParameter("ac");
 		String field_ = request.getParameter("f");
-		String query_ =request.getParameter("search");
+		String query_ =request.getParameter("q");
+		String page_ = request.getParameter("p");
 		
 		String ac="hotel";
 		if(ac_ != null)
@@ -36,14 +37,16 @@ public class ApplyListController extends HttpServlet{
 		if(query_ != null&& !query_.equals(""))
 			query = "%" +query_+"%";
 		
-		System.out.println(ac);
-		System.out.println(field);
-		System.out.println(query);
+		int page = 1;
+		if(page_ != null && !page_.equals(""))
+			page = Integer.parseInt(page_);
 		
 		AccService service = new AccService();
 		List<AccListForAdminView> list = service.getApplyViewList(ac,field,query,1,10);
+		int count = service.getApplyAccCount(ac,field,query);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("count", count);
 		request.getRequestDispatcher("applyList.jsp").forward(request, response);
 	}
 }

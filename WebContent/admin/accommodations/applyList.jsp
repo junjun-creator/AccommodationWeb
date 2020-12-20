@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +114,7 @@
                                     <option ${(param.f == "company_name")?"selecte":"" } value="company_name">사업자</option>
                                     <option ${(param.f == "acc_name")?"selecte":"" } value="acc_name">숙소</option>
                                 </select>
-                                <input type="text" name="search" value="${param.search}">
+                                <input type="text" name="q" value="${param.search}">
                                 <input type="submit" value="검색">
                             </form>
                         </div>
@@ -160,24 +161,37 @@
                                 <tr>
                                             <td colspan="8" class="no-border">
                                                 <div class="pager-container">
+                                                	<!--이전버튼  -->
                                                     <div class="btn btn-prev">
-                                                        <span><a href="">이전</a></span>
-                                                    </div>
-                                                    <ul class="pager-list">
-                                                        <li class="active-page"><a href="">1</a></li>
-                                                        <li><a href="">2</a></li>
-                                                        <li><a href="">3</a></li>
-                                                        <li><a href="">4</a></li>
-                                                        <li><a href="">5</a></li>
-                                                        <li><a href="">6</a></li>
-                                                        <li><a href="">7</a></li>
-                                                        <li><a href="">8</a></li>
-                                                        <li><a href="">9</a></li>
-                                                        <li><a href="">10</a></li>
-                                                    </ul>
-                                                    <div class="btn btn-next">
-                                                        <span><a href="">다음</a></span>
-                                                    </div>
+	                                                    <c:set var="ac" value="${accType}"/>
+														<c:set var="page" value="${(empty param.p)?1:param.p}"/>
+														<c:set var="startNum" value="${page-(page-1)%5}" />
+														<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.') }" /><!--6-->
+														
+														<c:if test="${startNum>1}">
+															<a href="list?page=${startNum-1}">이전</a>
+														</c:if>
+														<c:if test="${startNum<=1}">
+															<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+														</c:if>
+													</div>
+													<!--페이저 리스트  -->
+													<ul class="pager-list">
+														<c:forEach var="i"  begin="0"  end="4">
+														<c:if test="${(startNum+i) <= lastNum}">
+															<li><a class="${(page==(startNum+i))?'active-page':''}" href="list?p=${startNum+i}&ac=${param.ac}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
+														</c:if>
+														</c:forEach>
+													</ul>
+													<!--다음버튼  -->
+													<div class="btn btn-next">
+														<c:if test="${startNum+5<=lastNum}">
+															<a href="list?page=${startNum+5}">다음</a>
+														</c:if>
+														<c:if test="${startNum+5>lastNum}">
+															<span onclick="alert('다음 페이지가 없습니다.');">다음</span>
+														</c:if>
+													</div>
                                                 </div>
                                             </td>
                                         </tr>
