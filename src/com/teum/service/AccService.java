@@ -97,10 +97,10 @@ public class AccService {
 	}
 
 	public int approvalAll(int[] ids) {
-		int aResult =0;
+		int result =0;
 		for(Integer id : ids)
-			aResult += accDao.delete(id);
-		return aResult;
+			result += accDao.approval(id);
+		return result;
 	}
 	
 

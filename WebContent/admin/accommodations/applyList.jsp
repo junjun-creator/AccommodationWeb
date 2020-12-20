@@ -119,7 +119,7 @@
                             </form>
                         </div>
                         <section>
-                            <form class="list-board">
+                       <form class="list-board" action="" method="post">
                         <table>
                             <thead>
                                 <tr>
@@ -136,18 +136,18 @@
                             </thead>
                             <tbody>
                                 <c:forEach var="al" items="${list}">
-										<tr>
-											<td>${al.num}</td>
-											<td>${al.companyName}</td>
-											<td><a href="detail?accName=${al.name}">${al.name}</a></td>
-											<td>${al.location}</td>
-											<td>${al.regdate}</td>
-											<td>${al.phone}</td>
-											<td>${al.accType}</td>
-											<td><input type="checkbox" name="app-id" value="${al.id}"></td>
-											<td><input type="checkbox"name="del-id" value="${al.id}"></td>
-										</tr>
-										</c:forEach> 
+									<tr>
+										<td>${al.num}</td>
+										<td>${al.companyName}</td>
+										<td><a href="detail?accName=${al.name}">${al.name}</a></td>
+										<td>${al.location}</td>
+										<td>${al.regdate}</td>
+										<td>${al.phone}</td>
+										<td>${al.accType}</td>
+										<td><input type="checkbox" name="app-id" value="${al.id}"></td>
+										<td><input type="checkbox"name="del-id" value="${al.id}"></td>
+									</tr>
+								</c:forEach> 
 								<tr>
                                     <td></td>
                                     <td></td>
@@ -160,27 +160,22 @@
                                     <td><button type="submit" name="cmd" value="삭제">삭제</button></td>
                                 </tr>
                                 <tr>
-                                           <td colspan="8" class="no-border">
-                                           <c:set var="ids" value=""/>
-                                           <c:forEach var= "al" items="${list}">
-                                            <c:set var="ids" value="${ids} ${al.id}" />
-                                           </c:forEach>
-                                           	<input type = "hidden" name="ids" value="${ids}"}>
-                                               <div class="pager-container">
-                                               	<!--이전버튼  -->
-                                                   <div class="btn btn-prev">
-                                                    <c:set var="ac" value="${accType}"/>
-													<c:set var="page" value="${(empty param.p)?1:param.p}"/>
-													<c:set var="startNum" value="${page-(page-1)%5}" />
-													<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.') }" /><!--6-->
+                                     <td colspan="8" class="no-border">
+                                          <div class="pager-container">
+                                        	<!--이전버튼  -->
+                                            <div class="btn btn-prev">
+	                                            <c:set var="ac" value="${accType}"/>
+												<c:set var="page" value="${(empty param.p)?1:param.p}"/>
+												<c:set var="startNum" value="${page-(page-1)%5}" />
+												<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.') }" /><!--6-->
 													
-													<c:if test="${startNum>1}">
-														<a href="applyList?page=${startNum-1}">이전</a>
-													</c:if>
-													<c:if test="${startNum<=1}">
-														<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
-													</c:if>
-												</div>
+												<c:if test="${startNum>1}">
+													<a href="applyList?page=${startNum-1}">이전</a>
+												</c:if>
+												<c:if test="${startNum<=1}">
+													<span onclick="alert('이전 페이지가 없습니다.');">이전</span>
+												</c:if>
+											</div>
 												<!--페이저 리스트  -->
 												<ul class="pager-list">
 													<c:forEach var="i"  begin="0"  end="4">
@@ -201,8 +196,8 @@
                                                </div>
                                            </td>
                                         </tr>
-                            </tbody>
-                        </table>
+                           			 </tbody>
+                        		</table>
 		                    </form>
 	                    </section>
 	                </div>
