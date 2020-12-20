@@ -45,7 +45,7 @@
                 <!-- <h1>게시판</h1> -->
                 <ul>
                     <li><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href="reservationInfo"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li class="active"><a href="offerList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li><a href="pickList"><i class="far fa-question-circle"></i>&nbsp;&nbsp;찜한상품조회</a></li>
                 </ul>
@@ -55,39 +55,48 @@
 
                 </div>
                 <div>
-                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
-                    <div style="width: 700px; overflow:hidden;">
-                        <div class="proposal-item-container" style="display: flex;">
-				
-							<c:forEach items="${offerList }" var="offer" varStatus="status">
-								
-	                            <div class="proposal-info ${(status.index==0)?'picked':'' }">
-	                                <h2>제안정보</h2>
-	                                <ul>
-	                                    <li>
-	                                        <div>날짜</div>
-	                                        <div>${offer.checkinDate } ~ ${offer.checkoutDate }</div>
-	                                    </li>
-	                                    <li>
-	                                        <div>위치</div>
-	                                        <div>${offer.location }</div>
-	                                    </li>
-	                                    <li>
-	                                        <div>인원수</div>
-	                                        <div>${offer.headcount }</div>
-	                                    </li>
-	                                    <li>
-	                                        <div>희망하는 가격</div>
-	                                        <div class="wanted-price"><fmt:formatNumber value="${offer.price }" pattern="#,###" />원</div>
-	                                    </li>
-	                                </ul>
-	                                <input type="hidden" value="${offer.id }">
-	                                <input type="hidden" value="${offer.price }">
-	                            </div>
-							</c:forEach>
-                        </div>
-                    </div>
-                    <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
+                	<c:choose>
+	                	<c:when test="${empty offerList }">
+	                		<h1>제안등록이 처음이시네요!</h1>
+	                		<button>제안하기</button>
+	                	</c:when>
+	                	<c:otherwise>
+	                	
+		                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
+		                    <div style="width: 700px; overflow:hidden;">
+		                        <div class="proposal-item-container" style="display: flex;">
+						
+									<c:forEach items="${offerList }" var="offer" varStatus="status">
+										
+			                            <div class="proposal-info ${(status.index==0)?'picked':'' }">
+			                                <h2>제안정보</h2>
+			                                <ul>
+			                                    <li>
+			                                        <div>날짜</div>
+			                                        <div>${offer.checkinDate } ~ ${offer.checkoutDate }</div>
+			                                    </li>
+			                                    <li>
+			                                        <div>위치</div>
+			                                        <div>${offer.location }</div>
+			                                    </li>
+			                                    <li>
+			                                        <div>인원수</div>
+			                                        <div>${offer.headcount }</div>
+			                                    </li>
+			                                    <li>
+			                                        <div>희망하는 가격</div>
+			                                        <div class="wanted-price"><fmt:formatNumber value="${offer.price }" pattern="#,###" />원</div>
+			                                    </li>
+			                                </ul>
+			                                <input type="hidden" value="${offer.id }">
+			                                <input type="hidden" value="${offer.price }">
+			                            </div>
+									</c:forEach>
+		                        </div>
+		                    </div>
+		                    <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
+	                	</c:otherwise>
+                	</c:choose>
                 </div>
                 <!-- <section class="proposal-sec">
                     <div class="cliper-btn prev-btn">
@@ -208,12 +217,19 @@
                     	</div>
                     </c:forEach>
                 </section>
-	            <div class="btn-more-sec">
-	            	<a href="?page=${page+1 }&offerId=${oi}" class="btn-more">더보기</a>
-	            	<input type="hidden" value="${page+1 }" class="page">
-	            	<input type="hidden" value="${oi }" class="offer-id">
-	            	<input type="hidden" value="${offerCount }" class="offer-count">
-	            </div>
+                <c:choose>
+                	<c:when test="${empty offerList }">
+                	</c:when>
+	                <c:otherwise>
+	                	<div class="btn-more-sec">
+			            	<a href="?page=${page+1 }&offerId=${oi}" class="btn-more">더보기</a>
+			            	<input type="hidden" value="${page+1 }" class="page">
+			            	<input type="hidden" value="${oi }" class="offer-id">
+			            	<input type="hidden" value="${offerCount }" class="offer-count">
+			            </div>
+	                </c:otherwise>
+                </c:choose>
+	            
             </main>
         </div>
     </section>

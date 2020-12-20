@@ -138,10 +138,9 @@ public class AccService {
 		
 		return count;
 	}
-	
 
+	public List<Integer> getIds(int companyId,int accType) {
+		return accDao.getIds(companyId,accType);
+	}
 
-//	public List<Integer> getIds(int companyId) {
-//		return accDao.getIds(companyId);
-//	}
 }

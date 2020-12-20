@@ -24,7 +24,9 @@ window.addEventListener("load",function(){
 					resultHTML = html.replace("{accName}",jsonResult[i].accName)
 									.replace("{fileName}",jsonResult[i].fileName)
 									.replace("{checkinDate}",jsonResult[i].checkinDate)
-									.replace("{checkoutDate}",jsonResult[i].checkoutDate);
+									.replace("{checkoutDate}",jsonResult[i].checkoutDate)
+									.replace("{accId}",jsonResult[i].accId)
+									.replace("{id}",jsonResult[i].id);
 									
 					reservation_list_container.insertAdjacentHTML('beforeend',resultHTML);
 				}//아이템 추가 완료
@@ -42,4 +44,47 @@ window.addEventListener("load",function(){
 		data += 'page='+page;
 		xhr.send(data);
 	});
+	
+	var container = document.querySelector(".reservation-list-container");
+	
+	container.addEventListener("click",function(e){
+		e.stopPropagation();
+		var li;
+		
+		if(e.target.className == 're-reserve-btn'){
+			
+			console.log(e.target.nextElementSibling.value);
+			window.location.href="./accDetail?id="+e.target.nextElementSibling.value;
+			return;
+		}
+		
+		if(e.target.tagName == 'LI')
+			li = e.target;
+		else{
+			li = e.target;
+			while(li.tagName != 'LI'){
+				li = li.parentNode;
+			}
+		}
+		
+		window.location.href="./reservationDetail?id="+li.nextElementSibling.value;
+	});
+	/*
+	for(var item of reservationItem){
+		item.addEventListener("click",function(e){
+			e.stopPropagation();
+			//var reservationId = e.currentTarget.nextElementSibling.value;
+			//console.log(reservationId);
+		});
+	}
+	
+	var re_reserve_btn = document.querySelectorAll(".re-reserve-btn");
+	
+	for(var re of re_reserve_btn){
+		re.addEventListener("click",function(e){
+			e.stopPropagation();
+			
+			console.log("다시예약 선택");
+		});
+	}*/
 });

@@ -869,18 +869,23 @@ int count = 0;
 
 
 	@Override
-	public List<Integer> getIds(int companyId) {
+	public List<Integer> getIds(int companyId, int accType) {
 		List<Integer> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT ID FROM ACC WHERE COMPANY_ID = ?";
+		String sql;
+		if(accType == 0)
+			sql = "SELECT ID FROM ACC WHERE COMPANY_ID = ?";
+		else
+			sql = "SELECT ID FROM ACC WHERE COMPANY_ID = ? AND ACC_TYPE_ID=?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
-			
 			pst.setInt(1, companyId);
+			if(accType != 0)
+				pst.setInt(2, accType);
 			
 			ResultSet rs = pst.executeQuery();
 

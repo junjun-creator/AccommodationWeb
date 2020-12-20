@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.teum.dao.ReservationDao;
 import com.teum.dao.entity.OfferInfoView;
+import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
 
 public class JdbcReservationDao implements ReservationDao {
@@ -38,6 +39,7 @@ public class JdbcReservationDao implements ReservationDao {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int reservationId = rs.getInt("id");
 				int userId = rs.getInt("user_id");
 				int accId = rs.getInt("acc_id");
 				int roomId = rs.getInt("room_id");
@@ -49,6 +51,7 @@ public class JdbcReservationDao implements ReservationDao {
 				
 				ReservationListView rlv = new ReservationListView();
 				
+				rlv.setId(reservationId);
 				rlv.setUserId(userId);
 				rlv.setAccId(accId);
 				rlv.setRoomId(roomId);
@@ -110,6 +113,85 @@ public class JdbcReservationDao implements ReservationDao {
 		
 		
 		return result;
+	}
+
+	@Override
+	public List<ReservationForCompanyView> getList(int startIndex, int endIndex, String accIdsCSV, int accType) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql;
+		if(accType != 0)
+			sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s) AND ACC_TYPE_ID=?) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+		else
+			sql = String.format("SELECT * FROM (SELECT ROWNUM NUM, RFCV.* FROM RESERVATION_FOR_COMPANY_VIEW RFCV WHERE ACC_ID IN(%s)) WHERE NUM BETWEEN ? AND ?", accIdsCSV);
+		
+		List<ReservationForCompanyView> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,startIndex);
+			ps.setInt(2,endIndex);
+			if(accType !=0)
+				ps.setInt(3,accType);
+//			if(!field.equals("")) {
+//			}
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				int userId = rs.getInt("user_id");
+				Date regdate = rs.getDate("regdate");
+				Date reviewRegdate = rs.getDate("review_regdate");
+				int reviewScore = rs.getInt("review_score");
+				int accId = rs.getInt("acc_id");
+				int cancelStatus = rs.getInt("cancel_status");
+				int roomId = rs.getInt("room_id");
+				String reviewContent = rs.getString("review_content");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				int price = rs.getInt("price");
+				String userName = rs.getString("user_name");
+				String accName = rs.getString("acc_name");
+				int accTypeId = rs.getInt("acc_type_id");
+				
+				ReservationForCompanyView r = new ReservationForCompanyView();
+				
+				r.setId(id);
+				r.setUserId(userId);
+				r.setRegdate(regdate);
+				r.setReviewRegdate(reviewRegdate);
+				r.setReviewScore(reviewScore);
+				r.setAccId(accId);
+				r.setCancelStatus(cancelStatus);
+				r.setRoomId(roomId);
+				r.setReviewContent(reviewContent);
+				r.setCheckinDate(checkinDate);
+				r.setCheckoutDate(checkoutDate);
+				r.setPrice(price);
+				r.setUserName(userName);
+				r.setAccName(accName);
+				r.setAccTypeId(accTypeId);
+				
+				list.add(r);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

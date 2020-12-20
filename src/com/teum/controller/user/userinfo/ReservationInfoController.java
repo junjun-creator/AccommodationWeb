@@ -74,7 +74,8 @@ public class ReservationInfoController extends HttpServlet {
 			obj.put("price", r.getPrice());
 			obj.put("accName", r.getAccName());
 			obj.put("fileName", r.getFileName());
-			
+			obj.put("id", r.getId());
+			obj.put("accId", r.getAccId());
 			jArray.add(obj);
 		}
 		
