@@ -82,22 +82,32 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 	@Override
 	public List<GoldenTimeView> getGoldenList() {
 		
-		return getGoldenList(0);
+		return getGoldenList(0,0);
 	}
 	
+	@Override
+	public List<GoldenTimeView> getGoldenList(int open) {
+		
+		return getGoldenList(0,open);
+	}
+
 	
 	@Override
-	public List<GoldenTimeView> getGoldenList(int id) {
+	public List<GoldenTimeView> getGoldenList(int id,int open) {
 		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM GOLDENTIME_LIST_VIEW WHERE REG_STATUS = 1 "; 
-
+		
 		if(id>0) {
 			String sql_="AND COMPANY_ID LIKE "+id;
 			
 			sql+=sql_;
 		}
-		
+		else if(open>0) {
+			String sql2="AND GOLDENTIME_STATUS LIKE "+open;
+			
+			sql+=sql2;
+		}
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -274,5 +284,7 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 	}
 
 
+
+	
 	
 }

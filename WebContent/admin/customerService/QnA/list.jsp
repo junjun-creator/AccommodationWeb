@@ -40,7 +40,7 @@
 	            <h1>고객센터</h1>
 	                <ul>
 	                    <li><a href="/admin/customerService/notice/list">공지사항</a></li>
-	                    <li><a href="" class="active">QnA</a></li>
+	                    <li class="active"><a href="ist">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">

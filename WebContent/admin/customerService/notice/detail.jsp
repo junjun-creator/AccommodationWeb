@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +36,7 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li class="active"><a href="list" >공지사항</a></li>
 	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>

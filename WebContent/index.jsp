@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,29 +112,31 @@
         <section class="promotion-sec">
             <div class="promotion-bar">
                 <div>
-                    <h1 style="font-size: 24px; color: #f3e62f;"><i class="fas fa-hourglass-half"></i> <i class="fas fa-stopwatch"></i> <span style="color: #f3e62f;">골든타임(아이콘 원하는거 쓰세요)</span></h1>
+                    <h1 style="font-size: 24px; color: #ffd700; font-weight:bold"><i class="fas fa-stopwatch"></i> <span style="color: #ffd700;">골든타임</span></h1>
                 </div>
                 <div>
                     <div class="btn-left"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-left"></i></div>
                     <div style="width: 918px; overflow:hidden;">
                         <div class="promotion-item-container" style="display: flex;">
-
+						<c:forEach var="g" items="${goldenList}" varStatus="status">
                             <div class="promotion-item">
                                 <div class="parent">
-                                    <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
+                                    <img src="${g.fileroute}" alt="">
         
-                                    <div class="child"><span>00:00:00</span></div>
+                                    <div class="child"><span>${g.timeRemain}</span></div>
                                 </div>
                                 <div class="promotion-item-detail">
-                                    <h2>강남 파르페 호텔</h2>
-                                    <h4>128,000원</h4>
-                                    <h3>42,000원</h3>
-                                    <h5>서울시 강남구</h5>
+                                    <h2>${g.name}</h2>
+                                    <!-- <h4>Sale</h4> -->
+                                    <h3>전 품목 -<fmt:formatNumber value="${g.saleprice}" pattern="#,###" />원</h3>
+                                    <h4>${fn:substring(g.location,0,7) }</h4>
                                 </div>
-                                <div>
-                                    <h2>추천상품1</h2>
+                                <div class="promotion-item-thumb">
+                                    <h2>추천상품${status.index+1}</h2>
                                 </div>
                             </div>
+                            </c:forEach>
+                            <!-- 
                             <div class="promotion-item">
                                 <div class="parent">
                                     <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
@@ -150,6 +153,7 @@
                                     <h2>추천상품2</h2>
                                 </div>
                             </div>
+                            
                             <div class="promotion-item">
                                 <div>
                                     <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
@@ -178,6 +182,7 @@
                                     <h2>추천상품4</h2>
                                 </div>
                             </div>
+                            
                             <div class="promotion-item">
                                 <div class="parent">
                                     <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
@@ -194,6 +199,7 @@
                                     <h2>추천상품5</h2>
                                 </div>
                             </div>
+                             -->
                         </div>
                     </div>
                     <div class="btn-right"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-right"></i></div>
