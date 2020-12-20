@@ -29,6 +29,7 @@ public class ListController extends HttpServlet {
 		
 		int id = (int)session.getAttribute("id");
 		//int id =1;
+		
 		GoldenTimeService service = new GoldenTimeService();
 		List<GoldenTimeView> list = service.getGoldenList(id); 
 		

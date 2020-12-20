@@ -52,23 +52,30 @@ public class ListController extends HttpServlet {
 		String[] ids = ids_.trim().split(" ");
 		
 		NoticeService service = new NoticeService();
-		List<String> oIds = Arrays.asList(openIds);
-		// 공개할 id와 비공개할 id를 나눈다.
-		List<String> cIds = new ArrayList(Arrays.asList(ids));
-		cIds.removeAll(oIds); // 비공개할 id
+		
+		
 		switch (cmd) {
 		case "공개":
-			
+			if(openIds!=null) {
+			List<String> oIds = Arrays.asList(openIds);
+			// 공개할 id와 비공개할 id를 나눈다.
+			List<String> cIds = new ArrayList(Arrays.asList(ids));
+			cIds.removeAll(oIds); // 비공개할 id
 			service.openAll(oIds, cIds);
-			
+			}
 			break;
 			
 		case "비공개":
-			
-			service.closeAll(oIds, cIds);
-			
+			if(openIds!=null) {
+			List<String> oIds2 = Arrays.asList(openIds);
+			// 공개할 id와 비공개할 id를 나눈다.
+			List<String> cIds2 = new ArrayList(Arrays.asList(ids));
+			cIds2.removeAll(oIds2); // 비공개할 id
+			service.closeAll(oIds2, cIds2);
+			}
 			break;
 		case "삭제":
+			if(delIds!=null) {
 			int[] ids1 = new int[delIds.length];
 			
 			for (int i = 0; i < delIds.length; i++)
@@ -76,6 +83,7 @@ public class ListController extends HttpServlet {
 			
 			int result = service.deleteAll(ids1);
 			break;
+			}
 		}
 		
 		response.sendRedirect("list");

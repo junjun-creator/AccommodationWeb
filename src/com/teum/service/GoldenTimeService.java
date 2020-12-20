@@ -19,13 +19,20 @@ public class GoldenTimeService {
 
 	public List<GoldenTimeView> getGoldenList() {
 		
-		return getGoldenList(0);
+		return getGoldenList(0,0);
+	}
+	public List<GoldenTimeView> getGoldenList(int id) {
+		// TODO Auto-generated method stub
+		return getGoldenList(id,0);
+	}
+	public List<GoldenTimeView> getGoldenOpenList(int open) {
+	
+		return getGoldenList(0, open);
 	}
 
-
-	public List<GoldenTimeView> getGoldenList(int id) {
+	public List<GoldenTimeView> getGoldenList(int id, int open) {
 		List<GoldenTimeView> list = new ArrayList<GoldenTimeView>();
-			list =goldenTimeDao.getGoldenList(id);
+			list =goldenTimeDao.getGoldenList(id,open);
 		return list;
 	}
 
@@ -90,6 +97,9 @@ public class GoldenTimeService {
 		
 		return result;
 	}
+
+
+	
 
 
 	

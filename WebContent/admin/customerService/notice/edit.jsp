@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +37,8 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="" class="active">공지사항</a></li>
-	                    <li><a href="">QnA</a></li>
+	                    <li class="active"><a href="list">공지사항</a></li>
+	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
 	        <div class="container">
@@ -113,7 +113,7 @@
 	                            <div>
 	                            	<input type="hidden" name="ADMIN_ID" value="${n.adminId}">
 	                            	<input type="hidden" name="id" value="${n.id}">
-	                                <a class="btn-cancel"  href="detail?id=${n.id}"><span>취소<span></a>
+	                                <a class="btn-cancel"  href="detail?id=${n.id}"><span>취소</span></a>
 	                                <input type="submit"  class="btn-submit"  value="저장">
 	                            </div>
 	                        </form>

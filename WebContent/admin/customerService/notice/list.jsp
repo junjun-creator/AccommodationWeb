@@ -41,7 +41,7 @@
 	        <aside id="aside" class="aside">
 	            <h1>고객센터</h1>
 	                <ul>
-	                    <li><a href="list" class="active">공지사항</a></li>
+	                    <li  class="active"><a href="list" >공지사항</a></li>
 	                    <li><a href="/admin/customerService/QnA/list">QnA</a></li>
 	                </ul>
 	        </aside>
@@ -90,7 +90,7 @@
 	                            	<c:forEach var="n" items="${list}">
 	                                <tr>
 	                                    <td>${n.num}</td>
-	                                    <td class="ellips"><a href="detail?id=${n.id}">${n.title}</td>
+	                                    <td class="ellips"><a href="detail?id=${n.id}">${n.title}</a></td>
 	                                    <td>${n.regdate}</td>
 	                                    <td>관리자</td>
 	                                    <td>
@@ -119,7 +119,7 @@
 	                                        		<c:set var="ids" value="${ids} ${n.id}"/>
 	                                        	</c:forEach>
 	                                        	<input type="hidden" name="ids" value="${ids}">
-	                                            <a href="reg"><input type="submit" value="생성" ></a>
+	                                         	<input type="button" onclick="location.href='reg'" value="생성" style="width:80px; height:25px ;margin: 0 5px 0 5px;">
 	                                            <input type="submit" value="공개" name="cmd">
 	                                            <input type="submit" value="비공개"name="cmd">
 	                                            <input type="submit" value="삭제" name="cmd">
