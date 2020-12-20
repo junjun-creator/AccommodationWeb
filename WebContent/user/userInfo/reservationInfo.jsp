@@ -28,19 +28,12 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                        
                     </li>
                 </ul>
             </div>
@@ -70,13 +63,17 @@
                     <ul class="reservation-list-container">
                     	<c:forEach items="${list }" var="info" varStatus="status">
                     	
-	                        <li>
+	                        <li class="reservation-item">
 	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/${info.fileName }" alt="">
 	                            <p>사용완료</p>
 	                            <p>${info.accName }</p>
 	                            <p>${info.checkinDate } ~ ${info.checkoutDate }</p>
-	                            <p><input type="button" value="다시예약"></p>
+	                            <p>
+	                            	<input type="button" value="다시예약" class="re-reserve-btn">
+	                            	<input type="hidden" value="${info.accId }">
+	                            </p>
 	                        </li>
+	                        <input type="hidden" value="${info.id }">
                     	</c:forEach>
                         
                     </ul>
@@ -182,13 +179,17 @@
         </footer>
     </section>
     <script type="more-template" id="more-template">
-    	<li>
+    	<li class="reservation-item">
 	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/{fileName}" alt="">
 	                            <p>사용완료</p>
 	                            <p>{accName}</p>
 	                            <p>{checkinDate} ~ {checkoutDate}</p>
-	                            <p><input type="button" value="다시예약"></p>
+	                            <p>
+									<input type="button" value="다시예약" class="re-reserve-btn">
+									<input type="hidden" value="{accId}">
+								</p>
 	                        </li>
+							<input type="hidden" value="{id}">
     </script>
 </body>
 

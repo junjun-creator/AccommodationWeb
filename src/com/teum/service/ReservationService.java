@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.teum.dao.ReservationDao;
+import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
 import com.teum.dao.jdbc.JdbcReservationDao;
 import com.teum.entity.Reservation;
@@ -25,12 +26,7 @@ public class ReservationService implements ReservationServiceI {
 		
 		return list;
 	}
-
-	@Override
-	public List<Reservation> getList(int id, int type, String accType, int page, String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public int getCount(int userId) {
 		int result = 0;
@@ -38,6 +34,17 @@ public class ReservationService implements ReservationServiceI {
 		result = reservationDao.getCount(userId);
 		
 		return result;
+	}
+	@Override
+	public List<ReservationForCompanyView> getList(String accIdsCSV, int accType, int page) {
+		List<ReservationForCompanyView> list = new ArrayList<>();
+		
+		int startIndex = 1+(page-1)*10;
+		int endIndex = page*10;
+		
+		list = reservationDao.getList(startIndex, endIndex, accIdsCSV, accType);
+		
+		return list;
 	}
 
 }
