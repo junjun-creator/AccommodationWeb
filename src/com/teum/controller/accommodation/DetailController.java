@@ -18,6 +18,14 @@ public class DetailController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		
+		if(session.getAttribute("email") == null) 		  // 로그인이 안된 경우
+			response.sendRedirect("/signin");
+		else if(((int)session.getAttribute("type")) != 0) // 기업이 아닌 경우
+			response.sendRedirect("/index");
+		else {
+			
+		}
+		
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 	}
 	

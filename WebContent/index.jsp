@@ -102,18 +102,6 @@
         </section>
     </header>
 
-    <!-- <header class="header mobileHeader">
-        <div>
-            <a href=""><i class="fas fa-bars"></i></a>
-        </div>
-        <div class="header_h1">
-            <h1><a class="teum_logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-        </div>
-        <div>
-            <a href=""><i class="fas fa-search"></i></a>
-        </div>
-    </header> -->
-
     <section id="sec-promotion-page" class="sec-promotion-page scrolling">
         <section class="promotion-sec">
             <div class="promotion-bar">
@@ -217,31 +205,31 @@
                 <div class="category-bar">
                     <ul>
                         <li>
-                            <a class="category-img" href="">
+                            <a class="category-img" href="/accommodation/list?type=1">
                                 <img src="images/main/hotel-icon.png" alt="">
                                 <span>호텔</span>
                             </a>
                         </li>
                         <li>
-                            <a class="category-img" href="">
+                            <a class="category-img" href="/accommodation/list?type=2">
                                 <img src="images/main/motel-icon.png" alt="">
                                 <span>모텔</span>
                             </a>
                         </li>
                         <li>
-                            <a class="category-img" href="">
+                            <a class="category-img" href="/accommodation/list?type=3">
                                 <img src="images/main/guesthouse-icon.png" alt="">
                                 <span>게스트하우스</span>
                             </a>
                         </li>
                         <li>
-                            <a class="category-img" href="">
+                            <a class="category-img" href="/accommodation/list?type=4">
                                 <img src="images/main/resort-icon.png" alt="">
                                 <span>리조트</span>
                             </a>
                         </li>
                         <li>
-                            <a class="category-img" href="">
+                            <a class="category-img" href="/accommodation/list?type=5">
                                 <img src="images/main/pension-icon.png" alt="">
                                 <span>펜션</span>
                             </a>
