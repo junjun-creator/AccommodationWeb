@@ -58,9 +58,10 @@ public class ListController extends HttpServlet {
 	
 		int[] ids = new int[delIds.length];
 		
-		for (int i = 0; i < delIds.length; i++) 
+		for (int i = 0; i < delIds.length; i++) {
 			ids[i] = Integer.parseInt(delIds[i]);
-
+			System.out.println(ids[i]);
+		}
 		
 		int result = service.deleteAll(ids);
 

@@ -11,7 +11,7 @@ public interface AccDao {
 	int delete(int id);
 	int deleteAll(int[] ids);
 	int approval(int id);
-	int approval(int[] ids);
+	int approvalAll(int[] ids);
 	int getAccCount(String ac,String field, String query);
 	int getApplyAccCount(String ac,String field, String query);
 	

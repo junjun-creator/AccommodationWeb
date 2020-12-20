@@ -22,53 +22,34 @@ public class ApplyListController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		String[] appIds = request.getParameterValues("app-id");
-//		String[] delIds = request.getParameterValues("del-id");
-//		String ids_ = request.getParameter("ids1");
-//		String[] ids1 = ids_.split(" ");
-//		
-//		AccService service = new AccService();
-//		String cmd = request.getParameter("cmd");
-//		
-//		switch(cmd) {
-//		case "승인" :
-//			for(String appId : appIds)
-//				System.out.printf("apply id : %s\n, appId");
-//			
-//			List<String> aids = Arrays.asList(appIds);
-//				List<String> uids = new ArrayList(Arrays.asList(ids1));
-//				uids.remove(aids);
-//				System.out.println(uids);
-//				System.out.println(aids);
-//
-//			break;
-//			
-//		case "삭제" :
-////			AccService service = new AccService();
-//			int[] ids = new int[delIds.length];
-//			for(int i =0; i<delIds.length; i++) {
-//				ids[i] = Integer.parseInt(delIds[i]);
-//				System.out.printf("del id : %s\n",delIds);
-//			}
-//			int result = service.deleteAll(ids);
-//			break;
-//		}
-//		response.sendRedirect("applyList");
+		String[] appIds = request.getParameterValues("app-id");
 		String[] delIds = request.getParameterValues("del-id");
+		String cmd = request.getParameter("cmd");
 		
 		AccService service = new AccService();
 		
 		
-			int[] ids = new int[delIds.length];
+		switch(cmd) {
+		
+		
+		case "승인" :
+			int[] ids_ = new int[appIds.length];
+			for(int i =0; i<appIds.length; i++)
+				ids_[i] = Integer.parseInt(appIds[i]);
 			
-			for (int i = 0; i < delIds.length; i++) 
+			int result_ = service.approvalAll(ids_);
+			break;
+			
+		case "삭제" :
+			int[] ids = new int[delIds.length];
+			for(int i =0; i<delIds.length; i++)
 				ids[i] = Integer.parseInt(delIds[i]);
-
 			
 			int result = service.deleteAll(ids);
+			break;
+		}
+		response.sendRedirect("applyList");
 
-		
-		response.sendRedirect("list");
 	}
 
 	@Override

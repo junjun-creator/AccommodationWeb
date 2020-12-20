@@ -140,9 +140,7 @@ public class JdbcAccDao implements AccDao{
 					"AND ACC_TYPE = ? AND " + field + " LIKE ? ORDER BY REGDATE DESC) A )" + 
 					"WHERE NUM BETWEEN ? AND ?";
 		}
-		
-		System.out.println(startIndex);
-		System.out.println(endIndex);
+
 		
 
 		try {
@@ -160,9 +158,6 @@ public class JdbcAccDao implements AccDao{
 				
 
 			}
-			System.out.println(ac);
-			System.out.println(field);
-			System.out.println(query);
 			ResultSet rs = st.executeQuery();
 
 			while(rs.next()) {
@@ -417,7 +412,7 @@ public class JdbcAccDao implements AccDao{
 		return result;
 	}
 	@Override
-	public int approval(int[] ids) {
+	public int approvalAll(int[] ids) {
 int result = 0;
 		
 		String url = "DBContext.URL";
