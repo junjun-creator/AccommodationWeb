@@ -46,5 +46,13 @@ public class ReservationService implements ReservationServiceI {
 		
 		return list;
 	}
+	@Override
+	public int getItemCount(String accIdsCSV, int accType) {
+		int result = 0;
+		
+		result = reservationDao.getItemCount(accIdsCSV,accType);
+		
+		return result;
+	}
 
 }

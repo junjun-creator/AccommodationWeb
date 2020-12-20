@@ -29,19 +29,19 @@
                         <a href=""><i class="fas fa-search"></i></a>
                     </li>
                     <li>
-                    	<c:if test="${type == 0 }">
-                    		<a href="/user/offer/reg">제안하기</a>
+                       <c:if test="${type == 0 }">
+                          <a href="/user/offer/reg">제안하기</a>
                         </c:if>
                         <c:if test="${type == 1 }">
-                    		<a href="/company/accommodation/reg">숙소등록</a>
+                          <a href="/company/accommodation/reg">숙소등록</a>
                         </c:if>
                     </li>
                     <li>
-                    	<c:if test="${type == 0 }">
-                    		<a href="">예약내역</a>
+                       <c:if test="${type == 0 }">
+                          <a href="">예약내역</a>
                         </c:if>
                         <c:if test="${type == 1 }">
-                    		<a href="">예약현황</a>
+                          <a href="">예약현황</a>
                         </c:if>
                     </li>
                     <li class="sub-page">
@@ -51,50 +51,50 @@
                                 <li><a href="/notice/list">공지사항</a></li>
                                 <li><a href="/event/list">이벤트</a></li>
                                 <c:if test="${type == 0 }">
-                                	<li><a href="">1:1 문의</a></li>
-                        		</c:if>
+                                   <li><a href="">1:1 문의</a></li>
+                              </c:if>
                                 
                             </ul>
                         </div>
                     </li>
                     <li class="sub-page">
-                    	<c:if test="${empty email }">
-                        	<a href="signin" class="character">로그인</a>
+                       <c:if test="${empty email }">
+                           <a href="signin" class="character">로그인</a>
                         </c:if>
                         <c:if test="${email ne null}">
-                        	<a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
+                           <a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
                         </c:if>
                         
                         <c:if test="${type == 0 || type == 1 }">
-	                        <div class="mega-menu">
-	                            <ul>
-	                                <c:if test="${type == 0 }">
-			                    		 <li><a href="/user/userInfo/memberInfo">내정보</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="/company/userInfo/memberInfo">내정보</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 0 }">
-			                    		 <li><a href="/user/userInfo/reservationInfo">예약현황</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="">예약현황</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 0 }">
-			                    		 <li><a href="/user/userInfo/offerList">제안내역</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="/company/reverseOffer/reg">제안내역</a></li>
-			                        </c:if>
-	                                <c:if test="${type == 0 }">
-			                    		 <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
-			                        </c:if>
-			                        <c:if test="${type == 1 }">
-			                    		 <li><a href="/company/goldenTime/list">골든타임</a></li>
-			                        </c:if>
-	                                <li><a href="logout">로그아웃</a></li>
-	                            </ul>
-	                        </div>
+                           <div class="mega-menu">
+                               <ul>
+                                   <c:if test="${type == 0 }">
+                                    <li><a href="/user/userInfo/memberInfo">내정보</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 1 }">
+                                    <li><a href="/company/userInfo/memberInfo">내정보</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 0 }">
+                                    <li><a href="/user/userInfo/reservationInfo">예약현황</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 1 }">
+                                    <li><a href="">예약현황</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 0 }">
+                                    <li><a href="/user/userInfo/offerList">제안내역</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 1 }">
+                                    <li><a href="/company/reverseOffer/reg">제안내역</a></li>
+                                 </c:if>
+                                   <c:if test="${type == 0 }">
+                                    <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
+                                 </c:if>
+                                 <c:if test="${type == 1 }">
+                                    <li><a href="/company/goldenTime/list">골든타임</a></li>
+                                 </c:if>
+                                   <li><a href="logout">로그아웃</a></li>
+                               </ul>
+                           </div>
                         </c:if>
                     </li>
                 </ul>
@@ -112,7 +112,7 @@
                     <div class="btn-left"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-left"></i></div>
                     <div style="width: 918px; overflow:hidden;">
                         <div class="promotion-item-container" style="display: flex;">
-						<c:forEach var="g" items="${goldenList}" varStatus="status">
+                  <c:forEach var="g" items="${goldenList}" varStatus="status">
                             <div class="promotion-item">
                                 <div class="parent">
                                     <img src="${g.fileroute}" alt="">
@@ -266,24 +266,24 @@
                 </div>
                 <div class="event-list-container">
                     <ul class="event-list">
-                    	<c:if test="${count < 3}">
-	                    	<c:forEach var="event" begin="0" end="${count}" items="${eventList}">
-	                    		<c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
-		                    		<c:if test="${st.first == true}">
-		                    			<li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>
-		                    		</c:if>
-	                    		</c:forTokens>
-	                    	</c:forEach>
-                    	</c:if>
-                    	<c:if test="${count >= 3}">
-                    		<c:forEach var="event" begin="0" end="3" items="${eventList}">
-                    			<c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
-	                    			<c:if test="${st.first == true}">
-	                    				<li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>                    			
-	                    			</c:if>
-                    			</c:forTokens>
-                    		</c:forEach>
-                    	</c:if>
+                       <c:if test="${count < 3}">
+                          <c:forEach var="event" begin="0" end="${count}" items="${eventList}">
+                             <c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
+                                <c:if test="${st.first == true}">
+                                   <li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>
+                                </c:if>
+                             </c:forTokens>
+                          </c:forEach>
+                       </c:if>
+                       <c:if test="${count >= 3}">
+                          <c:forEach var="event" begin="0" end="3" items="${eventList}">
+                             <c:forTokens var="imageName" items="${event.imageName}" delims="," varStatus="st">
+                                <c:if test="${st.first == true}">
+                                   <li><a href="/event/detail?id=${event.id}"><img src="/images/event/2020/${event.id}/${imageName}"></a></li>                             
+                                </c:if>
+                             </c:forTokens>
+                          </c:forEach>
+                       </c:if>
                     </ul>
                 </div>
                 <div class="etc-container">

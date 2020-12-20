@@ -52,6 +52,7 @@ public class ReservationInfoController extends HttpServlet {
 			
 			ReservationService reservationService = new ReservationService();
 			List<ReservationForCompanyView> list = reservationService.getList(accIdsCSV, accType, page);
+			int count = reservationService.getItemCount(accIdsCSV, accType);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("accType", accType);
