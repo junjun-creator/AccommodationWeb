@@ -189,4 +189,88 @@ public class JdbcOfferDao implements OfferDao {
 		return result;
 	}
 
+	@Override
+	public List<Integer> getIds(String accIdsCSV) {
+		List<Integer> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = String.format("SELECT ID FROM OFFER WHERE ACC_ID IN (%s)", accIdsCSV);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				int id = rs.getInt("ID"); 
+				
+				list.add(id);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<Offer> getListByOfferIds(String finalOfferIdsCSV) {
+		List<Offer> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = String.format("SELECT * FROM OFFER WHERE ID IN (%s)", finalOfferIdsCSV);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				int accId = rs.getInt("acc_id");
+				int userId = rs.getInt("user_id");
+				int price = rs.getInt("price");
+				String location = rs.getString("location");
+				Date checkIn = rs.getDate("checkin_date");
+				Date checkOut = rs.getDate("checkout_date");
+				Date regdate = rs.getDate("regdate");
+				int headcount = rs.getInt("headcount");
+				
+				Offer o = new Offer();
+				o.setId(id);
+				o.setAccId(accId);
+				o.setUserId(userId);
+				o.setPrice(price);
+				o.setLocation(location);
+				o.setCheckinDate(checkIn);
+				o.setCheckoutDate(checkOut);
+				o.setRegdate(regdate);
+				o.setHeadcount(headcount);
+				
+				list.add(o);
+			}
+			
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 }

@@ -22,4 +22,6 @@ public interface RoomDao {
 
 	int getId(int roomId);
 
+	Room get(int roomId);
+
 }

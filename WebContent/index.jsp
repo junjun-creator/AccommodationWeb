@@ -111,7 +111,7 @@
         <section class="promotion-sec">
             <div class="promotion-bar">
                 <div>
-                    <h1 style="font-size: 30px; color: #fc0453;"><i class="fas fa-bell"></i>  <span style="color: #fc0453;">골든타임</span></h1>
+                    <h1 style="font-size: 24px; color: #f3e62f;"><i class="fas fa-hourglass-half"></i> <i class="fas fa-stopwatch"></i> <span style="color: #f3e62f;">골든타임(아이콘 원하는거 쓰세요)</span></h1>
                 </div>
                 <div>
                     <div class="btn-left"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-left"></i></div>

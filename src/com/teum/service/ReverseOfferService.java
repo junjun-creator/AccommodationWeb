@@ -24,6 +24,10 @@ public class ReverseOfferService {
 		int result = reverseOfferDao.insert(reverseOffer);
 		return result;
 	}
+
+	public List<ReverseOffer> getList(String offerIdsCSV) {
+		return reverseOfferDao.getList(offerIdsCSV);
+	}
 	
 	
 }

@@ -143,4 +143,7 @@ public class AccService {
 	}
 
 
+	public List<Integer> getIds(int companyId) {
+		return accDao.getIds(companyId);
+	}
 }

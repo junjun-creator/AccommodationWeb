@@ -57,4 +57,8 @@ public class RoomService implements RoomServiceI {
 	public int getId(int roomId) {
 		return roomDao.getId(roomId);
 	}
+
+	public Room get(int roomId) {
+		return roomDao.get(roomId);
+	}
 }

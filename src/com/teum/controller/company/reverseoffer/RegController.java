@@ -98,7 +98,6 @@ public class RegController extends HttpServlet {
 			/* -- offeredAccIdsCSV로 모든 방 리스트 불러오기(예약가능 여부는 밑에서 확인) -- */
 			List<Room> roomList = roomService.getList(offeredAccIdsCSV.toString());
 			
-			
 			List<Room> showRoomList = new ArrayList<>();
 			
 			/* -- 예약이 가능한 방 리스트만 뽑기 -- */

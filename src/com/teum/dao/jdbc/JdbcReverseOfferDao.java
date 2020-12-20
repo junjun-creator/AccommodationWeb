@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.ReverseOfferDao;
-import com.teum.dao.entity.PickListView;
 import com.teum.entity.ReverseOffer;
 
 public class JdbcReverseOfferDao implements ReverseOfferDao{
@@ -72,6 +72,49 @@ public class JdbcReverseOfferDao implements ReverseOfferDao{
 		}
 
 		return result;
+	}
+
+	@Override
+	public List<ReverseOffer> getList(String offerIdsCSV) {
+		List<ReverseOffer> list = new ArrayList<>();
+		
+		String url = DBContext.URL;
+		String sql = String.format("SELECT * FROM REVERSE_OFFER WHERE OFFER_ID IN(%s)", offerIdsCSV);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+				int offerId = rs.getInt("OFFER_ID"); 
+				int roomId = rs.getInt("ROOM_ID");
+				Date approvalDate = rs.getDate("APPROVAL_DATE");
+				
+				ReverseOffer ro = new ReverseOffer();
+				
+				ro.setId(id);
+				ro.setOfferId(offerId);
+				ro.setRoomId(roomId);
+				ro.setApprovalDate(approvalDate);
+				
+				list.add(ro);
+			};
+
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

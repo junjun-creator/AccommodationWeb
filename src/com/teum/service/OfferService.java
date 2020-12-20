@@ -47,4 +47,12 @@ public class OfferService implements OfferServiceI{
 		return offerDao.getId(accId);
 	}
 
+	public List<Integer> getIds(String accIdsCSV) {
+		return offerDao.getIds(accIdsCSV);
+	}
+
+	public List<Offer> getListByOfferIds(String finalOfferIdsCSV) {
+		return offerDao.getListByOfferIds(finalOfferIdsCSV);
+	}
+
 }
