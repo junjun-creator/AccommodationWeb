@@ -1,32 +1,39 @@
+.container-wrapper {
+    background: #F9FBFF;
+    padding-bottom: 150px;
+}
 /* --------------------------- */
 .container{
     width: max-content;
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    background: #F9FBFF;
     
 }
     /* ---------사이드---------- */
     .container .aside{
-        width: 210px;
-        height: 510px;
+        width: 260px;
+        height: 540px;
         margin-top: 155px;
         margin-right: 15px;
         border: 1px solid rgba(44, 50, 56, 0.5);
         padding-left: 5px;
         position: sticky;
         top: 72px;
+        padding: 15px 0 15px 15px;
     }
     .aside .big-city{
         width: 50px;
+        padding-left: 2px;
     }
     .aside .small-city{
-        width: 100px;
+        width: 130px;
+        padding-left: 2px;
     }
-    .aside .head-counter .form-option {
-        width: 60px;
-        padding-left: 20px;
-        
+    .aside .head-count .form-option {
+        width: 100px;
+        padding-left: 35px;
     }
 
     .container .aside h1{
@@ -63,6 +70,10 @@
         background: white;
         border: 1px solid #fc0453;
         }
+    .submit-container {
+        padding-left: 20px;
+    }
+
     /* ---------메인---------- */
     .container .main{
         width: 638px;
@@ -76,7 +87,48 @@
             font-size: 28px;
             padding-bottom: 10px;
         }
-    .picked-item-sec{
+            .small-span {
+                font-size: 20px;
+            }
+
+            .breadcrumb > .breadcrumb-list {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 12px;
+            }
+
+            .category-bar{
+                width: 630px;
+                height: 150px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+                .category-bar>ul{
+                    display: flex;
+                    justify-content: center;
+                }
+                .category-bar .category-img{
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    margin: 0 30px;
+                    align-items: center;
+                    text-decoration: none;
+                    transition: transform 0.5s ease;
+                }
+                    .category-bar .category-img:hover{
+                        color: lightcoral;
+                        transform: scale(1.05);
+                    }
+                    
+                .category-bar>ul>li>a>img{
+                    width: 60px;
+                    margin-bottom: 20px;
+                }
+
+    .picked-item-sec {
         margin-top: 20px;
     }
         .picked-item-sec > h1{

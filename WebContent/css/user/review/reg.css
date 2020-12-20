@@ -117,12 +117,12 @@
                     color: rgba(209, 209, 209, 0.596);
                     text-align: center;
                     cursor: pointer;
+                    display: flex; 
+                    justify-content: center;
                 }
 
                     .review-sec .review-form .star-container .pick {
-                        font-size: 25px;
                         color: gold;
-                        text-align: center;
                     }
 
                     .review-sec .review-form .comment-container {
