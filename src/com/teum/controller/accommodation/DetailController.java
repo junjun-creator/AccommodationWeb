@@ -16,11 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teum.dao.entity.ReservationDetailView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
+import com.teum.entity.Reservation;
 import com.teum.entity.Room;
 import com.teum.service.AccImageService;
 import com.teum.service.AccService;
+import com.teum.service.ReservationService;
 import com.teum.service.RoomImageService;
 import com.teum.service.RoomService;
 
@@ -31,12 +34,14 @@ public class DetailController extends HttpServlet {
 	private AccImageService accImageService;
 	private RoomService roomService;
 	private RoomImageService roomImageService;
+	private ReservationService reservationService;
 
 	public DetailController() {
 		accService = new AccService();
 		roomService = new RoomService();
 		accImageService = new AccImageService();
 		roomImageService = new RoomImageService();
+		reservationService = new ReservationService();
 	}
 
 	@Override
@@ -147,6 +152,7 @@ public class DetailController extends HttpServlet {
 			// 모든 사람들이 쓴 리뷰가 3개가 넘으면 3개만 보여주고, 아니면 해당 개수만 보여주기
 			// 해당 숙소에 등록된 리뷰를 모두 뽑아서 REVIEW_SCORE의 평균을 내기
 			// 해당 숙소에 등록된 리뷰를 모두 뽑아서 작성자 이름, 컨텐츠, 등록일 뽑기
+			List<ReservationDetailView> reservationViewList = reservationService.getList(accId);
 			
 			
 //			System.out.println("예약날짜 필터링 전 모든 방 : " + roomList.toString());
