@@ -357,7 +357,7 @@ public class JdbcReservationDao implements ReservationDao {
 			e.printStackTrace();
 		}
 		return rv;
-
+	}
 	public ReservationDetailView getDetail(int id) {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
