@@ -107,6 +107,8 @@
                             <textarea name="comment" id="" cols="47" rows="7" class="comment"></textarea>
                         </div>
                         <div class="submit-btn-container">
+                         <c:set var="id" value="${id}"/>
+                        	<input type="hidden" name="itemId"  value="${id}">
                         	<input type="hidden" name="score" class="score" value="0">
                             <input type="submit" class="submit-btn" value="리뷰 등록">
                         </div>
