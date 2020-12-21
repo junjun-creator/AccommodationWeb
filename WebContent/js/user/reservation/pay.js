@@ -6,6 +6,11 @@ window.addEventListener('load', function() {
     var phoneInput = document.querySelector('.phone-input');
     var submitBtn = document.querySelector('.submit-btn');
 
+    // 모든 정보가 채워졌을 때, 결제하기 버튼이 활성화되어야 한다.
+    // 그런데 onkeyup 이벤트로 체크를 하고 있어서 처음에 페이지가 로딩되었을 때는 이 부분이 먹히지 않는다.
+    // 그래서 전역에 페이지 실행되자마자 체크한번하라고 바로 밑줄에서 호출함
+    checkForm(nameInput, phoneInput, chkAll);
+
     /* 전체선택 체크박스 클릭이벤트 */
     chkAll.onclick = function() {
         for (var i = 0; i < chks.length; i++) {
@@ -54,7 +59,10 @@ window.addEventListener('load', function() {
         checkForm(nameInput, phoneInput, chkAll);
     }
 
-
+    submitBtn.onclick = function() {
+        if (!confirm('예약을 완료하시겠습니까?'))
+            return false;
+    }
 
     /* 모든 form 채워지면 결제하기 버튼 활성화하는 함수 */
     function checkForm(nameInput, phoneInput, chkAll) {

@@ -32,6 +32,13 @@ public class Room {
 		this.bedCount = bedCount;
 	}
 
+	public Room(int id, String name, String bookedDate, int price) {
+		this.id = id;
+		this.name = name;
+		this.bookedDate = bookedDate;
+		this.price = price;
+	}
+
 	public int getId() {
 		return id;
 	}

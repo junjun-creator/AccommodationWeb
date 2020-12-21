@@ -5,6 +5,7 @@ import java.util.List;
 import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
+import com.teum.dao.entity.PayInfoView;
 import com.teum.dao.jdbc.JdbcRoomDao;
 import com.teum.entity.Room;
 
@@ -64,5 +65,13 @@ public class RoomService implements RoomServiceI {
 
 	public List<Room> getList(int accId) {
 		return roomDao.getList(accId);
+	}
+
+	public PayInfoView getList(int accId, int roomId) {
+		return roomDao.getList(accId, roomId);
+	}
+
+	public int update(int accId, int roomId, String bookedDates) {
+		return roomDao.update(accId, roomId, bookedDates);
 	}
 }

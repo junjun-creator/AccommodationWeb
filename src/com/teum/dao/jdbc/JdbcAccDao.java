@@ -902,19 +902,28 @@ int count = 0;
 
 
 	@Override
-	public List<Acc> getList(int type, String location) {
+	public List<Acc> getList(int type, String location, String search) {
 		List<Acc> list = new ArrayList<>();
-		System.out.println(location);
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
+		String sql = "";
+		
+		if (search.equals(""))
+			sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
+		else
+			sql = "SELECT * FROM ACC WHERE NAME LIKE ? OR LOCATION LIKE ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
 			
-			pst.setInt(1, type);
-			pst.setString(2, "%" + location + "%");
+			if (search.equals("")) {
+				pst.setInt(1, type);
+				pst.setString(2, "%" + location + "%");
+			} else {
+				pst.setString(1, "%" + search + "%");
+				pst.setString(2, "%" + search + "%");
+			}
 			
 			ResultSet rs = pst.executeQuery();
 

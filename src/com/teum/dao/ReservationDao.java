@@ -32,5 +32,4 @@ public interface ReservationDao {
 
 	int getPrivateCount(int userId);
 
-
 }
