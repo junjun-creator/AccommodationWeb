@@ -3,6 +3,7 @@ package com.teum.service;
 import java.util.Date;
 import java.util.List;
 
+import com.teum.dao.entity.PrivateReservationListView;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
@@ -19,4 +20,7 @@ public interface ReservationServiceI {
 	int getItemCount(String accIdsCSV, int accType);
 	
 	ReservationDetailView getDetail(int id);
+	
+	List<PrivateReservationListView> getPrivateList(int id, int page1);
+	int getPrivateCount(int userId);
 }

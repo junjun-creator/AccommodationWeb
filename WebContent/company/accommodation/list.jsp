@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,19 +27,12 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
                     <li><a href="">제안하기</a></li>
                     <li><a href="">예약내역</a></li>
                     <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                        
                     </li>
                 </ul>
             </div>
@@ -69,37 +65,37 @@
                         <div class="category-bar">
                             <ul>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==0)?'selected':''}" href="list">
                                         <img src="../../images/main/all-icon.png" alt="">
                                         <span>전체</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img selected" href="">
+                                    <a class="category-img ${(accType==1)?'selected':''}" href="?accType=1">
                                         <img src="../../images/main/hotel-icon.png" alt="">
                                         <span>호텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==2)?'selected':''}" href="?accType=2">
                                         <img src="../../images/main/motel-icon.png" alt="">
                                         <span>모텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==3)?'selected':''}" href="?accType=3">
                                         <img src="../../images/main/guesthouse-icon.png" alt="">
                                         <span>게스트하우스</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==4)?'selected':''}" href="?accType=4">
                                         <img src="../../images/main/resort-icon.png" alt="">
                                         <span>리조트</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img" href="">
+                                    <a class="category-img ${(accType==5)?'selected':''}" href="?accType=5">
                                         <img src="../../images/main/pension-icon.png" alt="">
                                         <span>펜션</span>
                                     </a>
@@ -109,54 +105,34 @@
                     </section>
 
                     <section class="acc-item-sec">
-                        <div class="snip1368">
-                            <img src="../../images/company/호텔/서울/강남구/리베라/메인.jpg" alt="">
-                            <h3>상세보기</h3>
-                            <figcaption>
-                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                                </div>
-                              </figcaption>
-                            <div class="description-item">
-                                <p>라마다 호텔</p>
-                                <P>9.1 추천해요 (201)</P>
-                                <p>강남구 역삼동</p>
-                            </div>
-                            <div class="item-price">
-                                <div>
-                                    <p>숙박</p>
-                                    <p>예약특가</p>
-                                    <p>30,000원</p>
-                                </div>
-                            </div>
-                            <div class="hovered-item-bg">
-                            </div>
-                        </div>
-                        <div class="snip1368">
-                            <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
-                            <h3>상세보기</h3>
-                            <figcaption>
-                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
-                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
-                                </div>
-                              </figcaption>
-                            <div class="description-item">
-                                <p>라마다 호텔</p>
-                                <P>9.1 추천해요 (201)</P>
-                                <p>강남구 역삼동</p>
-                            </div>
-                            <div class="item-price">
-                                <div>
-                                    <p>숙박</p>
-                                    <p>예약특가</p>
-                                    <p>30,000원</p>
-                                </div>
-                            </div>
-                            <div class="hovered-item-bg">
-                            </div>
-                        </div>
+                    	<c:forEach items="${list }" var="item" varStatus="status">
+                    	
+	                        <div class="snip1368">
+	                            <img src="../../images/company/호텔/서울/강남구/리베라/메인.jpg" alt="">
+	                            <h3>상세보기</h3>
+	                            <figcaption>
+	                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+	                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+	                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+	                                </div>
+	                              </figcaption>
+	                            <div class="description-item">
+	                                <p>${item.accName }</p>
+	                                <P> <fmt:formatNumber type="number"  pattern="0.0" value="${ (((item.score*10) - ((item.score*10)%1)) * (1/10))*2   } " /> 추천해요</P>
+	                                <p>${fn:substring(item.accLocation,0,7) }</p>
+	                            </div>
+	                            <div class="item-price">
+	                                <div>
+	                                    <p>숙박</p>
+	                                    <p>예약특가</p>
+	                                    <p><fmt:formatNumber value="${item.price }" pattern="#,###" />원</p>
+	                                </div>
+	                            </div>
+	                            <div class="hovered-item-bg">
+	                            </div>
+	                        </div>
+                    	</c:forEach>
+                        
                     </section>
                     
                 </section>

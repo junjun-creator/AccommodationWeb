@@ -11,7 +11,9 @@ import java.util.Date;
 import java.util.List;
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.AccommodationListView;
 import com.teum.dao.entity.GoldenTimeView;
+import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.entity.Acc;
 import com.teum.entity.Event;
 
@@ -900,19 +902,28 @@ int count = 0;
 
 
 	@Override
-	public List<Acc> getList(int type, String location) {
+	public List<Acc> getList(int type, String location, String search) {
 		List<Acc> list = new ArrayList<>();
-		System.out.println(location);
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
+		String sql = "";
+		
+		if (search.equals(""))
+			sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
+		else
+			sql = "SELECT * FROM ACC WHERE NAME LIKE ? OR LOCATION LIKE ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
 			
-			pst.setInt(1, type);
-			pst.setString(2, "%" + location + "%");
+			if (search.equals("")) {
+				pst.setInt(1, type);
+				pst.setString(2, "%" + location + "%");
+			} else {
+				pst.setString(1, "%" + search + "%");
+				pst.setString(2, "%" + search + "%");
+			}
 			
 			ResultSet rs = pst.executeQuery();
 
@@ -950,6 +961,172 @@ int count = 0;
 		}
 		
 		return list;
+	}
+
+	@Override
+	public List<AccommodationListView> getAccListByCompany(int companyId, int accType) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT * FROM ACCOMMODATION_LIST_VIEW WHERE COMPANY_ID=?";
+		String sql_ = " AND ACC_TYPE=?";
+		
+		if(accType != 0)
+			sql = sql+sql_;
+		
+		List<AccommodationListView> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,companyId);
+			if(accType !=0) {
+				ps.setInt(2,accType);
+			}
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int accId = rs.getInt("acc_id");
+				String accName = rs.getString("acc_name");
+				String accLocation = rs.getString("acc_location");
+				String accFileName = rs.getString("acc_filename");
+				String accFileRoute = rs.getString("acc_fileroute");
+				int price = rs.getInt("price");
+				int score = rs.getInt("score");
+				
+				AccommodationListView alv = new AccommodationListView();
+				
+				alv.setAccId(accId);;
+				alv.setCompanyId(companyId);
+				alv.setAccType(accType);
+				alv.setAccName(accName);
+				alv.setAccLocation(accLocation);
+				alv.setAccFileName(accFileName);
+				alv.setAccFileRoute(accFileRoute);
+				alv.setPrice(price);
+				alv.setScore(score);
+				
+				list.add(alv);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
+
+	@Override
+	public List<Acc> getRegList(int companyId, int regStatus, int startIndex,int endIndex) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM NUM, ACC.* FROM ACC WHERE COMPANY_ID=? AND REG_STATUS=?) WHERE NUM BETWEEN ? AND ?";
+		
+		
+		List<Acc> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,companyId);
+			ps.setInt(2, regStatus);
+			ps.setInt(3, startIndex);
+			ps.setInt(4, endIndex);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int rownum = rs.getInt("num");
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String location = rs.getString("location");
+				Date approvalDate = rs.getDate("approval_date");
+				int accTypeId = rs.getInt("acc_type_id");
+				Date regdate = rs.getDate("regdate");
+				
+				Acc a = new Acc();
+				
+				a.setId(id);
+				a.setName(name);
+				a.setPhone(phone);
+				a.setCompanyId(companyId);
+				a.setRegStatus(regStatus);
+				a.setLocation(location);
+				a.setApprovalDate(approvalDate);
+				a.setAccTypeId(accTypeId);
+				a.setRownum(rownum);
+				a.setRegdate(regdate);
+				
+				list.add(a);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int getRegCount(int companyId, int regStatus) {
+		int result = 0;
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(*) FROM ACC WHERE COMPANY_ID=? AND REG_STATUS=?";
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,companyId);
+			ps.setInt(2, regStatus);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println(result);
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 

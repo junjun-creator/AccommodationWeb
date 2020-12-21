@@ -3,7 +3,7 @@ package com.teum.entity;
 import java.util.Date;
 
 public class Acc {
-
+	private int rownum;
 	 private int id;
 	 private String name;
 	 private String phone;
@@ -49,6 +49,14 @@ public class Acc {
 		this.gtStartDate = startDate;
 		this.gtEndDate = endDate;
 		this.saleprice = saleprice;
+	}
+	
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 
 	public Acc(int chk, int status) {

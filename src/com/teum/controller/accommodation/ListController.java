@@ -28,15 +28,16 @@ public class ListController extends HttpServlet {
       response.setContentType("text/html; charset=utf-8");
       HttpSession session = request.getSession();
       
-      // 위치, 타입
       String type_ = request.getParameter("type");
       String bigCity_ = request.getParameter("bigCity");
       String smallCity_ = request.getParameter("smallCity");
+      String search_ = request.getParameter("search");
       
       int type = 1;
       String bigCity = "";
       String smallCity = "";
       String location = "";
+      String search = "";
       
       if (type_ != null && !type_.equals(""))
          type = Integer.parseInt(type_);
@@ -47,9 +48,12 @@ public class ListController extends HttpServlet {
       if (smallCity_ != null && !smallCity_.equals(""))
          smallCity = smallCity_;
       
+      if (search_ != null && !search_.equals(""))
+    	  search = search_;
+      
       location = bigCity + " " + smallCity;
       
-      List<Acc> accList = accService.getList(type, location);
+      List<Acc> accList = accService.getList(type, location, search);
       
       request.setAttribute("accList", accList);
       request.setAttribute("type", type);

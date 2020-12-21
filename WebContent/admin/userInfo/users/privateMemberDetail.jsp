@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>업체 상세</title>
+    <title>등록된 업체 리스트</title>
 </head>
 <body>
     <header class="sec-header-page">
@@ -37,8 +37,8 @@
         <aside id="aside" class="aside">
             <h1>회원관리</h1>
                 <ul>
-                    <li><a href="">개인회원리스트</a></li>
-                    <li class="active"><a href="">기업회원리스트</a></li>
+                    <li class="active"><a href="">개인회원리스트</a></li>
+                    <li><a href="">기업회원리스트</a></li>
                 </ul>
         </aside>
         <div class="container">
@@ -60,25 +60,58 @@
                         </ul>
                     </div>
 
-                    <div class="user-info-member">
-                        <h1>${member.name } 님</h1>
+                    <div class="user-info">
+                        <div class="user-info-member">
+                            <h1>김병준 님 
+                            <c:if test="${member.rankId==1 }">
+                                    		<i class="fas fa-gem" style="color: green;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==2 }">
+                                    		<i class="fas fa-gem" style="color: gold;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==3 }">
+                                    		<i class="fas fa-gem" style="color: gray;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==4 }">
+                                    		<i class="fas fa-gem" style="color: black;"></i>
+                                    	</c:if>
+                            </h1>
+                        </div>
+                        <div>
+                            <img src="../../../images/logo.png" alt="">
+                            <input type="button" value="사진 변경하기">
+                        </div>
                     </div>
                     <!-- 다이아몬드 이런건 나중에 스크립트로 요청 정보 읽어서 등급에 맞게 클래스 이름만 setAttribute 해주면 될듯 -->
                     <div class="list-board">
                         <table>
                             <thead>
                                 <tr>
+                                    <td class="col-s">등급</td>
                                     <td class="col-m">이메일</td>
                                     <td class="col-sm">회원구분</td>
                                     <td class="col-m">연락처</td>
                                     <td class="col-sm">생년월일</td>
                                     <td class="col-m">등록일</td>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
+                                    <td class="col-s">
+                                    	<c:if test="${member.rankId==1 }">
+                                    		<i class="fas fa-gem" style="color: green;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==2 }">
+                                    		<i class="fas fa-gem" style="color: gold;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==3 }">
+                                    		<i class="fas fa-gem" style="color: gray;"></i>
+                                    	</c:if>
+                                    	<c:if test="${member.rankId==4 }">
+                                    		<i class="fas fa-gem" style="color: black;"></i>
+                                    	</c:if>
+                                    </td>
                                     <td class="col-m">${member.email }</td>
-                                    <td class="col-sm">${(member.type==1)?'기업회원':'개인회원' }</td>
+                                    <td class="col-sm">${(member.type==0)?'개인회원':'기업회원' }</td>
                                     <td class="col-m">${member.phone }</td>
                                     <td class="col-sm">${member.birthday }</td>
                                     <td class="col-m">${member.regdate }</td>
@@ -87,39 +120,35 @@
                     </div>
 
                     <div>
-                        <h1>보유 숙소</h1>
-                        <!-- <select name="" id="">
-                            <option value="">전체</option>
-                            <option value="">완료</option>
-                            <option value="">취소</option>
-                            <option value="">예약중</option>
-                        </select> -->
+                        <h1>예약 내역</h1>
                     </div>
                     <section class="list-board">
                             <table>
                                 <thead>
                                     <tr>
                                         <td class="col-s">No.</td>
-                                        <td class="col-m">숙소명</td>
-                                        <td class="col-l">주소</td>
-                                        <td class="col-m">숙소번호</td>
-                                        <td class="col-m">등록일</td>
-                                        <td class="col-sm">비고</td>
+                                        <td class="col-sm">회원명</td>
+                                        <td class="col-m">이메일</td>
+                                        <td class="col-m">예약숙소</td>
+                                        <td class="col-m">연락처</td>
+                                        <td class="col-m">체크인</td>
+                                        <td class="col-m">체크아웃</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${regAcc }" var="item">
-                                    <tr>
+                                <c:forEach items="${reservationList }" var="item">
+                                	<tr>
                                         <td class="col-s">${item.rownum }</td>
-                                        <td class="col-m">${item.name }</td>
-                                        <td class="col-l">${item.location }</td>
+                                        <td class="col-sm">${item.userName }</td>
+                                        <td class="col-m">${item.userEmail }</td>
+                                        <td class="col-m">${item.accName }</td>
                                         <td class="col-m">${item.phone }</td>
-                                        <td class="col-m">${item.regdate }</td>
-                                        <td class="col-sm"><button><a href="/accommodation/detail?accId=${item.id }">상세보기</a></button></td>
+                                        <td class="col-m">${item.checkinDate }</td>
+                                        <td class="col-m">${item.checkoutDate }</td>
                                     </tr>
-                                    </c:forEach>
+                                </c:forEach>
                                     <tr>
-											<td colspan="6" class="no-border">
+											<td colspan="7" class="no-border">
 												<div class="pager-container">
 													<!--start index 구하기! -->
 													<c:set var="page1" value="${(empty param.page1)?1:param.page1 }"/>
@@ -160,7 +189,7 @@
                     </section>
 
                     <div>
-                        <h1>승인 대기중 숙소</h1>
+                        <h1>1:1 문의 내역</h1>
                         <!-- <select name="" id="">
                             <option value="">전체</option>
                             <option value="">완료</option>
@@ -169,30 +198,32 @@
                         </select> -->
                     </div>
                     <section class="list-board">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td class="col-s">No.</td>
-                                    <td class="col-m">숙소명</td>
-                                    <td class="col-l">주소</td>
-                                    <td class="col-m">숙소번호</td>
-                                    <td class="col-m">등록일</td>
-                                    <td class="col-sm">비고</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${unRegAcc }" var="item">
-                                <tr>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td class="col-s">No.</td>
+                                        <td class="col-sm">회원명</td>
+                                        <td class="col-l">문의 제목</td>
+                                        <td class="col-m">연락처</td>
+                                        <td class="col-m">문의일자</td>
+                                        <td class="col-sm">답변여부</td>
+                                        <td class="col-sm">비고</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${qnaList }" var="item">
+                                	<tr>
                                         <td class="col-s">${item.rownum }</td>
-                                        <td class="col-m">${item.name }</td>
-                                        <td class="col-l">${item.location }</td>
+                                        <td class="col-sm">${item.userName }</td>
+                                        <td class="col-l">${item.title }</td>
                                         <td class="col-m">${item.phone }</td>
                                         <td class="col-m">${item.regdate }</td>
-                                        <td class="col-sm"><button><a href="/accommodation/detail?accId=${item.id }">상세보기</a></button></td>
+                                        <td class="col-s">${(item.answerStatus==1)?'예':'아니오' }</td>
+                                        <td><button><a href="/admin/customerService/QnA/detail?id=${item.qnaId }">상세보기</a></button></td>
                                     </tr>
-                               </c:forEach>
-                                <tr>
-											<td colspan="6" class="no-border">
+                                </c:forEach>
+                                    <tr>
+											<td colspan="7" class="no-border">
 												<div class="pager-container">
 													<!--start index 구하기! -->
 													
@@ -223,13 +254,15 @@
 												</div>
 											</td>
 										</tr>
-                            </tbody>
-                        </table>
+                                   
+                                    
+                                </tbody>
+                            </table>
                     </section>
 
                     <section class="user-info-btn">
                         <input type="button" value="목록">
-                        <input type="button" value="삭제">
+                        <input type="button" value="탈퇴">
                     </section>
                 </div>
             </main>
