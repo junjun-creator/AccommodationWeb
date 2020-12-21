@@ -61,7 +61,7 @@
             <aside id="aside" class="aside">
                 <h1>업체관리</h1>
                 <ul>
-                    <li><a href="list" class="active">승인된 업체 리스트</a></li>
+                    <li class="active"><a href="list" >승인된 업체 리스트</a></li>
                     <li><a href="regList">업체 등록 관리</a></li>
                 </ul>
             </aside>
@@ -138,8 +138,8 @@
 										<tr>
 											<td>${a.num}</td>
 											<td>${a.companyName}</td>
-											<td><a href="detail?id=${a.id}">${a.name}</a></td>
-											<td>${a.location}</td>
+											<td class="ellips"><a href="detail?id=${a.id}">${a.name}</a></td>
+											<td class="ellips">${a.location}</td>
 											<td>${a.regdate}</td>
 											<td>${a.phone}</td>
 											<td>${a.accType}</td>

@@ -162,7 +162,6 @@ public class DetailController extends HttpServlet {
 			request.setAttribute("review", review);
 			request.setAttribute("acc", acc);
 			request.setAttribute("accImageList", accImageList);
-			request.setAttribute("userId", userId);
 			request.getRequestDispatcher("detail.jsp").forward(request, response);
 			
 		}
