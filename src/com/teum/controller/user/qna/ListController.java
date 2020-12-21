@@ -18,23 +18,23 @@ public class ListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session = request.getSession();	
+		HttpSession session = request.getSession();	
 		
-				//int id = (int)session.getAttribute("id");
-				int id =1;
+		int id = (int)session.getAttribute("id");
+			
 				
-				QnAService service = new QnAService();
-				List<QnA> list = service.getList(id);
-				
-				  request.setAttribute("list",list);
-				  request.getRequestDispatcher("QnA.jsp").forward(request, response);
+		QnAService service = new QnAService();
+		List<QnA> list = service.getList(id);
+		
+	  request.setAttribute("list",list);
+	  request.getRequestDispatcher("QnA.jsp").forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session = request.getSession();	
+		HttpSession session = request.getSession();	
 		
-		//int id = (int)session.getAttribute("id");
-		int id =1;
+		int id = (int)session.getAttribute("id");
+		
 		int category = Integer.parseInt( request.getParameter("category"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");

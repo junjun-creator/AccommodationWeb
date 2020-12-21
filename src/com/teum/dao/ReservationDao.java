@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
+import com.teum.dao.entity.ReviewView;
+import com.teum.entity.Reservation;
 
 public interface ReservationDao {
 
@@ -15,4 +17,7 @@ public interface ReservationDao {
 
 	int getItemCount(String accIdsCSV, int accType);
 
+	int update(Reservation rese);
+
+	ReviewView get(int userId, int id);
 }
