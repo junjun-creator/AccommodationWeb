@@ -210,37 +210,25 @@
                         <a href="">♥ 찜</a>
                     </div>
                 </section>
+                <c:set var="avg" value="${avg}"/>
+                 <c:set var="count" value="${count}"/>
                 <section class="review-section">
                     <h1>리뷰</h1>
                     <div class="review-info">
                         <span class="review-span">추천해요!</span><br>
-                        <span class="review-span">평점 4.8 / 5.0</span><br>
-                        <span class="review-total">전체 리뷰 352개</span>
+                        <span class="review-span">평점<fmt:formatNumber type="number"  pattern="0.0" value="${ (((avg*10) - ((avg*10)%1)) * (1/10))}"/>/ 5.0</span><br>
+                        <span class="review-total">전체 리뷰 ${count}개</span>
                     </div>
+                    <c:forEach var="re" items="${review}">
                     <div class="review">
                         <img src="/images/review/face.png" class="review-img">
                         <div class="review-ment-container">
-                            <div class="review-title">여기만한 곳은 어디에도 없을 거예요.</div>
-                            <div class="review-ment">카운터분도 친절하시고 깨끗합니다!</div>
-                            <div class="review-regdate">2020-01-25</div>
+                            <div class="review-title">${re.userName}</div>
+                            <div class="review-ment">${re.reviewContent}</div>
+                            <div class="review-regdate">${re.reviewRegdate}</div>
                         </div>
                     </div>
-                    <div class="review">
-                        <img src="/images/review/face.png" class="review-img">
-                        <div class="review-ment-container">
-                            <div class="review-title">청결 최고 ㅋㅋㅋㅋㅋ.</div>
-                            <div class="review-ment">카운터 누나 존옠ㅋㅋㅋㅋ 내일 또감</div>
-                            <div class="review-regdate">2020-01-25</div>
-                        </div>
-                    </div>
-                    <div class="review">
-                        <img src="/images/review/face.png" class="review-img">
-                        <div class="review-ment-container">
-                            <div class="review-title">여기만한 곳은 어디에도 없을 거예요.</div>
-                            <div class="review-ment">카운터분도 친절하시고 깨끗합니다!</div>
-                            <div class="review-regdate">2020-01-25</div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </section>
             </section>
         </div>

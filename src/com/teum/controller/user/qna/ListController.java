@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.teum.entity.QnA;
 import com.teum.service.QnAService;
 
-@WebServlet("/user/QnA")
+@WebServlet("/user/qna")
 public class ListController extends HttpServlet {
 
 	@Override
@@ -27,7 +27,7 @@ public class ListController extends HttpServlet {
 		List<QnA> list = service.getList(id);
 		
 	  request.setAttribute("list",list);
-	  request.getRequestDispatcher("QnA.jsp").forward(request, response);
+	  request.getRequestDispatcher("qna.jsp").forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +49,6 @@ public class ListController extends HttpServlet {
 		
 		service.insert(qna);
 		
-		response.sendRedirect("QnA");
+		response.sendRedirect("qna");
 	}
 }
