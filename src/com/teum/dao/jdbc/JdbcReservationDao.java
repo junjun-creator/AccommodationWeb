@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,9 @@ import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
+import com.teum.dao.entity.ReviewView;
+import com.teum.entity.Notice;
+import com.teum.entity.Reservation;
 
 public class JdbcReservationDao implements ReservationDao {
 
@@ -264,6 +268,96 @@ public class JdbcReservationDao implements ReservationDao {
 	}
 
 	@Override
+	public int update(Reservation rese) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String sql = "UPDATE RESERVATION SET REVIEW_SCORE=?,REVIEW_CONTENT=?,REVIEW_REGDATE=SYSTIMESTAMP USER_ID= ? AND ID= ?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setInt(1, rese.getReviewScore());
+			st.setString(2, rese.getReviewContent());
+			st.setInt(3, rese.getUserId());
+			st.setInt(4, rese.getId());
+			
+			result =st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public ReviewView get(int userId,int id) {
+		ReviewView rv = null ;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM  RESERVATION_FOR_COMPANY_VIEW WHERE USER_ID="+userId+"and ID="+id;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+
+			if(rs.next()) {
+				Date regdate = rs.getDate("regdate");
+				int reviewScore = rs.getInt("review_score");
+				Date reviewRegdate = rs.getDate("review_regdate");
+				int accId =rs.getInt("accId");
+				int cancelStatus = rs.getInt("cancel_status");
+				int roomId = rs.getInt("room_id");
+				String reviewContent = rs.getString("review_content");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				int price = rs.getInt("price");
+				int headcount = rs.getInt("headcount");
+				String userName = rs.getString("user_name");
+				String accName = rs.getString("acc_name");
+				
+			    
+				rv = new ReviewView(
+			    		 id,
+			    		 userId, 
+			    		 regdate, 
+			    		 reviewScore, 
+			    		 reviewRegdate, 
+			    		 accId, 
+			    		 cancelStatus, 
+			    		 roomId, 
+			    		 reviewContent, 
+			    		 checkinDate,
+			    		 checkoutDate,
+			    		 price, 
+			    		 headcount, 
+			    		 userName, 
+			    		 accName
+			    		 );
+			     
+			     
+			     
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return rv;
+
 	public ReservationDetailView getDetail(int id) {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
@@ -316,6 +410,7 @@ public class JdbcReservationDao implements ReservationDao {
 		}
 		
 		return rd;
+
 	}
 
 }

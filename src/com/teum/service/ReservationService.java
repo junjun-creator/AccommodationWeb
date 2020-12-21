@@ -7,6 +7,7 @@ import com.teum.dao.ReservationDao;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
+import com.teum.dao.entity.ReviewView;
 import com.teum.dao.jdbc.JdbcReservationDao;
 import com.teum.entity.Reservation;
 
@@ -59,6 +60,19 @@ public class ReservationService implements ReservationServiceI {
 	@Override
 	public ReservationDetailView getDetail(int id) {
 		return reservationDao.getDetail(id);
+	}
+
+	public int update(Reservation rese) {
+		int result =0;
+		
+		result = reservationDao.update(rese);
+		return result;
+		
+	}
+
+	public ReviewView get(int userId, int id) {
+	
+		return reservationDao.get(userId,id);
 	}
 
 }
