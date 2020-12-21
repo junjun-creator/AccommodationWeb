@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/company/userInfo/reservationInfo.css">
+    <link rel="stylesheet" href="../../css/company/userInfo/myAccommodationLists.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -52,9 +49,9 @@
                 <!-- <h1>게시판</h1> -->
                 <ul>
                     <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li class="active"><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
-                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
+                    <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소등록</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;골든타임관리</a></li>
                 </ul>
@@ -67,42 +64,42 @@
                     </ul>
                 </div>
                 <section class="reservation-list-sec">
-                    <h1>예약관리</h1>
+                    <h1>숙소현황</h1>
                     <section class="category-sec">
                         <div class="category-bar">
                             <ul>
                                 <li>
-                                    <a class="category-img ${(accType==0)?'selected':''}" href="reservationInfo">
+                                    <a class="category-img" href="">
                                         <img src="../../images/main/all-icon.png" alt="">
                                         <span>전체</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==1)?'selected':''}" href="?accType=1">
+                                    <a class="category-img selected" href="">
                                         <img src="../../images/main/hotel-icon.png" alt="">
                                         <span>호텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==2)?'selected':''}" href="?accType=2">
+                                    <a class="category-img" href="">
                                         <img src="../../images/main/motel-icon.png" alt="">
                                         <span>모텔</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==3)?'selected':''}" href="?accType=3">
+                                    <a class="category-img" href="">
                                         <img src="../../images/main/guesthouse-icon.png" alt="">
                                         <span>게스트하우스</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==4)?'selected':''}" href="?accType=4">
+                                    <a class="category-img" href="">
                                         <img src="../../images/main/resort-icon.png" alt="">
                                         <span>리조트</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-img ${(accType==5)?'selected':''}" href="?accType=5">
+                                    <a class="category-img" href="">
                                         <img src="../../images/main/pension-icon.png" alt="">
                                         <span>펜션</span>
                                     </a>
@@ -110,99 +107,58 @@
                             </ul>
                         </div>
                     </section>
-                    <div class="table-container">
-                        <div>
-                            <select name="order-category" id="">
-                                <option value="체크인날짜순">체크인날짜순</option>
-                                <option value="예약자이름순">예약자이름순</option>
-                                <option value="예약상태순">예약상태순</option>
-                            </select>
+
+                    <section class="acc-item-sec">
+                        <div class="snip1368">
+                            <img src="../../images/company/호텔/서울/강남구/리베라/메인.jpg" alt="">
+                            <h3>상세보기</h3>
+                            <figcaption>
+                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+                                </div>
+                              </figcaption>
+                            <div class="description-item">
+                                <p>라마다 호텔</p>
+                                <P>9.1 추천해요 (201)</P>
+                                <p>강남구 역삼동</p>
+                            </div>
+                            <div class="item-price">
+                                <div>
+                                    <p>숙박</p>
+                                    <p>예약특가</p>
+                                    <p>30,000원</p>
+                                </div>
+                            </div>
+                            <div class="hovered-item-bg">
+                            </div>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>목록</td>
-                                    <td>숙소명</td>
-                                    <td>숙소종류</td>
-                                    <td>인원</td>
-                                    <td>금액</td>
-                                    <td>체크인</td>
-                                    <td>체크아웃</td>
-                                    <td>예약자</td>
-                                    <td>상태</td>
-                                    <td>비고</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${list }" var="item" varStatus="status">
-                            
-                                <tr>
-                                    <td>${item.rownum }</td>
-                                    <td>${item.accName }</td>
-                                    <td>${item.accTypeId }</td>
-                                    <td>${item.headcount }인</td>
-                                    <td><fmt:formatNumber value="${item.price }" pattern="#,###" />원</td>
-                                    <td>${item.checkinDate }</td>
-                                    <td>${item.checkoutDate }</td>
-                                    <td>${item.userName }</td>
-                                    
-                                		<c:if test="${item.cancelStatus == 0 }">
-                                			<c:set var="now" value="<%=new java.util.Date()%>" />
-                                			<c:choose>
-                                				<c:when test="${item.checkinDate  >= now}">
-                                					<td>이용예정</td>
-                                				</c:when>
-                                				<c:otherwise>
-                                					<td>이용완료</td>
-                                				</c:otherwise>
-                                			</c:choose>
-                                		</c:if>
-                                		<c:if test="${item.cancelStatus == 1 }">
-                                			<td>취소</td>
-                                		</c:if>
-                                    
-                                    <td><input type="button" value="상세보기"></td>
-                                </tr>
-                            </c:forEach>
-                               
-                                <tr>
-                                    <td colspan="10" class="no-border">
-                                        <div class="pager-container">
-													<!--start index 구하기! -->
-													<c:set var="page" value="${(empty param.page)?1:param.page }"/>
-													<c:set var="startNum" value="${page-(page-1)%5}"/>
-													<c:set var="lastNum" value="${pageLastCount }"/>
-													<div class="btn btn-prev">
-														<c:if test="${startNum > 1 }">
-															<span><a href="?page=${startNum-1 }&accType=${accType}">이전</a></span>
-														</c:if>
-														<c:if test="${startNum <= 1 }">
-															<span><a href="" onclick="alert('이전페이지가 없습니다.');">이전</a></span>
-														</c:if>
-													</div>
-													<ul class="pager-list">
-														<c:forEach var="i" begin="0" end="4" varStatus="status">
-															<c:if test="${startNum+i <=lastNum }">
-																<li class="${(page == (startNum+i))?'active-page':'' }"><a href="?page=${i+startNum }&accType=${accType}">${i+startNum }</a></li>
-															</c:if>
-														</c:forEach>
-														
-													</ul>
-													<div class="btn btn-next">
-														<c:if test="${startNum+4<lastNum }">
-															<span><a href="?page=${startNum+5 }&accType=${accType}">다음</a></span>
-														</c:if>
-														<c:if test="${startNum+4>=lastNum }">
-															<span><a href="" onclick="alert('다음페이지가 없습니다.');">다음</a></span>
-														</c:if>
-													</div>
-												</div>
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="snip1368">
+                            <img src="../../images/company/호텔/서울/신사,청담,압구정/리베라/리베라_메인.jpg" alt="">
+                            <h3>상세보기</h3>
+                            <figcaption>
+                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                                  <a href="#"> <i class="ion-social-vimeo-outline"></i></a>
+                                </div>
+                              </figcaption>
+                            <div class="description-item">
+                                <p>라마다 호텔</p>
+                                <P>9.1 추천해요 (201)</P>
+                                <p>강남구 역삼동</p>
+                            </div>
+                            <div class="item-price">
+                                <div>
+                                    <p>숙박</p>
+                                    <p>예약특가</p>
+                                    <p>30,000원</p>
+                                </div>
+                            </div>
+                            <div class="hovered-item-bg">
+                            </div>
+                        </div>
+                    </section>
+                    
                 </section>
             </main>
         </div>

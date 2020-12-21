@@ -5,6 +5,13 @@ window.addEventListener("load",function(){
 	if(reservation_count.value <= 4)
 		btn_more.style.display='none';
 	
+	function parse(str) {
+	    var y = str.substr(0, 4);
+	    var m = str.substr(5, 2);
+	    var d = str.substr(8, 2);
+	    return new Date(y,m-1,d);
+	}
+	
 	btn_more.addEventListener("click",function(e){
 		e.preventDefault();
 		
@@ -21,12 +28,22 @@ window.addEventListener("load",function(){
 				
 				for(var i=0;i<jsonResult.length-1;i++){
 					var resultHTML = '';
+					let today = new Date();
+					var status = '이용완료';
+					if(jsonResult[i].cancelStatus =='1')
+						status = '취소';
+					else{
+						if(parse(jsonResult[i].checkinDate) >= today)
+							status = '이용예정';
+					}
+					
 					resultHTML = html.replace("{accName}",jsonResult[i].accName)
 									.replace("{fileName}",jsonResult[i].fileName)
 									.replace("{checkinDate}",jsonResult[i].checkinDate)
 									.replace("{checkoutDate}",jsonResult[i].checkoutDate)
 									.replace("{accId}",jsonResult[i].accId)
-									.replace("{id}",jsonResult[i].id);
+									.replace("{id}",jsonResult[i].id)
+									.replace("{status}",status);
 									
 					reservation_list_container.insertAdjacentHTML('beforeend',resultHTML);
 				}//아이템 추가 완료
@@ -58,6 +75,13 @@ window.addEventListener("load",function(){
 			return;
 		}
 		
+		if(e.target.className == 'review-reg'){
+			
+			console.log(e.target.nextElementSibling.value);
+			window.location.href="/user/review/reg?id="+e.target.nextElementSibling.value;
+			return;
+		}
+		
 		if(e.target.tagName == 'LI')
 			li = e.target;
 		else{
@@ -67,7 +91,7 @@ window.addEventListener("load",function(){
 			}
 		}
 		
-		window.location.href="./reservationDetail?id="+li.nextElementSibling.value;
+		window.location.href="./detail?reservationId="+li.nextElementSibling.value;
 	});
 	/*
 	for(var item of reservationItem){

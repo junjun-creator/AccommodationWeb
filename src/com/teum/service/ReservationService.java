@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.teum.dao.ReservationDao;
+import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
 import com.teum.dao.entity.ReviewView;
@@ -54,6 +55,11 @@ public class ReservationService implements ReservationServiceI {
 		result = reservationDao.getItemCount(accIdsCSV,accType);
 		
 		return result;
+	}
+	
+	@Override
+	public ReservationDetailView getDetail(int id) {
+		return reservationDao.getDetail(id);
 	}
 
 	public int update(Reservation rese) {

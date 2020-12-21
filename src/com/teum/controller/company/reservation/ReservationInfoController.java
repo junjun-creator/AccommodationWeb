@@ -1,4 +1,4 @@
-package com.teum.controller.company.userinfo;
+package com.teum.controller.company.reservation;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.service.AccService;
 import com.teum.service.ReservationService;
 
-@WebServlet("/company/userInfo/reservationInfo")
+@WebServlet("/company/reservation/reservationInfo")
 public class ReservationInfoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

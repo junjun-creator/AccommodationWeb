@@ -41,8 +41,8 @@
             <aside id="aside" class="aside">
                 <!-- <h1>게시판</h1> -->
                 <ul>
-                    <li class="active"><a href="memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li class="active"><a href="/company/userInfo/memberInfo"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href="/company/reservation/reservationInfo"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;제안신청관리</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소현황</a></li>
                     <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;숙소등록</a></li>
