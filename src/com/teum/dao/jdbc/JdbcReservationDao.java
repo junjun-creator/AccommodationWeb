@@ -313,7 +313,7 @@ public class JdbcReservationDao implements ReservationDao {
 				Date regdate = rs.getDate("regdate");
 				int reviewScore = rs.getInt("review_score");
 				Date reviewRegdate = rs.getDate("review_regdate");
-				int accId =rs.getInt("accId");
+				int accId =rs.getInt("acc_Id");
 				int cancelStatus = rs.getInt("cancel_status");
 				int roomId = rs.getInt("room_id");
 				String reviewContent = rs.getString("review_content");

@@ -19,14 +19,20 @@ public class RegController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
 
-		int userId = (int)session.getAttribute("id");
-		int id = Integer.parseInt(request.getParameter("id"));
+		//int userId = (int)session.getAttribute("id");
+		//int id = Integer.parseInt(request.getParameter("id"));
 		
+		int userId =1;
+		int id =24;
 		ReservationService service = new ReservationService();
 		ReviewView reser= service.get(userId,id);
 		
-		request.setAttribute("reser",reser);
-		request.getRequestDispatcher("QnA.jsp").forward(request, response);
+		String userName = reser.getUserName();
+		String accName = reser.getAccName();
+		
+		request.setAttribute("accName",accName);
+		request.setAttribute("userName",userName);
+		request.getRequestDispatcher("reg.jsp").forward(request, response);
 	}
 	
 	@Override
