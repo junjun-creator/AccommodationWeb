@@ -244,6 +244,32 @@ margin: 50px auto 0px auto;
                         margin: 0px 10px 0px 10px;
                     }
 
+                    .room-form .cry-img-section {
+                        margin: 20px auto;
+                    }
+
+                        .room-form .cry-img-section > div {
+                            margin: 10px auto;
+                        }
+
+                        .room-form .cry-img-section .cry-img-container {
+                            --border: 1px solid red;
+                            width: 50px;
+                            margin: 0 auto;
+                        }
+
+                            .room-form .cry-img {
+                                width: 50px;
+                            }
+
+                            .room-form .cry-img-section .cry-ment-container {
+                                --border: 1px solid blue;
+                            }
+
+                            .room-form .cry-ment {
+                                text-align: center;
+                            }
+
                         .room-img-container {
                             margin: 10px 0 5px 0;
                             transform: scale(1);
