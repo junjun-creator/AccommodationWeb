@@ -114,11 +114,17 @@
                             width: 400px;
                             margin-top: 10px;
                         }
+                        
+                        .reservation-detail .name{
+                        	display: flex;
+                            width: 400px;
+                            margin-top: 30px;
+                        }
 
                         .reservation-detail .phone {
                             display: flex;
                             width: 400px;
-                            margin-top: 30px;
+                            margin-top: 10px;
                         }
 
                         .reservation-detail .price {

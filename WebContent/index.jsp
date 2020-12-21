@@ -75,10 +75,10 @@
                                     <li><a href="/company/userInfo/memberInfo">내정보</a></li>
                                  </c:if>
                                  <c:if test="${type == 0 }">
-                                    <li><a href="/user/userInfo/reservationInfo">예약현황</a></li>
+                                    <li><a href="/user/reservation/reservationInfo">예약현황</a></li>
                                  </c:if>
                                  <c:if test="${type == 1 }">
-                                    <li><a href="">예약현황</a></li>
+                                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
                                  </c:if>
                                  <c:if test="${type == 0 }">
                                     <li><a href="/user/userInfo/offerList">제안내역</a></li>
