@@ -66,6 +66,7 @@ public class ReservationService implements ReservationServiceI {
 		int result =0;
 		
 		result = reservationDao.update(rese);
+		
 		return result;
 		
 	}

@@ -272,8 +272,9 @@ public class JdbcReservationDao implements ReservationDao {
 		int result =0;
 		
 		String url = DBContext.URL;
-		String sql = "UPDATE RESERVATION SET REVIEW_SCORE=?,REVIEW_CONTENT=?,REVIEW_REGDATE=SYSTIMESTAMP USER_ID= ? AND ID= ?";
-		
+		String sql = "UPDATE RESERVATION SET REVIEW_SCORE=?,REVIEW_CONTENT=?,REVIEW_REGDATE=SYSTIMESTAMP WHERE USER_ID= ? AND ID= ?";
+		System.out.println(rese.getUserId());
+		System.out.println( rese.getId());
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
