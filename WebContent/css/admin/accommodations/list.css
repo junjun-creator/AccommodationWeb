@@ -197,11 +197,11 @@ margin: 30px 0 0 30px;
             }
 
             .main .list-board > table td.col-sm { 
-                width: 100px;
+                width: 80px;
             }
 
             .main .list-board > table td.col-m { 
-                width: 150px;
+                width: 200px;
             }
             .main .list-board > table tbody tr:last-child >td{
                 border-bottom: 1px solid #ffffff;
@@ -241,4 +241,10 @@ margin: 30px 0 0 30px;
                 .main .pager-container .btn a {
                     text-decoration: none;
                 }
-                
+                .ellips{
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                    word-wrap:normal;
+                    width:100px;
+                    overflow:hidden;
+                }
