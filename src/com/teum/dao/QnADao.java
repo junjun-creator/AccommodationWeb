@@ -2,6 +2,7 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.PrivateQnaView;
 import com.teum.dao.entity.QnAView;
 import com.teum.entity.QnA;
 
@@ -19,5 +20,7 @@ public interface QnADao {
 	List<QnAView> getViewList(int startIndex, int endIndex);
 	List<QnAView> getViewList(int startIndex, int endIndex,String category);
 	List<QnAView> getViewList(int startIndex, int endIndex, String category, String query);
+	List<PrivateQnaView> getPrivateList(int userId, int startIndex,int endIndex);
+	int getPrivateCount(int userId);
 	
 }

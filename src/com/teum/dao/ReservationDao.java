@@ -2,6 +2,7 @@ package com.teum.dao;
 
 import java.util.List;
 
+import com.teum.dao.entity.PrivateReservationListView;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
@@ -26,6 +27,10 @@ public interface ReservationDao {
 	ReservationDetailView getDetail(int id);
 
 	List<ReservationDetailView> getList(int accId);
+
+	List<PrivateReservationListView> getPrivateList(int id, int startIndex, int endIndex);
+
+	int getPrivateCount(int userId);
 
 
 }

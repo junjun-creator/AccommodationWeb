@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.teum.dao.ReservationDao;
+import com.teum.dao.entity.PrivateReservationListView;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
@@ -78,6 +79,21 @@ public class ReservationService implements ReservationServiceI {
 
 	public List<ReservationDetailView> getList(int accId) {
 		return reservationDao.getList(accId);
+	}
+	
+	@Override
+	public List<PrivateReservationListView> getPrivateList(int id, int page1) {
+		int startIndex = 1+(page1-1)*5;
+		int endIndex = page1*5;
+		return reservationDao.getPrivateList(id,startIndex,endIndex);
+	}
+	
+	@Override
+	public int getPrivateCount(int userId) {
+		int result = 0;
+		
+		result = reservationDao.getPrivateCount(userId);
+		return result;
 	}
 
 }

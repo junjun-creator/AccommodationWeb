@@ -2,6 +2,7 @@ package com.teum.service;
 
 import java.util.List;
 
+import com.teum.dao.entity.PrivateQnaView;
 import com.teum.entity.QnA;
 
 public interface QnAServiceI {
@@ -16,5 +17,7 @@ public interface QnAServiceI {
 	
 	int update(int id);
 	
+	List<PrivateQnaView> getPrivateList(int userId, int page2);
 	
+	int getPrivateCount(int userId);
 }

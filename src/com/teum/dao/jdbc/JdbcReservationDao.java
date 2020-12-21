@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.teum.dao.ReservationDao;
 import com.teum.dao.entity.OfferInfoView;
+import com.teum.dao.entity.PrivateReservationListView;
 import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
@@ -462,7 +463,99 @@ public class JdbcReservationDao implements ReservationDao {
 			e.printStackTrace();
 		}
 		
-		return rd;
+		return list;
+	}
+
+	@Override
+	public List<PrivateReservationListView> getPrivateList(int id, int startIndex,int endIndex) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM NUM, PRIVATE_RESERVATION_LIST.* FROM PRIVATE_RESERVATION_LIST WHERE USER_ID=?) WHERE NUM BETWEEN ? AND ?";
+		
+		List<PrivateReservationListView> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, dbid, dbpwd);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int rownum = rs.getInt("num");
+				int userId = rs.getInt("user_id");
+				String userName = rs.getString("user_name");
+				String userEmail = rs.getString("user_email");
+				String accName = rs.getString("acc_name");
+				String phone = rs.getString("phone");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				
+				PrivateReservationListView plv = new PrivateReservationListView();
+				plv.setRownum(rownum);
+				plv.setUserId(userId);
+				plv.setUserName(userName);
+				plv.setUserEmail(userEmail);
+				plv.setAccName(accName);
+				plv.setPhone(phone);
+				plv.setCheckinDate(checkinDate);
+				plv.setCheckoutDate(checkoutDate);
+				
+				list.add(plv);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int getPrivateCount(int userId) {
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(*) FROM PRIVATE_RESERVATION_LIST WHERE USER_ID=?";
+		
+		int result = 0;
+		
+		//DriverManager;//Class.forName~
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,userId);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
 }

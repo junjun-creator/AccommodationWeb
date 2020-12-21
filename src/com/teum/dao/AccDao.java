@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.AccommodationListView;
 import com.teum.dao.entity.GoldenTimeView;
 import com.teum.entity.Acc;
 
@@ -39,6 +40,9 @@ public interface AccDao {
 	List<GoldenTimeView> getGoldenList();
 	
 	List<Integer> getIds(int companyId, int accType);
+	List<AccommodationListView> getAccListByCompany(int companyId, int accType);
+	List<Acc> getRegList(int id, int regStatus, int startIndex, int endIndex);
+	int getRegCount(int companyId, int regStatus);
 
 
 	
