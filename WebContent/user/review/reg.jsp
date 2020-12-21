@@ -73,12 +73,14 @@
                 </div>
                 <section class="review-sec">
                     <h1>리뷰 등록</h1>
+                    <c:set var="an" value="${accName}"/>
+                    <c:set var="un" value="${userName}"/>
                     <form action="reg" class="review-form" method="post">
-                        <div class="acc-name">${reser.accName}</div>
+                        <div class="acc-name">${an}</div>
                         <div class="img-container">
                             <img src="/images/user/review/smile.png" alt="">
                         </div>
-                        <div class="user-name">${reser.userName}</div>
+                        <div class="user-name">${un}</div>
                         <div class="star-container">
                             <div>
                                 <i class="fas fa-star"></i>
