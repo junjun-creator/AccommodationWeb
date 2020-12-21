@@ -106,9 +106,13 @@
 
                     <section class="acc-item-sec">
                     	<c:forEach items="${list }" var="item" varStatus="status">
-                    	
 	                        <div class="snip1368">
-	                            <img src="../../images/company/호텔/서울/강남구/리베라/메인.jpg" alt="">
+	                        <c:forTokens var="fileRoute" items="${item.accFileRoute}" delims="," varStatus="st">
+	                        	<c:if test="${st.first == true}">
+		                        	<img src="${fileRoute}" alt="">
+	                        	</c:if>
+	                        </c:forTokens>
+	                            
 	                            <h3>상세보기</h3>
 	                            <figcaption>
 	                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>

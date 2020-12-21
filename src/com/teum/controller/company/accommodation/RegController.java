@@ -117,8 +117,10 @@ public class RegController extends HttpServlet {
 		String roomFileName = null;
 		String accFilePath = null;
 		String roomFilePath = null;
-		StringBuilder accBuilder = new StringBuilder();
-		StringBuilder roomBuilder = new StringBuilder();
+		StringBuilder accFileNameBuilder = new StringBuilder();
+		StringBuilder accFileRouteBuilder = new StringBuilder();
+		StringBuilder roomFileNameBuilder = new StringBuilder();
+		StringBuilder roomFileRouteBuilder = new StringBuilder();
 		int newAccId = 0;
 		int newRoomId = 0;
 		
@@ -130,7 +132,8 @@ public class RegController extends HttpServlet {
 				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
 				newAccId = accService.getLastId() + 1;
 				
-				String pathTemp = request.getServletContext().getRealPath("/images/company/accommodation/2020/" + newAccId); 
+				String relativePath = "/images/company/accommodation/2020/" + newAccId;
+				String pathTemp = request.getServletContext().getRealPath(relativePath); 
 				
 				File path = new File(pathTemp); // 얘는 절대경로만 받는다.
 				if (!path.exists())
@@ -138,8 +141,14 @@ public class RegController extends HttpServlet {
 				
 				accFileName = p.getSubmittedFileName();
 				accFilePath = pathTemp + File.separator + accFileName;
-				accBuilder.append(accFileName);
-				accBuilder.append(",");
+				
+				relativePath += File.separator + accFileName;
+				
+				accFileNameBuilder.append(accFileName);
+				accFileNameBuilder.append(",");
+				
+				accFileRouteBuilder.append(relativePath);
+				accFileRouteBuilder.append(",");
 				
 				InputStream fis = p.getInputStream();
 				FileOutputStream fos = new FileOutputStream(accFilePath);
@@ -165,7 +174,8 @@ public class RegController extends HttpServlet {
 				// 현재 게시글에 들어가 있는 번호중에서 마지막 번호를 동적으로 알아내기
 				newRoomId = roomService.getLastId() + 1;
 				
-				String pathTemp = request.getServletContext().getRealPath("/images/company/accommodation/2020/" + newAccId + "/" + newRoomId); 
+				String relativePath = "/images/company/accommodation/2020/" + newAccId + "/" + newRoomId;
+				String pathTemp = request.getServletContext().getRealPath(relativePath); 
 				
 				File path = new File(pathTemp); // 얘는 절대경로만 받는다.
 				if (!path.exists())
@@ -173,8 +183,14 @@ public class RegController extends HttpServlet {
 				
 				roomFileName = p.getSubmittedFileName();
 				roomFilePath = pathTemp + File.separator + roomFileName;
-				roomBuilder.append(roomFileName);
-				roomBuilder.append(",");
+				
+				relativePath += File.separator + roomFileName;
+				
+				roomFileNameBuilder.append(roomFileName);
+				roomFileNameBuilder.append(",");
+				
+				roomFileRouteBuilder.append(relativePath);
+				roomFileRouteBuilder.append(",");
 				
 				InputStream fis = p.getInputStream();
 				FileOutputStream fos = new FileOutputStream(roomFilePath);
@@ -191,15 +207,11 @@ public class RegController extends HttpServlet {
 				System.out.printf("room-filename: %s\n, room-filepath: %s\n", roomFileName, roomFilePath);
 			}
 		}
-		accBuilder.delete(accBuilder.length() - 1, accBuilder.length());
-		roomBuilder.delete(roomBuilder.length() - 1, roomBuilder.length());
+		accFileNameBuilder.delete(accFileNameBuilder.length() - 1, accFileNameBuilder.length());
+		accFileRouteBuilder.delete(accFileRouteBuilder.length() - 1, accFileRouteBuilder.length());
+		roomFileNameBuilder.delete(roomFileNameBuilder.length() - 1, roomFileNameBuilder.length());
+		roomFileRouteBuilder.delete(roomFileRouteBuilder.length() - 1, roomFileRouteBuilder.length());
 		
-//		System.out.printf("accName: %s\n", accName);
-//		System.out.printf("phone: %s\n", phone);
-//		System.out.printf("location: %s\n", fullAddress);
-//		System.out.printf("accTypeId: %d\n", accTypeNum);
-//		System.out.printf("companyId: %d\n", (int)session.getAttribute("id"));
-//		System.out.printf("adminId: %d\n", 1);
 		Acc acc = new Acc();
 		acc.setName(accName);
 		acc.setPhone(phone);
@@ -211,7 +223,7 @@ public class RegController extends HttpServlet {
 		
 		int accId = accService.getLastId();
 		
-		AccImage accImage = new AccImage(accBuilder.toString(), accFilePath, accId);
+		AccImage accImage = new AccImage(accFileNameBuilder.toString(), accFileRouteBuilder.toString(), accId);
 		accImageService.insert(accImage);
 		
 		Room room = new Room(roomName, price, accId, maxHeadcount, bedCount);
@@ -219,7 +231,7 @@ public class RegController extends HttpServlet {
 
 		int roomId = roomService.getLastId(); // insert를 하고 난 후에 방금 넣은 room의 id값 받아오기
 
-		RoomImage roomImage = new RoomImage(roomBuilder.toString(), roomFilePath, roomId);
+		RoomImage roomImage = new RoomImage(roomFileNameBuilder.toString(), roomFileRouteBuilder.toString(), roomId);
 		roomImageService.insert(roomImage);
 
 		response.sendRedirect("/index");
