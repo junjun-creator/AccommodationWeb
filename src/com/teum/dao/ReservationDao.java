@@ -27,5 +27,11 @@ public interface ReservationDao {
 
 	List<ReservationDetailView> getList(int accId);
 
+	List<ReviewView> getReviewList(int accId);
+
+	int getAvg(int accId);
+
+	int getReviewCount(int accId);
+
 
 }

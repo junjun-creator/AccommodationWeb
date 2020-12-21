@@ -80,4 +80,30 @@ public class ReservationService implements ReservationServiceI {
 		return reservationDao.getList(accId);
 	}
 
+	public List<ReviewView> getReviewList(int accId) {
+		
+		List<ReviewView> review= new ArrayList<ReviewView>();
+		
+		review = reservationDao.getReviewList(accId);
+		
+		return review;
+	}
+
+	public int getAvg(int accId) {
+		int resert=0;
+		
+		resert=reservationDao.getAvg(accId);
+		
+		return resert;
+	}
+
+	public int getReviewCount(int accId) {
+		int resert=0;
+		
+		resert=reservationDao.getReviewCount(accId);
+		
+		return resert;
+	}
+
+	
 }

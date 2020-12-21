@@ -273,8 +273,7 @@ public class JdbcReservationDao implements ReservationDao {
 		
 		String url = DBContext.URL;
 		String sql = "UPDATE RESERVATION SET REVIEW_SCORE=?,REVIEW_CONTENT=?,REVIEW_REGDATE=SYSTIMESTAMP WHERE USER_ID= ? AND ID= ?";
-		System.out.println(rese.getUserId());
-		System.out.println( rese.getId());
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
@@ -462,7 +461,113 @@ public class JdbcReservationDao implements ReservationDao {
 			e.printStackTrace();
 		}
 		
-		return rd;
+		return list;
+	}
+
+	/*--------------------디테일 페이지 리뷰 리스트 불러오기-----*/
+	@Override
+	public List<ReviewView> getReviewList(int accId) {
+		
+		List<ReviewView> review = new ArrayList<ReviewView>();
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM reservation_for_company_view WHERE ACC_ID = ? AND REVIEW_SCORE>0";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setInt(1, accId);
+			
+			ResultSet rs = st.executeQuery();
+			
+
+			while(rs.next()) {
+				String accName = rs.getString("acc_name");
+				
+				Date reviewRegdate = rs.getDate("REVIEW_REGDATE");
+				String userName = rs.getString("user_name");
+				int price = rs.getInt("price");
+				int cancelStatus = rs.getInt("cancel_status");
+				String reviewContent = rs.getString("review_content");
+				
+				ReviewView rv = new ReviewView();
+				
+				rv.setReviewContent(reviewContent);
+				rv.setReviewRegdate(reviewRegdate);
+				rv.setUserName(userName);
+				
+				review.add(rv);
+			}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return review;
+	}
+
+	@Override
+	public int getAvg(int accId) {
+		int result=0;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT AVG(REVIEW_SCORE) FROM RESERVATION WHERE ACC_ID ="+accId;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			
+			ResultSet rs =st.executeQuery();//insert,update,delete 문장일 떄
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			System.out.println(result);
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int getReviewCount(int accId) {
+		int result=0;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT COUNT(ACC_ID) FROM RESERVATION WHERE ACC_ID =? AND REVIEW_SCORE>0";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setInt(1, accId);
+			
+			ResultSet rs =st.executeQuery();//insert,update,delete 문장일 떄
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }
