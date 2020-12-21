@@ -1,5 +1,6 @@
 package com.teum.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.entity.AccListForAdminView;
@@ -38,6 +39,8 @@ public interface AccDao {
 	List<GoldenTimeView> getGoldenList();
 	
 	List<Integer> getIds(int companyId, int accType);
+
+
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.teum.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.AccDao;
@@ -17,6 +18,7 @@ public class AccService {
 	public AccService() {
 		accDao = new JdbcAccDao();
 	}
+	Date today = new Date();
 	
 	public int insert(Acc acc) {
 		int result = accDao.insert(acc);
@@ -92,12 +94,14 @@ public class AccService {
 		int result = 0;
 		Acc acc = accDao.applyGet(id);
 		acc.setRegStatus(1);
+		acc.setApprovalDate(today);
 		result = accDao.approval(id);
 		return result;
 	}
 
 	public int approvalAll(int[] ids) {
 		int result =0;
+		
 		for(Integer id : ids)
 			result += accDao.approval(id);
 		return result;
@@ -146,5 +150,7 @@ public class AccService {
 	public List<Acc> getList(int type, String location) {
 		return accDao.getList(type, location);
 	}
+
+
 
 }
