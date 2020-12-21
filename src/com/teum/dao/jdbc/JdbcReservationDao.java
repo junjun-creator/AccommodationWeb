@@ -405,13 +405,63 @@ public class JdbcReservationDao implements ReservationDao {
 			con.close();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			
 			e.printStackTrace();
 		}
 		
 		return rd;
 
+	}
+
+	@Override
+	public List<ReservationDetailView> getList(int accId) {
+		String url = DBContext.URL;
+		
+		List<ReservationDetailView> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM RESERVATION_DETAIL_VIEW WHERE ACC_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.PWD, DBContext.UID);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, accId);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int reservationId = rs.getInt("reservation_id");
+				String accName = rs.getString("acc_name");
+				String roomName = rs.getString("room_name");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				String userName = rs.getString("user_name");
+				String phone = rs.getString("phone");
+				int price = rs.getInt("price");
+				int cancelStatus = rs.getInt("cancel_status");
+				
+				ReservationDetailView rd = new ReservationDetailView();
+				
+				rd.setReservationId(reservationId);
+				rd.setAccName(accName);
+				rd.setRoomName(roomName);
+				rd.setCheckinDate(checkinDate);
+				rd.setCheckoutDate(checkoutDate);
+				rd.setUserName(userName);
+				rd.setPhone(phone);
+				rd.setPrice(price);
+				rd.setCancelStatus(cancelStatus);
+				
+				list.add(rd);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return rd;
 	}
 
 }

@@ -25,5 +25,7 @@ public interface ReservationDao {
 
 	ReservationDetailView getDetail(int id);
 
+	List<ReservationDetailView> getList(int accId);
+
 
 }

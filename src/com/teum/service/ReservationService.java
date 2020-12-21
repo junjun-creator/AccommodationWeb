@@ -75,4 +75,8 @@ public class ReservationService implements ReservationServiceI {
 		return reservationDao.get(userId,id);
 	}
 
+	public List<ReservationDetailView> getList(int accId) {
+		return reservationDao.getList(accId);
+	}
+
 }
