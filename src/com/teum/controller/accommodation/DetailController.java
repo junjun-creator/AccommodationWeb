@@ -48,6 +48,7 @@ public class DetailController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
@@ -64,10 +65,10 @@ public class DetailController extends HttpServlet {
 		/* -- acc id에 일치하는 모든 acc 정보 갖고 오기 -- */
 		Acc acc = accService.get(accId);
 
+
 		
 		/* -- acc id에 일치하는 accImage 정보들(fileName) 가져오기 -- */
 		List<AccImage> accImageList = accImageService.getList(accId);
-		
 		
 		/* -- acc id에 일치하는 모든 룸 정보 갖고오고 거기에 딸려오는 룸 사진도 갖고오기 -- */
 		List<Room> roomList = roomService.getList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
@@ -162,11 +163,9 @@ public class DetailController extends HttpServlet {
 			request.setAttribute("review", review);
 			request.setAttribute("acc", acc);
 			request.setAttribute("accImageList", accImageList);
-			request.setAttribute("userId", userId);
 			request.getRequestDispatcher("detail.jsp").forward(request, response);
 			
 		}
-
 	}
 
 	@Override

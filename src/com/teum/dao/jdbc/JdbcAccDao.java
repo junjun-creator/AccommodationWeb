@@ -969,7 +969,7 @@ int count = 0;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
 		
-		String sql = "SELECT * FROM ACCOMMODATION_LIST_VIEW WHERE COMPANY_ID=?";
+		String sql = "SELECT * FROM ACCOMMODATION_LIST_VIEW WHERE COMPANY_ID=? AND REG_STATUS > 0";
 		String sql_ = " AND ACC_TYPE=?";
 		
 		if(accType != 0)
