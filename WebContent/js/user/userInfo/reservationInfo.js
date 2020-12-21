@@ -36,6 +36,9 @@ window.addEventListener("load",function(){
 						if(parse(jsonResult[i].checkinDate) >= today)
 							status = '이용예정';
 					}
+					var reviewStatus = '리뷰등록';
+					if(jsonResult[i].reviewScore != '0')
+						reviewStatus = '리뷰수정';
 					
 					resultHTML = html.replace("{accName}",jsonResult[i].accName)
 									.replace("{fileName}",jsonResult[i].fileName)
@@ -43,7 +46,8 @@ window.addEventListener("load",function(){
 									.replace("{checkoutDate}",jsonResult[i].checkoutDate)
 									.replace("{accId}",jsonResult[i].accId)
 									.replace("{id}",jsonResult[i].id)
-									.replace("{status}",status);
+									.replace("{status}",status)
+									.replace("{reviewStatus}",reviewStatus);
 									
 					reservation_list_container.insertAdjacentHTML('beforeend',resultHTML);
 				}//아이템 추가 완료

@@ -202,6 +202,8 @@
 	                            <p>
 									<input type="button" value="다시예약" class="re-reserve-btn">
 									<input type="hidden" value="{accId}">
+									<input type="button" value="{reviewStatus}" class="review-reg">
+	                            	<input type="hidden" value="{id}">
 								</p>
 	                        </li>
 							<input type="hidden" value="{id}">
