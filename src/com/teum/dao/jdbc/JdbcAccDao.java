@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.dao.entity.GoldenTimeView;
@@ -202,6 +201,7 @@ public class JdbcAccDao implements AccDao{
 	
 	@Override
 	public Acc get(int id) {
+
 		Acc acc = null;
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM ACC WHERE ID=?";
@@ -266,7 +266,7 @@ public class JdbcAccDao implements AccDao{
 	public Acc applyGet(int id) {
 		Acc a = null;
 
-		String url = "DBContext.URL";
+		String url = DBContext.URL;
 		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0 AND ID=?";//조건 추가(accName)
 
 		try {
@@ -356,7 +356,7 @@ public class JdbcAccDao implements AccDao{
 	public int deleteAll(int[] ids) {
 		int result = 0;
 		
-		String url = "DBContext.URL";
+		String url = DBContext.URL;
 		
 		String params = "";
 		for(int i = 0; i<ids.length; i++) {
@@ -389,10 +389,8 @@ public class JdbcAccDao implements AccDao{
 	@Override
 	public int approval(int id) {
 		int result=0;
-
-		String url = "DBContext.URL";
-		String sql = "UPDATE ACC SET REG_STATUS=1 WHERE ID=?";
-
+		String url = DBContext.URL;
+		String sql = "UPDATE ACC SET REG_STATUS=1, APPROVAL_DATE=SYSTIMESTAMP WHERE ID=?";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,DBContext.UID,DBContext.PWD);
@@ -412,17 +410,15 @@ public class JdbcAccDao implements AccDao{
 	}
 	@Override
 	public int approvalAll(int[] ids) {
-int result = 0;
-		
-		String url = "DBContext.URL";
-		
+		int result = 0;
+		String url = DBContext.URL;
 		String params = "";
 		for(int i = 0; i<ids.length; i++) {
 			params += ids[i];
 			if(i < ids.length-1)
 				params+= ",";
 		}
-		String sql = "UPDATE ACC SET REG_STATUS=1 WHERE ID IN("+params+")";
+		String sql = "UPDATE ACC SET REG_STATUS=1 , APPROVAL_DATE=SYSTIMESTAMP WHERE ID IN("+params+")";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -803,7 +799,7 @@ int count = 0;
 	}
 	@Override
 	public List<Acc> applyGetList() {
-		String url = "DBContext.URL";
+		String url = DBContext.URL;
 		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=0";
 		List<Acc> list = new ArrayList<>();
 		try {
@@ -955,4 +951,6 @@ int count = 0;
 		
 		return list;
 	}
+
+
 }
