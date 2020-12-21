@@ -36,7 +36,16 @@ public class RegController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		request.getRequestDispatcher("reg.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+
+		if (session.getAttribute("email") == null) // 로그인이 안된 경우
+			response.sendRedirect("/signin");
+		else if (((int) session.getAttribute("type")) != 0) // 개인회원이 아닌경우
+			response.sendRedirect("/index");
+		else {
+			request.getRequestDispatcher("reg.jsp").forward(request, response);
+		}
+		
 	}
 	
 	@Override

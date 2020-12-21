@@ -21,11 +21,14 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header-search"><input type="text" placeholder="숙소명 또는 위치">
+                    <li class="header-search">
+                    	<form action="/accommodation/list" method="get">
+                    		<input type="text" name="search" placeholder="숙소명 또는 위치" value="${param.search}">
+                    	</form>
                         <a href=""><i class="fas fa-search"></i></a>
                     </li>
                     <li>
@@ -59,7 +62,7 @@
                     </li>
                     <li class="sub-page">
                        <c:if test="${empty email }">
-                           <a href="signin" class="character">로그인</a>
+                           <a href="/signin" class="character">로그인</a>
                         </c:if>
                         <c:if test="${email ne null}">
                            <a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
@@ -92,7 +95,7 @@
                                  <c:if test="${type == 1 }">
                                     <li><a href="/company/goldenTime/list">골든타임</a></li>
                                  </c:if>
-                                   <li><a href="logout">로그아웃</a></li>
+                                   <li><a href="/logout">로그아웃</a></li>
                                </ul>
                            </div>
                         </c:if>
@@ -106,13 +109,13 @@
         <section class="promotion-sec">
             <div class="promotion-bar">
                 <div>
-                    <h1 style="font-size: 24px; color: #ffd700; font-weight:bold"><i class="fas fa-stopwatch"></i> <span style="color: #ffd700;">골든타임</span></h1>
+                    <h1 style="font-size: 24px; color: #ffd700; font-weight:bold"><i class="fas fa-stopwatch"></i> <span style="color: #ffd700;">골든타임 특가</span></h1>
                 </div>
                 <div>
-                    <div class="btn-left"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-left"></i></div>
+                    <div class="btn-left"><i style="font-size: 40px; color: rgba(200, 200, 200, 0.5);" class="fas fa-angle-left"></i></div>
                     <div style="width: 918px; overflow:hidden;">
                         <div class="promotion-item-container" style="display: flex;">
-                  <c:forEach var="g" items="${goldenList}" varStatus="status">
+                  		<c:forEach var="g" items="${goldenList}" varStatus="status">
                             <div class="promotion-item">
                                 <div class="parent">
                                     <img src="${g.fileroute}" alt="">
@@ -129,74 +132,11 @@
                                     <h2>추천상품${status.index+1}</h2>
                                 </div>
                             </div>
-                            </c:forEach>
-                            <!-- 
-                            <div class="promotion-item">
-                                <div class="parent">
-                                    <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
-        
-                                    <div class="child"><span>00:00:00</span></div>
-                                </div>
-                                <div class="promotion-item-detail">
-                                    <h2>강남 파르페 호텔</h2>
-                                    <h4>128,000원</h4>
-                                    <h3>42,000원</h3>
-                                    <h5>서울시 강남구</h5>
-                                </div>
-                                <div>
-                                    <h2>추천상품2</h2>
-                                </div>
-                            </div>
+                         </c:forEach>
                             
-                            <div class="promotion-item">
-                                <div>
-                                    <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
-                                </div>
-                                <div class="promotion-item-detail">
-                                    <h2>강남 파르페 호텔</h2>
-                                    <h4>128,000원</h4>
-                                    <h3>42,000원</h3>
-                                    <h5>서울시 강남구</h5>
-                                </div>
-                                <div>
-                                    <h2>추천상품3</h2>
-                                </div>
-                            </div>
-                            <div class="promotion-item">
-                                <div>
-                                    <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
-                                </div>
-                                <div class="promotion-item-detail">
-                                    <h2>강남 파르페 호텔</h2>
-                                    <h4>128,000원</h4>
-                                    <h3>42,000원</h3>
-                                    <h5>서울시 강남구</h5>
-                                </div>
-                                <div>
-                                    <h2>추천상품4</h2>
-                                </div>
-                            </div>
-                            
-                            <div class="promotion-item">
-                                <div class="parent">
-                                    <img src="images/company/호텔/리스트/신라스테이_삼성_메인.jpg" alt="">
-        
-                                    <div class="child"><span>00:00:00</span></div>
-                                </div>
-                                <div class="promotion-item-detail">
-                                    <h2>강남 파르페 호텔</h2>
-                                    <h4>128,000원</h4>
-                                    <h3>42,000원</h3>
-                                    <h5>서울시 강남구</h5>
-                                </div>
-                                <div>
-                                    <h2>추천상품5</h2>
-                                </div>
-                            </div>
-                             -->
                         </div>
                     </div>
-                    <div class="btn-right"><i style="font-size: 40px; color: #5f0081;" class="fas fa-arrow-circle-right"></i></div>
+                    <div class="btn-right"><i style="font-size: 40px; color: rgba(200, 200, 200, 0.5);" class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </section>
@@ -245,11 +185,11 @@
         </div>
         <div class="offer-box">
             <div class="offer-ment">
-                <p class="ment">일상속 작은 <span class="teum">틈,</span></p>
+                <p class="ment">일상 속 작은 <span class="teum">틈,</span></p>
                 <p class="ment"><span class="teum">틈</span>을 채우기 위한 여행.</p>
             </div>
             <div class="btn-container">
-                <button class="btn-list" onclick="location.href='list'">제안하기</button>
+                <button class="btn-list" onclick="location.href='/user/offer/reg'">제안하기</button>
             </div>
         </div>
     </section>

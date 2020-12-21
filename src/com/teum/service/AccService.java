@@ -147,8 +147,8 @@ public class AccService {
 		return accDao.getIds(companyId,accType);
 	}
 
-	public List<Acc> getList(int type, String location) {
-		return accDao.getList(type, location);
+	public List<Acc> getList(int type, String location, String search) {
+		return accDao.getList(type, location, search);
 	}
 
 

@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신라스테이 삼성</title>
+    <link rel="icon" href="/images/logo.png">
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
     <link href="/css/accommodationList/detail.css"  rel="stylesheet">
@@ -158,7 +159,9 @@
 	                                    </div>
 	                                </div>
 	                                <div class="highlight-btn-container">
-	                                    <a href="/user/reservation?accId=${acc.id}&roomId=${room.id}&userId=${userId}"><input type="button" class="highlight-btn" value="예약하기"></a>
+	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
+	                                    	<input type="button" class="highlight-btn" value="예약하기">
+	                                    </a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -191,7 +194,9 @@
 	                                    </div>
 	                                </div>
 	                                <div class="highlight-btn-container">
-	                                    <a href="/user/reservation?accId=${acc.id}&roomId=${room.id}&userId=${userId}"><input type="button" class="highlight-btn" value="예약하기"></a>
+	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&userId=${userId}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
+	                                    	<input type="button" class="highlight-btn" value="예약하기">
+	                                    </a>
 	                                </div>
 	                            </div>
 	                        </div>

@@ -13,6 +13,7 @@ import java.util.List;
 import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
+import com.teum.dao.entity.PayInfoView;
 import com.teum.entity.Room;
 
 public class JdbcRoomDao implements RoomDao {
@@ -414,6 +415,73 @@ public class JdbcRoomDao implements RoomDao {
 		}
 
 		return list;
+	}
+
+	@Override
+	public PayInfoView getList(int accId, int roomId) {
+		PayInfoView payInfoView = null;
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM PAY_INFO_VIEW WHERE ACC_ID = ? AND ROOM_ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, accId);
+			pst.setInt(2, roomId);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				String accName = rs.getString("ACC_NAME");
+				String roomName = rs.getString("ROOM_NAME");
+				String bookedDate = rs.getString("BOOKED_DATE");
+				int price = rs.getInt("PRICE");
+				
+				payInfoView = new PayInfoView(accId, roomId, accName, roomName, bookedDate, price);
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return payInfoView;
+	}
+
+	@Override
+	public int update(int accId, int roomId, String bookedDates) {
+		int result = 0;
+		
+		String url = DBContext.URL;
+		String sql = "UPDATE ROOM SET BOOKED_DATE=? WHERE ACC_ID=? AND ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setString(1, bookedDates);
+			pst.setInt(2, accId);
+			pst.setInt(3, roomId);
+
+			result = pst.executeUpdate();
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

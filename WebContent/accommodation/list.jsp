@@ -209,7 +209,7 @@
                         </ul>
                     </div>
                 </section>
-                
+
                 <section class="picked-item-sec">
                    <c:forEach var="acc" items="${accList}">
                     <div class="snip1368" onclick="location.href='detail?accId=${acc.id}'">

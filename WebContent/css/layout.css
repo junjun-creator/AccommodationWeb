@@ -102,8 +102,8 @@ header li{
 .header-search{
     display: flex;
 }
-    .header-search>input{
-        --padding: 8px 16px 8px 16px;
+    .header-search form input{
+        padding: 5px;
         width: 200px;
         padding-left: 20px;
         font-size: 15px;

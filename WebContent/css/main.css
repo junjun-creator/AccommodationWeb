@@ -16,6 +16,7 @@
         .promotion-bar .btn-left,
         .promotion-bar .btn-right{
             align-items: center;
+            cursor: pointer;
         }
 
         .promotion-bar>div:first-child{
@@ -25,7 +26,6 @@
         .promotion-bar>div:nth-child(2){
             display: flex;
             height: 500px;
-            padding-top: 20px;
             justify-content: space-evenly;
         }
             .promotion-bar>div:nth-child(2)>div{
