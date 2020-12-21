@@ -61,4 +61,8 @@ public class RoomService implements RoomServiceI {
 	public Room get(int roomId) {
 		return roomDao.get(roomId);
 	}
+
+	public List<Room> getList(int accId) {
+		return roomDao.getList(accId);
+	}
 }

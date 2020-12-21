@@ -3,10 +3,14 @@ package com.teum.dao.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.teum.dao.AccImageDao;
 import com.teum.entity.AccImage;
+import com.teum.entity.Event;
 
 public class JdbcAccImageDao implements AccImageDao {
 
@@ -37,6 +41,45 @@ public class JdbcAccImageDao implements AccImageDao {
 		}
 
 		return result;
+	}
+
+	@Override
+	public List<AccImage> getList(int accId) {
+		List<AccImage> list = new ArrayList<>();
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ACC_IMAGE WHERE ACC_ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, accId);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String fileName = rs.getString("FILENAME");
+				String fileRoute = rs.getString("FILEROUTE");
+
+				AccImage accImage = new AccImage(id, fileName, fileRoute, accId);
+				
+				list.add(accImage);
+			}
+
+			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			rs.close();
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }
