@@ -23,7 +23,7 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -119,6 +119,19 @@
                     </form>
                 </div>
                 <form class="room-form">
+                	<c:if test="${empty showRoomList && empty roomList}">
+	               		<section class="cry-img-section">
+	                        <div>
+	                            <div class="cry-img-container">
+	                                <img class="cry-img" src="/images/cry.png" alt="">
+	                            </div>
+	                            <div class="cry-ment-container">
+	                                <div class="cry-ment">예약 가능한 방이 없습니다.</div>
+	                                <div class="cry-ment">다른 날짜를 검색해 주세요.</div>
+	                            </div>
+	                        </div>
+	                   	</section>
+                	</c:if>
                 	<c:if test="${empty showRoomList}">
 	                	<c:forEach var="room" items="${roomList}" varStatus="st">
 	                    <section>

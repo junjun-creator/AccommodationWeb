@@ -108,9 +108,8 @@ public class DetailController extends HttpServlet {
 				}
 				checkDatesCSV.delete(checkDatesCSV.length() - 12, checkDatesCSV.length()); // 퇴실일 ~ 콤마까지 삭제
 				
-				System.out.printf("개인이 희망한 체크인날짜: %s\n", checkDatesCSV);
-				
-				System.out.println("roomList: " + roomList.toString());
+//				System.out.printf("개인이 희망한 체크인날짜: %s\n", checkDatesCSV);
+//				System.out.println("roomList: " + roomList.toString());
 				
 				for (Room room : roomList) {
 					
@@ -119,8 +118,8 @@ public class DetailController extends HttpServlet {
 					String[] checkDates = checkDatesCSV.toString().split(",");
 					String bookedDate = room.getBookedDate();
 					
-					System.out.println("checkDates: " + Arrays.toString(checkDates));
-					System.out.println("bookedDate: " + bookedDate);
+//					System.out.println("checkDates: " + Arrays.toString(checkDates));
+//					System.out.println("bookedDate: " + bookedDate);
 					
 					boolean isBook = true;
 					
@@ -146,9 +145,12 @@ public class DetailController extends HttpServlet {
 			
 			
 			// 모든 사람들이 쓴 리뷰가 3개가 넘으면 3개만 보여주고, 아니면 해당 개수만 보여주기
+			// 해당 숙소에 등록된 리뷰를 모두 뽑아서 REVIEW_SCORE의 평균을 내기
+			// 해당 숙소에 등록된 리뷰를 모두 뽑아서 작성자 이름, 컨텐츠, 등록일 뽑기
 			
-			System.out.println("예약날짜 필터링 전 모든 방 : " + roomList.toString());
-			System.out.println("예약날짜 필터링 후 모든 방 : " + showRoomList.toString());
+			
+//			System.out.println("예약날짜 필터링 전 모든 방 : " + roomList.toString());
+//			System.out.println("예약날짜 필터링 후 모든 방 : " + showRoomList.toString());
 			
 			if (isDate)
 				request.setAttribute("showRoomList", showRoomList);
