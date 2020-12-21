@@ -70,14 +70,14 @@ public class JdbcRoomDao implements RoomDao {
 				int bedCount = rs.getInt("BED_COUNT");
 
 				room = new Room();
-				
+
 				room.setId(id);
 				room.setName(name);
 				room.setAccId(accId);
 				room.setMaxHeadcount(maxHeadcount);
 				room.setBedCount(bedCount);
 			}
-			
+
 			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
 			rs.close();
 			st.close();
@@ -102,10 +102,10 @@ public class JdbcRoomDao implements RoomDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
-			
+
 			ResultSet rs = pst.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				int id = rs.getInt("ID");
 				String name = rs.getString("NAME");
 				int accId = rs.getInt("ACC_ID");
@@ -113,9 +113,9 @@ public class JdbcRoomDao implements RoomDao {
 				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
 				int bedCount = rs.getInt("BED_COUNT");
 				String bookedDate = rs.getString("BOOKED_DATE");
-				
+
 				Room room = new Room();
-				
+
 				room.setId(id);
 				room.setName(name);
 				room.setAccId(accId);
@@ -123,10 +123,10 @@ public class JdbcRoomDao implements RoomDao {
 				room.setMaxHeadcount(maxHeadcount);
 				room.setBedCount(bedCount);
 				room.setBookedDate(bookedDate);
-				
+
 				list.add(room);
 			}
-			
+
 			pst.close();
 			con.close();
 
@@ -140,30 +140,29 @@ public class JdbcRoomDao implements RoomDao {
 	}
 
 	@Override
-	public List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId) {
+	public List<OfferInfoView> getOfferInfoList(int startIndex, int endIndex, int offerId) {
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		
-		
+
 		String sql = "SELECT * FROM (SELECT ROWNUM RN, OFFER_INFO_VIEW.* FROM OFFER_INFO_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
-		
+
 		List<OfferInfoView> list = new ArrayList<>();
-		//DriverManager;//Class.forName~
+		// DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
-			//PreparedStatement ps = con.prepareStatement(sql);
+			Connection con = DriverManager.getConnection(url, dbid, dbpwd);
+			// String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			// PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,offerId);
+			ps.setInt(1, offerId);
 			ps.setInt(2, startIndex);
 			ps.setInt(3, endIndex);
 //			if(!field.equals("")) {
 //			}
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				int roomId = rs.getInt("room_id");
 				String roomName = rs.getString("room_name");
 				int accId = rs.getInt("acc_id");
@@ -173,7 +172,7 @@ public class JdbcRoomDao implements RoomDao {
 				String fileName = rs.getString("filename");
 				String fileRoute = rs.getString("fileroute");
 				String accName = rs.getString("acc_name");
-				
+
 				OfferInfoView oiv = new OfferInfoView();
 				oiv.setRoomId(roomId);
 				oiv.setRoomName(roomName);
@@ -184,189 +183,237 @@ public class JdbcRoomDao implements RoomDao {
 				oiv.setAccId(accId);
 				oiv.setPrice(price);
 				oiv.setAccName(accName);
-				
+
 				list.add(oiv);
 			}
-			
+
 			rs.close();
 			ps.close();
 			con.close();
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
-  
-  @Override
-   public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
-      String url = DBContext.URL;
-      
-      String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID = ?";
-      
-      List<OfferableRoomListView> list = new ArrayList<>();
-      
-      try {
-         Class.forName("oracle.jdbc.driver.OracleDriver");
-         Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-         PreparedStatement ps = con.prepareStatement(sql);
-         
-         ps.setInt(1, offerId);
 
-         ResultSet rs = ps.executeQuery();
-         
-         while(rs.next()) {
-            int id = rs.getInt("ID");
-            String name = rs.getString("NAME");
-            int price = rs.getInt("PRICE");
-            int accId = rs.getInt("ACC_ID");
-            int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
-            int bedCount = rs.getInt("BED_COUNT");
-            String bookedDate = rs.getString("BOOKED_DATE");
-            int roomImageId = rs.getInt("ROOM_IMAGE_ID");
-            String fileName = rs.getString("FILENAME");
-            String fileRoute = rs.getString("FILEROUTE");
-            Date checkinDate = rs.getDate("CHECKIN_DATE");
-            Date checkoutDate = rs.getDate("CHECKOUT_DATE");
-            
-            OfferableRoomListView orlv = new OfferableRoomListView();
-            
-            orlv.setId(id);
-            orlv.setName(name);
-            orlv.setPrice(price);
-            orlv.setAccId(accId);
-            orlv.setMaxHeadcount(maxHeadcount);
-            orlv.setBedCount(bedCount);
-            orlv.setRoomImageId(roomImageId);
-            orlv.setFileName(fileName);
-            orlv.setFileRoute(fileRoute);
-            orlv.setCheckinDate(checkinDate);
-            orlv.setCheckoutDate(checkoutDate);
-            
-            list.add(orlv);
-         }
-         
-         rs.close();
-         ps.close();
-         con.close();
-         
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-      
-      return list;
-   }
-  
-  @Override
+	@Override
+	public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
+		String url = DBContext.URL;
+
+		String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID = ?";
+
+		List<OfferableRoomListView> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setInt(1, offerId);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int price = rs.getInt("PRICE");
+				int accId = rs.getInt("ACC_ID");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+				int roomImageId = rs.getInt("ROOM_IMAGE_ID");
+				String fileName = rs.getString("FILENAME");
+				String fileRoute = rs.getString("FILEROUTE");
+				Date checkinDate = rs.getDate("CHECKIN_DATE");
+				Date checkoutDate = rs.getDate("CHECKOUT_DATE");
+
+				OfferableRoomListView orlv = new OfferableRoomListView();
+
+				orlv.setId(id);
+				orlv.setName(name);
+				orlv.setPrice(price);
+				orlv.setAccId(accId);
+				orlv.setMaxHeadcount(maxHeadcount);
+				orlv.setBedCount(bedCount);
+				orlv.setRoomImageId(roomImageId);
+				orlv.setFileName(fileName);
+				orlv.setFileRoute(fileRoute);
+				orlv.setCheckinDate(checkinDate);
+				orlv.setCheckoutDate(checkoutDate);
+
+				list.add(orlv);
+			}
+
+			rs.close();
+			ps.close();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
 	public int getOfferCount(int offerId) {
 		int result = 0;
 		String url = DBContext.URL;
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
-		
-		
+
 		String sql = "SELECT COUNT(*) FROM OFFER_INFO_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID=?";
-		
-		//DriverManager;//Class.forName~
+
+		// DriverManager;//Class.forName~
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
-			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
-			//PreparedStatement ps = con.prepareStatement(sql);
+			Connection con = DriverManager.getConnection(url, dbid, dbpwd);
+			// String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			// PreparedStatement ps = con.prepareStatement(sql);
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,offerId);
+			ps.setInt(1, offerId);
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				result = rs.getInt(1);
 			}
-			
+
 			rs.close();
 			ps.close();
 			con.close();
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
-@Override
-public int getId(int roomId) {
-	int result = 0;
+	@Override
+	public int getId(int roomId) {
+		int result = 0;
 
-	String url = DBContext.URL;
-	String sql = "SELECT ACC_ID FROM ROOM WHERE ID = ?";
+		String url = DBContext.URL;
+		String sql = "SELECT ACC_ID FROM ROOM WHERE ID = ?";
 
-	try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-		PreparedStatement pst = con.prepareStatement(sql);
-		
-		pst.setInt(1, roomId);
-		
-		ResultSet rs = pst.executeQuery();
-		
-		while(rs.next()) {
-			result = rs.getInt("ACC_ID");
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, roomId);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				result = rs.getInt("ACC_ID");
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		
-		pst.close();
-		con.close();
 
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
+		return result;
 	}
 
-	return result;
-}
+	@Override
+	public Room get(int roomId) {
+		Room room = null;
 
-@Override
-public Room get(int roomId) {
-	Room room = null;
-	
-	String url = DBContext.URL;
-	String sql = "SELECT * FROM ROOM WHERE ID = ?";
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ROOM WHERE ID = ?";
 
-	try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
-		PreparedStatement pst = con.prepareStatement(sql);
-		
-		pst.setInt(1, roomId);
-		
-		ResultSet rs = pst.executeQuery();
-		
-		while(rs.next()) {
-			int id = rs.getInt("ID");
-			String name = rs.getString("NAME");
-			int price = rs.getInt("PRICE");
-			int accId = rs.getInt("ACC_ID");
-			int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
-			int bedCount = rs.getInt("BED_COUNT");
-			String bookedDate = rs.getString("BOOKED_DATE");
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, roomId);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int price = rs.getInt("PRICE");
+				int accId = rs.getInt("ACC_ID");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+
+				room = new Room(id, name, price, accId, maxHeadcount, bedCount, bookedDate);
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return room;
+	}
+
+	@Override
+	public List<Room> getList(int accId) {
+		List<Room> list = new ArrayList<>();
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ROOM WHERE ACC_ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, accId);
 			
-			room = new Room(id, name, price, accId, maxHeadcount, bedCount, bookedDate);
-		}
-		
-		pst.close();
-		con.close();
+			ResultSet rs = pst.executeQuery();
 
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int price = rs.getInt("PRICE");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+
+				Room room = new Room();
+
+				room.setId(id);
+				room.setName(name);
+				room.setAccId(accId);
+				room.setPrice(price);
+				room.setMaxHeadcount(maxHeadcount);
+				room.setBedCount(bedCount);
+				room.setBookedDate(bookedDate);
+
+				list.add(room);
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
-	
-	return room;
-}
 
 }

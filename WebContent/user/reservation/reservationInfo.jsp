@@ -65,12 +65,27 @@
                     	
 	                        <li class="reservation-item">
 	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/${info.fileName }" alt="">
-	                            <p>사용완료</p>
+	                            <c:if test="${info.cancelStatus == 0 }">
+			               			<c:set var="now" value="<%=new java.util.Date()%>" />
+			               			<c:choose>
+			               				<c:when test="${info.checkinDate  >= now}">
+			               					<p>이용예정</p>
+			               				</c:when>
+			               				<c:otherwise>
+			               					<p>이용완료</p>
+			               				</c:otherwise>
+			               			</c:choose>
+			               		</c:if>
+			               		<c:if test="${info.cancelStatus == 1 }">
+			               			<p>취소</p>
+			               		</c:if>
 	                            <p>${info.accName }</p>
 	                            <p>${info.checkinDate } ~ ${info.checkoutDate }</p>
-	                            <p>
+	                            <p style="display:flex;">
 	                            	<input type="button" value="다시예약" class="re-reserve-btn">
 	                            	<input type="hidden" value="${info.accId }">
+	                            	<input type="button" value="${(info.reviewScore==0)?'리뷰쓰기':'리뷰수정' }" class="review-reg">
+	                            	<input type="hidden" value="${info.id }">
 	                            </p>
 	                        </li>
 	                        <input type="hidden" value="${info.id }">
@@ -181,7 +196,7 @@
     <script type="more-template" id="more-template">
     	<li class="reservation-item">
 	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/{fileName}" alt="">
-	                            <p>사용완료</p>
+	                            <p>{status}</p>
 	                            <p>{accName}</p>
 	                            <p>{checkinDate} ~ {checkoutDate}</p>
 	                            <p>

@@ -12,13 +12,15 @@ public class ReservationListView {
 	private Date checkoutDate;
 	private String accName;
 	private String fileName;
+	private int cancelStatus;
+	private int reviewScore;
 	
 	public ReservationListView() {
 		
 	}
 
 	public ReservationListView(int id, int userId, int accId, int roomId, int price, Date checkinDate,
-			Date checkoutDate, String accName, String fileName) {
+			Date checkoutDate, String accName, String fileName, int cancelStatus, int reviewScore) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -29,6 +31,8 @@ public class ReservationListView {
 		this.checkoutDate = checkoutDate;
 		this.accName = accName;
 		this.fileName = fileName;
+		this.cancelStatus = cancelStatus;
+		this.reviewScore = reviewScore;
 	}
 
 	public int getId() {
@@ -103,12 +107,28 @@ public class ReservationListView {
 		this.fileName = fileName;
 	}
 
+	public int getCancelStatus() {
+		return cancelStatus;
+	}
+
+	public void setCancelStatus(int cancelStatus) {
+		this.cancelStatus = cancelStatus;
+	}
+
+	public int getReviewScore() {
+		return reviewScore;
+	}
+
+	public void setReviewScore(int reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+
 	@Override
 	public String toString() {
 		return "ReservationListView [id=" + id + ", userId=" + userId + ", accId=" + accId + ", roomId=" + roomId
 				+ ", price=" + price + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", accName="
-				+ accName + ", fileName=" + fileName + "]";
+				+ accName + ", fileName=" + fileName + ", cancelStatus=" + cancelStatus + ", reviewScore=" + reviewScore
+				+ "]";
 	}
-	
 	
 }

@@ -1,4 +1,4 @@
-package com.teum.controller.user.userinfo;
+package com.teum.controller.user.reservation;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 import com.teum.dao.entity.ReservationListView;
 import com.teum.service.ReservationService;
 
-@WebServlet("/user/userInfo/reservationInfo")
+@WebServlet("/user/reservation/reservationInfo")
 public class ReservationInfoController extends HttpServlet {
 
 	@Override
@@ -76,6 +76,8 @@ public class ReservationInfoController extends HttpServlet {
 			obj.put("fileName", r.getFileName());
 			obj.put("id", r.getId());
 			obj.put("accId", r.getAccId());
+			obj.put("cancelStatus", r.getCancelStatus());
+			obj.put("reviewScore", r.getReviewScore());
 			jArray.add(obj);
 		}
 		

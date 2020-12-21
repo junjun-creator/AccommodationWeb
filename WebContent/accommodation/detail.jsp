@@ -81,8 +81,8 @@
                     </div>
                 </div>
                 <div class="main-info">
-                    <h1>신라스테이 삼성</h1>
-                    <h2>서울 강남구 삼성동 168-3</h2>
+                    <h1>${acc.name}</h1>
+                    <h2>${acc.location }</h2>
                     <div class="rule">
                         <p>취소 및 환불 규정</p>
                         <ul>
@@ -112,70 +112,80 @@
                 <div class="subtitle">
                     <h1>객실 안내 및 예약</h1>
                     <form action="detail" method="get">
-                        체크인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" name="checkin-date" class="form-option date checkin-date" required><br>
-                        체크아웃 &nbsp;&nbsp;&nbsp; <input type="date" name="checkout-date" class="form-option date checkout-date" required><br>
+                        <input type="hidden" name="accId" value=${acc.id}>
+                        체크인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkin-date" name="checkinDate" value="${empty param ? '' : param.checkinDate }" required><br>
+                        체크아웃 &nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkout-date" name="checkoutDate" value="${empty param ? '' : param.checkoutDate }" required><br>
                         <input type="submit" class="submit-btn" value="적용하기">
                     </form>
                 </div>
                 <form class="room-form">
-                    <section>
-                        <!-- <div class="radio-container">
-                            <input type="radio" name="radio" id="radio-1" class="radio" required>
-                            <label for="radio-1"><span></span></label>
-                        </div> -->
-                        <div class="room-container">
-                            <div class="room-img-container">
-                                <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성">
-                            </div>
-                            <div class="room-detail-container">
-                                <div class="room-room">
-                                    <span>스탠다드 트윈</span>
-                                </div>
-                                <div class="room-bed-count">
-                                    <div>침대개수</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-max-headcount">
-                                    <div>최대 수용인원</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-price">
-                                    <div>가격</div>
-                                    <div>128,260원</div>
-                                </div>
-                                <div class="highlight-btn-container">
-                                    <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="room-container">
-                            <div class="room-img-container">
-                                <img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg">
-                            </div>
-                            <div class="room-detail-container">
-                                <div class="room-room">
-                                    <span>스탠다드 더블</span>
-                                </div>
-                                <div class="room-bed-count">
-                                    <div>침대개수</div>
-                                    <div>1</div>
-                                </div>
-                                <div class="room-max-headcount">
-                                    <div>최대 수용인원</div>
-                                    <div>2</div>
-                                </div>
-                                <div class="room-price">
-                                    <div>가격</div>
-                                    <div>500,260원</div>
-                                </div>
-                                <div class="highlight-btn-container">
-                                    <a href=""><input type="button" class="highlight-btn" value="예약하기"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                	<c:if test="${empty showRoomList}">
+	                	<c:forEach var="room" items="${roomList}" varStatus="st">
+	                    <section>
+	                        <div class="room-container">
+	                            <div class="room-img-container">
+	                                <img src="" alt= "">
+	                            </div>
+	                            <div class="room-detail-container">
+	                                <div class="room-room">
+	                                    <span>${room.name}</span>
+	                                </div>
+	                                <div class="room-bed-count">
+	                                    <div>침대개수</div>
+	                                    <div>${room.bedCount}</div>
+	                                </div>
+	                                <div class="room-max-headcount">
+	                                    <div>최대 수용인원</div>
+	                                    <div>${room.maxHeadcount}</div>
+	                                </div>
+	                                <div class="room-price">
+	                                    <div>가격</div>
+	                                    <div>
+	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
+	                                    </div>
+	                                </div>
+	                                <div class="highlight-btn-container">
+	                                    <a href="/user/reservation?accId=${acc.id}&roomId=${room.id}&userId=${userId}"><input type="button" class="highlight-btn" value="예약하기"></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </section>
+	                	</c:forEach>
+                	</c:if>
+                	<c:if test="${empty roomList}">
+	                	<c:forEach var="room" items="${showRoomList}" varStatus="st">
+	                    <section>
+	                        <div class="room-container">
+	                            <div class="room-img-container">
+	                                <img src="" alt= "">
+	                            </div>
+	                            <div class="room-detail-container">
+	                                <div class="room-room">
+	                                    <span>${room.name}</span>
+	                                </div>
+	                                <div class="room-bed-count">
+	                                    <div>침대개수</div>
+	                                    <div>${room.bedCount}</div>
+	                                </div>
+	                                <div class="room-max-headcount">
+	                                    <div>최대 수용인원</div>
+	                                    <div>${room.maxHeadcount}</div>
+	                                </div>
+	                                <div class="room-price">
+	                                    <div>가격</div>
+	                                    <div>
+	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
+	                                    </div>
+	                                </div>
+	                                <div class="highlight-btn-container">
+	                                    <a href="/user/reservation?accId=${acc.id}&roomId=${room.id}&userId=${userId}"><input type="button" class="highlight-btn" value="예약하기"></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </section>
+	                	</c:forEach>
+                	</c:if>
+                    
                 </form>
                 <section class="goodsonmylist-box">
                     <div class="goodsonmylist">

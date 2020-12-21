@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.teum.dao.ReservationDao;
 import com.teum.dao.entity.OfferInfoView;
+import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReservationForCompanyView;
 import com.teum.dao.entity.ReservationListView;
 
@@ -48,6 +49,8 @@ public class JdbcReservationDao implements ReservationDao {
 				Date checkoutDate = rs.getDate("checkout_date");
 				String accName = rs.getString("acc_name");
 				String fileName = rs.getString("filename");
+				int cancelStatus = rs.getInt("cancel_status");
+				int reviewScore = rs.getInt("review_score");
 				
 				ReservationListView rlv = new ReservationListView();
 				
@@ -60,6 +63,8 @@ public class JdbcReservationDao implements ReservationDao {
 				rlv.setCheckoutDate(checkoutDate);
 				rlv.setAccName(accName);
 				rlv.setFileName(fileName);
+				rlv.setCancelStatus(cancelStatus);
+				rlv.setReviewScore(reviewScore);
 				
 				list.add(rlv);
 			}
@@ -256,6 +261,61 @@ public class JdbcReservationDao implements ReservationDao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public ReservationDetailView getDetail(int id) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		ReservationDetailView rd = new ReservationDetailView();
+		
+		String sql = "SELECT * FROM RESERVATION_DETAIL_VIEW WHERE RESERVATION_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int reservationId = rs.getInt("reservation_id");
+				String accName = rs.getString("acc_name");
+				String roomName = rs.getString("room_name");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				String userName = rs.getString("user_name");
+				String phone = rs.getString("phone");
+				int price = rs.getInt("price");
+				int cancelStatus = rs.getInt("cancel_status");
+				
+				rd.setReservationId(reservationId);
+				rd.setAccName(accName);
+				rd.setRoomName(roomName);
+				rd.setCheckinDate(checkinDate);
+				rd.setCheckoutDate(checkoutDate);
+				rd.setUserName(userName);
+				rd.setPhone(phone);
+				rd.setPrice(price);
+				rd.setCancelStatus(cancelStatus);
+				
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return rd;
 	}
 
 }

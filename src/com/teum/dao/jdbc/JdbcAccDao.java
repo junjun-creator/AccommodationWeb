@@ -201,10 +201,10 @@ public class JdbcAccDao implements AccDao{
 	
 	@Override
 	public Acc get(int id) {
-		Acc a = null;
 
+		Acc acc = null;
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ACC_LIST_FOR_ADMIN WHERE REG_STATUS=1 AND ID=?";//조건 추가(accName)
+		String sql = "SELECT * FROM ACC WHERE ID=?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -212,7 +212,7 @@ public class JdbcAccDao implements AccDao{
 			PreparedStatement st = con.prepareStatement(sql);
 			
 			st.setInt(1, id);
-			ResultSet rs = st.executeQuery(sql);
+			ResultSet rs = st.executeQuery();
 
 			if(rs.next()) {
 				int nid = rs.getInt("ID");
@@ -228,9 +228,9 @@ public class JdbcAccDao implements AccDao{
 				Date gtStartDate = rs.getDate("GT_START_DATE");
 				Date gtEndDate = rs.getDate("GT_END_DATE");
 				int saleprice = rs.getInt("SALEPRICE");
-				int goldentimeStatus = rs.getInt("goldentimeStatus");
+				int goldentimeStatus = rs.getInt("goldentime_Status");
 				
-				a = new Acc(
+				acc = new Acc(
 						nid,
 						name,
 						phone,
@@ -258,7 +258,7 @@ public class JdbcAccDao implements AccDao{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return a;
+		return acc;
 	}
 	
 	
