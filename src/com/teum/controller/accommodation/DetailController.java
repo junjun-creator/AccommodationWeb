@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,11 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.teum.dao.entity.ReservationDetailView;
 import com.teum.dao.entity.ReviewView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
-import com.teum.entity.Reservation;
 import com.teum.entity.Room;
 import com.teum.service.AccImageService;
 import com.teum.service.AccService;
@@ -56,8 +53,14 @@ public class DetailController extends HttpServlet {
 		String accId_ = request.getParameter("accId");
 		int accId = 0;
 
-		String checkinDate_ = request.getParameter("checkinDate");
-		String checkoutDate_ = request.getParameter("checkoutDate");
+		String checkinDate_ = "1901-01-01";
+		String checkoutDate_ = "1901-01-02";
+		
+		if (request.getParameter("checkinDate") != null && !request.getParameter("checkinDate").equals(""))
+			checkinDate_ = request.getParameter("checkinDate");
+		
+		if (request.getParameter("checkoutDate") != null && !request.getParameter("checkoutDate").equals(""))
+			checkoutDate_ = request.getParameter("checkoutDate");
 
 		if (accId_ != null && !accId_.equals(""))
 			accId = Integer.parseInt(accId_);
@@ -73,8 +76,6 @@ public class DetailController extends HttpServlet {
 		/* -- acc id에 일치하는 모든 룸 정보 갖고오고 거기에 딸려오는 룸 사진도 갖고오기 -- */
 		List<Room> roomList = roomService.getList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
 
-		
-		
 		
 		
 		/* -- 개인이 검색한 예약날짜중 예약이 가능한 방만 뽑아내기 -- */
@@ -164,7 +165,7 @@ public class DetailController extends HttpServlet {
 			request.setAttribute("acc", acc);
 			request.setAttribute("accImageList", accImageList);
 			request.getRequestDispatcher("detail.jsp").forward(request, response);
-			
+
 		}
 	}
 
