@@ -3,6 +3,7 @@ package com.teum.service;
 import java.util.Date;
 import java.util.List;
 
+import com.teum.dao.entity.AccommodationListView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
 import com.teum.entity.Room;
@@ -41,6 +42,12 @@ public interface AccServiceI {
 	
 	//등록된 숙소정보
 	List<Acc> getList(int id, String type,int page, String accType, Date currentDate, String search);
+	List<AccommodationListView> getAccListByCompany(int companyId, int accType);
+	
+	//관리자 기업회원 보유,승인대기숙소
+	List<Acc> getRegList(int id, int regStatus);
+	
+	
 	//List<AccImage> getList(int[] id);
 	
 	//골든타임 관리

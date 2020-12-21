@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.teum.dao.AccDao;
 import com.teum.dao.entity.AccListForAdminView;
+import com.teum.dao.entity.AccommodationListView;
 import com.teum.dao.entity.GoldenTimeView;
 import com.teum.dao.jdbc.JdbcAccDao;
 //import com.teum.dao.jdbc.JdbcAccDao;
@@ -151,6 +152,24 @@ public class AccService {
 		return accDao.getList(type, location, search);
 	}
 
+	public List<AccommodationListView> getAccListByCompany(int companyId, int accType) {
+		return accDao.getAccListByCompany(companyId,accType);
+	}
 
+	public List<Acc> getRegList(int id, int regStatus, int page) {
+		int startIndex = 1+(page-1)*5;
+		int endIndex = page*5;
+		
+		return accDao.getRegList(id,regStatus,startIndex,endIndex);
+	}
+
+	public int getRegCount(int companyId, int regStatus) {
+		int result = 0;
+		
+		
+		result = accDao.getRegCount(companyId,regStatus);
+		
+		return result;
+	}
 
 }

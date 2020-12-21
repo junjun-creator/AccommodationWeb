@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.QnADao;
+import com.teum.dao.entity.PrivateQnaView;
+import com.teum.dao.entity.PrivateReservationListView;
 import com.teum.dao.entity.QnAView;
 import com.teum.entity.QnA;
 
@@ -309,6 +311,96 @@ public class JdbcQnADao implements QnADao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public List<PrivateQnaView> getPrivateList(int userId, int startIndex, int endIndex) {
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM NUM, PRIVATE_QNA_VIEW.* FROM PRIVATE_QNA_VIEW WHERE USER_ID=?) WHERE NUM BETWEEN ? AND ?";
+		
+		List<PrivateQnaView> list = new ArrayList<>();
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, dbid, dbpwd);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userId);
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int rownum = rs.getInt("num");
+				int qnaId = rs.getInt("qna_id");
+				String userName = rs.getString("user_name");
+				String title = rs.getString("title");
+				String phone = rs.getString("phone");
+				Date regdate = rs.getDate("regdate");
+				int answerStatus = rs.getInt("answer_status");
+				
+				PrivateQnaView pqv= new PrivateQnaView();
+				pqv.setRownum(rownum);
+				pqv.setQnaId(qnaId);
+				pqv.setUserName(userName);
+				pqv.setTitle(title);
+				pqv.setPhone(phone);
+				pqv.setRegdate(regdate);
+				pqv.setAnswerStatus(answerStatus);
+				
+				list.add(pqv);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int getPrivateCount(int userId) {
+
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(*) FROM PRIVATE_QNA_VIEW WHERE USER_ID=?";
+		
+		int result = 0;
+		
+		//DriverManager;//Class.forName~
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//String sql = "SELECT * FROM MEMBER WHERE TYPE = ?";
+			//PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,userId);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
 	

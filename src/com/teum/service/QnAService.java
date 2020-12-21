@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.QnADao;
+import com.teum.dao.entity.PrivateQnaView;
 import com.teum.dao.entity.QnAView;
 import com.teum.dao.jdbc.JdbcQnADao;
 import com.teum.entity.QnA;
@@ -100,6 +101,21 @@ public class QnAService {
 		
 		return result;
 		
+	}
+
+	public List<PrivateQnaView> getPrivateList(int userId, int page2) {
+		int startIndex = 1+(page2-1)*5;
+		int endIndex = page2*5;
+		
+		return qnaDao.getPrivateList(userId, startIndex,endIndex);
+	}
+
+	public int getPrivateCount(int userId) {
+		int result = 0;
+		
+		result = qnaDao.getPrivateCount(userId);
+		
+		return result;
 	}
 
 
