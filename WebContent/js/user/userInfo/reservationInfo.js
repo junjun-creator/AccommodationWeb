@@ -47,7 +47,8 @@ window.addEventListener("load",function(){
 									.replace("{accId}",jsonResult[i].accId)
 									.replace("{id}",jsonResult[i].id)
 									.replace("{status}",status)
-									.replace("{reviewStatus}",reviewStatus);
+									.replace("{reviewStatus}",reviewStatus)
+									.replace("{id}",jsonResult[i].id);
 									
 					reservation_list_container.insertAdjacentHTML('beforeend',resultHTML);
 				}//아이템 추가 완료

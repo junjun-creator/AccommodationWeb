@@ -37,7 +37,7 @@ reg_form_container.addEventListener("change",function(e){
 
     var password_input = e.currentTarget.children[1].lastElementChild.firstElementChild.firstElementChild;
     var password_check_input = e.currentTarget.children[2].lastElementChild.firstElementChild.firstElementChild;
-    if(e.target.id != "password-check"){
+    if(e.target.id != "password-check" && e.target.id != "checkbox-3" && e.target.id != "checkbox-2"){
 
         if(regExp.test(e.target.value)){
             e.target.classList.add('pass');
@@ -156,8 +156,11 @@ for(var j=0;j<checkbox.length;j++){
                     count_validation++;
                 }
             }
+
+			var password_i = document.querySelector(".password").value;
+			var password_c = document.querySelector(".password-check").value;
             if(count_validation == 5 &&
-            password_input.value == password_check_input.value &&
+            password_i== password_c &&
             (checkbox[0].checked || checkbox[1].checked)
 			&& email_check.classList.contains("no-duplication")){
                 button_submit.classList.remove('disabled');
@@ -196,9 +199,10 @@ email_check.addEventListener("click",function(e){
 				            count_validation++;
 				        }
 				    }
-				
+					var password_i = document.querySelector(".password").value;
+					var password_c = document.querySelector(".password-check").value;
 				    if(count_validation == 5 &&
-				    password_input.value == password_check_input.value &&
+				    password_i == password_c &&
 				    (checkbox[0].checked || checkbox[1].checked)){
 				        button_submit.classList.remove('disabled');
 				        button_submit.disabled = false;

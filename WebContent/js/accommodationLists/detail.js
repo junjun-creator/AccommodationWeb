@@ -29,4 +29,42 @@ window.addEventListener("load",function(){
         day = day >= 10 ? day : '0' + day;          // day 두자리로 저장
         return year + '-' + month + '-' + day;      // 'yyyy-mm-dd' 형태로 리턴
     };
+
+
+	var zzim = document.querySelector(".zzim");
+	zzim.addEventListener("click",function(e){
+		e.preventDefault();
+		var userId = e.target.nextElementSibling;
+		var accId = userId.nextElementSibling;
+		var xhr = new XMLHttpRequest();
+		xhr.open('post','./detail');
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState === 4 && xhr.status === 200){
+				var result = xhr.response;
+				if(JSON.parse(result).result != 0){
+					if(e.target.classList.contains("unzzimed")){
+						e.target.classList.remove("unzzimed");
+						e.target.classList.add("zzimed");
+					}
+					else{
+						e.target.classList.remove("zzimed");
+						e.target.classList.add("unzzimed");
+					}
+				}
+					
+			}
+		}
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		var data='';
+		data += 'userId='+userId.value;
+		data += '&accId='+accId.value;
+		if(e.target.classList.contains("unzzimed")){
+			data += '&status=0';
+		}
+		else{
+			data += '&status=1';
+		}
+		xhr.send(data);
+	});
+	
 });

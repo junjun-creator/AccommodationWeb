@@ -358,3 +358,27 @@
     opacity:0.5;
     cursor:pointer;
 }
+
+/***** 제안 아무것도 없을때 처리*******/
+.nothing{
+	display:flex;
+	flex-direction:column;
+}
+.nothing>h1{
+	font-size:30px;
+	margin-bottom:50px;
+}
+.nothing>button{
+	width: 100%;
+    color: white;
+    font-size: 16px;
+    background-color: #5f0081;
+    border: 1px solid #5f0081;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px 0;
+    opacity:0.5;
+}
+.nothing>button:hover{
+	opacity:1;
+}
