@@ -70,9 +70,9 @@
                     <section class="reservation-form-left">
                         <h1>예약자 정보</h1>
                         <div>예약자 이름</div>
-                        <input type="text" class="name-input" placeholder="체크인시 필요한 정보입니다." required autofocus autocomplete="off">
+                        <input type="text" class="name-input" value="${u.name }" disabled required autofocus autocomplete="off">
                         <div>휴대폰 번호</div>
-                        <input type="text" class="phone-input" placeholder="010-0000-0000" required autocomplete="off" pattern="^01[012678]-\d{3,4}-\d{4}$">
+                        <input type="text" class="phone-input" disabled value="${u.phone }" required autocomplete="off" pattern="^01[012678]-\d{3,4}-\d{4}$">
                         <div>결제수단 선택</div>
                         <select>
                             <option value="">신용 카드</option>
@@ -126,6 +126,8 @@
 	                        <input type="hidden" name="checkoutDate" value="${checkoutDate}">
 	                        <input type="hidden" name="accId" value="${param.accId}">
 	                        <input type="hidden" name="roomId" value="${param.roomId}">
+	                        <input type="hidden" name="price" value="${(empty param.price)?payInfo.price:param.price}">
+	                        <input type="hidden" name="headcount" value="${(empty param.headcount)?0:param.headcount}">
                             <input type="submit" class="submit-btn" value="결제하기">
                         </div>
                     </section>

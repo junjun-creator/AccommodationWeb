@@ -92,7 +92,7 @@
                             <span class="left">체크인</span><span class="right">${rd.checkinDate }</span>
                         </div>
                         <div class="checkout">
-                            <span class="left">체크인</span><span class="right">${rd.checkoutDate }</span>
+                            <span class="left">체크아웃</span><span class="right">${rd.checkoutDate }</span>
                         </div>
                         <div class="name">
                             <span class="left">예약자</span><span class="right">${rd.userName }</span>

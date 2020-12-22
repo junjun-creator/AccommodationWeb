@@ -52,6 +52,7 @@ window.addEventListener("load",function(){
 				var offer_id = currentOffer.querySelector("input").value;
 				var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
 				var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
+				var headcount = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.nextElementChild.value;
 				
 				for(var i=0;i<jsonResult.length-1;i++){
 					var resultHTML = '';
@@ -66,7 +67,8 @@ window.addEventListener("load",function(){
 									.replace("{roomId}",jsonResult[i].roomId)
 									.replace("{checkinDate}",checkinDate)
 									.replace("{checkoutDate}",checkoutDate)
-									.replace("{sendingPrice}",offerPrice);
+									.replace("{sendingPrice}",offerPrice)
+									.replace("{headcount}",headcount);
 									
 					offer_sec.insertAdjacentHTML('beforeend',resultHTML);
 					
@@ -100,6 +102,7 @@ window.addEventListener("load",function(){
 			var offerPrice = e.currentTarget.lastElementChild.value;
 			var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
 			var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
+			var headcount = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.nextElementChild.value;
 			var offer_id = e.currentTarget.querySelector("input").value;
 			
 			
@@ -128,8 +131,8 @@ window.addEventListener("load",function(){
 										.replace("{accId}",jsonResult[i].accId)
 										.replace("{roomId}",jsonResult[i].roomId)
 										.replace("{checkinDate}",checkinDate)
-										.replace("{checkoutDate}",checkoutDate);
-										
+										.replace("{checkoutDate}",checkoutDate)
+										.replace("{headcount}",headcount);
 										
 					}
 					offer_sec.innerHTML = resultHTML;
@@ -152,4 +155,16 @@ window.addEventListener("load",function(){
 		},true);
 	}
 	
+	
+	var reserve_btn = document.querySelector(".submit-btn");
+	reserve_btn.addEventListener("click",function(){
+		var checkinDate = reserve_btn.nextElementSibling;
+		var checkoutDate = checkinDate.nextElementSibling;
+		var price = checkoutDate.nextElementSibling;
+		var accId = price.nextElementSibling;
+		var roomId = accId.nextElementSibling;
+		var headcount = roomId.nextElementSibling;
+		
+		window.location.href = `/user/reservation/pay?accId=${accId.value}&roomId=${roomId.value}&price=${price.value}&checkinDate=${checkinDate.value}&checkoutDate=${checkoutDate.value}&headcount=${headcount.value}`;
+	});
 });

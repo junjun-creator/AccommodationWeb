@@ -1,6 +1,7 @@
 package com.teum.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.ReservationDao;
@@ -121,5 +122,10 @@ public class ReservationService implements ReservationServiceI {
 		return resert;
 	}
 
-	
+	public int insert(int accId, int roomId, Date checkinDate, Date checkoutDate, int userId, int price,
+			int headcount) {
+		int result = 0;
+		result = reservationDao.insert(accId, roomId,checkinDate , checkoutDate, userId,price,headcount);
+		return result;
+	}
 }

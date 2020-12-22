@@ -91,6 +91,7 @@
 			                                <input type="hidden" value="${offer.id }">
 			                                <input type="hidden" value="${offer.checkinDate }">
 			                                <input type="hidden" value="${offer.checkoutDate }">
+			                                <input type="hidden" value="${offer.headcount }">
 			                                <input type="hidden" value="${offer.price }">
 			                            </div>
 									</c:forEach>
@@ -220,6 +221,7 @@
 	                                        <input type="hidden" value="${offerList[0].price }">
 	                                        <input type="hidden" value="${roomList.accId }">
 	                                        <input type="hidden" value="${roomList.roomId }">
+	                                        <input type="hidden" value="${offerList[0].headcount }">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -322,6 +324,7 @@
 	                                        <input type="hidden" value="{sendingPrice}">
 	                                        <input type="hidden" value="{accId}">
 	                                        <input type="hidden" value="{roomId}">
+											<input type="hidden" value="{headcount}">
 	                                    </div>
 	                                </div>
 	                            </div>

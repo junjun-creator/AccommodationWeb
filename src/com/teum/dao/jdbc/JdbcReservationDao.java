@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -659,6 +660,40 @@ public class JdbcReservationDao implements ReservationDao {
 		}
 		
 		
+		return result;
+	}
+
+	@Override
+	public int insert(int accId, int roomId, Date checkinDate, Date checkoutDate, int userId, int price,
+			int headcount) {
+		int result = 0;
+		String url = DBContext.URL;
+		String sql = "INSERT INTO RESERVATION(ACC_ID,ROOM_ID,CHECKIN_DATE,CHECKOUT_DATE,USER_ID,PRICE,HEADCOUNT) VALUES(?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, accId);
+			pst.setInt(2, roomId);
+			pst.setDate(3, new java.sql.Date(checkinDate.getTime()));
+			pst.setDate(4, new java.sql.Date(checkoutDate.getTime()));
+			pst.setInt(5, userId);
+			pst.setInt(6, price);
+			pst.setInt(7, headcount);
+
+			result = pst.executeUpdate();
+
+			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		return result;
 	}
 			
