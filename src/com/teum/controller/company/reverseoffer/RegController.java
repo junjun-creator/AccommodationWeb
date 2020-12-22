@@ -203,6 +203,8 @@ public class RegController extends HttpServlet {
 		
 		reverseOfferService.insert(reverseOffer);
 		
+		//OFFER테이블에서 approvaldate date값 넣어주기 update
+		
 		response.sendRedirect("/index");
 	}
 }

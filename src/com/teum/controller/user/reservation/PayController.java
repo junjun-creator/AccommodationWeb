@@ -14,11 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.PayInfoView;
+import com.teum.entity.Users;
 import com.teum.service.AccService;
 import com.teum.service.OfferService;
+import com.teum.service.ReservationService;
 import com.teum.service.ReverseOfferService;
 import com.teum.service.RoomImageService;
 import com.teum.service.RoomService;
+import com.teum.service.UsersService;
 
 @WebServlet("/user/reservation/pay")
 public class PayController extends HttpServlet {
@@ -28,6 +31,8 @@ public class PayController extends HttpServlet {
 	private RoomService roomService;
 	private RoomImageService roomImageService;
 	private ReverseOfferService reverseOfferService;
+	private ReservationService reservationService;
+	private UsersService usersService;
 	
 	public PayController() {
 		accService = new AccService();
@@ -35,6 +40,8 @@ public class PayController extends HttpServlet {
 		roomService = new RoomService();
 		roomImageService = new RoomImageService();
 		reverseOfferService = new ReverseOfferService();
+		reservationService = new ReservationService();
+		usersService = new UsersService();
 	}
 	
 	@Override
@@ -53,6 +60,7 @@ public class PayController extends HttpServlet {
 			String checkinDate = request.getParameter("checkinDate");
 			String checkoutDate = request.getParameter("checkoutDate");
 			String offeredPrice = request.getParameter("price");
+			String headcount_ = request.getParameter("headcount");
 			
 			int accId = 0;
 			int roomId = 0;
@@ -62,15 +70,24 @@ public class PayController extends HttpServlet {
 			
 			if (roomId_ != null && !roomId_.equals(""))
 				roomId = Integer.parseInt(roomId_);
+			
+			int headcount=0;
+			if(headcount_ !=null && !headcount_.equals(""))
+				headcount = Integer.parseInt(headcount_);
 		
 			PayInfoView payInfo = roomService.getList(accId, roomId);
 			
 			if (offeredPrice != null && !offeredPrice.equals(""))
 				payInfo.setPrice(Integer.parseInt(offeredPrice));
+			
+			Users u = usersService.get((int)session.getAttribute("id"));
+			
 				
 			request.setAttribute("payInfo", payInfo);
 			request.setAttribute("checkinDate", checkinDate);
 			request.setAttribute("checkoutDate", checkoutDate);
+			request.setAttribute("headcount", headcount);
+			request.setAttribute("u", u);
 			
 			request.getRequestDispatcher("pay.jsp").forward(request, response);
 		}
@@ -83,6 +100,8 @@ public class PayController extends HttpServlet {
 		String checkoutDate_ = request.getParameter("checkoutDate");
 		String accId_ = request.getParameter("accId");
 		String roomId_ = request.getParameter("roomId");
+		
+		
 		
 		int accId = 0;
 		int roomId = 0;
@@ -103,6 +122,7 @@ public class PayController extends HttpServlet {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
+		Date checkinDateTemp = null;
 		Date checkinDate = null;
 		Date checkoutDate = null;
 		
@@ -111,20 +131,22 @@ public class PayController extends HttpServlet {
 			
 			try {
 				checkinDate = sdf.parse(checkinDate_);
+				checkinDateTemp = sdf.parse(checkinDate_);
 				checkoutDate = sdf.parse(checkoutDate_);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
+			
 			StringBuilder checkDatesCSV = new StringBuilder();
 			
-			while (checkinDate.compareTo(checkoutDate) <= 0) {
-				checkDatesCSV.append(sdf.format(checkinDate));
+			while (checkinDateTemp.compareTo(checkoutDate) <= 0) {
+				checkDatesCSV.append(sdf.format(checkinDateTemp));
 				checkDatesCSV.append(",");
 				Calendar c = Calendar.getInstance();
-				c.setTime(checkinDate);
+				c.setTime(checkinDateTemp);
 				c.add(Calendar.DAY_OF_MONTH, 1);
-				checkinDate = c.getTime();
+				checkinDateTemp = c.getTime();
 			}
 			checkDatesCSV.delete(checkDatesCSV.length() - 12, checkDatesCSV.length()); // 퇴실일 ~ 콤마까지 삭제
 			
@@ -132,9 +154,17 @@ public class PayController extends HttpServlet {
 			System.out.println("bookedDates : " + bookedDates);
 			
 			roomService.update(accId, roomId, bookedDates);
+			
+			HttpSession session = request.getSession();
+			int userId = (int)session.getAttribute("id");
+			int price = Integer.parseInt(request.getParameter("price"));
+			int headcount = Integer.parseInt(request.getParameter("headcount"));
+			//예약 추가 reservation 테이블 insert
+			reservationService.insert(accId,roomId,checkinDate,checkoutDate,userId,price,headcount);
+			
 		}
 		
 		// 확인창 띄우기
-		response.sendRedirect("/index");
+		response.sendRedirect("/user/reservation/reservationInfo");
 	}
 }

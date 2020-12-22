@@ -111,7 +111,7 @@ public class JdbcOfferDao implements OfferDao {
 		List<Offer> list = new ArrayList<>();
 
 		String url = DBContext.URL;
-		String sql = String.format("SELECT * FROM OFFER WHERE ACC_ID IN (%s)", accIdsCSV);
+		String sql = String.format("SELECT * FROM OFFER WHERE ACC_ID IN (%s) AND APPROVAL_DATE IS NULL", accIdsCSV);
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

@@ -133,7 +133,13 @@
                                     <td>${item.rownum }</td>
                                     <td>${item.accName }</td>
                                     <td class="acc-type">${item.accTypeId }</td>
-                                    <td>${item.headcount }인</td>
+                                    <c:if test="${item.headcount == 0 }">
+                                    	<td>정원</td>
+                                    </c:if>
+                                    <c:if test="${item.headcount != 0 }">
+                                    	<td>${item.headcount }인</td>
+                                    </c:if>
+                                    
                                     <td><fmt:formatNumber value="${item.price }" pattern="#,###" />원</td>
                                     <td>${item.checkinDate }</td>
                                     <td>${item.checkoutDate }</td>

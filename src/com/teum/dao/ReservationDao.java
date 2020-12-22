@@ -1,5 +1,6 @@
 package com.teum.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.entity.PrivateReservationListView;
@@ -38,4 +39,6 @@ public interface ReservationDao {
 	List<PrivateReservationListView> getPrivateList(int id, int startIndex, int endIndex);
 
 	int getPrivateCount(int userId);
+
+	int insert(int accId, int roomId, Date checkinDate, Date checkoutDate, int userId, int price, int headcount);
 }
