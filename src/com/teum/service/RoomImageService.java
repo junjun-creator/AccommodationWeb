@@ -15,5 +15,11 @@ public class RoomImageService {
 	public int insert(RoomImage roomImage) {
 		return roomImageDao.insert(roomImage); 
 	}
-
+//	public int delete(int id) {
+//		int result = 0;
+//		
+//		result = RoomImageDao.delete(id);
+//
+//		return result;
+//	}
 }

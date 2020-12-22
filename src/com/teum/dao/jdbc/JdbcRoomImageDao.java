@@ -39,4 +39,10 @@ public class JdbcRoomImageDao implements RoomImageDao {
 		return result;
 	}
 
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

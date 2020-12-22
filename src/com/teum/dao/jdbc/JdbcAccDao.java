@@ -332,7 +332,6 @@ public class JdbcAccDao implements AccDao{
 	@Override
 	public int delete(int id) {
 		int result=0;
-
 		String url = DBContext.URL;
 		String sql = "DELETE FROM ACC WHERE ID=?";
 

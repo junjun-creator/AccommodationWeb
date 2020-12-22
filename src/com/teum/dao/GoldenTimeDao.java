@@ -25,6 +25,9 @@ public interface GoldenTimeDao {
 	int updateStatus(int status, int chk);
 
 
+
+
+
 	
 
 }
