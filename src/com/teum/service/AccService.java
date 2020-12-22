@@ -19,7 +19,7 @@ public class AccService {
 	public AccService() {
 		accDao = new JdbcAccDao();
 	}
-	Date today = new Date();
+
 	
 	public int insert(Acc acc) {
 		int result = accDao.insert(acc);
@@ -95,7 +95,6 @@ public class AccService {
 		int result = 0;
 		Acc acc = accDao.applyGet(id);
 		acc.setRegStatus(1);
-		acc.setApprovalDate(today);
 		result = accDao.approval(id);
 		return result;
 	}
