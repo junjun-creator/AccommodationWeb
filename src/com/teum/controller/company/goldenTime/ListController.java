@@ -61,12 +61,13 @@ public class ListController extends HttpServlet {
 		switch (cmd) {
 		case "진행":
 		
-			service.openStatus(chk);
+			//service.openStatus(chk);
 		
 			break;
 		
 		case "대기":
-			service.closeStatus(chk);
+			
+			//service.closeStatus(chk);
 			
 			break;
 		case "수정":
