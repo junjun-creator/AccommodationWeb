@@ -270,14 +270,22 @@
                     opacity: 0.7;
                 }
 
-                .btn-cancel {
-                    width: 80px;
-                    height: 25px;
-                    margin: 0 5px 0 5px;
-                    border:1px solid #000000;
-                    border-radius: 4px;
-                    display:inline-block;
-                    text-decoration:none;
-                    background: #EFEFEF;
-                    font-size :15.5px;
+                .btn-box{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 10px;
+                    padding-bottom: 20px;
                 }
+                    .btn-cancel {
+                        width: 80px;
+                        height: 25px;
+                        margin: 0 5px 0 5px;
+                        border:1px solid #000000;
+                        border-radius: 4px;
+                        display:inline-block;
+                        text-decoration:none;
+                        background: #EFEFEF;
+                        font-size :15.5px;
+                        padding-left: 25px;
+                    }

@@ -60,8 +60,8 @@
 			<aside id="aside" class="aside">
 				<h1>업체관리</h1>
 				<ul>
-					<li><a href="list" class="active">승인된 업체 리스트</a></li>
-					<li class="active"><a href="regList">업체 등록 관리</a></li>
+					<li><a href="list">승인된 업체 리스트</a></li>
+					<li class="active"><a href="applyList">업체 등록 관리</a></li>
 				</ul>
 			</aside>
 			<div class="container">
@@ -100,17 +100,16 @@
                             </ul>
 						</div>
 						<h1>미승인 업체</h1><br>
-						
 						<section class='title'>
 							<div class="pic">
 								<div class="main-img">
-									<c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-                                       <c:if test="${st.first == true}">
-                                          <img src="${fileRoute}" alt="">
-                                       </c:if>
-                                    </c:forTokens><br>
-								</div>
-								<div class="cliper">
+				                    <c:forTokens var="fileRoute" items="${accImage.fileroute}" delims="," varStatus="st">
+			                        	<c:if test="${st.first == true}">
+				                        	<img src="${fileRoute}" alt=""><br>
+			                        	</c:if>
+			                       	</c:forTokens>
+		                    	</div>
+								<%-- <div class="cliper">
 									<ul>
 										<li class="current"><c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
                                        <c:if test="${st.first == true}">
@@ -138,11 +137,20 @@
                                        </c:if>
                                     </c:forTokens></li>
 									</ul>
-								</div>
+								</div> --%>
+								<div class="cliper">
+				                     <ul>
+				                         <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+				                         <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
+				                         <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+				                         <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성"></li> 
+				                         <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+				                     </ul>
+				                 </div>
 							</div>
 							<div class="main-info">
-								<h1>신라스테이 삼성</h1>
-								<h2>서울 강남구 삼성동 168-3</h2>
+								<h1>${acc.name}</h1>
+								<h2>${acc.location}</h2>
 								<div class="rule">
 									<p>취소 및 환불 규정</p>
 									<ul>
@@ -165,96 +173,44 @@
 								</div>
 							</div>
 						</section>
-						
-						<section class="room-sec">
-							<h1>객실 안내 및 예약</h1>
-							
-						<form class="room-form">
-                			<c:if test="${empty showRoomList}">
-	                			<c:forEach var="room" items="${roomList}" varStatus="st">
-	                 		   <section>
-	                    		    <div class="room-container">
-	                   		         <div class="room-img-container">
-	                   	             <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-                                       <c:if test="${st.first == true}">
-                                          <img src="${fileRoute}" alt="">
-                                       </c:if>
-                                    </c:forTokens>
-	                          		  </div>
-	                        		  <div class="room-detail-container">
-	                         	       <div class="room-room">
-	                                    <span>${room.name}</span>
-	                       		       </div>
-	                              	  <div class="room-bed-count">
-	                                    <div>침대개수</div>
-	                                    <div>${room.bedCount}</div>
-	                       			  </div>
-	                                  <div class="room-max-headcount">
-	                                    <div>최대 수용인원</div>
-	                                    <div>${room.maxHeadcount}</div>
-	                                  </div>
-	                                  <div class="room-price">
-	                                    <div>가격</div>
-	                                    <div>
-	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
-	                                    </div>
-	                                  </div>
-	                                  <div class="highlight-btn-container">
-	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
-	                                    	<input type="button" class="highlight-btn" value="예약하기">
-	                                    </a>
-	                                  </div>
-	                               </div>
-	                             </div>
-	                           </section>
-	                     	</c:forEach>
-                	      </c:if>
-                        <c:if test="${empty roomList}">
-	                	<c:forEach var="room" items="${showRoomList}" varStatus="st">
-	                    <section>
-	                        <div class="room-container">
-	                            <div class="room-img-container">
-	                                <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-                                       <c:if test="${st.first == true}">
-                                          <img src="${fileRoute}" alt="">
-                                       </c:if>
-                                    </c:forTokens>
-	                            </div>
-	                            <div class="room-detail-container">
-	                                <div class="room-room">
-	                                    <span>${room.name}</span>
-	                                </div>
-	                                <div class="room-bed-count">
-	                                    <div>침대개수</div>
-	                                    <div>${room.bedCount}</div>
-	                                </div>
-	                                <div class="room-max-headcount">
-	                                    <div>최대 수용인원</div>
-	                                    <div>${room.maxHeadcount}</div>
-	                                </div>
-	                                <div class="room-price">
-	                                    <div>가격</div>
-	                                    <div>
-	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
-	                                    </div>
-	                                </div>
-	                                <div class="highlight-btn-container">
-	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&userId=${userId}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
-	                                    	<input type="button" class="highlight-btn" value="예약하기">
-	                                    </a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </section>
-	                	</c:forEach>
-                	</c:if>
-			                </form>
+						<div class="room-form">
+						<c:forEach var="room" items="${roomList}" varStatus="st">
+		                <section>
+			                   <div class="room-container">
+				                    <div class="room-img-container">
+					                     <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+								              <c:if test="${st.first == true}">
+									           	<img src="${fileRoute}" alt=""><br>
+								              </c:if>
+							             </c:forTokens>
+				                    </div>
+				                    <div class="room-detail-container">
+				                    	<div class="room-room">
+				                    		<span>${room.name}</span>
+				                    	</div>
+				                    	<div class="room-bed-count">
+				                   			<div>침대개수</div>
+				                    		<div>${room.bedCount}</div>
+				                    	</div>
+					                    <div class="room-max-headcount">
+					                     	<div>최대 수용인원</div>
+					                     	<div>${room.maxHeadcount}</div>
+					                    </div>
+				                    	<div class="room-price">
+				                    		 <div>가격</div>
+			                         		 <div><fmt:formatNumber value="${room.price}" pattern="#,###" />원</div>
+			                       		</div>
+				                   </div>
+			                  </div>
+		                 </section>
 			              	  <form>
 								<div class="btn-box">
 									<a class="btn-cancel" href="edit?id=${n.id}">승인</a>
                     				<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
 								</div>
 							</form>
+	                </c:forEach>   
+	                </div>
 						</section>
 					</div>
 				</main>
