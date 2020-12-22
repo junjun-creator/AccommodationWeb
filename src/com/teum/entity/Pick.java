@@ -21,6 +21,9 @@ public class Pick {
 		this.userId = userId;
 		this.accId = accId;
 	}
+	public Pick(int accId) {
+		this.accId = accId;
+	}
 
 	public int getId() {
 		return id;

@@ -35,7 +35,7 @@ public class GoldenTimeService {
 			list =goldenTimeDao.getGoldenList(id,open);
 		return list;
 	}
-
+	
 	public int update(Acc acc) {
 		int result =0;
 		

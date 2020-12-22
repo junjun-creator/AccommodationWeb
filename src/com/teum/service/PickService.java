@@ -58,5 +58,13 @@ public class PickService implements PickServiceI{
 		
 		return result;
 	}
+
+	public int delete(int id) {
+int result = 0;
+		
+		result = pickDao.delete(id);
+		
+		return result;
+	}
 	
 }

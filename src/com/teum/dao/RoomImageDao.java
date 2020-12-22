@@ -6,4 +6,7 @@ public interface RoomImageDao {
 
 	int insert(RoomImage roomImage);
 
+//	int delete(int id);
+	
+
 }

@@ -17,4 +17,7 @@ public interface PickDao {
 	int insertZzim(int userId, int accId);
 
 	int deleteZzim(int userId, int accId);
+
+	int delete(int id);
+
 }
