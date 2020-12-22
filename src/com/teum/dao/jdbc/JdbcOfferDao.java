@@ -273,4 +273,29 @@ public class JdbcOfferDao implements OfferDao {
 		return list;
 	}
 
+	@Override
+	public int delete(int accId) {
+		int result = 0;
+
+		String url = DBContext.URL;
+		String sql = "DELETE FROM OFFER WHERE ACC_ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, accId);
+			result = pst.executeUpdate();
+			
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }

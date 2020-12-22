@@ -55,4 +55,12 @@ public class OfferService implements OfferServiceI{
 		return offerDao.getListByOfferIds(finalOfferIdsCSV);
 	}
 
+	public int delete(int accId) {
+		int result = 0;
+		
+		result = offerDao.delete(accId);
+		
+		return result;
+	}
+
 }

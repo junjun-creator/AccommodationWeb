@@ -35,6 +35,8 @@ public interface UsersServiceI {
 	//로그인 유효성검사
 	int valid(String email, String password);
 
+	int checkDuplicate(String email);
+
 	//예약관리 페이지(회원)
 //	List<Reservation> getList(int id, String type);
 //	List<Reservation> getList(String type, Date fromDate, Date toDate); // 기간별 내역 조회

@@ -17,23 +17,15 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header_search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    
                     <li><a href="">더보기</a></li>
                     <li class="mypage"><a href="">로그인</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                       
                     </li>
                 </ul>
             </div>
@@ -50,7 +42,7 @@
 
                     <form action="/reg" method="post">
                         <div class="reg-form-container">
-                            <div class="reg-form-item">
+                            <div class="reg-form-item" style="position:relative;">
                                 <label style="font-size: 12px;" for="email" title="이메일">
                                     <em style="color: red;">*</em>
                                     이메일
@@ -63,6 +55,7 @@
                                         <span class="caution-mention">올바른 이메일 형식을 입력해주세요</span>
                                     </div>
                                 </div>
+                                <button class="email-check">중복체크</button>
                             </div>
                             <div class="reg-form-item">
                                 <label style="font-size: 12px;" for="password" title="비밀번호">
@@ -142,14 +135,14 @@
                                 <div>
                                     <div class="member-type">
                                         <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-2" value="회원" class="checkbox" required>
+                                            <input name="member-type" type="radio" id="checkbox-2" value="회원" class="checkbox">
                                             <label for="checkbox-2"><span></span></label>
                                         </div>
                                         <div>
                                             개인회원
                                         </div>
                                         <div class="checkbox-container">
-                                            <input name="member-type" type="radio" id="checkbox-3" value="업체" class="checkbox" required>
+                                            <input name="member-type" type="radio" id="checkbox-3" value="업체" class="checkbox">
                                             <label for="checkbox-3"><span></span></label>
                                         </div>
                                         <div>
