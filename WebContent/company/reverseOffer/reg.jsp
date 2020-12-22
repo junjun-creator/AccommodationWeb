@@ -127,7 +127,7 @@
                 </div>
                 <div>
                     <c:if test="${empty offerList}">
-                    	아무런 정보가 없어요룡ㄹ욜욜
+                    	<h1>아무 정보가 없습니다.</h1>
                     </c:if>
                     <c:if test="${not empty offerList}">
 	                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
@@ -136,7 +136,7 @@
 	                        
 	                        
 	                        	<c:forEach var="offer" items="${offerList}" varStatus="status">
-	                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href=''">
+	                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}">
 	                                <h2>제안정보</h2>
 	                                <ul>
 	                                    <li>
@@ -158,6 +158,11 @@
 	                                        </div>
 	                                    </li>
 	                                </ul>
+	                                <input type="hidden" value="${offer.id}">
+	                                <input type="hidden" value="${offer.checkinDate}">
+	                                <input type="hidden" value="${offer.checkoutDate}">
+	                                <input type="hidden" value="${offer.headcount}">
+	                                <input type="hidden" value="${offer.price}">
 	                            </div>
 	                        	</c:forEach>
 	                        

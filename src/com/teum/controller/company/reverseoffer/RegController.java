@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
@@ -57,6 +58,8 @@ public class RegController extends HttpServlet {
 		else {
 			int companyId = (int) session.getAttribute("id");
 			
+			
+			
 			/* -- 개인이 제안한 위치에 매칭되는 모든 숙소 불러오기 -- */
 			List<Acc> accList = accService.getList(companyId);
 			StringBuilder accIdsCSV = new StringBuilder();
@@ -73,6 +76,9 @@ public class RegController extends HttpServlet {
 			
 			List<Offer> offerList = offerService.getList(accIdsCSV.toString());
 			
+			
+			
+			/*============================== Ajax ===============================*/
 			int page = 1;
 			int offerId = 0;
 			String page_ = request.getParameter("page");
@@ -84,6 +90,16 @@ public class RegController extends HttpServlet {
 			
 			if(page_ != null && !page_.equals(""))
 				page = Integer.parseInt(page_);
+			
+			if(offerId_ != null && !offerId_.equals(""))
+				offerId = Integer.parseInt(offerId_);
+			
+			List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
+			int offerCount = roomService.getOfferCount(offerId);
+			///////////////////////////////////////////////////////////////////////////
+			
+			
+			
 			
 			// 제안목록중 원하는 제안을 클릭한 경우 offerId에 클릭한 offer id를 대입
 			if(offerId_ != null && !offerId_.equals(""))
@@ -106,10 +122,14 @@ public class RegController extends HttpServlet {
 			
 			offeredAccIdsCSV.delete(offeredAccIdsCSV.length() - 1, offeredAccIdsCSV.length()); // 마지막 콤마 삭제
 			
+			
+			
 			/* -- offeredAccIdsCSV로 모든 방 리스트 불러오기(예약가능 여부는 밑에서 확인) -- */
 			List<RoomImageListView> roomList = roomService.getList(offeredAccIdsCSV.toString());
 			
 			List<RoomImageListView> showRoomList = new ArrayList<>();
+			
+			
 			
 			/* -- 예약이 가능한 방 리스트만 뽑기 -- */
 			for (OfferableRoomListView offer : offerViewList) {
@@ -136,7 +156,7 @@ public class RegController extends HttpServlet {
 //				등록된 예약일 2020-01-02,2020-01-03 
 //				이렇게 겹치면 해당 방은 제외
 				
-				int index = 1;
+//				int index = 1;
 				for (RoomImageListView room : roomList) {
 					// ex) 만약 개인이 2020-01-01 ~ 2020-01-03 날짜로 제안이 오는 경우에는 offeredDates는 아래와 같다.
 					// offeredDates = ["2020-01-01", "2020-01-02", "2020-01-03"];
@@ -145,11 +165,11 @@ public class RegController extends HttpServlet {
 					
 					boolean isBook = true;
 					
-					System.out.printf("%d번째 for문\n", index++);
-					System.out.println("offeredDates: " + Arrays.toString(offeredDates));
-					System.out.println("bookedDate: " + bookedDate);
-					System.out.println("showRoomList: " + showRoomList);
-					System.out.println();
+//					System.out.printf("%d번째 for문\n", index++);
+//					System.out.println("offeredDates: " + Arrays.toString(offeredDates));
+//					System.out.println("bookedDate: " + bookedDate);
+//					System.out.println("showRoomList: " + showRoomList);
+//					System.out.println();
 					
 					// 방에 예약이 비어있으므로 보여줄 수 있음
 					if (bookedDate == null || bookedDate.equals("")) {
@@ -171,13 +191,12 @@ public class RegController extends HttpServlet {
 					
 			}
 			
+			
+			
 			/* -- 데이터 넘기기 -- */
 			request.setAttribute("offerList", offerList);
 			request.setAttribute("showRoomList", showRoomList);
 			request.getRequestDispatcher("reg.jsp").forward(request, response);
-			
-			//System.out.printf("회원에게 역제안할 수 있는 방의 id들: %s\n\n", offerList.toString());
-			//System.out.printf("accId에 일치하는 모든 방의 id들: %s", roomList.toString());
 		}
 		
 	}
@@ -192,12 +211,9 @@ public class RegController extends HttpServlet {
 		if (roomId_ != null && !roomId_.equals(""))
 			roomId = Integer.parseInt(roomId_);
 		
-		System.out.printf("roomId: %d\n", roomId);
 		
 		int accId = roomService.getId(roomId);
-		System.out.printf("accId: %d\n", accId);
 		int offerId = offerService.getId(accId);
-		System.out.printf("offerId:%d\n", offerId);
 		
 		ReverseOffer reverseOffer = new ReverseOffer(offerId, roomId);
 		
@@ -207,5 +223,49 @@ public class RegController extends HttpServlet {
 		//REVERSE도
 		
 		response.sendRedirect("/index");
+		
+		
+		
+		
+		
+		
+		
+//		int page = 1;
+//		int offerId = 0;
+//		String page_ = request.getParameter("page");
+//		String offerId_ = request.getParameter("offerId");
+//		
+//		// 개인회원이 보낸 제안이 최소 1개라도 있는 경우엔 첫 번째 제안을 디폴트 값으로 설정
+//		if(!offerList.isEmpty())
+//			offerId = offerList.get(0).getId();
+//		
+//		if(page_ != null && !page_.equals(""))
+//			page = Integer.parseInt(page_);
+//		
+//		List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
+//		
+//		JSONArray jArray = new JSONArray();
+//		
+//		for(OfferInfoView o : oiv) {
+//			JSONObject obj = new JSONObject();
+//			obj.put("roomId", o.getRoomId());
+//			obj.put("accId", o.getAccId());
+//			obj.put("roomName", o.getRoomName());
+//			obj.put("maxHeadcount", o.getMaxHeadcount());
+//			obj.put("bedCount", o.getBedCount());
+//			obj.put("fileName", o.getFileName());
+//			obj.put("fileRoute", o.getFileRoute());
+//			obj.put("price", o.getPrice());
+//			obj.put("accName", o.getAccName());
+//			
+//			jArray.add(obj);
+//		}
+//		JSONObject obj = new JSONObject();
+//		int offerCount = roomService.getOfferCount(offerId);
+//		obj.put("offerCount", offerCount);
+//		jArray.add(obj);
+//		
+//		response.setContentType("application/x-json; charset=UTF-8");
+//		response.getWriter().print(jArray);
 	}
 }

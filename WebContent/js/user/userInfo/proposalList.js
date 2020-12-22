@@ -107,8 +107,8 @@ window.addEventListener("load",function(){
 			
 			
 			var xhr = new XMLHttpRequest();
-			xhr.open('post','./offerList');
-			xhr.onreadystatechange=function(){
+			xhr.open('post','./offerList'); // 1
+			xhr.onreadystatechange=function(){ // 2(settinㅎ만)
 				if(xhr.readyState === 4 && xhr.status === 200){
 					var result = xhr.response;
 					
@@ -147,11 +147,11 @@ window.addEventListener("load",function(){
 					
 				}
 			}
-			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //3
 			var data='';
 			data += 'page=1';
 			data += '&offerId='+offer_id;
-			xhr.send(data);
+			xhr.send(data); //4 0~5 UN
 		},true);
 	}
 	
