@@ -89,6 +89,8 @@
 			                                    </li>
 			                                </ul>
 			                                <input type="hidden" value="${offer.id }">
+			                                <input type="hidden" value="${offer.checkinDate }">
+			                                <input type="hidden" value="${offer.checkoutDate }">
 			                                <input type="hidden" value="${offer.price }">
 			                            </div>
 									</c:forEach>
@@ -188,8 +190,11 @@
 	                        <section>
 	                            <div class="offer-container">
 	                                <div class="offer-img-container">
-	                                    <!-- <a href=""><img src="http://lorempixel.com/370/220/"></a> -->
-	                                    <a href=""><img src="../..${roomList.fileRoute }" alt=""></a>
+									<c:forTokens var="fileRoute" items="${roomList.fileRoute}" delims="," varStatus="st">
+                                       <c:if test="${st.first == true}">
+                                          <a href=""><img src="${fileRoute}" alt=""></a>
+                                       </c:if>
+                                    </c:forTokens>
 	                                </div>
 	                                <div class="offer-detail-container">
 	                                    <div class="offer-room">
@@ -209,7 +214,12 @@
 	                                    	<div><fmt:formatNumber value="${offerList[0].price }" pattern="#,###" />원</div>
 	                                    </div>
 	                                    <div class="submit-btn-container">
-	                                        <input type="button" class="submit-btn" value="승인하기">
+	                                        <button class="submit-btn">예약하기</button>
+	                                        <input type="hidden" value="${offerList[0].checkinDate }">
+	                                        <input type="hidden" value="${offerList[0].checkoutDate }">
+	                                        <input type="hidden" value="${offerList[0].price }">
+	                                        <input type="hidden" value="${roomList.accId }">
+	                                        <input type="hidden" value="${roomList.roomId }">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -306,7 +316,12 @@
 											<div>{offerPrice}원</div>
 	                                    </div>
 	                                    <div class="submit-btn-container">
-	                                        <input type="button" class="submit-btn" value="승인하기">
+	                                        <button class="submit-btn">예약하기</button>
+	                                        <input type="hidden" value="{checkinDate}">
+	                                        <input type="hidden" value="{checkoutDate}">
+	                                        <input type="hidden" value="{sendingPrice}">
+	                                        <input type="hidden" value="{accId}">
+	                                        <input type="hidden" value="{roomId}">
 	                                    </div>
 	                                </div>
 	                            </div>

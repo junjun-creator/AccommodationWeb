@@ -64,7 +64,11 @@
                     
 	                    <c:forEach items="${list}" var="pick" varStatus="status">
 		                    <div class="snip1368">
-		                        <img src="../..${pick.accFileRoute }/${pick.accFileName}" alt="">
+		                    	<c:forTokens var="fileRoute" items="${pick.accFileRoute}" delims="," varStatus="st">
+                                       <c:if test="${st.first == true}">
+                                          <img src="${fileRoute}" alt="">
+                                       </c:if>
+                                </c:forTokens>
 		                        <h3>예약하기</h3>
 		                        <figcaption>
 		                            <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>
