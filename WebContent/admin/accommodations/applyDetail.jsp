@@ -60,8 +60,8 @@
 			<aside id="aside" class="aside">
 				<h1>업체관리</h1>
 				<ul>
-					<li><a href="list" class="active">등록된 업체 리스트</a></li>
-					<li><a href="regList">업체 등록 관리</a></li>
+					<li><a href="list" class="active">승인된 업체 리스트</a></li>
+					<li class="active"><a href="regList">업체 등록 관리</a></li>
 				</ul>
 			</aside>
 			<div class="container">
@@ -251,8 +251,8 @@
 			                </form>
 			              	  <form>
 								<div class="btn-box">
-									<input type="button"  name="cmd" value="삭제" class="btn delete-btn">
-									<input type="button"  name="cmd" value="승인" class="btn approval-btn">
+									<a class="btn-cancel" href="edit?id=${n.id}">승인</a>
+                    				<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
 								</div>
 							</form>
 						</section>

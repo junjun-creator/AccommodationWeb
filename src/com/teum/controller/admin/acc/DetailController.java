@@ -53,8 +53,6 @@ public class DetailController extends HttpServlet{
 			accId = Integer.parseInt(accId_);
 		/* -- acc id에 일치하는 모든 acc 정보 갖고 오기 -- */
 		Acc acc = accService.get(accId);
-
-		System.out.println(accId);
 		
 		/* -- acc id에 일치하는 accImage 정보들(fileName) 가져오기 -- */
 		AccImage accImage = accImageService.get(accId);
@@ -67,7 +65,7 @@ public class DetailController extends HttpServlet{
 		request.setAttribute("acc", acc);
 		request.setAttribute("accImage", accImage);
 		request.setAttribute("roomList", roomList);
-		   request.getRequestDispatcher("detail.jsp").forward(request,response);
+		request.getRequestDispatcher("detail.jsp").forward(request,response);
 	}
 
 	@Override
