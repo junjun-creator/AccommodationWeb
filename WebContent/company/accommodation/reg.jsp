@@ -126,32 +126,23 @@
                         <option value="리조트">리조트</option>
                         <option value="펜션">펜션</option>
                      </select>
-                     
                   </div>
                   <div class="insert-box">
-                     <em style="color: red;">*</em>숙소사진1 추가  
-                     <input type="file" accept="image acc_image" name="acc-file" required>
-                  </div>
-                  <div class="insert-box">
-                     <em style="color: red;">*</em>숙소사진2 추가  
+                     <em style="color: red;">*</em>메인 사진  
                      <input type="file" accept="image acc_image" name="acc-file" required>
                   </div>
                   <div class="img-box">
                   </div>
-                  <div class="insert-button">
+                  <!-- <div class="insert-button">
                      <input type="button" class="button add-button" value="방 추가">
                      <input type="button" class="button del-button" value="방 삭제">
-                  </div>
+                  </div> -->
                      
                   <div class="box">
                      <section class="add-room">
                         <div>
-                           <em style="color: red;">*</em>방 이름<br>
+                           <em style="color: red;">*</em>룸 이름<br>
                            <input type="text"  class="text-box room-name" name="room-name"  placeholder="스위트룸" required>
-                        </div>
-                        <div>
-                           <em style="color: red;">*</em>방 갯수<br>
-                           <input type="text" class="text-box room-count" name="room-count" placeholder="5" required>
                         </div>
                         <div>
                            <em style="color: red;">*</em>최대 인원 수<br>
@@ -166,11 +157,11 @@
                            <input type="text" class="text-box price" name="price" placeholder="100000 (돈의 단위는 적지 마세요.)" required>
                         </div>
                         <div>
-                           <em style="color: red;">*</em>방사진1 추가<br>
+                           <em style="color: red;">*</em>룸 이미지1<br>
                            <input type="file" accept="image text-box" class="text-box" name="room-file" required>
                         </div>
                         <div>
-                           <em style="color: red;">*</em>방사진2 추가<br>
+                           <em style="color: red;">*</em>룸 이미지2<br>
                            <input type="file" accept="image text-box" class="text-box" name="room-file" required>
                         </div>
                      </section>  

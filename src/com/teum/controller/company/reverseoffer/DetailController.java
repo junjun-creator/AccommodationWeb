@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teum.dao.entity.ReverseListView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Offer;
 import com.teum.entity.ReverseOffer;
-import com.teum.entity.Room;
 import com.teum.service.AccService;
 import com.teum.service.OfferService;
 import com.teum.service.ReverseOfferService;
@@ -49,8 +50,6 @@ public class DetailController extends HttpServlet {
 			response.sendRedirect("/index");
 		else {
 			int companyId = (int) session.getAttribute("id");
-			
-			
 			
 			/*----companyId로 등록된 모든 숙소 ID 뽑기----*/
 			List<Integer> accIds = accService.getIds(companyId,0);
@@ -103,7 +102,7 @@ public class DetailController extends HttpServlet {
 			
 			
 			
-			/*----뽑은 rever offer에 들어있는 offer id로 해당하는 offer만 다시 뽑기----*/
+			/*----뽑은 reverse offer에 들어있는 offer id로 해당하는 offer만 다시 뽑기----*/
 			List<Offer> offerList = offerService.getListByOfferIds(finalOfferIdsCSV);
 			
 //			System.out.println("offerList: " + offerList);
@@ -112,10 +111,11 @@ public class DetailController extends HttpServlet {
 			
 			
 			/* 개인회원에게 보낸 룸 정보 뽑기 */
-			List<Room> roomList = new ArrayList<>();
+			List<ReverseListView> roomList = new ArrayList<>();
 			
 			for (ReverseOffer reverseOffer : reverseOfferList) {
-				roomList.add(roomService.get(reverseOffer.getRoomId()));				
+				int roomId = reverseOffer.getRoomId();
+				roomList.add(roomService.get(roomId));
 			}
 			
 			request.setAttribute("offerList", offerList);

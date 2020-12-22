@@ -14,6 +14,7 @@ public class Offer {
 	private Date regdate;
 	private int headcount;
 	private Date rejectDate;
+	private Date approvalDate;
 	
 	public Offer() {
 		
@@ -126,12 +127,21 @@ public class Offer {
 		this.rejectDate = rejectDate;
 	}
 
+	public Date getApprovalDate() {
+		return approvalDate;
+	}
+
+	public void setApprovalDate(Date approvalDate) {
+		this.approvalDate = approvalDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Offer [id=" + id + ", accId=" + accId + ", userId=" + userId + ", price=" + price + ", location="
 				+ location + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", regdate=" + regdate
-				+ ", headcount=" + headcount + ", rejectDate=" + rejectDate + "]";
+				+ ", headcount=" + headcount + ", rejectDate=" + rejectDate + ", approvalDate=" + approvalDate + "]";
 	}
 
+	
 	
 }

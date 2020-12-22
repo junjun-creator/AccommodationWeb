@@ -18,6 +18,7 @@ public interface OfferDao {
 
 	List<Offer> getListByOfferIds(String finalOfferIdsCSV);
 
+	int update(int offerId);
 	int delete(int accId);
 
 }

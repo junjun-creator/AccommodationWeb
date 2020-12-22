@@ -80,6 +80,7 @@ public class JdbcOfferDao implements OfferDao {
 				Date checkOut = rs.getDate("checkout_date");
 				Date regdate = rs.getDate("regdate");
 				int headcount = rs.getInt("headcount");
+				Date approvalDate = rs.getDate("approval_date");
 				
 				Offer o = new Offer();
 				o.setId(offerId);
@@ -91,6 +92,8 @@ public class JdbcOfferDao implements OfferDao {
 				o.setCheckoutDate(checkOut);
 				o.setRegdate(regdate);
 				o.setHeadcount(headcount);
+				o.setAccId(accId);
+				o.setApprovalDate(approvalDate);
 				
 				list.add(o);
 			}
@@ -130,6 +133,7 @@ public class JdbcOfferDao implements OfferDao {
 				Date checkOut = rs.getDate("checkout_date");
 				Date regdate = rs.getDate("regdate");
 				int headcount = rs.getInt("headcount");
+				Date approvalDate = rs.getDate("approval_date");
 				
 				Offer o = new Offer();
 				o.setId(offerId);
@@ -141,6 +145,7 @@ public class JdbcOfferDao implements OfferDao {
 				o.setCheckoutDate(checkOut);
 				o.setRegdate(regdate);
 				o.setHeadcount(headcount);
+				o.setApprovalDate(approvalDate);
 				
 				list.add(o);
 			}
@@ -246,6 +251,7 @@ public class JdbcOfferDao implements OfferDao {
 				Date checkOut = rs.getDate("checkout_date");
 				Date regdate = rs.getDate("regdate");
 				int headcount = rs.getInt("headcount");
+				Date approvalDate = rs.getDate("approval_date");
 				
 				Offer o = new Offer();
 				o.setId(id);
@@ -257,6 +263,7 @@ public class JdbcOfferDao implements OfferDao {
 				o.setCheckoutDate(checkOut);
 				o.setRegdate(regdate);
 				o.setHeadcount(headcount);
+				o.setApprovalDate(approvalDate);
 				
 				list.add(o);
 			}
@@ -297,5 +304,36 @@ public class JdbcOfferDao implements OfferDao {
 		}
 		return result;
 	}
+  
+  @Override
+   public int update(int offerId) {
+      int result = 0;
+
+      String url = DBContext.URL;
+      String sql = "UPDATE OFFER SET APPROVAL_DATE=? WHERE ID=?";
+
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+         PreparedStatement pst = con.prepareStatement(sql);
+         
+         Date today = new Date();
+         pst.setDate(1, new java.sql.Date(today.getTime()));
+         pst.setInt(2, offerId);
+
+         result = pst.executeUpdate();
+
+         // 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+         pst.close();
+         con.close();
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+      }
+
+      return result;
+   }
 
 }
