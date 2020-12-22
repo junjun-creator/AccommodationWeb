@@ -40,11 +40,11 @@
                         </c:if>
                     </li>
                     <li>
-                       <c:if test="${type == 0 }">
-                          <a href="">예약내역</a>
+                       	<c:if test="${type == 0 }">
+                          <a href="/user/reservation/reservationInfo">예약내역</a>
                         </c:if>
                         <c:if test="${type == 1 }">
-                          <a href="">예약현황</a>
+                          <a href="/company/reservation/reservationInfo">예약현황</a>
                         </c:if>
                     </li>
                     <li class="sub-page">
@@ -55,7 +55,8 @@
                                 <li><a href="/event/list">이벤트</a></li>
                                 <c:if test="${type == 0 }">
                                    <li><a href="/user/qna">1:1 문의</a></li>
-                              </c:if>
+                              	</c:if>
+
                                 
                             </ul>
                         </div>

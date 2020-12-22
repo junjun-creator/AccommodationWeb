@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.ReviewView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
-import com.teum.entity.Room;
 import com.teum.service.AccImageService;
 import com.teum.service.AccService;
 import com.teum.service.ReservationService;
@@ -71,15 +71,16 @@ public class DetailController extends HttpServlet {
 
 		
 		/* -- acc id에 일치하는 accImage 정보들(fileName) 가져오기 -- */
-		List<AccImage> accImageList = accImageService.getList(accId);
+		AccImage accImage = accImageService.get(accId);
+		System.out.println(accImage.getFileroute());
 		
 		/* -- acc id에 일치하는 모든 룸 정보 갖고오고 거기에 딸려오는 룸 사진도 갖고오기 -- */
-		List<Room> roomList = roomService.getList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
+		List<RoomImageListView> roomList = roomService.getViewList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
 
 		
 		
 		/* -- 개인이 검색한 예약날짜중 예약이 가능한 방만 뽑아내기 -- */
-		List<Room> showRoomList = new ArrayList<>(); // 개인이 검색한 날짜에 예약이 가능한 방만 넣은 리스트
+		List<RoomImageListView> showRoomList = new ArrayList<>(); // 개인이 검색한 날짜에 예약이 가능한 방만 넣은 리스트
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -113,7 +114,7 @@ public class DetailController extends HttpServlet {
 //				System.out.printf("개인이 희망한 체크인날짜: %s\n", checkDatesCSV);
 //				System.out.println("roomList: " + roomList.toString());
 			
-			for (Room room : roomList) {
+			for (RoomImageListView room : roomList) {
 				
 				// ex) 만약 개인이 2020-01-01 ~ 2020-01-04 날짜로 검색을 하는 경우에 checkDates는 아래와 같다.
 				// checkDates = ["2020-01-01", "2020-01-02", "2020-01-03"];
@@ -163,7 +164,7 @@ public class DetailController extends HttpServlet {
 			request.setAttribute("avg", avg);
 			request.setAttribute("review", review);
 			request.setAttribute("acc", acc);
-			request.setAttribute("accImageList", accImageList);
+			request.setAttribute("accImage", accImage);
 			request.getRequestDispatcher("detail.jsp").forward(request, response);
 
 		}

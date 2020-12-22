@@ -19,8 +19,8 @@ public class AccImageService {
 		return accImageDao.insert(accImage);
 	}
 
-	public List<AccImage> getList(int accId) {
-		return accImageDao.getList(accId);
+	public AccImage get(int accId) {
+		return accImageDao.get(accId);
 	}
 
 }

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.OfferableRoomListView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
 import com.teum.entity.Offer;
 import com.teum.entity.ReverseOffer;
@@ -64,6 +65,10 @@ public class RegController extends HttpServlet {
 				accIdsCSV.append(toString().valueOf(acc.getId()));
 				accIdsCSV.append(",");
 			}
+			
+			if (accIdsCSV.toString().equals("") || accIdsCSV.toString() == null)
+				accIdsCSV.append("0,");
+				
 			accIdsCSV.delete(accIdsCSV.length() - 1, accIdsCSV.length()); // 마지막 콤마 삭제
 			
 			List<Offer> offerList = offerService.getList(accIdsCSV.toString());
@@ -83,22 +88,28 @@ public class RegController extends HttpServlet {
 			// 제안목록중 원하는 제안을 클릭한 경우 offerId에 클릭한 offer id를 대입
 			if(offerId_ != null && !offerId_.equals(""))
 				offerId = Integer.parseInt(offerId_);
-			
+			System.out.println("offerId: " + offerId);
 			List<OfferableRoomListView> offerViewList = roomService.getOfferableRoomList(offerId);
 			
 			
 			/* -- 개인이 제안한 위치에 매칭되는 모든 숙소의 id값을 CSV형식으로 뽑기 -- */
 			StringBuilder offeredAccIdsCSV = new StringBuilder();
+			System.out.println("offerViewList: " + offerViewList.toString());
+			System.out.println("offeredAccIdsCSV: " + offeredAccIdsCSV);
 			for (OfferableRoomListView offer : offerViewList) {
 				offeredAccIdsCSV.append(toString().valueOf(offer.getAccId()));
 				offeredAccIdsCSV.append(",");
 			}
+			
+			if (offeredAccIdsCSV.toString().equals("") || offeredAccIdsCSV.toString() == null)
+				offeredAccIdsCSV.append("0,");
+			
 			offeredAccIdsCSV.delete(offeredAccIdsCSV.length() - 1, offeredAccIdsCSV.length()); // 마지막 콤마 삭제
 			
 			/* -- offeredAccIdsCSV로 모든 방 리스트 불러오기(예약가능 여부는 밑에서 확인) -- */
-			List<Room> roomList = roomService.getList(offeredAccIdsCSV.toString());
+			List<RoomImageListView> roomList = roomService.getList(offeredAccIdsCSV.toString());
 			
-			List<Room> showRoomList = new ArrayList<>();
+			List<RoomImageListView> showRoomList = new ArrayList<>();
 			
 			/* -- 예약이 가능한 방 리스트만 뽑기 -- */
 			for (OfferableRoomListView offer : offerViewList) {
@@ -126,7 +137,7 @@ public class RegController extends HttpServlet {
 //				이렇게 겹치면 해당 방은 제외
 				
 				int index = 1;
-				for (Room room : roomList) {
+				for (RoomImageListView room : roomList) {
 					// ex) 만약 개인이 2020-01-01 ~ 2020-01-03 날짜로 제안이 오는 경우에는 offeredDates는 아래와 같다.
 					// offeredDates = ["2020-01-01", "2020-01-02", "2020-01-03"];
 					String[] offeredDates = offerdDatesCSV.toString().split(",");

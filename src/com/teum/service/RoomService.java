@@ -6,6 +6,7 @@ import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.dao.jdbc.JdbcRoomDao;
 import com.teum.entity.Room;
 
@@ -28,7 +29,7 @@ public class RoomService implements RoomServiceI {
 	}
 
 	@Override
-	public List<Room> getList(String accIdsCSV) {
+	public List<RoomImageListView> getList(String accIdsCSV) {
 		return roomDao.getList(accIdsCSV);
 	}
 
@@ -63,15 +64,15 @@ public class RoomService implements RoomServiceI {
 		return roomDao.get(roomId);
 	}
 
-	public List<Room> getList(int accId) {
-		return roomDao.getList(accId);
-	}
-
 	public PayInfoView getList(int accId, int roomId) {
 		return roomDao.getList(accId, roomId);
 	}
 
 	public int update(int accId, int roomId, String bookedDates) {
 		return roomDao.update(accId, roomId, bookedDates);
+	}
+
+	public List<RoomImageListView> getViewList(int accId) {
+		return roomDao.getViewList(accId);
 	}
 }
