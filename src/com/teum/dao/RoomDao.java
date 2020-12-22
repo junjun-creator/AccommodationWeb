@@ -33,4 +33,8 @@ public interface RoomDao {
 
 	List<RoomImageListView> getViewList(int accId);
 
+	Room getRoom(int roomId);
+
+	int update(int roomId, String newBookedDatesString);
+
 }

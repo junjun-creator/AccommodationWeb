@@ -128,4 +128,12 @@ public class ReservationService implements ReservationServiceI {
 		result = reservationDao.insert(accId, roomId,checkinDate , checkoutDate, userId,price,headcount);
 		return result;
 	}
+
+	public int update(int id) {
+		return reservationDao.update(id);
+	}
+
+	public Reservation get(int id) {
+		return reservationDao.get(id);
+	}
 }

@@ -76,4 +76,12 @@ public class RoomService implements RoomServiceI {
 	public List<RoomImageListView> getViewList(int accId) {
 		return roomDao.getViewList(accId);
 	}
+
+	public Room getRoom(int roomId) {
+		return roomDao.getRoom(roomId);
+	}
+
+	public int update(int roomId, String newBookedDatesString) {
+		return roomDao.update(roomId, newBookedDatesString);
+	}
 }

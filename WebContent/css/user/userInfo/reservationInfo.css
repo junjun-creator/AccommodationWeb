@@ -92,7 +92,7 @@
             }
             .reservation-list-sec>ul>li:hover{
             	
-                background: rgb(203, 185, 221);
+                --background: rgb(203, 185, 221);
                 cursor: pointer;
             }
                 .reservation-list-sec>ul>li>img{

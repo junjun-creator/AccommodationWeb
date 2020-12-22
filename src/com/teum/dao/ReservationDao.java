@@ -41,4 +41,8 @@ public interface ReservationDao {
 	int getPrivateCount(int userId);
 
 	int insert(int accId, int roomId, Date checkinDate, Date checkoutDate, int userId, int price, int headcount);
+
+	int update(int id);
+
+	Reservation get(int id);
 }

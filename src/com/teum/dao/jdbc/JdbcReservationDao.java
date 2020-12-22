@@ -696,6 +696,86 @@ public class JdbcReservationDao implements ReservationDao {
 
 		return result;
 	}
+
+	@Override
+	public int update(int id) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String sql = "UPDATE RESERVATION SET CANCEL_STATUS = 1 WHERE ID= ?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst =con.prepareStatement(sql);
+			pst.setInt(1, id);
 			
+			result = pst.executeUpdate();
+			
+			pst.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Reservation get(int id) {
+		Reservation rv = null ;
+		
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM  RESERVATION WHERE ID=" + id;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				Date regdate = rs.getDate("regdate");
+				int reviewScore = rs.getInt("review_score");
+				int userId = rs.getInt("user_id");
+				Date reviewRegdate = rs.getDate("review_regdate");
+				int accId =rs.getInt("acc_Id");
+				int cancelStatus = rs.getInt("cancel_status");
+				int roomId = rs.getInt("room_id");
+				String reviewContent = rs.getString("review_content");
+				Date checkinDate = rs.getDate("checkin_date");
+				Date checkoutDate = rs.getDate("checkout_date");
+				int price = rs.getInt("price");
+				int headcount = rs.getInt("headcount");
+			    
+				rv = new Reservation(
+			    		 id,
+			    		 userId, 
+			    		 regdate, 
+			    		 cancelStatus, 
+			    		 reviewRegdate, 
+			    		 reviewScore, 
+			    		 accId, 
+			    		 roomId, 
+			    		 reviewContent, 
+			    		 checkinDate,
+			    		 checkoutDate,
+			    		 price, 
+			    		 headcount
+			    		 );
+				}
+
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return rv;
+	}
 		
 }
