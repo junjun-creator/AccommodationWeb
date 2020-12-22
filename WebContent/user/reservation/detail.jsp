@@ -106,7 +106,7 @@
                         </div>
                         <div class="empty-line"></div>
                         
-                        <button style="width:70px; transform:translateX(300px); margin:10px;">예약취소</button>
+                        <button onclick="location.href='cancel?id=${param.reservationId}'" style="width:70px; transform:translateX(300px); margin:10px;">예약취소</button>
                     </section>
                 </section>
             </main>

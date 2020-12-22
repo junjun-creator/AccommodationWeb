@@ -501,4 +501,75 @@ public class JdbcRoomDao implements RoomDao {
 		return result;
 	}
 
+	@Override
+	public Room getRoom(int roomId) {
+		Room room = null;
+
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM ROOM WHERE ID = ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, roomId);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int price = rs.getInt("PRICE");
+				int accId = rs.getInt("ACC_ID");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+
+				room = new Room(
+						id, name, price,
+						accId, maxHeadcount, bedCount, 
+						bookedDate);
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return room;
+	}
+
+	@Override
+	public int update(int roomId, String newBookedDatesString) {
+		int result = 0;
+		
+		String url = DBContext.URL;
+		String sql = "UPDATE ROOM SET BOOKED_DATE=? WHERE ID=?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setString(1, newBookedDatesString);
+			pst.setInt(2, roomId);
+
+			result = pst.executeUpdate();
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }
