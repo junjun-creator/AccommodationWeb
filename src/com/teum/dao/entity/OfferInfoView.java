@@ -1,5 +1,7 @@
 package com.teum.dao.entity;
 
+import java.util.Date;
+
 public class OfferInfoView {
 	private int roomId;
 	private String roomName;
@@ -118,6 +120,5 @@ public class OfferInfoView {
 				+ ", fileRoute=" + fileRoute + ", offerId=" + offerId + ", accName=" + accName + "]";
 	}
 
-	
 	
 }

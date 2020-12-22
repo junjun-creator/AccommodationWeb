@@ -61,6 +61,8 @@ public class OfferListController extends HttpServlet {
 			List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
 			int offerCount = roomService.getOfferCount(offerId);
 			
+			
+			
 			request.setAttribute("oiv", oiv);
 			request.setAttribute("offerList", offerList);
 			request.setAttribute("page", page);
@@ -106,6 +108,7 @@ public class OfferListController extends HttpServlet {
 		for(OfferInfoView o : oiv) {
 			JSONObject obj = new JSONObject();
 			obj.put("roomId", o.getRoomId());
+			obj.put("accId", o.getAccId());
 			obj.put("roomName", o.getRoomName());
 			obj.put("maxHeadcount", o.getMaxHeadcount());
 			obj.put("bedCount", o.getBedCount());

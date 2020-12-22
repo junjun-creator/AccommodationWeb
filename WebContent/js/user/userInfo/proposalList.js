@@ -49,6 +49,9 @@ window.addEventListener("load",function(){
 				var offer_sec = document.querySelector(".offer-sec");
 				var currentOffer = document.querySelector(".picked");
 				var offerPrice = currentOffer.lastElementChild.value;
+				var offer_id = currentOffer.querySelector("input").value;
+				var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
+				var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
 				
 				for(var i=0;i<jsonResult.length-1;i++){
 					var resultHTML = '';
@@ -58,7 +61,12 @@ window.addEventListener("load",function(){
 									.replace("{bedCount}",jsonResult[i].bedCount)
 									.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
 									.replace("{price}",numberWithCommas(jsonResult[i].price))
-									.replace("{offerPrice}",numberWithCommas(offerPrice));
+									.replace("{offerPrice}",numberWithCommas(offerPrice))
+									.replace("{accId}",jsonResult[i].accId)
+									.replace("{roomId}",jsonResult[i].roomId)
+									.replace("{checkinDate}",checkinDate)
+									.replace("{checkoutDate}",checkoutDate)
+									.replace("{sendingPrice}",offerPrice);
 									
 					offer_sec.insertAdjacentHTML('beforeend',resultHTML);
 					
@@ -90,6 +98,8 @@ window.addEventListener("load",function(){
 			beforeTarget.classList.remove("picked");
 			e.currentTarget.classList.add("picked");
 			var offerPrice = e.currentTarget.lastElementChild.value;
+			var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
+			var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
 			var offer_id = e.currentTarget.querySelector("input").value;
 			
 			
@@ -113,7 +123,13 @@ window.addEventListener("load",function(){
 										.replace("{bedCount}",jsonResult[i].bedCount)
 										.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
 										.replace("{price}",numberWithCommas(jsonResult[i].price))
-										.replace("{offerPrice}",numberWithCommas(offerPrice));
+										.replace("{offerPrice}",numberWithCommas(offerPrice))
+										.replace("{sendingPrice}",offerPrice)
+										.replace("{accId}",jsonResult[i].accId)
+										.replace("{roomId}",jsonResult[i].roomId)
+										.replace("{checkinDate}",checkinDate)
+										.replace("{checkoutDate}",checkoutDate);
+										
 										
 					}
 					offer_sec.innerHTML = resultHTML;

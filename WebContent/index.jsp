@@ -56,6 +56,7 @@
                                 <c:if test="${type == 0 }">
                                    <li><a href="/user/qna">1:1 문의</a></li>
                               	</c:if>
+
                                 
                             </ul>
                         </div>
@@ -118,7 +119,11 @@
                   		<c:forEach var="g" items="${goldenList}" varStatus="status">
                             <div class="promotion-item">
                                 <div class="parent">
-                                    <img src="${g.fileroute}" alt="">
+                                   <c:forTokens var="fileRoute" items="${g.fileroute}" delims="," varStatus="st">
+	                        	<c:if test="${st.first == true}">
+		                        	<img src="${fileRoute}" alt="">
+	                        	</c:if>
+	                        </c:forTokens>
         
                                     <div class="child"><span>${g.timeRemain}</span></div>
                                 </div>
