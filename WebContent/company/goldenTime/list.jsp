@@ -88,7 +88,11 @@
 	                    </div>
 	                    <c:forEach var="g"  items="${list}">
 		                    <div class="snip1368">
-		                        <img src="../..${g.fileroute}" alt="">
+		                        <c:forTokens var="fileRoute" items="${g.fileroute}" delims="," varStatus="st">
+	                        	<c:if test="${st.first == true}">
+		                        	<img src="${fileRoute}" alt="">
+	                        	</c:if>
+	                        </c:forTokens>
 		                        <input type="radio" class="radio" name="check" value="${g.id}" >
 		                         <c:set var="status" value=""/>
 		                         <c:if test="${g.goldentimeStatus==1}">
@@ -106,7 +110,9 @@
 		                          </figcaption>
 		                        <div class="description-item">
 		                            <p>${g.name}</p>
-		                            <P>${g.gtStartDate} ~ ${g.gtEndDate}</P>
+		                            <div style="display:flex; color:orange; font-size:25px; font-weight:bold; margin-top:5px;">
+		                            <P>${g.gtStartDate}121112</P><p>~ ${g.gtEndDate}121121</p>
+		                            </div>
 		                            <p>${g.location }</p>
 		                        </div>
 		                        <div class="item-price">

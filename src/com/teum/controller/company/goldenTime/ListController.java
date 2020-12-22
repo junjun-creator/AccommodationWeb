@@ -1,6 +1,7 @@
 package com.teum.controller.company.goldenTime;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,7 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		GoldenTimeService service = new GoldenTimeService();
 		
 		String cmd = request.getParameter("cmd");
@@ -58,9 +60,9 @@ public class ListController extends HttpServlet {
 		
 		switch (cmd) {
 		case "진행":
+		
 			service.openStatus(chk);
-			
-			
+		
 			break;
 		
 		case "대기":
