@@ -297,41 +297,41 @@
     <script type="more-template" id="more-template">
 			<div class="offer-form">
 				<h1>{accName}</h1>
-	                        <section>
-	                            <div class="offer-container">
-	                                <div class="offer-img-container">
-	                                    <a href=""><img src="../..{fileRoute}" alt=""></a>
-	                                </div>
-	                                <div class="offer-detail-container">
-	                                    <div class="offer-room">
-	                                        <span>{roomName}</span>
-	                                    </div>
-	                                    <div class="offer-bed-count">
-	                                        <div>침대개수</div>
-	                                        <div>{bedCount}</div>
-	                                    </div>
-	                                    <div class="offer-max-headcount">
-	                                        <div>최대 수용인원</div>
-	                                        <div>{maxHeadcount}</div>
-	                                    </div>
-	                                    <div class="offer-price">
-	                                        <div>가격</div>
-	                                        <div>{price}원</div>
-											<div>{offerPrice}원</div>
-	                                    </div>
-	                                    <div class="submit-btn-container">
-	                                        <button class="submit-btn">예약하기</button>
-	                                        <input type="hidden" value="{checkinDate}">
-	                                        <input type="hidden" value="{checkoutDate}">
-	                                        <input type="hidden" value="{sendingPrice}">
-	                                        <input type="hidden" value="{accId}">
-	                                        <input type="hidden" value="{roomId}">
-											<input type="hidden" value="{headcount}">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </section>
-					</div>
+                    <section>
+                        <div class="offer-container">
+                            <div class="offer-img-container">
+                                <a href=""><img src="../..{fileRoute}" alt=""></a>
+                            </div>
+                            <div class="offer-detail-container">
+                                <div class="offer-room">
+                                    <span>{roomName}</span>
+                                </div>
+                                <div class="offer-bed-count">
+                                    <div>침대개수</div>
+                                    <div>{bedCount}</div>
+                                </div>
+                                <div class="offer-max-headcount">
+                                    <div>최대 수용인원</div>
+                                    <div>{maxHeadcount}</div>
+                                </div>
+                                <div class="offer-price">
+                                    <div>가격</div>
+                                    <div>{price}원</div>
+                                    <div>{offerPrice}원</div>
+                                </div>
+                                <div class="submit-btn-container">
+                                    <button class="submit-btn">예약하기</button>
+                                    <input type="hidden" value="{checkinDate}">
+                                    <input type="hidden" value="{checkoutDate}">
+                                    <input type="hidden" value="{sendingPrice}">
+                                    <input type="hidden" value="{accId}">
+                                    <input type="hidden" value="{roomId}">
+                                    <input type="hidden" value="{headcount}">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            </div>
 	</script>
 </body>
 
