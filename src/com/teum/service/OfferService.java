@@ -55,4 +55,8 @@ public class OfferService implements OfferServiceI{
 		return offerDao.getListByOfferIds(finalOfferIdsCSV);
 	}
 
+	public int update(int offerId) {
+		return offerDao.update(offerId);
+	}
+
 }

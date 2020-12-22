@@ -202,8 +202,9 @@ public class RegController extends HttpServlet {
 		ReverseOffer reverseOffer = new ReverseOffer(offerId, roomId);
 		
 		reverseOfferService.insert(reverseOffer);
-		
+		offerService.update(offerId);
 		//OFFER테이블에서 approvaldate date값 넣어주기 update
+		//REVERSE도
 		
 		response.sendRedirect("/index");
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.ReverseListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Room;
 
@@ -24,7 +25,7 @@ public interface RoomDao {
 
 	int getId(int roomId);
 
-	Room get(int roomId);
+	ReverseListView get(int roomId);
 
 	PayInfoView getList(int accId, int roomId);
 

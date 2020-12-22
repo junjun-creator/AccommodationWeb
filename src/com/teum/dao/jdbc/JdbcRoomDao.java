@@ -14,6 +14,7 @@ import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.ReverseListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Room;
 
@@ -334,11 +335,11 @@ public class JdbcRoomDao implements RoomDao {
 	}
 
 	@Override
-	public Room get(int roomId) {
-		Room room = null;
+	public ReverseListView get(int roomId) {
+		ReverseListView room = null;
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ROOM WHERE ID = ?";
+		String sql = "SELECT * FROM REVERSE_LIST_VIEW WHERE ROOM_ID = ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -350,15 +351,22 @@ public class JdbcRoomDao implements RoomDao {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				int id = rs.getInt("ID");
-				String name = rs.getString("NAME");
-				int price = rs.getInt("PRICE");
 				int accId = rs.getInt("ACC_ID");
+				int offerId = rs.getInt("OFFER_ID");
+				String roomName = rs.getString("NAME");
+				int roomPrice = rs.getInt("PRICE");
 				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
 				int bedCount = rs.getInt("BED_COUNT");
 				String bookedDate = rs.getString("BOOKED_DATE");
+				Date approvalDate = rs.getDate("APPROVAL_DATE");
+				String filename = rs.getString("FILENAME");
+				String fileroute = rs.getString("FILEROUTE");
 
-				room = new Room(id, name, price, accId, maxHeadcount, bedCount, bookedDate);
+				room = new ReverseListView(
+						accId, offerId, roomId,
+						roomName, roomPrice, maxHeadcount, 
+						bedCount, bookedDate, approvalDate, 
+						filename, fileroute);
 			}
 
 			pst.close();

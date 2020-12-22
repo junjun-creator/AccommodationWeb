@@ -6,6 +6,7 @@ import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.ReverseListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.dao.jdbc.JdbcRoomDao;
 import com.teum.entity.Room;
@@ -60,7 +61,7 @@ public class RoomService implements RoomServiceI {
 		return roomDao.getId(roomId);
 	}
 
-	public Room get(int roomId) {
+	public ReverseListView get(int roomId) {
 		return roomDao.get(roomId);
 	}
 

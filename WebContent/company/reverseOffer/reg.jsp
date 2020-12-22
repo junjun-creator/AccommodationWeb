@@ -126,84 +126,98 @@
                     </ul>
                 </div>
                 <div>
-                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
-                    <div style="width: 700px; overflow:hidden;">
-                        <div class="proposal-item-container" style="display: flex;">
-                        	<c:forEach var="offer" items="${offerList}" varStatus="status">
-                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href=''">
-                                <h2>제안정보</h2>
-                                <ul>
-                                    <li>
-                                        <div>날짜</div>
-                                        <div>${offer.checkinDate} ~ ${offer.checkoutDate}</div>
-                                    </li>
-                                    <li>
-                                        <div>위치</div>
-                                        <div>${offer.location}</div>
-                                    </li>
-                                    <li>
-                                        <div>인원수</div>
-                                        <div>${offer.headcount}</div>
-                                    </li>
-                                    <li>
-                                        <div>희망하는 가격</div>
-                                        <div class="wanted-price">
-                                        	<fmt:formatNumber value="${offer.price}" pattern="#,###" />원
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        	</c:forEach>
-                        </div>
-                    </div>
-                    <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
+                    <c:if test="${empty offerList}">
+                    	아무런 정보가 없어요룡ㄹ욜욜
+                    </c:if>
+                    <c:if test="${not empty offerList}">
+	                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
+	                    <div style="width: 700px; overflow:hidden;">
+	                        <div class="proposal-item-container" style="display: flex;">
+	                        
+	                        
+	                        	<c:forEach var="offer" items="${offerList}" varStatus="status">
+	                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href=''">
+	                                <h2>제안정보</h2>
+	                                <ul>
+	                                    <li>
+	                                        <div>날짜</div>
+	                                        <div>${offer.checkinDate} ~ ${offer.checkoutDate}</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>위치</div>
+	                                        <div>${offer.location}</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>인원수</div>
+	                                        <div>${offer.headcount}</div>
+	                                    </li>
+	                                    <li>
+	                                        <div>희망하는 가격</div>
+	                                        <div class="wanted-price">
+	                                        	<fmt:formatNumber value="${offer.price}" pattern="#,###" />원
+	                                        </div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        	</c:forEach>
+	                        
+	                        </div>
+	                    </div>
+	                    <div class="btn-right" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-right"></i></div>
+                    </c:if>
                 </div>
                 <section class="offer-sec">
                     <h1>역제안이 가능한 방 목록</h1>
-                    <form action="reg" method="post" class="offer-form">
-                    	<c:forEach var="room" items="${showRoomList}" varStatus="status">
-                        <section>
-                            <div class="radio-container">
-                                <input type="radio" name="room-id" value="${room.id}" id="radio-${status.index}" class="radio" required>
-                                <label for="radio-${status.index}"><span></span></label>
-                            </div>
-                            <div class="offer-container">
-                                <div class="offer-img-container">
-                                    <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-			                        	<c:if test="${st.first == true}">
-				                        	<img src="${fileRoute}" alt="">
-			                        	</c:if>
-		                        	</c:forTokens>
-                                </div>
-                                <div class="offer-detail-container">
-                                    <div class="offer-room">
-                                        <span>${room.name}</span>
-                                    </div>
-                                    <div class="offer-bed-count">
-                                        <div>침대개수</div>
-                                        <div>${room.bedCount}</div>
-                                    </div>
-                                    <div class="offer-max-headcount">
-                                        <div>최대 수용인원</div>
-                                        <div>${room.maxHeadcount}</div>
-                                    </div>
-                                    <div class="offer-price">
-                                        <div>가격</div>
-                                        <div>
-                                        	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
-                                        </div>
-                                    </div>
-                                    <div class="highlight-btn-container">
-                                        <input type="button" class="highlight-btn" value="예약이 가능한 방입니다">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    	</c:forEach>
-                        <div class="submit-btn-container">
-                            <input type="submit" class="submit-btn" value="역제안하기">
-                        </div>
-                    </form>
+                    <c:if test="${empty showRoomList}">
+                   		아무런 정보가 없어요룡ㄹ욜욜
+                   	</c:if>
+                   	<c:if test="${not empty showRoomList}">
+	                    <form action="reg" method="post" class="offer-form">
+	                    	<c:forEach var="room" items="${showRoomList}" varStatus="status">
+	                        <section>
+	                            <div class="radio-container">
+	                                <input type="radio" name="room-id" value="${room.id}" id="radio-${status.index}" class="radio" required>
+	                                <label for="radio-${status.index}"><span></span></label>
+	                            </div>
+	                            <div class="offer-container">
+	                                <div class="offer-img-container">
+	                                    <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+				                        	<c:if test="${st.first == true}">
+					                        	<img src="${fileRoute}" alt="">
+				                        	</c:if>
+			                        	</c:forTokens>
+	                                </div>
+	                                <div class="offer-detail-container">
+	                                    <div class="offer-room">
+	                                        <span>${room.name}</span>
+	                                    </div>
+	                                    <div class="offer-bed-count">
+	                                        <div>침대개수</div>
+	                                        <div>${room.bedCount}</div>
+	                                    </div>
+	                                    <div class="offer-max-headcount">
+	                                        <div>최대 수용인원</div>
+	                                        <div>${room.maxHeadcount}</div>
+	                                    </div>
+	                                    <div class="offer-price">
+	                                        <div>가격</div>
+	                                        <div>
+	                                        	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
+	                                        </div>
+	                                    </div>
+	                                    <div class="highlight-btn-container">
+	                                        <input type="button" class="highlight-btn" value="예약이 가능한 방입니다">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </section>
+	                    	</c:forEach>
+	                   	
+	                       	<div class="submit-btn-container">
+	                           	<input type="submit" class="submit-btn" value="역제안하기">
+	                       	</div>
+	                    </form>
+                	</c:if>
                 </section>
             </main>
         </div>
