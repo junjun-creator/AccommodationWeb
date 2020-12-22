@@ -139,7 +139,7 @@
 									<tr>
 										<td>${al.num}</td>
 										<td>${al.companyName}</td>
-										<td class="ellips"><a href="detail?accName=${al.name}">${al.name}</a></td>
+										<td class="ellips"><a href="applyDetail?id=${a.id}">${al.name}</a></td>
 										<td class="ellips">${al.location}</td>
 										<td>${al.regdate}</td>
 										<td>${al.phone}</td>

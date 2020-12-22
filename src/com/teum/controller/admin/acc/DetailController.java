@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.ReviewView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
 import com.teum.entity.Room;
@@ -45,30 +46,34 @@ public class DetailController extends HttpServlet{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 
-		String accId_ = request.getParameter("accId");
+		String accId_ = request.getParameter("id");
 		int accId = 0;
 
 		if (accId_ != null && !accId_.equals(""))
 			accId = Integer.parseInt(accId_);
-
 		/* -- acc id에 일치하는 모든 acc 정보 갖고 오기 -- */
 		Acc acc = accService.get(accId);
 
+		System.out.println(accId);
 		
 		/* -- acc id에 일치하는 accImage 정보들(fileName) 가져오기 -- */
-		List<AccImage> accImageList = accImageService.getList(accId);
+		AccImage accImage = accImageService.get(accId);
+//		System.out.println(accImage.getFileroute());
 		
 		
 		/* -- acc id에 일치하는 모든 룸 정보 갖고오고 거기에 딸려오는 룸 사진도 갖고오기 -- */
-		List<Room> roomList = roomService.getList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
+		List<RoomImageListView> roomList = roomService.getViewList(accId); //회원이 검색한 날짜에 상관없이 모든 방을 넣은 리스트
 
-
+		request.setAttribute("acc", acc);
+		request.setAttribute("accImage", accImage);
+		request.setAttribute("roomList", roomList);
+		   request.getRequestDispatcher("detail.jsp").forward(request,response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 적용버튼 누르면 해당 acc Id에 일치하는 모든 룸 정보를 갖고오기
+		
 
 		response.sendRedirect("/detail");
 	}
