@@ -14,7 +14,7 @@ import com.teum.service.QnAService;
 
 
 
-@WebServlet("/admin/customerService/QnA/detail")
+@WebServlet("/admin/customerService/qna/detail")
 public class DetailController extends HttpServlet{
 @Override
 protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

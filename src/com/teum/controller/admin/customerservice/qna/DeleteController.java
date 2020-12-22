@@ -13,7 +13,7 @@ import com.teum.service.QnAService;
 
 
 
-@WebServlet("/admin/customerService/QnA/del")
+@WebServlet("/admin/customerService/qna/del")
 public class DeleteController extends HttpServlet{
 	
 	@Override

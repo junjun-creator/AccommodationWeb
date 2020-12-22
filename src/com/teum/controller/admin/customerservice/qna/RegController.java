@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.teum.entity.QnA;
 import com.teum.service.QnAService;
 
-@WebServlet("/admin/customerService/QnA/reg")
+@WebServlet("/admin/customerService/qna/reg")
 public class RegController extends HttpServlet {
 
 	@Override

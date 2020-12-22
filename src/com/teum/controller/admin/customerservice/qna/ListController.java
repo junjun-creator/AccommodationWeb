@@ -2,7 +2,6 @@ package com.teum.controller.admin.customerservice.qna;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teum.dao.entity.QnAView;
-import com.teum.service.NoticeService;
 import com.teum.service.QnAService;
-@WebServlet("/admin/customerService/QnA/list")
+@WebServlet("/admin/customerService/qna/list")
 public class ListController extends HttpServlet {
 @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
