@@ -8,6 +8,6 @@ public interface AccImageDao {
 
 	int insert(AccImage accImage);
 
-	List<AccImage> getList(int accId);
+	AccImage get(int accId);
 
 }

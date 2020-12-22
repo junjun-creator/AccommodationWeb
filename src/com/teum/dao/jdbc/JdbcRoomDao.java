@@ -14,6 +14,7 @@ import com.teum.dao.RoomDao;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Room;
 
 public class JdbcRoomDao implements RoomDao {
@@ -93,11 +94,11 @@ public class JdbcRoomDao implements RoomDao {
 	}
 
 	@Override
-	public List<Room> getList(String accIdsCSV) {
-		List<Room> list = new ArrayList<>();
-
+	public List<RoomImageListView> getList(String accIdsCSV) {
+		List<RoomImageListView> list = new ArrayList<>();
+		
 		String url = DBContext.URL;
-		String sql = String.format("SELECT * FROM ROOM WHERE ACC_ID IN (%s)", accIdsCSV);
+		String sql = String.format("SELECT * FROM ROOM_IMAGE_LIST_VIEW WHERE ACC_ID IN (%s)", accIdsCSV);
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -114,8 +115,10 @@ public class JdbcRoomDao implements RoomDao {
 				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
 				int bedCount = rs.getInt("BED_COUNT");
 				String bookedDate = rs.getString("BOOKED_DATE");
+				String filename = rs.getString("FILENAME");
+				String fileroute = rs.getString("FILEROUTE");
 
-				Room room = new Room();
+				RoomImageListView room = new RoomImageListView();
 
 				room.setId(id);
 				room.setName(name);
@@ -124,6 +127,8 @@ public class JdbcRoomDao implements RoomDao {
 				room.setMaxHeadcount(maxHeadcount);
 				room.setBedCount(bedCount);
 				room.setBookedDate(bookedDate);
+				room.setFilename(filename);
+				room.setFileroute(fileroute);
 
 				list.add(room);
 			}
@@ -146,7 +151,7 @@ public class JdbcRoomDao implements RoomDao {
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
 
-		String sql = "SELECT * FROM (SELECT ROWNUM RN, OFFER_INFO_VIEW.* FROM OFFER_INFO_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, OFFER_INFO_VIEW.* FROM OFFER_INFO_VIEW WHERE OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
 
 		List<OfferInfoView> list = new ArrayList<>();
 		// DriverManager;//Class.forName~
@@ -205,7 +210,7 @@ public class JdbcRoomDao implements RoomDao {
 	public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
 		String url = DBContext.URL;
 
-		String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE FILENAME LIKE '%메인%' AND OFFER_ID = ?";
+		String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID = ?";
 
 		List<OfferableRoomListView> list = new ArrayList<>();
 
@@ -369,11 +374,11 @@ public class JdbcRoomDao implements RoomDao {
 	}
 
 	@Override
-	public List<Room> getList(int accId) {
-		List<Room> list = new ArrayList<>();
+	public List<RoomImageListView> getViewList(int accId) {
+		List<RoomImageListView> list = new ArrayList<>();
 
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM ROOM WHERE ACC_ID = ?";
+		String sql = "SELECT * FROM ROOM_IMAGE_LIST_VIEW WHERE ACC_ID = ?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -391,18 +396,22 @@ public class JdbcRoomDao implements RoomDao {
 				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
 				int bedCount = rs.getInt("BED_COUNT");
 				String bookedDate = rs.getString("BOOKED_DATE");
+				String filename = rs.getString("FILENAME");
+				String fileroute = rs.getString("FILEROUTE");
 
-				Room room = new Room();
+				RoomImageListView roomImageListView = new RoomImageListView();
 
-				room.setId(id);
-				room.setName(name);
-				room.setAccId(accId);
-				room.setPrice(price);
-				room.setMaxHeadcount(maxHeadcount);
-				room.setBedCount(bedCount);
-				room.setBookedDate(bookedDate);
+				roomImageListView.setId(id);
+				roomImageListView.setName(name);
+				roomImageListView.setAccId(accId);
+				roomImageListView.setPrice(price);
+				roomImageListView.setMaxHeadcount(maxHeadcount);
+				roomImageListView.setBedCount(bedCount);
+				roomImageListView.setBookedDate(bookedDate);
+				roomImageListView.setFilename(filename);
+				roomImageListView.setFileroute(fileroute);
 
-				list.add(room);
+				list.add(roomImageListView);
 			}
 
 			pst.close();

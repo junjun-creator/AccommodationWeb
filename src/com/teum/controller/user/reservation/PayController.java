@@ -1,4 +1,4 @@
-package com.teum.controller.company.reservation;
+package com.teum.controller.user.reservation;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -52,6 +52,7 @@ public class PayController extends HttpServlet {
 			String roomId_ = request.getParameter("roomId");
 			String checkinDate = request.getParameter("checkinDate");
 			String checkoutDate = request.getParameter("checkoutDate");
+			String offeredPrice = request.getParameter("offeredPrice");
 			
 			int accId = 0;
 			int roomId = 0;
@@ -64,10 +65,12 @@ public class PayController extends HttpServlet {
 		
 			PayInfoView payInfo = roomService.getList(accId, roomId);
 			
+			if (offeredPrice != null && !offeredPrice.equals(""))
+				payInfo.setPrice(Integer.parseInt(offeredPrice));
+				
 			request.setAttribute("payInfo", payInfo);
 			request.setAttribute("checkinDate", checkinDate);
 			request.setAttribute("checkoutDate", checkoutDate);
-			
 			
 			request.getRequestDispatcher("pay.jsp").forward(request, response);
 		}

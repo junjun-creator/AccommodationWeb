@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.teum.dao.AccDao;
+import com.teum.dao.entity.AccImageListView;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.dao.entity.AccommodationListView;
 import com.teum.dao.entity.GoldenTimeView;
@@ -902,15 +903,15 @@ int count = 0;
 
 
 	@Override
-	public List<Acc> getList(int type, String location, String search) {
-		List<Acc> list = new ArrayList<>();
+	public List<AccImageListView> getList(int type, String location, String search) {
+		List<AccImageListView> list = new ArrayList<>();
 		String url = DBContext.URL;
 		String sql = "";
 		
 		if (search.equals(""))
-			sql = "SELECT * FROM ACC WHERE ACC_TYPE_ID=? AND LOCATION LIKE ?";
+			sql = "SELECT * FROM ACC_IMAGE_LIST_VIEW WHERE ACC_TYPE_ID=? AND LOCATION LIKE ? AND REG_STATUS = 1";
 		else
-			sql = "SELECT * FROM ACC WHERE NAME LIKE ? OR LOCATION LIKE ?";
+			sql = "SELECT * FROM ACC_IMAGE_LIST_VIEW WHERE NAME LIKE ? OR LOCATION LIKE ? AND REG_STATUS = 1";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -931,6 +932,8 @@ int count = 0;
 				int id = rs.getInt("id"); 
 				String name = rs. getString("name");
 				String phone = rs.getString("phone");
+				String filename = rs.getString("FILENAME");
+				String fileroute = rs.getString("FILEROUTE");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -942,12 +945,15 @@ int count = 0;
 				int saleprice = rs.getInt("SALEPRICE");
 				int goldentimeStatus = rs.getInt("goldentime_Status");
 				
-				Acc acc = new Acc(id, name, phone, location, regStatus,
+				AccImageListView accImageListView = new AccImageListView(
+						id, name, 
+						filename, fileroute,
+						phone, location, regStatus,
 						approvalDate, adminId, companyId, regdate,
 						accTypeId, gtStartDate, gtEndDate,
 						saleprice, goldentimeStatus);
 				
-				list.add(acc);
+				list.add(accImageListView);
 			};
 
 			rs.close();

@@ -44,8 +44,8 @@ public class JdbcAccImageDao implements AccImageDao {
 	}
 
 	@Override
-	public List<AccImage> getList(int accId) {
-		List<AccImage> list = new ArrayList<>();
+	public AccImage get(int accId) {
+		AccImage accImage = null;
 
 		String url = DBContext.URL;
 		String sql = "SELECT * FROM ACC_IMAGE WHERE ACC_ID = ?";
@@ -61,12 +61,10 @@ public class JdbcAccImageDao implements AccImageDao {
 
 			while (rs.next()) {
 				int id = rs.getInt("ID");
-				String fileName = rs.getString("FILENAME");
-				String fileRoute = rs.getString("FILEROUTE");
+				String filename = rs.getString("FILENAME");
+				String fileroute = rs.getString("FILEROUTE");
 
-				AccImage accImage = new AccImage(id, fileName, fileRoute, accId);
-				
-				list.add(accImage);
+				accImage = new AccImage(id, filename, fileroute, accId);
 			}
 
 			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
@@ -79,7 +77,7 @@ public class JdbcAccImageDao implements AccImageDao {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return accImage;
 	}
 
 }

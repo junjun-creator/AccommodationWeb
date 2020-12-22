@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.teum.dao.AccDao;
+import com.teum.dao.entity.AccImageListView;
 import com.teum.dao.entity.AccListForAdminView;
 import com.teum.dao.entity.AccommodationListView;
 import com.teum.dao.entity.GoldenTimeView;
@@ -148,7 +149,7 @@ public class AccService {
 		return accDao.getIds(companyId,accType);
 	}
 
-	public List<Acc> getList(int type, String location, String search) {
+	public List<AccImageListView> getList(int type, String location, String search) {
 		return accDao.getList(type, location, search);
 	}
 

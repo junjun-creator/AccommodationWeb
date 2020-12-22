@@ -10,16 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.teum.entity.Acc;
+import com.teum.dao.entity.AccImageListView;
+import com.teum.service.AccImageService;
 import com.teum.service.AccService;
 
 @WebServlet("/accommodation/list")
 public class ListController extends HttpServlet {
 
    private AccService accService;
+   private AccImageService accImageService;
    
    public ListController() {
       accService = new AccService();
+      accImageService = new AccImageService();
    }
    
    @Override
@@ -53,7 +56,8 @@ public class ListController extends HttpServlet {
       
       location = bigCity + " " + smallCity;
       
-      List<Acc> accList = accService.getList(type, location, search);
+      List<AccImageListView> accList = accService.getList(type, location, search);
+      
       
       request.setAttribute("accList", accList);
       request.setAttribute("type", type);

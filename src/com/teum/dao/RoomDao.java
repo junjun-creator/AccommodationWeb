@@ -5,6 +5,7 @@ import java.util.List;
 import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.PayInfoView;
+import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Room;
 
 public interface RoomDao {
@@ -13,7 +14,7 @@ public interface RoomDao {
 
 	Room getLast();
 
-	List<Room> getList(String accIdsCSV);
+	List<RoomImageListView> getList(String accIdsCSV);
 
 	List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId);
 
@@ -25,10 +26,10 @@ public interface RoomDao {
 
 	Room get(int roomId);
 
-	List<Room> getList(int accId);
-
 	PayInfoView getList(int accId, int roomId);
 
 	int update(int accId, int roomId, String bookedDates);
+
+	List<RoomImageListView> getViewList(int accId);
 
 }

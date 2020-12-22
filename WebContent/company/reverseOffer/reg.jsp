@@ -118,7 +118,11 @@
                             </div>
                             <div class="offer-container">
                                 <div class="offer-img-container">
-                                    <a href=""><img src="" alt=""></a>
+                                    <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+			                        	<c:if test="${st.first == true}">
+				                        	<img src="${fileRoute}" alt="">
+			                        	</c:if>
+		                        	</c:forTokens>
                                 </div>
                                 <div class="offer-detail-container">
                                     <div class="offer-room">

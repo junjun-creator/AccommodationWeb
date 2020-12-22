@@ -211,9 +211,13 @@
                 </section>
 
                 <section class="picked-item-sec">
-                   <c:forEach var="acc" items="${accList}">
+                   <c:forEach var="acc" items="${accList}" varStatus="status">
                     <div class="snip1368" onclick="location.href='detail?accId=${acc.id}'">
-                        <img src="/images/company/호텔/서울/강남구/신라스테이_삼성/메인.jpg" alt="">
+                        <c:forTokens var="fileRoute" items="${acc.fileroute}" delims="," varStatus="st">
+                        	<c:if test="${st.first == true}">
+	                        	<img src="${fileRoute}" alt=""><br>
+                        	</c:if>
+                       	</c:forTokens>
                         <h3>예약하기</h3>
                         <figcaption>
                             <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a>

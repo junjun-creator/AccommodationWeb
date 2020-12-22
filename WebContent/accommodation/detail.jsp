@@ -63,7 +63,11 @@
             <section class="title">
                 <div class="pic">
                     <div class="main-img">
-                        <img src = "/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg" alt= "신라스테이 삼성"><br>
+	                    <c:forTokens var="fileRoute" items="${accImage.fileroute}" delims="," varStatus="st">
+                        	<c:if test="${st.first == true}">
+	                        	<img src="${fileRoute}" alt=""><br>
+                        	</c:if>
+                       	</c:forTokens>
                     </div>
                     <!-- <div class="cliper-btn prev-btn">
                         <i class="fas fa-angle-left"></i>
@@ -83,7 +87,7 @@
                 </div>
                 <div class="main-info">
                     <h1>${acc.name}</h1>
-                    <h2>${acc.location }</h2>
+                    <h2>${acc.location}</h2>
                     <div class="rule">
                         <p>취소 및 환불 규정</p>
                         <ul>
@@ -138,7 +142,11 @@
 	                    <section>
 	                        <div class="room-container">
 	                            <div class="room-img-container">
-	                                <img src="" alt= "">
+	                                <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+			                        	<c:if test="${st.first == true}">
+				                        	<img src="${fileRoute}" alt=""><br>
+			                        	</c:if>
+			                       	</c:forTokens>
 	                            </div>
 	                            <div class="room-detail-container">
 	                                <div class="room-room">
@@ -173,7 +181,11 @@
 	                    <section>
 	                        <div class="room-container">
 	                            <div class="room-img-container">
-	                                <img src="" alt= "">
+	                                <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+			                        	<c:if test="${st.first == true}">
+				                        	<img src="${fileRoute}" alt=""><br>
+			                        	</c:if>
+			                       	</c:forTokens>
 	                            </div>
 	                            <div class="room-detail-container">
 	                                <div class="room-room">
