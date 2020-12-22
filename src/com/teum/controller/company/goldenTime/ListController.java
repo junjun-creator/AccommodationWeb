@@ -47,7 +47,7 @@ public class ListController extends HttpServlet {
 		String cmd = request.getParameter("cmd");
 		int chk = Integer.parseInt(request.getParameter("check"));
 		String saleprice_=request.getParameter("price");
-		
+		String switching=request.getParameter("switching");
 		
 		//가격
 		int saleprice=0;
@@ -60,14 +60,15 @@ public class ListController extends HttpServlet {
 		
 		switch (cmd) {
 		case "진행":
-		
-			//service.openStatus(chk);
+			if(!switching.equals("0")) {
+				service.openStatus(chk);
+			}
 		
 			break;
 		
 		case "대기":
 			
-			//service.closeStatus(chk);
+			service.closeStatus(chk);
 			
 			break;
 		case "수정":
