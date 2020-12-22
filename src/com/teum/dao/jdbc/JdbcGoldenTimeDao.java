@@ -131,6 +131,7 @@ public class JdbcGoldenTimeDao implements GoldenTimeDao {
 				
 				GoldenTimeView g = new GoldenTimeView();
 				g.setId(accId);
+				g.setAccId(accId);
 				g.setCompanyId(companyId);
 				g.setRegStatus(regStatus);
 				g.setName(name);

@@ -9,20 +9,29 @@ public class GoldenTimeView extends Acc {
 	private String userName;
 	private String type;
 	private String timeRemain;
+	private int accId;
 	public GoldenTimeView() {
 		
 	}
 
 	public GoldenTimeView(int id, String name, String phone, String location, int regStatus, Date approvalDate,
 			int adminId, int companyId, Date regdate, int accTypeId, Date gtStartDate, Date gtEndDate, int saleprice,
-			int goldentimeStatus, String fileroute, String userName,String type,String timeRemain) {
+			int goldentimeStatus, String fileroute, String userName,String type,String timeRemain,int accId) {
 		super(id, name, phone, location, regStatus, approvalDate, adminId, companyId, regdate, accTypeId, gtStartDate,
 				gtEndDate, saleprice, goldentimeStatus);
-		
+		this.accId=accId;
 		this.fileroute=fileroute;
 		this.userName=userName;
 		this.type=type;
 		this.timeRemain=timeRemain;
+	}
+
+	public int getAccId() {
+		return accId;
+	}
+
+	public void setAccId(int accId) {
+		this.accId = accId;
 	}
 
 	public String getTimeRemain() {
@@ -60,8 +69,9 @@ public class GoldenTimeView extends Acc {
 	@Override
 	public String toString() {
 		return "GoldenTimeView [fileroute=" + fileroute + ", userName=" + userName + ", type=" + type + ", timeRemain="
-				+ timeRemain + "]";
+				+ timeRemain + ", accId=" + accId + "]";
 	}
+
 
 
 	

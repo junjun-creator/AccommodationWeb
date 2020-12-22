@@ -572,4 +572,79 @@ public class JdbcRoomDao implements RoomDao {
 		return result;
 	}
 
+	@Override
+	public List<Room> getPriceList(int chk) {
+		List<Room> list = new ArrayList<>();
+
+		String url = DBContext.URL;
+		String sql = "SELECT *FROM ROOM WHERE ACC_ID =?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement pst = con.prepareStatement(sql);
+
+			pst.setInt(1, chk);
+			
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				int price = rs.getInt("PRICE");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+			
+
+				Room r = new Room();
+				r.setId(id);
+				r.setAccId(chk);
+				r.setName(name);
+				r.setPrice(price);
+				r.setMaxHeadcount(maxHeadcount);
+				r.setBedCount(bedCount);
+
+				list.add(r);
+			}
+
+			pst.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public int updatePrice(Room room) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String sql = "UPDATE ROOM SET PRICE=? WHERE ID=? AND ACC_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setInt(1, room.getPrice());
+			st.setInt(2, room.getId());
+			st.setInt(3, room.getAccId());
+		
+			//ResultSet rs = st.executeQuery(sql); // select 문장에만
+			result =st.executeUpdate();//insert,update,delete 문장일 떄
+			
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
