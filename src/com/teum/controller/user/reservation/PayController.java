@@ -162,6 +162,10 @@ public class PayController extends HttpServlet {
 			//예약 추가 reservation 테이블 insert
 			reservationService.insert(accId,roomId,checkinDate,checkoutDate,userId,price,headcount);
 			
+			// 역제안을 통해서 예약하는 경우 역제안과, 제안에 있는 해당 목록 삭제
+			int deleteReverseOffer = reverseOfferService.delete(roomId);
+			int deleteOffer = offerService.delete(accId);
+			
 		}
 		
 		// 확인창 띄우기

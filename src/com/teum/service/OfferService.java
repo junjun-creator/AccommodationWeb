@@ -57,6 +57,13 @@ public class OfferService implements OfferServiceI{
 
 	public int update(int offerId) {
 		return offerDao.update(offerId);
+  }
+	public int delete(int accId) {
+		int result = 0;
+		
+		result = offerDao.delete(accId);
+		
+		return result;
 	}
 
 }

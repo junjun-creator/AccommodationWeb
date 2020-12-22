@@ -110,4 +110,13 @@ public class UsersService implements UsersServiceI{
 		
 		return result;
 	}
+	@Override
+	public int checkDuplicate(String email) {
+		int result=0;
+		
+		result = usersDao.checkDuplicate(email);
+		
+		return result;
+		
+	}
 }

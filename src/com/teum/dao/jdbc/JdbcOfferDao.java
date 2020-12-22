@@ -281,24 +281,19 @@ public class JdbcOfferDao implements OfferDao {
 	}
 
 	@Override
-	public int update(int offerId) {
+	public int delete(int accId) {
 		int result = 0;
 
 		String url = DBContext.URL;
-		String sql = "UPDATE OFFER SET APPROVAL_DATE=? WHERE ID=?";
+		String sql = "DELETE FROM OFFER WHERE ACC_ID=?";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
 			PreparedStatement pst = con.prepareStatement(sql);
-			
-			Date today = new Date();
-			pst.setDate(1, new java.sql.Date(today.getTime()));
-			pst.setInt(2, offerId);
-
+			pst.setInt(1, accId);
 			result = pst.executeUpdate();
-
-			// 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+			
 			pst.close();
 			con.close();
 
@@ -307,8 +302,38 @@ public class JdbcOfferDao implements OfferDao {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 		return result;
 	}
+  
+  @Override
+   public int update(int offerId) {
+      int result = 0;
+
+      String url = DBContext.URL;
+      String sql = "UPDATE OFFER SET APPROVAL_DATE=? WHERE ID=?";
+
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+         PreparedStatement pst = con.prepareStatement(sql);
+         
+         Date today = new Date();
+         pst.setDate(1, new java.sql.Date(today.getTime()));
+         pst.setInt(2, offerId);
+
+         result = pst.executeUpdate();
+
+         // 꼭 닫아줘야함!!! 안그럼 나중에 오류남
+         pst.close();
+         con.close();
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+      }
+
+      return result;
+   }
 
 }

@@ -137,5 +137,14 @@
                         opacity: 0.5;
                         cursor: initial;
                     }
+/*    ---------------------------------------------     */
 
-                
+.email-check{
+	position:absolute;
+	top:26px;
+	left:310px;
+	width:70px;
+}
+.no-duplication{
+	border:1px solid #5f0081;
+}

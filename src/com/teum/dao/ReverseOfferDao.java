@@ -12,4 +12,6 @@ public interface ReverseOfferDao {
 
 	List<ReverseOffer> getList(String offerIdsCSV);
 
+	int delete(int roomId);
+
 }

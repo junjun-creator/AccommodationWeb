@@ -12,6 +12,7 @@
      <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/../../js/company/goldenTime/list.js"></script>
     <title>골든타임 리스트</title>
 </head>
 <body>
@@ -72,17 +73,17 @@
                     		<div class="form">
 		                    	<div class="option-list">
 			                    	<div>
-						             	<span>시작일 :</span> <input type="date" name="start">
-						               	<span>종료일 : </span> <input type="date"name="end">
+						             	<span>시작일 :</span> <input class="startDate" type="date" name="start">
+						               	<span>종료일 : </span> <input class="endDate"  type="date"name="end">
 						            </div>
 						            <div>    
 						                <span>인하가격 : </span> <input type="text" class="form-option price-input" placeholder="원(￦) 단위로 입력해 주세요"  name="price">
 					                </div>
 				                </div>
 				                <div class="btn-list">
-				                	<input type="submit"  name="cmd"value="진행">
-				                	<input type="submit"  name="cmd"value="대기">
-				                	<input type="submit" name="cmd"value="수정">
+				                	<input class="progress"  type="submit"  name="cmd"value="진행">
+				                	<input class="nonprogress"  type="submit"  name="cmd"value="대기">
+				                	<input class="modify"  type="submit" name="cmd"value="수정">
 				                </div>
 					           </div>  
 	                    </div>
@@ -109,11 +110,11 @@
 		                            </div>
 		                          </figcaption>
 		                        <div class="description-item">
-		                            <p>${g.name}</p>
-		                            <div style="display:flex; color:orange; font-size:25px; font-weight:bold; margin-top:5px;">
-		                            <P>${g.gtStartDate}121112</P><p>~ ${g.gtEndDate}121121</p>
+		                            <p style="color:black;">${g.name}</p>
+		                            <div class="date-box" style="display:flex; color:orange; font-size:25px; font-weight:bold; margin-top:12px;margin-bottom:12px;">
+		                            	<p class="start">${g.gtStartDate}</p><span>~</span><p class="end">${g.gtEndDate}</p>
 		                            </div>
-		                            <p>${g.location }</p>
+		                            <p style="color:black;">${g.location }</p>
 		                        </div>
 		                        <div class="item-price">
 		                            <div>
