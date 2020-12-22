@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +59,7 @@
 			<aside id="aside" class="aside">
 				<h1>업체관리</h1>
 				<ul>
-					<li><a href="list" class="active">등록된 업체 리스트</a></li>
+					<li class="active"><a href="list" class="active">승인된 업체 리스트</a></li>
 					<li><a href="regList">업체 등록 관리</a></li>
 				</ul>
 			</aside>
@@ -96,7 +99,9 @@
 								<li>&nbsp;&nbsp;&nbsp;승인된 업체&nbsp;&nbsp;&nbsp;</li>
 							</ul>
 						</div>
+						<h1>등록된 업체</h1>
 						<section class="title">
+						
                 <div class="pic">
                     <div class="main-img">
 	                    <c:forTokens var="fileRoute" items="${accImage.fileroute}" delims="," varStatus="st">
@@ -146,88 +151,43 @@
                     </div>
                 </div>
             </section>
-						<h1>등록된 업체</h1><br>
-						
-						<form class="room-form">
-                	
-                	<c:if test="${empty showRoomList}">
-	                	<c:forEach var="room" items="${roomList}" varStatus="st">
-	                    <section>
-	                        <div class="room-container">
-	                            <div class="room-img-container">
-	                                <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-			                        	<c:if test="${st.first == true}">
-				                        	<img src="${fileRoute}" alt=""><br>
-			                        	</c:if>
-			                       	</c:forTokens>
-	                            </div>
-	                            <div class="room-detail-container">
-	                                <div class="room-room">
-	                                    <span>${room.name}</span>
-	                                </div>
-	                                <div class="room-bed-count">
-	                                    <div>침대개수</div>
-	                                    <div>${room.bedCount}</div>
-	                                </div>
-	                                <div class="room-max-headcount">
-	                                    <div>최대 수용인원</div>
-	                                    <div>${room.maxHeadcount}</div>
-	                                </div>
-	                                <div class="room-price">
-	                                    <div>가격</div>
-	                                    <div>
-	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
-	                                    </div>
-	                                </div>
-	                               
-	                            </div>
-	                        </div>
-	                    </section>
-	                	</c:forEach>
-                	</c:if>
-                	<c:if test="${empty roomList}">
-	                	<c:forEach var="room" items="${showRoomList}" varStatus="st">
-	                    <section>
-	                        <div class="room-container">
-	                            <div class="room-img-container">
-	                                <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
-			                        	<c:if test="${st.first == true}">
-				                        	<img src="${fileRoute}" alt=""><br>
-			                        	</c:if>
-			                       	</c:forTokens>
-	                            </div>
-	                            <div class="room-detail-container">
-	                                <div class="room-room">
-	                                    <span>${room.name}</span>
-	                                </div>
-	                                <div class="room-bed-count">
-	                                    <div>침대개수</div>
-	                                    <div>${room.bedCount}</div>
-	                                </div>
-	                                <div class="room-max-headcount">
-	                                    <div>최대 수용인원</div>
-	                                    <div>${room.maxHeadcount}</div>
-	                                </div>
-	                                <div class="room-price">
-	                                    <div>가격</div>
-	                                    <div>
-	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </section>
-	                	</c:forEach>
-                	</c:if>
-                    
-                </form>
-								
+				
+				<c:forEach var="room" items="${roomList}" varStatus="st">
+		                <section>
+			                   <div class="room-container">
+				                    <div class="room-img-container">
+					                     <c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+								              <c:if test="${st.first == true}">
+									           	<img src="${fileRoute}" alt=""><br>
+								              </c:if>
+							             </c:forTokens>
+				                    </div>
+				                    <div class="room-detail-container">
+				                    	<div class="room-room">
+				                    		<span>${room.name}</span>
+				                    	</div>
+				                    	<div class="room-bed-count">
+				                   			<div>침대개수</div>
+				                    		<div>${room.bedCount}</div>
+				                    	</div>
+					                    <div class="room-max-headcount">
+					                     	<div>최대 수용인원</div>
+					                     	<div>${room.maxHeadcount}</div>
+					                    </div>
+				                    	<div class="room-price">
+				                    		 <div>가격</div>
+			                         		 <div><fmt:formatNumber value="${room.price}" pattern="#,###" />원</div>
+			                       		</div>
+				                   </div>
+			                  </div>
+		                 </section>
+	                </c:forEach>   
+				</section>
 				<form>
 					<div class="btn-box">
-						<input type="submit"  name="cmd"value="삭제" class="delete-btn">
+						<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
 					</div>	
 				</form>
-						</section>
 					</div>
 				</main>
 			</div>
