@@ -9,4 +9,7 @@ public interface PickServiceI {
 	List<PickListView> getList(int userId);
 	List<Double> getPointList(List<Integer> accIds);
 	int delete(Pick p);
+	int checkZzim(int userId, int accId);
+	int insertZzim(int userId, int accId);
+	int deleteZzim(int userId, int accId);
 }

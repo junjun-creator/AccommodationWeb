@@ -57,8 +57,10 @@
                 <div>
                 	<c:choose>
 	                	<c:when test="${empty offerList }">
+	                	<div class="nothing">
 	                		<h1>제안등록이 처음이시네요!</h1>
-	                		<button>제안하기</button>
+	                		<button onclick="location.href='/user/offer/reg'">제안하기</button>
+	                	</div>
 	                	</c:when>
 	                	<c:otherwise>
 	                	

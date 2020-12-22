@@ -34,5 +34,29 @@ public class PickService implements PickServiceI{
 		
 		return result;
 	}
+	@Override
+	public int checkZzim(int userId, int accId) {
+		int result = 0;
+		
+		result = pickDao.checkZzim(userId, accId);
+		
+		return result;
+	}
+	@Override
+	public int insertZzim(int userId, int accId) {
+		int result = 0;
+		
+		result = pickDao.insertZzim(userId,accId);
+		
+		return result;
+	}
+	@Override
+	public int deleteZzim(int userId, int accId) {
+		int result = 0;
+		
+		result = pickDao.deleteZzim(userId,accId);
+		
+		return result;
+	}
 	
 }

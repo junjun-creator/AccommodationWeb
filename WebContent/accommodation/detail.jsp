@@ -268,11 +268,15 @@
                 	</c:if>
                     
                 </form>
-                <section class="goodsonmylist-box">
-                    <div class="goodsonmylist">
-                        <a href="">♥ 찜</a>
-                    </div>
-                </section>
+                <c:if test="${type == 0 }">
+	                <section class="goodsonmylist-box">
+	                    <div class="goodsonmylist">
+	                        <a href="" class="zzim ${(zzimStatus==0)?'unzzimed':'zzimed' }">♥ 찜</a>
+	                        <input type="hidden" value=${userId }>
+	                        <input type="hidden" value=${acc.id }>
+	                    </div>
+	                </section>
+                </c:if>
                 <c:set var="avg" value="${avg}"/>
                  <c:set var="count" value="${count}"/>
                 <section class="review-section">

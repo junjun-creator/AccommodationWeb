@@ -15,12 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import com.teum.dao.entity.ReviewView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
 import com.teum.entity.AccImage;
 import com.teum.service.AccImageService;
 import com.teum.service.AccService;
+import com.teum.service.PickService;
 import com.teum.service.ReservationService;
 import com.teum.service.RoomImageService;
 import com.teum.service.RoomService;
@@ -33,6 +36,7 @@ public class DetailController extends HttpServlet {
 	private RoomService roomService;
 	private RoomImageService roomImageService;
 	private ReservationService reservationService;
+	private PickService pickService;
 
 	public DetailController() {
 		accService = new AccService();
@@ -40,6 +44,7 @@ public class DetailController extends HttpServlet {
 		accImageService = new AccImageService();
 		roomImageService = new RoomImageService();
 		reservationService = new ReservationService();
+		pickService = new PickService();
 	}
 
 	@Override
@@ -160,11 +165,31 @@ System.out.println(accId);
 			else
 				request.setAttribute("roomList", roomList);
 			
+			
+			
+			//찜한숙소인지 검사하는 코드
+			int type = 2;
+			if(session.getAttribute("type")!=null)
+				type = (int)session.getAttribute("type");
+			
+			int userId = 0;
+			if(session.getAttribute("id")!=null && type == 0)
+				userId = (int)session.getAttribute("id");
+			
+			int zzimStatus = 0;
+			if(type == 0)
+				zzimStatus = pickService.checkZzim(userId,accId);
+			
+			
+			
 			request.setAttribute("count", count);
 			request.setAttribute("avg", avg);
 			request.setAttribute("review", review);
 			request.setAttribute("acc", acc);
 			request.setAttribute("accImage", accImage);
+			request.setAttribute("type", type);
+			request.setAttribute("userId", userId);
+			request.setAttribute("zzimStatus",zzimStatus);
 			request.getRequestDispatcher("detail.jsp").forward(request, response);
 
 		}
@@ -177,8 +202,22 @@ System.out.println(accId);
 
 		// 체크인, 체크아웃을 배열로 만들어서 ["2020-01-01", "2020-01-02"]로 넣고 마지막날은 빼기.
 		// 해당 배열을 돌면서 모든 룸의 BOOKED_DATE를 돌면서 포함되어 있지 않은 것들만 불러오기
-
-		response.sendRedirect("/detail");
+		
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		int accId = Integer.parseInt(request.getParameter("accId"));
+		int status = Integer.parseInt(request.getParameter("status"));
+		int result = 0;
+		if(status == 0) {
+			result = pickService.insertZzim(userId,accId);
+		}else {
+			result = pickService.deleteZzim(userId,accId);
+		}
+		
+		JSONObject obj = new JSONObject();
+		obj.put("result", result);
+		
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().print(obj);
 	}
 
 }

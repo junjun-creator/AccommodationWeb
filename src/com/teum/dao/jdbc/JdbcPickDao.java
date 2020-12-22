@@ -147,4 +147,105 @@ public class JdbcPickDao implements PickDao {
 		return result;
 	}
 
+	@Override
+	public int checkZzim(int userId, int accId) {
+		int result = 0;
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "SELECT COUNT(*) FROM PICK WHERE ACC_ID=? AND USER_ID=?";
+		
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, accId);
+			ps.setInt(2, userId);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int insertZzim(int userId, int accId) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "INSERT INTO PICK(ACC_ID,USER_ID) VALUES(?,?)";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,accId);
+			ps.setInt(2, userId);
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int deleteZzim(int userId, int accId) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "DELETE FROM PICK WHERE ACC_ID=? AND USER_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,accId);
+			ps.setInt(2, userId);
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }

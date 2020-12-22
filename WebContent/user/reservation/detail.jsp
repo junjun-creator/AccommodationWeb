@@ -106,7 +106,17 @@
                         </div>
                         <div class="empty-line"></div>
                         
-                        <button style="width:70px; transform:translateX(300px); margin:10px;">예약취소</button>
+                        <c:if test="${rd.cancelStatus == 0 }">
+	               			<c:set var="now" value="<%=new java.util.Date()%>" />
+	               			<c:choose>
+	               				<c:when test="${rd.checkinDate  >= now}">
+	               					<button style="width:70px; transform:translateX(300px); margin:10px;">예약취소</button>
+	               				</c:when>
+	               				<c:otherwise>
+	               				</c:otherwise>
+	               			</c:choose>
+	               		</c:if>
+                        
                     </section>
                 </section>
             </main>
