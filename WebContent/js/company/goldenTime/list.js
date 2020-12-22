@@ -10,8 +10,10 @@ window.addEventListener('load', function () {
 	var modify=document.querySelector('.modify');
 	var progress=document.querySelector('.progress');
 	var nonprogress=document.querySelector('.nonprogress');
+	var switching=document.querySelector('.switching');
 
-/*수정 버튼 비활성화*/
+
+/*모든 버튼 비활성화*/
 	checkForm(startDate, endDate,priceInput,radio);
    	buttonActive(radio);
 	
@@ -19,13 +21,15 @@ window.addEventListener('load', function () {
 	 btnList.addEventListener('click', function (e){
 	
         if(e.target.value=="진행"&&start.innerHTML==""&&end.innerHTML==""){
-               
+             
             alert("수정 버튼을 눌러 날짜와 가격을 먼저 등록해주세요!");
-            return false;
-        }else{
-		return true;
-}
+         
+		 }else{
+				
+			switching.value="1";
 	
+		} 
+		
     });
 
 	/* 라디오 버튼 체크하면 수정 버튼 활성화*/
@@ -47,6 +51,7 @@ window.addEventListener('load', function () {
         checkForm(startDate, endDate,priceInput,radio);
     }
 
+/*수정버튼 활성화*/
      function checkForm(startDate, endDate,priceInput,radio){
         if (startDate.value != '' && endDate.value != '' &&priceInput.value != '' &&radio.checked) {
             modify.style.opacity = 1;
@@ -57,9 +62,10 @@ window.addEventListener('load', function () {
         modify.disabled = true;
     }
 
+/*진행과 대기버튼 활성화*/
 	function buttonActive(radio){
         if (radio.checked) {
-          	 progress.style.opacity = 1;
+          	progress.style.opacity = 1;
             progress.disabled = false;
 			nonprogress.style.opacity = 1;
             nonprogress.disabled = false;
