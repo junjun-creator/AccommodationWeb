@@ -158,12 +158,16 @@
                         flex-grow: 10;
                         display: flex;
                         --border: 1px solid red;
+                        width: 950px;
+                        height: 225px;
                     }
 
                         .room-img-container {
                             margin: 10px 0 5px 0;
                             transform: scale(1);
                             transition: transform 0.2s;
+                            width: 370px;
+                            height: 220px;
                         }
 
                             .room-img-container img {
@@ -173,9 +177,11 @@
                             }
 
                         .room-detail-container {
-                            width: 100%;
                             margin-left: 10px;
                             position: relative;
+                            width: 500px;
+                            height: 220px;
+                            margin-right: 0px;
                         }
 
                         .room-detail-container .room-room {
@@ -270,7 +276,13 @@
                             opacity: 0.7;
                         }
 
-
+                    .btn-box{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        padding-top: 10px;
+                        padding-bottom: 20px;
+                    }
                         .btn-cancel {
                             width: 80px;
                             height: 25px;
@@ -281,4 +293,5 @@
                             text-decoration:none;
                             background: #EFEFEF;
                             font-size :15.5px;
+                            padding-left: 25px;
                         }

@@ -62,7 +62,7 @@
                 <h1>업체관리</h1>
                 <ul>
                     <li class="active"><a href="list" >승인된 업체 리스트</a></li>
-                    <li><a href="regList">업체 등록 관리</a></li>
+                    <li><a href="applyList">업체 등록 관리</a></li>
                 </ul>
             </aside>
             <div class="container">
