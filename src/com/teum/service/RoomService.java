@@ -84,4 +84,18 @@ public class RoomService implements RoomServiceI {
 	public int update(int roomId, String newBookedDatesString) {
 		return roomDao.update(roomId, newBookedDatesString);
 	}
+
+	public List<Room> getPriceList(int chk) {
+		
+		return roomDao.getPriceList(chk);
+	}
+
+	public int updatePrice(Room room) {
+		int result=0;
+		
+		result = roomDao.updatePrice(room);
+		// TODO Auto-generated method stub
+		return result;
+		
+	}
 }

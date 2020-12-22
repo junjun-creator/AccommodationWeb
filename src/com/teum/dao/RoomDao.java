@@ -37,4 +37,10 @@ public interface RoomDao {
 
 	int update(int roomId, String newBookedDatesString);
 
+	
+	/*골든타임 가격불러오기용*/
+	List<Room> getPriceList(int chk);
+
+	int updatePrice(Room room);
+
 }

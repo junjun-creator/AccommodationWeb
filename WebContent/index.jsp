@@ -122,12 +122,14 @@
                   		<c:forEach var="g" items="${goldenList}" varStatus="status">
                             <div class="promotion-item">
                                 <div class="parent">
+                                <a href="/accommodation/detail?accId=${g.accId}">
                                    <c:forTokens var="fileRoute" items="${g.fileroute}" delims="," varStatus="st">
-	                        	<c:if test="${st.first == true}">
-		                        	<img src="${fileRoute}" alt="">
-	                        	</c:if>
-	                        </c:forTokens>
+			                        	<c:if test="${st.first == true}">
+				                        	<img src="${fileRoute}" alt="">
+			                        	</c:if>
+	                        	</c:forTokens>
         
+                                    </a>
                                     <div class="child"><span>${g.timeRemain}</span></div>
                                 </div>
                                 <div class="promotion-item-detail">

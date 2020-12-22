@@ -68,7 +68,7 @@ public class IndexController extends HttpServlet {
 			goldenList.get(i).setTimeRemain(date_);
 
 		}
-
+		
 		request.setAttribute("email", email);
 		request.setAttribute("eventList", eventList);
 		request.setAttribute("count", count);

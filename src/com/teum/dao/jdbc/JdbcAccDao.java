@@ -626,11 +626,12 @@ public class JdbcAccDao implements AccDao{
 
 			while(rs.next()) {
 				int id = rs.getInt("ID"); 
+				int goldentimeStatus =rs.getInt("GOLDENTIME_STATUS");
 				
 				Acc acc = new Acc();
 				
 				acc.setId(id);
-				
+				acc.setGoldentimeStatus(goldentimeStatus);
 				list.add(acc);
 			};
 
