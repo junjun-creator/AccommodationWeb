@@ -52,7 +52,7 @@ public class PayController extends HttpServlet {
 			String roomId_ = request.getParameter("roomId");
 			String checkinDate = request.getParameter("checkinDate");
 			String checkoutDate = request.getParameter("checkoutDate");
-			String offeredPrice = request.getParameter("offeredPrice");
+			String offeredPrice = request.getParameter("price");
 			
 			int accId = 0;
 			int roomId = 0;
