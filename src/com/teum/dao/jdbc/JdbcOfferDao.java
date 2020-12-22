@@ -232,6 +232,9 @@ public class JdbcOfferDao implements OfferDao {
 		List<Offer> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
+		if(finalOfferIdsCSV == null || finalOfferIdsCSV.equals(""))
+			finalOfferIdsCSV += 0;
+		
 		String sql = String.format("SELECT * FROM OFFER WHERE ID IN (%s)", finalOfferIdsCSV);
 
 		try {

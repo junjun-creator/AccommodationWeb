@@ -28,80 +28,12 @@
             </div>
             <div>
                 <ul class="main-menu">
-                    <li class="header-search">
-                    	<form action="/accommodation/list" method="get">
-                    		<input type="text" name="search" placeholder="숙소명 또는 위치" value="${param.search}">
-                    	</form>
-                        <a href=""><i class="fas fa-search"></i></a>
-                    </li>
-                    <li>
-                       <c:if test="${type == 0 }">
-                          <a href="/user/offer/reg">제안하기</a>
-                        </c:if>
-                        <c:if test="${type == 1 }">
-                          <a href="/company/accommodation/reg">숙소등록</a>
-                        </c:if>
-                    </li>
-                    <li>
-                       	<c:if test="${type == 0 }">
-                          <a href="/user/reservation/reservationInfo">예약내역</a>
-                        </c:if>
-                        <c:if test="${type == 1 }">
-                          <a href="/company/reservation/reservationInfo">예약현황</a>
-                        </c:if>
-                    </li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="/notice/list">공지사항</a></li>
-                                <li><a href="/event/list">이벤트</a></li>
-                                <c:if test="${type == 0 }">
-                                   <li><a href="/user/qna">1:1 문의</a></li>
-                              	</c:if>
-                                
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                       <c:if test="${empty email }">
-                           <a href="/signin" class="character">로그인</a>
-                        </c:if>
-                        <c:if test="${email ne null}">
-                           <a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
-                        </c:if>
+                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
+                    <li><a href="/company/accommodation/reg">숙소등록</a></li>
+                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
                         
-                        <c:if test="${type == 0 || type == 1 }">
-                           <div class="mega-menu">
-                               <ul>
-                                   <c:if test="${type == 0 }">
-                                    <li><a href="/user/userInfo/memberInfo">내정보</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 1 }">
-                                    <li><a href="/company/userInfo/memberInfo">내정보</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 0 }">
-                                    <li><a href="/user/reservation/reservationInfo">예약현황</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 1 }">
-                                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 0 }">
-                                    <li><a href="/user/userInfo/offerList">제안내역</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 1 }">
-                                    <li><a href="/company/reverseOffer/reg">제안내역</a></li>
-                                 </c:if>
-                                   <c:if test="${type == 0 }">
-                                    <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
-                                 </c:if>
-                                 <c:if test="${type == 1 }">
-                                    <li><a href="/company/goldenTime/list">골든타임</a></li>
-                                 </c:if>
-                                   <li><a href="/logout">로그아웃</a></li>
-                               </ul>
-                           </div>
-                        </c:if>
                     </li>
                 </ul>
             </div>
@@ -111,14 +43,18 @@
     <section class="container-sec">
         <div class="container">
             <aside id="aside" class="aside">
-                <!-- <h1>회원 정보 관리(기업)</h1> -->
-                <ul>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴1</a></li>
-                    <li class="active"><a><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴2</a></li>
-                    <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;메뉴3</a></li>
+                <!-- <h1>게시판</h1> -->
+                <ul style="width:230px;">
+                    <li><a href="/company/userInfo/memberInfo"><i class="far fa-user-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href="/company/reservation/reservationInfo"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href="/company/reverseOffer/reg"><i class="fas fa-file-upload"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li class="active"><a href="/company/reverseOffer/detail"><i class="fas fa-file-download"></i>&nbsp;&nbsp;역제안신청관리</a></li>
+                    <li><a href="/company/accommodation/list"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;숙소현황</a></li>
+                    <li><a href="/company/accommodation/reg"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;숙소등록</a></li>
+                    <li><a href="/company/goldenTime/list"><i class="fas fa-hourglass-start"></i>&nbsp;&nbsp;골든타임관리</a></li>
                 </ul>
             </aside>
-            <main id="main" class="main">
+            <main id="main" class="main" style="min-height:600px;">
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
                         <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>

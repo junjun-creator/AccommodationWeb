@@ -79,6 +79,8 @@ public class JdbcReverseOfferDao implements ReverseOfferDao{
 		List<ReverseOffer> list = new ArrayList<>();
 		
 		String url = DBContext.URL;
+		if(offerIdsCSV == null || offerIdsCSV.equals(""))
+			offerIdsCSV += 0;
 		String sql = String.format("SELECT * FROM REVERSE_OFFER WHERE OFFER_ID IN(%s)", offerIdsCSV);
 
 		try {

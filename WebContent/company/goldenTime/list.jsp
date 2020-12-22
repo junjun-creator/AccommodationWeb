@@ -24,20 +24,11 @@
             <div>
                 <ul class="main-menu">
                     <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="/user/offer/reg">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="/notice/list">공지사항</a></li>
-                                <li><a href="/event/list">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                        <a href="/logout" >로그아웃</a>
+                    <li><a href="/company/accommodation/reg">숙소등록</a></li>
+                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                        
                     </li>
                 </ul>
             </div>
@@ -46,17 +37,18 @@
     <section  class="container-sec">
         <div class="container">
             <aside id="aside" class="aside">
-                <h1 class="d-none">골든타임</h1>
-                <ul>
-                	 <li><a href=""><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;회원정보수정</a></li>
-	                 <li><a href=""><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;예약관리</a></li>
-	                 <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;제안신청관리</a></li>
-	                 <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;숙소현황</a></li>
-	                 <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;숙소등록</a></li>
-	                 <li class="active"><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;골든타임관리</a></li>
-            	</ul>
+                <!-- <h1>게시판</h1> -->
+                <ul style="width:230px;">
+                    <li><a href="/company/userInfo/memberInfo"><i class="far fa-user-circle"></i>&nbsp;&nbsp;회원정보수정</a></li>
+                    <li><a href="/company/reservation/reservationInfo"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;예약관리</a></li>
+                    <li><a href="/company/reverseOffer/reg"><i class="fas fa-file-upload"></i>&nbsp;&nbsp;제안신청관리</a></li>
+                    <li><a href="/company/reverseOffer/detail"><i class="fas fa-file-download"></i>&nbsp;&nbsp;역제안신청관리</a></li>
+                    <li><a href="/company/accommodation/list"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;숙소현황</a></li>
+                    <li><a href="/company/accommodation/reg"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;숙소등록</a></li>
+                    <li class="active"><a href="/company/goldenTime/list"><i class="fas fa-hourglass-start"></i>&nbsp;&nbsp;골든타임관리</a></li>
+                </ul>
             </aside>
-            <main id="main" class="main">
+            <main id="main" class="main" style="min-height:600px;">
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
                          <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>

@@ -76,7 +76,7 @@ window.addEventListener("load",function(){
 		if(e.target.className == 're-reserve-btn'){
 			
 			console.log(e.target.nextElementSibling.value);
-			window.location.href="./accDetail?id="+e.target.nextElementSibling.value;
+			window.location.href="/accommodation/detail?accId="+e.target.nextElementSibling.value;
 			return;
 		}
 		

@@ -20,36 +20,19 @@
 </head>
 
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec">
+   <header class="sec-header-page">
+        <section class="header-sec pcHeader">
             <div class="header-logo">
                 <h1><a class="teum-logo" href="/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
                     <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="/notice/list">공지사항</a></li>
-                                <li><a href="/event/list">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
+                    <li><a href="/company/accommodation/reg">숙소등록</a></li>
+                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
+                    <li><a href="">더보기</a></li>
+                    <li class="mypage"><a href="/logout">로그아웃</a>
+                        
                     </li>
                 </ul>
             </div>
