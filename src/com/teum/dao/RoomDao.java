@@ -19,8 +19,8 @@ public interface RoomDao {
 
 	List<OfferInfoView> getOfferInfoList(int startIndex,int endIndex,int offerId);
 
-//	List<OfferableRoomListView> getOfferableRoomList(int startIndex, int endIndex, int offerId);
-	List<OfferableRoomListView> getOfferableRoomList(int offerId);
+	List<OfferableRoomListView> getOfferableRoomList(int startIndex, int endIndex, int offerId);
+//	List<OfferableRoomListView> getOfferableRoomList(int offerId);
 	int getOfferCount(int offerId);
 
 	int getId(int roomId);
@@ -44,5 +44,5 @@ public interface RoomDao {
 	int updatePrice(Room room);
 
 	int delete(int accId);
-
+	List<ReverseListView> getReversedRoomList(int startIndex, int endIndex, int offerId);
 }

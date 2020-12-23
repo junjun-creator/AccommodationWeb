@@ -17,7 +17,7 @@ public class MemberInfoController extends HttpServlet {
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("email"));
 		if(session.getAttribute("email")==null) {
-			response.sendRedirect("/signin");
+			response.sendRedirect("/signin?return-url=/user/userInfo/memberInfo");
 		}
 		else if(((int)session.getAttribute("type")) != 0) {
 			response.sendRedirect("/index");

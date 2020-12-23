@@ -208,10 +208,9 @@ public class JdbcRoomDao implements RoomDao {
 	}
 
 	@Override
-	public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
+	public List<OfferableRoomListView> getOfferableRoomList(int startIndex, int endIndex, int offerId) {
 		String url = DBContext.URL;
-
-		String sql = "SELECT * FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID = ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, OFFERABLE_ROOM_LIST_VIEW.* FROM OFFERABLE_ROOM_LIST_VIEW WHERE OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
 
 		List<OfferableRoomListView> list = new ArrayList<>();
 
@@ -221,6 +220,8 @@ public class JdbcRoomDao implements RoomDao {
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setInt(1, offerId);
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -245,6 +246,7 @@ public class JdbcRoomDao implements RoomDao {
 				orlv.setPrice(price);
 				orlv.setAccId(accId);
 				orlv.setMaxHeadcount(maxHeadcount);
+				orlv.setBookedDate(bookedDate);
 				orlv.setBedCount(bedCount);
 				orlv.setRoomImageId(roomImageId);
 				orlv.setFileName(fileName);
@@ -676,6 +678,62 @@ public class JdbcRoomDao implements RoomDao {
 		}
 		
 		return result;
+}
+	public List<ReverseListView> getReversedRoomList(int startIndex, int endIndex, int offerId) {
+		String url = DBContext.URL;
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, REVERSE_LIST_VIEW.* FROM REVERSE_LIST_VIEW WHERE OFFER_ID=?) WHERE RN BETWEEN ? AND ?";
+
+		List<ReverseListView> list = new ArrayList<>();
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setInt(1, offerId);
+			ps.setInt(2, startIndex);
+			ps.setInt(3, endIndex);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int roomId = rs.getInt("room_id");
+				String roomName = rs.getString("NAME");
+				int roomPrice = rs.getInt("PRICE");
+				int accId = rs.getInt("ACC_ID");
+				int maxHeadcount = rs.getInt("MAX_HEADCOUNT");
+				int bedCount = rs.getInt("BED_COUNT");
+				String bookedDate = rs.getString("BOOKED_DATE");
+				Date approvalDate = rs.getDate("APPROVAL_DATE");
+				String fileName = rs.getString("FILENAME");
+				String fileRoute = rs.getString("FILEROUTE");
+
+				ReverseListView rlv = new ReverseListView();
+
+				rlv.setRoomId(roomId);
+				rlv.setOfferId(offerId);
+				rlv.setRoomName(roomName);
+				rlv.setRoomPrice(roomPrice);
+				rlv.setMaxHeadcount(maxHeadcount);
+				rlv.setAccId(accId);
+				rlv.setBookedDate(bookedDate);
+				rlv.setBedCount(bedCount);
+				rlv.setApprovalDate(approvalDate);
+				rlv.setFilename(fileName);
+				rlv.setFileroute(fileRoute);
+
+				list.add(rlv);
+			}
+
+			rs.close();
+			ps.close();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 }

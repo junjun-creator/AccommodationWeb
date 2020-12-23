@@ -16,22 +16,7 @@
 
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="index">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="">로그인</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="container-sec">
         <div class="container">
@@ -71,10 +56,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         <div class="button-submit">
                             <button class="disabled">로그인</button>
+                            <input type="hidden" value="${returnURL }">
                             <button style="margin-left:5px;" onclick="location.href='reg'">회원가입</button>
+                            
+                        </div>
+                        <div class="forget" style="display:flex;justify-content:flex-end;">
+                        	<button>아이디/비밀번호찾기</button>
                         </div>
                     <!-- </form> -->
                 </div>

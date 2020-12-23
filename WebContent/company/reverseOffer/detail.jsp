@@ -21,24 +21,7 @@
     <title>TEUM | 틈을 채우다</title>
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="/index">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="/company/accommodation/reg">숙소등록</a></li>
-                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="/logout">로그아웃</a>
-                        
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="container-sec">
         <div class="container">
@@ -71,7 +54,7 @@
 	                    <div style="width: 700px; overflow:hidden;">
 	                        <div class="proposal-item-container" style="display: flex;">
 									<c:forEach var="offer" items="${offerList}">
-									<div class="proposal-info">
+									<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href='detail?page=1&offerId=${offer.id}'">
 		                                <h2>제안정보</h2>
 		                                <ul>
 		                                    <li>

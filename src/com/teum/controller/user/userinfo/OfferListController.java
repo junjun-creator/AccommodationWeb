@@ -28,7 +28,7 @@ public class OfferListController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("email")==null) {
-			response.sendRedirect("/signin");
+			response.sendRedirect("/signin?return-url=/user/userInfo/offerList");
 		}
 		else if(((int)session.getAttribute("type")) != 0) {
 			response.sendRedirect("/index");

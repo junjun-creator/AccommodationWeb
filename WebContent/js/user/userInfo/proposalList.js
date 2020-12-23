@@ -92,6 +92,7 @@ window.addEventListener("load",function(){
 	});
 	
 	var proposalInfo = document.querySelectorAll(".proposal-info");
+	console.log(proposalInfo);
 	for(var card of proposalInfo){
 		card.addEventListener("click",function(e){
 			e.stopPropagation();

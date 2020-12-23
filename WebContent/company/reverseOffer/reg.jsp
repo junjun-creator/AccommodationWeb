@@ -21,24 +21,7 @@
     <title>TEUM | 틈을 채우다</title>
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="/index">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="/company/accommodation/reg">숙소등록</a></li>
-                    <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="/logout">로그아웃</a>
-                        
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="container-sec">
         <div class="container">
@@ -70,10 +53,8 @@
 	                    <div class="btn-left" style="align-self: center;"><i style="font-size: 50px; color: gray; opacity: 0.5;" class="fas fa-angle-left"></i></div>
 	                    <div style="width: 700px; overflow:hidden;">
 	                        <div class="proposal-item-container" style="display: flex;">
-	                        
-	                        
 	                        	<c:forEach var="offer" items="${offerList}" varStatus="status">
-	                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}">
+	                        	<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href='reg?page=1&offerId=${offer.id}'">
 	                                <h2>제안정보</h2>
 	                                <ul>
 	                                    <li>
@@ -95,11 +76,12 @@
 	                                        </div>
 	                                    </li>
 	                                </ul>
-	                                <input type="hidden" value="${offer.id}">
+	                                <%-- <input type="hidden" value="${offer.id}">
 	                                <input type="hidden" value="${offer.checkinDate}">
 	                                <input type="hidden" value="${offer.checkoutDate}">
 	                                <input type="hidden" value="${offer.headcount}">
-	                                <input type="hidden" value="${offer.price}">
+	                                <input type="hidden" value="${offer.price}"> --%>
+	                                
 	                            </div>
 	                        	</c:forEach>
 	                        
@@ -208,5 +190,43 @@
             </div>
         </footer>
     </section>
+    
+    <!-- <script type="more-template" id="more-template">
+		<section>
+			<div class="radio-container">
+				<input type="radio" name="room-id" value="{roomId}" id="radio-{statusIndex}" class="radio" required>
+				<label for="radio-{statusIndex}"><span></span></label>
+			</div>
+			<div class="offer-container">
+				<div class="offer-img-container">
+					<c:forTokens var="fileRoute" items="${room.fileroute}" delims="," varStatus="st">
+						<c:if test="{st.first == true}">
+							<img src="{fileRoute}" alt="">
+						</c:if>
+					</c:forTokens>
+				</div>
+				<div class="offer-detail-container">
+					<div class="offer-room">
+						<span>{roomName}</span>
+					</div>
+					<div class="offer-bed-count">
+						<div>침대개수</div>
+						<div>{bedCount}</div>
+					</div>
+					<div class="offer-max-headcount">
+						<div>최대 수용인원</div>
+						<div>{maxHeadcount}</div>
+					</div>
+					<div class="offer-price">
+						<div>가격</div>
+						<div>{price}원</div>
+					</div>
+					<div class="highlight-btn-container">
+						<input type="button" class="highlight-btn" value="예약이 가능한 방입니다">
+					</div>
+				</div>
+			</div>
+		</section>
+	</script> -->
 </body>
 </html>

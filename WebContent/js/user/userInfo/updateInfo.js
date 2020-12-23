@@ -107,7 +107,7 @@ window.addEventListener("load",function(){
 
 	var button_submit = document.querySelector(".button-submit").firstElementChild;
 	button_submit.addEventListener("click",function(e){
-		if (!confirm('정말 ~하시겠습니까?')){
+		if (!confirm('정말 수정하시겠습니까?')){
 			e.preventDefault();
 			return false;
 		}

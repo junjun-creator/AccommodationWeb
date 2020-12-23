@@ -41,11 +41,10 @@ public class RoomService implements RoomServiceI {
 		return roomDao.getOfferInfoList(startIndex, endIndex, offerId);
 	}
 
-	public List<OfferableRoomListView> getOfferableRoomList(int offerId) {
-//		int startIndex = 1 + (page - 1) * 3;
-//		int endIndex = page * 3;
-//		return roomDao.getOfferableRoomList(startIndex, endIndex, offerId);
-		return roomDao.getOfferableRoomList(offerId);
+	public List<OfferableRoomListView> getOfferableRoomList(int page, int offerId) {
+		int startIndex = 1 + (page - 1) * 3;
+		int endIndex = page * 3;
+		return roomDao.getOfferableRoomList(startIndex, endIndex, offerId);
 	}
 
 	@Override
@@ -103,5 +102,11 @@ public class RoomService implements RoomServiceI {
 		int result = 0;
 		result = roomDao.delete(accId);
 		return result;
+}
+	public List<ReverseListView> getReversedRoomList(int page, int offerId) {
+		int startIndex = 1 + (page - 1) * 3;
+		int endIndex = page * 3;
+		
+		return roomDao.getReversedRoomList(startIndex, endIndex, offerId);
 	}
 }
