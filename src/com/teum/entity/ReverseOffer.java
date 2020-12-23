@@ -9,7 +9,10 @@ public class ReverseOffer {
 	private Date approvalDate;
 	
 	public ReverseOffer() {
-		
+	}
+	
+	public ReverseOffer(int offerId) {
+		this.offerId = offerId;
 	}
 
 	public ReverseOffer(int id, int offerId, int roomId, Date approvalDate) {

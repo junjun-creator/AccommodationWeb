@@ -3,7 +3,6 @@ package com.teum.controller.company.reverseoffer;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,13 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.teum.dao.entity.OfferInfoView;
 import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Acc;
 import com.teum.entity.Offer;
 import com.teum.entity.ReverseOffer;
-import com.teum.entity.Room;
 import com.teum.service.AccService;
 import com.teum.service.OfferService;
 import com.teum.service.ReverseOfferService;
@@ -94,24 +91,18 @@ public class RegController extends HttpServlet {
 			if(offerId_ != null && !offerId_.equals(""))
 				offerId = Integer.parseInt(offerId_);
 			
-			List<OfferInfoView> oiv = roomService.getOfferInfoList(page, offerId);
-			int offerCount = roomService.getOfferCount(offerId);
-			///////////////////////////////////////////////////////////////////////////
-			
-			
-			
 			
 			// 제안목록중 원하는 제안을 클릭한 경우 offerId에 클릭한 offer id를 대입
 			if(offerId_ != null && !offerId_.equals(""))
 				offerId = Integer.parseInt(offerId_);
 			System.out.println("offerId: " + offerId);
-			List<OfferableRoomListView> offerViewList = roomService.getOfferableRoomList(offerId);
+			List<OfferableRoomListView> offerViewList = roomService.getOfferableRoomList(page, offerId);
 			
 			
 			/* -- 개인이 제안한 위치에 매칭되는 모든 숙소의 id값을 CSV형식으로 뽑기 -- */
 			StringBuilder offeredAccIdsCSV = new StringBuilder();
-			System.out.println("offerViewList: " + offerViewList.toString());
-			System.out.println("offeredAccIdsCSV: " + offeredAccIdsCSV);
+//			System.out.println("offerViewList: " + offerViewList.toString());
+//			System.out.println("offeredAccIdsCSV: " + offeredAccIdsCSV);
 			for (OfferableRoomListView offer : offerViewList) {
 				offeredAccIdsCSV.append(toString().valueOf(offer.getAccId()));
 				offeredAccIdsCSV.append(",");
@@ -152,9 +143,7 @@ public class RegController extends HttpServlet {
 				
 				System.out.printf("개인이 예약한 날짜(체크인~체크아웃-1): %s\n", offerdDatesCSV.toString());
 				
-//				개인이 원하는 날짜 2020-01-01,2020-01-02 -> String
-//				등록된 예약일 2020-01-02,2020-01-03 
-//				이렇게 겹치면 해당 방은 제외
+				
 				
 //				int index = 1;
 				for (RoomImageListView room : roomList) {
@@ -219,8 +208,6 @@ public class RegController extends HttpServlet {
 		
 		reverseOfferService.insert(reverseOffer);
 		offerService.update(offerId);
-		//OFFER테이블에서 approvaldate date값 넣어주기 update
-		//REVERSE도
 		
 		response.sendRedirect("/index");
 		

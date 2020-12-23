@@ -43,11 +43,11 @@
                     </div> -->
                     <div class="cliper">
                         <ul>
-                            <li class="current"><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/메인.jpg" alt= "신라스테이 삼성"></li> 
-                            <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/메인.jpg"></li>
+	                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_더블/1.jpg"></li>
+	                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/신라스테이_삼성/스탠다드_트윈/2.jpg"></li>
+	                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼더블/1.jpg"></li> 
+	                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/라마다호텔/슈페리얼트윈/2.jpg"></li>
+	                        <li><img src="/images/company/호텔/서울/강남,역삼,삼성/머큐어_앰배서더_강남_쏘도베/디럭스 더블/1.jpg"></li>
                         </ul>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
 	                                </div>
 	                                <div class="highlight-btn-container">
 	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
-	                                    	<input type="button" class="highlight-btn" value="예약하기">
+	                                    	<input type="button" class="highlight-btn rv-btn" value="예약하기">
 	                                    </a>
 	                                </div>
 	                            </div>
