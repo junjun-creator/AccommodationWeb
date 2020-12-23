@@ -20,5 +20,4 @@ public interface OfferDao {
 
 	int update(int offerId);
 	int delete(int accId);
-
 }

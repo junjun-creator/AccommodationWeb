@@ -23,7 +23,7 @@
     <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
+                <h1><a class="teum-logo" href="/admin/index">틈</a></h1>
             </div>
             <div>
                 <ul class="main-menu">
@@ -34,9 +34,9 @@
                         <a href="">더보기</a>
                         <div class="mega-menu">
                             <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
+                                <li><a href="/admin/customerService/notice/list">공지사항</a></li>
+                                <li><a href="/admin/promotion/event/list">이벤트</a></li>
+                                <li><a href="/admin/customerService/qna/list">1:1 문의</a></li>
                             </ul>
                         </div>
                     </li>

@@ -6,7 +6,10 @@ public interface RoomImageDao {
 
 	int insert(RoomImage roomImage);
 
-//	int delete(int id);
+	static int delete(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }
