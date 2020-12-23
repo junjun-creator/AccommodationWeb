@@ -46,5 +46,4 @@ public interface ReservationDao {
 
 	Reservation get(int id);
 
-	int delete(int accId);
 }

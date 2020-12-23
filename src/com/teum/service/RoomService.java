@@ -98,11 +98,6 @@ public class RoomService implements RoomServiceI {
 		
 	}
 
-	public int delete(int accId) {
-		int result = 0;
-		result = roomDao.delete(accId);
-		return result;
-}
 	public List<ReverseListView> getReversedRoomList(int page, int offerId) {
 		int startIndex = 1 + (page - 1) * 3;
 		int endIndex = page * 3;
