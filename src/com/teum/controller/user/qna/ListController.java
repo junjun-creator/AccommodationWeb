@@ -19,7 +19,13 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
-		
+		if(session.getAttribute("email")==null) {
+			response.sendRedirect("/signin?return-url=/user/qna");
+		}
+		else if(((int)session.getAttribute("type")) != 0) {
+			response.sendRedirect("/index");
+		}
+		else {
 		int id = (int)session.getAttribute("id");
 			
 				
@@ -28,6 +34,7 @@ public class ListController extends HttpServlet {
 		
 	  request.setAttribute("list",list);
 	  request.getRequestDispatcher("qna.jsp").forward(request, response);
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

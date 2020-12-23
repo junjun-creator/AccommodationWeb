@@ -59,7 +59,9 @@
 	                             <input type="checkbox" id="${status.index}" class="checkbox" name="check" onclick="doOpenCheck(this);">
 	                                <div>
 	                                    <p>${q.title}</p>
-	                                    <p class="p-detail">${q.answerContent}</p>
+	                                    <p class="p-detail"><span style="font-size:18px;">내 문의내용:</span><br/><br/>${q.content}</p>
+	                                    
+	                                    <p class="p-detail"><span style="font-size:18px;">답변내용:</span><br/><br/>${q.answerContent}</p>
 	                                    <p>${q.answerRegdate}</p>
 	                                </div>
 	                                <p>Master</p>
