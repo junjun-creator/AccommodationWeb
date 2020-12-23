@@ -60,6 +60,7 @@
 				                	<input class="switching"  type="hidden" name="switching" value="0">
 				                	<input class="progress"  type="submit"  name="cmd"value="진행">
 				                	<input class="nonprogress"  type="submit"  name="cmd"value="대기">
+				                	<input class="modify"  type="submit"  name="cmd"value="수정">
 				                </div>
 					           </div>  
 	                    </div>

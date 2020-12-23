@@ -136,6 +136,28 @@ public class ListController extends HttpServlet {
 				service.closeStatus(chk);
 			}
 			break;
+			case "수정":
+			
+				/*남은 날짜 구하는 코드*/
+				DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+				Date startDate = null;
+				Date endDate = null;
+				
+				try {
+					startDate = dateFormat.parse(request.getParameter("start"));
+					endDate = dateFormat.parse(request.getParameter("end"));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				
+				 acc.setId(chk);
+				 acc.setGtStartDate(startDate);
+				 acc.setGtEndDate(endDate);
+				 acc.setSaleprice(saleprice);
+				
+				 service.update(acc);
+			break;
 		
 		}
 		
