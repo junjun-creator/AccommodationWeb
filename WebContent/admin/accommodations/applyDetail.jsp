@@ -203,14 +203,12 @@
 				                   </div>
 			                  </div>
 		                 </section>
-			              	  <form>
-								<div class="btn-box">
-									<a class="btn-cancel" href="edit?id=${n.id}">승인</a>
-                    				<a class="btn-cancel" href="del?id=${n.id}">삭제</a>
-								</div>
-							</form>
 	                </c:forEach>   
 	                </div>
+								<div class="btn-box">
+									<a class="btn-cancel" href="approve?id=${acc.id}">승인</a>
+                    				<a class="btn-cancel" href="applyDel?id=${acc.id}">삭제</a>
+								</div>
 						</section>
 					</div>
 				</main>

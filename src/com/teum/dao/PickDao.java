@@ -18,6 +18,6 @@ public interface PickDao {
 
 	int deleteZzim(int userId, int accId);
 
-	int delete(int id);
+	int delete(int accId);
 
 }

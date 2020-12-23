@@ -98,4 +98,10 @@ public class RoomService implements RoomServiceI {
 		return result;
 		
 	}
+
+	public int delete(int accId) {
+		int result = 0;
+		result = roomDao.delete(accId);
+		return result;
+	}
 }

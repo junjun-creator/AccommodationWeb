@@ -43,4 +43,6 @@ public interface RoomDao {
 
 	int updatePrice(Room room);
 
+	int delete(int accId);
+
 }

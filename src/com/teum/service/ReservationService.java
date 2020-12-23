@@ -136,4 +136,10 @@ public class ReservationService implements ReservationServiceI {
 	public Reservation get(int id) {
 		return reservationDao.get(id);
 	}
+
+	public int delete(int accId) {
+		int result = 0;
+		result = reservationDao.delete(accId);
+		return result;
+	}
 }

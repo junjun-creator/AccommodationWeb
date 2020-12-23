@@ -22,7 +22,6 @@ public class ApplyListController extends HttpServlet{
 	//403 권한이 없을때(보안오류)
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Date today = new Date();
 		String[] appIds = request.getParameterValues("app-id");
 		String[] delIds = request.getParameterValues("del-id");
 		String cmd = request.getParameter("cmd");

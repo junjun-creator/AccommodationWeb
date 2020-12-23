@@ -59,10 +59,10 @@ public class PickService implements PickServiceI{
 		return result;
 	}
 
-	public int delete(int id) {
-int result = 0;
+	public int delete(int accId) {
+		int result = 0;
 		
-		result = pickDao.delete(id);
+		result = pickDao.delete(accId);
 		
 		return result;
 	}
