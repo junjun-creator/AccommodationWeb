@@ -31,6 +31,7 @@ public class RegController extends HttpServlet {
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String answerContent = request.getParameter("ANSWER_CONTENT");
+		answerContent = answerContent.replace("\r\n", "<br >");
 		int adminId = Integer.parseInt(request.getParameter("ADMIN_ID"));
 		int answerStatus = Integer.parseInt(request.getParameter("ANSWER_STATUS"));
 		
