@@ -19,9 +19,10 @@
 </head>
 <body>
 	<a style="display:scroll;position:fixed;bottom:20px;right:20px;color:#5f0081;font-size:50px;" href="#" title=”맨 위로"><i class="fas fa-arrow-alt-circle-up"></i></a> 
-
-출처: https://seo6285.tistory.com/189 [라일락의 세상만사]
-    <header class="sec-header-page">
+	
+	<!--header import  -->
+	<jsp:include page="/inc/header.jsp"/>
+    <%-- <header class="sec-header-page">
         <section class="header-sec pcHeader">
             <div class="header-logo">
                 <h1><a class="teum-logo" href="/index">틈</a></h1>
@@ -35,18 +36,18 @@
                         <a href=""><i class="fas fa-search"></i></a>
                     </li>
                     <li>
-                       <c:if test="${type == 0 }">
+                       <c:if test="${sessionScope.type == 0 }">
                           <a href="/user/offer/reg">제안하기</a>
                         </c:if>
-                        <c:if test="${type == 1 }">
+                        <c:if test="${sessionScope.type == 1 }">
                           <a href="/company/accommodation/reg">숙소등록</a>
                         </c:if>
                     </li>
                     <li>
-                       	<c:if test="${type == 0 }">
+                       	<c:if test="${sessionScope.type == 0 }">
                           <a href="/user/reservation/reservationInfo">예약내역</a>
                         </c:if>
-                        <c:if test="${type == 1 }">
+                        <c:if test="${sessionScope.type == 1 }">
                           <a href="/company/reservation/reservationInfo">예약현황</a>
                         </c:if>
                     </li>
@@ -56,7 +57,7 @@
                             <ul>
                                 <li><a href="/notice/list">공지사항</a></li>
                                 <li><a href="/event/list">이벤트</a></li>
-                                <c:if test="${type == 0 }">
+                                <c:if test="${sessionScope.type == 0 }">
                                    <li><a href="/user/qna">1:1 문의</a></li>
                               	</c:if>
 
@@ -65,38 +66,38 @@
                         </div>
                     </li>
                     <li class="sub-page">
-                       <c:if test="${empty email }">
+                       <c:if test="${empty sessionScope.email }">
                            <a href="/signin" class="character">로그인</a>
                         </c:if>
-                        <c:if test="${email ne null}">
+                        <c:if test="${sessionScope.email ne null}">
                            <a href="" style="pointer-events:none;" class="character"><i class="fas fa-sort-down"></i></a>
                         </c:if>
                         
-                        <c:if test="${type == 0 || type == 1 }">
+                        <c:if test="${sessionScope.type == 0 || sessionScope.type == 1 }">
                            <div class="mega-menu">
                                <ul>
-                                   <c:if test="${type == 0 }">
+                                   <c:if test="${sessionScope.type == 0 }">
                                     <li><a href="/user/userInfo/memberInfo">내정보</a></li>
                                  </c:if>
-                                 <c:if test="${type == 1 }">
+                                 <c:if test="${sessionScope.type == 1 }">
                                     <li><a href="/company/userInfo/memberInfo">내정보</a></li>
                                  </c:if>
-                                 <c:if test="${type == 0 }">
+                                 <c:if test="${sessionScope.type == 0 }">
                                     <li><a href="/user/reservation/reservationInfo">예약현황</a></li>
                                  </c:if>
-                                 <c:if test="${type == 1 }">
+                                 <c:if test="${sessionScope.type == 1 }">
                                     <li><a href="/company/reservation/reservationInfo">예약현황</a></li>
                                  </c:if>
-                                 <c:if test="${type == 0 }">
+                                 <c:if test="${sessionScope.type == 0 }">
                                     <li><a href="/user/userInfo/offerList">제안내역</a></li>
                                  </c:if>
-                                 <c:if test="${type == 1 }">
+                                 <c:if test="${sessionScope.type == 1 }">
                                     <li><a href="/company/reverseOffer/reg">제안내역</a></li>
                                  </c:if>
-                                   <c:if test="${type == 0 }">
+                                   <c:if test="${sessionScope.type == 0 }">
                                     <li><a href="/user/userInfo/pickList">찜한숙소</a></li>
                                  </c:if>
-                                 <c:if test="${type == 1 }">
+                                 <c:if test="${sessionScope.type == 1 }">
                                     <li><a href="/company/goldenTime/list">골든타임</a></li>
                                  </c:if>
                                    <li><a href="/logout">로그아웃</a></li>
@@ -107,7 +108,7 @@
                 </ul>
             </div>
         </section>
-    </header>
+    </header> --%>
 
     <section id="sec-promotion-page" class="sec-promotion-page scrolling">
         <section class="promotion-sec">

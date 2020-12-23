@@ -27,4 +27,21 @@ public class LoginService implements LoginServiceI {
 		return memberDao.get(email, password);
 	}
 
+	@Override
+	public String getEmail(String name, String phone) {
+		String result = "";
+		
+		result = memberDao.getEmail(name,phone);
+		
+		return result;
+	}
+
+	public String getPwd(String name, String email, String phone) {
+		String result="";
+		
+		result = memberDao.getPwd(name,email,phone);
+		
+		return result;
+	}
+
 }

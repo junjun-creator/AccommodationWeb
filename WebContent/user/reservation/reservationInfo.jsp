@@ -21,24 +21,7 @@
 </head>
 
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="/index">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="/user/offer/reg">제안하기</a></li>
-                    <li><a href="/user/reservation/reservationInfo">예약내역</a></li>
-                    <li><a href="">더보기</a></li>
-                    <li class="mypage"><a href="/logout">로그아웃</a>
-                       
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="container-sec">
         <div class="container">

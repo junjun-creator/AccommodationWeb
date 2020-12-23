@@ -20,7 +20,7 @@ public class UpdateInfoController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("email")==null) {
-			response.sendRedirect("/signin");
+			response.sendRedirect("/signin?return-url=/user/userInfo/updateInfo");
 		}
 		else if(((int)session.getAttribute("type")) != 0) {
 			response.sendRedirect("/index");

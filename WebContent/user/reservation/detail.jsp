@@ -18,34 +18,7 @@
     <title>예약 상세페이지</title>
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">이벤트</a></li>
-                                <li><a href="">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                        <a href="/logout" class="character">로그아웃</a>
-                        
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="container-sec">
         <div class="container">

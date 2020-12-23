@@ -18,23 +18,16 @@ import com.teum.service.LoginService;
 public class LoginController extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("email")+"개빡치네 시부레");
-		
-		super.service(request, response);
-	}
-
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("email")+"개빡치네 시부레222222");
+		
+		String returnURL = request.getParameter("return-url");
 		
 		if(session.getAttribute("email")!=null) {
 			response.sendRedirect("/index");
 		}else {
 			
+			request.setAttribute("returnURL",returnURL);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
@@ -44,6 +37,7 @@ public class LoginController extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String returnURL = request.getParameter("return-url");
 		
 		LoginService service = new LoginService();
 		
@@ -55,8 +49,7 @@ public class LoginController extends HttpServlet {
 			emailValid = 1;
 		
 		obj.put("valid", emailValid);
-		//}
-		
+		obj.put("returnURL", returnURL);
 		HttpSession session = request.getSession();
 		if(emailValid == 1) {
 			session.setAttribute("email", email);
@@ -65,7 +58,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("password", m.getPassword());
 		}
 
-
+		
 		response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(obj);
 	}

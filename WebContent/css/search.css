@@ -1,0 +1,74 @@
+.category{
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+.category >div{
+    width: 155px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    cursor:pointer;
+}
+
+.search-category.pick{
+    
+    border: 2px solid #5f0080;
+    border-collapse: collapse;
+}
+.search-category{
+    border:1px solid gray;
+    border-collapse: collapse;
+}
+
+.search-form>form>div>span{
+    display: inline-block;
+    width: 100px;
+}
+.search-form{
+    margin-top: 20px;
+    display:none;
+}
+.choose{
+	display:block
+}
+.reg-form-container{
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form .reg-form-container> .reg-form-item>.input-box{
+    height: 40px;
+    overflow: hidden;
+}
+    .search-form .reg-form-container> .reg-form-item>.input-box>div{
+        display: flex;
+        flex-direction: column;
+    }
+.search-form .reg-form-container> .reg-form-item>.discorrect{
+    height: 52px;
+}
+    .email,.birthday,.name,.phone{
+        width: 300px;
+        height: 30px;
+        border: 1px solid gray;
+        padding-left: 10px;
+    }
+.reg-form-container>button{
+    margin-top: 20px;
+        width: 320px;
+        color: white;
+        font-size: 16px;
+        background-color: #5f0081;
+        border: 1px solid #5f0081;
+        border-radius: 15px;
+        cursor: pointer;
+        padding: 10px 0;
+    
+}
