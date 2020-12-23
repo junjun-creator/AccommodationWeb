@@ -3,6 +3,7 @@ package com.teum.service;
 import java.util.List;
 
 import com.teum.dao.ReverseOfferDao;
+import com.teum.dao.RoomImageDao;
 import com.teum.dao.jdbc.JdbcReverseOfferDao;
 import com.teum.entity.ReverseOffer;
 
@@ -32,7 +33,9 @@ public class ReverseOfferService {
 		int result = 0;
 		result = reverseOfferDao.delete(roomId);
 		return result;
+		
 	}
+
 
 
 

@@ -9,7 +9,6 @@ public interface AccImageDao {
 	int insert(AccImage accImage);
 
 	AccImage get(int accId);
-	
-	int delete(int accId);
+
 
 }
