@@ -47,7 +47,11 @@
                     	<c:forEach items="${list }" var="info" varStatus="status">
                     	
 	                        <li class="reservation-item">
-	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/${info.fileName }" alt="">
+	                        		<c:forTokens var="fileRoute" items="${info.fileRoute}" delims="," varStatus="st">
+                                       <c:if test="${st.first == true}">
+                                          <img src="${fileRoute}" alt="">
+                                       </c:if>
+                                    </c:forTokens>
 	                            <c:if test="${info.cancelStatus == 0 }">
 			               			<c:set var="now" value="<%=new java.util.Date()%>" />
 			               			<c:choose>

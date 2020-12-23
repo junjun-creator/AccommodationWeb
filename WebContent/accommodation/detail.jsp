@@ -84,8 +84,8 @@
                     <h1>객실 안내 및 예약</h1>
                     <form action="detail" method="get">
                         <input type="hidden" name="accId" value=${acc.id}>
-                        체크인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkin-date" name="checkinDate" value="${empty param ? '' : param.checkinDate }" required><br>
-                        체크아웃 &nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkout-date" name="checkoutDate" value="${empty param ? '' : param.checkoutDate }" required><br>
+                        체크인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkin-date" name="checkinDate" value="${empty param.checkinDate ? '' : param.checkinDate }" required><br>
+                        체크아웃 &nbsp;&nbsp;&nbsp; <input type="date" class="form-option date checkout-date" name="checkoutDate" value="${empty param.checkoutDate ? '' : param.checkoutDate }" required><br>
                         <input type="submit" class="submit-btn" value="적용하기">
                     </form>
                 </div>
@@ -133,9 +133,11 @@
 	                                    </div>
 	                                </div>
 	                                <div class="highlight-btn-container">
-	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
-	                                    	<input type="button" class="highlight-btn rv-btn" value="예약하기">
-	                                    </a>
+                                        <input type="button" class="highlight-btn" value="예약하기">
+                                        <input type="hidden" value="${acc.id}">
+                                        <input type="hidden" value="${room.id}">
+                                        <input type="hidden" value="${param.checkinDate}">
+                                        <input type="hidden" value="${param.checkoutDate}">
 	                                </div>
 	                            </div>
 	                        </div>
@@ -171,10 +173,12 @@
 	                                    	<fmt:formatNumber value="${room.price}" pattern="#,###" />원
 	                                    </div>
 	                                </div>
-	                                <div class="highlight-btn-container">
-	                                    <a href="/user/reservation/pay?accId=${acc.id}&roomId=${room.id}&userId=${userId}&checkinDate=${param.checkinDate}&checkoutDate=${param.checkoutDate}">
-	                                    	<input type="button" class="highlight-btn" value="예약하기">
-	                                    </a>
+                                    <div class="highlight-btn-container">
+                                        <input type="button" class="highlight-btn rv-btn" value="예약하기">
+                                        <input type="hidden" value="${acc.id}">
+                                        <input type="hidden" value="${room.id}">
+                                        <input type="hidden" value="${param.checkinDate}">
+                                        <input type="hidden" value="${param.checkoutDate}">
 	                                </div>
 	                            </div>
 	                        </div>

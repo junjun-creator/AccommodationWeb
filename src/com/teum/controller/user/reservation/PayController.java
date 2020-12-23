@@ -51,7 +51,7 @@ public class PayController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("email") == null) // 로그인이 안된 경우
-			response.sendRedirect("/signin");
+			response.sendRedirect("/signin?return-url=/accommodation/detail?accId=" + request.getParameter("accId"));
 		else if (((int) session.getAttribute("type")) != 0) // 개인회원이 아닌경우
 			response.sendRedirect("/index");
 		else {

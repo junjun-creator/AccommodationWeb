@@ -69,7 +69,7 @@ public class DetailController extends HttpServlet {
 
 		if (accId_ != null && !accId_.equals(""))
 			accId = Integer.parseInt(accId_);
-System.out.println(accId);
+		System.out.println(accId);
 		/* -- acc id에 일치하는 모든 acc 정보 갖고 오기 -- */
 		Acc acc = accService.get(accId);
 

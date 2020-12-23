@@ -926,6 +926,7 @@ int count = 0;
 				pst.setString(2, "%" + search + "%");
 			}
 			
+			
 			ResultSet rs = pst.executeQuery();
 
 			while(rs.next()) {
@@ -934,6 +935,7 @@ int count = 0;
 				String phone = rs.getString("phone");
 				String filename = rs.getString("FILENAME");
 				String fileroute = rs.getString("FILEROUTE");
+				String location2 = rs.getString("LOCATION");
 				int regStatus = rs.getInt("reg_status");
 				Date approvalDate = rs.getDate("approval_date");
 				int adminId = rs.getInt("admin_id");
@@ -948,7 +950,7 @@ int count = 0;
 				AccImageListView accImageListView = new AccImageListView(
 						id, name, 
 						filename, fileroute,
-						phone, location, regStatus,
+						phone, location2, regStatus,
 						approvalDate, adminId, companyId, regdate,
 						accTypeId, gtStartDate, gtEndDate,
 						saleprice, goldentimeStatus);

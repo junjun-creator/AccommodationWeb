@@ -28,7 +28,7 @@ public class JdbcReservationDao implements ReservationDao {
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM NUM, RLV.* FROM RESERVATION_LIST_VIEW RLV) WHERE NUM BETWEEN ? AND ? AND USER_ID=?";
+		String sql = "SELECT * FROM (SELECT ROWNUM, RLV.* FROM RESERVATION_LIST_VIEW RLV) WHERE ROWNUM BETWEEN ? AND ? AND USER_ID=?";
 		
 		List<ReservationListView> list = new ArrayList<>();
 		
@@ -54,7 +54,7 @@ public class JdbcReservationDao implements ReservationDao {
 				Date checkinDate = rs.getDate("checkin_date");
 				Date checkoutDate = rs.getDate("checkout_date");
 				String accName = rs.getString("acc_name");
-				String fileName = rs.getString("filename");
+				String fileRoute = rs.getString("fileroute");
 				int cancelStatus = rs.getInt("cancel_status");
 				int reviewScore = rs.getInt("review_score");
 				
@@ -68,7 +68,7 @@ public class JdbcReservationDao implements ReservationDao {
 				rlv.setCheckinDate(checkinDate);
 				rlv.setCheckoutDate(checkoutDate);
 				rlv.setAccName(accName);
-				rlv.setFileName(fileName);
+				rlv.setFileRoute(fileRoute);
 				rlv.setCancelStatus(cancelStatus);
 				rlv.setReviewScore(reviewScore);
 				

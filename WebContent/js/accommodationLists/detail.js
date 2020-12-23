@@ -1,7 +1,6 @@
 window.addEventListener("load",function(){
     // 날짜
-    var checkinDate = document.querySelector('.checkin-date');
-    var checkoutDate = document.querySelector('.checkout-date');
+   
 	var submitBtn = document.querySelector('.submit-btn');
 	var rvBtn = document.querySelector('.rv-btn');
 
@@ -12,12 +11,23 @@ window.addEventListener("load",function(){
         }
 	});
 
-
 	rvBtn.addEventListener('click', function(e) {
-		if (checkinDate.value == '' || checkoutDate.value == '') {
-            alert('예약하실 날짜를 먼저 설정해 주세요.');
-            e.preventDefault();
-        }
+		var checkinDate = document.querySelector('.checkin-date');
+		var checkoutDate = document.querySelector('.checkout-date');
+		if (checkinDate.value != '' && checkoutDate.value != '') {
+			var accId = e.target.nextElementSibling.value;
+			var roomId = e.target.nextElementSibling.nextElementSibling.value;
+			var checkinDate = e.target.nextElementSibling.nextElementSibling.nextElementSibling.value;
+			var checkoutDate = e.target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+			
+			location.href=`/user/reservation/pay?
+				accId=${accId}&roomId=${roomId}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`;
+		} else {
+			alert('예약하실 날짜를 먼저 설정해 주세요.');
+			e.preventDefault();
+		}
+
+		
 	});
 
 

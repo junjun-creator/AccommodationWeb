@@ -11,7 +11,7 @@ public class ReservationListView {
 	private Date checkinDate;
 	private Date checkoutDate;
 	private String accName;
-	private String fileName;
+	private String fileRoute;
 	private int cancelStatus;
 	private int reviewScore;
 	
@@ -20,7 +20,7 @@ public class ReservationListView {
 	}
 
 	public ReservationListView(int id, int userId, int accId, int roomId, int price, Date checkinDate,
-			Date checkoutDate, String accName, String fileName, int cancelStatus, int reviewScore) {
+			Date checkoutDate, String accName, String fileRoute, int cancelStatus, int reviewScore) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -30,7 +30,7 @@ public class ReservationListView {
 		this.checkinDate = checkinDate;
 		this.checkoutDate = checkoutDate;
 		this.accName = accName;
-		this.fileName = fileName;
+		this.fileRoute = fileRoute;
 		this.cancelStatus = cancelStatus;
 		this.reviewScore = reviewScore;
 	}
@@ -99,12 +99,12 @@ public class ReservationListView {
 		this.accName = accName;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getFileRoute() {
+		return fileRoute;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileRoute(String fileRoute) {
+		this.fileRoute = fileRoute;
 	}
 
 	public int getCancelStatus() {
@@ -127,8 +127,9 @@ public class ReservationListView {
 	public String toString() {
 		return "ReservationListView [id=" + id + ", userId=" + userId + ", accId=" + accId + ", roomId=" + roomId
 				+ ", price=" + price + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", accName="
-				+ accName + ", fileName=" + fileName + ", cancelStatus=" + cancelStatus + ", reviewScore=" + reviewScore
-				+ "]";
+				+ accName + ", fileRoute=" + fileRoute + ", cancelStatus=" + cancelStatus + ", reviewScore="
+				+ reviewScore + "]";
 	}
+
 	
 }

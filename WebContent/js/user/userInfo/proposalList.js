@@ -50,14 +50,15 @@ window.addEventListener("load",function(){
 				var currentOffer = document.querySelector(".picked");
 				var offerPrice = currentOffer.lastElementChild.value;
 				var offer_id = currentOffer.querySelector("input").value;
-				var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
-				var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
-				var headcount = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.nextElementChild.value;
+				var checkinDate = e.currentTarget.querySelector("input").nextElementSibling.value;
+				var checkoutDate = e.currentTarget.querySelector("input").nextElementSibling.nextElementSibling.value;
+				var headcount = e.currentTarget.querySelector("input").nextElementSibling.nextElementSibling.nextElementSibling.value;
 				
 				for(var i=0;i<jsonResult.length-1;i++){
 					var resultHTML = '';
+					
 					resultHTML = html.replace("{accName}",jsonResult[i].accName)
-									.replace("{fileRoute}",jsonResult[i].fileRoute)
+									.replace("{fileRoute}",(jsonResult[i].fileRoute).split(",", 1))
 									.replace("{roomName}",jsonResult[i].roomName)
 									.replace("{bedCount}",jsonResult[i].bedCount)
 									.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
@@ -101,9 +102,9 @@ window.addEventListener("load",function(){
 			beforeTarget.classList.remove("picked");
 			e.currentTarget.classList.add("picked");
 			var offerPrice = e.currentTarget.lastElementChild.value;
-			var checkinDate = e.currentTarget.querySelector("input").nextElementChild.value;
-			var checkoutDate = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.value;
-			var headcount = e.currentTarget.querySelector("input").nextElementChild.nextElementChild.nextElementChild.value;
+			var checkinDate = e.currentTarget.querySelector("input").nextElementSibling.value;
+			var checkoutDate = e.currentTarget.querySelector("input").nextElementSibling.nextElementSibling.value;
+			var headcount = e.currentTarget.querySelector("input").nextElementSibling.nextElementSibling.nextElementSibling.value;
 			var offer_id = e.currentTarget.querySelector("input").value;
 			
 			
@@ -122,7 +123,7 @@ window.addEventListener("load",function(){
 					var resultHTML = '';
 					for(var i=0;i<jsonResult.length-1;i++){
 						resultHTML += html.replace("{accName}",jsonResult[i].accName)
-										.replace("{fileRoute}",jsonResult[i].fileRoute)
+										.replace("{fileRoute}",(jsonResult[i].fileRoute).split(",", 1))
 										.replace("{roomName}",jsonResult[i].roomName)
 										.replace("{bedCount}",jsonResult[i].bedCount)
 										.replace("{maxHeadcount}",jsonResult[i].maxHeadcount)
@@ -156,16 +157,21 @@ window.addEventListener("load",function(){
 		},true);
 	}
 	
-	
-	var reserve_btn = document.querySelector(".submit-btn");
-	reserve_btn.addEventListener("click",function(){
-		var checkinDate = reserve_btn.nextElementSibling;
-		var checkoutDate = checkinDate.nextElementSibling;
-		var price = checkoutDate.nextElementSibling;
-		var accId = price.nextElementSibling;
-		var roomId = accId.nextElementSibling;
-		var headcount = roomId.nextElementSibling;
-		
-		window.location.href = `/user/reservation/pay?accId=${accId.value}&roomId=${roomId.value}&price=${price.value}&checkinDate=${checkinDate.value}&checkoutDate=${checkoutDate.value}&headcount=${headcount.value}`;
+	// firstElementChild.lastElementChild.firstElementChild.lastElementChild.lastElementChild.firstElementChild
+	var reserve_btn = document.querySelector(".offer-sec");
+	reserve_btn.addEventListener("click",function(e){
+		e.stopPropagation();
+
+		console.log(e.target.className);
+		if(e.target.className == "submit-btn"){
+			var checkinDate = e.target.nextElementSibling;
+			var checkoutDate = checkinDate.nextElementSibling;
+			var price = checkoutDate.nextElementSibling;
+			var accId = price.nextElementSibling;
+			var roomId = accId.nextElementSibling;
+			var headcount = roomId.nextElementSibling;
+			
+			window.location.href = `/user/reservation/pay?accId=${accId.value}&roomId=${roomId.value}&price=${price.value}&checkinDate=${checkinDate.value}&checkoutDate=${checkoutDate.value}&headcount=${headcount.value}`;
+		}
 	});
 });
