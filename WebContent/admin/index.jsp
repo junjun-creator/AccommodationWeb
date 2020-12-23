@@ -34,10 +34,10 @@
         <div class="container">
             <h1>관리자 페이지에 오신 것을 환영합니다.</h1>
             <ul>
-                <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
-                <li><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
+                <li><a href="accommodations/list"><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
+                <li><a href="userInfo/list"><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
                 <li><a href="promotion/goldenTime/list"><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-                <li><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
+                <li><a href="notice/list"><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
             </ul>
         </div>
     </section>

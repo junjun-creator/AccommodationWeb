@@ -23,11 +23,7 @@ public class AccImageService {
 		return accImageDao.get(accId);
 	}
 
-	public int delete(int accId) {
-		int result = 0;
-		result = accImageDao.delete(accId);
-		return result;
-	}
+
 
 
 
