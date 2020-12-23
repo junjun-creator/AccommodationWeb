@@ -71,7 +71,7 @@
 	                    <div style="width: 700px; overflow:hidden;">
 	                        <div class="proposal-item-container" style="display: flex;">
 									<c:forEach var="offer" items="${offerList}">
-									<div class="proposal-info">
+									<div class="proposal-info ${(status.index == 0) ? 'picked' : ''}" onclick="location.href='detail?page=1&offerId=${offer.id}'">
 		                                <h2>제안정보</h2>
 		                                <ul>
 		                                    <li>

@@ -32,6 +32,10 @@ public class ReverseListView {
 		this.fileroute = fileroute;
 	}
 	
+	public ReverseListView() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getAccId() {
 		return accId;
 	}

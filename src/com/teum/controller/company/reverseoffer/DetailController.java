@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teum.dao.entity.OfferableRoomListView;
 import com.teum.dao.entity.ReverseListView;
 import com.teum.dao.entity.RoomImageListView;
 import com.teum.entity.Offer;
@@ -61,9 +62,6 @@ public class DetailController extends HttpServlet {
 			
 			String accIdsCSV = String.join(",", accIdsList);
 			
-//			System.out.println("accIdsCSV: " + accIdsCSV);
-			
-			
 			
 			
 			/*----뽑은 숙소ID로 등록된 offer ID 모두 뽑기----*/
@@ -76,7 +74,18 @@ public class DetailController extends HttpServlet {
 			
 			String offerIdsCSV = String.join(",", offerIdsList);
 			
-//			System.out.println("offerIdsCSV: " + offerIdsCSV);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
 			
 			
 			
@@ -97,26 +106,48 @@ public class DetailController extends HttpServlet {
 			
 			String finalOfferIdsCSV = String.join(",", finalOfferIdsList);
 			
-//			System.out.println("finalOfferIdsCSV: " + finalOfferIdsCSV);
 			
 			
 			
 			
 			/*----뽑은 reverse offer에 들어있는 offer id로 해당하는 offer만 다시 뽑기----*/
 			List<Offer> offerList = offerService.getListByOfferIds(finalOfferIdsCSV);
+			//List<Offer> offerList = offerService.getList(page, );
 			
-//			System.out.println("offerList: " + offerList);
+			
+			
+			int page = 1;
+			int offerId = 0;
+			String page_ = request.getParameter("page");
+			String offerId_ = request.getParameter("offerId");
+			
+			// 개인회원이 보낸 제안이 최소 1개라도 있는 경우엔 첫 번째 제안을 디폴트 값으로 설정
+			if(!offerList.isEmpty())
+				offerId = offerList.get(0).getId();
+			
+			if(page_ != null && !page_.equals(""))
+				page = Integer.parseInt(page_);
+			
+			if(offerId_ != null && !offerId_.equals(""))
+				offerId = Integer.parseInt(offerId_);
+			
+			
+			// 제안목록중 원하는 제안을 클릭한 경우 offerId에 클릭한 offer id를 대입
+			if(offerId_ != null && !offerId_.equals(""))
+				offerId = Integer.parseInt(offerId_);
+			System.out.println("offerId: " + offerId);
+			List<ReverseListView> roomList = roomService.getReversedRoomList(page, offerId);
 			
 			
 			
 			
 			/* 개인회원에게 보낸 룸 정보 뽑기 */
-			List<ReverseListView> roomList = new ArrayList<>();
-			
-			for (ReverseOffer reverseOffer : reverseOfferList) {
-				int roomId = reverseOffer.getRoomId();
-				roomList.add(roomService.get(roomId));
-			}
+//			List<ReverseListView> roomList = new ArrayList<>();
+//			
+//			for (ReverseOffer reverseOffer : reverseOfferList) {
+//				int roomId = reverseOffer.getRoomId();
+//				roomList.add(roomService.get(roomId));
+//			}
 			
 			request.setAttribute("offerList", offerList);
 			request.setAttribute("roomList", roomList);
