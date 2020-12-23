@@ -26,7 +26,7 @@ window.addEventListener("load",function(){
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
-
+ 
 	var btn_more = document.querySelector(".btn-more");
 	var offer_count = document.querySelector(".offer-count");
 	
