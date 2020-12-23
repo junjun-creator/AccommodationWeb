@@ -104,4 +104,12 @@ public class RoomService implements RoomServiceI {
 		
 		return roomDao.getReversedRoomList(startIndex, endIndex, offerId);
 	}
+
+	public int getPrice(int id) {
+		int result = 0;
+		
+		result = roomDao.getPrice(id);
+		
+		return result;
+	}
 }

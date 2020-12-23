@@ -193,13 +193,13 @@
                         </figcaption>
                         <div class="description-item">
                             <p>${acc.name}</p>
-                            <P>★ 9.1</P>
+                            <P>★ ${pointList[status.index]*2 }</P>
                             <p>${acc.location}</p>
                         </div>
                         <div class="item-price">
                             <div>
                                 <p>예약특가</p>
-                                <p>120,000원</p>
+                                <p><fmt:formatNumber value="${priceList[status.index] }" pattern="#,###" />원</p>
                             </div>
                         </div>
                         <div class="hovered-item-bg">
