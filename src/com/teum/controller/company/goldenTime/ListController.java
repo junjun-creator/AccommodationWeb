@@ -26,141 +26,142 @@ import com.teum.service.RoomService;
 public class ListController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();	
-			
-		
-		int id = (int)session.getAttribute("id");
-		//int id =1;
-		
+		HttpSession session = request.getSession();
+
+		int id = (int) session.getAttribute("id");
+		// int id =1;
+
 		GoldenTimeService service = new GoldenTimeService();
-		List<GoldenTimeView> list = service.getGoldenList(id); 
-		
+		List<GoldenTimeView> list = service.getGoldenList(id);
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("list.jsp").forward(request, response);
 	}
-	
-	
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();	
-			
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		int id = (int) session.getAttribute("id");
+
 		
-		int id = (int)session.getAttribute("id");
-		
-		AccService accservie = new AccService();
 		GoldenTimeService service = new GoldenTimeService();
-		
+
 		String cmd = request.getParameter("cmd");
 		int chk = Integer.parseInt(request.getParameter("check"));
-		String saleprice_=request.getParameter("price");
-		String switching=request.getParameter("switching");
-		String addprice_=request.getParameter("saleprice");
 		
-		
-		
-		//가격
-				int saleprice=0;
-				if(saleprice_!=null&&!saleprice_.equals("")) {
-					saleprice =Integer.parseInt(saleprice_);
-				}
-				int addprice=0;
-				if(addprice_!=null&&!addprice_.equals("")) {
-					addprice =Integer.parseInt(addprice_);
-				}
-		
-		
+		String saleprice_ = request.getParameter("price");
+		String switching = request.getParameter("switching");
+		String addprice_ = request.getParameter("saleprice");
+
+		// 가격
+		int saleprice = 0;
+		if (saleprice_ != null && !saleprice_.equals("")) {
+			saleprice = Integer.parseInt(saleprice_);
+		}
+		int addprice = 0;
+		if (addprice_ != null && !addprice_.equals("")) {
+			addprice = Integer.parseInt(addprice_);
+		}
+
 		Acc acc = new Acc();
-		
+
 		switch (cmd) {
 		case "진행":
-			if(!switching.equals("0")) {
-				/*가격 할인 코드*/
+			if (!switching.equals("0")) {
+				/* 가격 할인 코드 */
 				RoomService rservice = new RoomService();
-				List<Room> list = rservice.getPriceList(chk); 
+				List<Room> list = rservice.getPriceList(chk);
+
+				AccService aservice =new AccService();
+				Acc alist = aservice.get(chk);
+				 addprice=alist.getSaleprice();
 				
-				int roomPrice =0;
-				
-				for(int i=0;i<list.size();i++) {
-					roomPrice=list.get(i).getPrice()-addprice;
-					
-					if(roomPrice<0) {
-						roomPrice=0;
+				int roomPrice = 0;
+
+				for (int i = 0; i < list.size(); i++) {
+					roomPrice = list.get(i).getPrice() - addprice;
+
+					if (roomPrice < 0) {
+						roomPrice = 0;
 					}
-					
+
 					list.get(i).setPrice(roomPrice);
-					 rservice.updatePrice(list.get(i));
+					rservice.updatePrice(list.get(i));
 				}
-				/*남은 날짜 구하는 코드*/
-				DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+				/* 남은 날짜 구하는 코드 */
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date startDate = null;
 				Date endDate = null;
-				
+
 				try {
 					startDate = dateFormat.parse(request.getParameter("start"));
 					endDate = dateFormat.parse(request.getParameter("end"));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				
-				
-				 acc.setId(chk);
-				 acc.setGtStartDate(startDate);
-				 acc.setGtEndDate(endDate);
-				 acc.setSaleprice(saleprice);
-				
-				 service.update(acc);
-				
+
+				acc.setId(chk);
+				acc.setGtStartDate(startDate);
+				acc.setGtEndDate(endDate);
+				acc.setSaleprice(saleprice);
+
+				service.update(acc);
+
 				service.openStatus(chk);
 			}
-		
+
 			break;
-		
+
 		case "대기":
-			
-			List<Acc> acc_ = accservie.getList(id);
-			if(acc_.get(0).getGoldentimeStatus()==1) {
-			
+			AccService accservie =new AccService();
+			Acc  acc_ = accservie.get(chk);
+			if (acc_.getGoldentimeStatus() == 1) {
+
 				RoomService rservice = new RoomService();
-				List<Room> list = rservice.getPriceList(chk); 
-				
-				int roomPrice =0;
-				
-				for(int i=0;i<list.size();i++) {
-					roomPrice=list.get(i).getPrice()+addprice;
-					
+				List<Room> list = rservice.getPriceList(chk);
+				AccService aservice =new AccService();
+				Acc alist = aservice.get(chk);
+				 addprice=alist.getSaleprice();
+				int roomPrice = 0;
+
+				for (int i = 0; i < list.size(); i++) {
+					roomPrice = list.get(i).getPrice() + addprice;
+
 					list.get(i).setPrice(roomPrice);
-					 rservice.updatePrice(list.get(i));
+					rservice.updatePrice(list.get(i));
 				}
 				service.closeStatus(chk);
 			}
 			break;
-			case "수정":
-			
-				/*남은 날짜 구하는 코드*/
-				DateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
-				Date startDate = null;
-				Date endDate = null;
-				
-				try {
-					startDate = dateFormat.parse(request.getParameter("start"));
-					endDate = dateFormat.parse(request.getParameter("end"));
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				
-				
-				 acc.setId(chk);
-				 acc.setGtStartDate(startDate);
-				 acc.setGtEndDate(endDate);
-				 acc.setSaleprice(saleprice);
-				
-				 service.update(acc);
+		case "수정":
+
+			/* 남은 날짜 구하는 코드 */
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date startDate = null;
+			Date endDate = null;
+
+			try {
+				startDate = dateFormat.parse(request.getParameter("start"));
+				endDate = dateFormat.parse(request.getParameter("end"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			acc.setId(chk);
+			acc.setGtStartDate(startDate);
+			acc.setGtEndDate(endDate);
+			acc.setSaleprice(saleprice);
+
+			service.update(acc);
 			break;
-		
+
 		}
-		
+
 		response.sendRedirect("list");
 	}
 }

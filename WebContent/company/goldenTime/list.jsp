@@ -96,7 +96,7 @@
 		                        <div class="item-price">
 		                            <div>
 		                                <p>인하가격</p>
-		                                <p>${g.saleprice}원</p>
+		                                <p class="saleprice">${g.saleprice}원</p>
 		                                <input type="hidden"  name="saleprice" value="${g.saleprice}">
 		                            </div>
 		                        </div>
