@@ -28,7 +28,7 @@ public class JdbcReservationDao implements ReservationDao {
 		String dbid = DBContext.UID;
 		String dbpwd = DBContext.PWD;
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM NUM, RLV.* FROM RESERVATION_LIST_VIEW RLV) WHERE NUM BETWEEN ? AND ? AND USER_ID=?";
+		String sql = "SELECT * FROM (SELECT ROWNUM, RLV.* FROM RESERVATION_LIST_VIEW RLV) WHERE ROWNUM BETWEEN ? AND ? AND USER_ID=?";
 		
 		List<ReservationListView> list = new ArrayList<>();
 		
@@ -74,6 +74,7 @@ public class JdbcReservationDao implements ReservationDao {
 				
 				list.add(rlv);
 			}
+			System.out.println(endIndex);
 			
 			rs.close();
 			ps.close();

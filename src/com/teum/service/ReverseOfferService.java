@@ -29,7 +29,6 @@ public class ReverseOfferService {
 	public List<ReverseOffer> getList(String offerIdsCSV) {
 		return reverseOfferDao.getList(offerIdsCSV);
 	}
-
 	public int delete(int roomId) {
 		int result = 0;
 		result = reverseOfferDao.delete(roomId);

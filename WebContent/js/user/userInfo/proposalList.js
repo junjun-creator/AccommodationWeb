@@ -157,15 +157,18 @@ window.addEventListener("load",function(){
 	}
 	
 	
-	var reserve_btn = document.querySelector(".submit-btn");
-	reserve_btn.addEventListener("click",function(){
-		var checkinDate = reserve_btn.nextElementSibling;
-		var checkoutDate = checkinDate.nextElementSibling;
-		var price = checkoutDate.nextElementSibling;
-		var accId = price.nextElementSibling;
-		var roomId = accId.nextElementSibling;
-		var headcount = roomId.nextElementSibling;
-		
-		window.location.href = `/user/reservation/pay?accId=${accId.value}&roomId=${roomId.value}&price=${price.value}&checkinDate=${checkinDate.value}&checkoutDate=${checkoutDate.value}&headcount=${headcount.value}`;
+	var reserve_btn = document.querySelector(".offer-sec");
+	reserve_btn.addEventListener("click",function(e){
+		if(e.target.className == "btn-more"){
+			
+			var checkinDate = reserve_btn.nextElementSibling;
+			var checkoutDate = checkinDate.nextElementSibling;
+			var price = checkoutDate.nextElementSibling;
+			var accId = price.nextElementSibling;
+			var roomId = accId.nextElementSibling;
+			var headcount = roomId.nextElementSibling;
+			
+			window.location.href = `/user/reservation/pay?accId=${accId.value}&roomId=${roomId.value}&price=${price.value}&checkinDate=${checkinDate.value}&checkoutDate=${checkoutDate.value}&headcount=${headcount.value}`;
+		}
 	});
 });
