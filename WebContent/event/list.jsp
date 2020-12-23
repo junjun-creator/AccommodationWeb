@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="/notice/list"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;공지사항</a></li>
                     <li class="active"><a href="list"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;이벤트</a></li>
-                    <li><a href=""><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Q&A</a></li>
+                    <li><a href="/user/qna"><i class="far fa-question-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Q&A</a></li>
                 </ul>
             </aside>
             <main id="main" class="main">

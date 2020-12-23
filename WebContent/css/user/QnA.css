@@ -164,7 +164,7 @@
                         right: 50px;
                     }
 	                    .qna-sec-list li>div .p-detail{
-	                    	width:800px;
+	                    	width:760px;
 	                    	background:#fafafa;
 	                    	padding:10px;
 	                    	margin-top:20px;
@@ -173,7 +173,7 @@
 	                    	
 	                    }
                         .qna-sec-list li>div p:nth-child(1){
-                        	width:820px;
+                        	width:720px;
                             --border-bottom: 0.5px solid #979797;
                             padding-bottom:20px;
                             font-size:20px;
