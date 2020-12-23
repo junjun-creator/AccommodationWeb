@@ -777,5 +777,36 @@ public class JdbcReservationDao implements ReservationDao {
 		}
 		return rv;
 	}
+
+	@Override
+	public int delete(int accId) {
+		int result =0;
+		
+		String url = DBContext.URL;
+		String dbid = DBContext.UID;
+		String dbpwd = DBContext.PWD;
+		
+		String sql = "DELETE FROM RESERVATION WHERE ACC_ID=?";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
+			//Statement st = con.createStatement();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,accId);
+			result = ps.executeUpdate();
+			
+			
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 		
 }

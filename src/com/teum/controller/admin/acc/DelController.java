@@ -26,32 +26,26 @@ public class DelController extends HttpServlet{
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		AccService service = new AccService();
-		RoomImageService riService = new RoomImageService();
-		RoomService roomService = new RoomService();
-		ReverseOfferService roService = new ReverseOfferService();
-		OfferService offerService = new OfferService();
-		AccImageService aiService = new AccImageService();
-		ReservationService reservationService = new ReservationService();
-		PickService pService = new PickService();
-		GoldenTimeService gService = new GoldenTimeService();
+//		RoomImageService riService = new RoomImageService();
+//		RoomService roomService = new RoomService();
+//		ReverseOfferService roService = new ReverseOfferService();
+//		OfferService offerService = new OfferService();
+//		AccImageService aiService = new AccImageService();
+//		ReservationService reservationService = new ReservationService();
+//		PickService pService = new PickService();
+//		
+//		//자식테이블 지우기 -> acc테이블지우기
+//		//int riResult = riService.delete(id);//roomImage
+//		int roomResult = roomService.delete(id);//room
+//		//int roResult = roService.delete1(roomId); //reverseOffer
+//		int offerResult = offerService.delete(id); //offer
+//		int aiResult = aiService.delete(id); //accImage
+//		int reservationResult = reservationService.delete(id); //reservation
+//		int pResult = pService.delete(id); //pick
 		
-		//자식테이블 지우기 -> acc테이블지우기
-		int riResult = riService.delete();
-		int roomResult = roomService.delete();
-		int roResult = roService.delete();
-		int offerResult = offerService.delete();
-		int aiResult = aiService.delete();
-		int reservationResult = reservationService.delete();
-		int pResult = pService.delete();
-		int gResult = gService.delete();
 		
 		int result = service.delete(id);
 		
 		response.sendRedirect("list");
-	}
-
-	private PickService PickService() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -249,7 +249,7 @@ public class JdbcPickDao implements PickDao {
 	}
 
 	@Override
-	public int delete(int id) {
+	public int delete(int accId) {
 		int result =0;
 		
 		String url = DBContext.URL;
@@ -263,7 +263,7 @@ public class JdbcPickDao implements PickDao {
 			Connection con = DriverManager.getConnection(url,dbid,dbpwd);
 			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,id);
+			ps.setInt(1,accId);
 			result = ps.executeUpdate();
 			
 			

@@ -94,8 +94,6 @@ public class AccService {
 	
 	public int approval(int id) {
 		int result = 0;
-		Acc acc = accDao.applyGet(id);
-		acc.setRegStatus(1);
 		result = accDao.approval(id);
 		return result;
 	}

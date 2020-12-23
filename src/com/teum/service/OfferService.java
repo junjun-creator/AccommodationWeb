@@ -60,9 +60,7 @@ public class OfferService implements OfferServiceI{
   }
 	public int delete(int accId) {
 		int result = 0;
-		
 		result = offerDao.delete(accId);
-		
 		return result;
 	}
 

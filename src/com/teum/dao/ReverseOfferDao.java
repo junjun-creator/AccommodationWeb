@@ -14,4 +14,6 @@ public interface ReverseOfferDao {
 
 	int delete(int roomId);
 
+	int delete1(int offerId);
+
 }
