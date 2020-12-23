@@ -209,7 +209,7 @@ public class RegController extends HttpServlet {
 		reverseOfferService.insert(reverseOffer);
 		offerService.update(offerId);
 		
-		response.sendRedirect("/index");
+		response.sendRedirect("/company/reverseOffer/detail");
 		
 		
 		

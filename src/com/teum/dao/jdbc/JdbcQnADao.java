@@ -272,7 +272,7 @@ public class JdbcQnADao implements QnADao {
 		List<QnA>list = new ArrayList<>();
 		
 		String url = DBContext.URL;
-		String sql = "SELECT * FROM QNA where user_id ="+id+"and answer_status=1";
+		String sql = "SELECT * FROM QNA where user_id =" + id;
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

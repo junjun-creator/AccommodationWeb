@@ -54,7 +54,7 @@ public class JdbcReservationDao implements ReservationDao {
 				Date checkinDate = rs.getDate("checkin_date");
 				Date checkoutDate = rs.getDate("checkout_date");
 				String accName = rs.getString("acc_name");
-				String fileName = rs.getString("filename");
+				String fileRoute = rs.getString("fileroute");
 				int cancelStatus = rs.getInt("cancel_status");
 				int reviewScore = rs.getInt("review_score");
 				
@@ -68,7 +68,7 @@ public class JdbcReservationDao implements ReservationDao {
 				rlv.setCheckinDate(checkinDate);
 				rlv.setCheckoutDate(checkoutDate);
 				rlv.setAccName(accName);
-				rlv.setFileName(fileName);
+				rlv.setFileRoute(fileRoute);
 				rlv.setCancelStatus(cancelStatus);
 				rlv.setReviewScore(reviewScore);
 				

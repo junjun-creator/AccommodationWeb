@@ -54,9 +54,16 @@ public class ListController extends HttpServlet {
       if (search_ != null && !search_.equals(""))
     	  search = search_;
       
-      location = bigCity + " " + smallCity;
+      System.out.println("bigcity: " + bigCity);
+      System.out.println("smallCity: " + smallCity);
+      
+      if (bigCity.equals("") && smallCity.equals(""))
+    	  location = "";
+      else
+    	  location = bigCity + " " + smallCity;
       
       List<AccImageListView> accList = accService.getList(type, location, search);
+      System.out.println(accList.get(0).getLocation());
       
       
       request.setAttribute("accList", accList);

@@ -70,7 +70,7 @@
 	                    </section>
 	                    <section class="qna-creat" style="display:none">
 	                        <h1 class="d-none">문의 작성</h1>
-	                       <form action="QnA" method="post">
+	                       <form action="/user/qna" method="post">
 	                           <select name="category" id="" class="category" >
 		                                <option value="" selected disabled>전체</option>
 		                                <option value="1"  ${(param.category=="1")?"selected":"" }>이벤트</option>
