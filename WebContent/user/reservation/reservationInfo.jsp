@@ -183,7 +183,7 @@
     </section>
     <script type="more-template" id="more-template">
     	<li class="reservation-item">
-	                            <img src="../../images/company/호텔/서울/강남구/신라스테이_삼성/{fileName}" alt="">
+	                            <img src="{fileName}" alt="">
 	                            <p>{status}</p>
 	                            <p>{accName}</p>
 	                            <p>{checkinDate} ~ {checkoutDate}</p>

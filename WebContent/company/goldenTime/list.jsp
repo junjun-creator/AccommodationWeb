@@ -88,11 +88,11 @@
 		                            </div>
 		                          </figcaption>
 		                        <div class="description-item">
-		                            <p style="color:black;">${g.name}</p>
+		                            <p style="color:white;">${g.name}</p>
 		                            <div class="date-box" style="display:flex; color:orange; font-size:25px; font-weight:bold; margin-top:12px;margin-bottom:12px;">
 		                            	<p class="start">${g.gtStartDate}</p><span>~</span><p class="end">${g.gtEndDate}</p>
 		                            </div>
-		                            <p style="color:black;">${g.location }</p>
+		                            <p style="color:white;">${g.location }</p>
 		                        </div>
 		                        <div class="item-price">
 		                            <div>

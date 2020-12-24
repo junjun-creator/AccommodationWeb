@@ -54,7 +54,7 @@ public class RegController extends HttpServlet{
 				UsersService service = new UsersService();
 				int result = service.insert(u);
 				
-				response.sendRedirect("/admin/userInfo/users/usersList");
+				response.sendRedirect("/index");
 			}
 			else {
 				Company c = new Company();
@@ -68,7 +68,7 @@ public class RegController extends HttpServlet{
 				CompanyService service = new CompanyService();
 				int result = service.insert(c);
 				
-				response.sendRedirect("/admin/userInfo/company/companyList");
+				response.sendRedirect("/signin");
 			}
 			
 			

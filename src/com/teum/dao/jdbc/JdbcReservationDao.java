@@ -73,6 +73,7 @@ public class JdbcReservationDao implements ReservationDao {
 				rlv.setReviewScore(reviewScore);
 				
 				list.add(rlv);
+				System.out.println(rlv);
 			}
 			System.out.println(endIndex);
 			
