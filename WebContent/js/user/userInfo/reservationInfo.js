@@ -41,7 +41,7 @@ window.addEventListener("load",function(){
 						reviewStatus = '리뷰수정';
 					
 					resultHTML = html.replace("{accName}",jsonResult[i].accName)
-									.replace("{fileName}",jsonResult[i].fileName)
+									.replace("{fileName}",(jsonResult[i].fileRoute).split(",", 1))
 									.replace("{checkinDate}",jsonResult[i].checkinDate)
 									.replace("{checkoutDate}",jsonResult[i].checkoutDate)
 									.replace("{accId}",jsonResult[i].accId)

@@ -19,20 +19,7 @@
     <title>회원관리 | 틈을 채우다</title>
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="http://127.0.0.1:5500/main.html">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="sub-page">
-                        <a href="">로그인</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
 
     <section class="body">
         <aside id="aside" class="aside">
@@ -45,10 +32,10 @@
         <div class="container">
             <nav id="nav" class="nav">
                 <ul>
-                    <li><a href=""><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
-                    <li class="current-tab"><a href=""><i class="fas fa-user-circle"></i><span>회원관리</span></a></li>
-                    <li><a href=""><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
-                    <li><a href=""><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
+                    <li><a href="/admin/accommodations/list"><i class="fas fa-hotel"></i><span>업체관리</span></a></li>
+                    <li class="current-tab"><a href="/admin/userInfo/users/usersList"><i class="fas fa-user-circle"></i><span> 회원관리</span></a></li>
+                    <li><a href="/admin/promotion/goldenTime/list"><i class="far fa-calendar-alt"></i><span>프로모션관리</span></a></li>
+                    <li><a href="/admin/customerService/notice/list"><i class="fas fa-headphones"></i><span>고객센터</span></a></li>
                 </ul>
             </nav>
             <main id="main" class="main">

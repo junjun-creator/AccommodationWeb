@@ -22,41 +22,7 @@
     <title>업체관리 | 틈을 채우다</title>
 </head>
 <body>
-    <header class="sec-header-page">
-        <section class="header-sec pcHeader">
-            <div class="header-logo">
-                <h1><a class="teum-logo" href="/admin/index">틈</a></h1>
-            </div>
-            <div>
-                <ul class="main-menu">
-                    <li class="header-search"><input type="text"><a href=""><i class="fas fa-search"></i></a></li>
-                    <li><a href="/admin/promotion/event/list">제안하기</a></li>
-                    <li><a href="">예약내역</a></li>
-                    <li class="sub-page">
-                        <a href="">더보기</a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="/admin/customerService/notice/list">공지사항</a></li>
-                                <li><a href="/admin/promotion/event/list">이벤트</a></li>
-                                <li><a href="/admin/customerService/qna/list">1:1 문의</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="sub-page">
-                        <a href="" class="character"><i class="fas fa-sort-down"></i></a>
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="">내정보</a></li>
-                                <li><a href="">제안내역</a></li>
-                                <li><a href="">찜한 숙소</a></li>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </header>
+    <jsp:include page="/inc/header.jsp"/>
     
     <main>
         <section class="body">
@@ -76,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/admin/userInfo/list">
+                            <a href="/admin/userInfo/users/usersList">
                                 <i class="fas fa-user-circle"></i><span> 회원관리</span>
                             </a>
                         </li>

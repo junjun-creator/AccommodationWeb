@@ -13,8 +13,8 @@
         <div class="search-main">
             <div>
                 <div class="category">
-                    <div class="search-category pick">아이디로 찾기</div>
-                    <div class="search-category">비밀번호로 찾기</div>
+                    <div class="search-category pick">아이디 찾기</div>
+                    <div class="search-category">비밀번호 찾기</div>
                 </div>
             </div>
             <div class="search-form choose">

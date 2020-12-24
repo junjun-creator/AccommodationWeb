@@ -121,7 +121,7 @@ public class RegController extends HttpServlet {
 			List<RoomImageListView> showRoomList = new ArrayList<>();
 			
 			
-			
+			StringBuilder offerdDatesCSV = new StringBuilder();
 			/* -- 예약이 가능한 방 리스트만 뽑기 -- */
 			for (OfferableRoomListView offer : offerViewList) {
 				Date checkinDate = offer.getCheckinDate();
@@ -129,7 +129,6 @@ public class RegController extends HttpServlet {
 				
 				// 개인이 제안한 체크인 날짜 ~ 체크아웃 전날 날짜까지 추리기
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				StringBuilder offerdDatesCSV = new StringBuilder();
 				
 				while (checkinDate.compareTo(checkoutDate) <= 0) {
 					offerdDatesCSV.append(sdf.format(checkinDate));
@@ -143,44 +142,50 @@ public class RegController extends HttpServlet {
 				
 				System.out.printf("개인이 예약한 날짜(체크인~체크아웃-1): %s\n", offerdDatesCSV.toString());
 				
-				
-				
-//				int index = 1;
-				for (RoomImageListView room : roomList) {
-					// ex) 만약 개인이 2020-01-01 ~ 2020-01-03 날짜로 제안이 오는 경우에는 offeredDates는 아래와 같다.
-					// offeredDates = ["2020-01-01", "2020-01-02", "2020-01-03"];
-					String[] offeredDates = offerdDatesCSV.toString().split(",");
-					String bookedDate = room.getBookedDate();
-					
-					boolean isBook = true;
-					
-//					System.out.printf("%d번째 for문\n", index++);
-//					System.out.println("offeredDates: " + Arrays.toString(offeredDates));
-//					System.out.println("bookedDate: " + bookedDate);
-//					System.out.println("showRoomList: " + showRoomList);
-//					System.out.println();
-					
-					// 방에 예약이 비어있으므로 보여줄 수 있음
-					if (bookedDate == null || bookedDate.equals("")) {
-						showRoomList.add(room);
-						continue;
-					}
-					
-					// 하루라도 예약날짜가 겹치면 isBook 상태를 false로 변경
-					for (String offeredDate : offeredDates)
-						if (bookedDate.contains(offeredDate)) {
-							isBook = false;
-							break;
-						}
-					
-					// 하루도 예약이 겹치지 않았으므로 예약가능
-					if (isBook)
-						showRoomList.add(room);
-				}
 					
 			}
 			
 			
+			
+			
+//			int index = 1;
+			for (RoomImageListView room : roomList) {
+				// ex) 만약 개인이 2020-01-01 ~ 2020-01-03 날짜로 제안이 오는 경우에는 offeredDates는 아래와 같다.
+				// offeredDates = ["2020-01-01", "2020-01-02", "2020-01-03"];
+				String[] offeredDates = offerdDatesCSV.toString().split(",");
+				String bookedDate = room.getBookedDate();
+				
+				boolean isBook = true;
+				
+//				System.out.printf("%d번째 for문\n", index++);
+//				System.out.println("offeredDates: " + Arrays.toString(offeredDates));
+//				System.out.println("bookedDate: " + bookedDate);
+//				System.out.println("showRoomList: " + showRoomList);
+//				System.out.println();
+				System.out.println(room.toString());
+				// 방에 예약이 비어있으므로 보여줄 수 있음
+				if (bookedDate == null || bookedDate.equals("")) {
+					showRoomList.add(room);
+					continue;
+				}
+				
+				// 하루라도 예약날짜가 겹치면 isBook 상태를 false로 변경
+				for (String offeredDate : offeredDates)
+					if (bookedDate.contains(offeredDate)) {
+						isBook = false;
+						break;
+					}
+				
+				// 하루도 예약이 겹치지 않았으므로 예약가능
+				if (isBook)
+					showRoomList.add(room);
+			}
+			
+			
+			
+			
+			
+//			System.out.println("showRoomList: " + showRoomList.toString());
 			
 			/* -- 데이터 넘기기 -- */
 			request.setAttribute("offerList", offerList);

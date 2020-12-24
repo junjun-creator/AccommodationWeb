@@ -57,7 +57,10 @@ public class ReservationInfoController extends HttpServlet {
 		if(page_ != null && !page_.equals(""))
 			page = Integer.parseInt(page_);
 		
+//		System.out.println("page: " + page);
+		
 		List<ReservationListView> rlv = service.getListByUser(page,userId);
+		System.out.println(rlv.toString());
 
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -73,7 +76,7 @@ public class ReservationInfoController extends HttpServlet {
 			obj.put("checkoutDate", checkoutDate);
 			obj.put("price", r.getPrice());
 			obj.put("accName", r.getAccName());
-			obj.put("fileName", r.getFileRoute());
+			obj.put("fileRoute", r.getFileRoute());
 			obj.put("id", r.getId());
 			obj.put("accId", r.getAccId());
 			obj.put("cancelStatus", r.getCancelStatus());
