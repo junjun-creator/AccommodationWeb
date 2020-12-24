@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>TEUM | 틈을 채우다</title>
+    <title>제안신청 | 틈을 채우다</title>
 </head>
 <body>
     <jsp:include page="/inc/header.jsp"/>

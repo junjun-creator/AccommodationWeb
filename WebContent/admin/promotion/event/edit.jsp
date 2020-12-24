@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="/js/admin/promotion/event/edit.js"></script>
-    <title>이벤트 수정</title>
+    <title>프로모션관리 | 틈을 채우다</title>
 </head>
 <body>
     <header class="sec-header-page">

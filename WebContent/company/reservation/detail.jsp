@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>예약 상세페이지</title>
+    <title>예약관리 | 틈을 채우다</title>
 </head>
 <body>
     <jsp:include page="/inc/header.jsp"/>
@@ -38,8 +38,8 @@
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
                         <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
-                        <li>&nbsp;&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i> </li>
-                        <li>&nbsp;&nbsp;&nbsp;예약관리</li>
+                        <li>&nbsp;&nbsp;&nbsp;마이페이지</li>
+                      
                     </ul>
                 </div>
                 <section class="reservation-detail-sec">

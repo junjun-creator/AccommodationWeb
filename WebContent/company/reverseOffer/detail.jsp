@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="/js/company/reverseOffer/detail.js"></script>
-    <title>TEUM | 틈을 채우다</title>
+    <title>제안신청관리 | 틈을 채우다</title>
 </head>
 <body>
     <jsp:include page="/inc/header.jsp"/>
@@ -41,8 +41,8 @@
                 <div class="breadcrumb">
                     <ul class="breadcrumb-list">
                         <li><i class="fas fa-home"></i>&nbsp;&nbsp;HOME&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
-                        <li>&nbsp;&nbsp;&nbsp;???&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></li>
-                        <li>&nbsp;&nbsp;&nbsp;???&nbsp;&nbsp;&nbsp;</li>
+                        
+                        <li>&nbsp;&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&nbsp;</li>
                     </ul>
                 </div>
                 <div>

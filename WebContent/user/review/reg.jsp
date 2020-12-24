@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="/js/user/review/reg.js"></script>
-    <title>리뷰 등록</title>
+    <title>리뷰등록 | 틈을 채우다</title>
 </head>
 <body>
     <jsp:include page="/inc/header.jsp"/>
