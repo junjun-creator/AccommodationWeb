@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="../../css/admin/accommodations/list.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link rel="icon" href="/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 	<script src="../../js/admin/accommodations/regList.js"></script>
