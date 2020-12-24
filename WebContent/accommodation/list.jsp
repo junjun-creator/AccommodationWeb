@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숙소 리스트</title>
+    <title>TEUM | 틈을 채우다</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/accommodationList/list.css">
@@ -193,13 +193,13 @@
                         </figcaption>
                         <div class="description-item">
                             <p>${acc.name}</p>
-                            <P>★ 9.1</P>
+                            <P>★ ${pointList[status.index]*2 }</P>
                             <p>${acc.location}</p>
                         </div>
                         <div class="item-price">
                             <div>
                                 <p>예약특가</p>
-                                <p>120,000원</p>
+                                <p><fmt:formatNumber value="${priceList[status.index] }" pattern="#,###" />원</p>
                             </div>
                         </div>
                         <div class="hovered-item-bg">

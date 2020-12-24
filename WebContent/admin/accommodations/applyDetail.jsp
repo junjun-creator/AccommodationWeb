@@ -9,14 +9,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="/images/logo.png">
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="../../css/admin/layout.css">
     <link rel="stylesheet" href="../../css/admin/accommodations/applyDetail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="icon" href="/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>등록 요청 업체</title>
+    <title>업체관리 | 틈을 채우다</title>
 </head>
 <body>
     <header class="sec-header-page">

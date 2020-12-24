@@ -1,6 +1,7 @@
 package com.teum.controller.accommodation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.teum.dao.entity.AccImageListView;
+import com.teum.dao.entity.PickListView;
 import com.teum.service.AccImageService;
 import com.teum.service.AccService;
+import com.teum.service.PickService;
+import com.teum.service.RoomService;
 
 @WebServlet("/accommodation/list")
 public class ListController extends HttpServlet {
@@ -63,11 +67,27 @@ public class ListController extends HttpServlet {
     	  location = bigCity + " " + smallCity;
       
       List<AccImageListView> accList = accService.getList(type, location, search);
-      System.out.println(accList.get(0).getLocation());
       
+      //평점
+      List<Integer> accIds = new ArrayList<>();
+      for(AccImageListView alv : accList) {
+    	  accIds.add(alv.getId());
+      }
+      PickService pickService = new PickService();
+      List<Double> pointList = pickService.getPointList(accIds);
+      
+      //가격
+      RoomService roomService = new RoomService();
+      List<Integer> priceList = new ArrayList();
+      for(AccImageListView alv : accList) {
+    	  int price = roomService.getPrice(alv.getId());
+    	  priceList.add(price);
+      }
       
       request.setAttribute("accList", accList);
       request.setAttribute("type", type);
+      request.setAttribute("pointList", pointList);
+      request.setAttribute("priceList", priceList);
       request.getRequestDispatcher("list.jsp").forward(request, response);
    }
    

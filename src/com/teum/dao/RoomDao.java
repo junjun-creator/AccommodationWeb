@@ -44,4 +44,6 @@ public interface RoomDao {
 	int updatePrice(Room room);
 
 	List<ReverseListView> getReversedRoomList(int startIndex, int endIndex, int offerId);
+
+	int getPrice(int id);
 }

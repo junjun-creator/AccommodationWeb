@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <title>예약 상세페이지</title>
+    <title>얘약 상세 | 틈을 채우다</title>
 </head>
 <body>
     <jsp:include page="/inc/header.jsp"/>

@@ -707,4 +707,35 @@ public class JdbcRoomDao implements RoomDao {
 		return list;
 	}
 
+	@Override
+	public int getPrice(int id) {
+		int result =0;
+		
+		
+		String url = DBContext.URL;
+		String sql = "SELECT AVG(PRICE) FROM ROOM WHERE ACC_ID=?";
+		System.out.println(id);
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, DBContext.UID, DBContext.PWD);
+			PreparedStatement st =con.prepareStatement(sql);
+			st.setInt(1, id);
+		
+			ResultSet rs = st.executeQuery(); // select 문장에만
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
