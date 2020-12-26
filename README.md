@@ -13,6 +13,9 @@
 | --- | --- | --- | --- | --- |
 | HTML5<br>CSS3<br>JavaScript | Servlet & JSP | Oracle | Apache Tomcat | Git<br>Trello<br>Adobe XD<br>Photoshop |
 
+## 📅 개발 기간
+(추가하기)
+
 ## 📊 E-R Diagram
 ![E-R Diagram](https://user-images.githubusercontent.com/65852909/103152482-c12fca80-47cb-11eb-8748-09a80007ecdf.png)
 
