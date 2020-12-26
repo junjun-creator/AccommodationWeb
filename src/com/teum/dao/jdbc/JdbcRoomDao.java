@@ -192,6 +192,7 @@ public class JdbcRoomDao implements RoomDao {
 				oiv.setAccName(accName);
 
 				list.add(oiv);
+				System.out.println(oiv);
 			}
 
 			rs.close();
