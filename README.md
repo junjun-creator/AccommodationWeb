@@ -1,10 +1,7 @@
 <p align="center">
-  <a href="https://github.com/mnxmnz/SEMOGEUM">
-    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcCodrA%2FbtqQIac0e80%2FXVKijxwFMks9EKvdKU8nuk%2Fimg.gif" alt="Logo" width="177" height="100">
-    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJrvTY%2FbtqQIaxi4i4%2FDqM8EpsqxCEvVm4RMTTJnk%2Fimg.png" alt="Logo" width="77" height="100">
-  </a>
+<img align="center" style="margin:0 auto;" src="https://user-images.githubusercontent.com/65852909/103152129-35686f00-47c8-11eb-82b4-a27dfd80ff37.png"/>
 
-  <h2 align="center"><a href="http://13.124.253.44:3000/preview">SEMOGEUM</a></h2>
+  <h2 align="center">TEUM</h2>
 </p>
 
 ## 📑 프로젝트 소개
