@@ -5,13 +5,19 @@
 </p>
 
 ## 📑 프로젝트 소개
-판매자-제작사-소비자를 이어주는 재능 상품화 반응형 웹 플랫폼 서비스입니다.
+기존 숙소예약시스템의 패러다임을 바꾸다 (각자쓰기)
 
 ## 🛠 사용 기술
 
-| Front-End | Back-End | DataBase | Front-Server | Back-Server | Tool |
-| --- | --- | --- | --- | --- | --- |
-| BootStrap4<br>JavaScript | Node.js<br>Express | MySQL | AWS EC2 | AWS EC2 | Git<br>Trello<br>Adobe XD<br>Photoshop |
+| Front-End | Back-End | DataBase | Server | Tool |
+| --- | --- | --- | --- | --- |
+| HTML5<br>CSS3<br>JavaScript | Servlet & JSP | Oracle | Apache Tomcat | Git<br>Trello<br>Adobe XD<br>Photoshop |
+
+## 📊 E-R Diagram
+![E-R Diagram](https://user-images.githubusercontent.com/65852909/103152482-c12fca80-47cb-11eb-8748-09a80007ecdf.png)
+
+## 📖 Issues 관리
+<img width="1516" alt="스크린샷 2020-12-26 오후 10 51 42" src="https://user-images.githubusercontent.com/65852909/103152604-00aae680-47cd-11eb-9923-6960d38b75a1.png">
 
 ## 🎞 실행 화면
 
@@ -41,8 +47,10 @@
 
 ## 💻 개발자
 
-| <img src="https://avatars1.githubusercontent.com/u/48766355?s=400&u=0dea83ee4d3109e4753d165f0131faff90085f49&v=4" width="55" height="55"><br>[김민지](https://github.com/mnxmnz) | <img src="https://avatars1.githubusercontent.com/u/45250049?s=400&u=743781fa797f330d5c81a47042d5c4c96052ea7b&v=4" width="55" height="55"><br>[김지윤](https://github.com/prinyun11) | <img src="https://avatars1.githubusercontent.com/u/40957996?s=400&u=df7fd20ae5c0afb399738e9b00fb770bea02d4b3&v=4" width="55" height="55"><br>[조재희](https://github.com/cbw1030) | <img src="https://avatars0.githubusercontent.com/u/36118545?s=400&u=22af5f807fdd9578b8c5a0dbc6453633d72c02fa&v=4" width="55" height="55"><br>[천승아](https://github.com/1000peach) |
+| <img src="https://avatars3.githubusercontent.com/u/65852909?s=400&u=8f18e9a8e35f4ea10e050c12d56c9c971e02eb4d&v=4" width="55" height="55"><br>[김병준](https://github.com/junjun-creator) | <img src="https://avatars2.githubusercontent.com/u/64012038?s=400&u=c1bf92ce021077a9d78d8418315c938e797fb238&v=4" width="55" height="55"><br>[신중언](https://github.com/Joong-eon) | <img src="https://avatars1.githubusercontent.com/u/40957996?s=400&u=df7fd20ae5c0afb399738e9b00fb770bea02d4b3&v=4" width="55" height="55"><br>[조재희](https://github.com/cbw1030) | <img src="https://avatars3.githubusercontent.com/u/73815879?s=400&v=4" width="55" height="55"><br>[박수현](https://github.com/suhyeon7846) |
 | --- | --- | --- | --- |
 
-## :link: URL
-- [SEMOGEUM 바로가기](http://13.124.253.44:3000/preview)
+## 💼Download
+  - git clone https://github.com/junjun-creator/AccommodationWeb.git
+  
+//본인이 맡은 역할, 
