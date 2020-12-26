@@ -78,4 +78,4 @@
 ## 💼Download
   - git clone https://github.com/junjun-creator/AccommodationWeb.git
   
-//본인이 맡은 역할, 
+//본인이 맡은 역할, 개발하면서 힘들었던점, 느낀점 등등 자유롭게 작성
