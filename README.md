@@ -21,29 +21,51 @@
 
 ## 🎞 실행 화면
 
-🧾 [1] 프리뷰: 세모금 플랫폼의 전반적인 프로세스를 소개하는 페이지입니다.
+🧾 [1] 메인화면 : 골든타임, 제안하기, 이벤트, 숙소등록 등 UI를 배치한 메인 페이지입니다.
 
-![PREVIEW](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiOpgQ%2FbtqFNhoyzlK%2FKph9REyW07SdNXkZd36fM0%2Fimg.gif)
+![main](https://user-images.githubusercontent.com/65852909/103154683-576bec80-47dc-11eb-97b4-012b42eb20a7.gif)
 
-🖥 [2] 메인: 세모금에 등록된 제품들과 리뷰, 세모금의 협찬사에 대한 소개를 합니다.
+🖥 [2] 회원가입 : 여행자, 숙박업체 등록을 위한 회원가입 페이지입니다. 실시간 폼데이터 유효성 검사 및 AJAX를 통한 이메일 중복체크 기능을 구현하였습니다.
 
-![MAIN](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcgSXdD%2FbtqFMIUpCzz%2F3Vz0hr5Hy8o2oLMDZlvdS1%2Fimg.gif)
+![signup](https://user-images.githubusercontent.com/65852909/103154728-b7629300-47dc-11eb-9a92-d9c25eafeca9.gif)
 
-🛒 [3] 상품 공모: 양식에 맞게 글을 작성하고 사진을 첨부하는 간단한 과정을 통해 상품을 공모할 수 있습니다.
+🛒 [3] EMAIL & PASSWORD 검색 및 로그인 : 로그인을 위한 이메일, 비밀번호 분실 시 찾을 수 있도록 검색 기능(AJAX)을 구현하였습니다.
 
-![UPLOAD](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcRPGID%2FbtqFMIfLIRV%2F7hpLna9pGcj4wPO01HRjoK%2Fimg.gif)
+![findIdPwd](https://user-images.githubusercontent.com/65852909/103154759-0b6d7780-47dd-11eb-855f-818bc47a28ef.gif)
 
-👍 [4] 한모금: 아이디어에 대한 소개글을 확인할 수 있고, 소비자들은 제작자에게 아이디어에 대한 의견을 남길 수 있습니다. 소비자는 상품화를 원하는 아이디어에 투표를 할 수 있고 실시간으로 반영 됩니다.
+👍 [4] 제안(여행자) : 여행자가 원하는 장소, 일시, 인원, 가격 등을 제안할 경우, 해당 지역에 있는 모든 숙소에 제안 정보 전송하는 기능을 구현하였습니다.
 
-![ONE](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F23MYY%2FbtqFN3v5Xh0%2FCmPwIqEJkNFKlQ6NTvUMAk%2Fimg.gif)
+![offer](https://user-images.githubusercontent.com/65852909/103154786-5ab3a800-47dd-11eb-8c43-f7d1274e0b23.gif)
 
-✌ [5] 두모금: 선정된 상품들이 공개되고, 그 상품이 본격적으로 상품화되는 과정과 진행 현황을 볼 수 있습니다.
+✌ [5] 역제안(숙박업체) : 여행자로부터 받은 제안목록을 확인하고, 제안을 수락하며 여행자가 예약할 수 있도록 방 정보를 전송할 수 있는 기능을 구현하였습니다.
 
-![TWO](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FxuNG8%2FbtqFNg4dsnK%2FMq0S88RXHNm3bgl9R5vh6K%2Fimg.gif)
+![reverseOffer](https://user-images.githubusercontent.com/65852909/103154849-da417700-47dd-11eb-9543-34ee89e97ab3.gif)
 
-👌 [6] 세모금 및 장바구니: 상세 페이지를 통해 상품 소개를 확인하고 리뷰와 별점을 남길 수 있습니다. 투표율이 높아 선정된 상품을 장바구니에 담아 구매할 수 있습니다. 
+👌 [6] 역제안 받은 숙소 예약하기(여행자) : 내가 보낸 제안에 대한 역제안을 수락하고 예약하는 기능을 구현하였습니다.
 
-![THREE & CART](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoYL25%2FbtqFNfYw4tq%2FudrzkSM3d1OSSiKSKxve30%2Fimg.gif)
+![제안한것을 예약하는 gif임](https://user-images.githubusercontent.com/65852909/103154876-2ee4f200-47de-11eb-93df-40186ecf8346.gif)
+
+👌 [7] 숙소리스트 훑어보기 : 숙소 타입(호텔, 모텔 등)별로 숙소리스트 검색 및 지역별 숙소리스트 검색 기능을 구현하였습니다.
+
+![accList](https://user-images.githubusercontent.com/65852909/103154941-a1ee6880-47de-11eb-9079-c3f61349c513.gif)
+
+👌 [8] 예약하기(기본) : 숙소리스트 검색 후, 원하는 숙소를 선택하여 예약하는 기능을 구현하였습니다.
+
+![reservation](https://user-images.githubusercontent.com/65852909/103154962-e24de680-47de-11eb-87f7-e34e28c7cad6.gif)
+
+👌 [9] 예약한 숙소에 리뷰 남기기 : 예약한 숙소에 리뷰를 남기는 기능을 구현하였습니다. 리뷰에는 별점과 코멘트를 남길 수 있습니다.
+
+![review](https://user-images.githubusercontent.com/65852909/103154996-204b0a80-47df-11eb-8682-1872ccdb6e48.gif)
+
+👌 [10] 골든타임 : 정해진 기간에 할인을 적용하고 있는 숙소들의 리스트를 확인할 수 있습니다. 해당 숙소를 소유하고있는 업체는 골든타임을 등록 및 해지할 수 있습니다.
+
+![goldentime](https://user-images.githubusercontent.com/65852909/103155060-8f286380-47df-11eb-9f6f-e6074676cf25.gif)
+
+👌 [11] 이벤트 : 현재 진행중인 이벤트 목록을 확인할 수 있는 페이지 입니다.
+
+![event](https://user-images.githubusercontent.com/65852909/103155074-b3844000-47df-11eb-857a-3c707dbf87f1.gif)
+
+👌 [12] 기타 : 이외에도 공지사항관리, 1:1문의, 관리자페이지(숙소등록관리,회원관리,이벤트&공지사항관리,골든타임관리) 기능도 구현 하였습니다.
 
 ## 💻 개발자
 
