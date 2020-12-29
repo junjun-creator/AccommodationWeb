@@ -5,7 +5,9 @@
 </p>
 
 ## 📑 프로젝트 소개
-기존 숙소예약시스템의 패러다임을 바꾸다 (각자쓰기)
+  - [x] 기존의 숙박 플랫폼 서비스는 숙박업체가 정해놓은 가격에 맞춰 소비자가 예약하는 시스템입니다.  
+    그래서 소비자는 원하는 가격에 예약을 할 수 있고 숙박업체는 공실을 최소화할 수 있는 Win-Win 서비스를 구현하였습니다.
+  - [x] 라이브러리와 프레임워크의 필요성을 체감하기 위해 json-simple, jdbc를 제외한 어떠한 라이브러리와 프레임워크도 사용하지 않았습니다.
 
 ## 🛠 사용 기술
 
@@ -75,7 +77,39 @@
 | <img src="https://avatars3.githubusercontent.com/u/65852909?s=400&u=8f18e9a8e35f4ea10e050c12d56c9c971e02eb4d&v=4" width="55" height="55"><br>[김병준](https://github.com/junjun-creator) | <img src="https://avatars2.githubusercontent.com/u/64012038?s=400&u=c1bf92ce021077a9d78d8418315c938e797fb238&v=4" width="55" height="55"><br>[신중언](https://github.com/Joong-eon) | <img src="https://avatars1.githubusercontent.com/u/40957996?s=400&u=df7fd20ae5c0afb399738e9b00fb770bea02d4b3&v=4" width="55" height="55"><br>[조재희](https://github.com/cbw1030) | <img src="https://avatars3.githubusercontent.com/u/73815879?s=400&v=4" width="55" height="55"><br>[박수현](https://github.com/suhyeon7846) |
 | --- | --- | --- | --- |
 
+## Contribution
+  - 프로젝트 진행 총괄
+  - [x] Front-end
+    - 메인페이지(일부)
+    - 로그인(아이디,비밀번호 검색 포함) 및 회원가입
+    - 사용자 페이지
+      - 회원 마이페이지 : 회원정보수정, 예약정보, 제안/역제안 정보, 찜한 숙소 목록
+      - 기업 마이페이지 : 회원정보수정, 예약현황, 보유숙소현황
+    - 관리자 페이지
+      - 회원, 기업 멤버 관리 CRUD 페이지
+  - [x] Back-end
+    - 로그인(아이디,비밀번호 검색 포함) 및 회원가입
+    - 사용자 페이지
+      - 회원 마이페이지
+        - 회원정보수정
+        - 예약정보
+        - 제안/역제안 정보
+        - 찜한 숙소 목록
+      - 기업 마이페이지
+        - 회원정보수정
+        - 예약현황
+        - 보유숙소현황
+    - 관리자 페이지
+      - 회원, 기업 멤버 관리 페이지
+
+## 개발에 어려웠던 점
+  - [x] 기획부터 모든 개발 프로세스를 직접 수행하는 것이 쉽지 않았다.
+  - [x] 배워가면서 설계하고 구현을 하다보니 코드의 집중화에 어려움이 있었다.
+
+## 느낀점
+  - [x] 팀프로젝트를 진행하며, 협업도구의 중요성을 깨달았다.
+  - [x] 라이브러리를 제한적으로 사용해보니, 라이브러리의 필요성을 알게 되었다.
+
 ## 💼Download
   - git clone https://github.com/junjun-creator/AccommodationWeb.git
   
-//본인이 맡은 역할, 개발하면서 힘들었던점, 느낀점 등등 자유롭게 작성
